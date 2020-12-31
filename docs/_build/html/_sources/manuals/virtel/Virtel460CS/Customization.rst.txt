@@ -55,9 +55,18 @@ Summary of Amendments
 Virtel version 4.60 (11th Oct 2020)
 -----------------------------------
 
-*   Support for IPV6
-*   Virtel MSG10 USSTAB
-*   FTP client interface 
+* Support for IPV6
+* New FTP Client interface
+* Enhanced Page Capture
+* New wizard support for VSR
+* Keyboard assignment enhancements
+* New dynamic symbolics for USSMSG10
+* Password and Passphrase support in native VTAM mode
+* DNS support on Line definition
+* Improvement to UNLOAD command. SYSPUNCH dynamically allocated
+* Scenario language updates
+* Silence command supports dynamic message updates
+* Various bug fixes
 
 .. note:: For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.60.
 
@@ -107,6 +116,40 @@ but if a property is defined outside of the object definition, no quotes are spe
     w2hparm.ctrl = "Newline";
 
 See Appendix A of the Virtel Users Guide for a full list of "key" names and associated default values.
+
+.. index::     
+   single: Customization; W2HPARM.JS
+   single: jokerkey 
+    
+Setting a Joker Key
+^^^^^^^^^^^^^^^^^^^
+
+The JokeyKey setting may be used to redefine keys on a keyboard to a one of the following functions - Reset, Ins, ATTN, Clear. For example, to redefine a key as an Insert key for keyboards that do not have an Insert key.
+
+1. First set which key will be the Joker Key in w2hparm.js
+
+::
+
+    w2hparm.jokeykey=192;   // Leftmost key on second row of US keyboard    
+
+2. To determine the scancode of a key use the scancode tester by entering the following URL
+
+::
+
+    http://192.168.170.48:41001/w2h/scancode.htm     
+
+3. Administrators can preset the joker key function with
+
+::
+    w2hparm.joker | shiftjoker | altjoker = "Ins"
+    
+.. note::
+    
+    A user can set the function assigned to the Joker Key through the user settings.
+
+|image69|
+*Settings Panel showing SHIFT Joker key assignments*
+
 
 .. index::     
    single: Customization; Displaying customized members 
@@ -4192,3 +4235,4 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image66| image:: images/media/image66.png
 .. |image67| image:: images/media/image67.png
 .. |image68| image:: images/media/image68.png
+.. |image69| image:: images/media/image69.png

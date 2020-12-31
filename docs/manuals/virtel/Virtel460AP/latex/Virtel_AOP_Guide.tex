@@ -55,7 +55,7 @@
 
 
 \title{Virtel Audit, Administration, Operations and Performance Guide}
-\date{Dec 30, 2020}
+\date{Dec 31, 2020}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -556,17 +556,17 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
 
 \section{SILENCE Command}
 \label{\detokenize{audit_operations_ and_performance:silence-command}}\label{\detokenize{audit_operations_ and_performance:index-18}}
-To supppress Virtel messages use the SILENCE command:
+The SILENCE command manages message suppression. The format of the command is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SILENCE}
+\PYG{n}{SILENCE}                     \PYG{n}{Toggle} \PYG{n}{SILENCE} \PYG{n}{mode} \PYG{n}{ON} \PYG{o+ow}{or} \PYG{n}{OFF}
+\PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{messagid}            \PYG{n}{Add} \PYG{n}{message} \PYG{n}{to} \PYG{n}{message} \PYG{n}{table}
+\PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{messageid}\PYG{p}{,}\PYG{n}{D}         \PYG{n}{Delete} \PYG{n}{message} \PYG{k+kn}{from} \PYG{n+nn}{message} \PYG{n}{table}
+\PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{RESET}               \PYG{n}{Reset} \PYG{n}{message} \PYG{n}{table} \PYG{o+ow}{and} \PYG{n}{remove} \PYG{n+nb}{all} \PYG{n}{entries}
+\PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{LIST}                \PYG{n}{List} \PYG{n}{messages}
 \end{sphinxVerbatim}
 
-The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.
-
-\begin{sphinxadmonition}{note}{Note:}
-Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)
-\end{sphinxadmonition}
+The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
 
 \index{SNAP Command@\spxentry{SNAP Command}!Commands@\spxentry{Commands}}\index{Commands@\spxentry{Commands}!SNAP Command@\spxentry{SNAP Command}}\ignorespaces 
 
@@ -830,10 +830,23 @@ The VIT indicators apply the the level of tracing.
 
 This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
 
+\index{UNLOAD Command@\spxentry{UNLOAD Command}!Commands@\spxentry{Commands}}\index{Commands@\spxentry{Commands}!UNLOAD Command@\spxentry{UNLOAD Command}}\ignorespaces 
+
+\section{UNLOAD Command}
+\label{\detokenize{audit_operations_ and_performance:unload-command}}\label{\detokenize{audit_operations_ and_performance:index-32}}
+Unload the ARBO configuration file.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{UNLOAD}
+\PYG{n}{UNLOAD}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{o}{*}\PYG{n}{dsname}\PYG{o}{*}
+\end{sphinxVerbatim}
+
+The UNLOAD commands writes the contents of the ARBO file. Depending on the VIRTEL JCL, the output will be directed to the SYSPUNCH DD statement. If no SYSPUNCH DD statement is defined, one will be allocated through dynamic allocation. Output will then by written to JES class SYSOUT=B or, if the DSN= option is specified, to the dsname provided. The dataset must be pre-allocated with DCB attributes LRECL=80,RECFM=FB,BLKSIZE=3200. The SYSPUNCH DD statement will be dynamically allocated if not provided in the Virtel JCL.
+
 \index{VIRSV Command@\spxentry{VIRSV Command}!Commands@\spxentry{Commands}}\index{Commands@\spxentry{Commands}!VIRSV Command@\spxentry{VIRSV Command}}\ignorespaces 
 
 \section{VIRSV Command}
-\label{\detokenize{audit_operations_ and_performance:virsv-command}}\label{\detokenize{audit_operations_ and_performance:index-32}}
+\label{\detokenize{audit_operations_ and_performance:virsv-command}}\label{\detokenize{audit_operations_ and_performance:index-33}}
 Refreshing a VIRSV Service program
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -852,7 +865,7 @@ SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In
 \index{ZAP Command@\spxentry{ZAP Command}!Commands@\spxentry{Commands}}\index{Commands@\spxentry{Commands}!ZAP Command@\spxentry{ZAP Command}}\ignorespaces 
 
 \section{ZAP Command}
-\label{\detokenize{audit_operations_ and_performance:zap-command}}\label{\detokenize{audit_operations_ and_performance:index-33}}
+\label{\detokenize{audit_operations_ and_performance:zap-command}}\label{\detokenize{audit_operations_ and_performance:index-34}}
 The ZAP command allows dynamic patching of a Virtel Program
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -878,17 +891,17 @@ The ZAP command allows the dynamic application of a corrective patch to a progra
 \index{singlepair: Administration@\spxentry{singlepair: Administration}}\ignorespaces 
 
 \chapter{Administration}
-\label{\detokenize{audit_operations_ and_performance:administration}}\label{\detokenize{audit_operations_ and_performance:index-34}}
+\label{\detokenize{audit_operations_ and_performance:administration}}\label{\detokenize{audit_operations_ and_performance:index-35}}
 \index{Line Status Application@\spxentry{Line Status Application}!Administration@\spxentry{Administration}}\index{Administration@\spxentry{Administration}!Line Status Application@\spxentry{Line Status Application}}\ignorespaces 
 
 \section{Line Status Application}
-\label{\detokenize{audit_operations_ and_performance:line-status-application}}\label{\detokenize{audit_operations_ and_performance:index-35}}
+\label{\detokenize{audit_operations_ and_performance:line-status-application}}\label{\detokenize{audit_operations_ and_performance:index-36}}
 The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.
 
 \index{Displaying Line Status@\spxentry{Displaying Line Status}!Line Status Application@\spxentry{Line Status Application}}\index{Line Status Application@\spxentry{Line Status Application}!Displaying Line Status@\spxentry{Displaying Line Status}}\ignorespaces 
 
 \subsection{Displaying line status}
-\label{\detokenize{audit_operations_ and_performance:displaying-line-status}}\label{\detokenize{audit_operations_ and_performance:index-36}}
+\label{\detokenize{audit_operations_ and_performance:displaying-line-status}}\label{\detokenize{audit_operations_ and_performance:index-37}}
 The Line Status sub-application is invoked by pressing {[}PF9{]} in the Configuration Menu, by pressing {[}PF10{]} in the Sub- Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0027.
 
 When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource \$\$UTIL\$\$.
@@ -947,7 +960,7 @@ scroll forward to next page.
 \index{Sending a command@\spxentry{Sending a command}!Line Status Application@\spxentry{Line Status Application}}\index{Line Status Application@\spxentry{Line Status Application}!Sending a command@\spxentry{Sending a command}}\ignorespaces 
 
 \subsection{Sending a command}
-\label{\detokenize{audit_operations_ and_performance:sending-a-command}}\label{\detokenize{audit_operations_ and_performance:index-37}}
+\label{\detokenize{audit_operations_ and_performance:sending-a-command}}\label{\detokenize{audit_operations_ and_performance:index-38}}
 To send a command to a line, place the cursor in the “C” field in front of the line name, type the command, then press {[}Enter{]}. The  commands available are:
 \begin{description}
 \item[{S}] \leavevmode\begin{description}
@@ -969,7 +982,7 @@ To return to the configuration menu, press {[}PF3{]} or {[}Clear{]}.
 \index{Displaying Line Usage@\spxentry{Displaying Line Usage}!Line Status Application@\spxentry{Line Status Application}}\index{Line Status Application@\spxentry{Line Status Application}!Displaying Line Usage@\spxentry{Displaying Line Usage}}\ignorespaces 
 
 \subsection{Displaying Line Usage}
-\label{\detokenize{audit_operations_ and_performance:displaying-line-usage}}\label{\detokenize{audit_operations_ and_performance:index-38}}
+\label{\detokenize{audit_operations_ and_performance:displaying-line-usage}}\label{\detokenize{audit_operations_ and_performance:index-39}}
 To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press {[}PF12{]}.
 
 Security rules are the same as those which apply to the previous screen.
@@ -1056,7 +1069,7 @@ To return to the Lines Status Display, press {[}PF3{]}. To return to the Configu
 \index{Memory Display Application@\spxentry{Memory Display Application}}\ignorespaces 
 
 \section{Memory Display Application}
-\label{\detokenize{audit_operations_ and_performance:memory-display-application}}\label{\detokenize{audit_operations_ and_performance:index-39}}
+\label{\detokenize{audit_operations_ and_performance:memory-display-application}}\label{\detokenize{audit_operations_ and_performance:index-40}}
 The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
 
 To invoke the memory management sub-application, press {[}PA2{]} in the Configuration Menu to display the Sub- Application Menu, then press {[}PF4{]} in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
@@ -1095,7 +1108,7 @@ Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are all
 \index{Using Memory=Test@\spxentry{Using Memory=Test}!Memory Display Application@\spxentry{Memory Display Application}}\index{Memory Display Application@\spxentry{Memory Display Application}!Using Memory=Test@\spxentry{Using Memory=Test}}\ignorespaces 
 
 \subsection{Memory display in Memory=Test mode.}
-\label{\detokenize{audit_operations_ and_performance:memory-display-in-memory-test-mode}}\label{\detokenize{audit_operations_ and_performance:index-40}}
+\label{\detokenize{audit_operations_ and_performance:memory-display-in-memory-test-mode}}\label{\detokenize{audit_operations_ and_performance:index-41}}
 If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
 
 \sphinxincludegraphics{{image28}.png}
@@ -1121,7 +1134,7 @@ This diagnostic tool should only be used when recommended by Technical Support.
 \index{Memory trace management@\spxentry{Memory trace management}!Memory Display Application@\spxentry{Memory Display Application}}\index{Memory Display Application@\spxentry{Memory Display Application}!Memory trace management@\spxentry{Memory trace management}}\ignorespaces 
 
 \subsection{Memory trace management}
-\label{\detokenize{audit_operations_ and_performance:memory-trace-management}}\label{\detokenize{audit_operations_ and_performance:index-41}}
+\label{\detokenize{audit_operations_ and_performance:memory-trace-management}}\label{\detokenize{audit_operations_ and_performance:index-42}}
 
 \subsubsection{Activating the memory trace}
 \label{\detokenize{audit_operations_ and_performance:activating-the-memory-trace}}
@@ -1228,13 +1241,13 @@ Tracing memory activity can produce an important overhead estimated to 20-30\% o
 \index{Maintenance@\spxentry{Maintenance}!Administration@\spxentry{Administration}}\index{Administration@\spxentry{Administration}!Maintenance@\spxentry{Maintenance}}\ignorespaces 
 
 \section{Maintenance}
-\label{\detokenize{audit_operations_ and_performance:maintenance}}\label{\detokenize{audit_operations_ and_performance:index-43}}
+\label{\detokenize{audit_operations_ and_performance:maintenance}}\label{\detokenize{audit_operations_ and_performance:index-44}}
 Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - \sphinxurl{http://ftp.syspertec.com/login/}. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
 
 \index{Applying z/OS maintenace via batch@\spxentry{Applying z/OS maintenace via batch}!Maintenance@\spxentry{Maintenance}}\index{Maintenance@\spxentry{Maintenance}!Applying z/OS maintenace via batch@\spxentry{Applying z/OS maintenace via batch}}\ignorespaces 
 
 \subsection{Applying z/OS maintenance.}
-\label{\detokenize{audit_operations_ and_performance:applying-z-os-maintenance}}\label{\detokenize{audit_operations_ and_performance:index-44}}
+\label{\detokenize{audit_operations_ and_performance:applying-z-os-maintenance}}\label{\detokenize{audit_operations_ and_performance:index-45}}
 By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as an accumulation file called either \sphinxstyleemphasis{allptfs-mshpvrr.txt} (z/VSE) or \sphinxstyleemphasis{allptfs-mvsvrr-txt} (z/OS).
 
 \sphinxincludegraphics{{image29}.png}
@@ -1254,7 +1267,7 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
 \index{Applying maintenace to the TRSF files@\spxentry{Applying maintenace to the TRSF files}!Maintenance@\spxentry{Maintenance}}\index{Maintenance@\spxentry{Maintenance}!Applying maintenace to the TRSF files@\spxentry{Applying maintenace to the TRSF files}}\ignorespaces 
 
 \subsection{Applying maintenance to the TRSF files}
-\label{\detokenize{audit_operations_ and_performance:applying-maintenance-to-the-trsf-files}}\label{\detokenize{audit_operations_ and_performance:index-45}}
+\label{\detokenize{audit_operations_ and_performance:applying-maintenance-to-the-trsf-files}}\label{\detokenize{audit_operations_ and_performance:index-46}}
 The updates to the web entities are delivered as an accumulation update file called \sphinxstyleemphasis{virtelvrrupdtnnnn1.zip} where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
 
 \sphinxincludegraphics{{image30}.png}
@@ -1276,7 +1289,7 @@ Open the “Drag and Drop” interface in Virtel, and then drag the files over o
 \index{Applying maintenace via batch@\spxentry{Applying maintenace via batch}!Maintenance@\spxentry{Maintenance}}\index{Maintenance@\spxentry{Maintenance}!Applying maintenace via batch@\spxentry{Applying maintenace via batch}}\ignorespaces 
 
 \subsection{Applying maintenance via batch.}
-\label{\detokenize{audit_operations_ and_performance:applying-maintenance-via-batch}}\label{\detokenize{audit_operations_ and_performance:index-46}}
+\label{\detokenize{audit_operations_ and_performance:applying-maintenance-via-batch}}\label{\detokenize{audit_operations_ and_performance:index-47}}
 A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN201709 Virtel batch maintenance”. This can be viewed online at \sphinxurl{http://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201709/TN201709.html}
 
 \newpage
@@ -1284,7 +1297,7 @@ A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply
 \index{Correspondent Management@\spxentry{Correspondent Management}}\ignorespaces 
 
 \section{Correspondent Management}
-\label{\detokenize{audit_operations_ and_performance:correspondent-management}}\label{\detokenize{audit_operations_ and_performance:index-47}}
+\label{\detokenize{audit_operations_ and_performance:correspondent-management}}\label{\detokenize{audit_operations_ and_performance:index-48}}
 One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.
 
 VIRTEL uses the correspondent file for the following purposes:
@@ -1299,7 +1312,7 @@ There are two types of correspondent: an e-mail correspondent and a local corres
 \index{Access@\spxentry{Access}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Access@\spxentry{Access}}\ignorespaces 
 
 \subsection{Access to the application}
-\label{\detokenize{audit_operations_ and_performance:access-to-the-application}}\label{\detokenize{audit_operations_ and_performance:index-48}}
+\label{\detokenize{audit_operations_ and_performance:access-to-the-application}}\label{\detokenize{audit_operations_ and_performance:index-49}}
 The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
 associated with a correspondent, is accessible by pressing {[}PF5{]} in the VIRTEL configuration menu, or {[}PF12{]} in the
 system services sub-application menu, or from the VIRTEL Multi-Session screen via an application referencing the
@@ -1308,7 +1321,7 @@ module VIR0041A.
 \index{Security@\spxentry{Security}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Security@\spxentry{Security}}\ignorespaces 
 
 \subsection{Security}
-\label{\detokenize{audit_operations_ and_performance:security}}\label{\detokenize{audit_operations_ and_performance:index-49}}
+\label{\detokenize{audit_operations_ and_performance:security}}\label{\detokenize{audit_operations_ and_performance:index-50}}
 When security is active, access to the correspondent management sub-application from the configuration menu or
 from the system services sub-application menu is controlled by the resource \$\$PCPC\$\$.
 When it is accessed by a transaction, the rules of security management of transactions will apply.
@@ -1317,7 +1330,7 @@ Security management is described under the heading “Security” 282.
 \index{Objectives@\spxentry{Objectives}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Objectives@\spxentry{Objectives}}\ignorespaces 
 
 \subsection{Objectives}
-\label{\detokenize{audit_operations_ and_performance:objectives}}\label{\detokenize{audit_operations_ and_performance:index-50}}
+\label{\detokenize{audit_operations_ and_performance:objectives}}\label{\detokenize{audit_operations_ and_performance:index-51}}
 This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing {[}PF12{]}.
 
@@ -1358,7 +1371,7 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 \index{Field contents@\spxentry{Field contents}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Field contents@\spxentry{Field contents}}\ignorespaces 
 
 \subsection{Field Contents}
-\label{\detokenize{audit_operations_ and_performance:field-contents}}\label{\detokenize{audit_operations_ and_performance:index-51}}\begin{description}
+\label{\detokenize{audit_operations_ and_performance:field-contents}}\label{\detokenize{audit_operations_ and_performance:index-52}}\begin{description}
 \item[{Id}] \leavevmode
 For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.
 
@@ -1406,7 +1419,7 @@ The number of contacts since the last activation.
 \index{Account activation@\spxentry{Account activation}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Account activation@\spxentry{Account activation}}\ignorespaces 
 
 \subsection{Account activation}
-\label{\detokenize{audit_operations_ and_performance:account-activation}}\label{\detokenize{audit_operations_ and_performance:index-52}}
+\label{\detokenize{audit_operations_ and_performance:account-activation}}\label{\detokenize{audit_operations_ and_performance:index-53}}
 In order to be operational, a correspondent account must be activated. This is achieved by pressing {[}PF4{]} at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
 correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.
 
@@ -1417,13 +1430,13 @@ To activate an e-mail correspondent, the administrator must be logged on to VIRT
 \index{Account deactivation@\spxentry{Account deactivation}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Account deactivation@\spxentry{Account deactivation}}\ignorespaces 
 
 \subsection{Account deactivation}
-\label{\detokenize{audit_operations_ and_performance:account-deactivation}}\label{\detokenize{audit_operations_ and_performance:index-53}}
+\label{\detokenize{audit_operations_ and_performance:account-deactivation}}\label{\detokenize{audit_operations_ and_performance:index-54}}
 A correspondent’s security code may be cancelled by deactivating with the {[}PF5{]} key. The message DISABLE WAS DONE indicates that the deactivation was successful.
 
 \index{Access to rules@\spxentry{Access to rules}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Access to rules@\spxentry{Access to rules}}\ignorespaces 
 
 \subsection{Access to associated rule set}
-\label{\detokenize{audit_operations_ and_performance:access-to-associated-rule-set}}\label{\detokenize{audit_operations_ and_performance:index-54}}
+\label{\detokenize{audit_operations_ and_performance:access-to-associated-rule-set}}\label{\detokenize{audit_operations_ and_performance:index-55}}
 To display the list of rules associated with this correspondent, press the {[}PF6{]} key.
 
 \newpage
@@ -1431,7 +1444,7 @@ To display the list of rules associated with this correspondent, press the {[}PF
 \index{Web Entity Manangement@\spxentry{Web Entity Manangement}}\ignorespaces 
 
 \section{Web Entity Management}
-\label{\detokenize{audit_operations_ and_performance:web-entity-management}}\label{\detokenize{audit_operations_ and_performance:index-55}}
+\label{\detokenize{audit_operations_ and_performance:web-entity-management}}\label{\detokenize{audit_operations_ and_performance:index-56}}
 Web Entity Management is concerned with maintaining the Virtel Web entities, such as HTML template pages, CSS, JavaScript elements and images etc. These can all be uploaded to the VIRTEL directories by any of the following methods:
 \begin{enumerate}
 \def\theenumi{\arabic{enumi}}
@@ -1454,13 +1467,13 @@ by web browser (HTTP), with cookie security. (Corresspondence Management only)
 \index{Uploading pages HTTP (Signon)@\spxentry{Uploading pages HTTP}\spxextra{Signon}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading pages HTTP (Signon)@\spxentry{Uploading pages HTTP}\spxextra{Signon}}\ignorespaces 
 
 \subsection{Uploading by web browser (HTTP) (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-56}}
+\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-57}}
 The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
 
 \index{HTTP definitions (Signon)@\spxentry{HTTP definitions}\spxextra{Signon}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!HTTP definitions (Signon)@\spxentry{HTTP definitions}\spxextra{Signon}}\ignorespaces 
 
 \subsection{Definitions for upload (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:definitions-for-upload-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-57}}
+\label{\detokenize{audit_operations_ and_performance:definitions-for-upload-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-58}}
 All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
 
 The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
@@ -1503,7 +1516,7 @@ Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant acc
 \index{HTTP definitions (Signon)@\spxentry{HTTP definitions}\spxextra{Signon}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!HTTP definitions (Signon)@\spxentry{HTTP definitions}\spxextra{Signon}}\ignorespaces 
 
 \subsection{Procedure for upload (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:procedure-for-upload-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-58}}\begin{enumerate}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-upload-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-59}}\begin{enumerate}
 \def\theenumi{\arabic{enumi}}
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
@@ -1577,7 +1590,7 @@ Depending on the values specified in the directory definition, VIRTEL may conver
 \index{Uploading pages by drag and Drop@\spxentry{Uploading pages by drag and Drop}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading pages by drag and Drop@\spxentry{Uploading pages by drag and Drop}}\ignorespaces 
 
 \subsection{Uploading by web browser (HTTP) by GUI drag and drop}
-\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-by-gui-drag-and-drop}}\label{\detokenize{audit_operations_ and_performance:index-59}}
+\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-by-gui-drag-and-drop}}\label{\detokenize{audit_operations_ and_performance:index-60}}
 The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
 
 
@@ -1616,7 +1629,7 @@ In this example, one file has failed to upload because of an invalid VIRTEL tag,
 \index{Extracting upload results@\spxentry{Extracting upload results}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Extracting upload results@\spxentry{Extracting upload results}}\ignorespaces 
 
 \subsection{Extracting upload results as an Excel spreadsheet}
-\label{\detokenize{audit_operations_ and_performance:extracting-upload-results-as-an-excel-spreadsheet}}\label{\detokenize{audit_operations_ and_performance:index-60}}
+\label{\detokenize{audit_operations_ and_performance:extracting-upload-results-as-an-excel-spreadsheet}}\label{\detokenize{audit_operations_ and_performance:index-61}}
 \sphinxincludegraphics{{image16}.png} The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
 
 
@@ -1667,7 +1680,7 @@ Thu, 13 Sep 2012 08:13:16 GMT
 \index{Uploading in batch with cURL@\spxentry{Uploading in batch with cURL}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading in batch with cURL@\spxentry{Uploading in batch with cURL}}\ignorespaces 
 
 \subsection{Uploading in batch with cURL}
-\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-with-curl}}\label{\detokenize{audit_operations_ and_performance:index-63}}
+\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-with-curl}}\label{\detokenize{audit_operations_ and_performance:index-64}}
 You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
 The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
 
@@ -1705,7 +1718,7 @@ external name of the upload transaction in VIRTEL which specifies the target dir
 \index{Uploading in batch with the upl2virt command@\spxentry{Uploading in batch with the upl2virt command}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading in batch with the upl2virt command@\spxentry{Uploading in batch with the upl2virt command}}\ignorespaces 
 
 \subsection{Uploading in batch using the upl2virt command}
-\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-using-the-upl2virt-command}}\label{\detokenize{audit_operations_ and_performance:index-65}}
+\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-using-the-upl2virt-command}}\label{\detokenize{audit_operations_ and_performance:index-66}}
 For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
 
 \sphinxstylestrong{Pre-requisites}
@@ -1802,13 +1815,13 @@ You may omit the \textendash{}u MYUSERID parameter and upl2virt will prompt you 
 \index{Uploading template pages using SMTP@\spxentry{Uploading template pages using SMTP}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading template pages using SMTP@\spxentry{Uploading template pages using SMTP}}\ignorespaces 
 
 \subsection{Uploading template pages using SMTP}
-\label{\detokenize{audit_operations_ and_performance:uploading-template-pages-using-smtp}}\label{\detokenize{audit_operations_ and_performance:index-68}}
+\label{\detokenize{audit_operations_ and_performance:uploading-template-pages-using-smtp}}\label{\detokenize{audit_operations_ and_performance:index-69}}
 Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
 
 \index{SMTP Definitions@\spxentry{SMTP Definitions}!Uploading Pages@\spxentry{Uploading Pages}}\index{Uploading Pages@\spxentry{Uploading Pages}!SMTP Definitions@\spxentry{SMTP Definitions}}\ignorespaces 
 
 \subsubsection{Definitions for page upload by SMTP}
-\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-69}}\begin{itemize}
+\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-70}}\begin{itemize}
 \item {} 
 Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
 
@@ -1845,7 +1858,7 @@ Press F5 from the Configuration Menu and define an e-mail correspondent specifyi
 \index{Upload page procedure using SMTP@\spxentry{Upload page procedure using SMTP}!Uploading pages@\spxentry{Uploading pages}}\index{Uploading pages@\spxentry{Uploading pages}!Upload page procedure using SMTP@\spxentry{Upload page procedure using SMTP}}\ignorespaces 
 
 \subsubsection{Procedure for page upload by SMTP}
-\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-70}}\begin{enumerate}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-71}}\begin{enumerate}
 \def\theenumi{\arabic{enumi}}
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
@@ -1917,7 +1930,7 @@ under the name LINKS.GI
 \index{Upload page procedure using HTML@\spxentry{Upload page procedure using HTML}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Upload page procedure using HTML@\spxentry{Upload page procedure using HTML}}\ignorespaces 
 
 \subsection{Uploading pages by HTTP (secured by cookie)}
-\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-71}}
+\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-72}}
 The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
 cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
 code used for uploading by SMTP.
@@ -2197,7 +2210,7 @@ Depending on the values specified in the directory definition, VIRTEL may conver
 \index{Performance@\spxentry{Performance}}\ignorespaces 
 
 \chapter{Performance}
-\label{\detokenize{audit_operations_ and_performance:performance}}\label{\detokenize{audit_operations_ and_performance:index-72}}
+\label{\detokenize{audit_operations_ and_performance:performance}}\label{\detokenize{audit_operations_ and_performance:index-73}}
 The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:
 \begin{itemize}
 \item {} 
@@ -2220,7 +2233,7 @@ the SNAP in the SYSPRINT file
 \index{Console file@\spxentry{Console file}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Console file@\spxentry{Console file}}\ignorespaces 
 
 \section{CONSOLE file}
-\label{\detokenize{audit_operations_ and_performance:console-file}}\label{\detokenize{audit_operations_ and_performance:index-73}}
+\label{\detokenize{audit_operations_ and_performance:console-file}}\label{\detokenize{audit_operations_ and_performance:index-74}}
 In \sphinxstylestrong{z/OS environment}, the CONSOLE file is written to the VIRTEL started task’s JESMSGLG file.
 
 In \sphinxstylestrong{VSE environment}, the CONSOLE file is written to the VIRTEL partition’s POWER LST file (LISTLOG)
@@ -2237,7 +2250,7 @@ The SILENCE=YES parameter in the VIRTCT allows the suppression of certain consol
 \index{Virlog file@\spxentry{Virlog file}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virlog file@\spxentry{Virlog file}}\ignorespaces 
 
 \section{VIRLOG file}
-\label{\detokenize{audit_operations_ and_performance:virlog-file}}\label{\detokenize{audit_operations_ and_performance:index-74}}
+\label{\detokenize{audit_operations_ and_performance:virlog-file}}\label{\detokenize{audit_operations_ and_performance:index-75}}
 This is a printable file with record length 131 and record format FA which provides a record of IP connections to VIRTEL. The figure below shows an example of VIRLOG entries for incoming
 HTTP calls:
 
@@ -2318,7 +2331,7 @@ The last column contains the PCNE call user data (if present), otherwise it cont
 \index{Virtel logger@\spxentry{Virtel logger}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel logger@\spxentry{Virtel logger}}\ignorespaces 
 
 \section{VIRTEL logger}
-\label{\detokenize{audit_operations_ and_performance:virtel-logger}}\label{\detokenize{audit_operations_ and_performance:index-75}}
+\label{\detokenize{audit_operations_ and_performance:virtel-logger}}\label{\detokenize{audit_operations_ and_performance:index-76}}
 The CONSOLE log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
 
 The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:
@@ -2351,7 +2364,7 @@ The date format is yyyyddd.
 \index{Virtel logger examples@\spxentry{Virtel logger examples}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel logger examples@\spxentry{Virtel logger examples}}\ignorespaces 
 
 \subsection{Examples}
-\label{\detokenize{audit_operations_ and_performance:examples}}\label{\detokenize{audit_operations_ and_performance:index-76}}
+\label{\detokenize{audit_operations_ and_performance:examples}}\label{\detokenize{audit_operations_ and_performance:index-77}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{COPY} \PYG{n}{Copy} \PYG{n+nb}{all} \PYG{n}{records}
 \PYG{n}{COPY}\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{Copy} \PYG{n}{records} \PYG{n}{older} \PYG{n}{than} \PYG{l+m+mi}{2} \PYG{n}{days}
@@ -2368,7 +2381,7 @@ The date format is yyyyddd.
 \index{Virtel trace@\spxentry{Virtel trace}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel trace@\spxentry{Virtel trace}}\ignorespaces 
 
 \section{Virtel trace}
-\label{\detokenize{audit_operations_ and_performance:virtel-trace}}\label{\detokenize{audit_operations_ and_performance:index-77}}
+\label{\detokenize{audit_operations_ and_performance:virtel-trace}}\label{\detokenize{audit_operations_ and_performance:index-78}}
 All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.
 
 Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).
@@ -2393,7 +2406,7 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
 \index{Virtel trace contents@\spxentry{Virtel trace contents}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel trace contents@\spxentry{Virtel trace contents}}\ignorespaces 
 
 \subsection{Contents of the trace}
-\label{\detokenize{audit_operations_ and_performance:contents-of-the-trace}}\label{\detokenize{audit_operations_ and_performance:index-78}}\begin{quote}
+\label{\detokenize{audit_operations_ and_performance:contents-of-the-trace}}\label{\detokenize{audit_operations_ and_performance:index-79}}\begin{quote}
 
 
 \begin{savenotes}\sphinxatlongtablestart\begin{longtable}{|*{3}{\X{1}{3}|}}
@@ -2677,7 +2690,7 @@ VIRTEL and the host application.
 \index{Virtel trace output examples@\spxentry{Virtel trace output examples}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel trace output examples@\spxentry{Virtel trace output examples}}\ignorespaces 
 
 \subsection{Trace Examples}
-\label{\detokenize{audit_operations_ and_performance:trace-examples}}\label{\detokenize{audit_operations_ and_performance:index-79}}
+\label{\detokenize{audit_operations_ and_performance:trace-examples}}\label{\detokenize{audit_operations_ and_performance:index-80}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 LCL712 11A: from application SPCICST 13:05:47.48
 00000 F1C2 *1B * 099A95B4
@@ -2746,7 +2759,7 @@ P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.55
 \index{Virtel Snap output@\spxentry{Virtel Snap output}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Virtel Snap output@\spxentry{Virtel Snap output}}\ignorespaces 
 
 \section{VIRTEL SNAP}
-\label{\detokenize{audit_operations_ and_performance:virtel-snap}}\label{\detokenize{audit_operations_ and_performance:index-80}}
+\label{\detokenize{audit_operations_ and_performance:virtel-snap}}\label{\detokenize{audit_operations_ and_performance:index-81}}
 VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.
 
 The SNAP listing is primarily intended for use by VIRTEL development personnel and will normally need to be forwarded to Syspertec for analysis. For customer diagnostics, the TRACE command (described     above) may often be more useful.
@@ -2777,17 +2790,17 @@ Several SNAP commands may be issued during a single run of VIRTEL. The output fi
 \index{Trigger SNAPS with SNAPMSG@\spxentry{Trigger SNAPS with SNAPMSG}!Performance@\spxentry{Performance}}\index{Performance@\spxentry{Performance}!Trigger SNAPS with SNAPMSG@\spxentry{Trigger SNAPS with SNAPMSG}}\ignorespaces 
 
 \subsection{Message-triggered SNAPMSG}
-\label{\detokenize{audit_operations_ and_performance:message-triggered-snapmsg}}\label{\detokenize{audit_operations_ and_performance:index-81}}
+\label{\detokenize{audit_operations_ and_performance:message-triggered-snapmsg}}\label{\detokenize{audit_operations_ and_performance:index-82}}
 The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”. See the SNAPMSG command for further details.
 
 \index{Audit@\spxentry{Audit}}\ignorespaces 
 
 \chapter{Audit}
-\label{\detokenize{audit_operations_ and_performance:audit}}\label{\detokenize{audit_operations_ and_performance:index-82}}
+\label{\detokenize{audit_operations_ and_performance:audit}}\label{\detokenize{audit_operations_ and_performance:index-83}}
 \index{VIRSTAT file@\spxentry{VIRSTAT file}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!VIRSTAT file@\spxentry{VIRSTAT file}}\ignorespaces 
 
 \section{VIRSTAT file}
-\label{\detokenize{audit_operations_ and_performance:virstat-file}}\label{\detokenize{audit_operations_ and_performance:index-83}}
+\label{\detokenize{audit_operations_ and_performance:virstat-file}}\label{\detokenize{audit_operations_ and_performance:index-84}}
 The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -2820,7 +2833,7 @@ The statistics file may contain a mixture of classic, alternate X25, and web for
 \index{VIRSTAT classic format@\spxentry{VIRSTAT classic format}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!VIRSTAT classic format@\spxentry{VIRSTAT classic format}}\ignorespaces 
 
 \subsection{VIRSTAT classsic format}
-\label{\detokenize{audit_operations_ and_performance:virstat-classsic-format}}\label{\detokenize{audit_operations_ and_performance:index-84}}
+\label{\detokenize{audit_operations_ and_performance:virstat-classsic-format}}\label{\detokenize{audit_operations_ and_performance:index-85}}
 For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2873,7 +2886,7 @@ Records are implemented at VIRTEL shutdown.
 \index{VIRSTAT alternative X25 format@\spxentry{VIRSTAT alternative X25 format}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!VIRSTAT alternative X25 format@\spxentry{VIRSTAT alternative X25 format}}\ignorespaces 
 
 \subsection{VIRSTAT alternative X25 format}
-\label{\detokenize{audit_operations_ and_performance:virstat-alternative-x25-format}}\label{\detokenize{audit_operations_ and_performance:index-85}}
+\label{\detokenize{audit_operations_ and_performance:virstat-alternative-x25-format}}\label{\detokenize{audit_operations_ and_performance:index-86}}
 For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2975,7 +2988,7 @@ This record type is written when 6 is specified in the STATS field of the termin
 \index{Printing the VIRSTAT file (X25)@\spxentry{Printing the VIRSTAT file}\spxextra{X25}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!Printing the VIRSTAT file (X25)@\spxentry{Printing the VIRSTAT file}\spxextra{X25}}\ignorespaces 
 
 \subsection{Printing the contents of the VIRSTAT file (X25)}
-\label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-x25}}\label{\detokenize{audit_operations_ and_performance:index-86}}
+\label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-x25}}\label{\detokenize{audit_operations_ and_performance:index-87}}
 The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics.
 
 Examples of the JCL required to execute this program are shown below:
@@ -3021,7 +3034,7 @@ Examples of the JCL required to execute this program are shown below:
 \index{Printing the VIRSTAT file (HTTP)@\spxentry{Printing the VIRSTAT file}\spxextra{HTTP}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!Printing the VIRSTAT file (HTTP)@\spxentry{Printing the VIRSTAT file}\spxextra{HTTP}}\ignorespaces 
 
 \subsection{Printing the contents of the VIRSTAT file (HTTP)}
-\label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-http}}\label{\detokenize{audit_operations_ and_performance:index-87}}
+\label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-http}}\label{\detokenize{audit_operations_ and_performance:index-88}}
 The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB.
 
 Examples of the execution JCL for this program are shown below.
@@ -3170,7 +3183,7 @@ a second step to PRINT or COUNT the records
 \index{Sorting the VIRSTAT file (HTTP)@\spxentry{Sorting the VIRSTAT file}\spxextra{HTTP}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!Sorting the VIRSTAT file (HTTP)@\spxentry{Sorting the VIRSTAT file}\spxextra{HTTP}}\ignorespaces 
 
 \subsection{Sorting the VIRSTAT file}
-\label{\detokenize{audit_operations_ and_performance:sorting-the-virstat-file}}\label{\detokenize{audit_operations_ and_performance:index-88}}
+\label{\detokenize{audit_operations_ and_performance:sorting-the-virstat-file}}\label{\detokenize{audit_operations_ and_performance:index-89}}
 The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.
 
 The sort operates on one or more criteria, in ascending (A) or descending (D) mode. You should adapt the SORT SYSIN according to the syntax of the specific SORT program being used.
@@ -3203,7 +3216,7 @@ For example, to obtain a report in ascending order of session start date, specif
 \index{The PRTSTATW Program@\spxentry{The PRTSTATW Program}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!The PRTSTATW Program@\spxentry{The PRTSTATW Program}}\ignorespaces 
 
 \subsection{PRTSTATW program}
-\label{\detokenize{audit_operations_ and_performance:prtstatw-program}}\label{\detokenize{audit_operations_ and_performance:index-89}}
+\label{\detokenize{audit_operations_ and_performance:prtstatw-program}}\label{\detokenize{audit_operations_ and_performance:index-90}}
 The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3332,13 +3345,13 @@ SELDATE 01012010 30122011
 \index{SMF Support@\spxentry{SMF Support}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!SMF Support@\spxentry{SMF Support}}\ignorespaces 
 
 \section{SMF Support}
-\label{\detokenize{audit_operations_ and_performance:smf-support}}\label{\detokenize{audit_operations_ and_performance:index-90}}
+\label{\detokenize{audit_operations_ and_performance:smf-support}}\label{\detokenize{audit_operations_ and_performance:index-91}}
 Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.
 
 \index{Printing the SMF file@\spxentry{Printing the SMF file}!Audit@\spxentry{Audit}}\index{Audit@\spxentry{Audit}!Printing the SMF file@\spxentry{Printing the SMF file}}\ignorespaces 
 
 \subsection{Printing the VIRSTAT SMF record}
-\label{\detokenize{audit_operations_ and_performance:printing-the-virstat-smf-record}}\label{\detokenize{audit_operations_ and_performance:index-91}}
+\label{\detokenize{audit_operations_ and_performance:printing-the-virstat-smf-record}}\label{\detokenize{audit_operations_ and_performance:index-92}}
 The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
 
 Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.

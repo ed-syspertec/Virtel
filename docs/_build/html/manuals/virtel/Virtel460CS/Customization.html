@@ -232,8 +232,17 @@ their respective owners.</p>
 <h3>Virtel version 4.60 (11th Oct 2020)<a class="headerlink" href="#virtel-version-4-60-11th-oct-2020" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Support for IPV6</li>
-<li>Virtel MSG10 USSTAB</li>
-<li>FTP client interface</li>
+<li>New FTP Client interface</li>
+<li>Enhanced Page Capture</li>
+<li>New wizard support for VSR</li>
+<li>Keyboard assignment enhancements</li>
+<li>New dynamic symbolics for USSMSG10</li>
+<li>Password and Passphrase support in native VTAM mode</li>
+<li>DNS support on Line definition</li>
+<li>Improvement to UNLOAD command. SYSPUNCH dynamically allocated</li>
+<li>Scenario language updates</li>
+<li>Silence command supports dynamic message updates</li>
+<li>Various bug fixes</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -273,8 +282,37 @@ their respective owners.</p>
 </div>
 <p>See Appendix A of the Virtel Users Guide for a full list of “key” names and associated default values.</p>
 </div>
+<div class="section" id="setting-a-joker-key">
+<span id="index-1"></span><h4>Setting a Joker Key<a class="headerlink" href="#setting-a-joker-key" title="Permalink to this headline">¶</a></h4>
+<p>The JokeyKey setting may be used to redefine keys on a keyboard to a one of the following functions - Reset, Ins, ATTN, Clear. For example, to redefine a key as an Insert key for keyboards that do not have an Insert key.</p>
+<ol class="arabic simple">
+<li>First set which key will be the Joker Key in w2hparm.js</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">jokeykey</span><span class="o">=</span><span class="mi">192</span><span class="p">;</span>   <span class="o">//</span> <span class="n">Leftmost</span> <span class="n">key</span> <span class="n">on</span> <span class="n">second</span> <span class="n">row</span> <span class="n">of</span> <span class="n">US</span> <span class="n">keyboard</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>To determine the scancode of a key use the scancode tester by entering the following URL</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">scancode</span><span class="o">.</span><span class="n">htm</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Administrators can preset the joker key function with</li>
+</ol>
+<dl class="docutils">
+<dt>::</dt>
+<dd>w2hparm.joker | shiftjoker | altjoker = “Ins”</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A user can set the function assigned to the Joker Key through the user settings.</p>
+</div>
+<p><img alt="image69" src="../../../_images/image699.png" />
+<em>Settings Panel showing SHIFT Joker key assignments</em></p>
+</div>
 <div class="section" id="displaying-customized-members">
-<span id="index-1"></span><h4>Displaying customized members<a class="headerlink" href="#displaying-customized-members" title="Permalink to this headline">¶</a></h4>
+<span id="index-2"></span><h4>Displaying customized members<a class="headerlink" href="#displaying-customized-members" title="Permalink to this headline">¶</a></h4>
 <p>To display a settings member use the following URLs as examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
@@ -287,7 +325,7 @@ their respective owners.</p>
 <p><em>Example of displaying a global option member</em></p>
 </div>
 <div class="section" id="common-settings-member">
-<span id="index-2"></span><h4>Common settings member<a class="headerlink" href="#common-settings-member" title="Permalink to this headline">¶</a></h4>
+<span id="index-3"></span><h4>Common settings member<a class="headerlink" href="#common-settings-member" title="Permalink to this headline">¶</a></h4>
 <p>If it is required that a common set of settings member be used for both W2H-DIR and CLI-DIR than a small modification to the W2H-DIR transaction, W2H-03P, is required. Changing the location directory from W2H-DIR to CLI-DIR will ensure that settings will be derived from the CLI-DIR W2HPARM.JS member. For example if you modify a key settings, which keyboard key reflects they “ENTER” key for example, than this change can used by both W2H and CLI transactions. An example of a modified W2H-03P transaction is displayed below:</p>
 <p><img alt="image56" src="../../../_images/image5610.png" /></p>
 <p><em>Example of W2H-03P pointing at the CLI-DIR</em></p>
@@ -319,7 +357,7 @@ their respective owners.</p>
 </div>
 </div>
 <div class="section" id="global-level-options">
-<span id="index-3"></span><h3>Global Level Options<a class="headerlink" href="#global-level-options" title="Permalink to this headline">¶</a></h3>
+<span id="index-4"></span><h3>Global Level Options<a class="headerlink" href="#global-level-options" title="Permalink to this headline">¶</a></h3>
 <p>Virtel implements a “global” option customized level whereby all customized elements apply to all transactions of a particular Entry Point. Each Entry Point may have its own “global” options. To implement global option customization, the W2HPARM.JS settings member is modified to contain a global settings object whose attributes point to members located in the options directory OPT-DIR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
@@ -375,7 +413,7 @@ their respective owners.</p>
 <p><em>Example of a wh2parm.global.js member</em></p>
 </div>
 <div class="section" id="transaction-level-options">
-<span id="index-4"></span><h3>Transaction Level Options<a class="headerlink" href="#transaction-level-options" title="Permalink to this headline">¶</a></h3>
+<span id="index-5"></span><h3>Transaction Level Options<a class="headerlink" href="#transaction-level-options" title="Permalink to this headline">¶</a></h3>
 <p>Some transactions may require a different set of options or settings than those defined at the Entry Point or Global level. For example, certain transactions may have a modified Tool Bar containing a Printer Icon. Transactions which require such specific customization should have a unique option identifier or “Id” associated with the transaction definition. This “id” will pull in a different set of options “key”:”values” settings and will override the “global” settings. The option “id” will be used to associate customized elements against specific transaction(s).</p>
 <p>In the following example the value “myOptions” has been chosen as an “id” for a particular transaction. A transaction level “core option file”, using the format “option.id.js”, will be used to locate they customized elements. In this example we are using a customized JavaScript member to add a “Printer Icon” to the Virtel Toolbar. Using the option “id” of “myOptions” a javascript file will be created called “option.myOptions.js”. This will be uploaded to CLI-DIR. Customized settings for transactions are held in a JavaScript object called “oCustom”. Here is an example of the myOptions JavaScript file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">option</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span><span class="o">.</span> <span class="n">Transaction</span> <span class="n">level</span> <span class="n">core</span> <span class="n">option</span> <span class="n">file</span>
@@ -410,13 +448,13 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </div>
 </div>
 <div class="section" id="defining-transaction-options">
-<span id="index-5"></span><h3>Defining Transaction Options<a class="headerlink" href="#defining-transaction-options" title="Permalink to this headline">¶</a></h3>
+<span id="index-6"></span><h3>Defining Transaction Options<a class="headerlink" href="#defining-transaction-options" title="Permalink to this headline">¶</a></h3>
 <p>The Virtel User Guide contains further information on how to use GUI based controls to create the necessary customization members and associated files for transaction settings customization. See the section “Defining Transaction Options” in the Customization section for further details.</p>
 </div>
 <div class="section" id="customizable-javascript-user-exits">
-<span id="index-6"></span><h3>Customizable JavaScript User Exits<a class="headerlink" href="#customizable-javascript-user-exits" title="Permalink to this headline">¶</a></h3>
+<span id="index-7"></span><h3>Customizable JavaScript User Exits<a class="headerlink" href="#customizable-javascript-user-exits" title="Permalink to this headline">¶</a></h3>
 <p>Virtel provides the following JavaScript functions that can be customized to give bespoke behaviour. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:</p>
-<ul id="index-7">
+<ul id="index-8">
 <li><p class="first"><strong>before_submitForm(pfKey,oFrom)</strong> - Called before submitting a Virtel request.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">pfKey</span><span class="o">*</span> <span class="n">The</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">key</span> <span class="n">pressed</span><span class="o">.</span> <span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;PF1&quot;</span><span class="p">,</span><span class="n">etc</span><span class="o">.</span>
             <span class="o">*</span><span class="n">oForm</span><span class="o">*</span> <span class="n">Form</span> <span class="n">DOM</span> <span class="nb">object</span> <span class="n">to</span> <span class="n">be</span> <span class="n">submitted</span><span class="o">.</span> <span class="p">(</span><span class="n">usually</span> <span class="n">document</span><span class="o">.</span><span class="n">virtelForm</span><span class="p">)</span>
@@ -424,10 +462,10 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </div>
 </li>
 </ul>
-<ul class="simple" id="index-8">
+<ul class="simple" id="index-9">
 <li><strong>after_standardInit()</strong> - Called after a session with the host application has started.</li>
 </ul>
-<ul id="index-9">
+<ul id="index-10">
 <li><p class="first"><strong>after_responseHandle(o,url,xtim)</strong> - Called after receiving a response from the VIRTEL server.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">o</span><span class="o">*</span>     <span class="n">XMLHttpRequest</span> <span class="nb">object</span> <span class="p">(</span><span class="n">status</span> <span class="ow">and</span> <span class="n">responseText</span><span class="p">)</span>
             <span class="o">*</span><span class="n">url</span><span class="o">*</span>   <span class="n">The</span> <span class="n">URL</span> <span class="n">which</span> <span class="n">was</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">request</span>
@@ -436,7 +474,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </div>
 </li>
 </ul>
-<ul id="index-10">
+<ul id="index-11">
 <li><p class="first"><strong>modify_settingsValues(name,values)</strong> -  Allows modification of settings before parameters are displayed in the Settings Menu. It allows the list of values to be modified.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">name</span><span class="o">*</span>  <span class="n">The</span> <span class="n">parameter</span> <span class="n">name</span>
             <span class="o">*</span><span class="n">values</span><span class="o">*</span> <span class="n">The</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">possible</span> <span class="n">values</span><span class="o">.</span>
@@ -447,13 +485,13 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </div>
 </li>
 </ul>
-<ul class="simple" id="index-11">
+<ul class="simple" id="index-12">
 <li><strong>when_init()</strong> - Called for each sub-page after vir3270 initialisation.</li>
 </ul>
-<ul class="simple" id="index-12">
+<ul class="simple" id="index-13">
 <li><strong>when_focusGained()</strong> - Called whenever the 3270 window gains focus.</li>
 </ul>
-<ul class="simple" id="index-13">
+<ul class="simple" id="index-14">
 <li><strong>when_focusLost()</strong> - Called whenever the 3270 window loses focus.</li>
 </ul>
 </div>
@@ -461,7 +499,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <div class="section" id="virtel-web-access-interface">
 <h2>Virtel Web Access Interface<a class="headerlink" href="#virtel-web-access-interface" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vwa-user-interface">
-<span id="index-14"></span><h3>VWA User Interface<a class="headerlink" href="#vwa-user-interface" title="Permalink to this headline">¶</a></h3>
+<span id="index-15"></span><h3>VWA User Interface<a class="headerlink" href="#vwa-user-interface" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL Web Access user interface is in the form of a conventional 3270 screen divided into three areas:</p>
 <ul class="simple">
 <li>The Tool Bar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).</li>
@@ -473,7 +511,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <div class="section" id="title">
 <h4>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="add-user-name-to-title-tab">
-<span id="index-15"></span><h5>Add User Name to Title Tab<a class="headerlink" href="#add-user-name-to-title-tab" title="Permalink to this headline">¶</a></h5>
+<span id="index-16"></span><h5>Add User Name to Title Tab<a class="headerlink" href="#add-user-name-to-title-tab" title="Permalink to this headline">¶</a></h5>
 <p>You can add the User Name into the title tab by using the following function in a custom.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle() {
     document.title =document.body.className + “-“ + getUserId();
@@ -488,7 +526,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <p>The Tool Bar is located at the top of the 3270 screen. It contains, icons, language selection tool and environment
 information. Some of those component can be removed, added or modified.</p>
 <div class="section" id="hiding-the-tool-bar">
-<span id="index-16"></span><h5>Hiding the Tool Bar<a class="headerlink" href="#hiding-the-tool-bar" title="Permalink to this headline">¶</a></h5>
+<span id="index-17"></span><h5>Hiding the Tool Bar<a class="headerlink" href="#hiding-the-tool-bar" title="Permalink to this headline">¶</a></h5>
 <p>The administrator may prevent access to features like copy/paste, print, and settings by removing the corresponding Tool Bar icons, or by hiding the Tool Bar altogether. This example shows how to hide the Tool Bar using a custom.css file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -500,7 +538,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p>You can also use custom.js to remove individual icons from the Tool Bar, see “Removing unwanted Tool Bar icons” on page 11.</p>
 </div>
 <div class="section" id="enable-disable-the-tool-bar-display">
-<span id="index-17"></span><h5>Enable/Disable the Tool Bar display<a class="headerlink" href="#enable-disable-the-tool-bar-display" title="Permalink to this headline">¶</a></h5>
+<span id="index-18"></span><h5>Enable/Disable the Tool Bar display<a class="headerlink" href="#enable-disable-the-tool-bar-display" title="Permalink to this headline">¶</a></h5>
 <p>The administrator can provide users with controls that enable or disable the display of the Tool Bar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
  <span class="o">*</span> <span class="n">Configuration</span> <span class="n">to</span> <span class="n">allow</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">manage</span> <span class="n">show</span><span class="o">/</span><span class="n">hide</span> <span class="n">Tool</span> <span class="n">Bar</span> <span class="n">by</span> <span class="n">himself</span><span class="o">.</span>
@@ -512,7 +550,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p>If this option is enabled, the “Alt + Insert” and “Alt + Home” keys in the Key Mappings tab control the “Tool bar” display. The user can these key assignments to control the Tool Bar display.</p>
 <p><a class="reference internal" href="../../../_images/image280.png"><img alt="image2" src="../../../_images/image280.png" style="width: 390.0px; height: 592.5px;" /></a></p>
 <p><em>Key Mappings Setting Tab</em></p>
-<p id="index-18">These two assignments can also be predefined in the w2hparm.js file by using the commands:</p>
+<p id="index-19">These two assignments can also be predefined in the w2hparm.js file by using the commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">to</span> <span class="n">assign</span> <span class="n">Alt</span><span class="o">+</span><span class="n">Insert</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">Alt</span><span class="o">+</span><span class="n">Home</span> <span class="n">key</span> <span class="n">to</span> <span class="n">show</span><span class="o">/</span><span class="n">hide</span> <span class="n">Tool</span> <span class="n">Bar</span><span class="o">.</span>
 <span class="o">*/</span>
@@ -521,7 +559,7 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example w2hparm.js to assign Alt+Insert and/or Alt+Home key to show/hide Tool Bar.</em></p>
-<p id="index-19">The Tool Bar can be automatically disabled at each new session opening by using the following command in w2hparm.js</p>
+<p id="index-20">The Tool Bar can be automatically disabled at each new session opening by using the following command in w2hparm.js</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">to</span> <span class="n">automatically</span> <span class="n">hide</span> <span class="n">the</span> <span class="n">Tool</span> <span class="n">Bar</span> <span class="n">when</span> <span class="n">opening</span> <span class="n">a</span> <span class="n">new</span> <span class="n">session</span><span class="o">.</span>
 <span class="o">*/</span>
@@ -532,7 +570,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p>Under Virtel 4.57, those features require update #5555 or above to be applied.</p>
 </div>
 <div class="section" id="enable-disable-maintenance-level">
-<span id="index-20"></span><h5>Enable / Disable Maintenance Level<a class="headerlink" href="#enable-disable-maintenance-level" title="Permalink to this headline">¶</a></h5>
+<span id="index-21"></span><h5>Enable / Disable Maintenance Level<a class="headerlink" href="#enable-disable-maintenance-level" title="Permalink to this headline">¶</a></h5>
 <p>On the right side of the Tool Bar, the running version and the level of maintenance of VIRTEL is shown. This information is important in diagnosing problems. It can be hidden if the <em>w2hparm.switchToolBarDisplay = true;</em> option is set or the user selects to disable to Tool Bar.</p>
 </div>
 <div class="section" id="changing-background-color-of-the-tool-bar-buttons">
@@ -564,7 +602,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p><em>Example custom.css managing the background color of the Tool Bar buttons</em></p>
 </div>
 <div class="section" id="customize-the-tool-bar-color-by-application">
-<span id="index-21"></span><h5>Customize the Tool Bar color by application<a class="headerlink" href="#customize-the-tool-bar-color-by-application" title="Permalink to this headline">¶</a></h5>
+<span id="index-22"></span><h5>Customize the Tool Bar color by application<a class="headerlink" href="#customize-the-tool-bar-color-by-application" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful for the user to have a clear visual indication of which system they are logged on to. This example shows how to set the color of the Tool Bar to yellow for SPCICSP and pink for SPCICSQ. Note that these names are the APPLID names that the transactions will connect to, they are not the transaction names.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -581,7 +619,7 @@ information. Some of those component can be removed, added or modified.</p>
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
-<span id="index-22"></span><h5>Add a Web Link in the Tool Bar<a class="headerlink" href="#add-a-web-link-in-the-tool-bar" title="Permalink to this headline">¶</a></h5>
+<span id="index-23"></span><h5>Add a Web Link in the Tool Bar<a class="headerlink" href="#add-a-web-link-in-the-tool-bar" title="Permalink to this headline">¶</a></h5>
 <p>You can add a web link in the Tool Bar by using the following order included in a custom.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">*</span> <span class="n">Adds</span> <span class="n">a</span> <span class="n">button</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Tool</span> <span class="n">Bar</span> <span class="n">which</span> <span class="n">performs</span> <span class="n">a</span> <span class="n">Google</span> <span class="n">search</span>
@@ -618,7 +656,7 @@ information. Some of those component can be removed, added or modified.</p>
 </div>
 </div>
 <div class="section" id="adding-a-company-logo">
-<span id="index-23"></span><h5>Adding a Company Logo<a class="headerlink" href="#adding-a-company-logo" title="Permalink to this headline">¶</a></h5>
+<span id="index-24"></span><h5>Adding a Company Logo<a class="headerlink" href="#adding-a-company-logo" title="Permalink to this headline">¶</a></h5>
 <p>This example shows how to display an icon (for example, a company logo) at the left of the Tool Bar:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
@@ -639,7 +677,7 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for displaying company logo in the Tool Bar</em></p>
-<p id="index-24">This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your company logo:</p>
+<p id="index-25">This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your company logo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access style sheet for site customization
 * (c)Copyright SysperTec Communication 2013 All Rights Reserved
@@ -662,7 +700,7 @@ information. Some of those component can be removed, added or modified.</p>
 <div class="section" id="tool-bar-icons">
 <h4>Tool Bar Icons<a class="headerlink" href="#tool-bar-icons" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="adding-a-tool-bar-icon">
-<span id="index-25"></span><h5>Adding a Tool Bar icon<a class="headerlink" href="#adding-a-tool-bar-icon" title="Permalink to this headline">¶</a></h5>
+<span id="index-26"></span><h5>Adding a Tool Bar icon<a class="headerlink" href="#adding-a-tool-bar-icon" title="Permalink to this headline">¶</a></h5>
 <p>This example uses the after_standardInit function to insert additional icons into the Tool Bar when the session is started. Icons may subsequently be added or removed from the Tool Bar after each screen by means of the after_responseHandle function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -696,7 +734,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p><em>Example custom.js to customize the Tool Bar icons</em></p>
 </div>
 <div class="section" id="removing-unwanted-tool-bar-icons">
-<span id="index-26"></span><h5>Removing unwanted Tool Bar icons<a class="headerlink" href="#removing-unwanted-tool-bar-icons" title="Permalink to this headline">¶</a></h5>
+<span id="index-27"></span><h5>Removing unwanted Tool Bar icons<a class="headerlink" href="#removing-unwanted-tool-bar-icons" title="Permalink to this headline">¶</a></h5>
 <p>This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the Tool Bar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2017</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -734,21 +772,21 @@ information. Some of those component can be removed, added or modified.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">(settingsV2 is présent only if w2hparms.js contains “settingsGUI”:{“version”:”V2”}, or “settingsGUI”:{“version”:”V1+V2”},)</p>
 </div>
-<span class="target" id="index-27"></span></div>
+<span class="target" id="index-28"></span></div>
 </div>
 <div class="section" id="file-transfer-icons">
-<span id="index-28"></span><h4>File Transfer icons<a class="headerlink" href="#file-transfer-icons" title="Permalink to this headline">¶</a></h4>
+<span id="index-29"></span><h4>File Transfer icons<a class="headerlink" href="#file-transfer-icons" title="Permalink to this headline">¶</a></h4>
 <p>The File Transfer icons are present in the Tool Bar only for access to TSO and if the transaction includes an INPUT and/or OUTPUT scenario with a call to the INDSCEN$ macro (See “TSO File Transfer” in “Virtel Web Access User Guide”).</p>
 <div class="section" id="removing-file-transfer-icons">
-<span id="index-29"></span><h5>Removing File Transfer Icons<a class="headerlink" href="#removing-file-transfer-icons" title="Permalink to this headline">¶</a></h5>
+<span id="index-30"></span><h5>Removing File Transfer Icons<a class="headerlink" href="#removing-file-transfer-icons" title="Permalink to this headline">¶</a></h5>
 <p>VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the Tool Bar.
 This can be done by using the removetoolbarbutton function using the appropriate variable name.(see “Removing unwanted Tool Bar icons”, page 11.)</p>
 </div>
 </div>
 <div class="section" id="macro-icons">
-<span id="index-30"></span><h4>Macro Icons<a class="headerlink" href="#macro-icons" title="Permalink to this headline">¶</a></h4>
+<span id="index-31"></span><h4>Macro Icons<a class="headerlink" href="#macro-icons" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="removing-macro-icons">
-<span id="index-31"></span><h5>Removing Macro Icons<a class="headerlink" href="#removing-macro-icons" title="Permalink to this headline">¶</a></h5>
+<span id="index-32"></span><h5>Removing Macro Icons<a class="headerlink" href="#removing-macro-icons" title="Permalink to this headline">¶</a></h5>
 <p>See “Removing unwanted Tool Bar icons”, page 11.</p>
 <p>To hide the Tool Bar completely, see “Hiding the Tool Bar” on page 6. To hide only the Virtel Application name, see “Showing / Hiding server information”, on page 15.</p>
 </div>
@@ -777,7 +815,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example custom.js to select a position for printer icon</em></p>
 </div>
 <div class="section" id="centring-user-icons">
-<span id="index-32"></span><h5>Centring User Icons<a class="headerlink" href="#centring-user-icons" title="Permalink to this headline">¶</a></h5>
+<span id="index-33"></span><h5>Centring User Icons<a class="headerlink" href="#centring-user-icons" title="Permalink to this headline">¶</a></h5>
 <p>The recommended size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering by modifying the content of the CSS class attribute passed within the “addTool Barbutton” function.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2014</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -811,7 +849,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example custom.css to manage a Tool Bar icon with a non standard size</em></p>
 </div>
 <div class="section" id="removing-3d-hover-effects-on-the-tool-bar-buttons">
-<span id="index-33"></span><h5>Removing 3D/hover effects on the Tool Bar buttons<a class="headerlink" href="#removing-3d-hover-effects-on-the-tool-bar-buttons" title="Permalink to this headline">¶</a></h5>
+<span id="index-34"></span><h5>Removing 3D/hover effects on the Tool Bar buttons<a class="headerlink" href="#removing-3d-hover-effects-on-the-tool-bar-buttons" title="Permalink to this headline">¶</a></h5>
 <p>This example shows how to remove the 3D/hover effects on Tool Bar buttons by adding orders in a Custom.CSS file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">removing</span> <span class="mi">3</span><span class="n">D</span><span class="o">/</span><span class="n">hover</span> <span class="n">effects</span>
@@ -830,13 +868,13 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </div>
 </div>
 <div class="section" id="icon-display-troubleshooting">
-<span id="index-34"></span><h4>Icon display troubleshooting<a class="headerlink" href="#icon-display-troubleshooting" title="Permalink to this headline">¶</a></h4>
+<span id="index-35"></span><h4>Icon display troubleshooting<a class="headerlink" href="#icon-display-troubleshooting" title="Permalink to this headline">¶</a></h4>
 <p>If Icons on the Tool Bar are not rendered correctly, check that the browser is not in a zoom mode greater than 100%.</p>
 </div>
 <div class="section" id="background-information">
 <h4>Background information<a class="headerlink" href="#background-information" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="adding-application-customized-text-to-the-tool-bar">
-<span id="index-35"></span><h5>Adding Application customized text to the Tool Bar<a class="headerlink" href="#adding-application-customized-text-to-the-tool-bar" title="Permalink to this headline">¶</a></h5>
+<span id="index-36"></span><h5>Adding Application customized text to the Tool Bar<a class="headerlink" href="#adding-application-customized-text-to-the-tool-bar" title="Permalink to this headline">¶</a></h5>
 <p>Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to the Tool Bar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is displayed for application TSO2A.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customisation</span>
@@ -871,7 +909,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <em>Web Access screen with custom text in the Tool Bar</em></p>
 </div>
 <div class="section" id="adding-transaction-application-name-to-the-tool-bar">
-<span id="index-36"></span><h5>Adding Transaction Application name to the Tool Bar<a class="headerlink" href="#adding-transaction-application-name-to-the-tool-bar" title="Permalink to this headline">¶</a></h5>
+<span id="index-37"></span><h5>Adding Transaction Application name to the Tool Bar<a class="headerlink" href="#adding-transaction-application-name-to-the-tool-bar" title="Permalink to this headline">¶</a></h5>
 <p>Adding Application Name from the transaction definition to the Tool Bar. In this example the text “TSO” is displayed when logged on to application TSO, and “SPCICSH” is displayed for application SPCICSH. Again, this is another way to provide feedback information to the user as to which system they are connected to.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customisation</span>
@@ -905,7 +943,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <em>Web Access screen with custom application name in the Tool Bar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-information">
-<span id="index-37"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
+<span id="index-38"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
 <p><img alt="image7" src="../../../_images/image750.png" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be <strong>permanently</strong> removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:</p>
@@ -922,7 +960,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="language">
 <h4>Language<a class="headerlink" href="#language" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="hide-the-language-icon">
-<span id="index-38"></span><h5>Hide the Language Icon<a class="headerlink" href="#hide-the-language-icon" title="Permalink to this headline">¶</a></h5>
+<span id="index-39"></span><h5>Hide the Language Icon<a class="headerlink" href="#hide-the-language-icon" title="Permalink to this headline">¶</a></h5>
 <p>You can hide the language icon by using the following CSS orders included in a customized custom.css file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Tool Bar td#Tool Bar-lang { width: 1px; }</span>
 <span class="c1">#Tool Bar td#Tool Bar-lang a { display: none; }</span>
@@ -931,7 +969,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example to hide the language icon</em></p>
 </div>
 <div class="section" id="assign-a-default-language">
-<span id="index-39"></span><h5>Assign a default language<a class="headerlink" href="#assign-a-default-language" title="Permalink to this headline">¶</a></h5>
+<span id="index-40"></span><h5>Assign a default language<a class="headerlink" href="#assign-a-default-language" title="Permalink to this headline">¶</a></h5>
 <p>You can set a default language by using the following CSS order included in a customized custom.js file. The ability to select other languages is through a selection drop down GUI widget. :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">/*</span> <span class="n">Will</span> <span class="n">force</span> <span class="n">default</span> <span class="n">language</span> <span class="n">to</span> <span class="n">Croatian</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">leave</span> <span class="n">to</span> <span class="n">the</span> <span class="n">customer</span> <span class="n">the</span> <span class="n">possibility</span> <span class="n">to</span> <span class="n">select</span> <span class="n">another</span> <span class="n">one</span> <span class="k">if</span> <span class="n">necessary</span> <span class="o">*/</span>
@@ -952,7 +990,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p>They must be entered in lower case.</p>
 </div>
 <div class="section" id="assign-a-permanent-default-language">
-<span id="index-40"></span><h5>Assign a permanent default language<a class="headerlink" href="#assign-a-permanent-default-language" title="Permalink to this headline">¶</a></h5>
+<span id="index-41"></span><h5>Assign a permanent default language<a class="headerlink" href="#assign-a-permanent-default-language" title="Permalink to this headline">¶</a></h5>
 <p>You can set a permanent language by including the following CSS order in a customized custom.js file. In this case, the user has no ptions to override the default language.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="o">/*</span> <span class="n">Will</span> <span class="n">force</span> <span class="n">default</span> <span class="n">language</span> <span class="n">to</span> <span class="n">Croatian</span> <span class="ow">and</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">allow</span> <span class="n">the</span> <span class="n">customer</span> <span class="n">to</span> <span class="n">select</span> <span class="n">another</span> <span class="n">one</span> <span class="k">if</span> <span class="n">necessary</span> <span class="o">*/</span>
@@ -975,12 +1013,12 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </div>
 </div>
 <div class="section" id="status-bar">
-<span id="index-41"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
+<span id="index-42"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
 <p>The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).</p>
 <p><img alt="image7" src="../../../_images/image750.png" />
 <em>The VWA 3270 screen’s areas</em></p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
-<span id="index-42"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
+<span id="index-43"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
 <p>To deactivate the status bar create a ccs rule and add it to a customized custom.css file. For example, to deactivate it for a transactions associated with the the options “ID” “myOptions” create a “myoptions” core file called option.myOptions.css.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">option</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">css</span><span class="o">.</span> <span class="n">Transaction</span> <span class="n">level</span> <span class="n">core</span> <span class="n">option</span> <span class="n">file</span>
 <span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
@@ -996,9 +1034,9 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example of customized CSS element</em></p>
 </div>
 <div class="section" id="relay-and-printer-name">
-<span id="index-43"></span><h4>Relay and Printer Name<a class="headerlink" href="#relay-and-printer-name" title="Permalink to this headline">¶</a></h4>
+<span id="index-44"></span><h4>Relay and Printer Name<a class="headerlink" href="#relay-and-printer-name" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="managing-relay-and-printer-name-area">
-<span id="index-44"></span><h5>Managing Relay and Printer name area<a class="headerlink" href="#managing-relay-and-printer-name-area" title="Permalink to this headline">¶</a></h5>
+<span id="index-45"></span><h5>Managing Relay and Printer name area<a class="headerlink" href="#managing-relay-and-printer-name-area" title="Permalink to this headline">¶</a></h5>
 <p>The area (5) of the VWA user interface contains information about the terminals used during the session. The name of the 3270 relay terminal is shown in the leftmost portion of the area while the name of the virtual printer terminal is shown in the rightmost portion of the area. The presence of a printer device is optional and depends on the terminal
 definition itself. The information in this area can be managed using the following functions:</p>
 <ul class="simple">
@@ -1033,7 +1071,7 @@ was sent by VWA to the browser.</p>
 <p><em>Example custom.js to customize the content of the relay name area</em></p>
 </div>
 <div class="section" id="hiding-the-relay-name">
-<span id="index-45"></span><h5>Hiding the Relay Name<a class="headerlink" href="#hiding-the-relay-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-46"></span><h5>Hiding the Relay Name<a class="headerlink" href="#hiding-the-relay-name" title="Permalink to this headline">¶</a></h5>
 <p>You can hide the the relay name by replacing its content by spaces.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -1063,7 +1101,7 @@ was sent by VWA to the browser.</p>
 <p><em>Example custom.js to customize the content of the printer name area</em></p>
 </div>
 <div class="section" id="hide-printer-name">
-<span id="index-46"></span><h5>Hide Printer Name<a class="headerlink" href="#hide-printer-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-47"></span><h5>Hide Printer Name<a class="headerlink" href="#hide-printer-name" title="Permalink to this headline">¶</a></h5>
 <p>You can hide the content of the printer name by replacing its content by spaces.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -1081,17 +1119,17 @@ was sent by VWA to the browser.</p>
 </div>
 </div>
 <div class="section" id="dynamic-directory-interface-ddi">
-<span id="index-47"></span><h2>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h2>
+<span id="index-48"></span><h2>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h2>
 <p>The Dynamic Directory Interface is intended for use by Virtel Administrators in managing dynamic directories dedicated to supporting centralized macros associated with users and user groups. The DDI interface is accessible from the Administration Portal, normally served by port 40001 and the associated W-HTTP line.</p>
 <p><img alt="image26" src="../../../_images/image2614.png" /></p>
 <p><em>Accessing the Dynamic Directory Interface</em></p>
 </div>
 <div class="section" id="virtel-lines">
-<span id="index-48"></span><h2>Virtel Lines<a class="headerlink" href="#virtel-lines" title="Permalink to this headline">¶</a></h2>
+<span id="index-49"></span><h2>Virtel Lines<a class="headerlink" href="#virtel-lines" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="starting-and-stopping-a-line">
-<span id="index-49"></span><h3>Starting and stopping a line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h3>
+<span id="index-50"></span><h3>Starting and stopping a line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h3>
 <p>By default, a line is automatically initialized at Virtel startup, and is terminated when Virtel stops. In some cases, the handling of line initialization/termination needs to be managed differently:</p>
-<p id="index-50">Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.</p>
+<p id="index-51">Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.</p>
 <p><img alt="image27" src="../../../_images/image2715.png" /></p>
 <p><em>Line definition - Possible Calls Parameter</em></p>
 <p><strong>Initialization through “Possible Calls” definition</strong></p>
@@ -1104,8 +1142,8 @@ was sent by VWA to the browser.</p>
 </ul>
 <p>If the value is 0 then the line is not initialized at Virtel start-up. It must be started manually. For values 1, 2, 3 the line is initialized automatically at Virtel start-up except for the cases below.</p>
 <p><strong>Initialization permanently completely inhibited</strong></p>
-<p id="index-51">If the VIRTCT contains a parameter IGNLU that references the line, then this line shall not be initialized automatically at Virtel start-up. In this case it will no longer be possible to start this line manually after Virtel has started.</p>
-<p id="index-52"><strong>Conditional initialization of a line</strong></p>
+<p id="index-52">If the VIRTCT contains a parameter IGNLU that references the line, then this line shall not be initialized automatically at Virtel start-up. In this case it will no longer be possible to start this line manually after Virtel has started.</p>
+<p id="index-53"><strong>Conditional initialization of a line</strong></p>
 <p>It is possible to condition the initialization of a line to that of another line. This can be necessary for example when an application communicates with Virtel via MQ/Series, with one line that accepts inbound messages and another line that handles outbound messages. In this case, it is useful to wait until the communication with the partner has been
 established before accepting inbound messages.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINE</span> <span class="n">ID</span><span class="o">=</span><span class="n">M</span><span class="o">-</span><span class="n">MQ1</span><span class="p">,</span> <span class="o">-</span>
@@ -1130,9 +1168,9 @@ established before accepting inbound messages.</p>
     <span class="n">RULESET</span><span class="o">=</span><span class="n">M</span><span class="o">-</span><span class="n">MQ2</span>
 </pre></div>
 </div>
-<p id="index-53"><strong>Deferred initialization</strong></p>
+<p id="index-54"><strong>Deferred initialization</strong></p>
 <p>The “Possible calls” field must be set to 0. The line may subsequently be started by a START command. It must not be referenced by an IGNLU parameter in the VIRTCT. Automation could be used to start the line when a particular event occurs and can be trapped by some automation software.</p>
-<p id="index-54"><strong>Virtel Line Commands</strong></p>
+<p id="index-55"><strong>Virtel Line Commands</strong></p>
 <p>Using commands at the system console Lines can be used to start or stop a line by entering the appropriate command at the console. For further information on how to issue Virtel commands, see the Virtel “Audit, Operation And Performance” manuel.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">START</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
 <span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">STOP</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">P</span><span class="p">)</span>
@@ -1144,7 +1182,7 @@ established before accepting inbound messages.</p>
 </div>
 </div>
 <div class="section" id="terminal-lu-nailing">
-<span id="index-55"></span><h2>Terminal LU Nailing<a class="headerlink" href="#terminal-lu-nailing" title="Permalink to this headline">¶</a></h2>
+<span id="index-56"></span><h2>Terminal LU Nailing<a class="headerlink" href="#terminal-lu-nailing" title="Permalink to this headline">¶</a></h2>
 <p>When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a Logical Unit or LU, and each LU has a unique eight character name (LU name). VIRTEL has at its disposal a pool of LUs known to VTAM,
 whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser. In this section we describes the following types of LU nailing:</p>
@@ -1157,7 +1195,7 @@ While most mainframe applications will accept a connection from any LU name, cer
 <li>LU nailing by URL</li>
 </ul>
 <div class="section" id="lu-nailing-using-the-work-station-name-predefined-terminals">
-<span id="index-56"></span><h3>LU nailing using the work station name (Predefined terminals)<a class="headerlink" href="#lu-nailing-using-the-work-station-name-predefined-terminals" title="Permalink to this headline">¶</a></h3>
+<span id="index-57"></span><h3>LU nailing using the work station name (Predefined terminals)<a class="headerlink" href="#lu-nailing-using-the-work-station-name-predefined-terminals" title="Permalink to this headline">¶</a></h3>
 <p>In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">ESH0000</span><span class="p">,</span> <span class="o">-</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span> <span class="o">-</span>
@@ -1324,7 +1362,7 @@ IST314I END
 </div>
 </div>
 <div class="section" id="lu-nailing-using-an-lu-name-predefined-terminal">
-<span id="index-57"></span><h3>LU nailing using an LU name (Predefined Terminal)<a class="headerlink" href="#lu-nailing-using-an-lu-name-predefined-terminal" title="Permalink to this headline">¶</a></h3>
+<span id="index-58"></span><h3>LU nailing using an LU name (Predefined Terminal)<a class="headerlink" href="#lu-nailing-using-an-lu-name-predefined-terminal" title="Permalink to this headline">¶</a></h3>
 <p>Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RULE ID=ESH0001, -
 RULESET=E-HTTP, -
@@ -1340,7 +1378,7 @@ NETMASK=255.255.255.255
 <p>The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009</p>
 </div>
 <div class="section" id="lu-nailing-using-an-lu-name-no-predefined-terminal">
-<span id="index-58"></span><h3>Lu Nailing using an LU Name (No predefined terminal)<a class="headerlink" href="#lu-nailing-using-an-lu-name-no-predefined-terminal" title="Permalink to this headline">¶</a></h3>
+<span id="index-59"></span><h3>Lu Nailing using an LU Name (No predefined terminal)<a class="headerlink" href="#lu-nailing-using-an-lu-name-no-predefined-terminal" title="Permalink to this headline">¶</a></h3>
 <p>Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
 grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this set-up certain conditions must be in place. Also note that no rules are required. Those definitions required are:</p>
 <ul class="simple">
@@ -1361,11 +1399,11 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <p><img alt="image15" src="../../../_images/image1521.png" /></p>
 </div>
 <div class="section" id="lu-nailing-using-a-cookie-correspondent-sub-application">
-<span id="index-59"></span><h3>Lu Nailing using a cookie (Correspondent Sub Application)<a class="headerlink" href="#lu-nailing-using-a-cookie-correspondent-sub-application" title="Permalink to this headline">¶</a></h3>
+<span id="index-60"></span><h3>Lu Nailing using a cookie (Correspondent Sub Application)<a class="headerlink" href="#lu-nailing-using-a-cookie-correspondent-sub-application" title="Permalink to this headline">¶</a></h3>
 <p>Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see Virtel – How to Activate LU Nailing.</p>
 </div>
 <div class="section" id="lu-nailing-by-ip">
-<span id="index-60"></span><h3>LU Nailing by IP<a class="headerlink" href="#lu-nailing-by-ip" title="Permalink to this headline">¶</a></h3>
+<span id="index-61"></span><h3>LU Nailing by IP<a class="headerlink" href="#lu-nailing-by-ip" title="Permalink to this headline">¶</a></h3>
 <p>This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool. Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx. The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.</p>
 <p><strong>Comparison Table</strong></p>
 <table border="1" class="docutils">
@@ -1411,16 +1449,16 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 </div>
 </div>
 <div class="section" id="virtel-transactions">
-<span id="index-61"></span><h2>Virtel Transactions<a class="headerlink" href="#virtel-transactions" title="Permalink to this headline">¶</a></h2>
+<span id="index-62"></span><h2>Virtel Transactions<a class="headerlink" href="#virtel-transactions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-multi-session-within-virtel-web-access">
-<span id="index-62"></span><h3>Virtel Multi-session Within Virtel Web Access<a class="headerlink" href="#virtel-multi-session-within-virtel-web-access" title="Permalink to this headline">¶</a></h3>
+<span id="index-63"></span><h3>Virtel Multi-session Within Virtel Web Access<a class="headerlink" href="#virtel-multi-session-within-virtel-web-access" title="Permalink to this headline">¶</a></h3>
 <p>In some situations, it is necessary to allow a group of users to simultaneously access several distinct 3270 applications. This can be solved by using the “appmenu.htm” associated with the “applist” transaction, or by using the 3270 Multi-session function of Virtel. In the first situation, for a same original calling terminal, Virtel uses as many relays as VTAM open sessions, in the second configuration, a single relay is used for all sessions, Virtel ensuring the swapping between the opened session. To access the Multi-session function of Virtel, you must define a transaction whose application name is the same as the main Virtel ACB name. This transaction is accessible in the same way as any other VTAM application. As the first screen shown is a signature screen, the transaction does not necessarily need to be secured. The lists of applications presented to the user depends on the selected parameter setting (See the Virtel Multi-session documented section for further information on this subject). Use of the multi-session Virtel module, even in a VWA context, requires an appropriate license agreement.</p>
 <p><img alt="image29" src="../../../_images/image2912.png" /></p>
 <p><em>Transaction definition for the Virtel Multi-session module</em></p>
 </div>
 <div class="section" id="directly-access-host-applications-by-url">
 <h3>Directly access host Applications by URL<a class="headerlink" href="#directly-access-host-applications-by-url" title="Permalink to this headline">¶</a></h3>
-<p id="index-63">It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
+<p id="index-64">It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
 subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the process of connection to a host application, see Virtel URL formats in the Virtel Web Access Reference manual, and “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual.</p>
 <div class="section" id="full-path-url">
 <h4>Full path URL<a class="headerlink" href="#full-path-url" title="Permalink to this headline">¶</a></h4>
@@ -1431,7 +1469,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <p>At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.</p>
 </div>
 <div class="section" id="default-url-for-the-entry-point">
-<span id="index-64"></span><h4>Default URL for the entry point<a class="headerlink" href="#default-url-for-the-entry-point" title="Permalink to this headline">¶</a></h4>
+<span id="index-65"></span><h4>Default URL for the entry point<a class="headerlink" href="#default-url-for-the-entry-point" title="Permalink to this headline">¶</a></h4>
 <p>An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default transaction is the transaction whose external name is the same as the entry point name). This allows the user to go directly to the host application simply by entering a URL of the format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span>
 </pre></div>
@@ -1442,7 +1480,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <p>For more information see Virtel URL formats in the Virtel Web Access Users Guide.</p>
 </div>
 <div class="section" id="how-to-use-different-screen-sizes">
-<span id="index-65"></span><h4>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h4>
+<span id="index-66"></span><h4>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h4>
 <p>Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:</p>
 <ul class="simple">
 <li>model 2 : 24x80 (logmode SNX32702)</li>
@@ -1457,7 +1495,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 </ul>
 </div>
 <div class="section" id="logmode-defined-by-the-transaction">
-<span id="index-66"></span><h4>LOGMODE defined by the transaction<a class="headerlink" href="#logmode-defined-by-the-transaction" title="Permalink to this headline">¶</a></h4>
+<span id="index-67"></span><h4>LOGMODE defined by the transaction<a class="headerlink" href="#logmode-defined-by-the-transaction" title="Permalink to this headline">¶</a></h4>
 <p>With this method, the administrator defines multiple VIRTEL transactions for a single application, each transaction specifying a different logmode. For example, transactions Tso2 and Tso5 delivered in the sample configuration both define TSO as the target application, but specify different logmodes SNX32702 and SNX32705 respectively. The user selects the desired transaction from the applist menu displayed by the “Other applications” link in the VIRTEL Web Access menu.</p>
 <p>The figure below shows the definition of the Tso5 transaction defined under the WEB2HOST entry point:</p>
 <p><img alt="image31" src="../../../_images/image3121.png" /></p>
@@ -1468,7 +1506,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 </div>
 </div>
 <div class="section" id="assigning-a-logmode-by-url-parameter">
-<span id="index-67"></span><h4>Assigning a LOGMODE by URL parameter<a class="headerlink" href="#assigning-a-logmode-by-url-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-68"></span><h4>Assigning a LOGMODE by URL parameter<a class="headerlink" href="#assigning-a-logmode-by-url-parameter" title="Permalink to this headline">¶</a></h4>
 <p>The URL which allows the browser to connect to a host application via VIRTEL may contain a parameter, such as “model5” as shown in this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
 </pre></div>
@@ -1538,7 +1576,7 @@ P1=Update               P3=Return                           Enter=Add
 <p><em>Definition of model 5 terminals in the W2HPOOL pool</em></p>
 </div>
 <div class="section" id="user-specified-logmode">
-<span id="index-68"></span><h4>User-specified LOGMODE<a class="headerlink" href="#user-specified-logmode" title="Permalink to this headline">¶</a></h4>
+<span id="index-69"></span><h4>User-specified LOGMODE<a class="headerlink" href="#user-specified-logmode" title="Permalink to this headline">¶</a></h4>
 <p>When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may override the default logmode by appending an additional parameter LOGMODE=modename to the URL, as shown in this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
 </pre></div>
@@ -1550,7 +1588,7 @@ P1=Update               P3=Return                           Enter=Add
 </div>
 </div>
 <div class="section" id="user-specified-codepage">
-<span id="index-69"></span><h4>User-specified CODEPAGE<a class="headerlink" href="#user-specified-codepage" title="Permalink to this headline">¶</a></h4>
+<span id="index-70"></span><h4>User-specified CODEPAGE<a class="headerlink" href="#user-specified-codepage" title="Permalink to this headline">¶</a></h4>
 <p>Users can override the default code page by specifying a different codepage in the URL. For example the following URL overrides the default TCT codepage with the codepage IBM0037.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://nn.nn.nn.nn:41002/w2h/WEB2AJAX.htm+Tsop?codepage=ibm0037&amp;logmode=D4A32XX3&amp;rows=54&amp;cols=160
 </pre></div>
@@ -1564,7 +1602,7 @@ SET$ ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 </div>
 </div>
 <div class="section" id="dynamic-logmode-with-user-specified-screen-size">
-<span id="index-70"></span><h4>Dynamic logmode with user-specified screen size<a class="headerlink" href="#dynamic-logmode-with-user-specified-screen-size" title="Permalink to this headline">¶</a></h4>
+<span id="index-71"></span><h4>Dynamic logmode with user-specified screen size<a class="headerlink" href="#dynamic-logmode-with-user-specified-screen-size" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&amp;rows=54&amp;cols=132
 </pre></div>
@@ -1572,11 +1610,11 @@ SET$ ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 <p>VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of non-standard screen sizes.</p>
 </div>
 <div class="section" id="session-management-in-the-application-menu-list">
-<span id="index-71"></span><h4>Session Management In The Application Menu List<a class="headerlink" href="#session-management-in-the-application-menu-list" title="Permalink to this headline">¶</a></h4>
+<span id="index-72"></span><h4>Session Management In The Application Menu List<a class="headerlink" href="#session-management-in-the-application-menu-list" title="Permalink to this headline">¶</a></h4>
 <p>By default, when a user selects an application from the “Application Selection Menu” the target application will replace the APPMENU application list display. Different behaviour may be required. The following sections look at some options.</p>
 </div>
 <div class="section" id="open-session-in-separate-tab">
-<span id="index-72"></span><h4>Open session in separate tab<a class="headerlink" href="#open-session-in-separate-tab" title="Permalink to this headline">¶</a></h4>
+<span id="index-73"></span><h4>Open session in separate tab<a class="headerlink" href="#open-session-in-separate-tab" title="Permalink to this headline">¶</a></h4>
 <p>To open each session in separate tabs and keep the application menu available, add the following code in a customized Javascript “custom.js” file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">To</span> <span class="nb">open</span> <span class="n">an</span> <span class="n">application</span> <span class="p">(</span><span class="n">issued</span> <span class="kn">from</span> <span class="nn">applist</span> <span class="n">transaction</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TAB</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">window</span> <span class="o">*/</span>
 <span class="n">function</span> <span class="n">before_launchApplink</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="p">{</span>
@@ -1599,7 +1637,7 @@ SET$ ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 </div>
 </div>
 <div class="section" id="how-to-handle-host-session-termination">
-<span id="index-73"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
+<span id="index-74"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
 <p>When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available: -</p>
 <ul class="simple">
 <li>Return to the application selection menu</li>
@@ -1608,17 +1646,17 @@ SET$ ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 </ul>
 <p>Remember that it is always best to exit cleanly from the host application by pressing the “Disconnect” button, rather than closing the browser window. If the browser window is closed abruptly, the host session resources may not be freed until the expiry of the time-out period specified in the entry point definition.</p>
 <div class="section" id="return-to-the-application-selection-menu">
-<span id="index-74"></span><h4>Return to the application selection menu<a class="headerlink" href="#return-to-the-application-selection-menu" title="Permalink to this headline">¶</a></h4>
+<span id="index-75"></span><h4>Return to the application selection menu<a class="headerlink" href="#return-to-the-application-selection-menu" title="Permalink to this headline">¶</a></h4>
 <p>When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see “Virtel URL formats”, page 1. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.</p>
 </div>
 <div class="section" id="displaying-a-specific-page-on-disconnection">
-<span id="index-75"></span><h4>Displaying a specific page on disconnection<a class="headerlink" href="#displaying-a-specific-page-on-disconnection" title="Permalink to this headline">¶</a></h4>
+<span id="index-76"></span><h4>Displaying a specific page on disconnection<a class="headerlink" href="#displaying-a-specific-page-on-disconnection" title="Permalink to this headline">¶</a></h4>
 <p>Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file
 must be uploaded to the same directory as specified in the URL for the host application (for example CLI-DIR if the URL specifies /w2h/web2ajax.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.).</p>
 </div>
 <div class="section" id="closing-the-browser-window-automatically">
-<span id="index-76"></span><h4>Closing the browser window automatically<a class="headerlink" href="#closing-the-browser-window-automatically" title="Permalink to this headline">¶</a></h4>
+<span id="index-77"></span><h4>Closing the browser window automatically<a class="headerlink" href="#closing-the-browser-window-automatically" title="Permalink to this headline">¶</a></h4>
 <p>Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.</p>
 <p>The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:</p>
 <p><img alt="image32" src="../../../_images/image3221.png" /></p>
@@ -1627,7 +1665,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 </div>
 <div class="section" id="virtel-macros">
-<span id="index-77"></span><h2>Virtel Macros<a class="headerlink" href="#virtel-macros" title="Permalink to this headline">¶</a></h2>
+<span id="index-78"></span><h2>Virtel Macros<a class="headerlink" href="#virtel-macros" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>Virtel macros capture keystroke operations which can subsequently be used to automate 3270 functions. These user captured macros are stored within a file called MACROS.JSON. This file is a JavaScript array of JSON objects, with each object representing a user macro. Here is an example:</p>
@@ -1656,20 +1694,20 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 </div>
 <div class="section" id="macro-modes">
-<span id="index-78"></span><h3>Macro modes<a class="headerlink" href="#macro-modes" title="Permalink to this headline">¶</a></h3>
+<span id="index-79"></span><h3>Macro modes<a class="headerlink" href="#macro-modes" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="local-macro-mode">
 <h4>Local Macro mode<a class="headerlink" href="#local-macro-mode" title="Permalink to this headline">¶</a></h4>
 <p>All user macros are objects within a file called MACROS.JSON and with suitable knowledge this file can be maintained locally, known as local mode. The MACROS.JSON file is maintained through either the local macro interface, as launched by the user from the Virtel Tool Bar, or can be imported from a flat file where the MACROS.JSON file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. By default Virtel maintains macros in local mode with the contents of the MACROS.JSON file being stored in the browsers local storage.</p>
 <div class="section" id="user-interface">
 <h5>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h5>
-<p id="index-79"><strong>Macro functions</strong></p>
+<p id="index-80"><strong>Macro functions</strong></p>
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.</p>
 <p><img alt="image34" src="../../../_images/image3411.png" /></p>
 <p><em>The local storage record and play/display macro buttons</em></p>
 <p>The record function is an on/off button that will record key strokes. When recording, the ICON will flash until it is clicked at which point it will stop recording and save the key strokes. A save panel will be displayed asking for the name of the macro entry. Note that an ENTER/PFK key must be pressed at least once, i.e. data must be sent by some key operation in order to create and save an entry within the macro.JSON file.</p>
 <p><img alt="image35" src="../../../_images/image358.png" /></p>
 <p><em>Creating a new macro</em></p>
-<p id="index-80"><strong>Keyboard mapping</strong></p>
+<p id="index-81"><strong>Keyboard mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
@@ -1677,7 +1715,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.</p>
 <p><img alt="image36" src="../../../_images/image368.png" /></p>
 <p><em>Saving a macro with keyboard mapping</em></p>
-<p id="index-81"><strong>Settings for macros</strong></p>
+<p id="index-82"><strong>Settings for macros</strong></p>
 <p>Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002. Create the following two JavaScript members and upload them to the CLI-DIR directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
@@ -1693,16 +1731,16 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </dl>
 <p><em>w2hparm.global.js</em></p>
 <p>These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true.</p>
-<p id="index-82"><strong>The Display Record/Play Buttons</strong></p>
+<p id="index-83"><strong>The Display Record/Play Buttons</strong></p>
 <p>The green triangular button will display the local storage macros. From here a context menu can be opened against each macro using the mouse right click. This will provide delete, edit, save as and run functions.</p>
 <p><img alt="image37" src="../../../_images/image378.png" /></p>
 <p><em>Displaying the local macros</em></p>
-<p id="index-83"><strong>Export and Import Options</strong></p>
+<p id="index-84"><strong>Export and Import Options</strong></p>
 <p>Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.</p>
 </div>
 </div>
 <div class="section" id="centralised-macros-ddi-mode">
-<span id="index-84"></span><h4>Centralised Macros - DDI mode<a class="headerlink" href="#centralised-macros-ddi-mode" title="Permalink to this headline">¶</a></h4>
+<span id="index-85"></span><h4>Centralised Macros - DDI mode<a class="headerlink" href="#centralised-macros-ddi-mode" title="Permalink to this headline">¶</a></h4>
 <p>The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.</p>
 <p>The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.</p>
 <div class="admonition note">
@@ -1710,7 +1748,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p class="last">To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF.</p>
 </div>
 <div class="section" id="implementation">
-<span id="index-85"></span><h5>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h5>
+<span id="index-86"></span><h5>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h5>
 <p>To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP0</span>   <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span> <span class="n">COND</span><span class="o">=</span><span class="n">ONLY</span>
 <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
@@ -1751,10 +1789,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p><em>Security Resources required for DDI</em></p>
-<p id="index-86">Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.</p>
+<p id="index-87">Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.</p>
 <p><img alt="image38" src="../../../_images/image3812.png" /></p>
 <p><em>DDI Directories</em></p>
-<p id="index-87">Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this:</p>
+<p id="index-88">Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
 <span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
 <span class="o">//</span> <span class="ow">and</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">file</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span>
@@ -1784,7 +1822,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&quot;w2hparm.useVirtelMacros&quot;:{“macrosAutoRefresh”: “never” | “once” | “daily” | “session” }
 </pre></div>
 </div>
-<p id="index-88"><strong>Macro Options</strong></p>
+<p id="index-89"><strong>Macro Options</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -1826,7 +1864,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 </div>
 <div class="section" id="centralised-ddi-validation">
-<span id="index-89"></span><h4>Centralised DDI validation<a class="headerlink" href="#centralised-ddi-validation" title="Permalink to this headline">¶</a></h4>
+<span id="index-90"></span><h4>Centralised DDI validation<a class="headerlink" href="#centralised-ddi-validation" title="Permalink to this headline">¶</a></h4>
 <p>After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO</span>
 </pre></div>
@@ -1837,7 +1875,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>Pressing the Blue ICON should display an empty macro list:</p>
 <p><img alt="image40" src="../../../_images/image407.png" /></p>
 <p><em>Empty Macro list</em></p>
-<p id="index-90">Configuring the Centralised Repository</p>
+<p id="index-91">Configuring the Centralised Repository</p>
 <p>To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span>
 </pre></div>
@@ -1846,7 +1884,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p><em>Accessing a local macro facility -  Green ICON</em></p>
 </div>
 <div class="section" id="creating-an-initial-macro">
-<span id="index-91"></span><h4>Creating an initial macro<a class="headerlink" href="#creating-an-initial-macro" title="Permalink to this headline">¶</a></h4>
+<span id="index-92"></span><h4>Creating an initial macro<a class="headerlink" href="#creating-an-initial-macro" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="sdsf-test-macro">
 <h5>SDSF test macro<a class="headerlink" href="#sdsf-test-macro" title="Permalink to this headline">¶</a></h5>
 <p>In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the Centralised DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:</p>
@@ -1865,7 +1903,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.</p>
 </div>
 <div class="section" id="uploading-macros-to-the-centralized-repository">
-<span id="index-92"></span><h5>Uploading macros to the centralized repository<a class="headerlink" href="#uploading-macros-to-the-centralized-repository" title="Permalink to this headline">¶</a></h5>
+<span id="index-93"></span><h5>Uploading macros to the centralized repository<a class="headerlink" href="#uploading-macros-to-the-centralized-repository" title="Permalink to this headline">¶</a></h5>
 <p>To upload any MACROS.JSON file to the centralized repository we must first create a “local” export version. In the “Local Macros” popup export the SDSF macro using the export option. This will create a local “macros.json” file. The “MACROS.JSON” file will be exported to your default “download” directory on your PC.</p>
 <p>If you view the file the following will be displayed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
@@ -1886,14 +1924,14 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 </div>
 <div class="section" id="creating-a-user-macro">
-<span id="index-93"></span><h4>Creating a user macro<a class="headerlink" href="#creating-a-user-macro" title="Permalink to this headline">¶</a></h4>
+<span id="index-94"></span><h4>Creating a user macro<a class="headerlink" href="#creating-a-user-macro" title="Permalink to this headline">¶</a></h4>
 <p>With centralized macros, users can create “local” macros which will by synchronized with the centralized repository. They will not have the ability to import/export any macro.
 Creating a “user” macro follows the same process as before. The user clicks the “record” button, records their macro, stops recording by pressing the record button again. As before, a popup window will open allowing the user to name the macro and associate with a “keyboard mapping” if that option has been set. The macro will then appear in the users list of macros.</p>
 <p>Here is an example of a user macro called “CUSTINQ” which drives a sequence of CICS keyboard sequences to display a customer Inquiry panel within a CICS transaction. The macro has been associated with key mapping “ALT+6”.</p>
 <p><img alt="image47" src="../../../_images/image4711.png" /></p>
 </div>
 <div class="section" id="macro-options">
-<span id="index-94"></span><h4>Macro Options<a class="headerlink" href="#macro-options" title="Permalink to this headline">¶</a></h4>
+<span id="index-95"></span><h4>Macro Options<a class="headerlink" href="#macro-options" title="Permalink to this headline">¶</a></h4>
 <p>Pressing the “right click” button against the macro name will reveal a small popup which provides the user with some options.</p>
 <p><img alt="image48" src="../../../_images/image487.png" /></p>
 <p>The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN the macro. Whatever changes are made will be synchronized with the central repository.</p>
@@ -1903,10 +1941,10 @@ Creating a “user” macro follows the same process as before. The user clicks 
 </div>
 </div>
 <div class="section" id="directory-and-macro-administration">
-<span id="index-95"></span><h4>Directory and Macro Administration<a class="headerlink" href="#directory-and-macro-administration" title="Permalink to this headline">¶</a></h4>
+<span id="index-96"></span><h4>Directory and Macro Administration<a class="headerlink" href="#directory-and-macro-administration" title="Permalink to this headline">¶</a></h4>
 <p>Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a “local” facility and export these up into the central repository to make them available to users at a Global, Group and User level.</p>
 <div class="section" id="making-a-user-s-ddi-macro-available-to-a-ddi-group">
-<span id="index-96"></span><h5>Making a user’s DDI macro available to a DDI Group<a class="headerlink" href="#making-a-user-s-ddi-macro-available-to-a-ddi-group" title="Permalink to this headline">¶</a></h5>
+<span id="index-97"></span><h5>Making a user’s DDI macro available to a DDI Group<a class="headerlink" href="#making-a-user-s-ddi-macro-available-to-a-ddi-group" title="Permalink to this headline">¶</a></h5>
 <p>The following procedure describes how to move a user’s DDI macro to a DDI GROUP level. Start by opening the DDI interface from the main Administration Portal and select the USER tab;specify the userid in the user name field. Press the Green tick. The macros associated with the userid will be listed.</p>
 <p><img alt="image49" src="../../../_images/image497.png" /></p>
 <p><em>Moving macros to a Group</em></p>
@@ -1937,7 +1975,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 </div>
 </div>
 <div class="section" id="centralized-ddi-troubleshooting">
-<span id="index-97"></span><h4>Centralized DDI Troubleshooting<a class="headerlink" href="#centralized-ddi-troubleshooting" title="Permalink to this headline">¶</a></h4>
+<span id="index-98"></span><h4>Centralized DDI Troubleshooting<a class="headerlink" href="#centralized-ddi-troubleshooting" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
@@ -1955,7 +1993,7 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="macro-formats-and-commands">
-<span id="index-98"></span><h4>Macro formats and Commands<a class="headerlink" href="#macro-formats-and-commands" title="Permalink to this headline">¶</a></h4>
+<span id="index-99"></span><h4>Macro formats and Commands<a class="headerlink" href="#macro-formats-and-commands" title="Permalink to this headline">¶</a></h4>
 <p>The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.</p>
 <ul class="simple">
 <li>Name : The name of the macro entry.</li>
@@ -1988,7 +2026,7 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="centralised-user-parameters">
-<span id="index-99"></span><h2>Centralised User Parameters<a class="headerlink" href="#centralised-user-parameters" title="Permalink to this headline">¶</a></h2>
+<span id="index-100"></span><h2>Centralised User Parameters<a class="headerlink" href="#centralised-user-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.</p>
 <div class="section" id="userparm-setup">
 <h3>USERPARM Setup<a class="headerlink" href="#userparm-setup" title="Permalink to this headline">¶</a></h3>
@@ -2039,7 +2077,7 @@ CTRL R</p>
 <p><img alt="image53" src="../../../_images/image5311.png" /></p>
 <p><em>Example of a Sanity Check after setting up USERPARM</em></p>
 <div class="section" id="testing-the-userparm-feature">
-<span id="index-100"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
+<span id="index-101"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
 <p>To test the USERPARM feature follow the procedure below :-</p>
 <p>1   Logon to a 3270 application, say TSO
 2   Open the settings dialog
@@ -2056,14 +2094,14 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="removing-a-user-s-settings">
-<span id="index-101"></span><h4>Removing a user’s settings<a class="headerlink" href="#removing-a-user-s-settings" title="Permalink to this headline">¶</a></h4>
+<span id="index-102"></span><h4>Removing a user’s settings<a class="headerlink" href="#removing-a-user-s-settings" title="Permalink to this headline">¶</a></h4>
 <p>This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:</p>
 <p><img alt="image55" src="../../../_images/image5510.png" /></p>
 <p><em>Listing the USERPARM directory</em></p>
 <p>We can remove the entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the default user parameters as defined by the Administrator.</p>
 </div>
 <div class="section" id="userparm-problems">
-<span id="index-102"></span><h4>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h4>
+<span id="index-103"></span><h4>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h4>
 <p>When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
 <span class="mi">330</span>
@@ -2104,12 +2142,12 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="security">
-<span id="index-103"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<span id="index-104"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-activate-ssl-at-tls">
 <h3>How To Activate SSL AT-TLS<a class="headerlink" href="#how-to-activate-ssl-at-tls" title="Permalink to this headline">¶</a></h3>
 <p>To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases. AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.</p>
 <div class="section" id="installation-steps">
-<span id="index-104"></span><h4>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h4>
+<span id="index-105"></span><h4>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="install-policy-agent-procedure">
 <h5>Install Policy Agent procedure<a class="headerlink" href="#install-policy-agent-procedure" title="Permalink to this headline">¶</a></h5>
 <p>If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.</p>
@@ -2128,7 +2166,7 @@ CTRL R</p>
 <p>The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</p>
 </div>
 <div class="section" id="create-the-server-certificate">
-<span id="index-105"></span><h5>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h5>
+<span id="index-106"></span><h5>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h5>
 <p>A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)</p>
 </div>
@@ -2141,7 +2179,7 @@ RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VI
 <p>To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.</p>
 </div>
 <div class="section" id="tcpip-definitions-for-at-tls">
-<span id="index-106"></span><h5>TCPIP Definitions for AT-TLS<a class="headerlink" href="#tcpip-definitions-for-at-tls" title="Permalink to this headline">¶</a></h5>
+<span id="index-107"></span><h5>TCPIP Definitions for AT-TLS<a class="headerlink" href="#tcpip-definitions-for-at-tls" title="Permalink to this headline">¶</a></h5>
 <p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span> <span class="n">TTLS</span>
 <span class="n">AUTOLOG</span> <span class="mi">5</span> <span class="n">PAGENT</span> <span class="n">ENDAUTOLOG</span>
@@ -2151,7 +2189,7 @@ RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VI
 </div>
 </div>
 <div class="section" id="operations">
-<span id="index-107"></span><h4>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h4>
+<span id="index-108"></span><h4>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="starting-the-policy-agent">
 <h5>Starting the Policy Agent<a class="headerlink" href="#starting-the-policy-agent" title="Permalink to this headline">¶</a></h5>
 <p>The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command S PAGENT.
@@ -2174,7 +2212,7 @@ Agent is started. Do not be tempted to authorize applications to use this RACF r
 <p>Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.</p>
 </div>
 <div class="section" id="common-error-messages">
-<span id="index-108"></span><h5>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h5>
+<span id="index-109"></span><h5>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h5>
 <p>Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="n">nnn</span> <span class="n">event</span>
 </pre></div>
@@ -2212,7 +2250,7 @@ In Firefox the cipher specifications are accessed by typing <a class="reference 
 </div>
 </div>
 <div class="section" id="ssl-signing-on-using-server-and-client-certificates">
-<span id="index-109"></span><h4>SSL - Signing On Using Server And Client Certificates<a class="headerlink" href="#ssl-signing-on-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h4>
+<span id="index-110"></span><h4>SSL - Signing On Using Server And Client Certificates<a class="headerlink" href="#ssl-signing-on-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h4>
 <p>In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:</p>
 <ul class="simple">
@@ -2232,7 +2270,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </ol>
 </div>
 <div class="section" id="what-is-a-certificates">
-<span id="index-110"></span><h4>What is a Certificates<a class="headerlink" href="#what-is-a-certificates" title="Permalink to this headline">¶</a></h4>
+<span id="index-111"></span><h4>What is a Certificates<a class="headerlink" href="#what-is-a-certificates" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="x-509-certificate">
 <h5>X.509 certificate?<a class="headerlink" href="#x-509-certificate" title="Permalink to this headline">¶</a></h5>
 <p>Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or Certification Authority (CA).</p>
@@ -2274,7 +2312,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <p>In this configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.</p>
 </div>
 <div class="section" id="configuring-the-certificates">
-<span id="index-111"></span><h5>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this headline">¶</a></h5>
+<span id="index-112"></span><h5>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this headline">¶</a></h5>
 <p>The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">DCERTCA</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span>
 <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
@@ -2352,7 +2390,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 </div>
 <div class="section" id="cerificates-and-key-rings">
-<span id="index-112"></span><h4>Cerificates and Key rings<a class="headerlink" href="#cerificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
+<span id="index-113"></span><h4>Cerificates and Key rings<a class="headerlink" href="#cerificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
 <p>Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*-----------------------------------------------------------------*/</span>
 <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> <span class="o">*/</span>
@@ -2372,7 +2410,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 <p>Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.</p>
 <div class="section" id="user-certificate">
-<span id="index-113"></span><h5>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this headline">¶</a></h5>
+<span id="index-114"></span><h5>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this headline">¶</a></h5>
 <p>The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*----------------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">Associate</span> <span class="n">certificate</span> <span class="k">with</span> <span class="n">user</span> <span class="nb">id</span> <span class="o">*</span>
@@ -2418,7 +2456,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 </div>
 <div class="section" id="importing-the-certificate-on-the-client-work-station">
-<span id="index-114"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
+<span id="index-115"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
 <p>To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.</p>
 <p><img alt="image19" src="../../../_images/image1914.png" /></p>
@@ -2428,7 +2466,7 @@ certificate import wizard is run to import the certificate.</p>
 </div>
 </div>
 <div class="section" id="passticket-support">
-<span id="index-115"></span><h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this headline">¶</a></h4>
+<span id="index-116"></span><h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this headline">¶</a></h4>
 <p>The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
@@ -2456,7 +2494,7 @@ accordingly:</p>
 <p>In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.</p>
 </div>
 <div class="section" id="pagent-configuration">
-<span id="index-116"></span><h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this headline">¶</a></h4>
+<span id="index-117"></span><h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this headline">¶</a></h4>
 <p>To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TTLSEnvironmentAction</span> <span class="n">VIRTELenvir_inSec</span>
 <span class="p">{</span>
@@ -2509,7 +2547,7 @@ you have made changes you can issue the following z/OS command:</p>
 </div>
 </div>
 <div class="section" id="configuring-virtel-cics-example">
-<span id="index-117"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
+<span id="index-118"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
 <p>The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.</p>
 <p><img alt="image21" src="../../../_images/image2126.png" /></p>
 <p><em>Note that PassTicket is set to 2.</em> This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has
@@ -2529,7 +2567,7 @@ obtained.</p>
 </div>
 </div>
 <div class="section" id="at-tls-problems">
-<span id="index-118"></span><h4>AT-TLS Problems<a class="headerlink" href="#at-tls-problems" title="Permalink to this headline">¶</a></h4>
+<span id="index-119"></span><h4>AT-TLS Problems<a class="headerlink" href="#at-tls-problems" title="Permalink to this headline">¶</a></h4>
 <p>It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.</p>
 <ol class="arabic simple">
 <li>Is AT-TLS active.</li>
@@ -2618,7 +2656,7 @@ The response should be :
 </div>
 </div>
 <div class="section" id="ntlm-support">
-<span id="index-119"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this headline">¶</a></h3>
+<span id="index-120"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this headline">¶</a></h3>
 <p>Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.</p>
 <div class="section" id="enable-windows-integrated-authentication-for-internet-exmplorer">
 <h4>Enable Windows Integrated Authentication for Internet Exmplorer<a class="headerlink" href="#enable-windows-integrated-authentication-for-internet-exmplorer" title="Permalink to this headline">¶</a></h4>
@@ -2706,7 +2744,7 @@ The response should be :
 </div>
 </div>
 <div class="section" id="ntlm-troubleshooting">
-<span id="index-120"></span><h4>NTLM Troubleshooting<a class="headerlink" href="#ntlm-troubleshooting" title="Permalink to this headline">¶</a></h4>
+<span id="index-121"></span><h4>NTLM Troubleshooting<a class="headerlink" href="#ntlm-troubleshooting" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="still-receiving-login-prompt">
 <h5>Still receiving login prompt<a class="headerlink" href="#still-receiving-login-prompt" title="Permalink to this headline">¶</a></h5>
 <p>If you still continue to receive logon prompt, please check your configuration. Most common error are:</p>
@@ -2719,9 +2757,9 @@ The response should be :
 </div>
 </div>
 <div class="section" id="system-management">
-<span id="index-121"></span><h2>System Management<a class="headerlink" href="#system-management" title="Permalink to this headline">¶</a></h2>
+<span id="index-122"></span><h2>System Management<a class="headerlink" href="#system-management" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-message-controls">
-<span id="index-122"></span><h3>Virtel Message Controls<a class="headerlink" href="#virtel-message-controls" title="Permalink to this headline">¶</a></h3>
+<span id="index-123"></span><h3>Virtel Message Controls<a class="headerlink" href="#virtel-message-controls" title="Permalink to this headline">¶</a></h3>
 <p>By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">)</span>
@@ -2731,7 +2769,7 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
 </pre></div>
 </div>
-<p id="index-123">The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:</p>
+<p id="index-124">The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span> <span class="n">Default</span><span class="o">=</span><span class="n">CONSOLE</span>
 </pre></div>
 </div>
@@ -2796,13 +2834,13 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 </div>
 </div>
 <div class="section" id="virconf-usage">
-<span id="index-124"></span><h3>VIRCONF Usage<a class="headerlink" href="#virconf-usage" title="Permalink to this headline">¶</a></h3>
+<span id="index-125"></span><h3>VIRCONF Usage<a class="headerlink" href="#virconf-usage" title="Permalink to this headline">¶</a></h3>
 <p>VIRCONF is a batch facilty you can use to add, update, delete VIRTEL definitions stored in the ARBO file. There is also an unload facility which can be invoked either in batch or dynamically through the Virtel UNLOAD command. See below.</p>
 <p><strong>VIRCONF does not open the ARBO for output.</strong></p>
 <p>If you run VIRCONF when Virtel is active you can get IEC161I error messages when performing add, update or replace options. The reason for this error is that the VIRCONF program requires exclusive control of the ARBO file. Following the performance improvements, through the introduction of VSAM LSR, VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. The unload option is not affected by this serialization.</p>
 <div class="section" id="unloading-the-arbo-dataset">
 <h4>Unloading the ARBO dataset<a class="headerlink" href="#unloading-the-arbo-dataset" title="Permalink to this headline">¶</a></h4>
-<p id="index-125">The following JCL is an example of the VIRCONF program.</p>
+<p id="index-126">The following JCL is an example of the VIRCONF program.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UNLOADS</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//*</span>
@@ -2822,7 +2860,7 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 <span class="o">//</span>             <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6080</span><span class="p">)</span>
 </pre></div>
 </div>
-<p id="index-126">A dynamic UNLOAD can be run through the following Virtel command:-</p>
+<p id="index-127">A dynamic UNLOAD can be run through the following Virtel command:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">virtel</span><span class="p">,</span><span class="n">unload</span>
 </pre></div>
 </div>
@@ -2843,7 +2881,7 @@ VIR0223I UNLOAD ENDED
 </div>
 </div>
 <div class="section" id="virtel-msg10-usstab">
-<span id="index-127"></span><h2>Virtel MSG10 USSTAB<a class="headerlink" href="#virtel-msg10-usstab" title="Permalink to this headline">¶</a></h2>
+<span id="index-128"></span><h2>Virtel MSG10 USSTAB<a class="headerlink" href="#virtel-msg10-usstab" title="Permalink to this headline">¶</a></h2>
 <p>This section discusses how to build and implement a VTAM USSMSG10 screen using the VIRTEL VIR0021W USSTAB menu program. Customers can take there existing VTAM USSMSG10 code and pace the assembled module in the VIRTEL DFHRPL load library. The VIR0021W program will interrogate the customers USSTAB module and create an equivalent VIRTEL 3270 MAP. The 3270 MAP will be passed to the module VIR0010 where it will be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL DFHRPL library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.</p>
 <div class="section" id="program-restrictions">
 <h3>Program restrictions<a class="headerlink" href="#program-restrictions" title="Permalink to this headline">¶</a></h3>
@@ -2913,7 +2951,7 @@ VIR0223I UNLOAD ENDED
 </div>
 </div>
 <div class="section" id="virtel-ftp-client">
-<span id="index-128"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
+<span id="index-129"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL Web Access v4.59 and above supports a FTP file transfer interface through the use of FTP command templates and the local FTP client. The Virtel FTP package consists of the following elements:</p>
@@ -3176,7 +3214,7 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="faqs">
-<span id="index-129"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
+<span id="index-130"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-specify-a-codepage-in-a-url">
 <h3>How to specify a codepage in a URL<a class="headerlink" href="#how-to-specify-a-codepage-in-a-url" title="Permalink to this headline">¶</a></h3>
 <p>Some users want to see square brackets displayed in their VWA presentation, for example “C” programmers. The default UTF8 / MVS codepage translation doesn’t transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.</p>
@@ -3185,16 +3223,16 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="how-to-use-the-tso-omvs-panel-command-with-vwa">
-<span id="index-130"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
+<span id="index-131"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
 <p>TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.</p>
 <p>Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.</p>
 </div>
 <div class="section" id="can-virtel-web-access-emulate-z-os-operator-consoles">
-<span id="index-131"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
+<span id="index-132"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
 <p>Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.</p>
 </div>
 <div class="section" id="can-i-customize-hotspot-recognition">
-<span id="index-132"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
+<span id="index-133"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
 <p>The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
 VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;

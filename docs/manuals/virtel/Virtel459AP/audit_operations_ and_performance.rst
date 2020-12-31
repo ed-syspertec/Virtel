@@ -513,7 +513,6 @@ The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. I
 .. note::
 
     Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
-
 .. index::
    pair: SNAP Command; Commands         
 
@@ -807,6 +806,7 @@ The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This 
 
 
 SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.
+
 
 .. index::
    pair: ZAP Command; Commands            

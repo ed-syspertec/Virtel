@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Dec 30, 2020}
+\date{Dec 31, 2020}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -3674,6 +3674,76 @@ If the first transaction results in a Multi-Session menu display, VIRTEL maybe d
 \end{description}
 
 
+\subsubsection{VIR0071I SILENCE message table display}
+\label{\detokenize{messages:vir0071i-silence-message-table-display}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+Displays a list of dynamically add messages which will be subject to the current SILENCE mode setting.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0072I Message added: \sphinxstyleemphasis{messageid}}
+\label{\detokenize{messages:vir0072i-message-added-messageid}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+Message \sphinxstyleemphasis{messageid} has been added to the message table.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0073I MESSAGE TABLE RESET}
+\label{\detokenize{messages:vir0073i-message-table-reset}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+All messages have been removed from the message table.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0074W MESSAGE NOT FOUND}
+\label{\detokenize{messages:vir0074w-message-not-found}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+Message does not exist in the table.
+
+\item[{Action}] \leavevmode
+Check the message number being deleted. Use the LIST command to list out the messages in the table.
+
+\end{description}
+
+
+\subsubsection{VIR0075I Message deleted: \sphinxstyleemphasis{messageid}}
+\label{\detokenize{messages:vir0075i-message-deleted-messageid}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+Message \sphinxstyleemphasis{messageid} has been deleted from the message table.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
 \subsection{Messages VIR008xx}
 \label{\detokenize{messages:messages-vir008xx}}
 
@@ -7021,6 +7091,20 @@ Unexpected VSAM error occurred during access of VIRARBO file. R15 and ACBERFLG g
 
 \item[{Action}] \leavevmode
 Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
+
+\end{description}
+
+
+\subsubsection{VIRCF54E DYNALLC FAILED FOR \sphinxstyleemphasis{dsname}}
+\label{\detokenize{messages:vircf54e-dynallc-failed-for-dsname}}\begin{description}
+\item[{Module}] \leavevmode
+VIRCONF
+
+\item[{Meaning}] \leavevmode
+Dynamic allocation failed to allocate the dataset \sphinxstyleemphasis{dsname}.
+
+\item[{Action}] \leavevmode
+The UNLOAD is aborted. Check that the correct dataset name has been specified in the DSN= keyword and that the dataset has been preallocated.
 
 \end{description}
 

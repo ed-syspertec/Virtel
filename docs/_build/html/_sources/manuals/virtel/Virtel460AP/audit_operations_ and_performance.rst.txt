@@ -499,20 +499,20 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
     \newpage  
 
 .. index::
-   pair: SILENCE Command; Commands     
+   pair: SILENCE Command; Commands 
 
 SILENCE Command
 ---------------
 
-To supppress Virtel messages use the SILENCE command::
+The SILENCE command manages message suppression. The format of the command is::
 
-    SILENCE
+    SILENCE                     Toggle SILENCE mode ON or OFF
+    SILENCE=messagid            Add message to message table
+    SILENCE=messageid,D         Delete message from message table
+    SILENCE=RESET               Reset message table and remove all entries
+    SILENCE=LIST                List messages        
 
-The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.
-
-.. note::
-
-    Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
+The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
 
 .. index::
    pair: SNAP Command; Commands         
@@ -787,6 +787,21 @@ Deactivate all traces
     NOTRACE,ALL
 
 This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
+
+.. index::
+   pair: UNLOAD Command; Commands            
+
+UNLOAD Command
+--------------
+
+Unload the ARBO configuration file.
+::
+
+    UNLOAD
+    UNLOAD,DSN=*dsname*
+
+The UNLOAD commands writes the contents of the ARBO file. Depending on the VIRTEL JCL, the output will be directed to the SYSPUNCH DD statement. If no SYSPUNCH DD statement is defined, one will be allocated through dynamic allocation. Output will then by written to JES class SYSOUT=B or, if the DSN= option is specified, to the dsname provided. The dataset must be pre-allocated with DCB attributes LRECL=80,RECFM=FB,BLKSIZE=3200. The SYSPUNCH DD statement will be dynamically allocated if not provided in the Virtel JCL.
+
 
 .. index::
    pair: VIRSV Command; Commands            

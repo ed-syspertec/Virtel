@@ -2380,6 +2380,55 @@ Meaning
 Action
     If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).
 
+VIR0071I SILENCE message table display
+""""""""""""""""""""""""""""""""""""""
+Module
+    	VIR0002
+Meaning
+    Displays a list of dynamically add messages which will be subject to the current SILENCE mode setting.
+Action
+    None.
+
+VIR0072I Message added: *messageid*
+"""""""""""""""""""""""""""""""""""
+Module
+    	VIR0002
+Meaning
+    Message *messageid* has been added to the message table.
+Action
+    None.
+
+VIR0073I MESSAGE TABLE RESET
+""""""""""""""""""""""""""""
+Module
+    	VIR0002
+Meaning
+    All messages have been removed from the message table.
+
+Action
+    None.
+
+VIR0074W MESSAGE NOT FOUND
+""""""""""""""""""""""""""
+Module
+    	VIR0002
+Meaning
+    Message does not exist in the table.
+
+Action
+    Check the message number being deleted. Use the LIST command to list out the messages in the table.
+
+
+VIR0075I Message deleted: *messageid*
+"""""""""""""""""""""""""""""""""""""
+Module
+    	VIR0002
+Meaning
+    Message *messageid* has been deleted from the message table.
+Action
+    None.
+
+
 Messages VIR008xx
 ^^^^^^^^^^^^^^^^^
 
@@ -4599,6 +4648,15 @@ Meaning
     Unexpected VSAM error occurred during access of VIRARBO file. R15 and ACBERFLG gives the error and the reason of the error.
 Action
     Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
+
+VIRCF54E DYNALLC FAILED FOR *dsname*
+""""""""""""""""""""""""""""""""""""
+Module
+    VIRCONF
+Meaning
+    Dynamic allocation failed to allocate the dataset *dsname*.
+Action
+    The UNLOAD is aborted. Check that the correct dataset name has been specified in the DSN= keyword and that the dataset has been preallocated.
 
 Messages VIRCTxxx
 ^^^^^^^^^^^^^^^^^ 

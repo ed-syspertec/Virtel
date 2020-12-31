@@ -2994,6 +2994,61 @@ Enter a value in the description field.</p>
 <dd>If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).</dd>
 </dl>
 </div>
+<div class="section" id="vir0071i-silence-message-table-display">
+<h5>VIR0071I SILENCE message table display<a class="headerlink" href="#vir0071i-silence-message-table-display" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>Displays a list of dynamically add messages which will be subject to the current SILENCE mode setting.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0072i-message-added-messageid">
+<h5>VIR0072I Message added: <em>messageid</em><a class="headerlink" href="#vir0072i-message-added-messageid" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>Message <em>messageid</em> has been added to the message table.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0073i-message-table-reset">
+<h5>VIR0073I MESSAGE TABLE RESET<a class="headerlink" href="#vir0073i-message-table-reset" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>All messages have been removed from the message table.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0074w-message-not-found">
+<h5>VIR0074W MESSAGE NOT FOUND<a class="headerlink" href="#vir0074w-message-not-found" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>Message does not exist in the table.</dd>
+<dt>Action</dt>
+<dd>Check the message number being deleted. Use the LIST command to list out the messages in the table.</dd>
+</dl>
+</div>
+<div class="section" id="vir0075i-message-deleted-messageid">
+<h5>VIR0075I Message deleted: <em>messageid</em><a class="headerlink" href="#vir0075i-message-deleted-messageid" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>Message <em>messageid</em> has been deleted from the message table.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="messages-vir008xx">
 <h4>Messages VIR008xx<a class="headerlink" href="#messages-vir008xx" title="Permalink to this headline">¶</a></h4>
@@ -5641,6 +5696,17 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <dd>Unexpected VSAM error occurred during access of VIRARBO file. R15 and ACBERFLG gives the error and the reason of the error.</dd>
 <dt>Action</dt>
 <dd>Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.</dd>
+</dl>
+</div>
+<div class="section" id="vircf54e-dynallc-failed-for-dsname">
+<h5>VIRCF54E DYNALLC FAILED FOR <em>dsname</em><a class="headerlink" href="#vircf54e-dynallc-failed-for-dsname" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIRCONF</dd>
+<dt>Meaning</dt>
+<dd>Dynamic allocation failed to allocate the dataset <em>dsname</em>.</dd>
+<dt>Action</dt>
+<dd>The UNLOAD is aborted. Check that the correct dataset name has been specified in the DSN= keyword and that the dataset has been preallocated.</dd>
 </dl>
 </div>
 </div>
