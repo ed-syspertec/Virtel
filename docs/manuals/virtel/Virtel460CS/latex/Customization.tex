@@ -56,7 +56,7 @@
 
 
 \title{Virtel Customization}
-\date{Dec 07, 2020}
+\date{Dec 30, 2020}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -113,7 +113,7 @@ their respective owners.
 
 
 \chapter{Summary of Amendments}
-\label{\detokenize{Customization:summary-of-amendments}}\label{\detokenize{Customization:virtel460hw-summary-of-ammendments}}
+\label{\detokenize{Customization:summary-of-amendments}}\label{\detokenize{Customization:virtel460hw-summary-of-amendments}}
 
 \section{Virtel version 4.60 (11th Oct 2020)}
 \label{\detokenize{Customization:virtel-version-4-60-11th-oct-2020}}\begin{itemize}
@@ -370,7 +370,7 @@ The Virtel User Guide contains further information on how to use GUI based contr
 
 \section{Customizable JavaScript User Exits}
 \label{\detokenize{Customization:customizable-javascript-user-exits}}\label{\detokenize{Customization:index-6}}
-Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
+Virtel provides the following JavaScript functions that can be customized to give bespoke behaviour. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
 
 \index{JavaScript User Exits@\spxentry{JavaScript User Exits}!before\_submitForm@\spxentry{before\_submitForm}}\index{before\_submitForm@\spxentry{before\_submitForm}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
 \item {} 
@@ -1934,10 +1934,29 @@ The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
 To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).
 \end{sphinxadmonition}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Overriding the default codepage@\spxentry{Overriding the default codepage}}\index{Application customization@\spxentry{Application customization}!Overriding a default codepage@\spxentry{Overriding a default codepage}}\index{URL Formats@\spxentry{URL Formats}!Overriding a default codepage@\spxentry{Overriding a default codepage}}\index{Codepage@\spxentry{Codepage}}\ignorespaces 
+
+\subsection{User-specified CODEPAGE}
+\label{\detokenize{Customization:user-specified-codepage}}\label{\detokenize{Customization:index-69}}
+Users can override the default code page by specifying a different codepage in the URL. For example the following URL overrides the default TCT codepage with the codepage IBM0037.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+http://nn.nn.nn.nn:41002/w2h/WEB2AJAX.htm+Tsop?codepage=ibm0037\PYGZam{}logmode=D4A32XX3\PYGZam{}rows=54\PYGZam{}cols=160
+\end{sphinxVerbatim}
+
+The entry point must refer to a scenario allowing to process the contents of the URL parameter CODEPAGE. By default the SCENLOGM scenario can be used. If another identification scenario is implemented, it must contain the following lines:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+COPY\PYGZdl{} INPUT\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=\PYGZsq{}CODEPAGE\PYGZsq{}, *
+        VAR=\PYGZsq{}CODEPAGE\PYGZsq{}
+IF\PYGZdl{} NOT\PYGZhy{}FOUND,THEN=NOCODEPG
+SET\PYGZdl{} ENCODING,UTF\PYGZhy{}8,\PYGZsq{}*CODEPAGE\PYGZsq{}
+\end{sphinxVerbatim}
+
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{Application customization@\spxentry{Application customization}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{URL Formats@\spxentry{URL Formats}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\ignorespaces 
 
 \subsection{Dynamic logmode with user-specified screen size}
-\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}\label{\detokenize{Customization:index-69}}
+\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}\label{\detokenize{Customization:index-70}}
 VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1949,13 +1968,13 @@ VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host applicat
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!The Application Menu List@\spxentry{The Application Menu List}}\index{Session Management@\spxentry{Session Management}!The Application Menu list@\spxentry{The Application Menu list}}\ignorespaces 
 
 \subsection{Session Management In The Application Menu List}
-\label{\detokenize{Customization:session-management-in-the-application-menu-list}}\label{\detokenize{Customization:index-70}}
+\label{\detokenize{Customization:session-management-in-the-application-menu-list}}\label{\detokenize{Customization:index-71}}
 By default, when a user selects an application from the “Application Selection Menu” the target application will replace the APPMENU application list display. Different behaviour may be required. The following sections look at some options.
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\index{Session Management@\spxentry{Session Management}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\ignorespaces 
 
 \subsection{Open session in separate tab}
-\label{\detokenize{Customization:open-session-in-separate-tab}}\label{\detokenize{Customization:index-71}}
+\label{\detokenize{Customization:open-session-in-separate-tab}}\label{\detokenize{Customization:index-72}}
 To open each session in separate tabs and keep the application menu available, add the following code in a customized Javascript “custom.js” file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1986,7 +2005,7 @@ Each new session gives rise to the opening of a specific IP socket, and therefor
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Handling Session termination@\spxentry{Handling Session termination}}\index{Session Management@\spxentry{Session Management}!Handling Session termination@\spxentry{Handling Session termination}}\ignorespaces 
 
 \section{How To Handle Host Session Termination}
-\label{\detokenize{Customization:how-to-handle-host-session-termination}}\label{\detokenize{Customization:index-72}}
+\label{\detokenize{Customization:how-to-handle-host-session-termination}}\label{\detokenize{Customization:index-73}}
 When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available: -
 \begin{itemize}
 \item {} 
@@ -2005,21 +2024,21 @@ Remember that it is always best to exit cleanly from the host application by pre
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\index{Session Management@\spxentry{Session Management}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\ignorespaces 
 
 \subsection{Return to the application selection menu}
-\label{\detokenize{Customization:return-to-the-application-selection-menu}}\label{\detokenize{Customization:index-73}}
+\label{\detokenize{Customization:return-to-the-application-selection-menu}}\label{\detokenize{Customization:index-74}}
 When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see “Virtel URL formats”, page 1. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\index{Session Management@\spxentry{Session Management}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\ignorespaces 
 
 \subsection{Displaying a specific page on disconnection}
-\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}\label{\detokenize{Customization:index-74}}
+\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}\label{\detokenize{Customization:index-75}}
 Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file
 must be uploaded to the same directory as specified in the URL for the host application (for example CLI-DIR if the URL specifies /w2h/web2ajax.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.).
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\index{Session Management@\spxentry{Session Management}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\ignorespaces 
 
 \subsection{Closing the browser window automatically}
-\label{\detokenize{Customization:closing-the-browser-window-automatically}}\label{\detokenize{Customization:index-75}}
+\label{\detokenize{Customization:closing-the-browser-window-automatically}}\label{\detokenize{Customization:index-76}}
 Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.
 
 The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:
@@ -2031,7 +2050,7 @@ The figure below shows an example of an entry point definition with close.htm sp
 \index{Virtel Macros@\spxentry{Virtel Macros}}\ignorespaces 
 
 \chapter{Virtel Macros}
-\label{\detokenize{Customization:virtel-macros}}\label{\detokenize{Customization:index-76}}
+\label{\detokenize{Customization:virtel-macros}}\label{\detokenize{Customization:index-77}}
 
 \section{Introduction}
 \label{\detokenize{Customization:introduction}}
@@ -2064,7 +2083,7 @@ Virtel macros capture keystroke operations which can subsequently be used to aut
 \index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!User Interface@\spxentry{User Interface}}\ignorespaces 
 
 \section{Macro modes}
-\label{\detokenize{Customization:macro-modes}}\label{\detokenize{Customization:index-77}}
+\label{\detokenize{Customization:macro-modes}}\label{\detokenize{Customization:index-78}}
 
 \subsection{Local Macro mode}
 \label{\detokenize{Customization:local-macro-mode}}
@@ -2144,7 +2163,7 @@ Macros can be exported or imported using the Export and Import buttons. On expor
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\ignorespaces 
 
 \subsection{Centralised Macros - DDI mode}
-\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-83}}
+\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-84}}
 The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
 
 The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.
@@ -2156,7 +2175,7 @@ To use centralized DDI mode users have a userid and group defined within a secur
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Implementation@\spxentry{Implementation}}\ignorespaces 
 
 \subsubsection{Implementation}
-\label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-84}}
+\label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-85}}
 To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2304,7 +2323,7 @@ If you are running multiple images of Virtel, say in a SYSPLEX arrangement using
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!DDI Validation@\spxentry{DDI Validation}}\ignorespaces 
 
 \subsection{Centralised DDI validation}
-\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-88}}
+\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-89}}
 After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2339,7 +2358,7 @@ To configure the centralised DDI repository we need to create an “initial” M
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating an initial macro@\spxentry{Creating an initial macro}}\ignorespaces 
 
 \subsection{Creating an initial macro}
-\label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-90}}
+\label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-91}}
 
 \subsubsection{SDSF test macro}
 \label{\detokenize{Customization:sdsf-test-macro}}
@@ -2368,7 +2387,7 @@ Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Uploading macros through the DDI interface@\spxentry{Uploading macros through the DDI interface}}\ignorespaces 
 
 \subsubsection{Uploading macros to the centralized repository}
-\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-91}}
+\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-92}}
 To upload any MACROS.JSON file to the centralized repository we must first create a “local” export version. In the “Local Macros” popup export the SDSF macro using the export option. This will create a local “macros.json” file. The “MACROS.JSON” file will be exported to your default “download” directory on your PC.
 
 If you view the file the following will be displayed:
@@ -2401,7 +2420,7 @@ To run the macro, enter the ISPF primary menu and then press the Green “ARROW�
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating user macros@\spxentry{Creating user macros}}\ignorespaces 
 
 \subsection{Creating a user macro}
-\label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-92}}
+\label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-93}}
 With centralized macros, users can create “local” macros which will by synchronized with the centralized repository. They will not have the ability to import/export any macro.
 Creating a “user” macro follows the same process as before. The user clicks the “record” button, records their macro, stops recording by pressing the record button again. As before, a popup window will open allowing the user to name the macro and associate with a “keyboard mapping” if that option has been set. The macro will then appear in the users list of macros.
 
@@ -2412,7 +2431,7 @@ Here is an example of a user macro called “CUSTINQ” which drives a sequence 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro panel options@\spxentry{Macro panel options}}\ignorespaces 
 
 \subsection{Macro Options}
-\label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-93}}
+\label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-94}}
 Pressing the “right click” button against the macro name will reveal a small popup which provides the user with some options.
 
 \sphinxincludegraphics{{image48}.png}
@@ -2426,13 +2445,13 @@ The “Edit” feature is for viewing only.
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directory and Macro Administration@\spxentry{Directory and Macro Administration}}\ignorespaces 
 
 \subsection{Directory and Macro Administration}
-\label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-94}}
+\label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-95}}
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a “local” facility and export these up into the central repository to make them available to users at a Global, Group and User level.
 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Making macros available@\spxentry{Making macros available}}\ignorespaces 
 
 \subsubsection{Making a user’s DDI macro available to a DDI Group}
-\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-95}}
+\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-96}}
 The following procedure describes how to move a user’s DDI macro to a DDI GROUP level. Start by opening the DDI interface from the main Administration Portal and select the USER tab;specify the userid in the user name field. Press the Green tick. The macros associated with the userid will be listed.
 
 \sphinxincludegraphics{{image49}.png}
@@ -2479,7 +2498,7 @@ It is not necessary to export a “dummy” macro from a “local mode” setup 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{Centralized DDI Troubleshooting}
-\label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-96}}
+\label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-97}}
 
 \subsubsection{Out of Sync condition or no transaction security}
 \label{\detokenize{Customization:out-of-sync-condition-or-no-transaction-security}}
@@ -2505,7 +2524,7 @@ CTRL R
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro Formats@\spxentry{Macro Formats}}\ignorespaces 
 
 \subsection{Macro formats and Commands}
-\label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-97}}
+\label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-98}}
 The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
 \begin{itemize}
 \item {} 
@@ -2547,7 +2566,7 @@ The macro editor supports the following commands:-
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Setup@\spxentry{Setup}}\ignorespaces 
 
 \chapter{Centralised User Parameters}
-\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-98}}
+\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-99}}
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.
 
 
@@ -2620,7 +2639,7 @@ If every has been configured correctly you should get a “GREEN” light.
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Validation@\spxentry{Validation}}\ignorespaces 
 
 \subsection{Testing the USERPARM feature}
-\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-99}}
+\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-100}}
 To test the USERPARM feature follow the procedure below :-
 
 1   Logon to a 3270 application, say TSO
@@ -2642,7 +2661,7 @@ In the Virtel log you should see the following “upload” message:-
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Removing a users settings@\spxentry{Removing a users settings}}\ignorespaces 
 
 \subsection{Removing a user’s settings}
-\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-100}}
+\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-101}}
 This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:
 
 \sphinxincludegraphics{{image55}.png}
@@ -2654,7 +2673,7 @@ We can remove the entry by using the delete option. This will remove any user se
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{USERPARM Problems}
-\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-101}}
+\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-102}}
 When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2711,7 +2730,7 @@ This is normally related to configuration. Try the “sanity” URL test to make
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!How to activate@\spxentry{How to activate}}\ignorespaces 
 
 \chapter{Security}
-\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-102}}
+\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-103}}
 
 \section{How To Activate SSL AT-TLS}
 \label{\detokenize{Customization:how-to-activate-ssl-at-tls}}
@@ -2720,7 +2739,7 @@ To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Appl
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Installation@\spxentry{Installation}}\ignorespaces 
 
 \subsection{Installation steps}
-\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-103}}
+\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-104}}
 
 \subsubsection{Install Policy Agent procedure}
 \label{\detokenize{Customization:install-policy-agent-procedure}}
@@ -2750,7 +2769,7 @@ The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RA
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Certificates@\spxentry{Certificates}}\ignorespaces 
 
 \subsubsection{Create the server certificate}
-\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-104}}
+\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-105}}
 A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace \%virtssl\% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
 
@@ -2767,7 +2786,7 @@ To allow VIRTEL to access its own keyring and server certificate, the VIRTEL sta
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!TCPIP definitions@\spxentry{TCPIP definitions}}\ignorespaces 
 
 \subsubsection{TCPIP Definitions for AT-TLS}
-\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-105}}
+\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-106}}
 To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2780,7 +2799,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Operations@\spxentry{Operations}}\ignorespaces 
 
 \subsection{Operations}
-\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-106}}
+\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-107}}
 
 \subsubsection{Starting the Policy Agent}
 \label{\detokenize{Customization:starting-the-policy-agent}}
@@ -2809,7 +2828,7 @@ Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Un
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshootings@\spxentry{Troubleshootings}}\ignorespaces 
 
 \subsubsection{Common error messages}
-\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-107}}
+\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-108}}
 Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2885,7 +2904,7 @@ SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) C
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Using Server and Client certificates@\spxentry{Using Server and Client certificates}}\ignorespaces 
 
 \subsection{SSL - Signing On Using Server And Client Certificates}
-\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-108}}
+\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-109}}
 In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT\_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:
 \begin{itemize}
@@ -2929,7 +2948,7 @@ An encryption algorithm and single key is chosen to encrypt / decrypt data The p
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!What is a X.509 certificate@\spxentry{What is a X.509 certificate}}\ignorespaces 
 
 \subsection{What is a Certificates}
-\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-109}}
+\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-110}}
 
 \subsubsection{X.509 certificate?}
 \label{\detokenize{Customization:x-509-certificate}}
@@ -2986,7 +3005,7 @@ In this configuration we will be using self-signed server and client certificate
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring certificates@\spxentry{Configuring certificates}}\index{RACF@\spxentry{RACF}!Configuring a X.509 certificate@\spxentry{Configuring a X.509 certificate}}\ignorespaces 
 
 \subsubsection{Configuring the certificates}
-\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-110}}
+\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-111}}
 The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3071,7 +3090,7 @@ Note how we identify the signing certificate with the SIGNWITH parameter using t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring key rings@\spxentry{Configuring key rings}}\index{RACF@\spxentry{RACF}!Configuring key rings@\spxentry{Configuring key rings}}\ignorespaces 
 
 \subsection{Cerificates and Key rings}
-\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-111}}
+\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-112}}
 Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3096,7 +3115,7 @@ Again it is the label that identifies the key(certificate) that we want to add t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!User certificates@\spxentry{User certificates}}\index{RACF@\spxentry{RACF}!User certificates@\spxentry{User certificates}}\ignorespaces 
 
 \subsubsection{User Certificate}
-\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-112}}
+\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-113}}
 The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3147,7 +3166,7 @@ The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and 
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Importing certificates@\spxentry{Importing certificates}}\index{RACF@\spxentry{RACF}!Importing certificates@\spxentry{Importing certificates}}\ignorespaces 
 
 \subsubsection{Importing the certificate on the client work station.}
-\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-113}}
+\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-114}}
 To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.
 
@@ -3159,10 +3178,10 @@ After importing the following panel is displayed:
 
 At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.
 
-\index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Setting up RACF for Passtick@\spxentry{Setting up RACF for Passtick}}\ignorespaces 
+\index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Setting up RACF for PassTicket@\spxentry{Setting up RACF for PassTicket}}\ignorespaces 
 
 \subsection{PassTicket support}
-\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-114}}
+\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-115}}
 The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:
 
@@ -3194,7 +3213,7 @@ In order for Virtel to generate PassTickets, you must also modify your VIRTCT to
 \index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Pagent Configuration@\spxentry{Pagent Configuration}}\ignorespaces 
 
 \subsection{PAGENT Configuration}
-\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-115}}
+\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-116}}
 To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3260,7 +3279,7 @@ you have made changes you can issue the following z/OS command:
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Example of Passtick support with CICS@\spxentry{Example of Passtick support with CICS}}\ignorespaces 
 
 \subsection{Configuring Virtel - CICS Example}
-\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-116}}
+\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-117}}
 The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.
 
 \sphinxincludegraphics{{image21}.png}
@@ -3294,7 +3313,7 @@ We are signed into CICS without having to specify any user id or password.
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{AT-TLS Problems}
-\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-117}}
+\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-118}}
 It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.
 \begin{enumerate}
 \def\theenumi{\arabic{enumi}}
@@ -3437,7 +3456,7 @@ VIRTEL Web Access Guide Security \textendash{} Data encryption by SSL
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\ignorespaces 
 
 \section{NTLM Support}
-\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-118}}
+\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-119}}
 Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.
 
 
@@ -3610,7 +3629,7 @@ You will see a list of preferences listed. Find the settings below by browsing t
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\index{NTLM Support@\spxentry{NTLM Support}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{NTLM Troubleshooting}
-\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-119}}
+\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-120}}
 
 \subsubsection{Still receiving login prompt}
 \label{\detokenize{Customization:still-receiving-login-prompt}}
@@ -3627,11 +3646,11 @@ The invoked Virtel transaction is not defined with security = 2.
 \index{System Managment@\spxentry{System Managment}}\ignorespaces 
 
 \chapter{System Management}
-\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-120}}
+\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-121}}
 \index{System Management@\spxentry{System Management}!Message controls@\spxentry{Message controls}}\index{Message controls@\spxentry{Message controls}!Messages to SYSOUT@\spxentry{Messages to SYSOUT}}\ignorespaces 
 
 \section{Virtel Message Controls}
-\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-121}}
+\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-122}}
 By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:
 
@@ -3729,20 +3748,47 @@ The display of message VIR0099I requires the PTF 5530 be applied. Similarly the 
 \index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Running@\spxentry{Running}}\ignorespaces 
 
 \section{VIRCONF Usage}
-\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-123}}
-VIRCONF is a batch facilty you can use to add, update or delete definition strored in the ARBO file.
+\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-124}}
+VIRCONF is a batch facilty you can use to add, update, delete VIRTEL definitions stored in the ARBO file. There is also an unload facility which can be invoked either in batch or dynamically through the Virtel UNLOAD command. See below.
 
 \sphinxstylestrong{VIRCONF does not open the ARBO for output.}
 
-If you run VIRCONF when Virtel is active you can get IEC161I error messages. The reason for this error is that the VIRCONF program requires an exclusive control on the ARBO file and following the performance improvements through the introduction of VSAM LSR the VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. To avoid this problem a new feature was added to V4.56 which enables a VIRCONF UNLOAD through an operator command :
+If you run VIRCONF when Virtel is active you can get IEC161I error messages when performing add, update or replace options. The reason for this error is that the VIRCONF program requires exclusive control of the ARBO file. Following the performance improvements, through the introduction of VSAM LSR, VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. The unload option is not affected by this serialization.
+
+
+\subsection{Unloading the ARBO dataset}
+\label{\detokenize{Customization:unloading-the-arbo-dataset}}
+\index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Virtel Unload JCL@\spxentry{Virtel Unload JCL}}\ignorespaces 
+The following JCL is an example of the VIRCONF program.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{THIS} \PYG{n}{JOB} \PYG{n}{UNLOADS} \PYG{n}{AN} \PYG{n}{ARBO} \PYG{n}{FILE}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{SP000}\PYG{o}{.}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{ARBO}\PYG{o}{=}\PYG{n}{SP000}\PYG{o}{.}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{ARBO}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{DEL} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IEFBR14}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{DDA} \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}\PYG{o}{.}\PYG{o}{.}\PYG{n}{VIRCONF}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{SYSIN}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{p}{(}\PYG{n}{MOD}\PYG{p}{,}\PYG{n}{DELETE}\PYG{p}{)}\PYG{p}{,}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{UNIT}\PYG{o}{=}\PYG{n}{SYSDA}\PYG{p}{,}\PYG{n}{SPACE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{TRK}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{UNLOAD}  \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{UNLOAD}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}\PYG{p}{,}\PYG{n}{AMP}\PYG{o}{=}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{RMODE31=NONE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPUNCH} \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}\PYG{o}{.}\PYG{o}{.}\PYG{n}{VIRCONF}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{SYSIN}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{p}{(}\PYG{p}{,}\PYG{n}{CATLG}\PYG{p}{)}\PYG{p}{,}
+\PYG{o}{/}\PYG{o}{/}             \PYG{n}{UNIT}\PYG{o}{=}\PYG{n}{SYSDA}\PYG{p}{,}\PYG{n}{VOL}\PYG{o}{=}\PYG{n}{SER}\PYG{o}{=}\PYG{n}{SPT30C}\PYG{p}{,}\PYG{n}{SPACE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{CYL}\PYG{p}{,}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,}
+\PYG{o}{/}\PYG{o}{/}             \PYG{n}{DCB}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RECFM}\PYG{o}{=}\PYG{n}{FB}\PYG{p}{,}\PYG{n}{LRECL}\PYG{o}{=}\PYG{l+m+mi}{80}\PYG{p}{,}\PYG{n}{BLKSIZE}\PYG{o}{=}\PYG{l+m+mi}{6080}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 \index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Virtel Unload Command@\spxentry{Virtel Unload Command}}\ignorespaces 
-\def\sphinxLiteralBlockLabel{\label{\detokenize{Customization:index-124}}}
+A dynamic UNLOAD can be run through the following Virtel command:-
+
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{F} \PYG{n}{virtel}\PYG{p}{,}\PYG{n}{unload}
 \end{sphinxVerbatim}
 
-This command invokes the VIRCONF program which unloads the ARBO file. The following DD statement must be added to the Virtel procedure:
+This command invokes the VIRCONF program which unloads the ARBO file. The following DD statement can be added to the Virtel procedure to direct the output to a dataset:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPUNCH} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{SP000}\PYG{o}{.}\PYG{n}{VIRTELxx}\PYG{o}{.}\PYG{n}{VIRCONF}\PYG{o}{.}\PYG{n}{SYSIN}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{p}{(}\PYG{p}{,}\PYG{n}{CATLG}\PYG{p}{)}\PYG{p}{,}
@@ -3750,27 +3796,480 @@ This command invokes the VIRCONF program which unloads the ARBO file. The follow
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{DCB}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RECFM}\PYG{o}{=}\PYG{n}{FB}\PYG{p}{,}\PYG{n}{LRECL}\PYG{o}{=}\PYG{l+m+mi}{80}\PYG{p}{,}\PYG{n}{BLKSIZE}\PYG{o}{=}\PYG{l+m+mi}{6080}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-Or alternatively:
+Or alternatively, if no SYSPUNCH is found, dynamic allocation will be invoke to write the ARBO statements to JES SYSOUT=B: The following mesages will appear in the log:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPUNCH} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{n}{B}
+F VIRTEL,UNLOAD
+VIR0200I UNLOAD
+\PYGZdl{}HASP375 VIRTEL ESTIMATED  CARDS EXCEEDED
+VIR0223I UNLOAD ENDED
 \end{sphinxVerbatim}
 
 \index{Virtel MSG10 USSTAB@\spxentry{Virtel MSG10 USSTAB}!VIR0021W@\spxentry{VIR0021W}}\ignorespaces 
 
 \chapter{Virtel MSG10 USSTAB}
-\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-125}}
+\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-127}}
+This section discusses how to build and implement a VTAM USSMSG10 screen using the VIRTEL VIR0021W USSTAB menu program. Customers can take there existing VTAM USSMSG10 code and pace the assembled module in the VIRTEL DFHRPL load library. The VIR0021W program will interrogate the customers USSTAB module and create an equivalent VIRTEL 3270 MAP. The 3270 MAP will be passed to the module VIR0010 where it will be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL DFHRPL library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.
+
+
+\section{Program restrictions}
+\label{\detokenize{Customization:program-restrictions}}
+In most cases no changes are required but that only applies if certain caveats are met. Those being
+\begin{itemize}
+\item {} 
+There is only one unprotected field with an IC instruction (x’13’). The maximum length of 50 characters. This area is for command entry.
+
+\item {} 
+Data areas are broken up with Start Field (x’1D’) or extended Start Field (x’29’) instructions. Each area cannot be greater than 240 characters.
+
+\item {} 
+Displacement addresses, such as AL2(((24-1)*80)+(80-1)), are not supported. Only use 3270 Buffer addresses such as x’C1C1’, representing Columun 1 Row 1.
+
+\item {} 
+The following PARM fields are supported - APPLID, P1 and P12.
+
+\item {} 
+The SCAN parameter must be included on the Buffer statement. For example:- MSG10 USSMSG MSG=10,BUFFER=(MSG10BUF,SCAN)
+
+\end{itemize}
+
+
+\section{Setting up to use the VIRTEL’s USSMSG support}
+\label{\detokenize{Customization:setting-up-to-use-the-virtel-s-ussmsg-support}}
+
+\subsection{Build a Virtel transaction}
+\label{\detokenize{Customization:build-a-virtel-transaction}}
+Start by defining a Virtel transaction to support the VIR0021W program and the USSMSG display.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{16}\PYG{n}{A}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+        \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{VTAMUSS}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+        \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Logon through USSTAB}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                            \PYG{o}{\PYGZhy{}}
+        \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021W}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+        \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+        \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CLVTA}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+        \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+        \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+        \PYG{n}{LOGMSG}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{usstab=myusstab,errmsg=y}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
+
+\sphinxincludegraphics{{image57}.png}
+
+\sphinxstyleemphasis{Example of a USSMSG transaction}
+
+
+\subsection{Create your USSTAB load module}
+\label{\detokenize{Customization:create-your-usstab-load-module}}
+Check your existing USSTAB code, in particular the USSMSG10 section, and check that it meets the caveats as outlinded above. Re-assemble the code and place in the DFHRPL loadlib.
+
+
+\subsection{Test the USSMSG10 display}
+\label{\detokenize{Customization:test-the-ussmsg10-display}}
+To display the USSMSG10 buffer you will need to use a VIRTEL URL that invokes the Virtel transaction. For example, \sphinxurl{http://192.168.170.48:41002/w2h/WEB2AJAX.htm+VTAMUSS}. Here is the default example that is shipped with Virtel. The source can be found in the SAMPLIB library as member USSVIRT.
+
+\sphinxincludegraphics{{image58}.png}
+
+\sphinxstyleemphasis{Default USSMSG display}
+
+You can, of course, make this transaction the default transaction for the Entry Point, so that the USSMSG display is shown whenever a user enters just the line and port. For example, \sphinxurl{http://192.168.170.48:41002}. You would specify the USSMSG transaction in the TIOA at logon field in the Entry Point definition - w2h/WEB2AJAX.HTM+VTAMUSS
+
+
+\subsection{The errmsg= keyword}
+\label{\detokenize{Customization:the-errmsg-keyword}}
+The VIR0021W program supports the errmsg=Y\textbar{}N keyword. If errmsg=Y is specified in the LOGMSG it instructs the VIR0021W program to use line 24 in your display as a feedback area. Meaningful messages will be reported back to the user should the VIR0021W fail to initiate a session with the target 3270 application. This area must not be utilized by your USSMSG10 definitions i.e. your should have no data defined in line 24.
+
+
+\subsection{Dyanmic substitution}
+\label{\detokenize{Customization:dyanmic-substitution}}
+VIR0021W supports symbolic values within the USSMSG10 code. Any values defined in the IEASYM00 zOS parmlib member may be substituted in the USSMSG buffer. For example:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DC} \PYG{n}{CL10}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZam{}\PYGZam{}SYSNAME.}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
+
+The \&\&SYSNAME would be replaced bu the systems SYSNAME. The template length must be sufficient to support the value being substituted. Apart from the values defined in the IEASYM00 parmlib member the following substition values can also be used:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{p}{:}\PYG{o}{@}\PYG{o}{@}\PYG{n+nd}{@IPADDR} \PYG{n}{Callers} \PYG{n}{IPV6} \PYG{o+ow}{or} \PYG{n}{IPV4} \PYG{n}{address}
+\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{n+nd}{@IPADDR}                         \PYG{n}{Callers} \PYG{n}{IPV4} \PYG{n}{Address}
+\PYG{o}{@}\PYG{n+nd}{@PORT}                                  \PYG{n}{PORT}
+\PYG{o}{@}\PYG{n+nd}{@LUNAME}                                \PYG{n}{Virtel} \PYG{n}{LU} \PYG{n}{Name}
+\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{n+nd}{@DATE}                                \PYG{n}{Date}
+\PYG{o}{@}\PYG{o}{@}\PYG{o}{@}\PYG{n+nd}{@TIME}                                \PYG{n}{Time}
+\end{sphinxVerbatim}
+
+
+\section{Problems}
+\label{\detokenize{Customization:problems}}
+Should your user USSATAB fail to load , or breaks one of the caveats listed above the the default USSTAB USSVIRT will be loaded. This default module can be overridden by specifying USSTAB=name in the TCT. You could provide a USSMSG10 help page directing users to a contact number, for example. If the default page is shown, check the VIRTEL log for error messages. Normally when the user USSTAB module fails an error message is written to the VIRTEL log.
+
 \index{Virtel FTP Client@\spxentry{Virtel FTP Client}!FTP@\spxentry{FTP}}\ignorespaces 
 
 \chapter{Virtel FTP Client}
-\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-126}}
+\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-128}}
+
+\section{Introduction}
+\label{\detokenize{Customization:id1}}
+VIRTEL Web Access v4.59 and above supports a FTP file transfer interface through the use of FTP command templates and the local FTP client. The Virtel FTP package consists of the following elements:
+\begin{itemize}
+\item {} 
+One or more templates that Virtel uses to generate FTP parameters. These can be configured by the Virtel administrator.
+
+\item {} 
+A Virtel scenario that generates the FTP parameter file, when the function is called via a button on the toolbar of from an option on the Virtel administration menu.
+
+\item {} 
+A Windows desktop script that invokes the local FTP client and passes through the FTP commands generated by Virtel.
+
+\end{itemize}
+
+
+\section{How does it work?}
+\label{\detokenize{Customization:how-does-it-work}}
+Virtel runs in a browser and, for sceurity reasons, cannot directly call the local FTP client program. Other than through the use of IND\$FILE, Virtel does not provide direct FTP connection to the mainframe. The Virtel FTP package centralizes the FTP file transfer parameters, where they can be configured by the Virtel Administrator. When an end-user requests for an FTP transfer to be initiated, an FTP parameter file is downloaded to the browser default download directory. The file transfer can then be executed by calling a batch script on the user’s desktop, that will use the parameter file as an input.
+
+
+\subsection{Pre-requisites}
+\label{\detokenize{Customization:pre-requisites}}\begin{itemize}
+\item {} 
+The user workstation must be able to run Microsoft’s ftp.exe program.
+
+\item {} 
+The user must be authorized to run batch (BAT) and Power shell scripts
+
+\item {} 
+The Virtel Entry point(s) must be defined to load scenarios from the SCE-DIR directory. This is normally the default.
+
+\item {} 
+A directory to keep the ancillary programs should be created on the users PC. This could be something like c:virtelftp. See Appendix A for me details on the ancillary post processing programs.
+
+\end{itemize}
+
+
+\section{Installing and configuring the FTP function}
+\label{\detokenize{Customization:installing-and-configuring-the-ftp-function}}
+Download and apply the Virtel 4.59 UPDT5799 update from the Virtel FTP website. This should apply they latest maintenance to Virtel which includes the FTP feature.
+\begin{itemize}
+\item {} 
+Stop Virtel.
+
+\item {} 
+Add the following Virtel transactions: -
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+//INIARBO EXEC PGM=VIRCONF,PARM=LOAD
+//STEPLIB  DD  DISP=SHR,DSN=VIRTEL.LOADLIB
+//SYSPRINT DD  SYSOUT=*
+//VIRARBO  DD  DISP=SHR,DSN=VIRTEL.ARBO
+//SYSIN    DD  *
+    TRANSACT ID=W2H\PYGZhy{}04E,                                             \PYGZhy{}
+            NAME=FTPPARM,                                           \PYGZhy{}
+            DESC=\PYGZsq{}FTPPARM   \PYGZsq{},                                      \PYGZhy{}
+            APPL=\PYGZdl{}NONE\PYGZdl{},                                            \PYGZhy{}
+            TYPE=2,                                                 \PYGZhy{}
+            TERMINAL=DELOC,                                         \PYGZhy{}
+            STARTUP=1,                                              \PYGZhy{}
+            SECURITY=0,                                             \PYGZhy{}
+            TIOASTA=\PYGZam{}/S,                                            \PYGZhy{}
+            EXITSTA=FTPPARM
+    TRANSACT ID=CLI\PYGZhy{}04E,                                             \PYGZhy{}
+            NAME=FTPPARM,                                           \PYGZhy{}
+            DESC=\PYGZsq{}FTPPARM   \PYGZsq{},                                      \PYGZhy{}
+            APPL=\PYGZdl{}NONE\PYGZdl{},                                            \PYGZhy{}
+            TYPE=2,                                                 \PYGZhy{}
+            TERMINAL=CLLOC,                                         \PYGZhy{}
+            STARTUP=1,                                              \PYGZhy{}
+            SECURITY=0,                                             \PYGZhy{}
+            TIOASTA=\PYGZam{}/S,                                            \PYGZhy{}
+            EXITSTA=FTPPARM
+\end{sphinxVerbatim}
+
+The new transactions will provide the support for the FTP feature. The external/internal must be called FTPPARM. The transactions update both the administration entry point (W2H) and the client entry point (CLI).
+
+\sphinxincludegraphics{{image59}.png}
+
+\sphinxstyleemphasis{FTP transaction definition for FTP file transfer}
+
+
+\subsection{FTP Scenario}
+\label{\detokenize{Customization:ftp-scenario}}
+The FTPPARM scenario, FTPPARM.390, can be found in the SCE directory. By default, the W2H entry point WEB2HOST, uses SCE-DIR as its directory for scenarios. However, for backward compatibility, the default for the client entry point CLI, CLIWHOST, doesn’t use SCE-DIR by default. It still loads scenarios from the Virtel LOADLIB. The scenario source FTPPARM can be found in the SAMPLIB datatset. Users can assemble it and place it in the VIRTEL LOADLIB  update the CLI entry point must be update to locate scenarios through the SCE-DIR. Alternatively, you could use a RULE \textbar{} Entry Point combination or define anothe VIRTEL LINE for FTP support, pointing the associated entry point at SCE-DIR.
+
+
+\section{Defining the FTP templates}
+\label{\detokenize{Customization:defining-the-ftp-templates}}
+Templates reside in the related directory, for eample W2H-DIR, CLI-DIR, or a user directory. The FTP package provides default templates for Upload and Download FTP requests. These can be customized to your site specifications and then re-uploaded to the W2H-DIR directory.
+
+For example: sendipnw.txt. (Send new file to target with IP address)
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZlt{}!\PYGZhy{}\PYGZhy{}VIRTEL start=\PYGZdq{}\PYGZob{}\PYGZob{}\PYGZob{}\PYGZdq{} end=\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}\PYGZdq{} \PYGZhy{}\PYGZhy{}\PYGZgt{}OPEN \PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}IPDSN\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+USER \PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}USERFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+?                                                                           \PYGZlt{}==== Optional Password Trigger!
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}TYPFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+quote site blksize=\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}BSZFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{} lrecl=\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}LRLFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{} recfm=\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}RFMFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}SPCFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{} pri=\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}PRIFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{} sec=\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}SECFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+PUT \PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}LOCALFILEFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{} \PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}REMOTEFILEFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}
+QUIT
+\end{sphinxVerbatim}
+
+The third line of the template defines the optional user password character. If it is set to “?”, then the user will be prompted for a password when running the background FTP script PSVirtelFtp.ps1.
+
+
+\subsection{Template Variables}
+\label{\detokenize{Customization:template-variables}}
+The following variables can be used in the FTP templates:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}USERFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}    = Screen field « Userid »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}TYPFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « text or Binary », value « ASCII » or « TYPE I »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}TYPCHS\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Charset »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}REMOTEFILEFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}      = Grouped Screen field of  «Path: » and « File : » of Section « Host File »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}LOCALFILEFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}       = Grouped Screen field «Path: » and « File : » of Section « PC File »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}IPDSN\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}      = Screen field « IUP/DNS »
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}BSZFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Blksize»
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}LRLFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Lrecl»
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}RFMFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Recfm»
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}SPCFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Space»
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}PRIFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Pri»
+\PYGZob{}\PYGZob{}\PYGZob{}CURRENT\PYGZhy{}VALUE\PYGZhy{}OF \PYGZdq{}SECFTP\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}     = Screen field « Sec»
+\end{sphinxVerbatim}
+
+
+\subsection{Defining the FTP templates for the action listbox}
+\label{\detokenize{Customization:defining-the-ftp-templates-for-the-action-listbox}}
+Modify the supplied JavaScript file “dataftplist.js” source to populate the “Action” list box with your personal templates. Upload to your Virtel directory.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+// \PYGZdl{}Id: dataftplist.js ???? 2019\PYGZhy{}10\PYGZhy{}15 09:01:46 lepi \PYGZdl{}
+var FTPLIST = new Array();
+
+var alink = new Array();
+alink[\PYGZdq{}ftpvalue\PYGZdq{}] = \PYGZdq{}send\PYGZdq{};
+alink[\PYGZdq{}host\PYGZdq{}] = \PYGZdq{}T\PYGZdq{};
+alink[\PYGZdq{}ftpmsg\PYGZdq{}] = \PYGZdq{}Send ip 192.168.92.161\PYGZdq{};
+FTPLIST[0] = alink;
+
+var alink = new Array();
+alink[\PYGZdq{}ftpvalue\PYGZdq{}] = \PYGZdq{}sendip\PYGZdq{};
+alink[\PYGZdq{}host\PYGZdq{}] = \PYGZdq{}T\PYGZdq{};
+alink[\PYGZdq{}ftpmsg\PYGZdq{}] = \PYGZdq{}Send ip Target\PYGZdq{};
+FTPLIST[1] = alink;
+\end{sphinxVerbatim}
+
+
+\subsection{Activate the Toolbar icons for file transfer}
+\label{\detokenize{Customization:activate-the-toolbar-icons-for-file-transfer}}
+A new icon for FTP package will displayed on the VIRTEL Web Access toolbar via a setting in the user parameter settings dialog. When the settings Option “Show the toggle button for VirtelFtp” is checked, a blue FTP icon will appear, as shown below:
+
+\sphinxincludegraphics{{image60}.png}
+
+\sphinxstyleemphasis{VIRTEL Web Access toolbar for FTP file transfer}
+
+
+\subsection{Installing the bat files, shortcut and ancillary programs}
+\label{\detokenize{Customization:installing-the-bat-files-shortcut-and-ancillary-programs}}
+Within the SAMPTRSF directory the will be a zip file virtelFTP.zip. Download and unzip this to a directory on your workstation, for example c:VirtelFtp. To download enter the following URL
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.48}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{PUBLIC}\PYG{o}{/}\PYG{n}{virtelftp}\PYG{o}{.}\PYG{n}{zip}
+\end{sphinxVerbatim}
+
+A “Save As” dialog box will open. Select a directory where you can save the file. Once unziped you will find a virtelFTP directory which contains the following:-
+\begin{itemize}
+\item {} 
+documentation
+
+\item {} 
+A software directory containing four files
+
+\end{itemize}
+
+These four files are used to initiate the FTP file transfer and maintain the FTP profiles in local browser storage.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+1.  Downloadftp.bat
+
+    rem Test Batch FTP script.
+    :: \PYGZdl{}Id: downloadftp.bat 5228 2019\PYGZhy{}12\PYGZhy{}03 13:57:05Z riou \PYGZdl{}
+    ::Script Batch de transfert ftp.exe avec fichier FTPPARAM.TXT
+    @echo off
+    set dateLog=\PYGZpc{}date:\PYGZti{}6,4\PYGZpc{}\PYGZpc{}date:\PYGZti{}3,2\PYGZpc{}\PYGZpc{}date:\PYGZti{}0,2\PYGZpc{}
+    set h=\PYGZpc{}TIME:\PYGZti{}0,2\PYGZpc{}
+    set m=\PYGZpc{}TIME:\PYGZti{}3,2\PYGZpc{}
+    set s=\PYGZpc{}TIME:\PYGZti{}6,2\PYGZpc{}
+    set timeLog=\PYGZpc{}h\PYGZpc{}\PYGZus{}\PYGZpc{}m\PYGZpc{}\PYGZus{}\PYGZpc{}s\PYGZpc{}
+    REM Launch FTP and pass it the  script
+    ftp \PYGZhy{}n \PYGZhy{}s:\PYGZpc{}HOMEDRIVE\PYGZpc{}\PYGZpc{}HomePath\PYGZpc{}\PYGZbs{}Downloads\PYGZbs{}FTPPARAM.txt \PYGZgt{}\PYGZpc{}HOMEDRIVE\PYGZpc{}\PYGZpc{}HomePath\PYGZpc{}\PYGZbs{}Downloads\PYGZbs{}Log\PYGZus{}Ftp\PYGZus{}\PYGZpc{}dateLog\PYGZpc{}\PYGZus{}\PYGZpc{}timeLog\PYGZpc{}.log
+    REM Delete params
+    rem del \PYGZpc{}HOMEDRIVE\PYGZpc{}\PYGZpc{}HomePath\PYGZpc{}\PYGZbs{}Downloads\PYGZbs{}FTPPARAM.txt
+
+2.  VirtelFtp.ps1
+
+    Ancillary Power Shell script.
+
+3.  VirtelFtp.vbs
+
+    Ancillary Visual Basic program.
+
+4.  PSVirtelFtp.bat
+
+    Initial Bat file which triggers the FTP process. It should be defined as a short\PYGZhy{}cut on the desktop. It will process the FTPPARM.TXT file that has been created in the users “Download” directory. This file contains all the details of the FTP request built from the Virtel FTP screens. The file is used by the ancillary programs to initiate and perform the FTP operation.
+
+    PSVirtelFtp.bat kicks off a power shell script VirtelFtp.ps1.
+
+        echo off
+        move \PYGZpc{}USERPROFILE\PYGZpc{}\PYGZbs{}Downloads\PYGZbs{}ftpparam.txt c:\PYGZbs{}virtel\PYGZbs{}ftp
+        start /W /B powershell \PYGZhy{}file VirtelFtp.ps1 \PYGZpc{}1
+        rem del \PYGZpc{}USERPROFILE\PYGZpc{}\PYGZbs{}Downloads\PYGZbs{}ftpparam.txt
+\end{sphinxVerbatim}
+
+
+\subsection{Set up a shortcut on your desktop}
+\label{\detokenize{Customization:set-up-a-shortcut-on-your-desktop}}
+For ease of operation set up a shortcut on your directory, pointing to the .bat file in c:virtelftp. Once the FTP parameters have been built by Virtel FTP, clicking this shortcut will invoke the FTP file transfer.
+
+
+\section{How to use the Virtel FTP function}
+\label{\detokenize{Customization:how-to-use-the-virtel-ftp-function}}
+
+\subsection{Sending and Receiving a file}
+\label{\detokenize{Customization:sending-and-receiving-a-file}}
+To send a file from your workstation to a target FTP site, click the FTP icon on the Virtel toolbar. The “VIRTEL FTP” dialog will open:
+
+\sphinxincludegraphics{{image61}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Dialog Part 1}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+*   Select « Send ip Target » in the action list box.
+*   Specify the Username to be used for the FTP connection.
+*   In Section “PC File”
+*   Specify the Local Path if necessary.
+*   Specify the PC file name. You can also specify the pathname here or \PYGZhy{}
+*   Drag And Drop a file onto the “Drag files from your directory path to here! » zone. This will populate the filename field.
+*   Specify the Charset to be used for the FTP transfer. The default is Windows CP\PYGZhy{}1252
+*   In Section “Host File”
+*   Specify the Path (equal TSO dataset name or TSO PDS), surrounded by quotes if necessary. Dataset names without quotes will be prefixed by your TSO prefix (usually your userid).
+*   Specify the File (equal TSO dataset name).
+*   In sub\PYGZhy{}Section “FTP Options” in the “Host File” section
+*   Choose either “Text” or “Binary”. “Text” translates the file from EBCDIC to ASCII and inserts carriage return line feed sequences (x’0D0A’) at the end of each record. “Binary” performs no translation.
+*   In sub\PYGZhy{}Section “Host” in “Host File”
+*   Select the target host type (TSO/UNIX/JES2) associated with the \PYGZdq{}Transfer Type\PYGZdq{} action. This will modify the actions to the selected type.
+*   Finally click “Build” to generate the FTP parameter file.
+\end{sphinxVerbatim}
+
+When the Generate Parameter is complete, the browser’s “VIRTEL FTP Save Parameter” dialog appears:
+
+\sphinxincludegraphics{{image62}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Dialog Part 2}
+
+Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on your workstation:
+
+\sphinxincludegraphics{{image63}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Dialog part 3}
+
+Now select the destination file and click “Save”. If the file already exists, you will be prompted for permission to overwrite it. The “Download Complete” dialog appears when the file has been saved. Once the file has downloaded, run the PSVirtelFtp.bat procedure. This should be setup as a shortcut on your desktop.
+
+If the password was defined by a”?” in the template, the following dialog will appear.
+
+\sphinxincludegraphics{{image64}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Entering your password}
+
+After entering the password, the transfer will be executed, and the following console log should be displayed.
+
+\sphinxincludegraphics{{image65}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Console Log}
+
+.The last line of the execution report in the DOS window provides information on the execution status.
+
+
+\subsection{Selecting a PC Codepage for FTP file transfer}
+\label{\detokenize{Customization:selecting-a-pc-codepage-for-ftp-file-transfer}}
+Users can select a PC Codepage for FTP file transfer. Possible values are: -
+\begin{itemize}
+\item {} 
+Windows (CP-1252) : CP-1252 ASCII-EBCDIC translation table.
+
+\item {} 
+MS-DOS (CP-850) : CP-850 ASCII-EBCDIC translation table. This depends on the value of the COUNTRY parameter specified in the VIRTCT. If this value is “FR”, “DE” or “BE”, system will use corresponding table FR-850, DE-850 or BE-850. If the specified country value is different, by default the BE-850 table will be used to support CECP 500 international EBCDIC.
+
+\end{itemize}
+
+
+\subsection{Saving and reusing FTP file transfer parameters}
+\label{\detokenize{Customization:saving-and-reusing-ftp-file-transfer-parameters}}
+Users who frequently use the same FTP file transfers can save the parameters for later reuse. To save a FTP file transfer, enter the dataset name and the type of transfer, and click the “Save” button: -
+
+\sphinxincludegraphics{{image66}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Receive dialog saved transfers}
+
+The user can then choose a name for the saved transfer and click “OK” to save the parameters. At the next transfer, the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Generate Parameter” to start the generate.
+
+\sphinxincludegraphics{{image67}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Saving the FTP file transfer parameters}
+
+Users can save transfer parameters for “Generate Parameter”. The parameters are saved in browser local storage. The number of sets of parameters which can be saved is limited only by the amount of local storage available.
+
+
+\subsection{Showing / Hiding FTP File Transfer}
+\label{\detokenize{Customization:showing-hiding-ftp-file-transfer}}
+The administrator may wish to prevent users from accessing features like FTP File Transfer. This example shows how to hide the toolbar option by setting a parameter in the w2hparm.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+/*
+* set the value of the “Show toggle button for VirtelFtp”.
+*/
+w2hparm.showftp = true;
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Example w2hparm.js for hiding FTP File Transfer}
+
+Users may also use the Virtel Settings Display options and deselect the VirtelFTP toggle.
+
+\sphinxincludegraphics{{image68}.png}
+
+\sphinxstyleemphasis{VIRTEL FTP Toggle the FTP button in the settings panel}
+
+If the default value is used, users can show this function for their own usage by checking “Show the toggle button for VirtelFtp” in the Display tab of the settings panel.
+
+
+\section{Debugging VirtelFTP}
+\label{\detokenize{Customization:debugging-virtelftp}}
+
+\subsection{Power Shell authority}
+\label{\detokenize{Customization:power-shell-authority}}
+Users may find that the an error message appears when invoking the Power Shell Script. This can be corrected by issuing the Windows command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Set}\PYG{o}{\PYGZhy{}}\PYG{n}{ExecutionPolicy} \PYG{n}{Bypass}
+\end{sphinxVerbatim}
+
+\index{FAQ Questions@\spxentry{FAQ Questions}!Square Brackets and codepages@\spxentry{Square Brackets and codepages}}\index{Codepage in the URL@\spxentry{Codepage in the URL}}\ignorespaces 
+
+\chapter{FAQs}
+\label{\detokenize{Customization:faqs}}\label{\detokenize{Customization:index-129}}
+
+\section{How to specify a codepage in a URL}
+\label{\detokenize{Customization:how-to-specify-a-codepage-in-a-url}}
+Some users want to see square brackets displayed in their VWA presentation, for example “C” programmers. The default UTF8 / MVS codepage translation doesn’t transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
+\end{sphinxVerbatim}
+
 \index{FAQ Questions@\spxentry{FAQ Questions}!OMVS panel@\spxentry{OMVS panel}}\ignorespaces 
 
-\chapter{FAQ}
-\label{\detokenize{Customization:faq}}\label{\detokenize{Customization:index-127}}
-
 \section{How to use the TSO OMVS panel command with VWA}
-\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}
+\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}\label{\detokenize{Customization:index-130}}
 TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.
 
 Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.
@@ -3778,13 +4277,13 @@ Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port
 \index{FAQ Questions@\spxentry{FAQ Questions}!z/OS Consoles@\spxentry{z/OS Consoles}}\ignorespaces 
 
 \section{Can VIRTEL WEB ACCESS emulate z/OS Operator consoles}
-\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-128}}
+\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-131}}
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
 \index{FAQ Questions@\spxentry{FAQ Questions}!Hotspot recognition with regular expressions@\spxentry{Hotspot recognition with regular expressions}}\ignorespaces 
 
 \section{Can I customize hotspot recognition}
-\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-129}}
+\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-132}}
 The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]

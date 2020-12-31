@@ -1851,6 +1851,31 @@ The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
     To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).
 
 .. index:: 
+   single: Virtel Transactions; Overriding the default codepage
+   single: Application customization; Overriding a default codepage
+   single: URL Formats; Overriding a default codepage
+   single: Codepage
+  
+User-specified CODEPAGE
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Users can override the default code page by specifying a different codepage in the URL. For example the following URL overrides the default TCT codepage with the codepage IBM0037. 
+
+::
+
+    http://nn.nn.nn.nn:41002/w2h/WEB2AJAX.htm+Tsop?codepage=ibm0037&logmode=D4A32XX3&rows=54&cols=160
+
+The entry point must refer to a scenario allowing to process the contents of the URL parameter CODEPAGE. By default the SCENLOGM scenario can be used. If another identification scenario is implemented, it must contain the following lines:
+
+::
+
+    COPY$ INPUT-TO-VARIABLE,FIELD='CODEPAGE', *
+            VAR='CODEPAGE'
+    IF$ NOT-FOUND,THEN=NOCODEPG
+    SET$ ENCODING,UTF-8,'*CODEPAGE'
+
+
+.. index:: 
    single: Virtel Transactions; Setting dynamic logmode and user screen sizes
    single: Application customization; Setting dynamic logmode and user screen sizes
    single: URL Formats; Setting dynamic logmode and user screen sizes   
@@ -4024,10 +4049,23 @@ Users may find that the an error message appears when invoking the Power Shell S
     Set-ExecutionPolicy Bypass
 
 .. index::   
-   single: FAQ Questions; OMVS panel
+   single: FAQ Questions; Square Brackets and codepages
+   single: Codepage in the URL
 
-FAQ
-===
+FAQs
+====
+
+How to specify a codepage in a URL
+----------------------------------
+
+Some users want to see square brackets displayed in their VWA presentation, for example "C" programmers. The default UTF8 / MVS codepage translation doesn't transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.
+
+::
+
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047 
+
+.. index::   
+   single: FAQ Questions; OMVS panel
 
 How to use the TSO OMVS panel command with VWA
 ----------------------------------------------

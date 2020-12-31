@@ -4923,7 +4923,7 @@ Module
 Meaning
     The parameter &luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
 Action
-    Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
+    Check the URL value if possible or run a /F stcname,snapmsg,all command at the console.
 
 VIRHT62E
 """""""" 
@@ -4942,6 +4942,15 @@ Meaning
     The VTAM terminal (relay) to use for a request is already active for another session. The request was received on line linename for transaction ttttttt.
 Action
     The request cannot be satisfied. The connection is closed. Run a /F stcname,snapmsg,all command at the console.
+
+VIRHT64I entity trying to BIND to locaddr
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIRHTTP
+Meaning
+    A VIRTEL entity is attempting to BIND a connection to the IP address locaddr.
+Action
+    None
 
 Messages VIRI9xxx
 ^^^^^^^^^^^^^^^^^

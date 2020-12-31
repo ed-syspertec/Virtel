@@ -447,7 +447,7 @@ REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          
 <dd>A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.</dd>
 </dl>
 <p>Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ARBOLOAD</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTELV</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ARBOLOAD</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*--------------------------------------------------------------*</span>
 <span class="o">//*</span>                                                              <span class="o">*</span>
 <span class="o">//*</span> <span class="n">ARBO</span> <span class="n">MIGRATION</span><span class="o">.</span> <span class="n">UPDATE</span> <span class="n">ARBO</span> <span class="n">TO</span> <span class="n">ADD</span> <span class="n">NEW</span> <span class="n">ELEMENTS</span>              <span class="o">*</span>
@@ -457,8 +457,8 @@ REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          
 <span class="o">//*</span>                                                              <span class="o">*</span>
 <span class="o">//*--------------------------------------------------------------*</span>
 <span class="o">//*</span>
-<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">LOADLIB</span>
-<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">ARBO</span>
 <span class="o">//*</span>
 <span class="o">//</span><span class="n">CONFIG</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,NOREPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
 <span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
@@ -614,7 +614,7 @@ invoked from the Configuration Menu, gives access to all of the sub-applications
 <div class="section" id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
 <p>The “Line” is one of the basic elements of the VIRTEL configuration. A line represents a connection between VIRTEL and another network element: an NPSI MCH, an X25 router, an X25 application (GATE, PCNE), a CICS system, a VIRNT server, an SMTP server; alternatively, a line can represent a VIRTEL server (HTTP, SMTP) listening on a TCP/IP port. VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions.</p>
-<p>This chapter describes all the functions associated with the definition of lines using the Line Managment sub-application. A detailed example will be presented later in
+<p>This chapter describes all the functions associated with the definition of lines using the Line Management sub-application. A detailed example will be presented later in
 this chapter for each type of line.</p>
 </div>
 <div class="section" id="line-management-sub-applications">
@@ -627,7 +627,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 </div>
 <div class="section" id="summary-display">
 <span id="index-6"></span><h4>Summary Display<a class="headerlink" href="#summary-display" title="Permalink to this headline">¶</a></h4>
-<p>The first screen shows a summay of existing line definitions in alphanumeric order:</p>
+<p>The first screen shows a summary of existing line definitions in alphanumeric order:</p>
 <p><img alt="image4" src="../../../_images/image457.png" />
 <em>Line Summary Display</em></p>
 <div class="section" id="navigation">
@@ -691,38 +691,51 @@ follow.</dd>
 </dl>
 <dl class="docutils" id="bookmark13">
 <dt>Local ident</dt>
-<dd><p class="first">This field contains the name or address used by VIRTEL. Usage
-depends on the line type and protocol. The contents of this field
-are described for each line type in the detailed examples which
+<dd><p class="first">This field contains the name or address used by VIRTEL. Usage depends on the line type and protocol. The contents of this field are described for each line type in the detailed examples which
 follow.</p>
-<p>For an IP connection, this field represents the listening port
-opened by VIRTEL. The port can be specified in any of the following
-forms:</p>
-<dl class="last docutils">
-<dt>: pppp</dt>
-<dd>VIRTEL opens port pppp on the default home IP address of the host
-TCP/IP. For example, :2048</dd>
-<dt>nnn.nnn.nnn.nnn: pppp</dt>
-<dd>VIRTEL opens port pppp on the indicated IP address. nnn.nnn.nnn.nnn
+<p>For an IP connection, this field represents the listening port opened by VIRTEL. In the ARBO definitions it is defined by the LOCADDR= keyword. The port can be specified in any of the following forms:</p>
+<dl class="docutils">
+<dt>: ppppp</dt>
+<dd>VIRTEL opens port ppppp on the default home IP address of the host
+TCP/IP. For example, :41002</dd>
+<dt>nnn.nnn.nnn.nnn: ppppp</dt>
+<dd>VIRTEL opens port ppppp on the indicated IPV4 address. nnn.nnn.nnn.nnn
 must be a valid HOME address defined in the host TCP/IP. For
-example, 192.168.0.100:2048</dd>
-<dt>0: pppp</dt>
-<dd><p class="first">VIRTEL opens port pppp without associating itself with a particular
+example, 192.168.0.100:41002</dd>
+<dt>[IPV6 Address]: ppppp</dt>
+<dd>VIRTEL opens port ppppp on the indicated IPV6 address. [IPV6]
+must be a valid IPV6 address defined within the square brackets. For
+example, [fd10:15c1:1921:1000::129]:41002</dd>
+<dt>dns_name: ppppp</dt>
+<dd>Virtel opens port ppppp on the IP address associated with the DNS name. For example, myvirtel.syspertec.com:41002</dd>
+<dt>0: ppppp</dt>
+<dd>VIRTEL opens port ppppp without associating itself with a particular
 IP address. VIRTEL can receive calls on any HOME address defined in
-the host TCP/IP. For example, 0:2048 (or 0.0.0.0:2048)</p>
-<p>The combination of IP address and port number must be unique. No two
-VIRTEL can contain a TCP/IP line with the same IP address and port
-number, except that:</p>
-<ul class="simple">
+the host TCP/IP. For example, 0:2048 (or 0.0.0.0:41002)</dd>
+</dl>
+<p>The combination of IP address and port number must be unique. No two VIRTELs can contain a TCP/IP line with the same IP address and port number, except that:</p>
+<blockquote>
+<div><ul class="simple">
 <li>multiple VIRTELs can use a single distributed VIPA address, provided that the address is defined with a non-zero value for the TIMEDAFFINITY parameter.</li>
 <li>multiple XOT lines within a single VIRTEL can listen on the same IP address and port number, providing that this same address and port number are not used by another VIRTEL.</li>
 </ul>
-<div class="last admonition note">
+<div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Note that the use of port numbers less than 1024 may require authorization in the profile of the TCP/IP stack (see for example the RESTRICTLOWPORTS, PORT, and PORTRANGE parameters of the z/OS Communications Server). In general, port numbers 1024 and above do not require authorization.</p>
 </div>
-</dd>
-</dl>
+</div></blockquote>
+<p>The default IP address can be specified via the IP= parameter of the Virtel startup JCL. This can be an IPV4, IPV6 or DNS name. Two access a single instance of Virtel with both IPV4 and IPV6 addresses you will have two define separate lines, one for the IPV4 connect and another for IPV6 connections.</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP4</span><span class="p">,</span><span class="n">LOCADDR</span><span class="o">=</span><span class="n">virtel_dns1pv4_name</span><span class="p">:</span><span class="mi">41002</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="n">C4</span><span class="o">...</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">C4LOC000</span><span class="p">,</span><span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals via IPV4 - no relay&#39;</span><span class="o">.....</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">C4VTA000</span><span class="p">,</span><span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals via IPV4 relay&#39;</span><span class="o">.....</span>
+
+<span class="o">....</span>
+
+<span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP6</span><span class="p">,</span><span class="n">LOCADDR</span><span class="o">=</span><span class="n">virtel_dns1pv6_name</span><span class="p">:</span><span class="mi">41002</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="n">C6</span><span class="o">...</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">C6LOC000</span><span class="p">,</span><span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals via IPV6 - no relay&#39;</span><span class="o">.....</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">C6VTA000</span><span class="p">,</span><span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals via IPV6 relay&#39;</span><span class="o">.....</span>
+</pre></div>
+</div>
 </dd>
 <dt>Description</dt>
 <dd>Free-form description with no particular significance or syntax requirement, except for SMTP lines (see the detailed example of an SMTP line which follows).</dd>
@@ -5532,22 +5545,22 @@ TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;’114BE9’&amp;U&amp;’114CF9’&amp
 </pre></div>
 </div>
 <p><strong>JCL example for Virtel ‘READER’ task 0</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT0</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
-<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
-<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">00</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTEL0</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">00</span>
 </pre></div>
 </div>
 <p><strong>JCL example for Virtel ‘READER’ task 1</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT1</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
-<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
-<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTEL1</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.47</span>
 </pre></div>
 </div>
 <p><strong>JCL example for Virtel ‘WRITER’ task</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT9</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
-<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
-<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTEL9</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">VIRT460</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">460</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.39</span>
 </pre></div>
 </div>
@@ -5588,7 +5601,7 @@ The TCPIP profile definition requirements for a VIRPLEX are a shared Port addres
 </pre></div>
 </div>
 <p id="index-183"><strong>Installation overview to get Virplex up and running.</strong></p>
-<p>The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (SPTHOLT0 and SPTHOLT1), and one writer instance, SPTHOLT9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - SPTHOLT0(SPVIRE00), SPTHOLT1(SPVIRE01) and SPTHOLT9(SPVIRE99).</p>
+<p>The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (VIRTEL0 and VIRTEL1), and one writer instance, VIRTEL9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - VIRTEL0(SPVIRE00), VIRTEL1(SPVIRE01) and VIRTEL9(SPVIRE99).</p>
 <p>Install Virtel and get base product up and running before attempting any Virplex changes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAMPLIB</span> <span class="n">Members</span><span class="p">:</span>     <span class="n">VIRPLEX</span><span class="p">,</span> <span class="n">VIRTCT00</span><span class="p">,</span> <span class="n">VIRTCT99</span><span class="p">,</span> <span class="n">VIRTELZ</span><span class="p">,</span> <span class="n">VIRTEL00</span><span class="p">,</span> <span class="n">VIRTEL01</span><span class="p">,</span> <span class="n">VIRTEL99</span>
 </pre></div>
@@ -5635,7 +5648,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 </pre></div>
 </div>
 <p>In the ‘READER’ tasks you should see evidence that the ‘READER ’ has connected to the ‘WRITER’ tasks:-</p>
-<p>SPTHOLT0 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT1</p>
+<p>VIRTEL0 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ tasks VIRTEL1</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.60</span>
 <span class="n">VIRT907I</span> <span class="n">SPVIRE99</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41099</span>
 <span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE99</span>
@@ -5651,7 +5664,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE01</span>
 </pre></div>
 </div>
-<p>SPTHOLT1 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT0</p>
+<p>VIRTEL1 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ tasks VIRTEL0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE00</span> <span class="p">(</span><span class="n">SPVIRE00</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE00</span>
 <span class="n">VIRT903W</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="n">HAS</span> <span class="n">A</span> <span class="n">SESSION</span> <span class="n">STARTED</span> <span class="n">WITH</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">TCPIP</span>    <span class="n">HIGHEST</span> <span class="n">SOCKET</span>
 <span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.60</span>
@@ -5664,7 +5677,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 </pre></div>
 </div>
 <p>Once the three tasks have initiated you should see no more “CONNECT” error messages. You can test that the tree tasks are communicating by doing a “Line” display:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLT0</span><span class="p">,</span><span class="n">LINES</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL0</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.60</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE00</span> <span class="n">LINES</span>
 <span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
@@ -5677,7 +5690,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <span class="n">VIR0202I</span> <span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span>
 <span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
 
-<span class="n">F</span> <span class="n">SPTHOLT1</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">F</span> <span class="n">VIRTEL1</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.60</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE01</span> <span class="n">LINES</span>
 <span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
@@ -5690,7 +5703,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <span class="n">VIR0202I</span> <span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span>
 <span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
 
-<span class="n">F</span> <span class="n">SPTHOLT9</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">F</span> <span class="n">VIRTEL9</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.60</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE99</span> <span class="n">LINES</span>
 <span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.39</span>
@@ -5709,9 +5722,9 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <p id="index-184"><strong>Validating the Virplex</strong></p>
 <p>Logon to Virtel using the common URL 192.168.170.15:41902. You should be presented with the Applist screen showing the two 3270 applications defined in the common ARBO.</p>
 <p><img alt="image113" src="../../../_images/image1137.png" /></p>
-<p>The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance SPTHOLT1 (SPVIRE01)</p>
+<p>The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance VIRTEL1 (SPVIRE01)</p>
 <p><img alt="image114" src="../../../_images/image1146.png" /></p>
-<p>On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance SPTHOLT0 (SPVIRE00).</p>
+<p>On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance VIRTEL0 (SPVIRE00).</p>
 <p><img alt="image115" src="../../../_images/image1156.png" /></p>
 <p>At this point validation of the Virplex is confirmed.</p>
 <p id="index-185"><strong>Testing QLNK communication.</strong></p>
@@ -5719,7 +5732,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <p><img alt="image116" src="../../../_images/image1166.png" /></p>
 <p>Is shows as UPDT level V4.60 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-</p>
 <p><img alt="image117" src="../../../_images/image1176.png" /></p>
-<p>This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance SPTHOLT9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.60 (5695):-</p>
+<p>This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance VIRTEL9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.60 (5695):-</p>
 <p><img alt="image118" src="../../../_images/image1186.png" /></p>
 <p>If a new browser window is opened on another machine, and TSO is accessed through the common URL / APPLIST navigation, the maintenance level has changed to V4.60 UPDT 5695:-</p>
 <p><img alt="image119" src="../../../_images/image1196.png" /></p>
@@ -5728,20 +5741,20 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
 <p id="index-186"><strong>Diagnosing Virplex issues</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.  Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
 
-F SPTHOLT9,TRACE,L=SPVIRE00
-F SPTHOLT9,TRACE,L=SPVIRE01
-F SPTHOLT9,TRACE,L=SPVIRE99
+F VIRTEL9,TRACE,L=SPVIRE00
+F VIRTEL9,TRACE,L=SPVIRE01
+F VIRTEL9,TRACE,L=SPVIRE99
 
 
 2.  Perform some Virplex activing – upload some maintenance for example.
 
 3.  Issue a line display for each Virplex instance.
 
-F SPTHOLTx,LINES
+F VIRTELx,LINES
 
 4.  Take a Virtel SNAP of the ‘Writer’ task.
 
-F SPTHOLT9,SNAP
+F VIRTEL9,SNAP
 
 5.  Obtain the Virtel logs from the ‘Writer’ task and the one of the ‘READER’ tasks.
 

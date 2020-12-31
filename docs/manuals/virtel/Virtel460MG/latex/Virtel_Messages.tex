@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Dec 07, 2020}
+\date{Dec 30, 2020}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4163,6 +4163,20 @@ None.
 \end{description}
 
 
+\subsubsection{VIR0223I UNLOAD ENDED}
+\label{\detokenize{messages:vir0223i-unload-ended}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+An UNLOAD command has completed. The ARBO statements will be written to the SYSPUNCH dataset, if allocated, or JES SYSOUT CLASS=B if SYSPUNCH was dynamically allocated.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
 \subsubsection{VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX}
 \label{\detokenize{messages:vir0230i-dynamic-allocation-failed-for-xxxxxxxx}}\begin{description}
 \item[{Module}] \leavevmode
@@ -4963,11 +4977,11 @@ An error occurred when VIRTEL attempted to write a SMF record with the IBM SMFWT
 
 Return codes.
 When the SMFWTM macro returns control, register 15 contains one of the following return codes.
-Code dec(hex) Meaning
-\begin{quote}
 
-36 (24)  The record was not written because the record specified is not currently being recorded.
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Code} \PYG{n}{dec}\PYG{p}{(}\PYG{n+nb}{hex}\PYG{p}{)} \PYG{n}{Meaning}
+ \PYG{l+m+mi}{36} \PYG{p}{(}\PYG{l+m+mi}{24}\PYG{p}{)}  \PYG{n}{The} \PYG{n}{record} \PYG{n}{was} \PYG{o+ow}{not} \PYG{n}{written} \PYG{n}{because} \PYG{n}{the} \PYG{n}{record} \PYG{n}{specified} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{currently} \PYG{n}{being} \PYG{n}{recorded}\PYG{o}{.}
+\end{sphinxVerbatim}
 
 \item[{Action}] \leavevmode
 VIRTEL STATS SMF recording is disabled.
@@ -5716,6 +5730,90 @@ None.
 
 \subsection{Messages VIR21xxx}
 \label{\detokenize{messages:messages-vir21xxx}}
+
+\subsubsection{VIR2102W UNABLE TO LOAD THE TRANSACTION USSTAB mmmmmmmm. DEFAULT USSTAB USSVIRT WILL BE USED.}
+\label{\detokenize{messages:vir2102w-unable-to-load-the-transaction-usstab-mmmmmmmm-default-usstab-ussvirt-will-be-used}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+The load module mmmmmmmm could not be found in the DFHRPL module list when attempting to load a user defined USSTAB.
+
+\item[{Action}] \leavevmode
+Correct the module name in the VIR0021W transaction or determine why the module could not be found in the DFHRPL load library list.
+
+\end{description}
+
+
+\subsubsection{VIR2103E INVALID FIELD STARTING:XXXXXXXXXXXXXXXXXXXX}
+\label{\detokenize{messages:vir2103e-invalid-field-starting-xxxxxxxxxxxxxxxxxxxx}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+The user USSTAB has data lengths greater than 240 characters without an intervening SF 3270 code (x’1D60’).
+
+\item[{Action}] \leavevmode
+Static data in the USSTAB must be separated by an SF 3270 code every 240 characters or less. For example DATA,SF,DATA,SF,DATA,SF. The DATA portion of this 3270 string cannot be greater than 240 characters. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+
+\end{description}
+
+
+\subsubsection{VIR2104E INPUT LENGTH ERROR IN USER USSTAB}
+\label{\detokenize{messages:vir2104e-input-length-error-in-user-usstab}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+In input field greater than 50 characters has been detected in the users USSTAB.
+
+\item[{Action}] \leavevmode
+A user USSTAB should only have one input field identified by the Insert Cursor 3270 code X’13’. This input field should not be greater than 50 characters. Correct the USSTAB source and reassemble the module. Ensure that the input field is terminated with a SF code. For example x’1d40’,x’13’,CL49’ ‘,X’1d60’ means SFUNINH\_FIELD,INSRT CURSOR,INPUT AREA,SFINH\_FIELD. The IC also takes up one character of the input area so X’13’,CL49’ ‘ equates to 50 characters. The default USSVIRT table will be loaded.
+
+\end{description}
+
+
+\subsubsection{VIR2105E COMMAND TABLE OVERFLOW}
+\label{\detokenize{messages:vir2105e-command-table-overflow}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+An internal error has occurred in processing the users USSTAB.
+
+\item[{Action}] \leavevmode
+The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+
+\end{description}
+
+
+\subsubsection{VIR2106E MULTIPLE INPUT FIELDS FOUND}
+\label{\detokenize{messages:vir2106e-multiple-input-fields-found}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+Multiple input fields have been found in the users USSTAB. Input fields are identified by the Insert Cursor 3270 code X’13’.
+
+\item[{Action}] \leavevmode
+A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X’13’. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+
+\end{description}
+
+
+\subsubsection{VIR2106E COMMAND TABLE OVERFLOW}
+\label{\detokenize{messages:vir2106e-command-table-overflow}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0021W
+
+\item[{Meaning}] \leavevmode
+An internal error has occurred in processing the users USSTAB.
+
+\item[{Action}] \leavevmode
+The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+
+\end{description}
+
 
 \subsubsection{VIR2121E epname HAS NO TRANSACTIONS}
 \label{\detokenize{messages:vir2121e-epname-has-no-transactions}}\begin{description}
@@ -7395,7 +7493,7 @@ VIRHTTP
 The parameter \&luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
 
 \item[{Action}] \leavevmode
-Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
+Check the URL value if possible or run a /F stcname,snapmsg,all command at the console.
 
 \end{description}
 
@@ -7424,6 +7522,20 @@ The VTAM terminal (relay) to use for a request is already active for another ses
 
 \item[{Action}] \leavevmode
 The request cannot be satisfied. The connection is closed. Run a /F stcname,snapmsg,all command at the console.
+
+\end{description}
+
+
+\subsubsection{VIRHT64I entity trying to BIND to locaddr}
+\label{\detokenize{messages:virht64i-entity-trying-to-bind-to-locaddr}}\begin{description}
+\item[{Module}] \leavevmode
+VIRHTTP
+
+\item[{Meaning}] \leavevmode
+A VIRTEL entity is attempting to BIND a connection to the IP address locaddr.
+
+\item[{Action}] \leavevmode
+None
 
 \end{description}
 

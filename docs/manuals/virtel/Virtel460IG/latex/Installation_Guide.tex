@@ -56,7 +56,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Dec 07, 2020}
+\date{Dec 30, 2020}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.60 Draft
 
-Release Date : 12 July 2019. Publication Date : 12/07/2019
+Release Date : 12 November 2020. Publication Date : 30/12/2020
 
 Syspertec Communication
 
@@ -118,7 +118,7 @@ their respective owners.
 \section{Virtel version 4.60 (11th Nov 2020)}
 \label{\detokenize{Installation_Guide:virtel-version-4-60-11th-nov-2020}}
 \begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN20203: Whats new in Virtel 4.60.
+For further details see the Virtel Technical Newsletter TN202003: Whats new in Virtel 4.60.
 \end{sphinxadmonition}
 
 
@@ -1260,7 +1260,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 \subsubsection{Step 1}
 \label{\detokenize{Installation_Guide:step-1}}
-Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.60” \textendash{} “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.60” \textendash{} “Products” folder and download the virtel460mvs.zip file. Unzip this file into a folder on your workstation.
 
 \newpage
 
@@ -2340,7 +2340,7 @@ Step VIRTVS1 of job VIRTVS contains an example of defining the VIRARBO and VIRSW
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{MTC} \PYG{n}{REW}\PYG{p}{,}\PYG{n}{SYS004}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{MTC} \PYG{n}{FSF}\PYG{p}{,}\PYG{n}{SYS004}\PYG{p}{,}\PYG{l+m+mi}{2} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{FRANCAIS}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{ANGLAIS}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{EXEC} \PYG{n}{IDCAMS}\PYG{p}{,}\PYG{n}{SIZE}\PYG{o}{=}\PYG{n}{AUTO}
-  \PYG{n}{REPRO} \PYG{n}{IFILE}\PYG{p}{(}\PYG{n}{BANDE} \PYG{n}{ENV}\PYG{p}{(}\PYG{n}{PDEV}\PYG{p}{(}\PYG{l+m+mi}{2400}\PYG{p}{)} \PYG{n}{NOLABEL} \PYG{n}{RECFM}\PYG{p}{(}\PYG{n}{VB}\PYG{p}{)} \PYG{n}{BLKSZ}\PYG{p}{(}\PYG{l+m+mi}{32000}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
+  \PYG{n}{REPRO} \PYG{n}{IFILE}\PYG{p}{(}\PYG{n}{BANDE} \PYG{n}{ENV}\PYG{p}{(}\PYG{n}{PDEV}\PYG{p}{(}\PYG{l+m+mi}{2400}\PYG{p}{)} \PYG{n}{NOLABEL} \PYG{n}{RECFM}\PYG{p}{(}\PYG{n}{VB}\PYG{p}{)} \PYG{n}{BLKSZ}\PYG{p}{(}\PYG{l+m+mi}{32758}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
   \PYG{n}{OFILE}\PYG{p}{(}\PYG{n}{VIRARBO}\PYG{p}{)}
 \PYG{o}{/}\PYG{o}{*}
 \end{sphinxVerbatim}
@@ -2574,7 +2574,7 @@ Step VIRTVS7 of job VIRTVS contains an example of defining the HTMLTRF file. Thi
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{MTC} \PYG{n}{REW}\PYG{p}{,}\PYG{n}{SYS004}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{MTC} \PYG{n}{FSF}\PYG{p}{,}\PYG{n}{SYS004}\PYG{p}{,}\PYG{l+m+mi}{3}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{EXEC} \PYG{n}{IDCAMS}\PYG{p}{,}\PYG{n}{SIZE}\PYG{o}{=}\PYG{n}{AUTO}
-  \PYG{n}{REPRO} \PYG{n}{IFILE}\PYG{p}{(}\PYG{n}{BANDE} \PYG{n}{ENV}\PYG{p}{(}\PYG{n}{PDEV}\PYG{p}{(}\PYG{l+m+mi}{2400}\PYG{p}{)} \PYG{n}{NOLABEL} \PYG{n}{RECFM}\PYG{p}{(}\PYG{n}{VB}\PYG{p}{)} \PYG{n}{BLKSZ}\PYG{p}{(}\PYG{l+m+mi}{32000}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
+  \PYG{n}{REPRO} \PYG{n}{IFILE}\PYG{p}{(}\PYG{n}{BANDE} \PYG{n}{ENV}\PYG{p}{(}\PYG{n}{PDEV}\PYG{p}{(}\PYG{l+m+mi}{2400}\PYG{p}{)} \PYG{n}{NOLABEL} \PYG{n}{RECFM}\PYG{p}{(}\PYG{n}{VB}\PYG{p}{)} \PYG{n}{BLKSZ}\PYG{p}{(}\PYG{l+m+mi}{32758}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
   \PYG{n}{OFILE}\PYG{p}{(}\PYG{n}{SAMPTRF}\PYG{p}{)} \PYG{n}{REPLACE}
 \PYG{o}{/}\PYG{o}{*}
 \end{sphinxVerbatim}
@@ -2629,7 +2629,7 @@ Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. Thi
 
 \subsection{Assembling the VIRTCT}
 \label{\detokenize{Installation_Guide:assembling-the-virtct}}
-Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section {\hyperref[\detokenize{Installation_Guide:vvrrig-virtct}]{\sphinxcrossref{\DUrole{std,std-ref}{VIRTCT}}}}.
+Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE and z/OS environments, please refer to section {\hyperref[\detokenize{Installation_Guide:vvrrig-virtct}]{\sphinxcrossref{\DUrole{std,std-ref}{VIRTCT}}}}.
 
 \begin{sphinxadmonition}{note}{Note:}
 Users in France should use job VIRTCTFR instead of VIRTCTUS.
@@ -7843,11 +7843,13 @@ Virtel Administrators have access to all the features of Virtel and are rsponsib
 
 An administrator would have READ access to all profiles whereas a user may only have access to the some of the profiles.
 
+\begin{sphinxadmonition}{note}{Note:}
 If you are implementing the Virtel USERPARM feature you should also add the following profiles:
-\begin{quote}
 
-RDEF FACILITY VIRTEL.USERPARM UACC(READ) /* Allow all users access to USERPARM {\color{red}\bfseries{}*}/
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RDEF} \PYG{n}{FACILITY} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{USERPARM} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Allow} \PYG{n+nb}{all} \PYG{n}{users} \PYG{n}{access} \PYG{n}{to} \PYG{n}{USERPARM} \PYG{o}{*}\PYG{o}{/}
+\end{sphinxVerbatim}
+\end{sphinxadmonition}
 
 For more information about protecting VIRTEL Web Access resources, refer to the Security section of the the VIRTEL User Guide.
 
@@ -7859,7 +7861,7 @@ Perform the following steps to activate ACF2 security for VIRTEL in the z/OS env
 
 
 \subsection{Modify the VIRTCT}
-\label{\detokenize{Installation_Guide:id12}}
+\label{\detokenize{Installation_Guide:id10}}
 In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -8040,7 +8042,7 @@ This command associates the VIRTEL started task with the VIRTSTC ACID. VIRTEL is
 
 
 \subsubsection{Create OMVS segment for VIRTEL}
-\label{\detokenize{Installation_Guide:id13}}
+\label{\detokenize{Installation_Guide:id11}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TSS} \PYG{n}{ADDTO}\PYG{p}{(}\PYG{n}{VIRTSTC}\PYG{p}{)} \PYG{n}{UID}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{DFLTGRP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{n}{GROUP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{o}{+}
         \PYG{n}{OMVSPGM}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/bin/sh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{HOME}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
@@ -8137,13 +8139,15 @@ TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 
 The VIRTEL administrator profile is named VIRTADP. You may choose a different name if required. In this example the administrator is granted access to all of the VIRTEL administration functions as well as to transactions PC-nnnn, W2H- nn and CLI-nn, and to directories W2H-DIR and CLI-DIR.
 
+\begin{sphinxadmonition}{note}{Note:}
 If you are implementing the Virtel USERPARM feature you should also add the following profiles:
-\begin{quote}
 
-TSS ADDTO(VIRTDEP)  VIRTNODE(USERPARM)
-TSS PERMIT(VIRTADP) VIRTNODE(USERPARM)
-TSS PERMIT(VIRTUSP) VIRTNODE(USERPARM)    \textless{}- all Virtel users should have this rule.
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TSS} \PYG{n}{ADDTO}\PYG{p}{(}\PYG{n}{VIRTDEP}\PYG{p}{)}  \PYG{n}{VIRTNODE}\PYG{p}{(}\PYG{n}{USERPARM}\PYG{p}{)}
+\PYG{n}{TSS} \PYG{n}{PERMIT}\PYG{p}{(}\PYG{n}{VIRTADP}\PYG{p}{)} \PYG{n}{VIRTNODE}\PYG{p}{(}\PYG{n}{USERPARM}\PYG{p}{)}
+\PYG{n}{TSS} \PYG{n}{PERMIT}\PYG{p}{(}\PYG{n}{VIRTUSP}\PYG{p}{)} \PYG{n}{VIRTNODE}\PYG{p}{(}\PYG{n}{USERPARM}\PYG{p}{)}    \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}} \PYG{n+nb}{all} \PYG{n}{Virtel} \PYG{n}{users} \PYG{n}{should} \PYG{n}{have} \PYG{n}{this} \PYG{n}{rule}\PYG{o}{.}
+\end{sphinxVerbatim}
+\end{sphinxadmonition}
 
 
 \subsubsection{Create user profile}

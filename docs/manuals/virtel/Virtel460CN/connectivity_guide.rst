@@ -362,7 +362,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
 
 ::     
 
-    //SPTHOLTV JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID             
+    //VIRTELV JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID             
     //*--------------------------------------------------------------*      
     //*                                                              *      
     //* ARBO MIGRATION. UPDATE ARBO TO ADD NEW ELEMENTS              *      
@@ -372,8 +372,8 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
     //*                                                              *      
     //*--------------------------------------------------------------*      
     //*                                                                     
-    // SET LOAD=SPTHOLT.VIRT460.LOADLIB                                     
-    // SET ARBO=SPTHOLT.VIRT460.ARBO                                        
+    // SET LOAD=VIRTEL.VIRT460.LOADLIB                                     
+    // SET ARBO=VIRTEL.VIRT460.ARBO                                        
     //*                                                                     
     //CONFIG  EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M                   
     //STEPLIB  DD  DSN=&LOAD,DISP=SHR                                       
@@ -579,7 +579,7 @@ Introduction
 
 The “Line” is one of the basic elements of the VIRTEL configuration. A line represents a connection between VIRTEL and another network element: an NPSI MCH, an X25 router, an X25 application (GATE, PCNE), a CICS system, a VIRNT server, an SMTP server; alternatively, a line can represent a VIRTEL server (HTTP, SMTP) listening on a TCP/IP port. VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions. 
 
-This chapter describes all the functions associated with the definition of lines using the Line Managment sub-application. A detailed example will be presented later in
+This chapter describes all the functions associated with the definition of lines using the Line Management sub-application. A detailed example will be presented later in
 this chapter for each type of line.
 
 .. index::
@@ -603,7 +603,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 Summary Display
 ^^^^^^^^^^^^^^^
 
-The first screen shows a summay of existing line definitions in alphanumeric order:
+The first screen shows a summary of existing line definitions in alphanumeric order:
 
 |image4|
 *Line Summary Display*
@@ -684,32 +684,34 @@ Remote ident
 .. _#_bookmark13:
 
 Local ident
-    This field contains the name or address used by VIRTEL. Usage
-    depends on the line type and protocol. The contents of this field
-    are described for each line type in the detailed examples which
-    follow.
+    This field contains the name or address used by VIRTEL. Usage depends on the line type and protocol. The contents of this field are described for each line type in the detailed examples which
+    follow. 
 
-    For an IP connection, this field represents the listening port
-    opened by VIRTEL. The port can be specified in any of the following
-    forms:
+    For an IP connection, this field represents the listening port opened by VIRTEL. In the ARBO definitions it is defined by the LOCADDR= keyword. The port can be specified in any of the following forms:
 
-    : pppp
-        VIRTEL opens port pppp on the default home IP address of the host
-        TCP/IP. For example, :2048
+    : ppppp
+        VIRTEL opens port ppppp on the default home IP address of the host
+        TCP/IP. For example, :41002
 
-    nnn.nnn.nnn.nnn: pppp
-        VIRTEL opens port pppp on the indicated IP address. nnn.nnn.nnn.nnn
+    nnn.nnn.nnn.nnn: ppppp
+        VIRTEL opens port ppppp on the indicated IPV4 address. nnn.nnn.nnn.nnn
         must be a valid HOME address defined in the host TCP/IP. For
-        example, 192.168.0.100:2048
+        example, 192.168.0.100:41002
 
-    0: pppp
-        VIRTEL opens port pppp without associating itself with a particular
+    [IPV6 Address]: ppppp
+        VIRTEL opens port ppppp on the indicated IPV6 address. [IPV6] 
+        must be a valid IPV6 address defined within the square brackets. For
+        example, [fd10:15c1:1921:1000::129]:41002
+
+    dns_name: ppppp
+        Virtel opens port ppppp on the IP address associated with the DNS name. For example, myvirtel.syspertec.com:41002                  
+
+    0: ppppp
+        VIRTEL opens port ppppp without associating itself with a particular
         IP address. VIRTEL can receive calls on any HOME address defined in
-        the host TCP/IP. For example, 0:2048 (or 0.0.0.0:2048)
+        the host TCP/IP. For example, 0:2048 (or 0.0.0.0:41002)
 
-        The combination of IP address and port number must be unique. No two
-        VIRTEL can contain a TCP/IP line with the same IP address and port
-        number, except that:
+    The combination of IP address and port number must be unique. No two VIRTELs can contain a TCP/IP line with the same IP address and port number, except that:
 
         - multiple VIRTELs can use a single distributed VIPA address, provided that the address is defined with a non-zero value for the TIMEDAFFINITY parameter.
 
@@ -718,6 +720,21 @@ Local ident
         .. note::
 
             Note that the use of port numbers less than 1024 may require authorization in the profile of the TCP/IP stack (see for example the RESTRICTLOWPORTS, PORT, and PORTRANGE parameters of the z/OS Communications Server). In general, port numbers 1024 and above do not require authorization.
+
+    The default IP address can be specified via the IP= parameter of the Virtel startup JCL. This can be an IPV4, IPV6 or DNS name. Two access a single instance of Virtel with both IPV4 and IPV6 addresses you will have two define separate lines, one for the IPV4 connect and another for IPV6 connections.
+
+    ::
+
+        LINE     ID=C-HTTP4,LOCADDR=virtel_dns1pv4_name:41002,TERMINAL=C4...
+        TERMINAL ID=C4LOC000,DESC='HTTP terminals via IPV4 - no relay'.....
+        TERMINAL ID=C4VTA000,DESC='HTTP terminals via IPV4 relay'..... 
+
+        ....
+
+        LINE     ID=C-HTTP6,LOCADDR=virtel_dns1pv6_name:41002,TERMINAL=C6...
+        TERMINAL ID=C6LOC000,DESC='HTTP terminals via IPV6 - no relay'.....
+        TERMINAL ID=C6VTA000,DESC='HTTP terminals via IPV6 relay'.....     
+
 
 Description
     Free-form description with no particular significance or syntax requirement, except for SMTP lines (see the detailed example of an SMTP line which follows).
@@ -6780,26 +6797,26 @@ JCL Procedure for Virplex.
 
 ::
 
-    //SPTHOLT0 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID  
-    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT460.CNTL                    
-    //S01 EXEC VIRTELZ,TCT=00,HLQ=SPTHOLT,REL=460,CLONE=00         
+    //VIRTEL0 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID  
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT460.CNTL                    
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=460,CLONE=00         
 
 **JCL example for Virtel ‘READER’ task 1**
 
 ::
 
-    //SPTHOLT1 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT460.CNTL                   
-    //S01 EXEC VIRTELZ,TCT=00,HLQ=SPTHOLT,REL=460,CLONE=01,       
+    //VIRTEL1 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT460.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=460,CLONE=01,       
     // IP=192.168.170.47 
 
 **JCL example for Virtel ‘WRITER’ task**
 
 ::
 
-    //SPTHOLT9 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                          
-    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT460.CNTL                   
-    //S01 EXEC VIRTELZ,TCT=99,HLQ=SPTHOLT,REL=460,CLONE=99,       
+    //VIRTEL9 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                          
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT460.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=99,HLQ=VIRTEL,REL=460,CLONE=99,       
     // IP=192.168.170.39    
 
 .. index::
@@ -6854,7 +6871,7 @@ The TCPIP profile definition requirements for a VIRPLEX are a shared Port addres
 
 **Installation overview to get Virplex up and running.**
 
-The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (SPTHOLT0 and SPTHOLT1), and one writer instance, SPTHOLT9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - SPTHOLT0(SPVIRE00), SPTHOLT1(SPVIRE01) and SPTHOLT9(SPVIRE99).
+The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (VIRTEL0 and VIRTEL1), and one writer instance, VIRTEL9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - VIRTEL0(SPVIRE00), VIRTEL1(SPVIRE01) and VIRTEL9(SPVIRE99).
 
 Install Virtel and get base product up and running before attempting any Virplex changes.
 
@@ -6908,7 +6925,7 @@ In the ‘WRITER’ task you should see evidence that the ‘WRITER’ has conne
 
 In the ‘READER’ tasks you should see evidence that the ‘READER ’ has connected to the ‘WRITER’ tasks:-
 
-SPTHOLT0 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT1
+VIRTEL0 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ tasks VIRTEL1
 
 ::
 
@@ -6926,7 +6943,7 @@ SPTHOLT0 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’
     VIRT907I SPVIRE01 SOCKET 00000000 CALLING   192.168.170.081:41031               
     VIRQLK8I LOCAL LINE SPVIRE01 (SPVIRE01) IS CONNECTED TO REMOTE VIRTEL : SPVIRE01    
 
-SPTHOLT1 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT0
+VIRTEL1 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ tasks VIRTEL0
 
 ::
 
@@ -6944,7 +6961,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
 
 ::
 
-    F SPTHOLT0,LINES                                      
+    F VIRTEL0,LINES                                      
     VIR0200I LINES                                        
     VIR0201I VIRTEL 4.60 APPLID=SPVIRE00 LINES            
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP            
@@ -6957,7 +6974,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
     VIR0202I V-HTTP   HTTP-VPX TCP1  192.168.170.15:41902 
     VIR0202I ---END OF LIST---                             
 
-    F SPTHOLT1,LINES                                         
+    F VIRTEL1,LINES                                         
     VIR0200I LINES                                           
     VIR0201I VIRTEL 4.60 APPLID=SPVIRE01 LINES               
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP               
@@ -6970,7 +6987,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
     VIR0202I V-HTTP   HTTP-VPX TCP1  192.168.170.15:41902    
     VIR0202I ---END OF LIST--- 
 
-    F SPTHOLT9,LINES                                        
+    F VIRTEL9,LINES                                        
     VIR0200I LINES                                          
     VIR0201I VIRTEL 4.60 APPLID=SPVIRE99 LINES              
     VIR0202I ALLOCATED IP ADDRESS = 192.168.170.39          
@@ -6995,11 +7012,11 @@ Logon to Virtel using the common URL 192.168.170.15:41902. You should be present
 
 |image113|
 
-The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance SPTHOLT1 (SPVIRE01)
+The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance VIRTEL1 (SPVIRE01)
 
 |image114|
 
-On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance SPTHOLT0 (SPVIRE00).
+On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance VIRTEL0 (SPVIRE00).
 
 |image115|
 
@@ -7018,7 +7035,7 @@ Is shows as UPDT level V4.60 / 5687. Confirm this with the Administration Portal
 
 |image117|
 
-This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance SPTHOLT9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.60 (5695):-
+This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance VIRTEL9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.60 (5695):-
 
 |image118|
 
@@ -7039,20 +7056,20 @@ This confirms that the ‘WRITER’ and ‘READER’ tasks are communicating and
 
     1.	Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
 
-    F SPTHOLT9,TRACE,L=SPVIRE00
-    F SPTHOLT9,TRACE,L=SPVIRE01
-    F SPTHOLT9,TRACE,L=SPVIRE99
+    F VIRTEL9,TRACE,L=SPVIRE00
+    F VIRTEL9,TRACE,L=SPVIRE01
+    F VIRTEL9,TRACE,L=SPVIRE99
 
 
     2.	Perform some Virplex activing – upload some maintenance for example.
 
     3.	Issue a line display for each Virplex instance.
 
-    F SPTHOLTx,LINES
+    F VIRTELx,LINES
 
     4.	Take a Virtel SNAP of the ‘Writer’ task.
 
-    F SPTHOLT9,SNAP
+    F VIRTEL9,SNAP
 
     5.	Obtain the Virtel logs from the ‘Writer’ task and the one of the ‘READER’ tasks.
 

@@ -198,7 +198,7 @@
 <p class="last">This is a draft version of the document.</p>
 </div>
 <p>Version : 4.60 Draft</p>
-<p>Release Date : 12 July 2019. Publication Date : 12/07/2019</p>
+<p>Release Date : 12 November 2020. Publication Date : 30/12/2020</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -224,7 +224,7 @@ their respective owners.</p>
 <h3>Virtel version 4.60 (11th Nov 2020)<a class="headerlink" href="#virtel-version-4-60-11th-nov-2020" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Virtel Technical Newsletter TN20203: Whats new in Virtel 4.60.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN202003: Whats new in Virtel 4.60.</p>
 </div>
 </div>
 <div class="section" id="virtel-version-4-59-12th-jul-2019">
@@ -754,7 +754,7 @@ sub-parameter</li>
 <p>All the VSAM and non-VSAM datasets required for the installation of VIRTEL are contained in a zipped XMIT file which can be downloaded from the Syspertec file server. The size of the zipped file is approximately 2MB. Two JCL files ($ALOCDSU and $RESTDSU) are also     included in the zip file. The procedure for obtaining and uploading the file is as follows:</p>
 <div class="section" id="step-1">
 <h5>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h5>
-<p>Login to the Syspertec file server <a class="reference external" href="http://ftp.syspertec.com/">http://ftp.syspertec.com</a> using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.60” – “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.</p>
+<p>Login to the Syspertec file server <a class="reference external" href="http://ftp.syspertec.com/">http://ftp.syspertec.com</a> using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.60” – “Products” folder and download the virtel460mvs.zip file. Unzip this file into a folder on your workstation.</p>
 </div>
 <div class="section" id="step-2">
 <h5>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h5>
@@ -1578,7 +1578,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
 <span class="o">//</span> <span class="n">MTC</span> <span class="n">REW</span><span class="p">,</span><span class="n">SYS004</span>
 <span class="o">//</span> <span class="n">MTC</span> <span class="n">FSF</span><span class="p">,</span><span class="n">SYS004</span><span class="p">,</span><span class="mi">2</span> <span class="mi">1</span><span class="o">=</span><span class="n">FRANCAIS</span><span class="p">,</span><span class="mi">2</span><span class="o">=</span><span class="n">ANGLAIS</span>
 <span class="o">//</span> <span class="n">EXEC</span> <span class="n">IDCAMS</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="n">AUTO</span>
-  <span class="n">REPRO</span> <span class="n">IFILE</span><span class="p">(</span><span class="n">BANDE</span> <span class="n">ENV</span><span class="p">(</span><span class="n">PDEV</span><span class="p">(</span><span class="mi">2400</span><span class="p">)</span> <span class="n">NOLABEL</span> <span class="n">RECFM</span><span class="p">(</span><span class="n">VB</span><span class="p">)</span> <span class="n">BLKSZ</span><span class="p">(</span><span class="mi">32000</span><span class="p">)))</span> <span class="o">-</span>
+  <span class="n">REPRO</span> <span class="n">IFILE</span><span class="p">(</span><span class="n">BANDE</span> <span class="n">ENV</span><span class="p">(</span><span class="n">PDEV</span><span class="p">(</span><span class="mi">2400</span><span class="p">)</span> <span class="n">NOLABEL</span> <span class="n">RECFM</span><span class="p">(</span><span class="n">VB</span><span class="p">)</span> <span class="n">BLKSZ</span><span class="p">(</span><span class="mi">32758</span><span class="p">)))</span> <span class="o">-</span>
   <span class="n">OFILE</span><span class="p">(</span><span class="n">VIRARBO</span><span class="p">)</span>
 <span class="o">/*</span>
 </pre></div>
@@ -1790,7 +1790,7 @@ $$$$IWS.WORKREC.INW$TEMP
 <span class="o">//</span> <span class="n">MTC</span> <span class="n">REW</span><span class="p">,</span><span class="n">SYS004</span>
 <span class="o">//</span> <span class="n">MTC</span> <span class="n">FSF</span><span class="p">,</span><span class="n">SYS004</span><span class="p">,</span><span class="mi">3</span>
 <span class="o">//</span> <span class="n">EXEC</span> <span class="n">IDCAMS</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="n">AUTO</span>
-  <span class="n">REPRO</span> <span class="n">IFILE</span><span class="p">(</span><span class="n">BANDE</span> <span class="n">ENV</span><span class="p">(</span><span class="n">PDEV</span><span class="p">(</span><span class="mi">2400</span><span class="p">)</span> <span class="n">NOLABEL</span> <span class="n">RECFM</span><span class="p">(</span><span class="n">VB</span><span class="p">)</span> <span class="n">BLKSZ</span><span class="p">(</span><span class="mi">32000</span><span class="p">)))</span> <span class="o">-</span>
+  <span class="n">REPRO</span> <span class="n">IFILE</span><span class="p">(</span><span class="n">BANDE</span> <span class="n">ENV</span><span class="p">(</span><span class="n">PDEV</span><span class="p">(</span><span class="mi">2400</span><span class="p">)</span> <span class="n">NOLABEL</span> <span class="n">RECFM</span><span class="p">(</span><span class="n">VB</span><span class="p">)</span> <span class="n">BLKSZ</span><span class="p">(</span><span class="mi">32758</span><span class="p">)))</span> <span class="o">-</span>
   <span class="n">OFILE</span><span class="p">(</span><span class="n">SAMPTRF</span><span class="p">)</span> <span class="n">REPLACE</span>
 <span class="o">/*</span>
 </pre></div>
@@ -1840,7 +1840,7 @@ $$$$IWS.WORKREC.INW$TEMP
 </div>
 <div class="section" id="assembling-the-virtct">
 <h4>Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this headline">¶</a></h4>
-<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
+<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE and z/OS environments, please refer to section <a class="reference internal" href="#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>

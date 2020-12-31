@@ -16,7 +16,7 @@ Installation Guide V4.60
 
 Version : 4.60 Draft
 
-Release Date : 12 July 2019. Publication Date : 12/07/2019
+Release Date : 12 November 2020. Publication Date : 30/12/2020
 
 Syspertec Communication
 
@@ -55,7 +55,7 @@ Summary of Amendments
 Virtel version 4.60 (11th Nov 2020)
 -----------------------------------
 
-.. note:: For further details see the Virtel Technical Newsletter TN20203: Whats new in Virtel 4.60.
+.. note:: For further details see the Virtel Technical Newsletter TN202003: Whats new in Virtel 4.60.
 
 Virtel version 4.59 (12th Jul 2019)
 -----------------------------------
@@ -810,7 +810,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 Step 1
 """"""
 
-Login to the Syspertec file server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.60” – “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.60” – “Products” folder and download the virtel460mvs.zip file. Unzip this file into a folder on your workstation.
 
 .. raw:: latex
 
@@ -1796,7 +1796,7 @@ Initialisation of the VIRARBO file
   // MTC REW,SYS004
   // MTC FSF,SYS004,2 1=FRANCAIS,2=ANGLAIS
   // EXEC IDCAMS,SIZE=AUTO
-    REPRO IFILE(BANDE ENV(PDEV(2400) NOLABEL RECFM(VB) BLKSZ(32000))) -
+    REPRO IFILE(BANDE ENV(PDEV(2400) NOLABEL RECFM(VB) BLKSZ(32758))) -
     OFILE(VIRARBO)
   /*
 
@@ -2030,7 +2030,7 @@ Loading the SAMPTRF file
   // MTC REW,SYS004
   // MTC FSF,SYS004,3
   // EXEC IDCAMS,SIZE=AUTO
-    REPRO IFILE(BANDE ENV(PDEV(2400) NOLABEL RECFM(VB) BLKSZ(32000))) -
+    REPRO IFILE(BANDE ENV(PDEV(2400) NOLABEL RECFM(VB) BLKSZ(32758))) -
     OFILE(SAMPTRF) REPLACE
   /*
 
@@ -2084,7 +2084,7 @@ Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. Thi
 Assembling the VIRTCT
 ^^^^^^^^^^^^^^^^^^^^^
 
-Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section :ref:`VIRTCT <#_VVRRIG_virtct>`. 
+Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE and z/OS environments, please refer to section :ref:`VIRTCT <#_VVRRIG_virtct>`. 
 
 .. note::
 

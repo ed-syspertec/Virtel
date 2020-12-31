@@ -16,7 +16,7 @@ User Guide V4.60
 
 Version : 4.60 Draft
 
-Release Date : 12 July 2019. Publication Date : 12/07/2019
+Release Date : 12 November 2020. Publication Date : 30/12/2020
 
 Syspertec Communication
 
@@ -51,47 +51,7 @@ NOTICE
 
 What's new in Virtel 4.60
 
-*VIRTEL Web Access:*
-
-- Bidirectional presentation support.
-
-- Enhanced font stretch mode. Optimization of screen size.
-
-- Additional RACHECK support for ForceLUNAME
-
-- Licence warning feature
-
-- Enhancements to USSMSG10 support module 
-
-- Enhancements to Virtel Web Macro interface (VWM)
-
-  - Keyboard mapping enhancements
-
-- Enhancements to Virtel Dynamic Directories Interface (DDI)
-
-  - Hotkey support for DDI macros
-
-  - New refresh options.
-
-*VIRTEL Web Modernisation & Integration:*
-
-- Enhancements to COPY$ NAME-OF. Support for TERMINAL, GROUP and RELAY items.
-
-- Enhancements to DEFAULT-FILED-WITH-CURSOR statement.  
-
-*Miscellaneous:*
-
-- Customizable HELP solution.
-
-- DNS access to resolve IP address or DNS name.
-
-- TCT option to support mixed case passwords
-
-- Additional language support
-
-- Batch export/import of RAW TRSF files.
-
-.. note:: For further details see the Technical Newsletter: TN201706 - What's new in Virtel 4.60.
+.. note:: For further details about enhancements in V4.60 see the Virtel Technical Newsletter TN202003: Whats new in Virtel 4.60.
 
 *****************
 The Virtel Engine
@@ -1063,6 +1023,8 @@ Delete
 
 Associated functions
 --------------------
+
+Functions are :-
 
 Deleting an element
 ^^^^^^^^^^^^^^^^^^^
