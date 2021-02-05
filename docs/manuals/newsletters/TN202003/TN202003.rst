@@ -1,6 +1,6 @@
 .. _tn202003:
 
-What’s new in Virtel 4.60 (October 2020) Beta Release
+What’s new in Virtel 4.60 (February 2021) GA Release
 =====================================================
 
 The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.60. 
@@ -16,6 +16,13 @@ Installation changes
 
 - Updated MVS and VSE installation tapes with new JCL for v4.60
 
+**5865/5884 complete VSE and FSE installations**
+
+- Corrected some installation jobs for z/VSE and Free Starter Edition
+
+**5885 sources.zip**
+
+- Updated sources.zip file included with product
 
 Migration considerations
 ------------------------
@@ -151,6 +158,26 @@ Presentation
 
 - FTPPARM scenario was only present in SCE-DIR, not LOADLIB
 
+**5866 replace X'0C' by a blank**
+
+- Display fixed for pages containing x'0C' characters
+
+**5867 hideinfo + VWA-captures parm badly reported**
+
+- Fixed code that hides icons in the Virtel toolbar.
+
+**5870 Adding keys PF22 PF23 for pgup/pgdn, obsolete links removed**
+
+- Added support to map PF22 and PF23 keys to PgUp/PgDown
+
+**5874 Safari CmdCV, PF22/23, Autoprint, Deferred Authentification and autocapture, w2hparm considerations, MAXIMUM-PASSWORD-LENGTH, fold/unfo**
+
+- Fixed code for printing and screen-capture
+- Added support for Cmd+C and Cmd+V in Safari
+
+**5882 Vtam app print no longer works**
+
+- Corrected 3270 printing feature for IE11
 
 .. raw:: latex
 
@@ -271,7 +298,37 @@ Base Components
 
 - Avoid possible loop when processing unexpected ASCII control characters in incoming HTTP message
 
+**5864 prefix RULE always succeeds**
 
+- Fixed IPv6 Prefix RULE processing
+
+**5871 Correct VIR0070 STATS output**
+
+- Virtel STATS updated for IPv6
+
+**5872 Update VIR0021W for IPV6 address**
+
+- Virtel USSPARM feature updated to be able to include IPv6 addresses
+
+**5876 Don't open DD VIRSTAT if STATS=SMF**
+
+- Fixed VIRSTAT processing for STATS=SMF
+
+**5877 Change MSG T61I to T64I in VIRHTTP**
+
+- Corrected invalid message VIRT61I
+
+**5879 VIRSECU wrong display in F VIRTEL,TCT command**
+
+- Corrected wrong display of VIRTCT VIRSECU parameter in F VIRTEL,TCT command
+
+**5883 Add DSASIZE to VIRTERM macro**
+
+- Increased default for DSASIZE in VIRTERM
+
+**5886 possible 0P77I INVALID STORAGE ADDRESS**
+
+- Fixed possible ASRA abend in Virtel for z/VSE
 
 .. raw:: latex
 
@@ -310,7 +367,13 @@ Virtel Administration
 
 - VIRCONF has been corrected to support square brackets \[ and \] for IPv6 addresses
 
+**5878 VIRTCT compile date in VIR0096I**
 
+- Added message in Virtel log with compile date for VIRTCT module
+
+**5881 Add Sample Jobs to print SMF records**
+
+- Added sample jobs to activate SMF stats printing
 
 .. raw:: latex
 
@@ -347,6 +410,9 @@ Scenario Language
 
 - Fixes a situation where CASE$ instruction does not correctly handle a sequence of multiple 3270 ATTRIBUTE fields.
 
+**5873 IPV6 VALUE-OF USER-IP-ADDRESS**
+
+- Added new option VALUE-OF USER-IP-ADDRESS that can be included in Virtel pages
 
 .. raw:: latex
 
@@ -450,6 +516,29 @@ Appendix A
 - 5861 add FTPPARM scenario to LOADLIB
 - 5862 TURQUOISE instead of BLUE in 3270-CLASSIC
 - 5863 possible loop processing one specific HTTP input
+- 5864 prefix RULE always succeeds
+- 5865 complete VSE and FSE installations
+- 5866 replace X'0C' by a blank
+- 5867 hideinfo + VWA-captures parm badly reported 
+- 5868 VirtelFtp Add 2 Transactions in ARBOLOAD
+- 5869 complement changement numero de version
+- 5870 Adding keys PF22 PF23 for pgup/pgdn, obsolete links removed
+- 5871 Correct VIR0070 STATS output
+- 5872 Update VIR0021W for IPV6 address
+- 5873 IPV6 VALUE-OF USER-IP-ADDRESS
+- 5874 Safari CmdCV, PF22/23, Autoprint, Deferred Authentification and autocapture, w2hparm considerations, MAXIMUM-PASSWORD-LENGTH, fold/unfo
+- 5875 Add virtelFTP zip file 
+- 5876 Don't open DD VIRSTAT if STATS=SMF
+- 5877 Change MSG T61I to T64I in VIRHTTP
+- 5878 VIRTCT compile date in VIR0096I
+- 5879 VIRSECU wrong display in F VIRTEL,TCT command
+- 5880 Remove [] from IPV6 Address in Stats Record 
+- 5881 Add Sample Jobs to print SMF records
+- 5882 Vtam app print no longer works
+- 5883 Add DSASIZE to VIRTERM macro
+- 5884 Vse assemblies
+- 5885 sources.zip
+- 5886 possible 0P77I INVALID STORAGE ADDRESS
 
 
 Appendix B
