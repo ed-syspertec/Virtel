@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What’s new in Virtel 4.60 (October 2020) Beta Release &mdash; Virtel 9 documentation</title>
+  <title>What’s new in Virtel 4.60 GA Release &mdash; Virtel 9 documentation</title>
   
 
   
@@ -101,7 +101,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id7">2020</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN202001/TN202001.html">Converting a VBA macro</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN202002/TN202002.html">Customizing Virtel V4.59 from scratch</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">What’s new in Virtel 4.60 (October 2020) Beta Release</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">What’s new in Virtel 4.60 GA Release</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installation-changes">Installation changes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#migration-considerations">Migration considerations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fixes-changes-and-new-features">Fixes, changes and new features</a></li>
@@ -162,7 +162,7 @@
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
-      <li>What’s new in Virtel 4.60 (October 2020) Beta Release</li>
+      <li>What’s new in Virtel 4.60 GA Release</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,8 +181,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="whats-new-in-virtel-4-60-october-2020-beta-release">
-<span id="tn202003"></span><h1>What’s new in Virtel 4.60 (October 2020) Beta Release<a class="headerlink" href="#whats-new-in-virtel-4-60-october-2020-beta-release" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="whats-new-in-virtel-4-60-ga-release">
+<span id="tn202003"></span><h1>What’s new in Virtel 4.60 GA Release<a class="headerlink" href="#whats-new-in-virtel-4-60-ga-release" title="Permalink to this headline">¶</a></h1>
 <p>The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.60.</p>
 <div class="section" id="installation-changes">
 <h2>Installation changes<a class="headerlink" href="#installation-changes" title="Permalink to this headline">¶</a></h2>
@@ -193,6 +193,14 @@
 <p><strong>5832 V4.60 Installation updates</strong></p>
 <ul class="simple">
 <li>Updated MVS and VSE installation tapes with new JCL for v4.60</li>
+</ul>
+<p><strong>5865/5884 complete VSE and FSE installations</strong></p>
+<ul class="simple">
+<li>Corrected some installation jobs for z/VSE and Free Starter Edition</li>
+</ul>
+<p><strong>5885 sources.zip</strong></p>
+<ul class="simple">
+<li>Updated sources.zip file included with product</li>
 </ul>
 </div>
 <div class="section" id="migration-considerations">
@@ -328,6 +336,27 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>FTPPARM scenario was only present in SCE-DIR, not LOADLIB</li>
 </ul>
+<p><strong>5866 replace X’0C’ by a blank</strong></p>
+<ul class="simple">
+<li>Display fixed for pages containing x’0C’ characters</li>
+</ul>
+<p><strong>5867 hideinfo + VWA-captures parm badly reported</strong></p>
+<ul class="simple">
+<li>Fixed code that hides icons in the Virtel toolbar.</li>
+</ul>
+<p><strong>5870 Adding keys PF22 PF23 for pgup/pgdn, obsolete links removed</strong></p>
+<ul class="simple">
+<li>Added support to map PF22 and PF23 keys to PgUp/PgDown</li>
+</ul>
+<p><strong>5874 Safari CmdCV, PF22/23, Autoprint, Deferred Authentification and autocapture, w2hparm considerations, MAXIMUM-PASSWORD-LENGTH, fold/unfo</strong></p>
+<ul class="simple">
+<li>Fixed code for printing and screen-capture</li>
+<li>Added support for Cmd+C and Cmd+V in Safari</li>
+</ul>
+<p><strong>5882 Vtam app print no longer works</strong></p>
+<ul class="simple">
+<li>Corrected 3270 printing feature for IE11</li>
+</ul>
 </div>
 <div class="section" id="base-components">
 <h3>Base Components<a class="headerlink" href="#base-components" title="Permalink to this headline">¶</a></h3>
@@ -443,6 +472,38 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Avoid possible loop when processing unexpected ASCII control characters in incoming HTTP message</li>
 </ul>
+<p><strong>5864 prefix RULE always succeeds</strong></p>
+<ul class="simple">
+<li>Fixed IPv6 Prefix RULE processing</li>
+</ul>
+<p><strong>5871 Correct VIR0070 STATS output</strong></p>
+<ul class="simple">
+<li>Virtel STATS updated for IPv6</li>
+</ul>
+<p><strong>5872 Update VIR0021W for IPV6 address</strong></p>
+<ul class="simple">
+<li>Virtel USSPARM feature updated to be able to include IPv6 addresses</li>
+</ul>
+<p><strong>5876 Don’t open DD VIRSTAT if STATS=SMF</strong></p>
+<ul class="simple">
+<li>Fixed VIRSTAT processing for STATS=SMF</li>
+</ul>
+<p><strong>5877 Change MSG T61I to T64I in VIRHTTP</strong></p>
+<ul class="simple">
+<li>Corrected invalid message VIRT61I</li>
+</ul>
+<p><strong>5879 VIRSECU wrong display in F VIRTEL,TCT command</strong></p>
+<ul class="simple">
+<li>Corrected wrong display of VIRTCT VIRSECU parameter in F VIRTEL,TCT command</li>
+</ul>
+<p><strong>5883 Add DSASIZE to VIRTERM macro</strong></p>
+<ul class="simple">
+<li>Increased default for DSASIZE in VIRTERM</li>
+</ul>
+<p><strong>5886 possible 0P77I INVALID STORAGE ADDRESS</strong></p>
+<ul class="simple">
+<li>Fixed possible ASRA abend in Virtel for z/VSE</li>
+</ul>
 </div>
 <div class="section" id="virtel-administration">
 <h3>Virtel Administration<a class="headerlink" href="#virtel-administration" title="Permalink to this headline">¶</a></h3>
@@ -476,6 +537,14 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>VIRCONF has been corrected to support square brackets [ and ] for IPv6 addresses</li>
 </ul>
+<p><strong>5878 VIRTCT compile date in VIR0096I</strong></p>
+<ul class="simple">
+<li>Added message in Virtel log with compile date for VIRTCT module</li>
+</ul>
+<p><strong>5881 Add Sample Jobs to print SMF records</strong></p>
+<ul class="simple">
+<li>Added sample jobs to activate SMF stats printing</li>
+</ul>
 </div>
 <div class="section" id="scenario-language">
 <h3>Scenario Language<a class="headerlink" href="#scenario-language" title="Permalink to this headline">¶</a></h3>
@@ -506,6 +575,10 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <p><strong>5838 CASE$ does not correctly handle multiple ATTRIBUTE fields</strong></p>
 <ul class="simple">
 <li>Fixes a situation where CASE$ instruction does not correctly handle a sequence of multiple 3270 ATTRIBUTE fields.</li>
+</ul>
+<p><strong>5873 IPV6 VALUE-OF USER-IP-ADDRESS</strong></p>
+<ul class="simple">
+<li>Added new option VALUE-OF USER-IP-ADDRESS that can be included in Virtel pages</li>
 </ul>
 </div>
 <div class="section" id="other-enhancements">
@@ -606,6 +679,29 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <li>5861 add FTPPARM scenario to LOADLIB</li>
 <li>5862 TURQUOISE instead of BLUE in 3270-CLASSIC</li>
 <li>5863 possible loop processing one specific HTTP input</li>
+<li>5864 prefix RULE always succeeds</li>
+<li>5865 complete VSE and FSE installations</li>
+<li>5866 replace X’0C’ by a blank</li>
+<li>5867 hideinfo + VWA-captures parm badly reported</li>
+<li>5868 VirtelFtp Add 2 Transactions in ARBOLOAD</li>
+<li>5869 complement changement numero de version</li>
+<li>5870 Adding keys PF22 PF23 for pgup/pgdn, obsolete links removed</li>
+<li>5871 Correct VIR0070 STATS output</li>
+<li>5872 Update VIR0021W for IPV6 address</li>
+<li>5873 IPV6 VALUE-OF USER-IP-ADDRESS</li>
+<li>5874 Safari CmdCV, PF22/23, Autoprint, Deferred Authentification and autocapture, w2hparm considerations, MAXIMUM-PASSWORD-LENGTH, fold/unfo</li>
+<li>5875 Add virtelFTP zip file</li>
+<li>5876 Don’t open DD VIRSTAT if STATS=SMF</li>
+<li>5877 Change MSG T61I to T64I in VIRHTTP</li>
+<li>5878 VIRTCT compile date in VIR0096I</li>
+<li>5879 VIRSECU wrong display in F VIRTEL,TCT command</li>
+<li>5880 Remove [] from IPV6 Address in Stats Record</li>
+<li>5881 Add Sample Jobs to print SMF records</li>
+<li>5882 Vtam app print no longer works</li>
+<li>5883 Add DSASIZE to VIRTERM macro</li>
+<li>5884 Vse assemblies</li>
+<li>5885 sources.zip</li>
+<li>5886 possible 0P77I INVALID STORAGE ADDRESS</li>
 </ul>
 </div>
 <div class="section" id="appendix-b">

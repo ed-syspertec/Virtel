@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Installation Guide V4.60" href="../Virtel460IG/Installation_Guide.html" />
+    <link rel="next" title="Getting Started with Virtel" href="../Virtel460GS/Getting_Started.html" />
     <link rel="prev" title="Connectivity Reference V4.60" href="../Virtel460CN/connectivity_guide.html" /> 
 </head>
 
@@ -120,6 +120,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#trademarks">Trademarks</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel460GS/Getting_Started.html">Getting Started with Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel460IG/Installation_Guide.html">Installation Guide V4.60</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel460MG/messages.html">Messages V4.60</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel460MI/Migration_Guide.html">Migration Guide V4.60</a></li>
@@ -200,7 +201,7 @@
 </div>
 <div class="section" id="customization-guide-v4-60">
 <span id="virtel460hw"></span><h1>Customization Guide V4.60<a class="headerlink" href="#customization-guide-v4-60" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web23.png"><img alt="image0" src="../../../_images/logo_virtel_web23.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web24.png"><img alt="image0" src="../../../_images/logo_virtel_web24.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL How to Guide</strong></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -237,7 +238,7 @@ their respective owners.</p>
 <li>Enhanced Page Capture</li>
 <li>New wizard support for VSR</li>
 <li>Keyboard assignment enhancements</li>
-<li>New dynamic symbolics for USSMSG10</li>
+<li>New dynamic symbolic for USSMSG10</li>
 <li>Password and Passphrase support in native VTAM mode</li>
 <li>DNS support on Line definition</li>
 <li>Improvement to UNLOAD command. SYSPUNCH dynamically allocated</li>
@@ -412,6 +413,26 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p><em>Example of a wh2parm.global.js member</em></p>
+<div class="section" id="adding-your-company-logo-to-virtel-toolbar-using-global-options">
+<h4>Adding your Company Logo to Virtel Toolbar using global options<a class="headerlink" href="#adding-your-company-logo-to-virtel-toolbar-using-global-options" title="Permalink to this headline">¶</a></h4>
+<p>Update the following two files:-</p>
+<ol class="arabic simple">
+<li>custCSS.[key name].css      Cascading style sheet customisation for company logo</li>
+</ol>
+<p>Append to you existing Cascading Style sheet the following additional style sheet definitions along with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size.</p>
+<p><img alt="image83" src="../../../_images/image836.png" /></p>
+<ol class="arabic simple" start="2">
+<li>w2hparm.js                  Update or add a Global settings w2hparm.js file.</li>
+</ol>
+<p>The Global VWA display setting file also has 2 parameters used to apply .css customization to all transactions. Add the last two lines below to your existing w2hparm.js file.  This will apply the custCSS.CLIENT.css setting to all defined Virtel Transactions.</p>
+<p><img alt="image84" src="../../../_images/image846.png" /></p>
+<p>From the Administration panel select the VWA customized files, the custCSS,[key name],css and the w2hparm.js file with the global setting, and upload to your CLI directory using the Virtel Drap and drop function.</p>
+<p><img alt="image85" src="../../../_images/image856.png" /></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refresh your browser cache and Reconnect to the Application Menu to see the results.</p>
+</div>
+</div>
 </div>
 <div class="section" id="transaction-level-options">
 <span id="index-5"></span><h3>Transaction Level Options<a class="headerlink" href="#transaction-level-options" title="Permalink to this headline">¶</a></h3>
@@ -3003,6 +3024,359 @@ VIR0223I UNLOAD ENDED
 <div class="section" id="virtel-cappmenu-tier-menu-description">
 <h4>Virtel cAppMenu Tier Menu description<a class="headerlink" href="#virtel-cappmenu-tier-menu-description" title="Permalink to this headline">¶</a></h4>
 <p><img alt="image73" src="../../../_images/image7311.png" /></p>
+<div class="section" id="modify-the-main-and-sub-titles">
+<h5>Modify the <em>Main</em> and <em>Sub</em> titles<a class="headerlink" href="#modify-the-main-and-sub-titles" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;main-title&quot;</span><span class="p">:</span><span class="s2">&quot;Virtel Application Tier Menu&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sub-title&quot;</span><span class="p">:</span><span class="s2">&quot;Syspertec Virtel V4.60 Application Menu&quot;</span><span class="p">,</span>
+        <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-level-0-first-level-of-the-tier-menu-cics-production-regions">
+<h5>Setup Level 0, first level of the Tier menu - <strong>CICS Production Regions</strong><a class="headerlink" href="#setup-level-0-first-level-of-the-tier-menu-cics-production-regions" title="Permalink to this headline">¶</a></h5>
+<blockquote>
+<div>Level 0 is setup as CICS Productions Regions. Using KEY <em>tran</em> so all defined transactions with an External name of cicsp anywhere in the transaction name; the /i means any case.</div></blockquote>
+<p><img alt="image74" src="../../../_images/image7410.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cAppMenuOptions[&quot;levels&quot;] = []
+
+// First group - CICS Production - criteria: the VIRTEL transaction name that contains “CICSP&quot;
+cAppMenuOptions[&quot;levels&quot;][0] =  {
+        &quot;title&quot;:&quot;CICS Production Regions&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /cicsp/i
+            };
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-level-1-of-the-tier-menu-cics-development-regions">
+<h5>Setup Level 1 of the Tier menu - <strong>CICS Development Regions</strong><a class="headerlink" href="#setup-level-1-of-the-tier-menu-cics-development-regions" title="Permalink to this headline">¶</a></h5>
+<p>Level  1 defined as CICS Development Regions.  Using KEY <em>tran</em> so all defined transactions with an External name of cicsd anywhere in the transaction name, the /i means any case</p>
+<p><img alt="image75" src="../../../_images/image7510.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Second</span> <span class="n">group</span> <span class="o">-</span> <span class="n">CICS</span> <span class="n">development</span>  <span class="o">-</span> <span class="n">criteria</span> <span class="p">:</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">name</span> <span class="n">starts</span> <span class="k">with</span> <span class="s2">&quot;CICSD&quot;</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Development Regions&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;criteria&quot;</span> <span class="p">:</span> <span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;regexp&quot;</span> <span class="p">:</span> <span class="o">/</span><span class="n">cicsd</span><span class="o">/</span><span class="n">i</span>
+        <span class="p">};</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Repeat the above code for each required level. See the sample appmenu.level3.js file provide by SYSPERTEC</p>
+</div>
+</div>
+<div class="section" id="setup-final-level-as-other-applications-if-required">
+<h5>Setup Final Level as Other Applications if Required<a class="headerlink" href="#setup-final-level-as-other-applications-if-required" title="Permalink to this headline">¶</a></h5>
+<p>The final Level (using my example in figure 2), level 5 would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or    merely as a temporary level to show remaining applications that need to be added to a previously defined level.</p>
+<p><img alt="image76" src="../../../_images/image7610.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Other</span> <span class="n">Applications</span>  <span class="o">-</span> <span class="n">criteria</span> <span class="p">:</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">names</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">previous</span> <span class="n">levels</span><span class="s2">&quot;</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Other Sessions&quot;</span>
+
+        <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="customizing-the-css-custcss-key-name-css-style-sheet">
+<h3>Customizing the CSS custCSS.[key name].css style sheet<a class="headerlink" href="#customizing-the-css-custcss-key-name-css-style-sheet" title="Permalink to this headline">¶</a></h3>
+<p>Add company logo to the Virtel cAppMenu Tier Menu Syspertec group</p>
+<p><img alt="image77" src="../../../_images/image7710.png" /></p>
+<p>Create a Cascading Style sheet using the following code with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size. This example also adds the Company Logo to the Toolbar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span>
+<span class="o">*/</span>
+<span class="n">div</span><span class="o">.</span><span class="n">App</span><span class="o">-</span><span class="n">logo</span> <span class="p">{</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">326</span><span class="n">px</span><span class="p">;</span>
+<span class="n">height</span><span class="p">:</span> <span class="mi">57</span><span class="n">px</span><span class="p">;</span>
+<span class="n">background</span><span class="o">-</span><span class="n">image</span><span class="p">:</span> <span class="n">url</span><span class="p">(</span><span class="s2">&quot;syspertec.png&quot;</span><span class="p">);</span>
+<span class="n">background</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">200</span><span class="n">px</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+<span class="n">height</span><span class="p">:</span><span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+<span class="n">width</span><span class="p">:</span><span class="mi">200</span><span class="n">px</span><span class="p">;</span>
+<span class="n">background</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-an-option-key-name-js-javascript-file">
+<h3>Create an option.[key name].js JavaScript file<a class="headerlink" href="#create-an-option-key-name-js-javascript-file" title="Permalink to this headline">¶</a></h3>
+<p>Modify the following file, change [key name] to your company name.  This value [key name]  will be used in step “Update the Required Virtel Transactions”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// $Id: option.level3.js 4809 2018-10-10 14:38:13Z riou $
+var oCustom={
+    &quot;pathToJsCustom&quot;:&quot;../../option/appmenu.[key name].js&quot;,
+    &quot;pathToCssCustom&quot; : &quot;../option/custCSS.[key name].css&quot;
+    }
+</pre></div>
+</div>
+</div>
+<div class="section" id="company-logo-syspertec-png">
+<h3>Company Logo Syspertec.png<a class="headerlink" href="#company-logo-syspertec-png" title="Permalink to this headline">¶</a></h3>
+<p>Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.</p>
+<p><img alt="image78" src="../../../_images/image7810.png" /></p>
+</div>
+<div class="section" id="update-the-required-virtel-transactions">
+<h3>Update the required Virtel Transactions<a class="headerlink" href="#update-the-required-virtel-transactions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cli-90">
+<h4>CLI-90<a class="headerlink" href="#cli-90" title="Permalink to this headline">¶</a></h4>
+<p>Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used.</p>
+<p><img alt="image79" src="../../../_images/image7910.png" /></p>
+</div>
+<div class="section" id="cli-00">
+<h4>CLI-00<a class="headerlink" href="#cli-00" title="Permalink to this headline">¶</a></h4>
+<p>Modify the default Entry Point transaction CLI-00 and update the TIOA at logon fiedl to call cAppMenu.htm</p>
+<p><img alt="image80" src="../../../_images/image809.png" /></p>
+</div>
+</div>
+<div class="section" id="update-the-cli-dir-directoy">
+<h3>Update the CLI-DIR directoy<a class="headerlink" href="#update-the-cli-dir-directoy" title="Permalink to this headline">¶</a></h3>
+<p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR</p>
+<p><img alt="image81" src="../../../_images/image8117.png" /></p>
+<p>From the Administration Panel, select the customized files and Drop &amp; Drag them into the CLI-DIR.</p>
+<p><img alt="image82" src="../../../_images/image8211.png" /></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.</p>
+</div>
+</div>
+<div class="section" id="full-reference-document-for-cappmenuoptions-object">
+<h3>Full reference document for cAppMenuOptions object<a class="headerlink" href="#full-reference-document-for-cappmenuoptions-object" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// v 10/10/2018
+// Customer version
+// cusomer directory.
+
+// This file is related to the option of the application menu list VIRTEL transaction definition.
+
+
+// This file builds the javascript object cAppMenuOptions,
+// that defines the customizations.
+
+// Create the javascript object that contains the options.
+var cAppMenuOptions = {};
+
+// ====================
+// Customize some texts
+// ====================
+// Remove the // comment mark on the next line, to create the level for texts customization:
+// cAppMenuOptions.texts = {};
+//
+// customize main title
+// --------------------
+// Replace xxx by the text for your main title
+// remove the // comment mark on the next line, to create the main title customization:
+// cAppMenuOptions.texts[&quot;main-title&quot;] = &quot;xxx&quot;;
+//
+// customize subtitle
+// ------------------
+// Replace xxx by the text for your sub title
+// remove the // comment mark on the next line, to create the sub title customization:
+// cAppMenuOptions.texts[&quot;sub-title&quot;] = &quot;xxx&quot;;
+//
+// customize texts of signon form
+// ------------------------------
+// Remove the // comment mark on the next line, to create the level for signon texts customization:
+// cAppMenuOptions.texts.signon = {};
+
+// Replace the English standard text on the right part of the assignments,
+// remove the leading // comment mark on the modified lines
+//  cAppMenuOptions.texts.signon[&quot;signon-invite&quot;]=&quot;Enter your username and password&quot;;
+//  cAppMenuOptions.texts.signon[&quot;user-label&quot;]=&quot;Username&quot;;
+//  cAppMenuOptions.texts.signon[&quot;password-label&quot;]=&quot;Password&quot;;
+//  cAppMenuOptions.texts.signon[&quot;newpassword-label&quot;]=&quot;New Password&quot;;
+//  cAppMenuOptions.texts.signon[&quot;confirmpassword-label&quot;]=&quot;Confirm password&quot;;
+//  cAppMenuOptions.texts.signon[&quot;login-button&quot;]=&quot;Validate&quot;;
+//  cAppMenuOptions.texts.signon[&quot;cancel-button&quot;]=&quot;Cancel&quot;;
+//  cAppMenuOptions.texts.signon[&quot;user-invite&quot;]=&quot;ENTER YOUR USERNAME&quot;;
+//  cAppMenuOptions.texts.signon[&quot;password-invite&quot;]=&quot;ENTER YOUR PASSWORD&quot;;
+//  cAppMenuOptions.texts.signon[&quot;newpassword-invite&quot;]=&quot;Enter and confirm your new password&quot;;
+//  cAppMenuOptions.texts.signon[&quot;newpassword-mismatch&quot;]=&quot;NEW PASSWORDS DO NOT MATCH&quot;;
+//  cAppMenuOptions.texts.signon[&quot;user-unknown&quot;]=&quot;USER NAME UNKNOWN&quot;;
+//  cAppMenuOptions.texts.signon[&quot;password-incorrect&quot;]=&quot;INCORRECT PASSWORD&quot;;
+//  cAppMenuOptions.texts.signon[&quot;password-expired&quot;]=&quot;Password expired&quot;;
+//  cAppMenuOptions.texts.signon[&quot;newpassword-invalid&quot;]=&quot;Newpassword is invalid.&quot;;
+
+
+
+// =====================================
+// Customize transaction opening options
+// =====================================
+//
+// open to a new window
+// --------------------
+// Use: Each time you click a line of the application menu, you will open a new window for the session of the selected transaction.
+// remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.open_name = &quot;_blank&quot;;
+
+//
+// open to the current window
+// --------------------------
+// Use: Clicking a application menu item will replace the application menu page with the session of the selected transaction.
+// remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.open_name = &quot;_self&quot;;
+
+//
+// open to a dedicated window
+// --------------------------
+// Use: Clicking a application menu item will open the session of the selected transaction in a dedicated window, replacing the previous session if any.
+// This feature is based on a name for this window.
+// Below, you can keep the name &quot;VWA&quot;, or replace it with the name you want;
+// remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.open_name = &quot;VWA&quot;;
+
+//
+// open specs
+// ----------
+// To add HTML standard specs of window opening,
+// replace specs by your specs (e.g.&quot;location=no&quot;),
+// remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.open_specs = specs;
+
+
+
+//
+// skip the application menu in case of a single transaction
+// ----------------------------------------------------------
+// Use: If the list contains one transaction only (this might happen after filtering the transactions),
+// the menu display will be skiped
+// and the window will be opened of the VIRTEL transaction session.
+// Remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.skip_menu_if_single = true;
+
+
+
+
+
+
+// =====================================
+// Customize user selectable information
+// =====================================
+//
+// Prepare the user selectable design
+// ----------------------------------
+// Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
+// Some user selectable information can be taken into account to build it.
+// Remove the // comment mark on the next line to prepare the user selectable design:
+// cAppMenuOptions.userSelectable = {};
+
+//
+// Prepare query parameters definition
+// -----------------------------------
+// Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
+// Some query parameters might be taken into account, e.g. (after the question mark):
+// http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&amp;rows=43&amp;cols=132
+// Remove the // comment mark on the next line to prepare the definition of query parameters:
+// cAppMenuOptions.userSelectable.queryParameter = {};
+
+
+//
+// Define query parameters
+// -----------------------
+// Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
+// Some query parameters might be taken into account, e.g. (after the question mark):
+// http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&amp;rows=43&amp;cols=132
+
+// - Define the name of the query parameter
+// Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
+// Remove the // comment mark on the next line to Start the definition for this query parameter:
+// cAppMenuOptions.userSelectable.queryParameter[&quot;xxx&quot;] = {&quot;label&quot;:&quot;&quot;, &quot;values&quot;:[]};
+
+// - Define the label to be displayed on the application menu for the query parameter
+// Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
+// Replace yyy by the label.
+// Remove the // comment mark on the next line to Start the definition for this query parameter:
+// cAppMenuOptions.userSelectable.queryParameter[&quot;xxx&quot;][&quot;label&quot;] = &quot;yyy&quot;;
+
+// - Define the values of the query parameter
+// Duplicate this last line as much as the number of values you want to take into account.
+// For each of those lines
+// - replace xxx by the value of your query parameter,
+// - replace aaa by the label for the current value,
+// - replace bbb by the current value.
+// Remove the // comment mark on all of those lines to take these values into account:
+// cAppMenuOptions.userSelectable.queryParameter[&quot;xxx&quot;][&quot;items&quot;].push({&quot;label&quot;:&quot;aaaa&quot;, &quot;value&quot;:&quot;bbbb&quot;});
+
+
+// You can define an additionnal query parameter in the same way.
+// You can define as much query parameters as you want,
+// provided that your VIRTEL is set up to take them into account.
+
+
+
+//
+// Define templates
+// ----------------
+// Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.  This url contains a template name.
+// e.g. &quot;WEB2AJAX.htm&quot; in http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso
+// e Various templates, even customer templates in case of specific projets, can be made available for the user selection.
+
+// - Start the templates definition
+// Replace &quot;xxx&quot; by your label for templates.
+// Remove the // comment mark on the next lines to Start the templates definition:
+// cAppMenuOptions.userSelectable.template =  {&quot;label&quot;:&quot;&quot;, &quot;items&quot;:[]};
+
+
+// - Define the information for each template:
+// Duplicate the last lines of this block ( with push(&quot;xxx&quot;)) as much as the number of templates you want to take into account.
+// For each of those lines, replace
+// - &quot;xxx&quot; by the label for this template (e.g. &quot;Standard VWA&quot;)
+// - &quot;yyy&quot; by the path to the template (e.g. &quot;../w2h/web2ajax.htm&quot;), making sure that your VIRTEL is set up to take it into account.
+// Remove the // comment mark on all of those lines to take these values into account:
+// cAppMenuOptions.userSelectable.template.items.push({&quot;label&quot;:&quot;xxx&quot;, &quot;value&quot;:&quot;yyy&quot;});
+
+
+
+
+
+// ==================
+// Subdivide the list
+// ==================
+// Remove the // comment mark on the next line, to prepare a the first level of subdivision.
+// cAppMenuOptions.levels = [];
+//
+// Design a selection definition
+// -----------------------------
+// Remove the // comment mark on the next line, to prepare the selection definition number one ([0]), (to be transposed to [1] for the second, [2] for the third one and so on)
+// cAppMenuOptions.levels[0] = {};
+//
+// - Define the title of the selection:
+// Replace xxx by the text for your selection title
+// remove the // comment mark on the next line to define this title.
+// cAppMenuOptions.levels[0].title = &quot;xxx&quot;;
+//
+// - Define the criteria of the selection:
+// Remove the // comment mark leading the line with the criteria you choose for your selection
+// cAppMenuOptions.levels[0].criteria = &quot;status&quot;;       // status of the transaction
+// cAppMenuOptions.levels[0].criteria = &quot;tran&quot;;         // external name of the VIRTEL transaction
+// cAppMenuOptions.levels[0].criteria = &quot;application&quot;;  // application of the VIRTEL transaction
+// cAppMenuOptions.levels[0].criteria = &quot;description&quot;;  // description of the VIRTEL transaction
+//
+// - Define the regular expression of the selection:
+// Replace xxx by the regular expression for your selection
+// Examples:
+//   /cics/      // to select the transactions where the criteria contains &quot;cics&quot; (case sensitive)
+//   /cics/i     // to select the transactions where the criteria contains &quot;cics&quot; (case insensitive)
+//   /^cics/     // to select the transactions where the criteria starts with &quot;cics&quot;
+//   /cics$/     // to select the transactions where the criteria ends with &quot;cics&quot;
+
+// remove the // comment mark on the next line to define this regular expression
+// cAppMenuOptions.levels[0].regexp = /xxx/;
+
+// - Define an additional level of subdivision:
+// Advanced!
+// You could divide further this selection, by adding a level, and defining it following the same instructiuons at the next level, and add recursively further levels.
+// remove the // comment mark on the next line to start this next level definition:
+// cAppMenuOptions.levels[0].levels = [];
+
+
+
+// You can add a second ([1]) definition following the same instructions.
+// If an additional definition does not contain a criteria,
+// all the remaining list transactions will be kept.
+</pre></div>
 </div>
 </div>
 </div>
@@ -3325,7 +3699,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel460IG/Installation_Guide.html" class="btn btn-neutral float-right" title="Installation Guide V4.60" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Virtel460GS/Getting_Started.html" class="btn btn-neutral float-right" title="Getting Started with Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../Virtel460CN/connectivity_guide.html" class="btn btn-neutral float-left" title="Connectivity Reference V4.60" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

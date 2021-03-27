@@ -60,7 +60,7 @@ Virtel version 4.60 (11th Oct 2020)
 * Enhanced Page Capture
 * New wizard support for VSR
 * Keyboard assignment enhancements
-* New dynamic symbolics for USSMSG10
+* New dynamic symbolic for USSMSG10
 * Password and Passphrase support in native VTAM mode
 * DNS support on Line definition
 * Improvement to UNLOAD command. SYSPUNCH dynamically allocated
@@ -287,6 +287,32 @@ The output from this display should show the DDI/Macros options that we used in 
     w2hparm.keymapping=true;  
 
 *Example of a wh2parm.global.js member*
+
+Adding your Company Logo to Virtel Toolbar using global options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Update the following two files:-
+
+1.  custCSS.[key name].css      Cascading style sheet customisation for company logo
+
+Append to you existing Cascading Style sheet the following additional style sheet definitions along with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size.  
+
+|image83|
+
+2.  w2hparm.js                  Update or add a Global settings w2hparm.js file.
+
+The Global VWA display setting file also has 2 parameters used to apply .css customization to all transactions. Add the last two lines below to your existing w2hparm.js file.  This will apply the custCSS.CLIENT.css setting to all defined Virtel Transactions.
+
+|image84|
+
+
+From the Administration panel select the VWA customized files, the custCSS,[key name],css and the w2hparm.js file with the global setting, and upload to your CLI directory using the Virtel Drap and drop function.
+
+|image85|
+
+.. note::
+
+    Refresh your browser cache and Reconnect to the Application Menu to see the results.
 
 .. index::     
    single: Customization; Transaction Level Options 
@@ -3828,6 +3854,383 @@ Virtel cAppMenu Tier Menu description
 
 |image73|
 
+Modify the *Main* and *Sub* titles
+""""""""""""""""""""""""""""""""""
+::
+
+    var cAppMenuOptions = {}
+    cAppMenuOptions["texts"] = {
+            "main-title":"Virtel Application Tier Menu",
+            "sub-title":"Syspertec Virtel V4.60 Application Menu",
+            };
+
+Setup Level 0, first level of the Tier menu - **CICS Production Regions**  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  
+  Level 0 is setup as CICS Productions Regions. Using KEY *tran* so all defined transactions with an External name of cicsp anywhere in the transaction name; the /i means any case.
+
+|image74|
+  
+::
+
+    cAppMenuOptions["levels"] = []
+
+    // First group - CICS Production - criteria: the VIRTEL transaction name that contains “CICSP"
+    cAppMenuOptions["levels"][0] =  {
+            "title":"CICS Production Regions",
+            "criteria" : "tran",
+            "regexp" : /cicsp/i
+                };
+
+Setup Level 1 of the Tier menu - **CICS Development Regions**  
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""        
+ 
+Level  1 defined as CICS Development Regions.  Using KEY *tran* so all defined transactions with an External name of cicsd anywhere in the transaction name, the /i means any case
+
+|image75|
+
+::
+
+    // Second group - CICS development  - criteria : the VIRTEL transaction name starts with "CICSD"
+    cAppMenuOptions["levels"][1] =  {
+            "title":"CICS Development Regions",
+            "criteria" : "tran",
+            "regexp" : /cicsd/i
+            };  
+            
+.. note::
+    Repeat the above code for each required level. See the sample appmenu.level3.js file provide by SYSPERTEC
+            
+Setup Final Level as Other Applications if Required
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The final Level (using my example in figure 2), level 5 would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or    merely as a temporary level to show remaining applications that need to be added to a previously defined level.
+
+|image76|
+
+::
+
+    // Other Applications  - criteria : the VIRTEL transaction names not in any previous levels"
+    cAppMenuOptions["levels"][5] =  {
+            "title":"Other Sessions" 
+            
+            };
+
+Customizing the CSS custCSS.[key name].css style sheet
+------------------------------------------------------
+
+Add company logo to the Virtel cAppMenu Tier Menu Syspertec group
+
+|image77|
+
+Create a Cascading Style sheet using the following code with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size. This example also adds the Company Logo to the Toolbar.
+
+::
+
+    * 
+    * VIRTEL Web Access style sheet customisation for company logo
+    * (c)Copyright SysperTec Communication 2012 All Rights Reserved
+    *   
+    */
+    div.App-logo {
+    width: 326px;
+    height: 57px;
+    background-image: url("syspertec.png");
+    background-size: 200px 50px;
+    height:50px;
+    width:200px;
+    background-size: 100%;
+    }
+
+Create an option.[key name].js JavaScript file
+----------------------------------------------
+
+Modify the following file, change [key name] to your company name.  This value [key name]  will be used in step “Update the Required Virtel Transactions”
+
+::
+
+    // $Id: option.level3.js 4809 2018-10-10 14:38:13Z riou $
+    var oCustom={
+        "pathToJsCustom":"../../option/appmenu.[key name].js",
+        "pathToCssCustom" : "../option/custCSS.[key name].css"
+        }
+ 
+Company Logo Syspertec.png
+--------------------------
+
+Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.
+
+|image78|
+
+
+Update the required Virtel Transactions
+---------------------------------------
+
+CLI-90
+^^^^^^
+
+Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used.
+
+|image79|
+
+CLI-00
+^^^^^^
+
+Modify the default Entry Point transaction CLI-00 and update the TIOA at logon fiedl to call cAppMenu.htm
+
+|image80|
+
+Update the CLI-DIR directoy
+---------------------------
+
+Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR
+
+|image81|
+
+From the Administration Panel, select the customized files and Drop & Drag them into the CLI-DIR.
+
+|image82|
+
+.. note::
+    Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.
+
+Full reference document for cAppMenuOptions object
+--------------------------------------------------
+
+::
+
+    // v 10/10/2018
+    // Customer version
+    // cusomer directory.
+    
+    // This file is related to the option of the application menu list VIRTEL transaction definition.
+     
+    
+    // This file builds the javascript object cAppMenuOptions,
+    // that defines the customizations.
+    
+    // Create the javascript object that contains the options.
+    var cAppMenuOptions = {};
+    
+    // ====================
+    // Customize some texts
+    // ====================
+    // Remove the // comment mark on the next line, to create the level for texts customization:
+    // cAppMenuOptions.texts = {};
+    //
+    // customize main title
+    // --------------------
+    // Replace xxx by the text for your main title
+    // remove the // comment mark on the next line, to create the main title customization:
+    // cAppMenuOptions.texts["main-title"] = "xxx";
+    //
+    // customize subtitle
+    // ------------------
+    // Replace xxx by the text for your sub title
+    // remove the // comment mark on the next line, to create the sub title customization:
+    // cAppMenuOptions.texts["sub-title"] = "xxx";
+    //
+    // customize texts of signon form 
+    // ------------------------------
+    // Remove the // comment mark on the next line, to create the level for signon texts customization:
+    // cAppMenuOptions.texts.signon = {};
+    
+    // Replace the English standard text on the right part of the assignments,
+    // remove the leading // comment mark on the modified lines
+    //  cAppMenuOptions.texts.signon["signon-invite"]="Enter your username and password";
+    //  cAppMenuOptions.texts.signon["user-label"]="Username";
+    //  cAppMenuOptions.texts.signon["password-label"]="Password";
+    //  cAppMenuOptions.texts.signon["newpassword-label"]="New Password";
+    //  cAppMenuOptions.texts.signon["confirmpassword-label"]="Confirm password";
+    //  cAppMenuOptions.texts.signon["login-button"]="Validate";
+    //  cAppMenuOptions.texts.signon["cancel-button"]="Cancel";
+    //  cAppMenuOptions.texts.signon["user-invite"]="ENTER YOUR USERNAME";
+    //  cAppMenuOptions.texts.signon["password-invite"]="ENTER YOUR PASSWORD";
+    //  cAppMenuOptions.texts.signon["newpassword-invite"]="Enter and confirm your new password";
+    //  cAppMenuOptions.texts.signon["newpassword-mismatch"]="NEW PASSWORDS DO NOT MATCH";
+    //  cAppMenuOptions.texts.signon["user-unknown"]="USER NAME UNKNOWN";
+    //  cAppMenuOptions.texts.signon["password-incorrect"]="INCORRECT PASSWORD";	
+    //  cAppMenuOptions.texts.signon["password-expired"]="Password expired";
+    //  cAppMenuOptions.texts.signon["newpassword-invalid"]="Newpassword is invalid.";
+    
+    
+    
+    // =====================================
+    // Customize transaction opening options
+    // =====================================
+    //
+    // open to a new window
+    // --------------------
+    // Use: Each time you click a line of the application menu, you will open a new window for the session of the selected transaction.
+    // remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.open_name = "_blank";
+    
+    //
+    // open to the current window
+    // --------------------------
+    // Use: Clicking a application menu item will replace the application menu page with the session of the selected transaction.
+    // remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.open_name = "_self";
+    
+    //
+    // open to a dedicated window
+    // --------------------------
+    // Use: Clicking a application menu item will open the session of the selected transaction in a dedicated window, replacing the previous session if any.
+    // This feature is based on a name for this window.
+    // Below, you can keep the name "VWA", or replace it with the name you want;
+    // remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.open_name = "VWA";
+    
+    //
+    // open specs
+    // ----------
+    // To add HTML standard specs of window opening,
+    // replace specs by your specs (e.g."location=no"),
+    // remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.open_specs = specs;
+    
+    
+     
+    //
+    // skip the application menu in case of a single transaction
+    // ----------------------------------------------------------
+    // Use: If the list contains one transaction only (this might happen after filtering the transactions),
+    // the menu display will be skiped
+    // and the window will be opened of the VIRTEL transaction session.
+    // Remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.skip_menu_if_single = true;
+    
+    
+    
+    
+    
+    
+    // =====================================
+    // Customize user selectable information
+    // =====================================
+    //
+    // Prepare the user selectable design
+    // ----------------------------------
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
+    // Some user selectable information can be taken into account to build it.
+    // Remove the // comment mark on the next line to prepare the user selectable design:
+    // cAppMenuOptions.userSelectable = {};
+    
+    //
+    // Prepare query parameters definition
+    // -----------------------------------
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window. 
+    // Some query parameters might be taken into account, e.g. (after the question mark):
+    // http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&rows=43&cols=132
+    // Remove the // comment mark on the next line to prepare the definition of query parameters:
+    // cAppMenuOptions.userSelectable.queryParameter = {};
+    
+    
+    //
+    // Define query parameters 
+    // -----------------------
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window. 
+    // Some query parameters might be taken into account, e.g. (after the question mark):
+    // http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&rows=43&cols=132
+    
+    // - Define the name of the query parameter
+    // Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
+    // Remove the // comment mark on the next line to Start the definition for this query parameter:
+    // cAppMenuOptions.userSelectable.queryParameter["xxx"] = {"label":"", "values":[]};
+    
+    // - Define the label to be displayed on the application menu for the query parameter
+    // Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
+    // Replace yyy by the label.
+    // Remove the // comment mark on the next line to Start the definition for this query parameter:
+    // cAppMenuOptions.userSelectable.queryParameter["xxx"]["label"] = "yyy";
+    
+    // - Define the values of the query parameter
+    // Duplicate this last line as much as the number of values you want to take into account.
+    // For each of those lines 
+    // - replace xxx by the value of your query parameter,
+    // - replace aaa by the label for the current value,
+    // - replace bbb by the current value.
+    // Remove the // comment mark on all of those lines to take these values into account:
+    // cAppMenuOptions.userSelectable.queryParameter["xxx"]["items"].push({"label":"aaaa", "value":"bbbb"});
+    
+    
+    // You can define an additionnal query parameter in the same way.
+    // You can define as much query parameters as you want, 
+    // provided that your VIRTEL is set up to take them into account.
+    
+    
+    
+    //
+    // Define templates 
+    // ----------------
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.  This url contains a template name.
+    // e.g. "WEB2AJAX.htm" in http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso
+    // e Various templates, even customer templates in case of specific projets, can be made available for the user selection.
+    
+    // - Start the templates definition
+    // Replace "xxx" by your label for templates.
+    // Remove the // comment mark on the next lines to Start the templates definition:
+    // cAppMenuOptions.userSelectable.template =  {"label":"", "items":[]};
+    
+    
+    // - Define the information for each template:
+    // Duplicate the last lines of this block ( with push("xxx")) as much as the number of templates you want to take into account.
+    // For each of those lines, replace 
+    // - "xxx" by the label for this template (e.g. "Standard VWA")
+    // - "yyy" by the path to the template (e.g. "../w2h/web2ajax.htm"), making sure that your VIRTEL is set up to take it into account.
+    // Remove the // comment mark on all of those lines to take these values into account:
+    // cAppMenuOptions.userSelectable.template.items.push({"label":"xxx", "value":"yyy"});
+    
+       
+       
+       
+       
+    // ==================
+    // Subdivide the list
+    // ==================
+    // Remove the // comment mark on the next line, to prepare a the first level of subdivision. 
+    // cAppMenuOptions.levels = [];
+    //
+    // Design a selection definition
+    // -----------------------------
+    // Remove the // comment mark on the next line, to prepare the selection definition number one ([0]), (to be transposed to [1] for the second, [2] for the third one and so on)
+    // cAppMenuOptions.levels[0] = {};
+    //
+    // - Define the title of the selection:
+    // Replace xxx by the text for your selection title
+    // remove the // comment mark on the next line to define this title.
+    // cAppMenuOptions.levels[0].title = "xxx";
+    //
+    // - Define the criteria of the selection:
+    // Remove the // comment mark leading the line with the criteria you choose for your selection
+    // cAppMenuOptions.levels[0].criteria = "status";       // status of the transaction
+    // cAppMenuOptions.levels[0].criteria = "tran";         // external name of the VIRTEL transaction
+    // cAppMenuOptions.levels[0].criteria = "application";  // application of the VIRTEL transaction
+    // cAppMenuOptions.levels[0].criteria = "description";  // description of the VIRTEL transaction
+    //
+    // - Define the regular expression of the selection:
+    // Replace xxx by the regular expression for your selection 
+    // Examples:
+    //   /cics/      // to select the transactions where the criteria contains "cics" (case sensitive)
+    //   /cics/i     // to select the transactions where the criteria contains "cics" (case insensitive)
+    //   /^cics/     // to select the transactions where the criteria starts with "cics"
+    //   /cics$/     // to select the transactions where the criteria ends with "cics"
+    
+    // remove the // comment mark on the next line to define this regular expression
+    // cAppMenuOptions.levels[0].regexp = /xxx/;
+    
+    // - Define an additional level of subdivision:
+    // Advanced!
+    // You could divide further this selection, by adding a level, and defining it following the same instructiuons at the next level, and add recursively further levels.
+    // remove the // comment mark on the next line to start this next level definition:
+    // cAppMenuOptions.levels[0].levels = [];
+    
+    
+    
+    // You can add a second ([1]) definition following the same instructions.
+    // If an additional definition does not contain a criteria,
+    // all the remaining list transactions will be kept.
+
 
 .. index::   
    single: Virtel FTP Client; FTP
@@ -4311,3 +4714,15 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
 .. |image73| image:: images/media/image73.png
+.. |image74| image:: images/media/image74.png
+.. |image75| image:: images/media/image75.png
+.. |image76| image:: images/media/image76.png
+.. |image77| image:: images/media/image77.png
+.. |image78| image:: images/media/image78.png
+.. |image79| image:: images/media/image79.png
+.. |image80| image:: images/media/image80.png
+.. |image81| image:: images/media/image81.png
+.. |image82| image:: images/media/image82.png
+.. |image83| image:: images/media/image83.png
+.. |image84| image:: images/media/image84.png
+.. |image85| image:: images/media/image85.png
