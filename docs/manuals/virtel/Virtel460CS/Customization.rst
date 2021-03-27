@@ -3759,6 +3759,77 @@ Problems
 Should your user USSATAB fail to load , or breaks one of the caveats listed above the the default USSTAB USSVIRT will be loaded. This default module can be overridden by specifying USSTAB=name in the TCT. You could provide a USSMSG10 help page directing users to a contact number, for example. If the default page is shown, check the VIRTEL log for error messages. Normally when the user USSTAB module fails an error message is written to the VIRTEL log.
 
 .. index::   
+   single: Virtel Tier Menu; cAppMenu Customization
+
+cAppMenu Customization
+======================
+
+Tier Menu Design Overview
+-------------------------
+
+The Default Application Menu can be customized to the NEW enhanced feature!  The Virtel Administrator can now choose to emulate any 3270 Session Manager; making Virtel a viable replacement for any Session Manager product.
+
+Default Virtel Application Menu design
+--------------------------------------
+
+|image70|
+  
+*Default Virtel Application Menu*
+
+The New Virtel Tier Menu Style
+------------------------------
+
+The application user list displayed after logon is dynamically linked to their security profile, i.e.; RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list in collapsible (>) expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications. 
+
+|image71|
+        
+*cAppMenu Application Tier Menu*
+
+Required files for Tier Menu Support
+------------------------------------
+For the purpose of this document, the value [key name] can be replaced with your company name. In this document, we use the key name equal to "level3".   
+
+|image72|
+*Example of required files using a key name of level3*
+
+::
+
+    appmenu.[key name].js       Defines the custome values of the parameters used on the cAppMenu.htm page
+    custCSS.[key name].js       CSS customization for company logo    
+    option.[key name].js        Setup the default files used for custCSS.level3.css and appmenu.level3.js
+    syspertec.png               Company logo
+
+Customizing the appmenu.[key name].js JavaScript
+------------------------------------------------
+
+Key Values Criteria Types
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Key values for the Tier Level display are triggered by any of the following criteria, as documented in the appmenu.client.js script: 
+
+* status; 
+* tran; 
+* application; 
+* description 
+
+The application contains 4 columes of data :-
+
+::
+
+    1   Key="status"
+    2   Key="tran"
+    3   Key="application"
+    4   Key="description"
+
+Each key can be taken as a criteria for a level selection    
+
+Virtel cAppMenu Tier Menu description
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image73|
+
+
+.. index::   
    single: Virtel FTP Client; FTP
 
 Virtel FTP Client
@@ -4236,3 +4307,7 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image67| image:: images/media/image67.png
 .. |image68| image:: images/media/image68.png
 .. |image69| image:: images/media/image69.png
+.. |image70| image:: images/media/image70.png
+.. |image71| image:: images/media/image71.png
+.. |image72| image:: images/media/image72.png
+.. |image73| image:: images/media/image73.png

@@ -2904,7 +2904,42 @@ Printing the VIRSTAT SMF record
 
 The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
 
+The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print SMF records that have been written to the SMF LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM.
+
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
+
+
+Structure of the Binary STATS record.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The segment within the SMF record starts at offset X'0E' within the record.  
+
+::
+
+    *------------------------------------------------------------* 
+    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT3)    
+    *------------------------------------------------------------* 
+    *                                                              
+    BSTATS   DSECT                                                 
+    B$LUNAME DS    CL8                     NOM DU TERMINAL         
+    B$DATE   DS    PL4                     DATE STATISTIQUES       
+    B$TIME   DS    PL4                     HEURE STATISTIQUES      
+    B$CUMPAR DS    CL1                     B Binaire HTTP entrant  
+             DS    CL3                     filler                  
+    B$IPADDR DS    CL40  (was 15)          CALLER IP ADDRESS           
+    B$ENTRY  DS    CL8                     ENTRY POINT             
+    B$TRANS  DS    CL8                     TRANSACTION             
+    B$RULE   DS    CL8                     RULE (default to LINE)  
+    B$STATUS DS    CL4                     HTTP STATUS             
+    B$RELAY  DS    CL8                     NOM DU RELAY            
+    B$SPENT  DS    XL4                     Dur e d'appel en 1/100s 
+    B$BYTRD  DS    XL4                     BYTES RECEIVED          
+    B$BYTST  DS    XL4                     BYTES SENT              
+    B$USERID DS    CL20                    USERID                  
+    B$PARM   DS    CL16                    PARAMETER                   
+    B$PXYADR DS    CL40                    PROXY IP ADDRESS        
+            ORG   BSTATS+255                                      
+    LBSTATS  EQU   *-BSTATS                LONGUEUR ENREGISTREMENT 
 
 
 Appendix

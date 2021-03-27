@@ -113,6 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#system-management">System Management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-msg10-usstab">Virtel MSG10 USSTAB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cappmenu-customization">cAppMenu Customization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-ftp-client">Virtel FTP Client</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#appendix">Appendix</a></li>
@@ -2950,8 +2951,63 @@ VIR0223I UNLOAD ENDED
 <p>Should your user USSATAB fail to load , or breaks one of the caveats listed above the the default USSTAB USSVIRT will be loaded. This default module can be overridden by specifying USSTAB=name in the TCT. You could provide a USSMSG10 help page directing users to a contact number, for example. If the default page is shown, check the VIRTEL log for error messages. Normally when the user USSTAB module fails an error message is written to the VIRTEL log.</p>
 </div>
 </div>
+<div class="section" id="cappmenu-customization">
+<span id="index-129"></span><h2>cAppMenu Customization<a class="headerlink" href="#cappmenu-customization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tier-menu-design-overview">
+<h3>Tier Menu Design Overview<a class="headerlink" href="#tier-menu-design-overview" title="Permalink to this headline">¶</a></h3>
+<p>The Default Application Menu can be customized to the NEW enhanced feature!  The Virtel Administrator can now choose to emulate any 3270 Session Manager; making Virtel a viable replacement for any Session Manager product.</p>
+</div>
+<div class="section" id="default-virtel-application-menu-design">
+<h3>Default Virtel Application Menu design<a class="headerlink" href="#default-virtel-application-menu-design" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image70" src="../../../_images/image708.png" /></p>
+<p><em>Default Virtel Application Menu</em></p>
+</div>
+<div class="section" id="the-new-virtel-tier-menu-style">
+<h3>The New Virtel Tier Menu Style<a class="headerlink" href="#the-new-virtel-tier-menu-style" title="Permalink to this headline">¶</a></h3>
+<p>The application user list displayed after logon is dynamically linked to their security profile, i.e.; RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list in collapsible (&gt;) expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications.</p>
+<p><img alt="image71" src="../../../_images/image7117.png" /></p>
+<p><em>cAppMenu Application Tier Menu</em></p>
+</div>
+<div class="section" id="required-files-for-tier-menu-support">
+<h3>Required files for Tier Menu Support<a class="headerlink" href="#required-files-for-tier-menu-support" title="Permalink to this headline">¶</a></h3>
+<p>For the purpose of this document, the value [key name] can be replaced with your company name. In this document, we use the key name equal to “level3”.</p>
+<p><img alt="image72" src="../../../_images/image7212.png" />
+<em>Example of required files using a key name of level3</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">Defines</span> <span class="n">the</span> <span class="n">custome</span> <span class="n">values</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parameters</span> <span class="n">used</span> <span class="n">on</span> <span class="n">the</span> <span class="n">cAppMenu</span><span class="o">.</span><span class="n">htm</span> <span class="n">page</span>
+<span class="n">custCSS</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">CSS</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
+<span class="n">option</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>        <span class="n">Setup</span> <span class="n">the</span> <span class="n">default</span> <span class="n">files</span> <span class="n">used</span> <span class="k">for</span> <span class="n">custCSS</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">css</span> <span class="ow">and</span> <span class="n">appmenu</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">js</span>
+<span class="n">syspertec</span><span class="o">.</span><span class="n">png</span>               <span class="n">Company</span> <span class="n">logo</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-the-appmenu-key-name-js-javascript">
+<h3>Customizing the appmenu.[key name].js JavaScript<a class="headerlink" href="#customizing-the-appmenu-key-name-js-javascript" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="key-values-criteria-types">
+<h4>Key Values Criteria Types<a class="headerlink" href="#key-values-criteria-types" title="Permalink to this headline">¶</a></h4>
+<p>The Key values for the Tier Level display are triggered by any of the following criteria, as documented in the appmenu.client.js script:</p>
+<ul class="simple">
+<li>status;</li>
+<li>tran;</li>
+<li>application;</li>
+<li>description</li>
+</ul>
+<p>The application contains 4 columes of data :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;status&quot;</span>
+<span class="mi">2</span>   <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;tran&quot;</span>
+<span class="mi">3</span>   <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;application&quot;</span>
+<span class="mi">4</span>   <span class="n">Key</span><span class="o">=</span><span class="s2">&quot;description&quot;</span>
+</pre></div>
+</div>
+<p>Each key can be taken as a criteria for a level selection</p>
+</div>
+<div class="section" id="virtel-cappmenu-tier-menu-description">
+<h4>Virtel cAppMenu Tier Menu description<a class="headerlink" href="#virtel-cappmenu-tier-menu-description" title="Permalink to this headline">¶</a></h4>
+<p><img alt="image73" src="../../../_images/image7311.png" /></p>
+</div>
+</div>
+</div>
 <div class="section" id="virtel-ftp-client">
-<span id="index-129"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
+<span id="index-130"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL Web Access v4.59 and above supports a FTP file transfer interface through the use of FTP command templates and the local FTP client. The Virtel FTP package consists of the following elements:</p>
@@ -3214,7 +3270,7 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="faqs">
-<span id="index-130"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
+<span id="index-131"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-specify-a-codepage-in-a-url">
 <h3>How to specify a codepage in a URL<a class="headerlink" href="#how-to-specify-a-codepage-in-a-url" title="Permalink to this headline">¶</a></h3>
 <p>Some users want to see square brackets displayed in their VWA presentation, for example “C” programmers. The default UTF8 / MVS codepage translation doesn’t transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.</p>
@@ -3223,16 +3279,16 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="how-to-use-the-tso-omvs-panel-command-with-vwa">
-<span id="index-131"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
+<span id="index-132"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
 <p>TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.</p>
 <p>Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.</p>
 </div>
 <div class="section" id="can-virtel-web-access-emulate-z-os-operator-consoles">
-<span id="index-132"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
+<span id="index-133"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
 <p>Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.</p>
 </div>
 <div class="section" id="can-i-customize-hotspot-recognition">
-<span id="index-133"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
+<span id="index-134"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
 <p>The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
 VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
