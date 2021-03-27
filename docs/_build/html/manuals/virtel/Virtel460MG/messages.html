@@ -7000,7 +7000,8 @@ Contact technical support.</p>
 <dt>Module</dt>
 <dd>VIRNATV</dd>
 <dt>Meaning</dt>
-<dd><p class="first">An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:</p>
+<dd><p class="first">An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+..</p>
 <blockquote class="last">
 <div><ul class="simple">
 <li>00000001 : Invalid pseudo terminal.</li>
@@ -7016,6 +7017,31 @@ Contact technical support.</p>
 <dd>If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.</dd>
 </dl>
 </div>
+</div>
+<div class="section" id="messages-virnxxxx">
+<h4>Messages VIRNXxxx<a class="headerlink" href="#messages-virnxxxx" title="Permalink to this headline">¶</a></h4>
+<p>Support of XOT (X25 over TCPIP) Error codes.</p>
+<p>VIRNX98E linename ERROR errcode RECEIVING FROM SOCKET sockno</p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIRNXTV</dd>
+<dt>Meaning</dt>
+<dd><p class="first">An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+..</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>00000001 : No session or invalid pseudo terminal.</li>
+<li>00000002 : Unablet to identified message with an active session.</li>
+<li>00000003 : Line not linked or no more psuedo-terminals available.</li>
+<li>00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.</li>
+<li>00000005 : Socket closed.</li>
+<li>00000006 : XOT Protocol violation. Bad header or invalid length.</li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>Action</dt>
+<dd>If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.</dd>
+</dl>
 </div>
 <div class="section" id="messages-virp1xxx">
 <h4>Messages VIRP1xxx<a class="headerlink" href="#messages-virp1xxx" title="Permalink to this headline">¶</a></h4>

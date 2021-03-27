@@ -1082,8 +1082,8 @@ You can hide the language icon by using the following CSS orders included in a c
 
 ::
 
-    #Tool Bar td#Tool Bar-lang { width: 1px; }
-    #Tool Bar td#Tool Bar-lang a { display: none; }
+    #Tool Bar td#toolbar-lang { width: 1px; }
+    #Tool Bar td#toolbar-lang a { display: none; }
 
 *Example to hide the language icon*
 

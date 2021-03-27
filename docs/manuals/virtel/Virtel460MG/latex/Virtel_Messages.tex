@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Dec 31, 2020}
+\date{Mar 27, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -8742,6 +8742,7 @@ VIRNATV
 
 \item[{Meaning}] \leavevmode
 An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+..
 \begin{itemize}
 \item {} 
 00000001 : Invalid pseudo terminal.
@@ -8760,6 +8761,45 @@ An error occurred when sending a message to the native IP line whose external na
 
 \item {} 
 00000006 : Session cleared before message could be sent.
+
+\end{itemize}
+
+\item[{Action}] \leavevmode
+If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
+
+\end{description}
+
+
+\subsection{Messages VIRNXxxx}
+\label{\detokenize{messages:messages-virnxxxx}}
+Support of XOT (X25 over TCPIP) Error codes.
+
+VIRNX98E linename ERROR errcode RECEIVING FROM SOCKET sockno
+\begin{description}
+\item[{Module}] \leavevmode
+VIRNXTV
+
+\item[{Meaning}] \leavevmode
+An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+..
+\begin{itemize}
+\item {} 
+00000001 : No session or invalid pseudo terminal.
+
+\item {} 
+00000002 : Unablet to identified message with an active session.
+
+\item {} 
+00000003 : Line not linked or no more psuedo-terminals available.
+
+\item {} 
+00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
+
+\item {} 
+00000005 : Socket closed.
+
+\item {} 
+00000006 : XOT Protocol violation. Bad header or invalid length.
 
 \end{itemize}
 

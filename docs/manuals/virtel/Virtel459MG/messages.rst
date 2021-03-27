@@ -5609,6 +5609,29 @@ Meaning
 Action
     If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
 
+Messages VIRNXxxx
+^^^^^^^^^^^^^^^^^
+    
+Support of XOT (X25 over TCPIP) Error codes.
+    
+VIRNX98E linename ERROR errcode RECEIVING FROM SOCKET sockno
+    
+Module 
+    VIRNXTV
+Meaning
+    An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+    ..
+    
+        - 00000001 : No session or invalid pseudo terminal.
+        - 00000002 : Unablet to identified message with an active session.
+        - 00000003 : Line not linked or no more psuedo-terminals available.
+        - 00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
+        - 00000005 : Socket closed.
+        - 00000006 : XOT Protocol violation. Bad header or invalid length.
+    
+Action
+    If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
+    
 Messages VIRP1xxx
 ^^^^^^^^^^^^^^^^^
 

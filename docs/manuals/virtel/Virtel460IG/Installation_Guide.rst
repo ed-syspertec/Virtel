@@ -1486,7 +1486,7 @@ Jobs VIRTLIB, VIRTCIL, VIRTSSL, VIRTVS, VIRTCT, VIRMOD, and VIRTAPPL must be exe
 Sites upgrading from a previous version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRTvrr.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files.
+Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRTvrr.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files except SAMPTRSF. **You must install the new version of SAMPTRSF** as delivered with the new version of Virtel.
 
 Sites using VIRTEL Web Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
