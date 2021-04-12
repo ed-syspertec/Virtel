@@ -13,9 +13,6 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
-
-
-
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -30,7 +27,24 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\usepackage{sphinxmessages}
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
+\makeatletter
+\def\fnum@figure{\figurename\thefigure{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\tablename}{Table }}
+\makeatletter
+\def\fnum@table{\tablename\thetable{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
+
+\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
+\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
+\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
+\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
+\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
+
+\addto\extrasenglish{\def\pageautorefname{page}}
+
 \setcounter{tocdepth}{2}
 
 
@@ -42,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Jul 14, 2019}
+\date{Apr 12, 2021}
 \release{4.59}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2529,7 +2543,7 @@ VIR0000
 Error code xx has occurred when generating the VSAM buffer pools.
 
 \item[{Action}] \leavevmode
-Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X‘08’ indicates that the memory allocated to VIRTEL is insufficient.
+Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X’08’ indicates that the memory allocated to VIRTEL is insufficient.
 
 \end{description}
 
@@ -2543,7 +2557,7 @@ VIR0000
 VSAM error xx occurred when opening file filename.
 
 \item[{Action}] \leavevmode
-Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X‘5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
+Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X’5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
 
 \end{description}
 
@@ -5559,6 +5573,13 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 
 \end{description}
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SAF} \PYG{n}{RC}  \PYG{n}{RACF} \PYG{n}{RC}     \PYG{n}{Reason}  \PYG{n}{Meaning}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{8}           \PYG{l+m+mi}{4}       \PYG{n}{Input} \PYG{n}{parameter} \PYG{n+nb}{list} \PYG{n}{error}\PYG{o}{.}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{8}           \PYG{l+m+mi}{10}      \PYG{n}{Virtel} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{authorized} \PYG{n}{to} \PYG{n}{generate} \PYG{n}{Pass} \PYG{n}{tickets}\PYG{o}{.} \PYG{n}{See} \PYG{n}{message} \PYG{n}{ICH408I} \PYG{o+ow}{in} \PYG{n}{SYSLOG}\PYG{o}{.}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{10}          \PYG{l+m+mi}{1}\PYG{n}{C}      \PYG{n}{There} \PYG{o+ow}{is} \PYG{n}{no} \PYG{n}{profile} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{PTKTDATA} \PYG{k}{class} \PYG{n+nc}{for} \PYG{n}{the} \PYG{n}{application} \PYG{o+ow}{or} \PYG{n}{PTKTDATA} \PYG{k}{class} \PYG{n+nc}{is} \PYG{o+ow}{not} \PYG{n}{active}\PYG{o}{.}
+\end{sphinxVerbatim}
+
 
 \subsubsection{VIR1551I termid(luname) CONNECTED TO “applname”}
 \label{\detokenize{messages:vir1551i-termid-luname-connected-to-applname}}\begin{description}
@@ -8542,6 +8563,45 @@ An error occurred when sending a message to the native IP line whose external na
 
 \item {} 
 00000006 : Session cleared before message could be sent.
+
+\end{itemize}
+
+\item[{Action}] \leavevmode
+If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
+
+\end{description}
+
+
+\subsection{Messages VIRNXxxx}
+\label{\detokenize{messages:messages-virnxxxx}}
+Support of XOT (X25 over TCPIP) Error codes.
+
+VIRNX98E linename ERROR errcode RECEIVING FROM SOCKET sockno
+\begin{description}
+\item[{Module}] \leavevmode
+VIRNXTV
+
+\item[{Meaning}] \leavevmode
+An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+..
+\begin{itemize}
+\item {} 
+00000001 : No session or invalid pseudo terminal.
+
+\item {} 
+00000002 : Unablet to identified message with an active session.
+
+\item {} 
+00000003 : Line not linked or no more psuedo-terminals available.
+
+\item {} 
+00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
+
+\item {} 
+00000005 : Socket closed.
+
+\item {} 
+00000006 : XOT Protocol violation. Bad header or invalid length.
 
 \end{itemize}
 

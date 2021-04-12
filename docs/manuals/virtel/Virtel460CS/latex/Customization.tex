@@ -56,7 +56,7 @@
 
 
 \title{Virtel Customization}
-\date{Mar 27, 2021}
+\date{Apr 12, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4054,9 +4054,9 @@ For the purpose of this document, the value {[}key name{]} can be replaced with 
 \sphinxstyleemphasis{Example of required files using a key name of level3}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{appmenu}\PYG{o}{.}\PYG{p}{[}\PYG{n}{key} \PYG{n}{name}\PYG{p}{]}\PYG{o}{.}\PYG{n}{js}       \PYG{n}{Defines} \PYG{n}{the} \PYG{n}{custome} \PYG{n}{values} \PYG{n}{of} \PYG{n}{the} \PYG{n}{parameters} \PYG{n}{used} \PYG{n}{on} \PYG{n}{the} \PYG{n}{cAppMenu}\PYG{o}{.}\PYG{n}{htm} \PYG{n}{page}
+\PYG{n}{appmenu}\PYG{o}{.}\PYG{p}{[}\PYG{n}{key} \PYG{n}{name}\PYG{p}{]}\PYG{o}{.}\PYG{n}{js}       \PYG{n}{Custom} \PYG{n}{parameter} \PYG{n}{values} \PYG{k}{for} \PYG{n}{the} \PYG{n}{cAppMenu}\PYG{o}{.}\PYG{n}{htm} \PYG{n}{page}
 \PYG{n}{custCSS}\PYG{o}{.}\PYG{p}{[}\PYG{n}{key} \PYG{n}{name}\PYG{p}{]}\PYG{o}{.}\PYG{n}{js}       \PYG{n}{CSS} \PYG{n}{customization} \PYG{k}{for} \PYG{n}{company} \PYG{n}{logo}
-\PYG{n}{option}\PYG{o}{.}\PYG{p}{[}\PYG{n}{key} \PYG{n}{name}\PYG{p}{]}\PYG{o}{.}\PYG{n}{js}        \PYG{n}{Setup} \PYG{n}{the} \PYG{n}{default} \PYG{n}{files} \PYG{n}{used} \PYG{k}{for} \PYG{n}{custCSS}\PYG{o}{.}\PYG{n}{level3}\PYG{o}{.}\PYG{n}{css} \PYG{o+ow}{and} \PYG{n}{appmenu}\PYG{o}{.}\PYG{n}{level3}\PYG{o}{.}\PYG{n}{js}
+\PYG{n}{option}\PYG{o}{.}\PYG{p}{[}\PYG{n}{key} \PYG{n}{name}\PYG{p}{]}\PYG{o}{.}\PYG{n}{js}        \PYG{n}{Option} \PYG{n}{file} \PYG{n}{to} \PYG{n}{define} \PYG{n}{appmenu} \PYG{o+ow}{and} \PYG{n}{custCSS} \PYG{n}{files}
 \PYG{n}{syspertec}\PYG{o}{.}\PYG{n}{png}               \PYG{n}{Company} \PYG{n}{logo}
 \end{sphinxVerbatim}
 
@@ -4102,7 +4102,10 @@ Each key can be taken as a criteria for a level selection
 \subsubsection{Modify the \sphinxstyleemphasis{Main} and \sphinxstyleemphasis{Sub} titles}
 \label{\detokenize{Customization:modify-the-main-and-sub-titles}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{var} \PYG{n}{cAppMenuOptions} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}
+\PYG{n}{var} \PYG{n}{cAppMenuOptions} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{close\PYGZus{}VWA\PYGZus{}when\PYGZus{}disconnects}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{n}{true}
+\PYG{p}{\PYGZcb{}}
+
 \PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{texts}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{main\PYGZhy{}title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Virtel Application Tier Menu}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{sub\PYGZhy{}title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Syspertec Virtel V4.60 Application Menu}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
@@ -4146,19 +4149,19 @@ Level  1 defined as CICS Development Regions.  Using KEY \sphinxstyleemphasis{tr
 \end{sphinxVerbatim}
 
 \begin{sphinxadmonition}{note}{Note:}
-Repeat the above code for each required level. See the sample appmenu.level3.js file provide by SYSPERTEC
+Repeat the above code for each required level. See the sample appmenu.sample.js at the end of this section.
 \end{sphinxadmonition}
 
 
 \subsubsection{Setup Final Level as Other Applications if Required}
 \label{\detokenize{Customization:setup-final-level-as-other-applications-if-required}}
-The final Level (using my example in figure 2), level 5 would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or    merely as a temporary level to show remaining applications that need to be added to a previously defined level.
+The final Level, level 6,  would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or merely as a temporary level to show remaining applications that need to be added to a previously defined level. Note that there is no “criteria” or “regexp” properties.
 
 \sphinxincludegraphics{{image76}.png}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{Other} \PYG{n}{Applications}  \PYG{o}{\PYGZhy{}} \PYG{n}{criteria} \PYG{p}{:} \PYG{n}{the} \PYG{n}{VIRTEL} \PYG{n}{transaction} \PYG{n}{names} \PYG{o+ow}{not} \PYG{o+ow}{in} \PYG{n+nb}{any} \PYG{n}{previous} \PYG{n}{levels}\PYG{l+s+s2}{\PYGZdq{}}
-\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]} \PYG{o}{=}  \PYG{p}{\PYGZob{}}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]} \PYG{o}{=}  \PYG{p}{\PYGZob{}}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Other Sessions}\PYG{l+s+s2}{\PYGZdq{}}
 
         \PYG{p}{\PYGZcb{}}\PYG{p}{;}
@@ -4191,8 +4194,8 @@ Create a Cascading Style sheet using the following code with a .jpeg or .png fil
 \end{sphinxVerbatim}
 
 
-\section{Create an option.{[}key name{]}.js JavaScript file}
-\label{\detokenize{Customization:create-an-option-key-name-js-javascript-file}}
+\section{Create an option.{[}key name{]}.js file}
+\label{\detokenize{Customization:create-an-option-key-name-js-file}}
 Modify the following file, change {[}key name{]} to your company name.  This value {[}key name{]}  will be used in step “Update the Required Virtel Transactions”
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4204,8 +4207,8 @@ var oCustom=\PYGZob{}
 \end{sphinxVerbatim}
 
 
-\section{Company Logo Syspertec.png}
-\label{\detokenize{Customization:company-logo-syspertec-png}}
+\section{Create a Company Logo file}
+\label{\detokenize{Customization:create-a-company-logo-file}}
 Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.
 
 \sphinxincludegraphics{{image78}.png}
@@ -4216,7 +4219,7 @@ Download a company logo that will look best on the cAppMenu application Menu, sa
 
 \subsection{CLI-90}
 \label{\detokenize{Customization:cli-90}}
-Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your {[}key name{]}, for example level3. In the example below the value CLIENT has been used.
+Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your {[}key name{]}, for example level3. In the example below the value CLIENT has been used as the option.
 
 \sphinxincludegraphics{{image79}.png}
 
@@ -4230,7 +4233,7 @@ Modify the default Entry Point transaction CLI-00 and update the TIOA at logon f
 
 \section{Update the CLI-DIR directoy}
 \label{\detokenize{Customization:update-the-cli-dir-directoy}}
-Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR
+Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.
 
 \sphinxincludegraphics{{image81}.png}
 
@@ -4241,6 +4244,80 @@ From the Administration Panel, select the customized files and Drop \& Drag them
 \begin{sphinxadmonition}{note}{Note:}
 Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.
 \end{sphinxadmonition}
+
+
+\section{Example of appmenu.{[}keyname{]}.js}
+\label{\detokenize{Customization:example-of-appmenu-keyname-js}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{var} \PYG{n}{cAppMenuOptions} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{close\PYGZus{}VWA\PYGZus{}when\PYGZus{}disconnects}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{n}{true}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Titles}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{texts}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{main\PYGZhy{}title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Virtel Sample Application Tier Menu}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{sub\PYGZhy{}title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Syspertec Virtel V4.60 Application Menu}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{First} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{cicsp} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CICS Production Regions}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{cicsp}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Second} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{cicsd} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CICS Development Regions}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{cicsd}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Third} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{cicst} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CICS Test Regions}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{cicst}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Fourth} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{3}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{tsop} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{TSO Production Systems}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{tsop}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Fifth} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{4}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{tsod} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{TSO Development Systems}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{tsod}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Sixth} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{5}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{n}{name} \PYG{k}{with} \PYG{n}{tsod} \PYG{n}{becomes} \PYG{n}{part} \PYG{n}{of} \PYG{n}{this} \PYG{n}{level}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Regular} \PYG{n}{experession} \PYG{o+ow}{is} \PYG{n}{used} \PYG{n}{to} \PYG{n+nb}{filter} \PYG{n}{out} \PYG{n}{qualifying} \PYG{n}{applications}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{VTAM USSTAB Sessions}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{criteria}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tran}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{regexp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{o}{/}\PYG{n}{vtam}\PYG{o}{/}\PYG{n}{i}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Final} \PYG{n}{Group} \PYG{p}{(}\PYG{n}{Level} \PYG{l+m+mi}{6}\PYG{p}{)}\PYG{o}{.} \PYG{n}{Any} \PYG{n}{transaction} \PYG{o+ow}{not} \PYG{n}{caught} \PYG{n}{by} \PYG{n}{the} \PYG{n}{previous} \PYG{n}{levels}\PYG{o}{.}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{Note} \PYG{n}{that} \PYG{n}{the} \PYG{n}{Criteria} \PYG{o+ow}{and} \PYG{n}{Regular} \PYG{n}{experession} \PYG{n}{properties} \PYG{n}{are} \PYG{o+ow}{not} \PYG{n}{used}\PYG{o}{.}
+\PYG{n}{cAppMenuOptions}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{levels}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Other Sessions}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\newpage
 
 
 \section{Full reference document for cAppMenuOptions object}

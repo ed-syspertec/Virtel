@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Mar 27, 2021}
+\date{Apr 12, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5664,6 +5664,13 @@ Examine the SAF and RACF return codes and the RACF reason code to determine the 
 For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R\_ticketserv”. Some common codes are:
 
 \end{description}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SAF} \PYG{n}{RC}  \PYG{n}{RACF} \PYG{n}{RC}     \PYG{n}{Reason}  \PYG{n}{Meaning}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{8}           \PYG{l+m+mi}{4}       \PYG{n}{Input} \PYG{n}{parameter} \PYG{n+nb}{list} \PYG{n}{error}\PYG{o}{.}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{8}           \PYG{l+m+mi}{10}      \PYG{n}{Virtel} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{authorized} \PYG{n}{to} \PYG{n}{generate} \PYG{n}{Pass} \PYG{n}{tickets}\PYG{o}{.} \PYG{n}{See} \PYG{n}{message} \PYG{n}{ICH408I} \PYG{o+ow}{in} \PYG{n}{SYSLOG}\PYG{o}{.}
+\PYG{l+m+mi}{8}       \PYG{l+m+mi}{10}          \PYG{l+m+mi}{1}\PYG{n}{C}      \PYG{n}{There} \PYG{o+ow}{is} \PYG{n}{no} \PYG{n}{profile} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{PTKTDATA} \PYG{k}{class} \PYG{n+nc}{for} \PYG{n}{the} \PYG{n}{application} \PYG{o+ow}{or} \PYG{n}{PTKTDATA} \PYG{k}{class} \PYG{n+nc}{is} \PYG{o+ow}{not} \PYG{n}{active}\PYG{o}{.}
+\end{sphinxVerbatim}
 
 
 \subsubsection{VIR1551I termid(luname) CONNECTED TO “applname”}

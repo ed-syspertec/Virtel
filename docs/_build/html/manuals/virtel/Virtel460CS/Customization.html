@@ -2994,9 +2994,9 @@ VIR0223I UNLOAD ENDED
 <p>For the purpose of this document, the value [key name] can be replaced with your company name. In this document, we use the key name equal to “level3”.</p>
 <p><img alt="image72" src="../../../_images/image7212.png" />
 <em>Example of required files using a key name of level3</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">Defines</span> <span class="n">the</span> <span class="n">custome</span> <span class="n">values</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parameters</span> <span class="n">used</span> <span class="n">on</span> <span class="n">the</span> <span class="n">cAppMenu</span><span class="o">.</span><span class="n">htm</span> <span class="n">page</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">Custom</span> <span class="n">parameter</span> <span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">cAppMenu</span><span class="o">.</span><span class="n">htm</span> <span class="n">page</span>
 <span class="n">custCSS</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">CSS</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
-<span class="n">option</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>        <span class="n">Setup</span> <span class="n">the</span> <span class="n">default</span> <span class="n">files</span> <span class="n">used</span> <span class="k">for</span> <span class="n">custCSS</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">css</span> <span class="ow">and</span> <span class="n">appmenu</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">js</span>
+<span class="n">option</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>        <span class="n">Option</span> <span class="n">file</span> <span class="n">to</span> <span class="n">define</span> <span class="n">appmenu</span> <span class="ow">and</span> <span class="n">custCSS</span> <span class="n">files</span>
 <span class="n">syspertec</span><span class="o">.</span><span class="n">png</span>               <span class="n">Company</span> <span class="n">logo</span>
 </pre></div>
 </div>
@@ -3026,7 +3026,10 @@ VIR0223I UNLOAD ENDED
 <p><img alt="image73" src="../../../_images/image7311.png" /></p>
 <div class="section" id="modify-the-main-and-sub-titles">
 <h5>Modify the <em>Main</em> and <em>Sub</em> titles<a class="headerlink" href="#modify-the-main-and-sub-titles" title="Permalink to this headline">¶</a></h5>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;close_VWA_when_disconnects&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;main-title&quot;</span><span class="p">:</span><span class="s2">&quot;Virtel Application Tier Menu&quot;</span><span class="p">,</span>
         <span class="s2">&quot;sub-title&quot;</span><span class="p">:</span><span class="s2">&quot;Syspertec Virtel V4.60 Application Menu&quot;</span><span class="p">,</span>
@@ -3064,15 +3067,15 @@ cAppMenuOptions[&quot;levels&quot;][0] =  {
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Repeat the above code for each required level. See the sample appmenu.level3.js file provide by SYSPERTEC</p>
+<p class="last">Repeat the above code for each required level. See the sample appmenu.sample.js at the end of this section.</p>
 </div>
 </div>
 <div class="section" id="setup-final-level-as-other-applications-if-required">
 <h5>Setup Final Level as Other Applications if Required<a class="headerlink" href="#setup-final-level-as-other-applications-if-required" title="Permalink to this headline">¶</a></h5>
-<p>The final Level (using my example in figure 2), level 5 would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or    merely as a temporary level to show remaining applications that need to be added to a previously defined level.</p>
+<p>The final Level, level 6,  would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or merely as a temporary level to show remaining applications that need to be added to a previously defined level. Note that there is no “criteria” or “regexp” properties.</p>
 <p><img alt="image76" src="../../../_images/image7610.png" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Other</span> <span class="n">Applications</span>  <span class="o">-</span> <span class="n">criteria</span> <span class="p">:</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">names</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">previous</span> <span class="n">levels</span><span class="s2">&quot;</span>
-<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Other Sessions&quot;</span>
 
         <span class="p">};</span>
@@ -3103,8 +3106,8 @@ cAppMenuOptions[&quot;levels&quot;][0] =  {
 </pre></div>
 </div>
 </div>
-<div class="section" id="create-an-option-key-name-js-javascript-file">
-<h3>Create an option.[key name].js JavaScript file<a class="headerlink" href="#create-an-option-key-name-js-javascript-file" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-an-option-key-name-js-file">
+<h3>Create an option.[key name].js file<a class="headerlink" href="#create-an-option-key-name-js-file" title="Permalink to this headline">¶</a></h3>
 <p>Modify the following file, change [key name] to your company name.  This value [key name]  will be used in step “Update the Required Virtel Transactions”</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// $Id: option.level3.js 4809 2018-10-10 14:38:13Z riou $
 var oCustom={
@@ -3114,8 +3117,8 @@ var oCustom={
 </pre></div>
 </div>
 </div>
-<div class="section" id="company-logo-syspertec-png">
-<h3>Company Logo Syspertec.png<a class="headerlink" href="#company-logo-syspertec-png" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="create-a-company-logo-file">
+<h3>Create a Company Logo file<a class="headerlink" href="#create-a-company-logo-file" title="Permalink to this headline">¶</a></h3>
 <p>Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.</p>
 <p><img alt="image78" src="../../../_images/image7810.png" /></p>
 </div>
@@ -3123,7 +3126,7 @@ var oCustom={
 <h3>Update the required Virtel Transactions<a class="headerlink" href="#update-the-required-virtel-transactions" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="cli-90">
 <h4>CLI-90<a class="headerlink" href="#cli-90" title="Permalink to this headline">¶</a></h4>
-<p>Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used.</p>
+<p>Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used as the option.</p>
 <p><img alt="image79" src="../../../_images/image7910.png" /></p>
 </div>
 <div class="section" id="cli-00">
@@ -3134,13 +3137,84 @@ var oCustom={
 </div>
 <div class="section" id="update-the-cli-dir-directoy">
 <h3>Update the CLI-DIR directoy<a class="headerlink" href="#update-the-cli-dir-directoy" title="Permalink to this headline">¶</a></h3>
-<p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR</p>
+<p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.</p>
 <p><img alt="image81" src="../../../_images/image8116.png" /></p>
 <p>From the Administration Panel, select the customized files and Drop &amp; Drag them into the CLI-DIR.</p>
 <p><img alt="image82" src="../../../_images/image8210.png" /></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.</p>
+</div>
+</div>
+<div class="section" id="example-of-appmenu-keyname-js">
+<h3>Example of appmenu.[keyname].js<a class="headerlink" href="#example-of-appmenu-keyname-js" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;close_VWA_when_disconnects&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Titles</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">]</span><span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;main-title&quot;</span><span class="p">:</span><span class="s2">&quot;Virtel Sample Application Tier Menu&quot;</span><span class="p">,</span>
+<span class="s2">&quot;sub-title&quot;</span><span class="p">:</span> <span class="s2">&quot;Syspertec Virtel V4.60 Application Menu&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="o">//</span> <span class="n">First</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicsp</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Production Regions&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">cicsp</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Second</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicsd</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Development Regions&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">cicsd</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Third</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicst</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Test Regions&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">cicst</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Fourth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsop</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;TSO Production Systems&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">tsop</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Fifth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsod</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;TSO Development Systems&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">tsod</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Sixth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsod</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;VTAM USSTAB Sessions&quot;</span><span class="p">,</span>
+<span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
+<span class="s2">&quot;regexp&quot;</span><span class="p">:</span> <span class="o">/</span><span class="n">vtam</span><span class="o">/</span><span class="n">i</span>
+<span class="p">};</span>
+
+<span class="o">//</span> <span class="n">Final</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="ow">not</span> <span class="n">caught</span> <span class="n">by</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">levels</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Criteria</span> <span class="ow">and</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="n">properties</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">used</span><span class="o">.</span>
+<span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Other Sessions&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="full-reference-document-for-cappmenuoptions-object">

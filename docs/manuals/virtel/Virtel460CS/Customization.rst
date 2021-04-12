@@ -3820,9 +3820,9 @@ For the purpose of this document, the value [key name] can be replaced with your
 
 ::
 
-    appmenu.[key name].js       Defines the custome values of the parameters used on the cAppMenu.htm page
+    appmenu.[key name].js       Custom parameter values for the cAppMenu.htm page
     custCSS.[key name].js       CSS customization for company logo    
-    option.[key name].js        Setup the default files used for custCSS.level3.css and appmenu.level3.js
+    option.[key name].js        Option file to define appmenu and custCSS files
     syspertec.png               Company logo
 
 Customizing the appmenu.[key name].js JavaScript
@@ -3858,7 +3858,10 @@ Modify the *Main* and *Sub* titles
 """"""""""""""""""""""""""""""""""
 ::
 
-    var cAppMenuOptions = {}
+    var cAppMenuOptions = {
+    "close_VWA_when_disconnects":true
+    }
+
     cAppMenuOptions["texts"] = {
             "main-title":"Virtel Application Tier Menu",
             "sub-title":"Syspertec Virtel V4.60 Application Menu",
@@ -3899,19 +3902,19 @@ Level  1 defined as CICS Development Regions.  Using KEY *tran* so all defined t
             };  
             
 .. note::
-    Repeat the above code for each required level. See the sample appmenu.level3.js file provide by SYSPERTEC
+    Repeat the above code for each required level. See the sample appmenu.sample.js at the end of this section.
             
 Setup Final Level as Other Applications if Required
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-The final Level (using my example in figure 2), level 5 would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or    merely as a temporary level to show remaining applications that need to be added to a previously defined level.
+The final Level, level 6,  would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or merely as a temporary level to show remaining applications that need to be added to a previously defined level. Note that there is no "criteria" or "regexp" properties.
 
 |image76|
 
 ::
 
     // Other Applications  - criteria : the VIRTEL transaction names not in any previous levels"
-    cAppMenuOptions["levels"][5] =  {
+    cAppMenuOptions["levels"][6] =  {
             "title":"Other Sessions" 
             
             };
@@ -3942,8 +3945,8 @@ Create a Cascading Style sheet using the following code with a .jpeg or .png fil
     background-size: 100%;
     }
 
-Create an option.[key name].js JavaScript file
-----------------------------------------------
+Create an option.[key name].js file
+-----------------------------------
 
 Modify the following file, change [key name] to your company name.  This value [key name]  will be used in step “Update the Required Virtel Transactions”
 
@@ -3955,7 +3958,7 @@ Modify the following file, change [key name] to your company name.  This value [
         "pathToCssCustom" : "../option/custCSS.[key name].css"
         }
  
-Company Logo Syspertec.png
+Create a Company Logo file
 --------------------------
 
 Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.
@@ -3969,7 +3972,7 @@ Update the required Virtel Transactions
 CLI-90
 ^^^^^^
 
-Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used.
+Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used as the option.
 
 |image79|
 
@@ -3983,7 +3986,7 @@ Modify the default Entry Point transaction CLI-00 and update the TIOA at logon f
 Update the CLI-DIR directoy
 ---------------------------
 
-Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR
+Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.
 
 |image81|
 
@@ -3993,6 +3996,82 @@ From the Administration Panel, select the customized files and Drop & Drag them 
 
 .. note::
     Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.
+
+Example of appmenu.[keyname].js    
+-------------------------------
+
+::
+
+    var cAppMenuOptions = {
+    "close_VWA_when_disconnects":true
+    }
+
+    // Titles
+    cAppMenuOptions["texts"]= {
+    "main-title":"Virtel Sample Application Tier Menu",
+    "sub-title": "Syspertec Virtel V4.60 Application Menu",
+    };
+
+
+    cAppMenuOptions["levels"] = [];
+
+    // First Group (Level 0). Any transaction name with cicsp becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][0] = {
+    "title":"CICS Production Regions",
+    "criteria":"tran",
+    "regexp": /cicsp/i
+    };
+
+    // Second Group (Level 1). Any transaction name with cicsd becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][1] = {
+    "title":"CICS Development Regions",
+    "criteria":"tran",
+    "regexp": /cicsd/i
+    };
+
+    // Third Group (Level 2). Any transaction name with cicst becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][2] = {
+    "title":"CICS Test Regions",
+    "criteria":"tran",
+    "regexp": /cicst/i
+    };
+
+    // Fourth Group (Level 3). Any transaction name with tsop becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][3] = {
+    "title":"TSO Production Systems",
+    "criteria":"tran",
+    "regexp": /tsop/i
+    };
+
+    // Fifth Group (Level 4). Any transaction name with tsod becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][4] = {
+    "title":"TSO Development Systems",
+    "criteria":"tran",
+    "regexp": /tsod/i
+    };
+
+    // Sixth Group (Level 5). Any transaction name with tsod becomes part of this level.
+    // Regular experession is used to filter out qualifying applications
+    cAppMenuOptions["levels"][5] = {
+    "title":"VTAM USSTAB Sessions",
+    "criteria":"tran",
+    "regexp": /vtam/i
+    };
+
+    // Final Group (Level 6). Any transaction not caught by the previous levels. 
+    // Note that the Criteria and Regular experession properties are not used.
+    cAppMenuOptions["levels"][6] = {
+    "title":"Other Sessions",    
+    };
+
+.. raw:: latex
+
+    \newpage  
 
 Full reference document for cAppMenuOptions object
 --------------------------------------------------
