@@ -4561,6 +4561,12 @@ When the SMFWTM macro returns control, register 15 contains one of the following
 <dd>Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
 For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:</dd>
 </dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAF</span> <span class="n">RC</span>  <span class="n">RACF</span> <span class="n">RC</span>     <span class="n">Reason</span>  <span class="n">Meaning</span>
+<span class="mi">8</span>       <span class="mi">8</span>           <span class="mi">4</span>       <span class="n">Input</span> <span class="n">parameter</span> <span class="nb">list</span> <span class="n">error</span><span class="o">.</span>
+<span class="mi">8</span>       <span class="mi">8</span>           <span class="mi">10</span>      <span class="n">Virtel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">authorized</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">Pass</span> <span class="n">tickets</span><span class="o">.</span> <span class="n">See</span> <span class="n">message</span> <span class="n">ICH408I</span> <span class="ow">in</span> <span class="n">SYSLOG</span><span class="o">.</span>
+<span class="mi">8</span>       <span class="mi">10</span>          <span class="mi">1</span><span class="n">C</span>      <span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">profile</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">PTKTDATA</span> <span class="k">class</span> <span class="nc">for</span> <span class="n">the</span> <span class="n">application</span> <span class="ow">or</span> <span class="n">PTKTDATA</span> <span class="k">class</span> <span class="nc">is</span> <span class="ow">not</span> <span class="n">active</span><span class="o">.</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="vir1551i-termid-luname-connected-to-applname">
 <h5>VIR1551I termid(luname) CONNECTED TO “applname”<a class="headerlink" href="#vir1551i-termid-luname-connected-to-applname" title="Permalink to this headline">¶</a></h5>

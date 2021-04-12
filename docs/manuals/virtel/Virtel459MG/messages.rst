@@ -3638,6 +3638,14 @@ Action
     Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
     For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:
 
+::
+
+    SAF RC  RACF RC     Reason  Meaning
+    8       8           4       Input parameter list error.                                      
+    8       8           10      Virtel is not authorized to generate Pass tickets. See message ICH408I in SYSLOG.
+    8       10          1C      There is no profile in the PTKTDATA class for the application or PTKTDATA class is not active.                   
+
+
 VIR1551I termid(luname) CONNECTED TO "applname"
 """""""""""""""""""""""""""""""""""""""""""""""
 Module
