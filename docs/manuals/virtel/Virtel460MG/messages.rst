@@ -3769,6 +3769,16 @@ Meaning
 Action
     Check the SYSLOG for preceding message IEC070I.
 
+VIR1727E Error: Cannot write to Read only file xxxxxxxx
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0017
+Meaning
+    A VSAM error occurred when VIRTEL attempted to write to file xxxxxxxx which has been defined as READONLY.
+Action
+    Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.
+        
+
 VIR1729E LINE linename NOT FOUND
 """"""""""""""""""""""""""""""""
 Module
@@ -6656,7 +6666,7 @@ VIRT904I LINE linename (n-xxxxxx) IS USING TCP/IP KEEPALIVE
 Module
     VIR0T09
 Meaning
-    VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename     and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
+    VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
 Action
     None.
 
@@ -7301,3 +7311,19 @@ Meaning
 
 Action
     Contact technical support.    
+
+Miscellaneos messages
+^^^^^^^^^^^^^^^^^^^^^
+
+File transfers
+""""""""""""""
+
+*TRANS14 Error reading file from host: file transfer cancelled.*
+
+Meaning
+    A file transfer download has exceeded the maximum file size.
+
+*413 Request Entity Too Large.*
+
+Meaning
+    A file transfer upload has exceeded the maximum file size. 

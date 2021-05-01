@@ -3573,7 +3573,7 @@ This parameter allows you to override various VIRTEL Web Access settings. If HTP
 
 **n1** - HTTP segment size. Do not change from the default value of 30000 unless advised by VIRTEL support.
 
-**n2** - Maximum file size (in bytes) allowed for an IND$FILE upload. The default value 4096000 permits a maximum upload size of approximately 4MB. If the size is exceeded the user will see HTTP response code “413 Request Entity Too Large”.
+**n2** - Maximum file size (in bytes) allowed for an IND$FILE transfer. The default value 4096000 permits a maximum transfer size of approximately 4MB. For upload, If the size is exceeded the user will see HTTP response code “413 Request Entity Too Large”. For download, if the size is exceeded the user will see error message “TRANS14 Error reading file from host: file transfer canceled”.
 
 .. index::
    pair: Virtel TCT; HTSETn parameter	

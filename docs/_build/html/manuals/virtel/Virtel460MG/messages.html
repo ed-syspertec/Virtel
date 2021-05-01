@@ -4637,6 +4637,17 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <dd>Check the SYSLOG for preceding message IEC070I.</dd>
 </dl>
 </div>
+<div class="section" id="vir1727e-error-cannot-write-to-read-only-file-xxxxxxxx">
+<h5>VIR1727E Error: Cannot write to Read only file xxxxxxxx<a class="headerlink" href="#vir1727e-error-cannot-write-to-read-only-file-xxxxxxxx" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0017</dd>
+<dt>Meaning</dt>
+<dd>A VSAM error occurred when VIRTEL attempted to write to file xxxxxxxx which has been defined as READONLY.</dd>
+<dt>Action</dt>
+<dd>Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.</dd>
+</dl>
+</div>
 <div class="section" id="vir1729e-line-linename-not-found">
 <h5>VIR1729E LINE linename NOT FOUND<a class="headerlink" href="#vir1729e-line-linename-not-found" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
@@ -8111,7 +8122,7 @@ The following codes are commonly encountered:</p>
 <dt>Module</dt>
 <dd>VIR0T09</dd>
 <dt>Meaning</dt>
-<dd>VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename     and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.</dd>
+<dd>VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.</dd>
 <dt>Action</dt>
 <dd>None.</dd>
 </dl>
@@ -8854,6 +8865,22 @@ The following codes are commonly encountered:</p>
 <dd>VIRSV could not allocate the VSVTRACE file number tracenum</dd>
 <dt>Action</dt>
 <dd>Contact technical support.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="miscellaneos-messages">
+<h4>Miscellaneos messages<a class="headerlink" href="#miscellaneos-messages" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="file-transfers">
+<h5>File transfers<a class="headerlink" href="#file-transfers" title="Permalink to this headline">¶</a></h5>
+<p><em>TRANS14 Error reading file from host: file transfer cancelled.</em></p>
+<dl class="docutils">
+<dt>Meaning</dt>
+<dd>A file transfer download has exceeded the maximum file size.</dd>
+</dl>
+<p><em>413 Request Entity Too Large.</em></p>
+<dl class="docutils">
+<dt>Meaning</dt>
+<dd>A file transfer upload has exceeded the maximum file size.</dd>
 </dl>
 </div>
 </div>
