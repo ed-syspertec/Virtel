@@ -382,7 +382,7 @@ their respective owners.</p>
 <p>Virtel locates static HTML pages through the URL passed to the Virtel Engine and the configuration definitions defined within the Virtel ARBO VSAM file. An endpoint for Virtel is defined by a Virtel line definition which identifies the TCP/IP port that Virtel listens on for incoming calls. By default Virtel uses two endpoints or ports, 41001 for Administration and port 41002 for user or client transactions. Each endpoint is associated with a default Entry Point; WEB2HOST in the case of 41001 and CLIWHOST for 41002. Transactions are associated with End Points. An endpoint can be associated with more than one Entry Point.  Virtel provides a Rule facility whereby an Entry Point can be selected by incoming call criteria - IP address for example.
 <img alt="static_pages" src="../../../_images/static_pages3.png" />
 <em>Virtel Static Pages</em></p>
-<p>Virtel stores pages and web elements within VIRTEL diretories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:</p>
+<p>Virtel stores pages and web elements within VIRTEL directories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span>
 </pre></div>
 </div>
@@ -586,7 +586,7 @@ the template page.</dd>
 </div>
 <div class="section" id="dynamic-url-with-parameters">
 <span id="index-11"></span><h6>Dynamic URL with parameters<a class="headerlink" href="#dynamic-url-with-parameters" title="Permalink to this headline">¶</a></h6>
-<p>A third form of URL allows one or more parameters to be passed to a transaction by means of an “Input Scenario” or by a “Connection / Disconnection Script”:</p>
+<p>A third form of URL allows one or more parameters to be passed to a transaction by means of an “Identification Scenario” or by a “Connection / Disconnection Script”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://ipaddr:port/pathname/pagename+tranname?param1=value&amp;param2=value
 </pre></div>
 </div>
@@ -614,6 +614,13 @@ special characters must be coded in the standard URL escape format
 %xx where xx is the hexadecimal value of the character in ASCII. For
 example, a blank is represented as %20.</dd>
 </dl>
+<p>Parameters can be used to override the Virtel defaults. For example, a different code page is required to the default code page defined in the TCT. The following parameters can be used to override Virtel TCT or session defaults :-</p>
+<blockquote>
+<div>LOGMODE     Logmode for session
+ROWS        Number of rows
+COLS        Number of columns
+CODEPAGE    codepage
+USEHTMINI   Minitel HTTL support - Yes or No.</div></blockquote>
 </div>
 <div class="section" id="dynamic-url-with-userdata-and-parameters">
 <h6>Dynamic URL with userdata and parameters<a class="headerlink" href="#dynamic-url-with-userdata-and-parameters" title="Permalink to this headline">¶</a></h6>
@@ -7032,15 +7039,26 @@ message.</p>
 <p id="index-286"><strong>OPTION$ FOR-MQ</strong></p>
 <p>Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line type is MQ.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OPTION$ FOR-MQ,                   *
-    (FILE-OUT,&#39;varname1&#39;),        *
-    TOVAR=&#39;varnamep&#39;
+(METHOD,&#39;REQUEST-AND-RESPONSE&#39;),  *
+(REPLY-TO-Q,&#39;MQ-REP&#39;),            *
+(REPLY-TO-QMGR,&#39;qmgrid&#39;),         *
+(FILE-OUT,&#39;varname1&#39;),            *
+(FILE-IN,&#39;varname2&#39;),             *
+(RET-CODE,&#39;retcode&#39;),             *
+TOVAR=&#39;varnamep&#39;
 </pre></div>
 </div>
 <dl class="docutils">
+<dt>qmgrid</dt>
+<dd>The MQ queue manager ID</dd>
+<dt>varname2</dt>
+<dd>the name of the VIRTEL variable which contains the input data (COMMAREA or container).</dd>
 <dt>varname1</dt>
 <dd>the name of the VIRTEL variable which contains data to be written to the MQ line.</dd>
 <dt>varnamep</dt>
 <dd>the name of the VIRTEL variable which will contain the parameter list.</dd>
+<dt>retcode</dt>
+<dd>the name of the VIRTEL variable which will receive the return code from the MQ request.</dd>
 </dl>
 <p id="index-287"><strong>OPTION$ FOR-QUICKLNK</strong></p>
 <p>Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line type is QUICKLNK.</p>

@@ -56,7 +56,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Mar 27, 2021}
+\date{May 01, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4303,7 +4303,7 @@ This parameter allows you to override various VIRTEL Web Access settings. If HTP
 
 \sphinxstylestrong{n1} - HTTP segment size. Do not change from the default value of 30000 unless advised by VIRTEL support.
 
-\sphinxstylestrong{n2} - Maximum file size (in bytes) allowed for an IND\$FILE upload. The default value 4096000 permits a maximum upload size of approximately 4MB. If the size is exceeded the user will see HTTP response code “413 Request Entity Too Large”.
+\sphinxstylestrong{n2} - Maximum file size (in bytes) allowed for an IND\$FILE transfer. The default value 4096000 permits a maximum transfer size of approximately 4MB. For upload, If the size is exceeded the user will see HTTP response code “413 Request Entity Too Large”. For download, if the size is exceeded the user will see error message “TRANS14 Error reading file from host: file transfer canceled”.
 
 \index{Virtel TCT@\spxentry{Virtel TCT}!HTSETn parameter@\spxentry{HTSETn parameter}}\index{HTSETn parameter@\spxentry{HTSETn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 

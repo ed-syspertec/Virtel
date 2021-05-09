@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Apr 12, 2021}
+\date{May 01, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5760,6 +5760,20 @@ Check the SYSLOG for preceding message IEC070I.
 \end{description}
 
 
+\subsubsection{VIR1727E Error: Cannot write to Read only file xxxxxxxx}
+\label{\detokenize{messages:vir1727e-error-cannot-write-to-read-only-file-xxxxxxxx}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0017
+
+\item[{Meaning}] \leavevmode
+A VSAM error occurred when VIRTEL attempted to write to file xxxxxxxx which has been defined as READONLY.
+
+\item[{Action}] \leavevmode
+Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.
+
+\end{description}
+
+
 \subsubsection{VIR1729E LINE linename NOT FOUND}
 \label{\detokenize{messages:vir1729e-line-linename-not-found}}\begin{description}
 \item[{Module}] \leavevmode
@@ -10158,7 +10172,7 @@ None
 VIR0T09
 
 \item[{Meaning}] \leavevmode
-VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename     and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
+VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
 
 \item[{Action}] \leavevmode
 None.
@@ -11119,6 +11133,26 @@ VIRSV could not allocate the VSVTRACE file number tracenum
 
 \item[{Action}] \leavevmode
 Contact technical support.
+
+\end{description}
+
+
+\subsection{Miscellaneos messages}
+\label{\detokenize{messages:miscellaneos-messages}}
+
+\subsubsection{File transfers}
+\label{\detokenize{messages:file-transfers}}
+\sphinxstyleemphasis{TRANS14 Error reading file from host: file transfer cancelled.}
+\begin{description}
+\item[{Meaning}] \leavevmode
+A file transfer download has exceeded the maximum file size.
+
+\end{description}
+
+\sphinxstyleemphasis{413 Request Entity Too Large.}
+\begin{description}
+\item[{Meaning}] \leavevmode
+A file transfer upload has exceeded the maximum file size.
 
 \end{description}
 

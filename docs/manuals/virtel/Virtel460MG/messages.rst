@@ -4012,7 +4012,25 @@ Action
     None.
 
 Messages VIR60xxx
-^^^^^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^^^^^
+
+VIR6004I ATTACH VIRSV SUCCESSFUL TCB=xxxxxxxx PROG=VSVTINIT
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    VIRSV subtask has been successfully attached VSVTINIT.
+Action
+    None.
+
+VIR6006I INITIALIZE VIRSV SUCCESSFUL
+    """"""""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    VIRSV has successfully initialised.
+Action
+    None.    
 
 VIR6010E VIRSV ERROR VSVPCMDE RC=x
 """"""""""""""""""""""""""""""""""
@@ -4022,6 +4040,15 @@ Meaning
     VIRSV subtask terminates with RC=x. If RC is greater than 0 then an error has occurred.
 Action
     Contact Syspertec Support if RC is greater than 0.
+
+VIR6012I ATTACH VIRTEL SUCCESSFUL TCB=xxxxxxxx PROG=VIR6001
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    VIRTEL has successfully attached subrtask VIR6001.
+Action
+    None.    
 
 VIR6016I VIRTEL TERMINATED
 """"""""""""""""""""""""""
@@ -4955,7 +4982,7 @@ Meaning
 Action
     VIRTEL henceforth treats the call as if it had been received from real-ip instead of from proxy-ip. The real-ip address will be displayed in console messages and recorded in the VIRLOG.
 
-VIRHT58E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS
+VIRHT57E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP

@@ -313,7 +313,7 @@ Virtel locates static HTML pages through the URL passed to the Virtel Engine and
 |static_pages|
 *Virtel Static Pages*
 
-Virtel stores pages and web elements within VIRTEL diretories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:
+Virtel stores pages and web elements within VIRTEL directories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:
 
 ::
 
@@ -582,7 +582,7 @@ userdata
 Dynamic URL with parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A third form of URL allows one or more parameters to be passed to a transaction by means of an “Input Scenario” or by a “Connection / Disconnection Script”:
+A third form of URL allows one or more parameters to be passed to a transaction by means of an “Identification Scenario” or by a “Connection / Disconnection Script”:
 
 ::
 
@@ -614,6 +614,16 @@ param1, param2, ...
     special characters must be coded in the standard URL escape format
     %xx where xx is the hexadecimal value of the character in ASCII. For
     example, a blank is represented as %20.
+
+Parameters can be used to override the Virtel defaults. For example, a different code page is required to the default code page defined in the TCT. The following parameters can be used to override Virtel TCT or session defaults :-
+
+    LOGMODE     Logmode for session 
+    ROWS        Number of rows
+    COLS        Number of columns
+    CODEPAGE    codepage
+    USEHTMINI   Minitel HTTL support - Yes or No.
+
+
 
 Dynamic URL with userdata and parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
@@ -8850,13 +8860,25 @@ Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line
 ::
 
     OPTION$ FOR-MQ,                   *
-        (FILE-OUT,'varname1'),        *
-        TOVAR='varnamep'
+    (METHOD,'REQUEST-AND-RESPONSE'),  *                        
+    (REPLY-TO-Q,'MQ-REP'),            *                          
+    (REPLY-TO-QMGR,'qmgrid'),         *                         
+    (FILE-OUT,'varname1'),            *                    
+    (FILE-IN,'varname2'),             *
+    (RET-CODE,'retcode'),             *                       
+    TOVAR='varnamep'           
 
+qmgrid
+    The MQ queue manager ID
+varname2
+    the name of the VIRTEL variable which contains the input data (COMMAREA or container).     
 varname1
     the name of the VIRTEL variable which contains data to be written to the MQ line.
 varnamep
     the name of the VIRTEL variable which will contain the parameter list.
+retcode    
+    the name of the VIRTEL variable which will receive the return code from the MQ request.
+
 
 .. index::
    pair: OPTION$ FOR-QUICKLNK; Scenario Instructions   
