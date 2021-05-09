@@ -4024,7 +4024,7 @@ Action
     None.
 
 VIR6006I INITIALIZE VIRSV SUCCESSFUL
-    """"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 Module
     VIR6000
 Meaning
@@ -4042,7 +4042,7 @@ Action
     Contact Syspertec Support if RC is greater than 0.
 
 VIR6012I ATTACH VIRTEL SUCCESSFUL TCB=xxxxxxxx PROG=VIR6001
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR6000
 Meaning

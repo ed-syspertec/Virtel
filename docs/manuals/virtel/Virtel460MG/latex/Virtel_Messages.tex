@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{May 01, 2021}
+\date{May 09, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -6125,6 +6125,34 @@ None.
 \subsection{Messages VIR60xxx}
 \label{\detokenize{messages:messages-vir60xxx}}
 
+\subsubsection{VIR6004I ATTACH VIRSV SUCCESSFUL TCB=xxxxxxxx PROG=VSVTINIT}
+\label{\detokenize{messages:vir6004i-attach-virsv-successful-tcb-xxxxxxxx-prog-vsvtinit}}\begin{description}
+\item[{Module}] \leavevmode
+VIR6000
+
+\item[{Meaning}] \leavevmode
+VIRSV subtask has been successfully attached VSVTINIT.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR6006I INITIALIZE VIRSV SUCCESSFUL}
+\label{\detokenize{messages:vir6006i-initialize-virsv-successful}}\begin{description}
+\item[{Module}] \leavevmode
+VIR6000
+
+\item[{Meaning}] \leavevmode
+VIRSV has successfully initialised.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
 \subsubsection{VIR6010E VIRSV ERROR VSVPCMDE RC=x}
 \label{\detokenize{messages:vir6010e-virsv-error-vsvpcmde-rc-x}}\begin{description}
 \item[{Module}] \leavevmode
@@ -6135,6 +6163,20 @@ VIRSV subtask terminates with RC=x. If RC is greater than 0 then an error has oc
 
 \item[{Action}] \leavevmode
 Contact Syspertec Support if RC is greater than 0.
+
+\end{description}
+
+
+\subsubsection{VIR6012I ATTACH VIRTEL SUCCESSFUL TCB=xxxxxxxx PROG=VIR6001}
+\label{\detokenize{messages:vir6012i-attach-virtel-successful-tcb-xxxxxxxx-prog-vir6001}}\begin{description}
+\item[{Module}] \leavevmode
+VIR6000
+
+\item[{Meaning}] \leavevmode
+VIRTEL has successfully attached subrtask VIR6001.
+
+\item[{Action}] \leavevmode
+None.
 
 \end{description}
 
@@ -7533,8 +7575,8 @@ VIRTEL henceforth treats the call as if it had been received from real-ip instea
 \end{description}
 
 
-\subsubsection{VIRHT58E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS}
-\label{\detokenize{messages:virht58e-linename-received-an-erroneous-request-from-ipaddr-port-line-is-not-set-up-for-https}}\begin{description}
+\subsubsection{VIRHT57E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS}
+\label{\detokenize{messages:virht57e-linename-received-an-erroneous-request-from-ipaddr-port-line-is-not-set-up-for-https}}\begin{description}
 \item[{Module}] \leavevmode
 VIRHTTP
 

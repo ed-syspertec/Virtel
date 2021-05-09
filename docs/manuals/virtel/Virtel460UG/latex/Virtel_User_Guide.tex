@@ -56,7 +56,7 @@
 
 
 \title{Virtel User Guide}
-\date{Dec 31, 2020}
+\date{May 09, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -459,7 +459,7 @@ Virtel locates static HTML pages through the URL passed to the Virtel Engine and
 \sphinxincludegraphics{{static_pages}.png}
 \sphinxstyleemphasis{Virtel Static Pages}
 
-Virtel stores pages and web elements within VIRTEL diretories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:
+Virtel stores pages and web elements within VIRTEL directories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{ipaddr}\PYG{p}{:}\PYG{n}{port}\PYG{o}{/}\PYG{n}{pathname}\PYG{o}{/}\PYG{n}{pagename}
@@ -737,7 +737,7 @@ Is a character string which can be tested by the “User Data” field in the ru
 
 \paragraph{Dynamic URL with parameters}
 \label{\detokenize{User_Guide:dynamic-url-with-parameters}}\label{\detokenize{User_Guide:index-11}}
-A third form of URL allows one or more parameters to be passed to a transaction by means of an “Input Scenario” or by a “Connection / Disconnection Script”:
+A third form of URL allows one or more parameters to be passed to a transaction by means of an “Identification Scenario” or by a “Connection / Disconnection Script”:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 http://ipaddr:port/pathname/pagename+tranname?param1=value\PYGZam{}param2=value
@@ -771,6 +771,16 @@ special characters must be coded in the standard URL escape format
 example, a blank is represented as \%20.
 
 \end{description}
+
+Parameters can be used to override the Virtel defaults. For example, a different code page is required to the default code page defined in the TCT. The following parameters can be used to override Virtel TCT or session defaults :-
+\begin{quote}
+
+LOGMODE     Logmode for session
+ROWS        Number of rows
+COLS        Number of columns
+CODEPAGE    codepage
+USEHTMINI   Minitel HTTL support - Yes or No.
+\end{quote}
 
 
 \paragraph{Dynamic URL with userdata and parameters}
@@ -9662,15 +9672,29 @@ Builds a parameter list for a subsequent SEND\$ TO-LINE instruction when the lin
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 OPTION\PYGZdl{} FOR\PYGZhy{}MQ,                   *
-    (FILE\PYGZhy{}OUT,\PYGZsq{}varname1\PYGZsq{}),        *
-    TOVAR=\PYGZsq{}varnamep\PYGZsq{}
+(METHOD,\PYGZsq{}REQUEST\PYGZhy{}AND\PYGZhy{}RESPONSE\PYGZsq{}),  *
+(REPLY\PYGZhy{}TO\PYGZhy{}Q,\PYGZsq{}MQ\PYGZhy{}REP\PYGZsq{}),            *
+(REPLY\PYGZhy{}TO\PYGZhy{}QMGR,\PYGZsq{}qmgrid\PYGZsq{}),         *
+(FILE\PYGZhy{}OUT,\PYGZsq{}varname1\PYGZsq{}),            *
+(FILE\PYGZhy{}IN,\PYGZsq{}varname2\PYGZsq{}),             *
+(RET\PYGZhy{}CODE,\PYGZsq{}retcode\PYGZsq{}),             *
+TOVAR=\PYGZsq{}varnamep\PYGZsq{}
 \end{sphinxVerbatim}
 \begin{description}
+\item[{qmgrid}] \leavevmode
+The MQ queue manager ID
+
+\item[{varname2}] \leavevmode
+the name of the VIRTEL variable which contains the input data (COMMAREA or container).
+
 \item[{varname1}] \leavevmode
 the name of the VIRTEL variable which contains data to be written to the MQ line.
 
 \item[{varnamep}] \leavevmode
 the name of the VIRTEL variable which will contain the parameter list.
+
+\item[{retcode}] \leavevmode
+the name of the VIRTEL variable which will receive the return code from the MQ request.
 
 \end{description}
 
