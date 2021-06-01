@@ -2495,6 +2495,15 @@ Meaning
 Action
     Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
 
+VIR0087E FATAL DSA TABLE ERROR. MEMORY DIAGS. DISABLED
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0000
+Meaning
+    Virtel has reached the end of the current DSA table.
+Action
+    Virtel continues but you should contact support.     
+
 VIRT0088E DSA TABLE FULL. MEMORY DIAGS. DISABLED
 """"""""""""""""""""""""""""""""""""""""""""""""
 Module
@@ -2502,16 +2511,7 @@ Module
 Meaning
     The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.
 Action
-    Virtel contines but you should contact support support. Schedule a restart of Virtel.
-
-VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED
-""""""""""""""""""""""""""""""""""""""""""""
-Module
-    	VIR0000
-Meaning
-    	Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
-Action
-    Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
+    Virtel continues but you should contact support. 
 
 VIR0089I VIRTEL RUNNING AUTHORIZED
 """"""""""""""""""""""""""""""""""
@@ -2783,7 +2783,7 @@ Meaning
 Action
     Check the VIRTEL log and SYSLOG for further information.
 
-VIR0231I ERROR OPENING DDNAME XXXXXXXX
+VIR0231W ERROR OPENING DDNAME XXXXXXXX
 """"""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
@@ -2791,6 +2791,15 @@ Meaning
     An error has occurred trying to open the log output destination. Log option will be set to CONSOLE.
 Action
     Check the VIRTEL log and SYSLOG for further information.
+
+VIR0232W ERROR WRITING TO SYSOUT DDNAME
+"""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002A
+Meaning
+    An error has occurred trying to write to the log output destination. Log option will be set to CONSOLE.
+Action
+    Check the VIRTEL log and SYSLOG for further information.    
 
 VIR0233I VIRTEL XXXXXXXX DATASET HAS BEEN SPUN OFF
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -2800,8 +2809,17 @@ Meaning
     A log output destination file has been closed and made available.
 Action
     None.
+    
+VIR0233I VIRTEL SYS001 DATASET HAS BEEN CLOSED (Z/VSE)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002A
+Meaning
+    A log output destination file SYS001 has been closed and made available.
+Action
+    None.  
 
-VIR0234I CLOSE FAILED FOR XXXXXXXX DATASET
+VIR0234W CLOSE FAILED FOR XXXXXXXX DATASET
 """"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
@@ -2837,12 +2855,21 @@ Meaning
 Action
     None.
 
+VIR0237W ERROR WRITING TO LOGSTREAM
+"""""""""""""""""""""""""""""""""""
+Module
+    VIR0002A
+Meaning
+    An error occurred trying to write to the logstream.
+Action
+    Check the VIRTEL log and SYSLOG for further information.    
+
 VIR0238I VIRTEL LOG RECORDING TO LOGFILE
 """"""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
-    Reports reporing destination for Virtel LOGFILE messages. 
+    Reports reporting destination for Virtel LOGFILE messages. 
 Action
     Use to LOG,D command to display the active LOGFILE.
 

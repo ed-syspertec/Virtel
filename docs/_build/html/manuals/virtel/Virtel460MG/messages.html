@@ -3130,6 +3130,17 @@ Enter a value in the description field.</p>
 <dd>Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.</dd>
 </dl>
 </div>
+<div class="section" id="vir0087e-fatal-dsa-table-error-memory-diags-disabled">
+<h5>VIR0087E FATAL DSA TABLE ERROR. MEMORY DIAGS. DISABLED<a class="headerlink" href="#vir0087e-fatal-dsa-table-error-memory-diags-disabled" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0000</dd>
+<dt>Meaning</dt>
+<dd>Virtel has reached the end of the current DSA table.</dd>
+<dt>Action</dt>
+<dd>Virtel continues but you should contact support.</dd>
+</dl>
+</div>
 <div class="section" id="virt0088e-dsa-table-full-memory-diags-disabled">
 <h5>VIRT0088E DSA TABLE FULL. MEMORY DIAGS. DISABLED<a class="headerlink" href="#virt0088e-dsa-table-full-memory-diags-disabled" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
@@ -3138,18 +3149,7 @@ Enter a value in the description field.</p>
 <dt>Meaning</dt>
 <dd>The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.</dd>
 <dt>Action</dt>
-<dd>Virtel contines but you should contact support support. Schedule a restart of Virtel.</dd>
-</dl>
-</div>
-<div class="section" id="id6">
-<h5>VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
-<dl class="docutils">
-<dt>Module</dt>
-<dd>VIR0000</dd>
-<dt>Meaning</dt>
-<dd>Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.</dd>
-<dt>Action</dt>
-<dd>Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.</dd>
+<dd>Virtel continues but you should contact support.</dd>
 </dl>
 </div>
 <div class="section" id="vir0089i-virtel-running-authorized">
@@ -3456,13 +3456,24 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>Check the VIRTEL log and SYSLOG for further information.</dd>
 </dl>
 </div>
-<div class="section" id="vir0231i-error-opening-ddname-xxxxxxxx">
-<h5>VIR0231I ERROR OPENING DDNAME XXXXXXXX<a class="headerlink" href="#vir0231i-error-opening-ddname-xxxxxxxx" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="vir0231w-error-opening-ddname-xxxxxxxx">
+<h5>VIR0231W ERROR OPENING DDNAME XXXXXXXX<a class="headerlink" href="#vir0231w-error-opening-ddname-xxxxxxxx" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0002A</dd>
 <dt>Meaning</dt>
 <dd>An error has occurred trying to open the log output destination. Log option will be set to CONSOLE.</dd>
+<dt>Action</dt>
+<dd>Check the VIRTEL log and SYSLOG for further information.</dd>
+</dl>
+</div>
+<div class="section" id="vir0232w-error-writing-to-sysout-ddname">
+<h5>VIR0232W ERROR WRITING TO SYSOUT DDNAME<a class="headerlink" href="#vir0232w-error-writing-to-sysout-ddname" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002A</dd>
+<dt>Meaning</dt>
+<dd>An error has occurred trying to write to the log output destination. Log option will be set to CONSOLE.</dd>
 <dt>Action</dt>
 <dd>Check the VIRTEL log and SYSLOG for further information.</dd>
 </dl>
@@ -3478,8 +3489,19 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>None.</dd>
 </dl>
 </div>
-<div class="section" id="vir0234i-close-failed-for-xxxxxxxx-dataset">
-<h5>VIR0234I CLOSE FAILED FOR XXXXXXXX DATASET<a class="headerlink" href="#vir0234i-close-failed-for-xxxxxxxx-dataset" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="vir0233i-virtel-sys001-dataset-has-been-closed-z-vse">
+<h5>VIR0233I VIRTEL SYS001 DATASET HAS BEEN CLOSED (Z/VSE)<a class="headerlink" href="#vir0233i-virtel-sys001-dataset-has-been-closed-z-vse" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002A</dd>
+<dt>Meaning</dt>
+<dd>A log output destination file SYS001 has been closed and made available.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0234w-close-failed-for-xxxxxxxx-dataset">
+<h5>VIR0234W CLOSE FAILED FOR XXXXXXXX DATASET<a class="headerlink" href="#vir0234w-close-failed-for-xxxxxxxx-dataset" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0002A</dd>
@@ -3522,13 +3544,24 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>None.</dd>
 </dl>
 </div>
+<div class="section" id="vir0237w-error-writing-to-logstream">
+<h5>VIR0237W ERROR WRITING TO LOGSTREAM<a class="headerlink" href="#vir0237w-error-writing-to-logstream" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002A</dd>
+<dt>Meaning</dt>
+<dd>An error occurred trying to write to the logstream.</dd>
+<dt>Action</dt>
+<dd>Check the VIRTEL log and SYSLOG for further information.</dd>
+</dl>
+</div>
 <div class="section" id="vir0238i-virtel-log-recording-to-logfile">
 <h5>VIR0238I VIRTEL LOG RECORDING TO LOGFILE<a class="headerlink" href="#vir0238i-virtel-log-recording-to-logfile" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0002A</dd>
 <dt>Meaning</dt>
-<dd>Reports reporing destination for Virtel LOGFILE messages.</dd>
+<dd>Reports reporting destination for Virtel LOGFILE messages.</dd>
 <dt>Action</dt>
 <dd>Use to LOG,D command to display the active LOGFILE.</dd>
 </dl>
