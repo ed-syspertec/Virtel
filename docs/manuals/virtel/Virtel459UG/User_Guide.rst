@@ -13795,6 +13795,14 @@ allows VIRTEL to enforce authorization rules based on Entry Point, Rules, and Tr
 described in the “VIRTEL Connectivity Reference” manual.
 
 .. index::
+   pair: Password restrictions; Passphrase restrictions 
+
+Password and Passphrase constraints
+-----------------------------------
+
+As of PTF5912 a password credential is considered to be eight characters or less. If the credentials are greater than eight characters then the credential is considered to be a passphrase. A password cannot be replaced by a passphrase, and equally, a passphrase cannot be replaced by a password. For example, you cannot replace a 8 character password with a 12 character passphrase.  
+
+.. index::
    pair: Entry point security; Virtel Web Access Security
 
 Specifying security in the entry point

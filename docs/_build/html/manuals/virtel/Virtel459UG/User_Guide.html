@@ -10908,8 +10908,12 @@ permanent IP session between the browser and VIRTEL, there is less risk of a ses
 standard network security features (firewall, network sign on, SSO, etc.), each URL sent to VIRTEL has a structure which
 allows VIRTEL to enforce authorization rules based on Entry Point, Rules, and Transactions, which are VIRTEL entities
 described in the “VIRTEL Connectivity Reference” manual.</p>
+<div class="section" id="password-and-passphrase-constraints">
+<span id="index-427"></span><h4>Password and Passphrase constraints<a class="headerlink" href="#password-and-passphrase-constraints" title="Permalink to this headline">¶</a></h4>
+<p>As of PTF5912 a password credential is considered to be eight characters or less. If the credentials are greater than eight characters then the credential is considered to be a passphrase. A password cannot be replaced by a passphrase, and equally, a passphrase cannot be replaced by a password. For example, you cannot replace a 8 character password with a 12 character passphrase.</p>
+</div>
 <div class="section" id="specifying-security-in-the-entry-point">
-<span id="index-427"></span><h4>Specifying security in the entry point<a class="headerlink" href="#specifying-security-in-the-entry-point" title="Permalink to this headline">¶</a></h4>
+<span id="index-428"></span><h4>Specifying security in the entry point<a class="headerlink" href="#specifying-security-in-the-entry-point" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL supplies a signon program for HTTP lines called VIR0020H (refer to the “VIRTEL Connectivity Reference” manual
 for more details about how to specify a signon program in an entry point).</p>
 <p>When the first call is made to a secure transaction under an entry point which specifies VIR0020H as its signon
@@ -10922,7 +10926,7 @@ Depending on the userid, the security manager may authorize or deny access to th
 <p><em>Example of signon dialog box displayed by browser</em></p>
 </div>
 <div class="section" id="specifying-security-in-the-transaction">
-<span id="index-428"></span><h4>Specifying security in the transaction<a class="headerlink" href="#specifying-security-in-the-transaction" title="Permalink to this headline">¶</a></h4>
+<span id="index-429"></span><h4>Specifying security in the transaction<a class="headerlink" href="#specifying-security-in-the-transaction" title="Permalink to this headline">¶</a></h4>
 <p>To display the signon dialog box shown above, the transaction under the entry point must specify SECURITY 1
 (standard). Refer to the “Transactions” section of the “VIRTEL Connectivity Reference” manual for details of the
 security field in the VIRTEL transaction definition.</p>
@@ -10932,14 +10936,14 @@ transaction. Specifying security at the directory level can be useful in that it
 displaying a static page which has no associated application transaction.</p>
 </div>
 <div class="section" id="mixed-case-password-support">
-<span id="index-429"></span><h4>Mixed-case password support<a class="headerlink" href="#mixed-case-password-support" title="Permalink to this headline">¶</a></h4>
+<span id="index-430"></span><h4>Mixed-case password support<a class="headerlink" href="#mixed-case-password-support" title="Permalink to this headline">¶</a></h4>
 <p>If SECUR=RACROUTE or SECUR=(RACROUTE,RACF) is specified in the VIRTCT, and if the security manager reports that it
 supports lower-case characters in passwords, then VIRTEL will pass all passwords to the security manager in mixed
 case as entered by the user. Otherwise VIRTEL will translate all passwords to upper case before passing them to the
 security manager. Message VIR0861I at integration indicates that VIRTEL will use mixed-case passwords.</p>
 </div>
 <div class="section" id="automatic-retrieval-of-username">
-<span id="index-430"></span><h4>Automatic retrieval of username<a class="headerlink" href="#automatic-retrieval-of-username" title="Permalink to this headline">¶</a></h4>
+<span id="index-431"></span><h4>Automatic retrieval of username<a class="headerlink" href="#automatic-retrieval-of-username" title="Permalink to this headline">¶</a></h4>
 <p>NTLM security allows VIRTEL to retrieve the username under which the user has already signed on to Windows. This
 allows VIRTEL Web Access to sign on the user without requiring him or her to enter a username and password.</p>
 <p>When SECURITY 2 (NTLM) is specified in the VIRTEL transaction definition (either the application transaction or the
@@ -10954,7 +10958,7 @@ cannot verify the validity of the username, and cannot propagate the signon to o
 as the value of the network.automatic-ntlm-auth.trusted-uris parameter.</p>
 <span class="target" id="v459ug-data-encryption-ssl"></span></div>
 <div class="section" id="data-encryption-by-at-tls-ssl">
-<span id="index-431"></span><h4>Data encryption by AT-TLS/SSL<a class="headerlink" href="#data-encryption-by-at-tls-ssl" title="Permalink to this headline">¶</a></h4>
+<span id="index-432"></span><h4>Data encryption by AT-TLS/SSL<a class="headerlink" href="#data-encryption-by-at-tls-ssl" title="Permalink to this headline">¶</a></h4>
 <p>The AT-TLS feature (“Application Transparent Transport Layer Security”), available with z/OS Communication Server
 V1R7 and later releases, allows direct access to the VIRTEL Web Access server in SSL mode (HTTPS), without using an
 intermediate server. The SSLSETUP job in the VIRTEL SAMPLIB contains an example of the definitions required to place
@@ -10967,8 +10971,8 @@ proxy is to transform the dataflow into HTTP mode before sending it on to VIRTEL
 <p class="last">Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.</p>
 </div>
 </div>
-<div class="section" id="index-432">
-<span id="identification-by-certificate"></span><h4>Identification by certificate<a class="headerlink" href="#index-432" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="index-433">
+<span id="identification-by-certificate"></span><h4>Identification by certificate<a class="headerlink" href="#index-433" title="Permalink to this headline">¶</a></h4>
 <p>The definition of a transaction with SECURITY 3 (TLS) allows VIRTEL to recognize a VIRTEL Web Access user by means of
 a digital certificate installed in the user’s web browser. VIRTEL will use the RACF userid associated with the certificate
 to determine the user’s authority to execute the transaction.</p>
@@ -10988,7 +10992,7 @@ user’s workstation and installed in the user’s browser.</p>
 </div>
 <span class="target" id="v459ug-password-encryption"></span></div>
 <div class="section" id="password-encryption">
-<span id="index-433"></span><h4>Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
+<span id="index-434"></span><h4>Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Web Access offers the possibility of encrypting passwords (3270 non-display fields) transmitted in HTML pages.
 VIRTEL uses the encryption facilities provided by the System z hardware through the z/OS Integrated Cryptographic
 Service Facility (ICSF). Password encryption is available only when using VIRTEL Web Access in Ajax mode using the
@@ -11002,7 +11006,7 @@ the name and ICSF as the encryption engine, as in example shown below:</p>
 <p><em>CRYPTn parameter for password encryption using WEB2AJAX.htm</em></p>
 <span class="target" id="v459ug-signon-using-html"></span></div>
 <div class="section" id="signon-using-html-fields">
-<span id="index-434"></span><h4>Signon using HTML fields<a class="headerlink" href="#signon-using-html-fields" title="Permalink to this headline">¶</a></h4>
+<span id="index-435"></span><h4>Signon using HTML fields<a class="headerlink" href="#signon-using-html-fields" title="Permalink to this headline">¶</a></h4>
 <p>The definition of a transaction with SECURITY 4 (HTML) allows VIRTEL to obtain the userid and password from fields
 embedded in the HTML page.</p>
 <p>When a security type 4 transaction is requested, and the user is not already signed on, VIRTEL will send the requested
@@ -11036,7 +11040,7 @@ P1=Update                          P3=Return                        P12=Server
 </pre></div>
 </div>
 <p><em>HTML security: Example transaction with security type 4</em></p>
-<p id="index-435">The figure below shows an example of a page template containing userid and password fields which can be used with
+<p id="index-436">The figure below shows an example of a page template containing userid and password fields which can be used with
 the security type 4 transaction as shown above.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
 &lt;!doctype html public &quot;-//w3c//dtd html 4.0//en&quot;&gt;
@@ -11088,7 +11092,7 @@ genloginform(&quot;{{{NAME-OF (PAGE)}}}++{{{AJAX-SESSION-CODE}}}&quot;,
 <p><em>HTML security: Example page template</em></p>
 </div>
 <div class="section" id="virtel-rules">
-<span id="index-436"></span><h4>Virtel Rules<a class="headerlink" href="#virtel-rules" title="Permalink to this headline">¶</a></h4>
+<span id="index-437"></span><h4>Virtel Rules<a class="headerlink" href="#virtel-rules" title="Permalink to this headline">¶</a></h4>
 <p>The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
 case, the entry point will be chosen according to the set of rules associated with that particular user. See <em>Correspondent Management</em> in the Virtel Administration Guide. The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
 third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example, display a page containing the message “Access not authorised”).</p>
@@ -11194,9 +11198,9 @@ CREATION OK
 </div>
 </div>
 <div class="section" id="howtos">
-<span id="index-437"></span><h2>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h2>
+<span id="index-438"></span><h2>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-use-different-screen-sizes">
-<span id="index-438"></span><h3>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h3>
+<span id="index-439"></span><h3>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h3>
 <p>Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of
 terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between
 VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:</p>
@@ -11353,7 +11357,7 @@ non-standard screen sizes.</p>
 </div>
 </div>
 <div class="section" id="how-to-support-multiple-codes-pages">
-<span id="index-439"></span><h3>How To Support Multiple Codes Pages<a class="headerlink" href="#how-to-support-multiple-codes-pages" title="Permalink to this headline">¶</a></h3>
+<span id="index-440"></span><h3>How To Support Multiple Codes Pages<a class="headerlink" href="#how-to-support-multiple-codes-pages" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If the page contains the embedded VIRTEL tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
 “COUNTRY” and “DEFUTF8” parameters in the VIRTEL Installation Guide for further details). Code Page Support can be provided at the following levels:</p>
 <ul class="simple">
@@ -11398,7 +11402,7 @@ and SET$ URL-ENCODING instructions. These are described in the VWA Users Guide.<
 </div>
 </div>
 <div class="section" id="how-to-handle-host-session-termination">
-<span id="index-440"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
+<span id="index-441"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
 <p>When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available:
 - Return to the application selection menu
 - Display a specific HTML page
@@ -11446,7 +11450,7 @@ application selection menu.</p>
 </div>
 </div>
 <div class="section" id="how-to-access-a-host-application-directly">
-<span id="index-441"></span><h3>How To Access A Host Application Directly<a class="headerlink" href="#how-to-access-a-host-application-directly" title="Permalink to this headline">¶</a></h3>
+<span id="index-442"></span><h3>How To Access A Host Application Directly<a class="headerlink" href="#how-to-access-a-host-application-directly" title="Permalink to this headline">¶</a></h3>
 <p>It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the process of connection to a host application, see <a class="reference internal" href="#v459ug-url-formats"><span class="std std-ref">“Virtel URL formats”</span></a> of this manual, and “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual.</p>
 <div class="section" id="full-path-url">
 <h4>Full path URL<a class="headerlink" href="#full-path-url" title="Permalink to this headline">¶</a></h4>
@@ -11487,18 +11491,18 @@ Input Scenario   ===&gt;                   Output Scenario ===&gt;</p>
 </div>
 </div>
 <div class="section" id="how-to-change-the-font-for-web-access">
-<span id="index-442"></span><h3>How To Change The Font For Web Access<a class="headerlink" href="#how-to-change-the-font-for-web-access" title="Permalink to this headline">¶</a></h3>
+<span id="index-443"></span><h3>How To Change The Font For Web Access<a class="headerlink" href="#how-to-change-the-font-for-web-access" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#v459ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the font family and font size. By default VIRTEL will calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer. VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can choose any fixed-pitch font installed on the workstation. Typical fonts available on Windows workstations are Courier New, Fixedsys, Terminal, Consolas, and Lucida Console. You can use the Windows Control Panel – Fonts dialog to view the installed fonts.</p>
 </div>
 <div class="section" id="how-to-change-the-3270-display-style">
-<span id="index-443"></span><h3>How To Change The 3270 Display Style<a class="headerlink" href="#how-to-change-the-3270-display-style" title="Permalink to this headline">¶</a></h3>
+<span id="index-444"></span><h3>How To Change The 3270 Display Style<a class="headerlink" href="#how-to-change-the-3270-display-style" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#v459ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the display style to suit your needs. By default VIRTEL
 provides 3 defaults models named “3270”, “Gray” and “White”, If you need some more, you must request your
 Administrators.</p>
 <p>Selecting display pattern : The display model changes will take effect at the next connection to a 3270 application.</p>
 </div>
 <div class="section" id="how-to-customize-the-enter-key-settings">
-<span id="index-444"></span><h3>How To Customize The Enter Key Settings<a class="headerlink" href="#how-to-customize-the-enter-key-settings" title="Permalink to this headline">¶</a></h3>
+<span id="index-445"></span><h3>How To Customize The Enter Key Settings<a class="headerlink" href="#how-to-customize-the-enter-key-settings" title="Permalink to this headline">¶</a></h3>
 <p>Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter. The <a class="reference internal" href="#v459ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to specify this configuration using the following settings:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
 <span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
@@ -11521,7 +11525,7 @@ Administrators.</p>
 <span class="target" id="v459ug-customize-display"></span></div>
 </div>
 <div class="section" id="how-to-customize-display-styles">
-<span id="index-445"></span><h3>How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
+<span id="index-446"></span><h3>How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an Administration function. Administrators will configure model types which can then be selected by a user.</p>
 <div class="section" id="add-or-remove-a-display-style">
 <h4>Add or remove a display style<a class="headerlink" href="#add-or-remove-a-display-style" title="Permalink to this headline">¶</a></h4>
@@ -11640,19 +11644,19 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 </div>
 </div>
 <div class="section" id="how-to-change-the-default-user-settings">
-<span id="index-446"></span><h3>How To Change The Default User Settings<a class="headerlink" href="#how-to-change-the-default-user-settings" title="Permalink to this headline">¶</a></h3>
+<span id="index-447"></span><h3>How To Change The Default User Settings<a class="headerlink" href="#how-to-change-the-default-user-settings" title="Permalink to this headline">¶</a></h3>
 <p>The site default settings for Web Access are stored in the file w2hparm.js (see <a class="reference internal" href="#v459ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>)</p>
 </div>
 <div class="section" id="how-to-support-a-reverse-proxy">
-<span id="index-447"></span><h3>How To Support A Reverse Proxy<a class="headerlink" href="#how-to-support-a-reverse-proxy" title="Permalink to this headline">¶</a></h3>
+<span id="index-448"></span><h3>How To Support A Reverse Proxy<a class="headerlink" href="#how-to-support-a-reverse-proxy" title="Permalink to this headline">¶</a></h3>
 <p>If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end user. In order for VIRTEL to recognize and log the originating user’s IP address, you must declare the proxy in the HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide) or in a rule attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference manual).</p>
 </div>
 <div class="section" id="how-to-support-virtual-hosting">
-<span id="index-448"></span><h3>How To Support Virtual Hosting<a class="headerlink" href="#how-to-support-virtual-hosting" title="Permalink to this headline">¶</a></h3>
+<span id="index-449"></span><h3>How To Support Virtual Hosting<a class="headerlink" href="#how-to-support-virtual-hosting" title="Permalink to this headline">¶</a></h3>
 <p>Name-based virtual hosting is a method for supporting multiple sites (for example, site1.mycompany.com and site2.mycompany.com) using the same IP address and port number. By means of the “HTTP Host” field in the rules attached to the HTTP line, VIRTEL can recognize the site name and direct the request to a specific entry point. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details. You can install a set sample definitions for virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.</p>
 </div>
 <div class="section" id="how-to-control-applist-behaviour">
-<span id="index-449"></span><h3>How To Control APPLIST behaviour<a class="headerlink" href="#how-to-control-applist-behaviour" title="Permalink to this headline">¶</a></h3>
+<span id="index-450"></span><h3>How To Control APPLIST behaviour<a class="headerlink" href="#how-to-control-applist-behaviour" title="Permalink to this headline">¶</a></h3>
 <p>To open an application in a new TAB instead of the current window code the following in the customizable exit <em>before_launchApplink(href)</em>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">To</span> <span class="nb">open</span> <span class="n">an</span> <span class="n">application</span> <span class="p">(</span><span class="n">issued</span> <span class="kn">from</span> <span class="nn">applist</span> <span class="n">transaction</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TAB</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">window</span> <span class="o">*/</span>
 <span class="n">function</span> <span class="n">before_launchApplink</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="p">{</span>

@@ -4537,6 +4537,8 @@ This parameter should be coded in the same way as for the X25MCH macro in NPSI.
 .. index::
    pair: Virtel TCT; UFIELnn parameter  
 
+.. _#_V460UG_ufile1_to_ufile20_parameters:     
+
 UFILE1 to UFILE20 parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -4640,9 +4642,7 @@ VSAMTYP parameter
 
 **NORMAL** - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.
 
-.. note::
-
-	VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”).
+VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see :ref:`“Additional parameters for VSAM files”, <#_V460UG_additional_parameters_for_VSAM_files>`): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see :ref:`“UFILE1 to UFILE20", <#_V460UG_ufile1_to_ufile20_parameters>`).
 
 .. note::
 
@@ -4738,6 +4738,8 @@ ZAPH parameter
 .. index::
    pair: VSAM Files; Additional Parameters  
 
+.. _#_V460UG_additional_parameters_for_VSAM_files:  
+
 Additional Parameters For VSAM Files
 ------------------------------------
 
@@ -4818,7 +4820,7 @@ How To Share VSAM Files Between Multiple Instances Of VIRTEL
 
 Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in "write" mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel. 
 
-For more detailed informations on this subject, see “UFILE1 to UFILE20”, and “VSAMTYP parameters of the VIRTCT. Also refer to “Additional parameters for VSAM files”.
+For more detailed informations on this subject, see :ref:`“UFILE1 to UFILE20", <#_V460UG_ufile1_to_ufile20_parameters>` and also :ref:`“Additional parameters for VSAM files”, <#_V460UG_additional_parameters_for_VSAM_files>`.
 
 .. raw:: latex
 

@@ -3618,7 +3618,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p>This parameter should be coded in the same way as for the X25MCH macro in NPSI.</p>
 </div>
 <div class="section" id="ufile1-to-ufile20-parameters">
-<span id="index-133"></span><h4>UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
+<span id="v460ug-ufile1-to-ufile20-parameters"></span><span id="index-133"></span><h4>UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UFILEx</span><span class="o">=</span><span class="p">(</span><span class="n">ddname</span><span class="p">,</span><span class="n">acbcard</span><span class="p">,</span><span class="n">rkp</span><span class="p">,</span><span class="n">keylen</span><span class="p">,</span><span class="n">mode</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
 </pre></div>
 </div>
@@ -3694,10 +3694,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><strong>READONLY</strong> - This parameter, if specified in the VIRTCT, allows the VIRTEL started task to be run in read-only mode for VSAM files,to be used in production mode, especially in a sysplex environment. Except for the VIRSWAP work file, all other VSAM files used by VIRTEL can be opened in read-only mode.</p>
 <p><strong>WRITER</strong> - This parameter, if specified in the VIRTCT, allows updates in a Virplex without necessitating the stop of other, read-only, Virtel instances.</p>
 <p><strong>NORMAL</strong> - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”).</p>
-</div>
+<p>VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see <a class="reference internal" href="#v460ug-additional-parameters-for-vsam-files"><span class="std std-ref">“Additional parameters for VSAM files”,</span></a>): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see <a class="reference internal" href="#v460ug-ufile1-to-ufile20-parameters"><span class="std std-ref">“UFILE1 to UFILE20”,</span></a>).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">VSAMTYP=WRITER should be used to suppport the Virplex writer instance of Virtel. See the Virplex section in the Virtel Connectivity Guide.</p>
@@ -3757,7 +3754,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="additional-parameters-for-vsam-files">
-<span id="index-143"></span><h3>Additional Parameters For VSAM Files<a class="headerlink" href="#additional-parameters-for-vsam-files" title="Permalink to this headline">¶</a></h3>
+<span id="v460ug-additional-parameters-for-vsam-files"></span><span id="index-143"></span><h3>Additional Parameters For VSAM Files<a class="headerlink" href="#additional-parameters-for-vsam-files" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. These VSAM files must be defined in the VIRTCT by means of a parameter UFILEx and an ACBHx macro for each file. The ACB macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACBHx ACB AM=VSAM,DDNAME=dddddddd,MACRF=(P1,P2,…....,Pn),STRNO=3
 </pre></div>
@@ -3811,7 +3808,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <div class="section" id="how-to-share-vsam-files-between-multiple-instances-of-virtel">
 <span id="index-145"></span><h4>How To Share VSAM Files Between Multiple Instances Of VIRTEL<a class="headerlink" href="#how-to-share-vsam-files-between-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h4>
 <p>Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in “write” mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel.</p>
-<p>For more detailed informations on this subject, see “UFILE1 to UFILE20”, and “VSAMTYP parameters of the VIRTCT. Also refer to “Additional parameters for VSAM files”.</p>
+<p>For more detailed informations on this subject, see <a class="reference internal" href="#v460ug-ufile1-to-ufile20-parameters"><span class="std std-ref">“UFILE1 to UFILE20”,</span></a> and also <a class="reference internal" href="#v460ug-additional-parameters-for-vsam-files"><span class="std std-ref">“Additional parameters for VSAM files”,</span></a>.</p>
 </div>
 </div>
 <div class="section" id="example-of-the-virtct">
