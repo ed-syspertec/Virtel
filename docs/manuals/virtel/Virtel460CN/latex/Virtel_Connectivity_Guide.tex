@@ -56,7 +56,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Dec 30, 2020}
+\date{Aug 20, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -3520,7 +3520,7 @@ Must contain the value LLC5.
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id43}}
-Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See the “How-To” guide ‘Virtel LU Nailing’ for examples on how to define and use Virtel Rules.
+Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See {\hyperref[\detokenize{connectivity_guide:v460cn-forceluname}]{\sphinxcrossref{\DUrole{std,std-ref}{“Controlling LUNames”}}}}) for examples on how to define and use Virtel Rules to control LU names.
 
 \index{Virtel Rules@\spxentry{Virtel Rules}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!Virtel Rules@\spxentry{Virtel Rules}}\ignorespaces 
 
@@ -3821,7 +3821,7 @@ The “Relay” field may alternatively contain a name in the form *POOLNAM whic
 Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
 
 \end{description}
-
+\phantomsection\label{\detokenize{connectivity_guide:v460cn-patterncharacters}}
 \index{Terminal Management Sub-Application@\spxentry{Terminal Management Sub-Application}!Pattern Characters@\spxentry{Pattern Characters}}\index{Pattern Characters@\spxentry{Pattern Characters}!Terminal Management Sub-Application@\spxentry{Terminal Management Sub-Application}}\ignorespaces 
 Pattern characters:
 
@@ -5718,7 +5718,7 @@ The 3 groups of terminals contain the value *POOL001 under the heading “*Pool 
 \label{\detokenize{connectivity_guide:id72}}
 In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a \sphinxstyleemphasis{Logical Unit} or \sphinxstyleemphasis{LU}, and each LU has a unique eight character name (\sphinxstyleemphasis{LU name)}. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 
-While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following:-
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following :-
 \begin{itemize}
 \item {} 
 By IP address
@@ -5730,6 +5730,8 @@ By by cookie
 By by URL
 
 \end{itemize}
+
+Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v460cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation.
 
 
 \section{LU Nailing By URL}
@@ -5893,60 +5895,44 @@ Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a
 
 \section{LU Nailing by IP address}
 \label{\detokenize{connectivity_guide:lu-nailing-by-ip-address}}\label{\detokenize{connectivity_guide:index-154}}
-The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v460cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. In the example below we define a rule on line E-HTTP which will force a terminal connecting with IP address 192.168.092.080 to use LU name EHVTA100. The LU name must be pre-defined in a Virtel terminal pool.
 
-This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
+\sphinxincludegraphics{{image121}.png}
+\sphinxstyleemphasis{Rule to map IP address 192.168.092.080 to LU name EHVTA100}
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRBW}     \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{:}\PYG{l+m+mi}{38}
-\PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WHT00110} \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
-\PYG{n}{Status} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE} \PYG{l+m+mi}{15} \PYG{n}{Feb} \PYG{l+m+mi}{2010} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{:}\PYG{l+m+mi}{35} \PYG{n}{SPTBOWL}
-\PYG{n}{Description} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{HTTP} \PYG{n}{access} \PYG{k+kn}{from} \PYG{n+nn}{IP} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{0.39}
-\PYG{n}{Entry} \PYG{n}{point} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST} \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
-\PYG{n}{Parameter} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{RHTVT001} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value} \PYG{o+ow}{or} \PYG{n}{LUNAME}
-\PYG{n}{Trace} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
-\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
-\PYG{l+m+mi}{1} \PYG{n}{IP} \PYG{n}{Subnet} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{000.039} \PYG{n}{Mask} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
-\PYG{l+m+mi}{0} \PYG{n}{Host} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{eMail} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address} \PYG{o+ow}{or} \PYG{n}{proxy}
-\PYG{l+m+mi}{0} \PYG{n}{Called} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
-\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
-\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{Days} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{W}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{F}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
-\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
-\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update} \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return} \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
-\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate} \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate} \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
-\end{sphinxVerbatim}
+Multiple terminals can be defined with a rule by using the * suffix in the parameter field. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.092.0 through to 192.168.092.255 will be assigned the next unused LU name in the range EHVTA2\%\%.
 
-\sphinxstyleemphasis{Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx}
+\sphinxincludegraphics{{image122}.png}
+\sphinxstyleemphasis{Rule to map IP range 192.168.092.0 to LU names starting EHVTA2\%\%}
 
-Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx.
+This rule is named EHRLE200, the “IP Subnet” field specifies the IP address 192.168.092.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name EHVTA2* which signifies that any LU whose name begins with EHVTA2 may be assigned to clients whose IP address matches this rule. If we open two Virtel sessions from a device whose IP address is 192.168.92.80 we can see that the rule is matched, message VIRHT281, and the VTAM relays assigned are from the EHVTA200 pool, starting at the highest avaiable LU name.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRBW}     \PYG{l+m+mi}{17}\PYG{p}{:}\PYG{l+m+mi}{53}\PYG{p}{:}\PYG{l+m+mi}{56}
-\PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WHT00140} \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
-\PYG{n}{Status} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE} \PYG{l+m+mi}{15} \PYG{n}{Feb} \PYG{l+m+mi}{2010} \PYG{l+m+mi}{17}\PYG{p}{:}\PYG{l+m+mi}{53}\PYG{p}{:}\PYG{l+m+mi}{49} \PYG{n}{SPTBOWL}
-\PYG{n}{Description} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{HTTP} \PYG{n}{access} \PYG{k+kn}{from} \PYG{n+nn}{IP} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{100.}\PYG{n}{nnn}
-\PYG{n}{Entry} \PYG{n}{point} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST} \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
-\PYG{n}{Parameter} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{RHTVT1}\PYG{o}{*} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value} \PYG{o+ow}{or} \PYG{n}{LUNAME}
-\PYG{n}{Trace} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
-\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
-\PYG{l+m+mi}{1} \PYG{n}{IP} \PYG{n}{Subnet} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{100.000} \PYG{n}{Mask} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.000}
-\PYG{l+m+mi}{0} \PYG{n}{Host} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{eMail} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address} \PYG{o+ow}{or} \PYG{n}{proxy}
-\PYG{l+m+mi}{0} \PYG{n}{Called} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
-\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
-\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
-\PYG{l+m+mi}{0} \PYG{n}{Days} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{W}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{F}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
-\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
-\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update} \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return} \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}  \PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate} \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate} \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
+\PYG{n}{VIRHT28I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS} \PYG{n}{GETS} \PYG{n}{ENTRY} \PYG{n}{POINT} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDSHOST }\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{FROM} \PYG{n}{RULE} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EHRLE200}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{FOR}
+\PYG{n}{CALLER} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.80}\PYG{p}{:}\PYG{l+m+mi}{51280}
+\PYG{n}{VIRHT51I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS} \PYG{n}{CONNECTING} \PYG{n}{EHVTA209} \PYG{n}{TO} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.80}\PYG{p}{:}\PYG{l+m+mi}{51280}
+\PYG{n}{VIR0919I} \PYG{n}{EHVTA209} \PYG{n}{RELAY} \PYG{n}{EHVTA200}\PYG{p}{(}\PYG{n}{IPTRM200}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{n}{VIR0919I} \PYG{n}{EHVTA209} \PYG{n}{RELAY} \PYG{n}{EHVIM200}\PYG{p}{(}\PYG{n}{IPPRT200}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{n}{VIRHT28I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS} \PYG{n}{GETS} \PYG{n}{ENTRY} \PYG{n}{POINT} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDSHOST }\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{FROM} \PYG{n}{RULE} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EHRLE200}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{FOR}
+\PYG{n}{CALLER} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.80}\PYG{p}{:}\PYG{l+m+mi}{51280}
+\PYG{n}{VIRHT51I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS} \PYG{n}{CONNECTING} \PYG{n}{EHVTA208} \PYG{n}{TO} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.80}\PYG{p}{:}\PYG{l+m+mi}{51280}
+\PYG{n}{VIR0919I} \PYG{n}{EHVTA208} \PYG{n}{RELAY} \PYG{n}{EHVTA201}\PYG{p}{(}\PYG{n}{IPTRM201}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{n}{VIR0919I} \PYG{n}{EHVTA208} \PYG{n}{RELAY} \PYG{n}{EHVIM201}\PYG{p}{(}\PYG{n}{IPPRT201}\PYG{p}{)} \PYG{n}{ACTIVATED}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx}
+The supporting terminal definitions look like :-
 
-The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
+\sphinxincludegraphics{{image123}.png}
+\sphinxstyleemphasis{Terminal definitions to support IP range}
+
+When a device is “nailed” by a rule it takes the first predefined terminal in the range, in this case terminal IPTRM200(3270 name EHVTA200, Printer name EHVIM200). This pre-defined entry than grabs the highest availble pool entry from pool IPPOOL. IPPOOL supports 10 entries from the range EHVTA200 through to EHVTA209. Ten entries. Pool entry EHVTA209 is used to support the 3270 session.
+
+Although it is recommended that terminal definitions should be defined with the same prefix as defined in the line statement it is not necessary. Here we have used a prefix of \sphinxstylestrong{IP} to define terminals that will be caught by the IP rule(s). The key name definition that \sphinxstylestrong{must} be adhered to is that the prefix of the terminal pool defintions, in this case EHVTA2\%\%, must begin with the transaction pseudo-terminals parameter. In this line definition the transactions associated with the Entry Point use a pseudo-terminals prefix of EHVTA.
+
+Note the use of pattern characters when defining the range. In this example we have used \%\% when \% represents hexadecimal digist 0-9 and A-F. See {\hyperref[\detokenize{connectivity_guide:v460cn-patterncharacters}]{\sphinxcrossref{\DUrole{std,std-ref}{“Pattern characters”,}}}} for more information on how to define ranges with pattern characters.
+
+\sphinxincludegraphics{{image124}.png}
+\sphinxstyleemphasis{3270 session allocated from IP range}
 
 \newpage
 

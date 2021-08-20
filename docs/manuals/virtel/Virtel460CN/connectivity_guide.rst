@@ -3273,7 +3273,7 @@ Virtel Rules
 Introduction
 ------------
 
-Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See the "How-To" guide 'Virtel LU Nailing' for examples on how to define and use Virtel Rules.  
+Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See :ref:`“Controlling LUNames”<#_V460CN_ForceLUNAME>`) for examples on how to define and use Virtel Rules to control LU names.  
 
 .. index::
    pair: Virtel Rules; Summary Display   
@@ -3528,6 +3528,8 @@ Relay
     The “Relay” field may alternatively contain a name in the form \*POOLNAM which refers to the logical pool which has the same name \*POOLNAM specified in its “\*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”. Certain terminals (those associated with an AntiPCNE line) require the definition of an external server whose name is equal to the relay name of the terminal. In this case, you can press [PF12] to display the external server detail definition. If the “Repeat” field contains a value greater than 1, then the relay name, if supplied, must contain a numeric portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below), or it must refer to a logical pool. If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any '+' character in the relay name will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
     Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the "terminal name", "relay", and "2nd relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
+
+.. _#_V460CN_PatternCharacters:
 
 .. index::
    pair: Terminal Management Sub-Application; Pattern Characters
@@ -5146,13 +5148,16 @@ Introduction
 
 In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a *Logical Unit* or *LU*, and each LU has a unique eight character name (*LU name)*. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 
-While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following:- 
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following :- 
 
 -  By IP address
 
 -  By by cookie
 
 -  By by URL
+
+Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V460CN_VirtelRules>` for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation. 
+
 
 LU Nailing By URL
 -----------------
@@ -5317,61 +5322,44 @@ Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a
 LU Nailing by IP address
 ------------------------
 
-The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V460CN_VirtelRules>` for further information on Virtel Rules. 
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. In the example below we define a rule on line E-HTTP which will force a terminal connecting with IP address 192.168.092.080 to use LU name EHVTA100. The LU name must be pre-defined in a Virtel terminal pool.
 
-This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
+|image121|
+*Rule to map IP address 192.168.092.080 to LU name EHVTA100*
 
-::
+Multiple terminals can be defined with a rule by using the * suffix in the parameter field. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.092.0 through to 192.168.092.255 will be assigned the next unused LU name in the range EHVTA2%%.
 
+|image122|
+*Rule to map IP range 192.168.092.0 to LU names starting EHVTA2%%*
 
-    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     14:30:38
-    Name ===> WHT00110 Rule priority is per name
-    Status ===> ACTIVE 15 Feb 2010 14:30:35 SPTBOWL
-    Description ===> HTTP access from IP 192.168.0.39
-    Entry point ===> WEB2HOST Target Entry Point
-    Parameter ===> RHTVT001 &1 value or LUNAME
-    Trace ===> 1=commands 2=data 3=partner
-    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
-    1 IP Subnet ===> 192.168.000.039 Mask ===> 255.255.255.255
-    0 Host ===>
-    0 eMail ===>
-    0 Calling DTE ===> Calling DTE address or proxy
-    0 Called ===> Called DTE address
-    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-    0 User Data ===>
-    0 Days ===> M: T: W: T: F: S: S:
-    0 Start time ===> H: M: S: End time ===> H: M: S:
-    P1=Update P3=Return Enter=Add
-    P4=Activate P5=Inactivate P12=Entry P.
-
-*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
-
-Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx.
+This rule is named EHRLE200, the “IP Subnet” field specifies the IP address 192.168.092.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name EHVTA2* which signifies that any LU whose name begins with EHVTA2 may be assigned to clients whose IP address matches this rule. If we open two Virtel sessions from a device whose IP address is 192.168.92.80 we can see that the rule is matched, message VIRHT281, and the VTAM relays assigned are from the EHVTA200 pool, starting at the highest avaiable LU name.   
 
 ::
 
-    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     17:53:56
-    Name ===> WHT00140 Rule priority is per name
-    Status ===> ACTIVE 15 Feb 2010 17:53:49 SPTBOWL
-    Description ===> HTTP access from IP 192.168.100.nnn
-    Entry point ===> WEB2HOST Target Entry Point
-    Parameter ===> RHTVT1* &1 value or LUNAME
-    Trace ===> 1=commands 2=data 3=partner
-    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
-    1 IP Subnet ===> 192.168.100.000 Mask ===> 255.255.255.000
-    0 Host ===>
-    0 eMail ===>
-    0 Calling DTE ===> Calling DTE address or proxy
-    0 Called ===> Called DTE address
-    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-    0 User Data ===>
-    0 Days ===> M: T: W: T: F: S: S:
-    0 Start time ===> H: M: S: End time ===> H: M: S:
-    P1=Update P3=Return Enter=Add  P4=Activate P5=Inactivate P12=Entry P.
+    VIRHT28I HTTP-EDS GETS ENTRY POINT 'EDSHOST ' FROM RULE 'EHRLE200' FOR
+    CALLER 192.168.92.80:51280                                            
+    VIRHT51I HTTP-EDS CONNECTING EHVTA209 TO 192.168.92.80:51280          
+    VIR0919I EHVTA209 RELAY EHVTA200(IPTRM200) ACTIVATED                  
+    VIR0919I EHVTA209 RELAY EHVIM200(IPPRT200) ACTIVATED                  
+    VIRHT28I HTTP-EDS GETS ENTRY POINT 'EDSHOST ' FROM RULE 'EHRLE200' FOR
+    CALLER 192.168.92.80:51280                                            
+    VIRHT51I HTTP-EDS CONNECTING EHVTA208 TO 192.168.92.80:51280          
+    VIR0919I EHVTA208 RELAY EHVTA201(IPTRM201) ACTIVATED                  
+    VIR0919I EHVTA208 RELAY EHVIM201(IPPRT201) ACTIVATED 
 
-*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
+The supporting terminal definitions look like :-
 
-The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
+|image123|
+*Terminal definitions to support IP range*
+
+When a device is "nailed" by a rule it takes the first predefined terminal in the range, in this case terminal IPTRM200(3270 name EHVTA200, Printer name EHVIM200). This pre-defined entry than grabs the highest availble pool entry from pool IPPOOL. IPPOOL supports 10 entries from the range EHVTA200 through to EHVTA209. Ten entries. Pool entry EHVTA209 is used to support the 3270 session.
+
+Although it is recommended that terminal definitions should be defined with the same prefix as defined in the line statement it is not necessary. Here we have used a prefix of **IP** to define terminals that will be caught by the IP rule(s). The key name definition that **must** be adhered to is that the prefix of the terminal pool defintions, in this case EHVTA2%%, must begin with the transaction pseudo-terminals parameter. In this line definition the transactions associated with the Entry Point use a pseudo-terminals prefix of EHVTA.    
+
+Note the use of pattern characters when defining the range. In this example we have used %% when % represents hexadecimal digist 0-9 and A-F. See :ref:`“Pattern characters”,<#_V460CN_PatternCharacters>` for more information on how to define ranges with pattern characters. 
+
+|image124|
+*3270 session allocated from IP range*
 
 .. raw:: latex
 
@@ -7368,4 +7356,8 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image117| image:: images/media/image117.png 
 .. |image118| image:: images/media/image118.png 
 .. |image119| image:: images/media/image119.png 
-.. |image120| image:: images/media/image120.png 
+.. |image120| image:: images/media/image120.png
+.. |image121| image:: images/media/image121.png  
+.. |image122| image:: images/media/image122.png 
+.. |image123| image:: images/media/image123.png
+.. |image124| image:: images/media/image124.png      
