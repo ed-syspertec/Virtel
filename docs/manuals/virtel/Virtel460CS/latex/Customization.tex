@@ -56,7 +56,7 @@
 
 
 \title{Virtel Customization}
-\date{Apr 12, 2021}
+\date{Aug 22, 2021}
 \release{4.60}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -74,7 +74,7 @@
 
 \sphinxincludegraphics[scale=0.5]{{logo_virtel_web}.png}
 
-\sphinxstylestrong{VIRTEL How to Guide}
+\sphinxstylestrong{VIRTEL Customization}
 
 \begin{sphinxadmonition}{warning}{Warning:}
 This is a draft version of the document.
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.60 Draft
 
-Release Date : 11th October 2020. Publication Date : 25/11/2020
+Release Date : 11th October 2020. Publication Date : 22/08/2021
 
 Syspertec Communication
 
@@ -1493,375 +1493,14 @@ Using commands at the system console Lines can be used to start or stop a line b
 
 The LINE START and LINE STOP commands perform the same function as using the “S” and “P” commands on the “Status of lines” application panel. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
 
-\index{Terminals@\spxentry{Terminals}}\index{Terminals@\spxentry{Terminals}!Lu Nailing@\spxentry{Lu Nailing}}\ignorespaces 
-
-\chapter{Terminal LU Nailing}
-\label{\detokenize{Customization:terminal-lu-nailing}}\label{\detokenize{Customization:index-56}}
-When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a Logical Unit or LU, and each LU has a unique eight character name (LU name). VIRTEL has at its disposal a pool of LUs known to VTAM,
-whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
-While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser. In this section we describes the following types of LU nailing:
-\begin{itemize}
-\item {} 
-LU nailing by work station name
-
-\item {} 
-LU nailing by LU (Pre-defined terminal)
-
-\item {} 
-LU nailing by LU (Non-predefined terminal)
-
-\item {} 
-LU nailing by IP address
-
-\item {} 
-LU nailing by cookie
-
-\item {} 
-LU nailing by URL
-
-\end{itemize}
-
-\index{Terminals@\spxentry{Terminals}!Lu Nailing using work station name@\spxentry{Lu Nailing using work station name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a work station name@\spxentry{Using a work station name}}\ignorespaces 
-
-\section{LU nailing using the work station name (Predefined terminals)}
-\label{\detokenize{Customization:lu-nailing-using-the-work-station-name-predefined-terminals}}\label{\detokenize{Customization:index-57}}
-In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{ESH0000}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{E}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rule for terminal EHPMA00}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{PARAM}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Or} \PYG{n}{EHPMA00}\PYG{o}{*} \PYG{o}{*}\PYG{o}{/} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NETMASK}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{USERDATA}\PYG{o}{=}\PYG{p}{(}\PYG{n}{EQUAL}\PYG{p}{,}\PYG{n}{HOLT}\PYG{o}{\PYGZhy{}}\PYG{n}{W}\PYG{p}{)}
-\end{sphinxVerbatim}
-
-\sphinxstyleemphasis{Example of a Virtel RULE to be activated with a user data}
-
-The rule instructs Virtel to test the user data field passed in a URL and if it matches the string POOL-W than to assign an LU name prefix of EHPMA00 and direct the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name. The EDSWHOST entry point looks like:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS WEB ENTRY POINT (USERS WITH USERDATA)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{EDSW}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{ENDPAGE}\PYG{o}{=}\PYG{n}{CLOSE}\PYG{o}{.}\PYG{n}{HTM}
-\end{sphinxVerbatim}
-
-In this entry point you would define the relevant transactions. In our case we have defined the following:
-\begin{itemize}
-\item {} 
-A transaction using EHLOC terminals to access the /w2h directory
-
-\item {} 
-A Virtel transaction using EHLOC terminals to support the application menu list
-
-\item {} 
-VTAM transaction using EHVTS terminal to establish a relationship with the VTAM application
-
-\end{itemize}
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTML page directory (default access)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w2h}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{W2H toolkit directory (/w2h)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{41}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{IMS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{IMS access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{IMS3270}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{42}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TSO access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{applist}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{List of applications for appmenu.htm}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021S}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
-\end{sphinxVerbatim}
-
-In VTAM we would have the following definition:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{o}{*} \PYG{n}{LU} \PYG{n}{Test} \PYG{p}{:} \PYG{n}{VTAM} \PYG{n}{application} \PYG{n}{relays} \PYG{k}{with} \PYG{n}{user} \PYG{n}{data}\PYG{o}{.} \PYG{o}{*}
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{n}{EHPMA000} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{ISTINCLM}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{SNX32702}\PYG{p}{,}\PYG{n}{EAS}\PYG{o}{=}\PYG{l+m+mi}{1}
-\end{sphinxVerbatim}
-
-Or for EHPMA00*
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
-* LU Test : VTAM application relays with user data. *
-* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
-EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-\end{sphinxVerbatim}
-
-\sphinxstyleemphasis{Example of VTAM APPL definitions}
-
-We also need a terminal and pool definition. Here is the pool definition:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Or} \PYG{n}{EHPMA00}\PYG{o}{*} \PYG{o}{*}\PYG{o}{/} \PYG{o}{\PYGZhy{}}
-\PYG{n}{POOL}\PYG{o}{=}\PYG{o}{*}\PYG{n}{STAPOOL}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal definition for EHPMA000}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{REPEAT}\PYG{o}{=}
-\end{sphinxVerbatim}
-
-and a pool definition for out static pool:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHVTS000}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{RELAY}\PYG{o}{=}\PYG{o}{*}\PYG{n}{STAPOOL}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Static definition pool}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0010}
-\end{sphinxVerbatim}
-
-This setup will support up to 10 predefined terminal definitions. For each terminal we have to provide a static definition. Of course we could have used a generic terminal definition of EHPMA00* but this would only work for numerically sequenced terminal names \textendash{} EHPMA000 \textendash{} EHPMA009. Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user data parameter. Here is an example:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{title} \PYG{n}{Test} \PYG{n}{Propagation} \PYG{n}{of} \PYG{n}{Userdata} \PYG{n}{Parameter}
-\PYG{n+nd}{@echo} \PYG{n}{on}
-\PYG{n}{color} \PYG{l+m+mi}{1}\PYG{n}{f}
-\PYG{n+nb+bp}{cls}
-\PYG{n}{SET} \PYG{n}{P1}\PYG{o}{=}\PYG{o}{\PYGZpc{}}\PYG{n}{COMPUTERNAME}\PYG{p}{:}\PYG{o}{\PYGZti{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{o}{\PYGZpc{}}
-\PYG{n}{start} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.33}\PYG{p}{:}\PYG{l+m+mi}{41003}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{appmenu}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{applist}\PYG{o}{+}\PYG{o}{\PYGZpc{}}\PYG{n}{P1}\PYG{o}{\PYGZpc{}} \PYG{o}{\PYGZam{}}\PYG{n}{goto}\PYG{p}{:}\PYG{n}{eof}
-\PYG{p}{:}\PYG{n}{exit}
-\end{sphinxVerbatim}
-
-\sphinxstyleemphasis{Example of a batch job to pass the work station name}
-
-The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:
-
-\sphinxincludegraphics{{image10}.png}
-
-When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.
-
-\sphinxincludegraphics{{image11}.png}
-
-The Virtel RULE has forced an LU name prefixed EHPMA00* to be used from the the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. In the VTAM display we can see that a session has been set up using that LU name:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-D NET,ID=EHPMA000,E
-IST097I DISPLAY ACCEPTED
-IST075I NAME = SPNET.EHPMA000, TYPE = DYNAMIC APPL 073
-IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
-IST1447I REGISTRATION TYPE = CDSERVR
-IST1629I MODSRCH = NEVER
-IST977I MDLTAB=***NA*** ASLTAB=***NA***
-IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***
-IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***
-IST1632I VPACING = 7
-IST1938I APPC = NO
-IST597I CAPABILITY\PYGZhy{}PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
-IST231I APPL MAJOR NODE = APPLSPEH
-IST1425I DEFINED USING MODEL EHPMA???
-IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
-IST1500I STATE TRACE = OFF
-IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
-IST228I ENCRYPTION = OPTIONAL , TYPE = DES
-IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
-IST1552I MAC = NONE MACTYPE = NONE
-IST1050I MAXIMUM COMPRESSION LEVEL \PYGZhy{} INPUT = 0, OUTPUT = 0
-IST1633I ASRCVLM = 1000000
-IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
-IST1669I IPADDR..PORT 192.168.92.65..50027
-IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
-IST206I SESSIONS:
-IST634I NAME STATUS SID SEND RECV VR TP NETID
-IST635I TSO1A005 ACTIV\PYGZhy{}P CA7B8B52114E7A85 0000 0002 SPNET
-IST314I END
-\end{sphinxVerbatim}
-
-\index{Terminals@\spxentry{Terminals}!Lu Nailing using an LU Name@\spxentry{Lu Nailing using an LU Name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a LU Name (Predefined)@\spxentry{Using a LU Name}\spxextra{Predefined}}\ignorespaces 
-
-\section{LU nailing using an LU name (Predefined Terminal)}
-\label{\detokenize{Customization:lu-nailing-using-an-lu-name-predefined-terminal}}\label{\detokenize{Customization:index-58}}
-Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-RULE ID=ESH0001, \PYGZhy{}
-RULESET=E\PYGZhy{}HTTP, \PYGZhy{}
-STATUS=ACTIVE, \PYGZhy{}
-DESC=\PYGZsq{}Rule for terminal EHPMA00\PYGZsq{}, \PYGZhy{}
-ENTRY=EDSWHOST, \PYGZhy{}
-PARAM=\PYGZdl{}URL\PYGZdl{}, \PYGZhy{}
-NETMASK=255.255.255.255
-\end{sphinxVerbatim}
-
-We use the special PARAM=\$URL\$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.
-
-\sphinxincludegraphics{{image28}.png}
-
-The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009
-
-\index{Terminals@\spxentry{Terminals}!Lu Nailing using an LU Name@\spxentry{Lu Nailing using an LU Name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a LU Name (Not Predefined)@\spxentry{Using a LU Name}\spxextra{Not Predefined}}\ignorespaces 
-
-\section{Lu Nailing using an LU Name (No predefined terminal)}
-\label{\detokenize{Customization:lu-nailing-using-an-lu-name-no-predefined-terminal}}\label{\detokenize{Customization:index-59}}
-Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
-grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this set-up certain conditions must be in place. Also note that no rules are required. Those definitions required are:
-\begin{itemize}
-\item {} 
-The HTTP Line must specify a pool name,
-
-\item {} 
-A pool name needs to be defined,
-
-\item {} 
-Transactions must specify \$LINE\$ in the “Pseudo-terminals” field.
-
-\end{itemize}
-
-Line definition
-
-\sphinxincludegraphics{{image12}.png}
-
-\sphinxstyleemphasis{Pool definition for non-predefined LU Names}
-
-\sphinxincludegraphics{{image13}.png}
-
-\sphinxstyleemphasis{Transaction definition}
-
-\sphinxincludegraphics{{image14}.png}
-
-\begin{sphinxadmonition}{note}{Note:}
-Note that the Pseudo-Terminal is defined as \$LINE\$. We have also assign a printer definition to this set-up. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for DYNPOOL,but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.
-\end{sphinxadmonition}
-
-\sphinxincludegraphics{{image15}.png}
-
-\index{Terminals@\spxentry{Terminals}!Lu Nailing using a cookie@\spxentry{Lu Nailing using a cookie}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a cookie@\spxentry{Using a cookie}}\ignorespaces 
-
-\section{Lu Nailing using a cookie (Correspondent Sub Application)}
-\label{\detokenize{Customization:lu-nailing-using-a-cookie-correspondent-sub-application}}\label{\detokenize{Customization:index-60}}
-Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see Virtel \textendash{} How to Activate LU Nailing.
-
-\index{Terminals@\spxentry{Terminals}!Lu Nailing by IP address@\spxentry{Lu Nailing by IP address}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using an IP address@\spxentry{Using an IP address}}\ignorespaces 
-
-\section{LU Nailing by IP}
-\label{\detokenize{Customization:lu-nailing-by-ip}}\label{\detokenize{Customization:index-61}}
-This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool. Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx. The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
-
-\sphinxstylestrong{Comparison Table}
-
-
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
-\hline
-\sphinxstyletheadfamily &\sphinxstartmulticolumn{3}%
-\begin{varwidth}[t]{\sphinxcolwidth{3}{4}}
-\sphinxstyletheadfamily Rule definition                  \textbar{}    Terminal Definition            \textbar{}  Cookies Used
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
-\sphinxstopmulticolumn
-\\
-\hline
-Work Station Name in URL
-&
-\sphinxstylestrong{Yes. 1 per work station}
-&
-\sphinxstylestrong{Yes. Individual or Group}
-&
-No
-\\
-\hline
-LUNAME in URL
-&
-\sphinxstylestrong{Yes. 1 per work station}
-&
-\sphinxstylestrong{Yes. Individual or Group}
-&
-No
-\\
-\hline
-Using Forced LU
-&
-No
-&
-Pool Only
-&
-No
-\\
-\hline
-Correspondent
-&
-\sphinxstylestrong{Yes}
-&
-\sphinxstylestrong{Yes}
-&
-\sphinxstylestrong{Yes}
-\\
-\hline
-By IP
-&
-\sphinxstylestrong{Yes}
-&
-\sphinxstylestrong{Yes}
-&
-No
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-
 \index{Virtel Transactions@\spxentry{Virtel Transactions}}\ignorespaces 
 
 \chapter{Virtel Transactions}
-\label{\detokenize{Customization:virtel-transactions}}\label{\detokenize{Customization:index-62}}
+\label{\detokenize{Customization:virtel-transactions}}\label{\detokenize{Customization:index-56}}
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Multi-Session Feature@\spxentry{Multi-Session Feature}}\ignorespaces 
 
 \section{Virtel Multi-session Within Virtel Web Access}
-\label{\detokenize{Customization:virtel-multi-session-within-virtel-web-access}}\label{\detokenize{Customization:index-63}}
+\label{\detokenize{Customization:virtel-multi-session-within-virtel-web-access}}\label{\detokenize{Customization:index-57}}
 In some situations, it is necessary to allow a group of users to simultaneously access several distinct 3270 applications. This can be solved by using the “appmenu.htm” associated with the “applist” transaction, or by using the 3270 Multi-session function of Virtel. In the first situation, for a same original calling terminal, Virtel uses as many relays as VTAM open sessions, in the second configuration, a single relay is used for all sessions, Virtel ensuring the swapping between the opened session. To access the Multi-session function of Virtel, you must define a transaction whose application name is the same as the main Virtel ACB name. This transaction is accessible in the same way as any other VTAM application. As the first screen shown is a signature screen, the transaction does not necessarily need to be secured. The lists of applications presented to the user depends on the selected parameter setting (See the Virtel Multi-session documented section for further information on this subject). Use of the multi-session Virtel module, even in a VWA context, requires an appropriate license agreement.
 
 \sphinxincludegraphics{{image29}.png}
@@ -1889,7 +1528,7 @@ At the end of the session with the host application, VIRTEL examines the “Last
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Application access by Entry Point@\spxentry{Application access by Entry Point}}\index{URL Formats@\spxentry{URL Formats}!Default Entry Point URL@\spxentry{Default Entry Point URL}}\ignorespaces 
 
 \subsection{Default URL for the entry point}
-\label{\detokenize{Customization:default-url-for-the-entry-point}}\label{\detokenize{Customization:index-65}}
+\label{\detokenize{Customization:default-url-for-the-entry-point}}\label{\detokenize{Customization:index-59}}
 An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default transaction is the transaction whose external name is the same as the entry point name). This allows the user to go directly to the host application simply by entering a URL of the format:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1907,7 +1546,7 @@ For more information see Virtel URL formats in the Virtel Web Access Users Guide
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying screen size and attributes@\spxentry{Specifying screen size and attributes}}\index{Application customization@\spxentry{Application customization}!Specifying screen size and attributes@\spxentry{Specifying screen size and attributes}}\ignorespaces 
 
 \subsection{How To Use Different Screen Sizes}
-\label{\detokenize{Customization:how-to-use-different-screen-sizes}}\label{\detokenize{Customization:index-66}}
+\label{\detokenize{Customization:how-to-use-different-screen-sizes}}\label{\detokenize{Customization:index-60}}
 Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:
 \begin{itemize}
 \item {} 
@@ -1937,7 +1576,7 @@ Group the VTAM relay LUs into pools, each pool having a different logmode, and a
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying default logmode@\spxentry{Specifying default logmode}}\index{Application customization@\spxentry{Application customization}!Specifying default logmode@\spxentry{Specifying default logmode}}\ignorespaces 
 
 \subsection{LOGMODE defined by the transaction}
-\label{\detokenize{Customization:logmode-defined-by-the-transaction}}\label{\detokenize{Customization:index-67}}
+\label{\detokenize{Customization:logmode-defined-by-the-transaction}}\label{\detokenize{Customization:index-61}}
 With this method, the administrator defines multiple VIRTEL transactions for a single application, each transaction specifying a different logmode. For example, transactions Tso2 and Tso5 delivered in the sample configuration both define TSO as the target application, but specify different logmodes SNX32702 and SNX32705 respectively. The user selects the desired transaction from the applist menu displayed by the “Other applications” link in the VIRTEL Web Access menu.
 
 The figure below shows the definition of the Tso5 transaction defined under the WEB2HOST entry point:
@@ -1955,7 +1594,7 @@ The URL to access this transaction could be of the format:
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying logmode in the URL@\spxentry{Specifying logmode in the URL}}\index{Application customization@\spxentry{Application customization}!Specifying logmode in the URL@\spxentry{Specifying logmode in the URL}}\index{URL Formats@\spxentry{URL Formats}!Specifying the logmode@\spxentry{Specifying the logmode}}\ignorespaces 
 
 \subsection{Assigning a LOGMODE by URL parameter}
-\label{\detokenize{Customization:assigning-a-logmode-by-url-parameter}}\label{\detokenize{Customization:index-68}}
+\label{\detokenize{Customization:assigning-a-logmode-by-url-parameter}}\label{\detokenize{Customization:index-62}}
 The URL which allows the browser to connect to a host application via VIRTEL may contain a parameter, such as “model5” as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2038,7 +1677,7 @@ P1=Update               P3=Return                           Enter=Add
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Overriding a default scenario logmode@\spxentry{Overriding a default scenario logmode}}\index{Application customization@\spxentry{Application customization}!Overriding a default scenario logmode@\spxentry{Overriding a default scenario logmode}}\index{URL Formats@\spxentry{URL Formats}!Overriding a default logmode@\spxentry{Overriding a default logmode}}\index{Scenarios@\spxentry{Scenarios}!SCENLOGM - Logmode defaults@\spxentry{SCENLOGM - Logmode defaults}}\ignorespaces 
 
 \subsection{User-specified LOGMODE}
-\label{\detokenize{Customization:user-specified-logmode}}\label{\detokenize{Customization:index-69}}
+\label{\detokenize{Customization:user-specified-logmode}}\label{\detokenize{Customization:index-63}}
 When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may override the default logmode by appending an additional parameter LOGMODE=modename to the URL, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2054,7 +1693,7 @@ To activate this functionality, SCENLOGM must be specified in the “Identificat
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Overriding the default codepage@\spxentry{Overriding the default codepage}}\index{Application customization@\spxentry{Application customization}!Overriding a default codepage@\spxentry{Overriding a default codepage}}\index{URL Formats@\spxentry{URL Formats}!Overriding a default codepage@\spxentry{Overriding a default codepage}}\index{Codepage@\spxentry{Codepage}}\ignorespaces 
 
 \subsection{User-specified CODEPAGE}
-\label{\detokenize{Customization:user-specified-codepage}}\label{\detokenize{Customization:index-70}}
+\label{\detokenize{Customization:user-specified-codepage}}\label{\detokenize{Customization:index-64}}
 Users can override the default code page by specifying a different codepage in the URL. For example the following URL overrides the default TCT codepage with the codepage IBM0037.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2073,7 +1712,7 @@ SET\PYGZdl{} ENCODING,UTF\PYGZhy{}8,\PYGZsq{}*CODEPAGE\PYGZsq{}
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{Application customization@\spxentry{Application customization}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{URL Formats@\spxentry{URL Formats}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\ignorespaces 
 
 \subsection{Dynamic logmode with user-specified screen size}
-\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}\label{\detokenize{Customization:index-71}}
+\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}\label{\detokenize{Customization:index-65}}
 VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2085,13 +1724,13 @@ VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host applicat
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!The Application Menu List@\spxentry{The Application Menu List}}\index{Session Management@\spxentry{Session Management}!The Application Menu list@\spxentry{The Application Menu list}}\ignorespaces 
 
 \subsection{Session Management In The Application Menu List}
-\label{\detokenize{Customization:session-management-in-the-application-menu-list}}\label{\detokenize{Customization:index-72}}
+\label{\detokenize{Customization:session-management-in-the-application-menu-list}}\label{\detokenize{Customization:index-66}}
 By default, when a user selects an application from the “Application Selection Menu” the target application will replace the APPMENU application list display. Different behaviour may be required. The following sections look at some options.
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\index{Session Management@\spxentry{Session Management}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\ignorespaces 
 
 \subsection{Open session in separate tab}
-\label{\detokenize{Customization:open-session-in-separate-tab}}\label{\detokenize{Customization:index-73}}
+\label{\detokenize{Customization:open-session-in-separate-tab}}\label{\detokenize{Customization:index-67}}
 To open each session in separate tabs and keep the application menu available, add the following code in a customized Javascript “custom.js” file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2122,7 +1761,7 @@ Each new session gives rise to the opening of a specific IP socket, and therefor
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Handling Session termination@\spxentry{Handling Session termination}}\index{Session Management@\spxentry{Session Management}!Handling Session termination@\spxentry{Handling Session termination}}\ignorespaces 
 
 \section{How To Handle Host Session Termination}
-\label{\detokenize{Customization:how-to-handle-host-session-termination}}\label{\detokenize{Customization:index-74}}
+\label{\detokenize{Customization:how-to-handle-host-session-termination}}\label{\detokenize{Customization:index-68}}
 When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available: -
 \begin{itemize}
 \item {} 
@@ -2141,21 +1780,21 @@ Remember that it is always best to exit cleanly from the host application by pre
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\index{Session Management@\spxentry{Session Management}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\ignorespaces 
 
 \subsection{Return to the application selection menu}
-\label{\detokenize{Customization:return-to-the-application-selection-menu}}\label{\detokenize{Customization:index-75}}
+\label{\detokenize{Customization:return-to-the-application-selection-menu}}\label{\detokenize{Customization:index-69}}
 When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see “Virtel URL formats”, page 1. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\index{Session Management@\spxentry{Session Management}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\ignorespaces 
 
 \subsection{Displaying a specific page on disconnection}
-\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}\label{\detokenize{Customization:index-76}}
+\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}\label{\detokenize{Customization:index-70}}
 Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file
 must be uploaded to the same directory as specified in the URL for the host application (for example CLI-DIR if the URL specifies /w2h/web2ajax.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.).
 
 \index{Virtel Transactions@\spxentry{Virtel Transactions}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\index{Session Management@\spxentry{Session Management}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\ignorespaces 
 
 \subsection{Closing the browser window automatically}
-\label{\detokenize{Customization:closing-the-browser-window-automatically}}\label{\detokenize{Customization:index-77}}
+\label{\detokenize{Customization:closing-the-browser-window-automatically}}\label{\detokenize{Customization:index-71}}
 Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.
 
 The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:
@@ -2167,7 +1806,7 @@ The figure below shows an example of an entry point definition with close.htm sp
 \index{Virtel Macros@\spxentry{Virtel Macros}}\ignorespaces 
 
 \chapter{Virtel Macros}
-\label{\detokenize{Customization:virtel-macros}}\label{\detokenize{Customization:index-78}}
+\label{\detokenize{Customization:virtel-macros}}\label{\detokenize{Customization:index-72}}
 
 \section{Introduction}
 \label{\detokenize{Customization:introduction}}
@@ -2200,7 +1839,7 @@ Virtel macros capture keystroke operations which can subsequently be used to aut
 \index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!User Interface@\spxentry{User Interface}}\ignorespaces 
 
 \section{Macro modes}
-\label{\detokenize{Customization:macro-modes}}\label{\detokenize{Customization:index-79}}
+\label{\detokenize{Customization:macro-modes}}\label{\detokenize{Customization:index-73}}
 
 \subsection{Local Macro mode}
 \label{\detokenize{Customization:local-macro-mode}}
@@ -2280,7 +1919,7 @@ Macros can be exported or imported using the Export and Import buttons. On expor
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\ignorespaces 
 
 \subsection{Centralised Macros - DDI mode}
-\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-85}}
+\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-79}}
 The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
 
 The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.
@@ -2292,7 +1931,7 @@ To use centralized DDI mode users have a userid and group defined within a secur
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Implementation@\spxentry{Implementation}}\ignorespaces 
 
 \subsubsection{Implementation}
-\label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-86}}
+\label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-80}}
 To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2440,7 +2079,7 @@ If you are running multiple images of Virtel, say in a SYSPLEX arrangement using
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!DDI Validation@\spxentry{DDI Validation}}\ignorespaces 
 
 \subsection{Centralised DDI validation}
-\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-90}}
+\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-84}}
 After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2475,7 +2114,7 @@ To configure the centralised DDI repository we need to create an “initial” M
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating an initial macro@\spxentry{Creating an initial macro}}\ignorespaces 
 
 \subsection{Creating an initial macro}
-\label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-92}}
+\label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-86}}
 
 \subsubsection{SDSF test macro}
 \label{\detokenize{Customization:sdsf-test-macro}}
@@ -2504,7 +2143,7 @@ Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Uploading macros through the DDI interface@\spxentry{Uploading macros through the DDI interface}}\ignorespaces 
 
 \subsubsection{Uploading macros to the centralized repository}
-\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-93}}
+\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-87}}
 To upload any MACROS.JSON file to the centralized repository we must first create a “local” export version. In the “Local Macros” popup export the SDSF macro using the export option. This will create a local “macros.json” file. The “MACROS.JSON” file will be exported to your default “download” directory on your PC.
 
 If you view the file the following will be displayed:
@@ -2537,7 +2176,7 @@ To run the macro, enter the ISPF primary menu and then press the Green “ARROW�
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating user macros@\spxentry{Creating user macros}}\ignorespaces 
 
 \subsection{Creating a user macro}
-\label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-94}}
+\label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-88}}
 With centralized macros, users can create “local” macros which will by synchronized with the centralized repository. They will not have the ability to import/export any macro.
 Creating a “user” macro follows the same process as before. The user clicks the “record” button, records their macro, stops recording by pressing the record button again. As before, a popup window will open allowing the user to name the macro and associate with a “keyboard mapping” if that option has been set. The macro will then appear in the users list of macros.
 
@@ -2548,7 +2187,7 @@ Here is an example of a user macro called “CUSTINQ” which drives a sequence 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro panel options@\spxentry{Macro panel options}}\ignorespaces 
 
 \subsection{Macro Options}
-\label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-95}}
+\label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-89}}
 Pressing the “right click” button against the macro name will reveal a small popup which provides the user with some options.
 
 \sphinxincludegraphics{{image48}.png}
@@ -2562,13 +2201,13 @@ The “Edit” feature is for viewing only.
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directory and Macro Administration@\spxentry{Directory and Macro Administration}}\ignorespaces 
 
 \subsection{Directory and Macro Administration}
-\label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-96}}
+\label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-90}}
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a “local” facility and export these up into the central repository to make them available to users at a Global, Group and User level.
 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Making macros available@\spxentry{Making macros available}}\ignorespaces 
 
 \subsubsection{Making a user’s DDI macro available to a DDI Group}
-\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-97}}
+\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-91}}
 The following procedure describes how to move a user’s DDI macro to a DDI GROUP level. Start by opening the DDI interface from the main Administration Portal and select the USER tab;specify the userid in the user name field. Press the Green tick. The macros associated with the userid will be listed.
 
 \sphinxincludegraphics{{image49}.png}
@@ -2615,7 +2254,7 @@ It is not necessary to export a “dummy” macro from a “local mode” setup 
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{Centralized DDI Troubleshooting}
-\label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-98}}
+\label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-92}}
 
 \subsubsection{Out of Sync condition or no transaction security}
 \label{\detokenize{Customization:out-of-sync-condition-or-no-transaction-security}}
@@ -2641,7 +2280,7 @@ CTRL R
 \index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro Formats@\spxentry{Macro Formats}}\ignorespaces 
 
 \subsection{Macro formats and Commands}
-\label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-99}}
+\label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-93}}
 The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
 \begin{itemize}
 \item {} 
@@ -2683,7 +2322,7 @@ The macro editor supports the following commands:-
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Setup@\spxentry{Setup}}\ignorespaces 
 
 \chapter{Centralised User Parameters}
-\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-100}}
+\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-94}}
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.
 
 
@@ -2756,7 +2395,7 @@ If every has been configured correctly you should get a “GREEN” light.
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Validation@\spxentry{Validation}}\ignorespaces 
 
 \subsection{Testing the USERPARM feature}
-\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-101}}
+\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-95}}
 To test the USERPARM feature follow the procedure below :-
 
 1   Logon to a 3270 application, say TSO
@@ -2778,7 +2417,7 @@ In the Virtel log you should see the following “upload” message:-
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Removing a users settings@\spxentry{Removing a users settings}}\ignorespaces 
 
 \subsection{Removing a user’s settings}
-\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-102}}
+\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-96}}
 This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:
 
 \sphinxincludegraphics{{image55}.png}
@@ -2790,7 +2429,7 @@ We can remove the entry by using the delete option. This will remove any user se
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{USERPARM Problems}
-\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-103}}
+\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-97}}
 When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2847,7 +2486,7 @@ This is normally related to configuration. Try the “sanity” URL test to make
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!How to activate@\spxentry{How to activate}}\ignorespaces 
 
 \chapter{Security}
-\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-104}}
+\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-98}}
 
 \section{How To Activate SSL AT-TLS}
 \label{\detokenize{Customization:how-to-activate-ssl-at-tls}}
@@ -2856,7 +2495,7 @@ To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Appl
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Installation@\spxentry{Installation}}\ignorespaces 
 
 \subsection{Installation steps}
-\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-105}}
+\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-99}}
 
 \subsubsection{Install Policy Agent procedure}
 \label{\detokenize{Customization:install-policy-agent-procedure}}
@@ -2886,7 +2525,7 @@ The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RA
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Certificates@\spxentry{Certificates}}\ignorespaces 
 
 \subsubsection{Create the server certificate}
-\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-106}}
+\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-100}}
 A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace \%virtssl\% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
 
@@ -2903,7 +2542,7 @@ To allow VIRTEL to access its own keyring and server certificate, the VIRTEL sta
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!TCPIP definitions@\spxentry{TCPIP definitions}}\ignorespaces 
 
 \subsubsection{TCPIP Definitions for AT-TLS}
-\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-107}}
+\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-101}}
 To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2916,7 +2555,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Operations@\spxentry{Operations}}\ignorespaces 
 
 \subsection{Operations}
-\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-108}}
+\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-102}}
 
 \subsubsection{Starting the Policy Agent}
 \label{\detokenize{Customization:starting-the-policy-agent}}
@@ -2945,7 +2584,7 @@ Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Un
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshootings@\spxentry{Troubleshootings}}\ignorespaces 
 
 \subsubsection{Common error messages}
-\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-109}}
+\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-103}}
 Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3021,7 +2660,7 @@ SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) C
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Using Server and Client certificates@\spxentry{Using Server and Client certificates}}\ignorespaces 
 
 \subsection{SSL - Signing On Using Server And Client Certificates}
-\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-110}}
+\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-104}}
 In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT\_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:
 \begin{itemize}
@@ -3065,7 +2704,7 @@ An encryption algorithm and single key is chosen to encrypt / decrypt data The p
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!What is a X.509 certificate@\spxentry{What is a X.509 certificate}}\ignorespaces 
 
 \subsection{What is a Certificates}
-\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-111}}
+\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-105}}
 
 \subsubsection{X.509 certificate?}
 \label{\detokenize{Customization:x-509-certificate}}
@@ -3122,7 +2761,7 @@ In this configuration we will be using self-signed server and client certificate
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring certificates@\spxentry{Configuring certificates}}\index{RACF@\spxentry{RACF}!Configuring a X.509 certificate@\spxentry{Configuring a X.509 certificate}}\ignorespaces 
 
 \subsubsection{Configuring the certificates}
-\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-112}}
+\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-106}}
 The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3207,7 +2846,7 @@ Note how we identify the signing certificate with the SIGNWITH parameter using t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring key rings@\spxentry{Configuring key rings}}\index{RACF@\spxentry{RACF}!Configuring key rings@\spxentry{Configuring key rings}}\ignorespaces 
 
 \subsection{Cerificates and Key rings}
-\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-113}}
+\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-107}}
 Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3232,7 +2871,7 @@ Again it is the label that identifies the key(certificate) that we want to add t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!User certificates@\spxentry{User certificates}}\index{RACF@\spxentry{RACF}!User certificates@\spxentry{User certificates}}\ignorespaces 
 
 \subsubsection{User Certificate}
-\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-114}}
+\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-108}}
 The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3283,7 +2922,7 @@ The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and 
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Importing certificates@\spxentry{Importing certificates}}\index{RACF@\spxentry{RACF}!Importing certificates@\spxentry{Importing certificates}}\ignorespaces 
 
 \subsubsection{Importing the certificate on the client work station.}
-\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-115}}
+\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-109}}
 To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.
 
@@ -3298,7 +2937,7 @@ At this stage we have completed our certificate generation. Through the use of t
 \index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Setting up RACF for PassTicket@\spxentry{Setting up RACF for PassTicket}}\ignorespaces 
 
 \subsection{PassTicket support}
-\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-116}}
+\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-110}}
 The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:
 
@@ -3330,7 +2969,7 @@ In order for Virtel to generate PassTickets, you must also modify your VIRTCT to
 \index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Pagent Configuration@\spxentry{Pagent Configuration}}\ignorespaces 
 
 \subsection{PAGENT Configuration}
-\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-117}}
+\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-111}}
 To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3396,7 +3035,7 @@ you have made changes you can issue the following z/OS command:
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Example of Passtick support with CICS@\spxentry{Example of Passtick support with CICS}}\ignorespaces 
 
 \subsection{Configuring Virtel - CICS Example}
-\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-118}}
+\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-112}}
 The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.
 
 \sphinxincludegraphics{{image21}.png}
@@ -3430,7 +3069,7 @@ We are signed into CICS without having to specify any user id or password.
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{AT-TLS Problems}
-\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-119}}
+\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-113}}
 It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.
 \begin{enumerate}
 \def\theenumi{\arabic{enumi}}
@@ -3573,7 +3212,7 @@ VIRTEL Web Access Guide Security \textendash{} Data encryption by SSL
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\ignorespaces 
 
 \section{NTLM Support}
-\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-120}}
+\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-114}}
 Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.
 
 
@@ -3746,7 +3385,7 @@ You will see a list of preferences listed. Find the settings below by browsing t
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\index{NTLM Support@\spxentry{NTLM Support}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{NTLM Troubleshooting}
-\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-121}}
+\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-115}}
 
 \subsubsection{Still receiving login prompt}
 \label{\detokenize{Customization:still-receiving-login-prompt}}
@@ -3763,11 +3402,11 @@ The invoked Virtel transaction is not defined with security = 2.
 \index{System Managment@\spxentry{System Managment}}\ignorespaces 
 
 \chapter{System Management}
-\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-122}}
+\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-116}}
 \index{System Management@\spxentry{System Management}!Message controls@\spxentry{Message controls}}\index{Message controls@\spxentry{Message controls}!Messages to SYSOUT@\spxentry{Messages to SYSOUT}}\ignorespaces 
 
 \section{Virtel Message Controls}
-\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-123}}
+\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-117}}
 By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:
 
@@ -3865,7 +3504,7 @@ The display of message VIR0099I requires the PTF 5530 be applied. Similarly the 
 \index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Running@\spxentry{Running}}\ignorespaces 
 
 \section{VIRCONF Usage}
-\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-125}}
+\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-119}}
 VIRCONF is a batch facilty you can use to add, update, delete VIRTEL definitions stored in the ARBO file. There is also an unload facility which can be invoked either in batch or dynamically through the Virtel UNLOAD command. See below.
 
 \sphinxstylestrong{VIRCONF does not open the ARBO for output.}
@@ -3925,7 +3564,7 @@ VIR0223I UNLOAD ENDED
 \index{Virtel MSG10 USSTAB@\spxentry{Virtel MSG10 USSTAB}!VIR0021W@\spxentry{VIR0021W}}\ignorespaces 
 
 \chapter{Virtel MSG10 USSTAB}
-\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-128}}
+\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-122}}
 This section discusses how to build and implement a VTAM USSMSG10 screen using the VIRTEL VIR0021W USSTAB menu program. Customers can take there existing VTAM USSMSG10 code and pace the assembled module in the VIRTEL DFHRPL load library. The VIR0021W program will interrogate the customers USSTAB module and create an equivalent VIRTEL 3270 MAP. The 3270 MAP will be passed to the module VIR0010 where it will be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL DFHRPL library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.
 
 
@@ -4023,7 +3662,7 @@ Should your user USSATAB fail to load , or breaks one of the caveats listed abov
 \index{Virtel Tier Menu@\spxentry{Virtel Tier Menu}!cAppMenu Customization@\spxentry{cAppMenu Customization}}\ignorespaces 
 
 \chapter{cAppMenu Customization}
-\label{\detokenize{Customization:cappmenu-customization}}\label{\detokenize{Customization:index-129}}
+\label{\detokenize{Customization:cappmenu-customization}}\label{\detokenize{Customization:index-123}}
 
 \section{Tier Menu Design Overview}
 \label{\detokenize{Customization:tier-menu-design-overview}}
@@ -4559,7 +4198,7 @@ var cAppMenuOptions = \PYGZob{}\PYGZcb{};
 \index{Virtel FTP Client@\spxentry{Virtel FTP Client}!FTP@\spxentry{FTP}}\ignorespaces 
 
 \chapter{Virtel FTP Client}
-\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-130}}
+\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-124}}
 
 \section{Introduction}
 \label{\detokenize{Customization:id1}}
@@ -4909,7 +4548,7 @@ Users may find that the an error message appears when invoking the Power Shell S
 \index{FAQ Questions@\spxentry{FAQ Questions}!Square Brackets and codepages@\spxentry{Square Brackets and codepages}}\index{Codepage in the URL@\spxentry{Codepage in the URL}}\ignorespaces 
 
 \chapter{FAQs}
-\label{\detokenize{Customization:faqs}}\label{\detokenize{Customization:index-131}}
+\label{\detokenize{Customization:faqs}}\label{\detokenize{Customization:index-125}}
 
 \section{How to specify a codepage in a URL}
 \label{\detokenize{Customization:how-to-specify-a-codepage-in-a-url}}
@@ -4922,7 +4561,7 @@ http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
 \index{FAQ Questions@\spxentry{FAQ Questions}!OMVS panel@\spxentry{OMVS panel}}\ignorespaces 
 
 \section{How to use the TSO OMVS panel command with VWA}
-\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}\label{\detokenize{Customization:index-132}}
+\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}\label{\detokenize{Customization:index-126}}
 TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.
 
 Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.
@@ -4930,13 +4569,13 @@ Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port
 \index{FAQ Questions@\spxentry{FAQ Questions}!z/OS Consoles@\spxentry{z/OS Consoles}}\ignorespaces 
 
 \section{Can VIRTEL WEB ACCESS emulate z/OS Operator consoles}
-\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-133}}
+\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-127}}
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
 \index{FAQ Questions@\spxentry{FAQ Questions}!Hotspot recognition with regular expressions@\spxentry{Hotspot recognition with regular expressions}}\ignorespaces 
 
 \section{Can I customize hotspot recognition}
-\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-134}}
+\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-128}}
 The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]

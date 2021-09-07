@@ -108,7 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#connection-disconnection-scripts">Connection / Disconnection Scripts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-servers">External Servers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connection-modes">Connection Modes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#controlling-lunames">Controlling LUNAMEs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-lunames-lu-nailing">Controlling LUNAMEs - LU Nailing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#at-tls-secure-session">AT-TLS Secure Session</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sso-passtickets-and-proxy-servers">SSO, PassTickets and Proxy Servers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#running-multiple-instances-of-virtel">Running multiple instances of Virtel</a></li>
@@ -4073,7 +4073,32 @@ P7=Page-1            P8=Page+1            P12=Details
 </div>
 <div class="section" id="terminal-pool-selection">
 <span id="index-143"></span><h4>Terminal Pool Selection<a class="headerlink" href="#terminal-pool-selection" title="Permalink to this headline">¶</a></h4>
-<p>When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal assumes an application relay.</p>
+<p>When a terminal is defined to a logical pool, the selection of a pool is managed automatically by VIRTEL at connection time. At connection time a terminal entry from the logical pool is selected starting at the highest available entry. That entry will be associated with a physical group of predefine terminals each associated with a logical pool. The first available entry of that physical group will be used as the terminal definition. From that terminal definition we derive the VTAM LUNAMES for 3270 and printer definitions for a 3270 application relay.</p>
+<p>Using the above definitions the following selection would occurr for a 3270 application where the Virtel transaction uses a prefix of HTVTA. The incoming connection would select a logical entry from logical pool *W2HPOOL, assuming a line prefix of HT, would select from the range HTVTA000 - HTVTA015. The highest would be HTVTA015 if this is the first connection. Physical terminals defined to *W2HPOOL are W2HTP000 - W2HTP015. The connection would take the first entry in this group, in this case W2HTP000. W2HTP000 is defined as having a 3270 relay LUNAME of RHDVT000 and an associated printer relay of RHDIM000. These LU names would be used to support the 3270 session.</p>
+</div>
+<div class="section" id="terminal-naming-and-order-conventions">
+<h4>Terminal naming and order conventions<a class="headerlink" href="#terminal-naming-and-order-conventions" title="Permalink to this headline">¶</a></h4>
+<p>In selected the correct physical terminal to represent a Virtel connection Virtel uses a selection logic based on highest logical pool entry associated with a line to first physical terminal entry associated with the logical pool. For example, in the screen belowe four logical pools are defined to line E-HTTP. The line is defined with a prelix of EH.</p>
+<p><img alt="image125" src="../../../_images/image1251.png" />
+<em>Terminals definitions associated with a line</em></p>
+<p>There is also a physical terminal defined to logical pool *URLPOOL named EHTRMEH0. This has a 3270 relay name of EHVTA300 and is associated with a printer relay EHVIM300. The printer relay is also defined as a physical terminal entry EHPRTEH0.</p>
+<p>The highest entry within the logical pools associated with the line is EHVTA209 in pool *IPPOOL. When a connection comes in this entry will be used if it is available. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.</p>
+<p><img alt="image126" src="../../../_images/image1261.png" />
+<em>Terminals associated with a pool IPPOOL</em></p>
+<p>The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical terminal pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.</p>
+<p><img alt="image127" src="../../../_images/image1271.png" />
+<em>Printer terminal definition IPPRT100</em></p>
+<p>Logging on with a 3270 TSO application will present the following screen. In the OIA rea, bottom left, the associated LUNAMEs can be seen - EHVTA100 and printer EHVIM100. These of course must be defined to VTAM.</p>
+<p><img alt="image128" src="../../../_images/image1281.png" />
+<em>Connection to 3270 application</em></p>
+<p>In the console log we can see the logical pool entry to physical terminal entry associations:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">13.38</span><span class="o">.</span><span class="mi">46</span> <span class="n">JOB01825</span>  <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">SOCKET</span> <span class="mi">00030000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.80</span><span class="p">:</span><span class="mi">47730</span>              <span class="o">&lt;</span> <span class="n">Call</span> <span class="n">coming</span> <span class="ow">in</span> <span class="o">&gt;</span>
+<span class="mf">13.38</span><span class="o">.</span><span class="mi">46</span> <span class="n">JOB01825</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">CONNECTING</span> <span class="n">EHVTA209</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.80</span><span class="p">:</span><span class="mi">25094</span>                 <span class="o">&lt;</span> <span class="n">Highest</span> <span class="n">Logical</span> <span class="n">pool</span> <span class="n">entry</span> <span class="n">selected</span> <span class="kn">from</span> <span class="nn">IPPOOL</span><span class="o">&gt;</span>
+<span class="mf">13.38</span><span class="o">.</span><span class="mi">46</span> <span class="n">JOB01825</span>  <span class="n">VIR0919I</span> <span class="n">EHVTA209</span> <span class="n">RELAY</span> <span class="n">EHVTA100</span><span class="p">(</span><span class="n">IPTRM100</span><span class="p">)</span> <span class="n">ACTIVATED</span>                         <span class="o">&lt;</span> <span class="n">First</span> <span class="n">physical</span> <span class="n">terminal</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">IPPOOL</span> <span class="o">&gt;</span>
+<span class="mf">13.38</span><span class="o">.</span><span class="mi">46</span> <span class="n">JOB01825</span>  <span class="n">VIR0919I</span> <span class="n">EHVTA209</span> <span class="n">RELAY</span> <span class="n">EHVIM100</span><span class="p">(</span><span class="n">IPPRT100</span><span class="p">)</span> <span class="n">ACTIVATED</span>                         <span class="o">&lt;</span> <span class="n">Associated</span> <span class="n">printer</span> <span class="n">definition</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">IPTRM100</span> <span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The naming of logical pools is important so that in rule processing the correct pool is selected. The general rule being that pools associated with rule selections should be lower in alphabetic ranking than general non-rule pools. This will ensure that non-rule or default connections use logical terminals from the higher pool definitions.</p>
 <div class="section" id="rules-for-opening-relay-acbs">
 <h5>Rules for opening relay ACBs<a class="headerlink" href="#rules-for-opening-relay-acbs" title="Permalink to this headline">¶</a></h5>
 <p>For explicit or repeated fixed entry definitions, the relay ACBs are opened at VIRTEL startup time. For terminals defined in a physical pool, the relay ACBs are opened at terminal connection time. For terminals which reference a logical pool, the relay ACB is opened only when accessing an application.</p>
@@ -4266,30 +4291,32 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 </div>
 </div>
 </div>
-<div class="section" id="controlling-lunames">
-<span id="v460cn-forceluname"></span><span id="index-149"></span><h2>Controlling LUNAMEs<a class="headerlink" href="#controlling-lunames" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="controlling-lunames-lu-nailing">
+<span id="v460cn-forceluname"></span><span id="index-149"></span><h2>Controlling LUNAMEs - LU Nailing<a class="headerlink" href="#controlling-lunames-lu-nailing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id72">
 <h3>Introduction<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
-<p>In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a <em>Logical Unit</em> or <em>LU</em>, and each LU has a unique eight character name (<em>LU name)</em>. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.</p>
+<p>In this section we look at how we can control LUNAME selection for inbound HTTP calls, sometimes referred to as LU nailing. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a <em>Logical Unit</em> or <em>LU</em>, and each LU has a unique eight character name (<em>LU name)</em>. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.</p>
 <p>While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following :-</p>
 <ul class="simple">
 <li>By IP address</li>
-<li>By by cookie</li>
-<li>By by URL</li>
+<li>By cookie</li>
+<li>By URL</li>
 </ul>
 <p>Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See <a class="reference internal" href="#v460cn-virtelrules"><span class="std std-ref">“Virtel Rules”,</span></a> for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation.</p>
 </div>
 <div class="section" id="lu-nailing-by-url">
 <h3>LU Nailing By URL<a class="headerlink" href="#lu-nailing-by-url" title="Permalink to this headline">¶</a></h3>
-<p>The URL can contain information which can be used to force an LUNAME. This is done by by using either the FORCELUNAME= keyword or by using the <em>UserData</em> in the URL.</p>
-<p>Using UserData to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).</p>
+<p>The URL can contain information which can be used to force a specific LUNAME to be used. This is done by by using either the FORCELUNAME= keyword or by using the <em>UserData</em> parameter in the URL. The userdata can be provide through a batch job or may be directly coded. These three methods are what is refered to as <strong>Predefined terminal definitions</strong>. This means that the terminals must be physically defined and related to a logical pool of Virtel terminals.</p>
+<p>Using <em>UserData</em> to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).</p>
 <p>For example:-</p>
+<p><a class="reference external" href="http://192.168.170.33:41003/w2h/appmenu">http://192.168.170.33:41003/w2h/appmenu</a>.htm+applist+%P1%                Passing through a work station name. P1 will be defined through a batch job.</p>
+<p>or</p>
 <p><a class="reference external" href="http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname">http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname</a>            UserData example</p>
 <p>or</p>
 <p><a class="reference external" href="http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500">http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500</a>          ForceLUNAME example</p>
 <div class="section" id="userdata-example-using-a-work-station-name">
 <span id="index-150"></span><h4>UserData example using a work station name<a class="headerlink" href="#userdata-example-using-a-work-station-name" title="Permalink to this headline">¶</a></h4>
-<p>In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
+<p>In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. Using a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
 <p>Here is an example of a Virtel RULE.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">ESH0000</span><span class="p">,</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
@@ -4301,7 +4328,7 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 <span class="n">USERDATA</span><span class="o">=</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span><span class="n">HOLT</span><span class="o">-</span><span class="n">W</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The rule instructs Virtel to test the <strong>UserData</strong> field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and directs the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.</p>
+<p>The rule instructs Virtel to test the <strong>UserData</strong> field passed in a URL and if it matches the string HOLT-W than to assign an LU name of EHPMA000 and directs the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.</p>
 <p>Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
 data parameter. Here is an example:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="n">Test</span> <span class="n">Propagation</span> <span class="n">of</span> <span class="n">Userdata</span> <span class="n">Parameter</span>
@@ -4319,7 +4346,7 @@ data parameter. Here is an example:-</p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
 <p><a class="reference internal" href="../../../_images/image9210.png"><img alt="image92" src="../../../_images/image9210.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
 <p><em>Selecting a LU name through a rule and work station id in the URL</em></p>
-<p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.</p>
+<p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. The physical terminal name, EHPMA000 need not be the same as the LU relay name but the LU relay name must be associated with the transaction prefix and must be defined to VTAM.</p>
 </div>
 <div class="section" id="userdata-example-using-a-lu-name">
 <span id="index-151"></span><h4>UserData example using a LU Name<a class="headerlink" href="#userdata-example-using-a-lu-name" title="Permalink to this headline">¶</a></h4>
@@ -4342,7 +4369,7 @@ NETMASK=255.255.255.255
 </div>
 <div class="section" id="forceluname-example">
 <span id="index-152"></span><h4>ForceLUNAME Example<a class="headerlink" href="#forceluname-example" title="Permalink to this headline">¶</a></h4>
-<p>In the preceding examples both required that a terminals and relays be predefined. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-</p>
+<p>In the preceding examples both required that a physical terminal and relays be predefined and associated with a logical pool of terminals. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-</p>
 <ul class="simple">
 <li>the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:</li>
 </ul>
@@ -4375,9 +4402,69 @@ NETMASK=255.255.255.255
 </div>
 </div>
 </div>
-<div class="section" id="lu-nailing-by-cookie">
-<span id="index-153"></span><h3>LU Nailing by cookie<a class="headerlink" href="#lu-nailing-by-cookie" title="Permalink to this headline">¶</a></h3>
-<p>Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document <em>Virtel – How to Activate LU Nailing.</em></p>
+<div class="section" id="lu-nailing-by-cookies">
+<span id="index-153"></span><h3>LU Nailing by cookies<a class="headerlink" href="#lu-nailing-by-cookies" title="Permalink to this headline">¶</a></h3>
+<p>Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the user as part of an Email from which the user selects a link to access Virtel or it can be part of the ‘self-registration’ process. The following section details the process of setting up LU nailing with cookies delivered by email.</p>
+<div class="section" id="setting-up-the-smtp-line">
+<h4>Setting up the SMTP line<a class="headerlink" href="#setting-up-the-smtp-line" title="Permalink to this headline">¶</a></h4>
+<p>The procedure consists of defining a user, associating an LU name with the user, and sending the user an e-mail containing a browser cookie.  When the user’s browser subsequently connects to a mainframe application such as IMS or CICS via VIRTEL Web Access, VIRTEL recognizes the security code contained in the cookie and assigns the designated LU name to the user during communication with the application. In this procedure we will use a special LINE definition - the SMTP line.</p>
+<p>In VIRTEL terms, a user identified by cookie is known as a “correspondent”.  The cookie is initially delivered to the correspondent by e-mail, so before you can activate a correspondent, you have to make sure that you have your VIRTEL SMTP line correctly configured. You can add an SMTP line to the VIRTEL configuration by running the ARBOLOAD job in the VIRTEL CNTL library. If you did not already do so at VIRTEL installation time, specify SMTP=YES in the options at the start of the job, and rerun ARBOLOAD which will add an SMTP line named S-SMTP to the VIRTEL configuration file.  Now stop and restart the VIRTEL STC.</p>
+<p>Next, logon to VIRTEL via TN3270 and choose F1=Admin then F1=Lines.  Put the cursor on line S-SMTP and press F12.  In “remote ident” you need to put the IP address and port number of your SMTP server (this will normally be the same SMTP server as you have configured in your desktop e-mail client).  Leave “local ident” unchanged, we do not use it since VIRTEL will not be receiving any incoming e-mails for this application.  Fill in the “description” field as defined in the VIRTEL Connectivity Reference manual.</p>
+<p>Press F1 to save the updated line definition. Then stop and start the SMTP line using these MVS commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span><span class="p">,</span><span class="n">P</span>
+<span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span><span class="p">,</span><span class="n">S</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-up-the-rules-for-lu-nailing-with-cookies">
+<h4>Setting up the rules for LU nailing with cookies<a class="headerlink" href="#setting-up-the-rules-for-lu-nailing-with-cookies" title="Permalink to this headline">¶</a></h4>
+<p>A set of “rules” attached to the VIRTEL HTTP line determines how VIRTEL processes incoming requests.  To see the rules attached to an HTTP line, go to the VIRTEL Configuration Menu and press F1=Lines, then put the cursor on the name of the line and press F5=Rules.  The list of rules attached to the W-HTTP line (port 41001) is shown below:</p>
+<p><img alt="image129" src="../../../_images/image1291.png" /></p>
+<p><em>Rules for line W-HTTP</em></p>
+<p>Normally all requests are processed by a default “catch-all” rule.  For the W-HTTP line the default rule is named WHT00200.  This default rule assigns an entry point (in this case WEB2HOST) and selects the next available LU from the terminal pool *W2HPOOL.  When LU nailing with cookies is in effect, a different rule WHT00100 is selected for users who present a cookie containing a valid security code.  This rule also assigns entry point WEB2HOST, but the LU name is obtained from the user’s correspondent record.</p>
+<p><img alt="image130" src="../../../_images/image1301.png" /></p>
+<p><em>Rule for LU nailing by cookie</em></p>
+<p>The rule for LU nailing has the special value $COOKIE$ in the “Parameter” field.  This value has a two-fold meaning: firstly, it ensures that the rule is matched only for users who present a cookie containing a valid security code, and secondly, it indicates to VIRTEL that the LU name is taken from “VTAM name” field in the user’s correspondent record.
+Users who do not present a cookie, or whose cookie contains an invalid or expired security code, will not match this rule and will drop through to the next rule, which in this example is the “catch-all” rule WHT00200.</p>
+</div>
+<div class="section" id="defining-a-user">
+<h4>Defining a user<a class="headerlink" href="#defining-a-user" title="Permalink to this headline">¶</a></h4>
+<p>Now you can define your first user.  From the VIRTEL Configuration Menu, press F5=Correspondents.  At the “List of correspondents” panel, press F12 then fill in these fields:</p>
+<p><img alt="image131" src="../../../_images/image13110.png" /></p>
+<p><em>Correspondent detail screen (e-mail correspondent)</em></p>
+<ul class="simple">
+<li>Replace <a class="reference external" href="mailto:john&#46;user&#37;&#52;&#48;whatever&#46;com">john<span>&#46;</span>user<span>&#64;</span>whatever<span>&#46;</span>com</a> by the user’s e-mail address.</li>
+<li>Replace 192.168.5.30 by the host IP address where VIRTEL is running</li>
+<li>Replace RHTVT003 by the LU name to be assigned to this user</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The LU name must be defined in a VIRTEL pool.</p>
+</div>
+<p>Leave the “Rule Set” and “Directory” fields blank. Now press Enter. You should get the message “CREATION OK”. For further information on “Correspondent Mangement” refer to the Virtel Users Guide.</p>
+</div>
+<div class="section" id="delivering-the-cookie-via-e-mail">
+<h4>Delivering the cookie via e-mail<a class="headerlink" href="#delivering-the-cookie-via-e-mail" title="Permalink to this headline">¶</a></h4>
+<p>Next we will send the cookie to the user.</p>
+<p>In the “CORRESPONDENT DETAIL DEFINITION” panel, press F4=Activate. The message “ACTIVATION WAS REQUESTED” indicates that VIRTEL has sent the cookie to the user via the SMTP server.</p>
+<p>If this is the first time you have tried sending an e-mail from VIRTEL, then it is quite possible that it will fail if the configuration is not yet correct.  If the e-mail does not arrive at the user’s workstation, then enter the following MVS command:</p>
+<p>F VIRTEL,TRACE,L=S-SMTP</p>
+<p>then press F4=Activate again to generate a trace of VIRTEL’s dialog with the SMTP server.  The dialog is traced in the SYSPRINT dataset of the VIRTEL started task (use SDSF to see it). From this you should be able to see what the problem is.</p>
+<p>Common problems are:</p>
+<ul class="simple">
+<li>codepage problem (the e-mail address in the MAIL TO command should contain an &#64; sign. If it does not, then check that the COUNTRY parameter in the VIRTCT matches your host codepage)</li>
+<li>the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver.  You may need to liaise with the company’s e-mail administrator to agree on appropriate values.</li>
+</ul>
+</div>
+<div class="section" id="installing-the-cookie-on-the-browser">
+<h4>Installing the cookie on the browser<a class="headerlink" href="#installing-the-cookie-on-the-browser" title="Permalink to this headline">¶</a></h4>
+<p>When the e-mail arrives at the user’s workstation, it will contain a hyperlink to a VIRTEL page.  The user clicks on this hyperlink to install the cookie in his browser.</p>
+<p>One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the Internet Explorer screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools - Internet Options - Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP address to the list.</p>
+</div>
+<div class="section" id="using-the-cookie">
+<h4>Using the cookie<a class="headerlink" href="#using-the-cookie" title="Permalink to this headline">¶</a></h4>
+<p>Having installed the cookie on the workstation, now whenever this user calls up a VIRTEL web page, VIRTEL will recognize that the cookie matches the one previously sent to john.user, and so it will assign the LU name RHTVT003 when connecting to a host application.</p>
+</div>
 </div>
 <div class="section" id="lu-nailing-by-ip-address">
 <span id="index-154"></span><h3>LU Nailing by IP address<a class="headerlink" href="#lu-nailing-by-ip-address" title="Permalink to this headline">¶</a></h3>

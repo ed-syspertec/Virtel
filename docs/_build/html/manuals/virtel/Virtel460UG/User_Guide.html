@@ -861,7 +861,7 @@ the same as the generated token.</dd>
 <div class="section" id="access-through-3270">
 <h5>Access through 3270<a class="headerlink" href="#access-through-3270" title="Permalink to this headline">¶</a></h5>
 <p>Access to the 3270 application is through a normal VTAM logon using the VIRTEL APPLID as the application name. For example, from a VTAM screen enter LOGON APPLID=VIRTEL. The following screen will appear:-</p>
-<p><img alt="image113" src="../../../_images/image1139.png" />
+<p><img alt="image113" src="../../../_images/image1138.png" />
 <em>Logon screen for 3270 Administration</em></p>
 <p>After logging in with security details the main application menu will be presented. Select PF1 from the main menu to access the administration and configuration menu.</p>
 <p><img alt="image114" src="../../../_images/image1147.png" />
@@ -3239,7 +3239,7 @@ Specifying the application selection menu in the default transaction</p>
 has a virtual 3287 printer associated with the user’s 3270 display terminal. The name of the virtual printer is displayed
 in the status bar at the bottom of the Web Access window. Data sent to the virtual printer from a host application (for
 example, CICS, QMF, or VPS) is captured by VIRTEL and is saved in virtual storage.</p>
-<p><img alt="image28" src="../../../_images/image2817.png" /> <em>A printer icon appears in the Web Access toolbar to notify the user that print data is available</em></p>
+<p><img alt="image28" src="../../../_images/image2816.png" /> <em>A printer icon appears in the Web Access toolbar to notify the user that print data is available</em></p>
 <p>When the user clicks on this icon, VIRTEL sends the print data to the user’s browser, either as an attached file or in a
 pop-up window.</p>
 <p id="index-140">Two types of virtual printer are supported:</p>
@@ -3335,7 +3335,7 @@ DFH3270P</td>
 offers printing must indicate the name of an “Input Scenario”. The scenario processes the HTTP request containing a
 PF=SCENARIO-PRINT parameter which is issued when the user presses the “Get print data” icon (below) on the VIRTEL
 Web Access toolbar.</p>
-<p><img alt="image28" src="../../../_images/image2817.png" /></p>
+<p><img alt="image28" src="../../../_images/image2816.png" /></p>
 <p>The scenario accesses the SCS print data which is accumulated in a VIRTEL variable called $PRINT$, and instructs
 VIRTEL to send the print data to the browser as an attached file.
 Several suitable scenarios are delivered as standard in the VIRTEL SAMPLIB and LOADLIB:</p>

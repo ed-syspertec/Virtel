@@ -336,6 +336,8 @@ What's new in this release
 
 - Virtel UP message VIR009I always written to syslog.
 
+- Message VIRT905I. Leading zeros removed.
+
 Further details can be found in the "What's new in Virtel V4.60" newsletter.
 
 .. |image1| image:: images/media/logo_virtel_web.png
