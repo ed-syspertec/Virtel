@@ -73,7 +73,7 @@ Upgrade Procedure
 
 Before starting the upgrade read through this document first and build a migration plan. Depending on your current release and configuration some of the migration steps may not be applicable.
 
-Download from our file server at http://ftp-group.syspertec.com
+Download from our file server at https://ftp-group.syspertec.com
 
 - /VIRTEL 4.57/Produits/virtel457mvs.zip
 - /VIRTEL 4.57/PTFS/allptfs-mvs457.txt

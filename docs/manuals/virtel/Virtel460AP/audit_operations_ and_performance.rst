@@ -1150,7 +1150,7 @@ Tracing memory activity can produce an important overhead estimated to 20-30% of
 Maintenance
 -----------
 
-Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - http://ftp-group.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
+Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - https://ftp-group.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
 
 .. index::
    pair: Applying z/OS maintenace via batch; Maintenance
