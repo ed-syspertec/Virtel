@@ -699,7 +699,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 3.1.1.1 Step 1
 
-Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.56” – “Products” folder and download the virtel456mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server `https://ftp-group.syspertec.com <https://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.56” – “Products” folder and download the virtel456mvs.zip file. Unzip this file into a folder on your workstation.
 
 3.1.1.2 Step 2
 
@@ -1197,7 +1197,7 @@ P VIRTEL
 
 Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
-1. Download the following files from our FTP server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__
+1. Download the following files from our FTP server `https://ftp-group.syspertec.com <https://ftp-group.syspertec.com/>`__
 
    -  Virtel456mvs.zip.
 
