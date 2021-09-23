@@ -584,7 +584,7 @@ Before you install the product
 Prepare to download the product
 ===============================
 
-The Virtel products and PTFs can be downloaded from the SysperTec FTP server, at https://ftp.syspertec.com
+The Virtel products and PTFs can be downloaded from the SysperTec FTP server, at https://ftp-group.syspertec.com
 
 Credentials to access this server can be requested from SysperTec support at support@syspertec.com
 
@@ -596,7 +596,7 @@ To start the Virtel STC, you will need a valid product license key, that will be
 Access your documentation
 =========================
 
-Virtel documentation (including the detailed installation guide) is available in PDF format on the SysperTec FTP server at https://ftp.syspertec.com or in HTML format at https://virtel.readthedocs.io 
+Virtel documentation (including the detailed installation guide) is available in PDF format on the SysperTec FTP server at https://ftp-group.syspertec.com or in HTML format at https://virtel.readthedocs.io 
 
 Security planning
 =================
