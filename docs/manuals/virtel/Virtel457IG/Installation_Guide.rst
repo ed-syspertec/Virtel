@@ -844,7 +844,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 Step 1
 """"""
 
-Login to the Syspertec file server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.57” – “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.57” – “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
 
 .. raw:: latex
 
@@ -1426,7 +1426,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 	If you are upgrading to a new version of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process. 
 
-1. Download the following files from our FTP server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__
+1. Download the following files from our FTP server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__
 
    -  Virtelvrr.zip.
 
