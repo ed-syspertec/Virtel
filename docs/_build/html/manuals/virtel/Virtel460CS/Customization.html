@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Customization Guide V4.60 &mdash; Virtel 9 documentation</title>
+  <title>Customization Guide V4.61 &mdash; Virtel 9 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                4.59
+                4.61
               </div>
             
           
@@ -97,9 +97,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../Virtel460AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.60</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel460AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.61</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel460CN/connectivity_guide.html">Connectivity Reference V4.60</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Customization Guide V4.60</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customization Guide V4.61</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#summary-of-amendments">Summary of Amendments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ipv6-support">IPV6 Support</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#w2h-customization">W2H Customization</a></li>
@@ -126,6 +126,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel460UG/User_Guide.html">User Guide V4.60</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-61">V4.61</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -177,7 +178,7 @@
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
-      <li>Customization Guide V4.60</li>
+      <li>Customization Guide V4.61</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -198,15 +199,11 @@
             
   <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="customization-guide-v4-60">
-<span id="virtel460hw"></span><h1>Customization Guide V4.60<a class="headerlink" href="#customization-guide-v4-60" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="customization-guide-v4-61">
+<span id="virtel460cs"></span><h1>Customization Guide V4.61<a class="headerlink" href="#customization-guide-v4-61" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web24.png"><img alt="image0" src="../../../_images/logo_virtel_web24.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Customization</strong></p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a draft version of the document.</p>
-</div>
-<p>Version : 4.60 Draft</p>
+<p>Version : 4.61</p>
 <p>Release Date : 11th October 2020. Publication Date : 22/08/2021</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
@@ -228,9 +225,9 @@ and companies mentioned in this document may be trademarks or registered tradema
 their respective owners.</p>
 </div>
 <div class="section" id="summary-of-amendments">
-<span id="virtel460hw-summary-of-amendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="virtel-version-4-60-11th-oct-2020">
-<h3>Virtel version 4.60 (11th Oct 2020)<a class="headerlink" href="#virtel-version-4-60-11th-oct-2020" title="Permalink to this headline">¶</a></h3>
+<span id="virtel460cs-summary-of-amendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="virtel-version-4-61-11th-oct-2020">
+<h3>Virtel version 4.61 (11th Oct 2020)<a class="headerlink" href="#virtel-version-4-61-11th-oct-2020" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Support for IPV6</li>
 <li>New FTP Client interface</li>
@@ -247,13 +244,13 @@ their respective owners.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.60.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.61.</p>
 </div>
 </div>
 </div>
 <div class="section" id="ipv6-support">
 <h2>IPV6 Support<a class="headerlink" href="#ipv6-support" title="Permalink to this headline">¶</a></h2>
-<p>Virtel 4.60 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [<a class="reference external" href="http://[fd10:15c1:1921:a1a6::31]:41001">http://[fd10:15c1:1921:a1a6::31]:41001</a>. In all cases the square brackets are essential.</p>
+<p>Virtel 4.61 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [<a class="reference external" href="http://[fd10:15c1:1921:a1a6::31]:41001">http://[fd10:15c1:1921:a1a6::31]:41001</a>. In all cases the square brackets are essential.</p>
 </div>
 <div class="section" id="w2h-customization">
 <h2>W2H Customization<a class="headerlink" href="#w2h-customization" title="Permalink to this headline">¶</a></h2>
@@ -2764,7 +2761,7 @@ VIR0223I UNLOAD ENDED
 
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;main-title&quot;</span><span class="p">:</span><span class="s2">&quot;Virtel Application Tier Menu&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sub-title&quot;</span><span class="p">:</span><span class="s2">&quot;Syspertec Virtel V4.60 Application Menu&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sub-title&quot;</span><span class="p">:</span><span class="s2">&quot;Syspertec Virtel V4.61 Application Menu&quot;</span><span class="p">,</span>
         <span class="p">};</span>
 </pre></div>
 </div>
@@ -2887,7 +2884,7 @@ var oCustom={
 <span class="o">//</span> <span class="n">Titles</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">]</span><span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;main-title&quot;</span><span class="p">:</span><span class="s2">&quot;Virtel Sample Application Tier Menu&quot;</span><span class="p">,</span>
-<span class="s2">&quot;sub-title&quot;</span><span class="p">:</span> <span class="s2">&quot;Syspertec Virtel V4.60 Application Menu&quot;</span><span class="p">,</span>
+<span class="s2">&quot;sub-title&quot;</span><span class="p">:</span> <span class="s2">&quot;Syspertec Virtel V4.61 Application Menu&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 
 

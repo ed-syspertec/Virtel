@@ -1,0 +1,272 @@
+.. _tn202101:
+
+What’s new in Virtel 4.61 GA Release
+=====================================================
+
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61. 
+
+Installation changes
+--------------------
+
+**5900 VIRTERM/Samplib changes**
+
+- SAMPLIB TCT members: Changed BUFSIZE from 20000 to 32000
+
+**5921 Correct Version number**
+
+- Update installation files with correct version number.
+
+
+Migration considerations
+------------------------
+
+V4.61 
+^^^^^
+
+**End of support for COMPATIBILITY mode**
+
+The "COMPATIBILITY" mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of V4.53 w2hparm to V4.54. w2hparm is no longer supported in V4.61. It is recommended to switch to "Option" mode before migrating to V4.61.
+
+**Version support**
+
+Versions of Virtel older than V4.58 are no longer supported.
+
+**ARBO changes**
+
+There have been no changes to the ARBO which would require migration from V4.61, V4.59 or V4.58. Customers who are migrating from older releases should review the 
+“What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. 
+Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+
+Fixes, changes and new features
+-------------------------------
+
+Presentation
+^^^^^^^^^^^^
+
+
+**5887 APL support for Omegamon**
+
+- Improved Omegamon 3270 Enhanced APL support.
+
+
+**5888 minor Javascript updates**
+
+- Correct copy and paste implementation.
+- Add option of displaying the SYSNAME in the Virtel title bar.
+- Improved help panels.   
+
+
+**5890 update backspace key to left arrow to settings panel**
+
+- Settings panel now supports backspace as left arrow.
+
+
+**5891 Security type 4. Expired password panel correction**
+
+- Changes have been made to support an expired password panel in the Security type 4 logic.
+
+
+**5892 Modified delete PF Key description on Virtel Rule List Panel** 
+
+- Virtel Rule List panel, "Suppress" text replaced by "Delete" 
+
+**5895 Ctrl+S default logic amended** 
+
+- Browser copy and paste functionality impacted by Ctrl+S code.
+ 
+**5896 TBT Web Access**
+
+- Uppercase attribute corrected  
+
+**5899 Missing class attribute for color update, cAppMenu documentation updated**  
+
+- Updates to the cAppMenu feature.
+
+**5906 Update ShowFTP parm**
+
+ - w2hparm corrected to process ShowFTP parameter
+
+**5913 Fix Insertion mode of Ctrl+V without Paste**
+
+- Fixed insertion problem when using Ctrl+V without the "Map Ctrl+V to Paste by Typing" option activated. 
+
+**5917 Correct "Paste Continue" menu in IE11**
+
+- Regressed code fixed.
+
+**5920 Colors on the grey background modification**
+
+- Correct CSS file.
+
+**5923 Unicode conversion of specific character**
+
+- Curly quotes converted to straight quote
+
+**5924 Mouse wheel enhancement**
+
+- Initialisation process modified to avoid error messages - "language xx is not processed".
+
+.. raw:: latex
+
+    \newpage 
+
+Base Components
+^^^^^^^^^^^^^^^
+
+
+**5893 VIRPLEX startup corrected**
+
+- Modification to support IPV6 protocol.  
+
+**5894 VIRPLEX error after long poll response**
+
+- Avoid "Storage Exhaustion" due to inadvertent long poll storage reuse. Possible AbendS0C4.
+
+**5897 High CPU when using USERPARM and VSAMTYPE=READONLY**
+
+- Correct High CPU issue when using USERPARM with VIRHTML defined as READONLY
+
+**5898 VIRIPA9I INITIALISATION FOR VIRTELXM (9-XMPASS)**
+
+- Message VIRIPA9I corrected to show correct Virtel version number.
+
+**5900 Updates to VIRTERM**
+
+- Increate BUFSIZE defualt value from 8192 to 32000. MVS only.
+
+**5901 Correct ABENDS0C4 in MEMDISPLAY command**
+
+- Default DSASIZE defaults to 1MB, which is too small. Message VIR0086E issued. 
+
+**5903 VIRAPI error in 4.59**
+
+- VIB deleted, destroying the VIRAPI control block. Corrected.
+
+**5904 USERPARM 100% CPU at Virtel startup**
+
+- Logic updated to correctly handle VSAM key location searches.  
+
+**5905 Update IND$FILE Codepage limitation**
+
+- Codepage logic corrected. Code regressed following fix.
+
+**5908 Improve support for graphics escape characters**
+
+- Correct Graphic characters processing. Characters were being replaced base character set.
+
+**5909 Passphrase fix for NOMIXEDCASE environments**
+
+- Uppercase conversion was being performed on passphrase. This is incorrect. 
+                                      
+**5910/5893 VIRPLEX STARTUP INCORRECT IN VIRTEL 4.61**
+
+- Correct Virplex startup processing. 
+                                      
+**5912 allow setting minimum PASSPHRASE length**
+
+- Avoid ICH409I 283-024 Abend. Password and Passphrase lengths can be defined in TCT to set lengths for Passphrase.
+
+**5915 Support for dynamic SNAP message table**
+
+- New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum of 10 messages.
+
+**5916 LOCK= terminal support**
+
+- LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.
+
+**5922 Correct SILENCE(YES/NO) in VIRTERM macro**
+
+- Correct SILENCE= keyword logic in VIRTERM macro. 
+
+
+
+.. raw:: latex
+
+    \newpage 
+
+Scenario Language
+^^^^^^^^^^^^^^^^^
+
+**5918 Scenario Discard Flag is reset if application issues CLSDST,PASS**
+
+- Correct VTAM CLSDST,PASS processing in scenario code.
+
+**5919 Abend after setting DBCS from a scenario**                                 
+
+- Correct Abend in scenario when using DBCS.
+
+
+
+.. raw:: latex
+
+    \newpage 
+
+Other Enhancements
+^^^^^^^^^^^^^^^^^^
+
+**5907 UPLOAD fails**
+
+- Boundary processing corrected for VSR.
+
+
+Updates and maintenance
+-----------------------
+
+A full list of maintenance updates can be found in Appendix A.
+
+.. raw:: latex
+
+    \newpage 
+
+Appendix A
+----------
+
+**Maintenance list**
+
+- 5887 APL support for Omegamon                                                 
+- 5888 Minor Javascript updates                                                              
+- 5889 Missing SVN Update 5874                                                  
+- 5890 update backspace key to left arrow to settings panel.
+- 5891 expired password panel correction in security 4                          
+- 5892 #2031 Translation of delete PF Key description on Virtel Rule List Panel 
+- 5893 VIRPLEX startup incorrect in Virtel 4.61                                 
+- 5894 VIRPLEX error after longpoll response                                    
+- 5895 Ctrl+S default behavior prevented Enhancement, Copy/Paste ending by empty
+- 5896 TBT Web Access - Uppercase attribute correction                                                        
+- 5897 High CPU when using USERPARM and VSAMTYPE=READONLY; VIRHTML should not be
+- 5898 VIRIPA9I INITIALISATION FOR VIRTELXM (9-XMPASS) - CHANGE THE VIRTEL VERSI
+- 5899 Missing class attribute for color update, cAppMenu documentation update  
+- 5900 Updates to VIRTERM                                                       
+- 5901 Correct ABENDS0C4 in MEMDISPLAY command                                  
+- 5903 VIRAPI error in 4.59                                                     
+- 5904 USERPARM 100% CPU at Virtel startup                                      
+- 5905 Update IND$FILE Codepage limitation                                      
+- 5906 Update showFtp parm                                                      
+- 5907 UPLOAD fails                                                   
+- 5908 Improve support for graphics escape characters                           
+- 5909 Passphrase fix for NOMIXEDCASE environments                              
+- 5910 PTF for update 5893                                                      
+- 5910/5893 VIRPLEX STARTUP INCORRECT IN VIRTEL 4.61                            
+- 5911 Delivery VIRTERM MACLIB Xmit format                                      
+- 5912 allow setting minimum PASSPHRASE length                                  
+- 5913 Fix Insertion mode of Ctrl+V without Paste by typing activated           
+- 5914 Correct VIRTERM macro delivery.                                          
+- 5915 Support for dynamic SNAP message table                                   
+- 5916 LOCK= terminal support                                                   
+- 5917 Correct "Paste Continue" menu in IE11 regression, dfhmdf.txt replacement 
+- 5918 Scenario Discard Flag is reset if application issues CLOSEDESTPASS       
+- 5919 Abend after setting DBCS from a scenario                                 
+- 5920 Colors on the grey background modification                               
+- 5921 Correct version number                                         
+- 5922 Correct SILENCE(YES/NO) in VIRTERM macro              
+- 5923 Unicode conversion of specific character (curly quotes to straight quote)
+- 5924 Mouse wheel enhancement, Initialization process modified to avoid message
+
+    
+.. |image0| image:: images/media/image1.png
+   :width: 3.52851in
+   :height: 5.30278in
+.. |image1| image:: images/media/image2.png
+   :width: 6.26806in
+   :height: 3.78125in
+.. |image3| image:: images/media/image3.png 

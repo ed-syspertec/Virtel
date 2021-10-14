@@ -10,9 +10,7 @@ Migration Guide V4.60
 
 **VIRTEL Migration Guide**
 
-.. warning:: This is a draft version of the document.
-
-Version : 4.60 Draft
+Version : 4.60 
 
 Release Date : 11th October 2020. Publication Date : 25/11/2020
 

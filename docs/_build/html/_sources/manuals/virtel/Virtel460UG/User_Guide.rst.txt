@@ -12,9 +12,7 @@ User Guide V4.60
 
 **VIRTEL User Guide**
 
-.. warning:: This is a draft version of the document.
-
-Version : 4.60 Draft
+Version : 4.60
 
 Release Date : 12 November 2020. Publication Date : 30/12/2020
 

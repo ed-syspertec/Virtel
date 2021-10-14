@@ -13,9 +13,7 @@ Connectivity Reference V4.60
 
 **VIRTEL Connectivity Reference**
 
-.. warning:: This is a draft version of the document.
-
-Version : 4.60 Draft
+Version : 4.60 
 
 Release Date : 11 October 2020. Publication Date : 25/11/2020
 
@@ -5212,7 +5210,7 @@ LU Nailing By URL
 
 The URL can contain information which can be used to force a specific LUNAME to be used. This is done by by using either the FORCELUNAME= keyword or by using the *UserData* parameter in the URL. The userdata can be provide through a batch job or may be directly coded. These three methods are what is refered to as **Predefined terminal definitions**. This means that the terminals must be physically defined and related to a logical pool of Virtel terminals.  
 
-Using *UserData* to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. An asterisk at the end of the LU name signifies that the parameter is a prefix rather than a specific value. For example PARAM=EHVTA00* will allocate a VTAM LU within the range EHVTA000 to EHVTA009. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). Again, in the URL, the parameter value could be defined as EHVTA00*.
+Using *UserData* to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. An asterisk at the end of the LU name signifies that the parameter is a prefix rather than a specific value. For example PARAM=EHVTA00* will allocate a VTAM LU within the range EHVTA000 to EHVTA009. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). Again, in the URL, the parameter value could be defined as EHVTA00*. This would allocate a LU range of EHVTA000 through to EHVTA009. 
 
 For example:-
 

@@ -55,7 +55,7 @@ author = 'Ed Holt'
 # built documents.
 #
 # The short X.Y version.
-version = '4.59'
+version = '4.61'
 # The full version, including alpha/beta/rc tags.
 release = '9'
 
