@@ -189,24 +189,13 @@ Installation changes
 Migration considerations
 ------------------------
 
-V4.61 
-^^^^^
-
-**End of support for COMPATIBILITY mode**
-
-The "COMPATIBILITY" mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of 4.53 w2hparm to 4.54 w2hparm is no longer supported in v4.61. It is recommended to switch to "Option" mode before migrating to 4.61.
-
-**ARBO changes**
-
-There have been no changes to the ARBO which would require migration from V4.59 or V4.58. Customers who are migrating from older releases should review the 
-“What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. 
-Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+V4.61 - None 
 
 Fixes, changes and new features
 -------------------------------
 
 Presentation
-^^^^^^^^^^^^
+
 
 **5782 w2h page capture improved**
 
@@ -346,7 +335,7 @@ Presentation
     \newpage 
 
 Base Components
-^^^^^^^^^^^^^^^
+
 
 **5776 Add symbolics to VIR0021W**
 
@@ -497,7 +486,6 @@ Base Components
     \newpage 
 
 Virtel Administration
-^^^^^^^^^^^^^^^^^^^^^
 
 **5805 Calling DTE RULE fails if asked for '1=IS' address**
 
@@ -542,7 +530,6 @@ Virtel Administration
     \newpage 
 
 Scenario Language
-^^^^^^^^^^^^^^^^^
 
 **5777 possible abend in vir0s12 if scenario repetedly executes the same MAP$ instructions**
 

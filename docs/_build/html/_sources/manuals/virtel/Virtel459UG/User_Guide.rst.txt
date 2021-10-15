@@ -12,9 +12,7 @@ User Guide V4.59
 
 **VIRTEL User Guide**
 
-.. warning:: This is a draft version of the document.
-
-Version : 4.59 Draft
+Version : 4.59
 
 Release Date : 12 July 2019. Publication Date : 12/07/2019
 
@@ -14870,7 +14868,7 @@ Default values for W2H parameters
 +-----------------+-----------------------+---------------------------------------------------+
 | "movecursor"    | Move cursor on activat| true, false                                       | 
 +-----------------+-----------------------+---------------------------------------------------+
-| "style"         | Style                 | "3270", "3270classic", "gray", "white"                           |
+| "style"         | Style                 | "3270", "3270classic", "gray", "white"            |
 +-----------------+-----------------------+---------------------------------------------------+
 | "printstyle”    | Print style           | "3270", "color", "white"                          |
 +-----------------+-----------------------+---------------------------------------------------+

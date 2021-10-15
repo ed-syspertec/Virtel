@@ -397,15 +397,11 @@ Redesigner</td>
 </div>
 <div class="section" id="migration-considerations">
 <h2>Migration considerations<a class="headerlink" href="#migration-considerations" title="Permalink to this headline">¶</a></h2>
-<p><strong>End of support for COMPATIBILITY mode</strong></p>
-<p>The “COMPATIBILITY” mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of 4.53 w2hparm to 4.54 w2hparm is no longer supported in v4.61. It is recommended to switch to “Option” mode before migrating to 4.61.</p>
-<p><strong>ARBO changes</strong></p>
-<p>There have been no changes to the ARBO which would require migration from V4.59 or V4.58. Customers who are migrating from older releases should review the
-“What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features.
-Depending on requirements not all actions may be applicable. These newsletters are available online at <a class="reference external" href="https://virtel.readthedocs.io/en/latest/">https://virtel.readthedocs.io/en/latest/</a></p>
+<p>V4.61 - None</p>
 </div>
 <div class="section" id="fixes-changes-and-new-features">
 <h2>Fixes, changes and new features<a class="headerlink" href="#fixes-changes-and-new-features" title="Permalink to this headline">¶</a></h2>
+<p>Presentation</p>
 <p><strong>5782 w2h page capture improved</strong></p>
 <ul class="simple">
 <li>Improved capture feature to support older IE browsers and multiple captures on one page</li>
@@ -544,6 +540,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Corrected 3270 printing feature for IE11</li>
 </ul>
+<p>Base Components</p>
 <p><strong>5776 Add symbolics to VIR0021W</strong></p>
 <ul class="simple">
 <li>Add &#64;&#64;&#64;&#64;DATE, &#64;&#64;&#64;&#64;TIME and &#64;&#64;PRT variables in USSTAB support</li>
@@ -688,6 +685,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Fixed possible ASRA abend in Virtel for z/VSE</li>
 </ul>
+<p>Virtel Administration</p>
 <p><strong>5805 Calling DTE RULE fails if asked for ‘1=IS’ address</strong></p>
 <ul class="simple">
 <li>Fixes RULE workflow for cases that worked with 1=STARTS-WITH but not 1=IS</li>
@@ -726,6 +724,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Added sample jobs to activate SMF stats printing</li>
 </ul>
+<p>Scenario Language</p>
 <p><strong>5777 possible abend in vir0s12 if scenario repetedly executes the same MAP$ instructions</strong></p>
 <ul class="simple">
 <li>Corrects a situation where, when a MAP$ sequence was executed several times, Virtel sometimes failed to match a MAP$ END to the appropriate MAP$ BEGIN</li>

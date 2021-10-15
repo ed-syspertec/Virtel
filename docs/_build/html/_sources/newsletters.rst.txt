@@ -57,7 +57,7 @@ Technical Newsletters
    
    manuals/newsletters/TN2020*/*
 
-2020
+2021
 ----
 .. toctree::
    :glob:

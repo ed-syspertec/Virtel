@@ -11666,6 +11666,283 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 <h3>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="default-values-for-w2h-parameters">
 <span id="ug-w2hparm-defaults"></span><h4>Default values for W2H parameters<a class="headerlink" href="#default-values-for-w2h-parameters" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="25%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyword</th>
+<th class="head">Caption</th>
+<th class="head">Possible values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“fontsize”</td>
+<td>Font size</td>
+<td>“window”, “screen”, “8”, “10”, “12”, “14”, “16”</td>
+</tr>
+<tr class="row-odd"><td>“font”</td>
+<td>Font family</td>
+<td>“font name”</td>
+</tr>
+<tr class="row-even"><td>“autocapture”</td>
+<td>Auto-capture</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“autoprint”</td>
+<td>Auto-print</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“cursor”</td>
+<td>Cursor “Bar”,</td>
+<td>“Blink”, “Block”</td>
+</tr>
+<tr class="row-odd"><td>“vline”</td>
+<td>Vertical line</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“hline”</td>
+<td>Horiz line</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“esc”</td>
+<td>Esc key</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“ctrl”</td>
+<td>Ctrl key</td>
+<td>“no”, “ENTER”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“cmdleft”</td>
+<td>Left Cmd key</td>
+<td>“no”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“cmdright”</td>
+<td>Right Cmd key</td>
+<td>“no”, “ENTER”</td>
+</tr>
+<tr class="row-odd"><td>“enter”</td>
+<td>Enter key</td>
+<td>“ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“home”</td>
+<td>Home key</td>
+<td>“no”, “Home”</td>
+</tr>
+<tr class="row-odd"><td>“end”</td>
+<td>End key</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“pgup”</td>
+<td>PageUp key</td>
+<td>“PF7”, “PF19”, “PA1”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“pgdn”</td>
+<td>PageDown key</td>
+<td>“PF8”, “PF20”, “PA2”, “no”</td>
+</tr>
+<tr class="row-even"><td>“pause”</td>
+<td>Pause key</td>
+<td>“CLEAR”, “ATTN”, “PA3”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“kpenter”</td>
+<td>Keypad Enter</td>
+<td>“ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“shiftenter”</td>
+<td>Shift+Enter</td>
+<td>“no”,”ENTER”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“shiftesc”</td>
+<td>Shift+Esc</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“shiftins”</td>
+<td>Shift+Insert</td>
+<td>“no”, “Dup”</td>
+</tr>
+<tr class="row-odd"><td>“shiftdel”</td>
+<td>Shift+Delete</td>
+<td>“no”, “ErEof”</td>
+</tr>
+<tr class="row-even"><td>“shifthome”</td>
+<td>Shift+Home</td>
+<td>“no”, “FieldMark”, “Home”</td>
+</tr>
+<tr class="row-odd"><td>“shiftend”</td>
+<td>Shift+End</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“shiftpgdn”</td>
+<td>Shift+PageDown</td>
+<td>“no”, “PA3”</td>
+</tr>
+<tr class="row-odd"><td>“ctrlenter”</td>
+<td>Ctrl+Enter</td>
+<td>“no”,”ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“ctrlins”</td>
+<td>Ctrl+Insert</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td>“ctrldel”</td>
+<td>Ctrl+Delete</td>
+<td>“no”, “PA2”, “ErEof”</td>
+</tr>
+<tr class="row-even"><td>“ctrlhome”</td>
+<td>Ctrl+Home</td>
+<td>“no”, “PA3”, “Home”, “ChgCur”</td>
+</tr>
+<tr class="row-odd"><td>“ctrlend”</td>
+<td>Ctrl+End</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“altins”</td>
+<td>Alt+Ins</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td>“althome”</td>
+<td>Alt+Home</td>
+<td>“no”, “PA2”</td>
+</tr>
+<tr class="row-even"><td>“altpgup”</td>
+<td>Alt+PageUp</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">“altpgdn”</td>
+<td rowspan="2">Alt+PageDown</td>
+<td rowspan="2">“no”, “PA2”</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td>“altpause”</td>
+<td>Alt+Pause</td>
+<td>“no”, “ATTN”, “CLEAR”, “PA3”</td>
+</tr>
+<tr class="row-even"><td>“altf1”</td>
+<td>Alt+F1</td>
+<td>“no”, “PA1”, “ENTER”</td>
+</tr>
+<tr class="row-odd"><td>“altf2”</td>
+<td>Alt+F2</td>
+<td>“no”, “PA2”</td>
+</tr>
+<tr class="row-even"><td>“altf3”</td>
+<td>Alt+F3</td>
+<td>“no”, “PA3”, “ChgCur”</td>
+</tr>
+<tr class="row-odd"><td>“kpslash”</td>
+<td>Keypad /</td>
+<td>“/”, “PA1”</td>
+</tr>
+<tr class="row-even"><td>“kpaster”</td>
+<td>Keypad *</td>
+<td>“*”, “PA2”</td>
+</tr>
+<tr class="row-odd"><td>“kpminus”</td>
+<td>Keypad -</td>
+<td>“-“, “Backtab”</td>
+</tr>
+<tr class="row-even"><td>“kpplus”</td>
+<td>Keypad +</td>
+<td>“+”, “Tab”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“kpdot”</td>
+<td>Keypad .</td>
+<td>“.”, “,”</td>
+</tr>
+<tr class="row-even"><td>“dblclick”</td>
+<td>Double Click</td>
+<td>“Word”, “ENTER”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“urlhotspot”</td>
+<td>URL hotspots</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“pfkhotspot”</td>
+<td>PF key hotspots</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“pasteereof”</td>
+<td>Paste erase EOF</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“pastetyping”</td>
+<td>Map Ctrl+V to Paste
+by Typing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“movecursor”</td>
+<td>Move cursor on activat</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“style”</td>
+<td>Style</td>
+<td>“3270”, “3270classic”, “gray”, “white”</td>
+</tr>
+<tr class="row-odd"><td>“printstyle”</td>
+<td>Print style</td>
+<td>“3270”, “color”, “white”</td>
+</tr>
+<tr class="row-even"><td>“rtm”</td>
+<td>Response time monitor</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“omitnulls”</td>
+<td>Omit nulls from input</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“keepmacpad”</td>
+<td>Keep macro pad open</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“keepkeypad”</td>
+<td>Keep keypad open</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“hiliteinput”</td>
+<td>Highlight input fields</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“caretnot”</td>
+<td>Remap ^ to logical not</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“adaptfontratio”</td>
+<td>Adapt font size ratio</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“charspace”</td>
+<td>Character spacing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“linespace”</td>
+<td>Line spacing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“settingsGUI”</td>
+<td>Uuser interface type</td>
+<td>v2</td>
+</tr>
+<tr class="row-even"><td>“preservein”</td>
+<td>Preserve insert mode</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“nolongpoll”</td>
+<td>AsynchSupport</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“MirrorMode”</td>
+<td>BiDirectional mode</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“NOstretch”</td>
+<td>Font Size Stretch</td>
+<td>true, false</td>
+</tr>
+</tbody>
+</table>
 <p><em>Default W2H parameters: List of keywords and possible values</em></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
