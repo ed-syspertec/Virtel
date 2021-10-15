@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{May 09, 2021}
+\date{Oct 15, 2021}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.61 Draft
 
-Release Date : 11th October 2020. Publication Date : 25/11/2020
+Release Date : 14th October 2021. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -111,7 +111,7 @@ their respective owners.
 
 
 \chapter{Virtel Messages}
-\label{\detokenize{messages:virtel-messages}}\label{\detokenize{messages:v460mg-introduction}}
+\label{\detokenize{messages:virtel-messages}}\label{\detokenize{messages:v461mg-introduction}}
 
 \section{Virtel user messages}
 \label{\detokenize{messages:virtel-user-messages}}
@@ -3845,6 +3845,20 @@ Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virte
 \end{description}
 
 
+\subsubsection{VIR0087E FATAL DSA TABLE ERROR. MEMORY DIAGS. DISABLED}
+\label{\detokenize{messages:vir0087e-fatal-dsa-table-error-memory-diags-disabled}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0000
+
+\item[{Meaning}] \leavevmode
+Virtel has reached the end of the current DSA table.
+
+\item[{Action}] \leavevmode
+Virtel continues but you should contact support.
+
+\end{description}
+
+
 \subsubsection{VIRT0088E DSA TABLE FULL. MEMORY DIAGS. DISABLED}
 \label{\detokenize{messages:virt0088e-dsa-table-full-memory-diags-disabled}}\begin{description}
 \item[{Module}] \leavevmode
@@ -3854,21 +3868,7 @@ VIR0000
 The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.
 
 \item[{Action}] \leavevmode
-Virtel contines but you should contact support support. Schedule a restart of Virtel.
-
-\end{description}
-
-
-\subsubsection{VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED}
-\label{\detokenize{messages:id6}}\begin{description}
-\item[{Module}] \leavevmode
-VIR0000
-
-\item[{Meaning}] \leavevmode
-Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
-
-\item[{Action}] \leavevmode
-Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
+Virtel continues but you should contact support.
 
 \end{description}
 
@@ -4261,13 +4261,27 @@ Check the VIRTEL log and SYSLOG for further information.
 \end{description}
 
 
-\subsubsection{VIR0231I ERROR OPENING DDNAME XXXXXXXX}
-\label{\detokenize{messages:vir0231i-error-opening-ddname-xxxxxxxx}}\begin{description}
+\subsubsection{VIR0231W ERROR OPENING DDNAME XXXXXXXX}
+\label{\detokenize{messages:vir0231w-error-opening-ddname-xxxxxxxx}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0002A
 
 \item[{Meaning}] \leavevmode
 An error has occurred trying to open the log output destination. Log option will be set to CONSOLE.
+
+\item[{Action}] \leavevmode
+Check the VIRTEL log and SYSLOG for further information.
+
+\end{description}
+
+
+\subsubsection{VIR0232W ERROR WRITING TO SYSOUT DDNAME}
+\label{\detokenize{messages:vir0232w-error-writing-to-sysout-ddname}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002A
+
+\item[{Meaning}] \leavevmode
+An error has occurred trying to write to the log output destination. Log option will be set to CONSOLE.
 
 \item[{Action}] \leavevmode
 Check the VIRTEL log and SYSLOG for further information.
@@ -4289,8 +4303,22 @@ None.
 \end{description}
 
 
-\subsubsection{VIR0234I CLOSE FAILED FOR XXXXXXXX DATASET}
-\label{\detokenize{messages:vir0234i-close-failed-for-xxxxxxxx-dataset}}\begin{description}
+\subsubsection{VIR0233I VIRTEL SYS001 DATASET HAS BEEN CLOSED (Z/VSE)}
+\label{\detokenize{messages:vir0233i-virtel-sys001-dataset-has-been-closed-z-vse}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002A
+
+\item[{Meaning}] \leavevmode
+A log output destination file SYS001 has been closed and made available.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0234W CLOSE FAILED FOR XXXXXXXX DATASET}
+\label{\detokenize{messages:vir0234w-close-failed-for-xxxxxxxx-dataset}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0002A
 
@@ -4345,13 +4373,27 @@ None.
 \end{description}
 
 
+\subsubsection{VIR0237W ERROR WRITING TO LOGSTREAM}
+\label{\detokenize{messages:vir0237w-error-writing-to-logstream}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002A
+
+\item[{Meaning}] \leavevmode
+An error occurred trying to write to the logstream.
+
+\item[{Action}] \leavevmode
+Check the VIRTEL log and SYSLOG for further information.
+
+\end{description}
+
+
 \subsubsection{VIR0238I VIRTEL LOG RECORDING TO LOGFILE}
 \label{\detokenize{messages:vir0238i-virtel-log-recording-to-logfile}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0002A
 
 \item[{Meaning}] \leavevmode
-Reports reporing destination for Virtel LOGFILE messages.
+Reports reporting destination for Virtel LOGFILE messages.
 
 \item[{Action}] \leavevmode
 Use to LOG,D command to display the active LOGFILE.
@@ -5770,6 +5812,20 @@ A VSAM error occurred when VIRTEL attempted to write to file xxxxxxxx which has 
 
 \item[{Action}] \leavevmode
 Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.
+
+\end{description}
+
+
+\subsubsection{VIR1728E Error: Cannot open xxxxxxxx file. File control record missing.}
+\label{\detokenize{messages:vir1728e-error-cannot-open-xxxxxxxx-file-file-control-record-missing}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0017
+
+\item[{Meaning}] \leavevmode
+A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx and obtain the control record.
+
+\item[{Action}] \leavevmode
+Check the SYSLOG for other error messages. Contact technical support.
 
 \end{description}
 
@@ -10228,7 +10284,7 @@ None.
 VIR0T09
 
 \item[{Meaning}] \leavevmode
-VIRTEL has opened a TCP/IP listening socket for the line with external name linename. port is the listening port number, and ipaddr is the IP address on which VIRTEL will accept incoming connections. If ipaddr is 000.000.000.000 then VIRTEL accepts connections on any of the host’s home IP addresses.
+VIRTEL has opened a TCP/IP listening socket for the line with external name linename. port is the listening port number, and ipaddr is the IP address on which VIRTEL will accept incoming connections. If ipaddr is 0.0.0.0 then VIRTEL accepts connections on any of the host’s home IP addresses.
 
 \item[{Action}] \leavevmode
 None.

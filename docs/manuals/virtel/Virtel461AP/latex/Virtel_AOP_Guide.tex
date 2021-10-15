@@ -55,7 +55,7 @@
 
 
 \title{Virtel Audit, Administration, Operations and Performance Guide}
-\date{Dec 31, 2020}
+\date{Oct 15, 2021}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -81,7 +81,7 @@ This is a draft version of the document.
 
 Version : 4.61
 
-Release Date : 11 Oct 2020. Publication Date : 25/11/2020
+Release Date : 14 Oct 2021. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -110,7 +110,7 @@ their respective owners.
 
 
 \chapter{Operations}
-\label{\detokenize{audit_operations_ and_performance:operations}}\label{\detokenize{audit_operations_ and_performance:v460ap-introduction}}
+\label{\detokenize{audit_operations_ and_performance:operations}}\label{\detokenize{audit_operations_ and_performance:v461ap-introduction}}
 \index{Issuing commands@\spxentry{Issuing commands}}\ignorespaces 
 
 \section{Commands}
@@ -472,7 +472,7 @@ For example in the above display in SP5 we can see that there is an allocated va
 
 \subsection{Enabling the MEMDISPLAY function}
 \label{\detokenize{audit_operations_ and_performance:enabling-the-memdisplay-function}}\label{\detokenize{audit_operations_ and_performance:index-12}}
-Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL460 Installation User Guide”).
+Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL461 Installation User Guide”).
 
 \index{Disabling MEMDISPLAY@\spxentry{Disabling MEMDISPLAY}!MEMDISPLAY Command@\spxentry{MEMDISPLAY Command}}\index{MEMDISPLAY Command@\spxentry{MEMDISPLAY Command}!Disabling MEMDISPLAY@\spxentry{Disabling MEMDISPLAY}}\ignorespaces 
 
@@ -1236,7 +1236,7 @@ Reserved for internal use.
 Tracing memory activity can produce an important overhead estimated to 20-30\% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
 \newpage
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-maintenance}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-maintenance}}
 \index{Maintenance@\spxentry{Maintenance}}\ignorespaces 
 \index{Maintenance@\spxentry{Maintenance}!Administration@\spxentry{Administration}}\index{Administration@\spxentry{Administration}!Maintenance@\spxentry{Maintenance}}\ignorespaces 
 
@@ -1293,7 +1293,7 @@ Open the “Drag and Drop” interface in Virtel, and then drag the files over o
 A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN201709 Virtel batch maintenance”. This can be viewed online at \sphinxurl{http://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201709/TN201709.html}
 
 \newpage
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-correspondent-management}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-correspondent-management}}
 \index{Correspondent Management@\spxentry{Correspondent Management}}\ignorespaces 
 
 \section{Correspondent Management}
@@ -1303,7 +1303,7 @@ One of the methods which VIRTEL may use to identify users is by means of a secur
 VIRTEL uses the correspondent file for the following purposes:
 - the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
 - the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
-- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to {\hyperref[\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages-smtp}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by SMTP”}}}} and {\hyperref[\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by cookie)”}}}}.
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to {\hyperref[\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages-smtp}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by SMTP”}}}} and {\hyperref[\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by cookie)”}}}}.
 
 There are two types of correspondent: an e-mail correspondent and a local correspondent:
 - An \sphinxstylestrong{e-mail correspondent} is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
@@ -1415,7 +1415,7 @@ Date and time of the last transfer, and the IP address of the correspondent.
 The number of contacts since the last activation.
 
 \end{description}
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-account-activation}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-account-activation}}
 \index{Account activation@\spxentry{Account activation}!Correspondent Manangement@\spxentry{Correspondent Manangement}}\index{Correspondent Manangement@\spxentry{Correspondent Manangement}!Account activation@\spxentry{Account activation}}\ignorespaces 
 
 \subsection{Account activation}
@@ -1440,7 +1440,7 @@ A correspondent’s security code may be cancelled by deactivating with the {[}P
 To display the list of rules associated with this correspondent, press the {[}PF6{]} key.
 
 \newpage
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-web-entity-management}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-web-entity-management}}
 \index{Web Entity Manangement@\spxentry{Web Entity Manangement}}\ignorespaces 
 
 \section{Web Entity Management}
@@ -1463,7 +1463,7 @@ by e-mail (SMTP). (Corresspondence Management only)
 by web browser (HTTP), with cookie security. (Corresspondence Management only)
 
 \end{enumerate}
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages-signon}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages-signon}}
 \index{Uploading pages HTTP (Signon)@\spxentry{Uploading pages HTTP}\spxextra{Signon}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading pages HTTP (Signon)@\spxentry{Uploading pages HTTP}\spxextra{Signon}}\ignorespaces 
 
 \subsection{Uploading by web browser (HTTP) (secured by signon)}
@@ -1704,7 +1704,7 @@ identifies the VIRTEL HTTP line
 page template for displaying upload result messages
 
 \item[{uplbas}] \leavevmode
-external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See {\hyperref[\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages-signon}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by signon)”}}}} for a list of upload transactions.
+external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See {\hyperref[\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages-signon}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by signon)”}}}} for a list of upload transactions.
 
 \end{description}
 
@@ -1811,7 +1811,7 @@ is the IP address of VIRTEL.
 You may omit the \textendash{}u MYUSERID parameter and upl2virt will prompt you for your userid.
 
 \newpage
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages-smtp}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages-smtp}}
 \index{Uploading template pages using SMTP@\spxentry{Uploading template pages using SMTP}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Uploading template pages using SMTP@\spxentry{Uploading template pages using SMTP}}\ignorespaces 
 
 \subsection{Uploading template pages using SMTP}
@@ -1863,7 +1863,7 @@ Press F5 from the Configuration Menu and define an e-mail correspondent specifyi
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \item {} 
-Activate the e-mail correspondent: see “Account activation” under the heading {\hyperref[\detokenize{audit_operations_ and_performance:v460ap-correspondent-management}]{\sphinxcrossref{\DUrole{std,std-ref}{“Correspondent Management”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:-
+Activate the e-mail correspondent: see “Account activation” under the heading {\hyperref[\detokenize{audit_operations_ and_performance:v461ap-correspondent-management}]{\sphinxcrossref{\DUrole{std,std-ref}{“Correspondent Management”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:-
 
 \end{enumerate}
 
@@ -1926,7 +1926,7 @@ truncation must not duplicate any other filename in the directory. For example, 
 using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
 under the name LINKS.GI
 
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v460ap-http-uploading-pages}}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v461ap-http-uploading-pages}}
 \index{Upload page procedure using HTML@\spxentry{Upload page procedure using HTML}!Web Entity Management@\spxentry{Web Entity Management}}\index{Web Entity Management@\spxentry{Web Entity Management}!Upload page procedure using HTML@\spxentry{Upload page procedure using HTML}}\ignorespaces 
 
 \subsection{Uploading pages by HTTP (secured by cookie)}
@@ -2130,7 +2130,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \item {} 
-(First time only) Activate the e-mail correspondent: see {\hyperref[\detokenize{audit_operations_ and_performance:v460ap-account-activation}]{\sphinxcrossref{\DUrole{std,std-ref}{“Account activation”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:
+(First time only) Activate the e-mail correspondent: see {\hyperref[\detokenize{audit_operations_ and_performance:v461ap-account-activation}]{\sphinxcrossref{\DUrole{std,std-ref}{“Account activation”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:
 
 \end{enumerate}
 
@@ -3354,7 +3354,41 @@ Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS record
 \label{\detokenize{audit_operations_ and_performance:printing-the-virstat-smf-record}}\label{\detokenize{audit_operations_ and_performance:index-92}}
 The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
 
+The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print SMF records that have been written to the SMF LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM.
+
 Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.
+
+
+\subsection{Structure of the Binary STATS record.}
+\label{\detokenize{audit_operations_ and_performance:structure-of-the-binary-stats-record}}
+The segment within the SMF record starts at offset X’0E’ within the record.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+*        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT3)
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+*
+BSTATS   DSECT
+B\PYGZdl{}LUNAME DS    CL8                     NOM DU TERMINAL
+B\PYGZdl{}DATE   DS    PL4                     DATE STATISTIQUES
+B\PYGZdl{}TIME   DS    PL4                     HEURE STATISTIQUES
+B\PYGZdl{}CUMPAR DS    CL1                     B Binaire HTTP entrant
+         DS    CL3                     filler
+B\PYGZdl{}IPADDR DS    CL40  (was 15)          CALLER IP ADDRESS
+B\PYGZdl{}ENTRY  DS    CL8                     ENTRY POINT
+B\PYGZdl{}TRANS  DS    CL8                     TRANSACTION
+B\PYGZdl{}RULE   DS    CL8                     RULE (default to LINE)
+B\PYGZdl{}STATUS DS    CL4                     HTTP STATUS
+B\PYGZdl{}RELAY  DS    CL8                     NOM DU RELAY
+B\PYGZdl{}SPENT  DS    XL4                     Dur e d\PYGZsq{}appel en 1/100s
+B\PYGZdl{}BYTRD  DS    XL4                     BYTES RECEIVED
+B\PYGZdl{}BYTST  DS    XL4                     BYTES SENT
+B\PYGZdl{}USERID DS    CL20                    USERID
+B\PYGZdl{}PARM   DS    CL16                    PARAMETER
+B\PYGZdl{}PXYADR DS    CL40                    PROXY IP ADDRESS
+        ORG   BSTATS+255
+LBSTATS  EQU   *\PYGZhy{}BSTATS                LONGUEUR ENREGISTREMENT
+\end{sphinxVerbatim}
 
 
 \chapter{Appendix}

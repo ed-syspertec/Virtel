@@ -80,9 +80,9 @@
 This is a draft version of the document.
 \end{sphinxadmonition}
 
-Version : 4.61 Draft
+Version : 4.60 Draft
 
-Release Date : 14 October 2021. Publication Date : 10/10/2021
+Release Date : 12 November 2020. Publication Date : 30/12/2020
 
 Syspertec Communication
 
@@ -113,14 +113,7 @@ their respective owners.
 
 
 \chapter{Summary of Amendments}
-\label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:virtel461ig-summary-of-ammendments}}
-
-\section{Virtel version 4.61 (10th Oct 2021)}
-\label{\detokenize{Installation_Guide:virtel-version-4-61-10th-oct-2021}}
-\begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.
-\end{sphinxadmonition}
-
+\label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:vvrrig60-summary-of-ammendments}}
 
 \section{Virtel version 4.60 (11th Nov 2020)}
 \label{\detokenize{Installation_Guide:virtel-version-4-60-11th-nov-2020}}
@@ -1040,7 +1033,7 @@ Miscellaneous editorial corrections and enhancements
 
 
 \chapter{Introduction}
-\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:virtel461ig-introduction}}
+\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:vvrrig60-introduction}}
 \index{Virtel operating environments@\spxentry{Virtel operating environments}}\ignorespaces 
 
 \section{Required Environment}
@@ -1088,7 +1081,7 @@ Safari Version 5 or above
 
 VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
-\phantomsection\label{\detokenize{Installation_Guide:virtel461ig-installz-os}}
+\phantomsection\label{\detokenize{Installation_Guide:vvrrig-installz-os}}
 \index{Installing under z/OS@\spxentry{Installing under z/OS}}\ignorespaces 
 
 \chapter{Installing VIRTEL under z/OS}
@@ -1112,7 +1105,7 @@ If you are upgrading to a new version of Virtel, plan to move any user transacti
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \item {} 
-Download the following files from our FTP server \sphinxhref{http://ftp-group.syspertec.com/}{http://ftp-group.syspertec.com}
+Download the following files from our FTP server \sphinxhref{https://ftp-group.syspertec.com/}{https://ftp-group.syspertec.com}
 \begin{itemize}
 \item {} 
 Virtelvrr.zip.
@@ -1267,7 +1260,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 \subsubsection{Step 1}
 \label{\detokenize{Installation_Guide:step-1}}
-Login to the Syspertec file server \sphinxhref{http://ftp-group.syspertec.com/}{http://ftp-group.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.61” \textendash{} “Products” folder and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server \sphinxhref{https://ftp-group.syspertec.com/}{https://ftp-group.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.60” \textendash{} “Products” folder and download the virtel460mvs.zip file. Unzip this file into a folder on your workstation.
 
 \newpage
 
@@ -1775,7 +1768,7 @@ At execution time:
 \PYG{n}{VIRQ903W} \PYG{n}{LINE} \PYG{n}{lin1name} \PYG{n}{HAS} \PYG{n}{A} \PYG{n}{SESSION} \PYG{n}{STARTED} \PYG{n}{WITH} \PYG{n}{MQM} \PYG{n}{CSQ7}
 \PYG{n}{VIRQ923E} \PYG{n}{lin1name} \PYG{n}{REQ} \PYG{n}{MQOPEN} \PYG{n}{COMPLETION} \PYG{n}{CODE} \PYG{l+m+mi}{00000002} \PYG{n}{REASON} \PYG{n}{CODE} \PYG{l+m+mi}{00000825} \PYG{p}{(}\PYG{l+m+mi}{00002085}\PYG{p}{)} \PYG{n}{MQM} \PYG{n}{CSQ7}
 \PYG{n}{VIRQ923E} \PYG{n}{lin1name} \PYG{n}{PARAM} \PYG{n}{ABCD}\PYG{o}{.}\PYG{n}{VIRTELOUT}
-\PYG{n}{VIRRW01I} \PYG{n}{INITIALISATION} \PYG{n}{FOR} \PYG{n}{lin2name} \PYG{p}{(}\PYG{n}{MQI}\PYG{o}{\PYGZhy{}}\PYG{n}{XX} \PYG{p}{)}\PYG{p}{,} \PYG{n}{VERSION} \PYG{l+m+mf}{4.61}
+\PYG{n}{VIRRW01I} \PYG{n}{INITIALISATION} \PYG{n}{FOR} \PYG{n}{lin2name} \PYG{p}{(}\PYG{n}{MQI}\PYG{o}{\PYGZhy{}}\PYG{n}{XX} \PYG{p}{)}\PYG{p}{,} \PYG{n}{VERSION} \PYG{l+m+mf}{4.60}
 \PYG{n}{VIRQ903W} \PYG{n}{LINE} \PYG{n}{lin2name} \PYG{n}{HAS} \PYG{n}{A} \PYG{n}{SESSION} \PYG{n}{STARTED} \PYG{n}{WITH} \PYG{n}{MQM} \PYG{n}{CSQ6}
 \end{sphinxVerbatim}
 
@@ -2096,7 +2089,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
 
 \sphinxstyleemphasis{VIRTLIB : JCL to define the sublibrary (z/VSE)}
 
-Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.61. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
+Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.60. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
 
 \subsection{Loading the executable modules}
@@ -4418,7 +4411,7 @@ WTOs are written to the sysout dataset, eventually in a specific class.
 WTOs are written to Sysplex logger.
 
 \item[{FILE}] \leavevmode
-Messages will be written to the DDNAMEs LOGFILEx\textbar{}y               (Virtel 4.61)
+Messages will be written to the DDNAMEs LOGFILEx\textbar{}y               (Virtel 4.60)
 
 \end{description}
 
@@ -5167,7 +5160,7 @@ This parameter should be coded in the same way as for the X25MCH macro in NPSI.
 \index{Virtel TCT@\spxentry{Virtel TCT}!UFIELnn parameter@\spxentry{UFIELnn parameter}}\index{UFIELnn parameter@\spxentry{UFIELnn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{UFILE1 to UFILE20 parameters}
-\label{\detokenize{Installation_Guide:ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:index-133}}
+\label{\detokenize{Installation_Guide:ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:v460ug-ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:index-133}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{UFILEx}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ddname}\PYG{p}{,}\PYG{n}{acbcard}\PYG{p}{,}\PYG{n}{rkp}\PYG{p}{,}\PYG{n}{keylen}\PYG{p}{,}\PYG{n}{mode}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ }\PYG{l+s+s1}{\PYGZsq{}}
 \end{sphinxVerbatim}
@@ -5269,7 +5262,7 @@ This parameter defines the characteristics of the interface to the VIRSV service
 
 \sphinxstylestrong{NORMAL} - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.
 
-VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see {\hyperref[\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for VSAM files”,}}}}): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}]{\sphinxcrossref{\DUrole{std,std-ref}{“UFILE1 to UFILE20”,}}}}).
+VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see {\hyperref[\detokenize{Installation_Guide:v460ug-additional-parameters-for-vsam-files}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for VSAM files”,}}}}): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:v460ug-ufile1-to-ufile20-parameters}]{\sphinxcrossref{\DUrole{std,std-ref}{“UFILE1 to UFILE20”,}}}}).
 
 \begin{sphinxadmonition}{note}{Note:}
 VSAMTYP=WRITER should be used to suppport the Virplex writer instance of Virtel. See the Virplex section in the Virtel Connectivity Guide.
@@ -5353,7 +5346,7 @@ This parameter defines the characteristics of the connection to the cross-memory
 \index{VSAM Files@\spxentry{VSAM Files}!Additional Parameters@\spxentry{Additional Parameters}}\index{Additional Parameters@\spxentry{Additional Parameters}!VSAM Files@\spxentry{VSAM Files}}\ignorespaces 
 
 \section{Additional Parameters For VSAM Files}
-\label{\detokenize{Installation_Guide:additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:index-143}}
+\label{\detokenize{Installation_Guide:additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:v460ug-additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:index-143}}
 VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. These VSAM files must be defined in the VIRTCT by means of a parameter UFILEx and an ACBHx macro for each file. The ACB macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5437,7 +5430,7 @@ The example below shows how to code DCB/DCBE macros when the BATCH1 parameter is
 \label{\detokenize{Installation_Guide:how-to-share-vsam-files-between-multiple-instances-of-virtel}}\label{\detokenize{Installation_Guide:index-145}}
 Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in “write” mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel.
 
-For more detailed informations on this subject, see {\hyperref[\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}]{\sphinxcrossref{\DUrole{std,std-ref}{“UFILE1 to UFILE20”,}}}} and also {\hyperref[\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for VSAM files”,}}}}.
+For more detailed informations on this subject, see {\hyperref[\detokenize{Installation_Guide:v460ug-ufile1-to-ufile20-parameters}]{\sphinxcrossref{\DUrole{std,std-ref}{“UFILE1 to UFILE20”,}}}} and also {\hyperref[\detokenize{Installation_Guide:v460ug-additional-parameters-for-vsam-files}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for VSAM files”,}}}}.
 
 \newpage
 

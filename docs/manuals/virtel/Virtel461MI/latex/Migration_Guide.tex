@@ -56,7 +56,7 @@
 
 
 \title{Virtel Migration Guide}
-\date{Dec 30, 2020}
+\date{Oct 15, 2021}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -80,7 +80,7 @@ This is a draft version of the document.
 
 Version : 4.61 Draft
 
-Release Date : 11th October 2020. Publication Date : 25/11/2020
+Release Date : 14th October 2021. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -114,7 +114,7 @@ their respective owners.
 \index{Migrating to Virtel V4.61@\spxentry{Migrating to Virtel V4.61}}\ignorespaces 
 
 \chapter{Migrating to Virtel V4.61}
-\label{\detokenize{Migration_Guide:migrating-to-virtel-v4-60}}\label{\detokenize{Migration_Guide:v460mi-introduction}}\label{\detokenize{Migration_Guide:index-0}}
+\label{\detokenize{Migration_Guide:migrating-to-virtel-v4-61}}\label{\detokenize{Migration_Guide:v461mi-introduction}}\label{\detokenize{Migration_Guide:index-0}}
 
 \section{Overview}
 \label{\detokenize{Migration_Guide:overview}}
@@ -141,13 +141,13 @@ Before starting the upgrade read through this document first and build a migrati
 Download from our file server at \sphinxurl{http://ftp-group.syspertec.com}
 \begin{itemize}
 \item {} 
-/VIRTEL 4.61/Produits/virtel460mvs.zip
+/VIRTEL 4.61/Produits/virtel461mvs.zip
 
 \item {} 
-/VIRTEL 4.61/PTFS/allptfs-mvs460.txt
+/VIRTEL 4.61/PTFS/allptfs-mvs461.txt
 
 \item {} 
-/VIRTEL 4.61/PTFS/virtel460updtnnnn.zip
+/VIRTEL 4.61/PTFS/virtel461updtnnnn.zip
 
 \end{itemize}
 
@@ -161,19 +161,19 @@ The procedure for upgrading from a previous release of VIRTEL (version 4.00 or l
 \def\labelenumi{\theenumi .}
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \item {} 
-Download and unzip virtel460mvs.zip.
+Download and unzip virtel461mvs.zip.
 
 \item {} 
 Upload and run job \$ALOCDSU. This will allocate a XMIT file on the mainframe.
 
 \item {} 
-Upload virtel460mvs.xmit to the file allocated by \$ALOCDSU.
+Upload virtel461mvs.xmit to the file allocated by \$ALOCDSU.
 
 \item {} 
 Upload and run job \$RESTDSU. This will allocate and install the new Virtel 4.61 libraries.
 
 \item {} 
-Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRTnnn.SAMPLIB). The input file is allptfs-mvs460.txt.
+Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRTnnn.SAMPLIB). The input file is allptfs-mvs461.txt.
 
 \item {} 
 Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRTnnn.CNTL
@@ -219,7 +219,7 @@ Apply recommandations as shown below in “Check list and precautions”.
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \setcounter{enumi}{11}
 \item {} 
-Apply any “update” maintenance (virtel460updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.
+Apply any “update” maintenance (virtel461updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.
 
 \item {} 
 Stop and restart Virtel. If you want to create new copies of your existing ARBO and HTML.TRSF files, and rename them to your V4.61 HLQ, use the JCl shown below. This will preserve any configurational and customized elements you have. For example w2hparm.js, custom.js, custom.css and any customized option members:-
@@ -405,7 +405,7 @@ None
 
 
 \section{Upgrading from a version prior to 4.61}
-\label{\detokenize{Migration_Guide:upgrading-from-a-version-prior-to-4-60}}
+\label{\detokenize{Migration_Guide:upgrading-from-a-version-prior-to-4-61}}
 None
 
 \newpage
@@ -494,6 +494,9 @@ PA3 can be mapped to PGUP.
 
 \item {} 
 Virtel UP message VIR009I always written to syslog.
+
+\item {} 
+Message VIRT905I. Leading zeros removed.
 
 \end{itemize}
 
