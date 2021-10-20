@@ -5,14 +5,14 @@
 .. _Virtel460CS:
 
 =========================
-Customization Guide V4.61
+Customization Guide V4.60
 =========================
 
 |image0|
 
 **VIRTEL Customization**
 
-Version : 4.61 
+Version : 4.60 
 
 Release Date : 11th October 2020. Publication Date : 22/08/2021
 
@@ -50,7 +50,7 @@ Syspertec Communication
 Summary of Amendments
 =====================
 
-Virtel version 4.61 (11th Oct 2020)
+Virtel version 4.60 (11th Oct 2020)
 -----------------------------------
 
 * Support for IPV6
@@ -66,12 +66,12 @@ Virtel version 4.61 (11th Oct 2020)
 * Silence command supports dynamic message updates
 * Various bug fixes
 
-.. note:: For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.61.
+.. note:: For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.60.
 
 IPV6 Support
 ============
 
-Virtel 4.61 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [http://[fd10:15c1:1921:a1a6::31]:41001. In all cases the square brackets are essential. 
+Virtel 4.60 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [http://[fd10:15c1:1921:a1a6::31]:41001. In all cases the square brackets are essential. 
 
 W2H Customization
 =================
@@ -3558,7 +3558,7 @@ Modify the *Main* and *Sub* titles
 
     cAppMenuOptions["texts"] = {
             "main-title":"Virtel Application Tier Menu",
-            "sub-title":"Syspertec Virtel V4.61 Application Menu",
+            "sub-title":"Syspertec Virtel V4.60 Application Menu",
             };
 
 Setup Level 0, first level of the Tier menu - **CICS Production Regions**  
@@ -3703,7 +3703,7 @@ Example of appmenu.[keyname].js
     // Titles
     cAppMenuOptions["texts"]= {
     "main-title":"Virtel Sample Application Tier Menu",
-    "sub-title": "Syspertec Virtel V4.61 Application Menu",
+    "sub-title": "Syspertec Virtel V4.60 Application Menu",
     };
 
 
