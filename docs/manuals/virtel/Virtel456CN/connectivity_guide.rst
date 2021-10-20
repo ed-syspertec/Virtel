@@ -3341,7 +3341,7 @@ allows management of the parameters associated with each entry point.
 When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu
 is controlled by the resource $$GLOG$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
-Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+Security management is described in chapter 5 of the VIRTEL Users Guide.
 **4.1.4. Choosing the Entry Point**
 The entry point used in the connection from a terminal may be specified in various ways:
 *4.1.4.1. 3270 Terminals*
@@ -4110,7 +4110,7 @@ allows management of the parameters associated with each external server.
 When security is active, access to external server management from the Configuration Menu or the Sub-Application
 Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
-Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+Security management is described in chapter 5 of the VIRTEL Users Guide.
 **6.2. Summary Of Existing Definitions**
 The first screen displayed by the external server management sub-application shows a summary of existing definitions
 in alphanumeric order:
@@ -4290,7 +4290,7 @@ is also accessible by pressing [PF4] from the line management sub-application.
 When security is active, access to the terminal management menu from the Configuration Menu or the Sub-
 Application Menu is controlled by the resource $$TERM$$.
 When this menu is accessed via a transaction, the rules governing the security management of transactions will apply.
-Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+Security management is described in chapter 5 of the VIRTEL Users Guide.
 **7.1.3. Objectives**
 This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the
 sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
