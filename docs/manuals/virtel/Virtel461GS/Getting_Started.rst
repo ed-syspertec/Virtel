@@ -12,7 +12,7 @@ Getting Started with Virtel
 
 Version : 4.61
 
-Release Date : 14 October 2021. Publication Date : 10/10/2021
+Release Date : TBA. Publication Date : 10/10/2021
 
 Syspertec Communication
 
