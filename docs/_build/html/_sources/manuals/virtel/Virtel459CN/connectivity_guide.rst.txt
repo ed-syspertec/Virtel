@@ -3441,7 +3441,7 @@ is also accessible by pressing [PF4] from the line management sub-application.
 Security
 ^^^^^^^^
 
-When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$TERM$$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$TERM$$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 .. index::
    pair: Terminal Management Sub-Application; Summary Display
@@ -3665,7 +3665,7 @@ The Entry Point Management sub-application is accessed by pressing [PF3] in the 
 Security
 ^^^^^^^^
 
-When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$GLOG$$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$GLOG$$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 .. index::
    pair: Entry Point Management Sub-Application; Selection an Entry Point
@@ -4475,7 +4475,7 @@ Security
 
 When security is active, access to external server management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
-Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 .. index::
    pair: External Server Management Sub-Application; Summary Display

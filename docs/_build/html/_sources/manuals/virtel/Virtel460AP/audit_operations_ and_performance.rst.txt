@@ -1,7 +1,7 @@
 .. _Virtel460AP:
 
 =======================================================
-Audit, Administration, Operations and Performance V4.61
+Audit, Administration, Operations and Performance V4.60
 =======================================================
 
 |imagelogo|
@@ -10,7 +10,7 @@ Audit, Administration, Operations and Performance V4.61
 
 .. warning:: This is a draft version of the document.
 
-Version : 4.61
+Version : 4.60
 
 Release Date : 11 Oct 2020. Publication Date : 25/11/2020
 
@@ -156,7 +156,7 @@ Example::
 
     F VIRTEL,LINES                                     
     VIR0200I LINES                                      
-    VIR0201I VIRTEL 4.61 APPLID=VIRTEL  LINES          
+    VIR0201I VIRTEL 4.60 APPLID=VIRTEL  LINES          
     VIR0202I ALLOCATED IP ADDRESS = 192.168.170.047     
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP          
     VIR0202I -------- -------- ----- ---------          
@@ -487,7 +487,7 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
 
     F VIRTEL,RELAYS                                         
     VIR0200I RELAYS                                           
-    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.61 APPLID=APPLHOLT
+    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.60 APPLID=APPLHOLT
     VIR0214I TERMINAL RELAY    APPLID   CLIENT                
     VIR0214I -------- -------- -------- ---------------       
     VIR0214I CLVTA004 REHVT000 SPCICST  192.168.92.58         
@@ -873,7 +873,7 @@ Displaying line status
 The Line Status sub-application is invoked by pressing [PF9] in the Configuration Menu, by pressing [PF10] in the Sub- Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0027.
 
 When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
-When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.
 
@@ -1172,7 +1172,7 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
 
 ::
 
-    VIR0018I VIRTEL 4.61 HAS THE FOLLOWING PTF(S) APPLIED
+    VIR0018I VIRTEL 4.60 HAS THE FOLLOWING PTF(S) APPLIED
     VIR0018I 5530,5540,5549,5557,5559,5567               
     VIR0089I VIRTEL RUNNING FROM AN AUTHORIZED LIBRARY   
 
