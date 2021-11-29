@@ -109,7 +109,7 @@ Fx
 
 ::
 
-    nnnn virtel-cmd    
+    nnnn virtel-command    
 
 nnnn
     reply number
