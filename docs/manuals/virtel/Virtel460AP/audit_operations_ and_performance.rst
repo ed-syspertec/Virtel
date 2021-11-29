@@ -81,12 +81,12 @@ To send a command to VIRTEL, issue the following command at the VSE operator con
 
 ::
 
-    MSG virtel,DATA=cirtel-command    
+    MSG virtel,DATA=virtel-command    
 
 virtel
     The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)
 
-virtel-cmd
+virtel-command
     A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:
 
 ::
