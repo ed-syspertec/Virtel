@@ -56,7 +56,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Oct 15, 2021}
+\date{Nov 19, 2021}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.61 Draft
 
-Release Date : 14 October 2021. Publication Date : 10/10/2021
+Release Date : TBA. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -4755,7 +4755,7 @@ For example:-
 \subsection{SECUR parameter}
 \label{\detokenize{Installation_Guide:secur-parameter}}\label{\detokenize{Installation_Guide:index-112}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{NO}\PYG{o}{/}\PYG{n}{VIRTEL}\PYG{o}{/}\PYG{n}{RACF}\PYG{o}{/}\PYG{n}{TOPS}\PYG{o}{/}\PYG{n}{ACF2}\PYG{o}{/}\PYG{n}{RACROUTE}\PYG{o}{/}\PYG{n}{MIXEDCASE}\PYG{o}{/}\PYG{n}{PASSPHRASE} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
+\PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{NO}\PYG{o}{/}\PYG{n}{VIRTEL}\PYG{o}{/}\PYG{n}{RACF}\PYG{o}{/}\PYG{n}{TOPS}\PYG{o}{/}\PYG{n}{ACF2}\PYG{o}{/}\PYG{n}{RACROUTE}\PYG{o}{/}\PYG{n}{MIXEDCASE}\PYG{o}{/}\PYG{n}{PASSPHRASE}\PYG{o}{/}\PYG{n}{PASSPHRASELEN} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
 
 For the z/OS environment, the following options can be specified:
@@ -4772,6 +4772,11 @@ For the z/OS environment, the following options can be specified:
 
 \begin{sphinxadmonition}{note}{Note:}
 Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: \sphinxstylestrong{SECUR=(RACROUTE,{[}RACF\textbar{}TOPS\textbar{}ACF2{]},PASSPHRASE)}
+You can also specify the minimum passphrase length using the Passphrase Length option. Default is 14 characters long.
+The following sets the Passphrase length to 10 :
+\sphinxstylestrong{SECURE=(RACROUTE,RACF,PASSPHRASE(10))}
+
+Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase.
 \end{sphinxadmonition}
 
 For the z/VSE environment, the following options can be specified:

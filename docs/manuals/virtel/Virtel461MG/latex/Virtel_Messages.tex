@@ -56,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Oct 15, 2021}
+\date{Nov 19, 2021}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.61 Draft
 
-Release Date : 14th October 2021. Publication Date : 10/10/2021
+Release Date : TBA. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -4233,6 +4233,34 @@ None.
 \end{description}
 
 
+\subsubsection{VIR0221I MESSAGE TABLE RESET}
+\label{\detokenize{messages:vir0221i-message-table-reset}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+The dynamic SNAPMSG entries have been removed.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0222I NO TCT SNAPMSG}
+\label{\detokenize{messages:vir0222i-no-tct-snapmsg}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+No TCT SNAPMSG.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
 \subsubsection{VIR0223I UNLOAD ENDED}
 \label{\detokenize{messages:vir0223i-unload-ended}}\begin{description}
 \item[{Module}] \leavevmode
@@ -4247,8 +4275,92 @@ None.
 \end{description}
 
 
-\subsubsection{VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX}
-\label{\detokenize{messages:vir0230i-dynamic-allocation-failed-for-xxxxxxxx}}\begin{description}
+\subsubsection{VIR0224I UNLOAD FAILED}
+\label{\detokenize{messages:vir0224i-unload-failed}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+An UNLOAD command has failed. See supporting messages for further information.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0225I MESSAGE TABLE DISPLAY}
+\label{\detokenize{messages:vir0225i-message-table-display}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+Initial message for the multiline SNAPMSG table display.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0226I TABLE EMPTY}
+\label{\detokenize{messages:vir0226i-table-empty}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+No entries in the dynamic SNAPMSG table.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0227I MSG. nn=msgid,ACTION=a,SEARCH=string}
+\label{\detokenize{messages:vir0227i-msg-nn-msgid-action-a-search-string}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+A dynamic SNAPMSG message entry.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0228I TCT MSG=msgid,ACTION=a,SEARCH=string}
+\label{\detokenize{messages:vir0228i-tct-msg-msgid-action-a-search-string}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+TCT SNAPMSG entry.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0229I MESSAGE ADDED\textbar{}DELETED TO\textbar{}FROM TABLE}
+\label{\detokenize{messages:vir0229i-message-added-deleted-to-from-table}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+The dynamic SNAPMSG table has been updated.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
+\subsubsection{VIR0230W DYNAMIC ALLOCATION FAILED FOR XXXXXXXX}
+\label{\detokenize{messages:vir0230w-dynamic-allocation-failed-for-xxxxxxxx}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0002A
 
@@ -4568,6 +4680,20 @@ A call to server servname from terminal termid failed because the called number 
 
 \item[{Action}] \leavevmode
 Check the definition of external server servname. Check that the “Number” field is valid (see “External Servers” in the VIRTEL Connectivity Reference manual). If the value of the “Number” field is blank or “=”, check the called number supplied by the application (CFT, Inter.PEL, STI) which initiated the call. In the case of a VIRKIX application, check that the entry point has a “Mirror” transaction as the first transaction.
+
+\end{description}
+
+
+\subsubsection{VIR0510W terminal (relay) IS TIME LOCKED}
+\label{\detokenize{messages:vir0510w-terminal-relay-is-time-locked}}\begin{description}
+\item[{Module}] \leavevmode
+VIRHTTP
+
+\item[{Meaning}] \leavevmode
+The TCT LOCK= value has expired for this terminal.
+
+\item[{Action}] \leavevmode
+The terminal has been inactive for the LOCK= value (minutes). User must re-enter their password to continue their session.
 
 \end{description}
 

@@ -548,15 +548,17 @@ SNAPMSG Command
 ---------------
 ::
 
-    SNAPMSG,ALL    
+    SNAPMSG,[ALL,RESET,LIST]    
 
-The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).
+    ALL     - The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).
+    LIST    - List all messages and Actions
+    RESET   - Reset the dynamic table and clear out all messages.
 
 ::
 
-    SNAPMSG=message,search,action
+    SNAPMSG=message[,search string],action
 
-The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.
+The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature allows upto 10 messagesto be held in a dynamic table, along with a static entry that can be defined in the TCT by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.
 
 message
     Any message that can be issued by Virtel.
@@ -565,14 +567,44 @@ search
     Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.
 
 action
-    Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
+    Possible values are S for SNAP, A for ABEND, and D to delete a message from the dynamic table. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
     
 Default action is SNAP.
 
-Example:
+Examples:
 ::
  
 	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
+
+::
+
+Add message VIRHT51I to SNAPMSG table and take a SNAP if the message is issued and the string "CALL" is found in the message.
+
+::
+
+    F SPVIREH1,SNAPMSG,LIST                               
+
+::
+
+List message subjected to SNAPMSG processing. Example output would look like: -
+
+::
+
+    VIR0200I SNAPMSG,LIST                                 
+    VIR0225I MESSAGE TABLE DISPLAY     459                
+    VIR0230I TCT MSG=VIR0202I,ACTION=S,SEARCH=41001       
+    VIR0227I MSG. 01=VIR0202I,ACTION=S,SEARCH=41002       
+    VIR0225I MESSAGE TABLE END                            
+
+::
+
+Delete message number 1 from the dynamic SNAPMSG table: - 
+
+::
+
+    F SPVIREH1,SNAPMSG,D=1
+
+::  
 
 .. index::
    pair: SNAP80 Command; Commands         
@@ -658,7 +690,7 @@ The TCT command displays some of the TCT options that have been defined in the a
     VIR0200I TCT                                                        
     VIR0270I DISPLAY                                                 
     VIRTEL TCT=VIRTCTEH:                                                
-    SILENCE=N,MEMORY=(A,N),BFVSAM=32768,BUFDATA=016,BUFSIZE=20000,STR=03
+    SILENCE=N,MEMORY=(A,N),BFVSAM=32768,BUFDATA=016,BUFSIZE=32000,STR=03
     COUNTRY=FR,GMT=SYSTZ,DEFUTF8=IBM1147 ,LANG=E,MAXSOCK=00240,VSAMTYP=N
     APPLID=VIRTEL ,SMF=N,PASSTCK=Y,VIRSECU=Y,SWA=N,NBTERM=0500,NTASK=04
     MEMORY=(SYS(0001688K,0001688K),DATA(0002304K,0003200K)),LOG=CONSOLE 

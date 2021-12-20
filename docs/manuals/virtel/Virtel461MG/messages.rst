@@ -2765,6 +2765,24 @@ Meaning
 Action
     None.
 
+VIR0221I MESSAGE TABLE RESET
+""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    The dynamic SNAPMSG entries have been removed.
+Action
+    None.
+
+VIR0222I NO TCT SNAPMSG
+"""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    No TCT SNAPMSG.
+Action
+    None.
+
 VIR0223I UNLOAD ENDED
 """""""""""""""""""""
 Module
@@ -2774,7 +2792,61 @@ Meaning
 Action
     None.
 
-VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX
+VIR0224I UNLOAD FAILED
+""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    An UNLOAD command has failed. See supporting messages for further information.    
+Action
+    None.
+
+VIR0225I MESSAGE TABLE DISPLAY
+""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    Initial message for the multiline SNAPMSG table display.
+Action
+    None.
+
+VIR0226I TABLE EMPTY
+""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    No entries in the dynamic SNAPMSG table.    
+Action
+    None.
+
+VIR0227I MSG. nn=msgid,ACTION=a,SEARCH=string
+"""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    A dynamic SNAPMSG message entry.
+Action
+    None.
+
+VIR0228I TCT MSG=msgid,ACTION=a,SEARCH=string
+"""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    TCT SNAPMSG entry.
+Action
+    None.
+
+VIR0229I MESSAGE ADDED|DELETED TO|FROM TABLE
+""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    The dynamic SNAPMSG table has been updated.
+Action
+    None.
+
+VIR0230W DYNAMIC ALLOCATION FAILED FOR XXXXXXXX
 """""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
@@ -2912,7 +2984,7 @@ Action
 VIR0270I DISPLAY 938 VIRTEL TCT=VIRTCTRJ:
 """""""""""""""""""""""""""""""""""""""""
 .. 
-    SILENCE=N,MEMORY=(A,N),BFVSAM=08192,BUFDATA=016,BUFSIZE=20000,
+    SILENCE=N,MEMORY=(A,N),BFVSAM=08192,BUFDATA=016,BUFSIZE=32000,
     STR=03 COUNTRY=FR,GMT=XXXXX,DEFUTF8=IBM1147 ,LANG= ,MAXSOCK=00250,
     VSAMTYP=N APPLID=SPVIRRI ,SMF=X,PASSTCK=N,VIRSECU=Y,SWA=N,NBTERM=0500,
     NTASK=04 MEMORY=(SYS(0001868K,0001868K),DATA(0011712K,0011712K)),LOG=CONSOLE
@@ -2989,6 +3061,15 @@ Meaning
     A call to server servname from terminal termid failed because the called number is blank or non-numeric.
 Action
     Check the definition of external server servname. Check that the “Number” field is valid (see “External Servers” in the VIRTEL Connectivity Reference manual). If the value of the “Number” field is blank or “=”, check the called number supplied by the application (CFT, Inter.PEL, STI) which initiated the call. In the case of a VIRKIX application, check that the entry point has a “Mirror” transaction as the first transaction.
+
+VIR0510W terminal (relay) IS TIME LOCKED
+""""""""""""""""""""""""""""""""""""""""  	
+Module
+    VIRHTTP
+Meaning
+    The TCT LOCK= value has expired for this terminal. 
+Action
+    The terminal has been inactive for the LOCK= value (minutes). User must re-enter their password to continue their session.
 
 VIR0526W termid IS DISCONNECTED DUE TO TIME-OUT
 """""""""""""""""""""""""""""""""""""""""""""""
