@@ -581,25 +581,44 @@ VIR0202I ---END OF LIST---
 </div>
 <div class="section" id="snapmsg-command">
 <span id="index-20"></span><h3>SNAPMSG Command<a class="headerlink" href="#snapmsg-command" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="p">,</span><span class="n">ALL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="p">,[</span><span class="n">ALL</span><span class="p">,</span><span class="n">RESET</span><span class="p">,</span><span class="n">LIST</span><span class="p">]</span>
+
+<span class="n">ALL</span>     <span class="o">-</span> <span class="n">The</span> <span class="n">SNAPMSG</span> <span class="n">command</span> <span class="n">requests</span> <span class="n">VIRTEL</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">an</span> <span class="n">automatic</span> <span class="n">SNAP</span> <span class="n">after</span> <span class="n">certain</span> <span class="n">messages</span> <span class="p">(</span><span class="n">VIRI902W</span> <span class="n">VIR0026W</span> <span class="n">VIR0052I</span> <span class="n">VIR1552I</span> <span class="n">VIR0526W</span> <span class="n">VIR1952I</span><span class="p">)</span><span class="o">.</span>
+<span class="n">LIST</span>    <span class="o">-</span> <span class="n">List</span> <span class="nb">all</span> <span class="n">messages</span> <span class="ow">and</span> <span class="n">Actions</span>
+<span class="n">RESET</span>   <span class="o">-</span> <span class="n">Reset</span> <span class="n">the</span> <span class="n">dynamic</span> <span class="n">table</span> <span class="ow">and</span> <span class="n">clear</span> <span class="n">out</span> <span class="nb">all</span> <span class="n">messages</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">message</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">action</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">message</span><span class="p">[,</span><span class="n">search</span> <span class="n">string</span><span class="p">],</span><span class="n">action</span>
 </pre></div>
 </div>
-<p>The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.</p>
+<p>The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature allows upto 10 messagesto be held in a dynamic table, along with a static entry that can be defined in the TCT by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.</p>
 <dl class="docutils">
 <dt>message</dt>
 <dd>Any message that can be issued by Virtel.</dd>
 <dt>search</dt>
 <dd>Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.</dd>
 <dt>action</dt>
-<dd>Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</dd>
+<dd>Possible values are S for SNAP, A for ABEND, and D to delete a message from the dynamic table. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</dd>
 </dl>
 <p>Default action is SNAP.</p>
-<p>Example:</p>
+<p>Examples:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">VIRHT51I</span><span class="p">,</span><span class="n">CALL</span><span class="p">,</span><span class="n">S</span>
+</pre></div>
+</div>
+<p>Add message VIRHT51I to SNAPMSG table and take a SNAP if the message is issued and the string “CALL” is found in the message.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIREH1</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
+</pre></div>
+</div>
+<p>List message subjected to SNAPMSG processing. Example output would look like: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0200I</span> <span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
+<span class="n">VIR0225I</span> <span class="n">MESSAGE</span> <span class="n">TABLE</span> <span class="n">DISPLAY</span>     <span class="mi">459</span>
+<span class="n">VIR0230I</span> <span class="n">TCT</span> <span class="n">MSG</span><span class="o">=</span><span class="n">VIR0202I</span><span class="p">,</span><span class="n">ACTION</span><span class="o">=</span><span class="n">S</span><span class="p">,</span><span class="n">SEARCH</span><span class="o">=</span><span class="mi">41001</span>
+<span class="n">VIR0227I</span> <span class="n">MSG</span><span class="o">.</span> <span class="mi">01</span><span class="o">=</span><span class="n">VIR0202I</span><span class="p">,</span><span class="n">ACTION</span><span class="o">=</span><span class="n">S</span><span class="p">,</span><span class="n">SEARCH</span><span class="o">=</span><span class="mi">41002</span>
+<span class="n">VIR0225I</span> <span class="n">MESSAGE</span> <span class="n">TABLE</span> <span class="n">END</span>
+</pre></div>
+</div>
+<p>Delete message number 1 from the dynamic SNAPMSG table: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIREH1</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="p">,</span><span class="n">D</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -655,7 +674,7 @@ VIR0202I ---END OF LIST---
 <span class="n">VIR0200I</span> <span class="n">TCT</span>
 <span class="n">VIR0270I</span> <span class="n">DISPLAY</span>
 <span class="n">VIRTEL</span> <span class="n">TCT</span><span class="o">=</span><span class="n">VIRTCTEH</span><span class="p">:</span>
-<span class="n">SILENCE</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">N</span><span class="p">),</span><span class="n">BFVSAM</span><span class="o">=</span><span class="mi">32768</span><span class="p">,</span><span class="n">BUFDATA</span><span class="o">=</span><span class="mi">016</span><span class="p">,</span><span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span><span class="n">STR</span><span class="o">=</span><span class="mi">03</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">N</span><span class="p">),</span><span class="n">BFVSAM</span><span class="o">=</span><span class="mi">32768</span><span class="p">,</span><span class="n">BUFDATA</span><span class="o">=</span><span class="mi">016</span><span class="p">,</span><span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">32000</span><span class="p">,</span><span class="n">STR</span><span class="o">=</span><span class="mi">03</span>
 <span class="n">COUNTRY</span><span class="o">=</span><span class="n">FR</span><span class="p">,</span><span class="n">GMT</span><span class="o">=</span><span class="n">SYSTZ</span><span class="p">,</span><span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1147</span> <span class="p">,</span><span class="n">LANG</span><span class="o">=</span><span class="n">E</span><span class="p">,</span><span class="n">MAXSOCK</span><span class="o">=</span><span class="mi">00240</span><span class="p">,</span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">N</span>
 <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="p">,</span><span class="n">SMF</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">PASSTCK</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span><span class="n">VIRSECU</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span><span class="n">SWA</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">NBTERM</span><span class="o">=</span><span class="mi">0500</span><span class="p">,</span><span class="n">NTASK</span><span class="o">=</span><span class="mi">04</span>
 <span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">SYS</span><span class="p">(</span><span class="mi">0001688</span><span class="n">K</span><span class="p">,</span><span class="mi">0001688</span><span class="n">K</span><span class="p">),</span><span class="n">DATA</span><span class="p">(</span><span class="mi">0002304</span><span class="n">K</span><span class="p">,</span><span class="mi">0003200</span><span class="n">K</span><span class="p">)),</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>

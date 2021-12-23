@@ -3334,7 +3334,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </div>
 <div class="section" id="secur-parameter">
 <span id="index-112"></span><h4>SECUR parameter<a class="headerlink" href="#secur-parameter" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span><span class="o">/</span><span class="n">PASSPHRASE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span><span class="o">/</span><span class="n">PASSPHRASE</span><span class="o">/</span><span class="n">PASSPHRASELEN</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
 <p>For the z/OS environment, the following options can be specified:</p>
@@ -3345,7 +3345,11 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p><strong>(RACROUTE,ACF2)</strong> - The ACF2 security management system is used (via SAF).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: <strong>SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)</strong></p>
+<p>Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: <strong>SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)</strong>
+You can also specify the minimum passphrase length using the Passphrase Length option. Default is 14 characters long.
+The following sets the Passphrase length to 10 :
+<strong>SECURE=(RACROUTE,RACF,PASSPHRASE(10))</strong></p>
+<p class="last">Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase.</p>
 </div>
 <p>For the z/VSE environment, the following options can be specified:</p>
 <p><strong>NO</strong> - No security software is used to control access.</p>

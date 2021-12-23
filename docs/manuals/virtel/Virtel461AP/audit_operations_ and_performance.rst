@@ -576,15 +576,11 @@ Examples:
  
 	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
 
-::
-
 Add message VIRHT51I to SNAPMSG table and take a SNAP if the message is issued and the string "CALL" is found in the message.
 
 ::
 
     F SPVIREH1,SNAPMSG,LIST                               
-
-::
 
 List message subjected to SNAPMSG processing. Example output would look like: -
 
@@ -596,15 +592,12 @@ List message subjected to SNAPMSG processing. Example output would look like: -
     VIR0227I MSG. 01=VIR0202I,ACTION=S,SEARCH=41002       
     VIR0225I MESSAGE TABLE END                            
 
-::
-
 Delete message number 1 from the dynamic SNAPMSG table: - 
 
 ::
 
     F SPVIREH1,SNAPMSG,D=1
 
-::  
 
 .. index::
    pair: SNAP80 Command; Commands         
