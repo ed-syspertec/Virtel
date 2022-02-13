@@ -202,7 +202,7 @@
 <p><strong>Version support</strong></p>
 <p>Versions of Virtel older than V4.58 are no longer supported.</p>
 <p><strong>ARBO changes</strong></p>
-<p>There have been no changes to the ARBO which would require migration from V4.61, V4.59 or V4.58. Customers who are migrating from older releases should review the
+<p>There have been no changes to the ARBO which would require migration from V4.60, V4.59 or V4.58. Customers who are migrating from older releases should review the
 “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features.
 Depending on requirements not all actions may be applicable. These newsletters are available online at <a class="reference external" href="https://virtel.readthedocs.io/en/latest/">https://virtel.readthedocs.io/en/latest/</a></p>
 </div>
@@ -271,6 +271,10 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Initialisation process modified to avoid error messages - “language xx is not processed”.</li>
 </ul>
+<p><strong>5936 Samsung Tablet support</strong></p>
+<ul class="simple">
+<li>Add support for Samsung tablet and customization of keys.</li>
+</ul>
 </div>
 <div class="section" id="base-components">
 <h3>Base Components<a class="headerlink" href="#base-components" title="Permalink to this headline">¶</a></h3>
@@ -330,13 +334,19 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum of 10 messages.</li>
 </ul>
-<p><strong>5916 LOCK= terminal support</strong></p>
+<p><strong>5916/25/38 LOCK= terminal support</strong></p>
 <ul class="simple">
 <li>LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.</li>
+<li>Support ESC key as DISCONNECT</li>
+<li>CANCEL bug when using SECU=1</li>
 </ul>
 <p><strong>5922 Correct SILENCE(YES/NO) in VIRTERM macro</strong></p>
 <ul class="simple">
 <li>Correct SILENCE= keyword logic in VIRTERM macro.</li>
+</ul>
+<p><strong>5927 Support unsolicited BINDS</strong></p>
+<ul class="simple">
+<li>Support for applications which use unsolicited BIND in session setup. For example IBM Debugger.</li>
 </ul>
 </div>
 <div class="section" id="scenario-language">
@@ -349,12 +359,28 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li>Correct Abend in scenario when using DBCS.</li>
 </ul>
+<p><strong>5931 DECLARE$ bug</strong></p>
+<ul class="simple">
+<li>Bug in DECLARE$ when length=79 destroys buffer. Screen garbled.</li>
+</ul>
 </div>
 <div class="section" id="other-enhancements">
 <h3>Other Enhancements<a class="headerlink" href="#other-enhancements" title="Permalink to this headline">¶</a></h3>
 <p><strong>5907 UPLOAD fails</strong></p>
 <ul class="simple">
 <li>Boundary processing corrected for VSR.</li>
+</ul>
+<p><strong>5937 AIEV Abend</strong></p>
+<ul class="simple">
+<li>Remove AEIV Abend when ARBO is updated at a higher Virtel release. Now report a LENGTH ERROR.</li>
+</ul>
+<p><strong>5940 LOCADDR updates</strong></p>
+<ul class="simple">
+<li>When a DNS name is used as a LOCADDR= address it was capitalized and put in quotes. This has been removed.</li>
+</ul>
+<p><strong>5941 AXIOS UPLOAD</strong></p>
+<ul class="simple">
+<li>Data was corrupted after upload from AXIOS.</li>
 </ul>
 </div>
 </div>
@@ -404,6 +430,20 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <li>5922 Correct SILENCE(YES/NO) in VIRTERM macro</li>
 <li>5923 Unicode conversion of specific character (curly quotes to straight quote)</li>
 <li>5924 Mouse wheel enhancement, Initialization process modified to avoid message</li>
+<li>5925 ESC acts as DISCONNECT in LOCK Support</li>
+<li>5926 Correct messages in SNAPMSG display</li>
+<li>5927 Allow unsolicited BINDS</li>
+<li>5929 License statement corrected</li>
+<li>5931 DECLARE$ bug</li>
+<li>5932 Scenario assembly errors</li>
+<li>5933 Remove Compatibility support</li>
+<li>5934 Update LOCK= processing</li>
+<li>5935 WaitScreen instruction in Javascript</li>
+<li>5936 Samsung tablet support</li>
+<li>5937 Prevent AEIV abends</li>
+<li>5938 LOCK= and CANCEL support</li>
+<li>5940 Correct LOCADDR processing in ARBO LOAD/UNLOAD</li>
+<li>5941 Correct UPLOAD bug for AXIOS</li>
 </ul>
 </div>
 </div>

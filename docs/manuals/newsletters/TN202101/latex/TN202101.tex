@@ -55,7 +55,7 @@
 
 
 \title{What's new in Virtel}
-\date{Oct 10, 2021}
+\date{Feb 13, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -220,6 +220,13 @@ Initialisation process modified to avoid error messages - “language xx is not 
 
 \end{itemize}
 
+\sphinxstylestrong{5936 Samsung Tablet support}
+\begin{itemize}
+\item {} 
+Add support for Samsung tablet and customization of keys.
+
+\end{itemize}
+
 \newpage
 
 
@@ -323,10 +330,16 @@ New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum
 
 \end{itemize}
 
-\sphinxstylestrong{5916 LOCK= terminal support}
+\sphinxstylestrong{5916/25/38 LOCK= terminal support}
 \begin{itemize}
 \item {} 
 LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.
+
+\item {} 
+Support ESC key as DISCONNECT
+
+\item {} 
+CANCEL bug when using SECU=1
 
 \end{itemize}
 
@@ -334,6 +347,13 @@ LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after 
 \begin{itemize}
 \item {} 
 Correct SILENCE= keyword logic in VIRTERM macro.
+
+\end{itemize}
+
+\sphinxstylestrong{5927 Support unsolicited BINDS}
+\begin{itemize}
+\item {} 
+Support for applications which use unsolicited BIND in session setup. For example IBM Debugger.
 
 \end{itemize}
 
@@ -356,6 +376,13 @@ Correct Abend in scenario when using DBCS.
 
 \end{itemize}
 
+\sphinxstylestrong{5931 DECLARE\$ bug}
+\begin{itemize}
+\item {} 
+Bug in DECLARE\$ when length=79 destroys buffer. Screen garbled.
+
+\end{itemize}
+
 \newpage
 
 
@@ -365,6 +392,27 @@ Correct Abend in scenario when using DBCS.
 \begin{itemize}
 \item {} 
 Boundary processing corrected for VSR.
+
+\end{itemize}
+
+\sphinxstylestrong{5937 AIEV Abend}
+\begin{itemize}
+\item {} 
+Remove AEIV Abend when ARBO is updated at a higher Virtel release. Now report a LENGTH ERROR.
+
+\end{itemize}
+
+\sphinxstylestrong{5940 LOCADDR updates}
+\begin{itemize}
+\item {} 
+When a DNS name is used as a LOCADDR= address it was capitalized and put in quotes. This has been removed.
+
+\end{itemize}
+
+\sphinxstylestrong{5941 AXIOS UPLOAD}
+\begin{itemize}
+\item {} 
+Data was corrupted after upload from AXIOS.
 
 \end{itemize}
 
@@ -493,6 +541,48 @@ A full list of maintenance updates can be found in Appendix A.
 
 \item {} 
 5924 Mouse wheel enhancement, Initialization process modified to avoid message
+
+\item {} 
+5925 ESC acts as DISCONNECT in LOCK Support
+
+\item {} 
+5926 Correct messages in SNAPMSG display
+
+\item {} 
+5927 Allow unsolicited BINDS
+
+\item {} 
+5929 License statement corrected
+
+\item {} 
+5931 DECLARE\$ bug
+
+\item {} 
+5932 Scenario assembly errors
+
+\item {} 
+5933 Remove Compatibility support
+
+\item {} 
+5934 Update LOCK= processing
+
+\item {} 
+5935 WaitScreen instruction in Javascript
+
+\item {} 
+5936 Samsung tablet support
+
+\item {} 
+5937 Prevent AEIV abends
+
+\item {} 
+5938 LOCK= and CANCEL support
+
+\item {} 
+5940 Correct LOCADDR processing in ARBO LOAD/UNLOAD
+
+\item {} 
+5941 Correct UPLOAD bug for AXIOS
 
 \end{itemize}
 

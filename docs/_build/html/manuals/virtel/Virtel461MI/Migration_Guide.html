@@ -219,7 +219,7 @@ their respective owners.</p>
 <div class="section" id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
 <p>The upgrade procedure detailed below will restore a complete “new” system on the mainframe.</p>
-<p>Once restored you will have to integrate/migrate to the new librairies (sources or binaries), except for the ARBO (user configuration data) and HTML.TRSF (customisation data). Depending on your current Virtel level will dictate the migration path and consequently the updates you will need to do as part of the upgrade process.</p>
+<p>Once restored you will have to integrate/migrate to the new libraries (sources or binaries), except for the ARBO (user configuration data) and HTML.TRSF (customization data). Depending on your current Virtel level will dictate the migration path and consequently the updates you will need to do as part of the upgrade process.</p>
 <ul class="simple">
 <li>The SAMP.TRSF VSAM file will be completely replaced as part of the upgrade process. Any user directories located within the SAMP.TRSF VSAM file must be migrated to another TRSF file before beginning migration.</li>
 <li>Similarly, you must ensure that you have not saved any customized elements into the SAMP.TRSF directories, a modified w2hparm.js for example. If this is the case, you must move these customisations to a directory hosted on another VSAM file and restore them back after the upgrade processes. Where possible, it is advisable than user modifications should not be kept in the SAMP.TRSF. Migrate them to another directory such as CLI-DIR, located on the HTML.TRSF VSAM file. This VSAM file is not affected by the migration process.</li>
@@ -259,7 +259,7 @@ their respective owners.</p>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="11">
-<li>Apply recommandations as shown below in “Check list and precautions”.</li>
+<li>Apply recommendations as shown below in “Check list and precautions”.</li>
 </ol>
 <ol class="arabic simple" start="12">
 <li>Apply any “update” maintenance (virtel461updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.</li>
@@ -310,7 +310,7 @@ their respective owners.</p>
 <h3>All versions<a class="headerlink" href="#all-versions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>You MUST backup and save a copy of your original configuration ARBO file as this file will be migrated to Virtel 4.61. This can be done using the example JCL procedure above. Alternatively, you can use a VIRCONF UNLOAD process to unload and reload to the new distributed V4.61 ARBO file. See “VIRCONF - Unloading a VIRARBO file” in your CURRENT Virtelxxx_Installation_User_Guide.</li>
-<li>If you are not using the new ‘option customization’ mode you will need to update your TCT to include the HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT parameter. This maintains configuration compatibility with Virtel versions prior to V4.56 for users who have chosen to stay with the old “Compatibility Mode” of operation.</li>
+<li>The previous compatibility support option, as defined in the TCT as HTSET1=(OPTION-DEFAULT-COMPATIBILITY) is no longer supported. You must migrate to “global options” support. See the customization manual for further details.</li>
 <li>If you using some “custom” files or options files (“custom.js”, “customs.css”,custom “w2hparm.js” or any option related files) you MUST check that they are stored in a directory other than W2H-DIR. If not you must store your “custom” files in another directory (CLI-DIR for example).</li>
 <li>Ensure that the directory on which “custom” file are stored is not the W2H-DIR directory as this directory is allocated to the VIRTxxx.SAMP.TRSF VSAM file. VIRTxxx.SAMP.TRSF is completely replaced as part of the migration procedure. Any customized elements will be lost or overwritten. See SAMPLIB(CUSTCSS) as a sample job to point the relevant transactions to a directory other than W2H-DIR. The suggested directory should be CLI-DIR. For further information on customization see the section “Virtel customization Modes” in the Virtel User Guide.</li>
 </ul>
@@ -401,9 +401,9 @@ their respective owners.</p>
 <h3>Upgrading from a version prior to 4.59<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-59" title="Permalink to this headline">¶</a></h3>
 <p>None</p>
 </div>
-<div class="section" id="upgrading-from-a-version-prior-to-4-61">
-<h3>Upgrading from a version prior to 4.61<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-61" title="Permalink to this headline">¶</a></h3>
-<p>None</p>
+<div class="section" id="upgrading-from-a-version-prior-to-4-60">
+<h3>Upgrading from a version prior to 4.60<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-60" title="Permalink to this headline">¶</a></h3>
+<p>HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT option removed.</p>
 </div>
 </div>
 <div class="section" id="running-under-vse">
@@ -415,36 +415,10 @@ their respective owners.</p>
 </div>
 <div class="section" id="what-s-new-in-this-release">
 <span id="index-9"></span><h2>What’s new in this release<a class="headerlink" href="#what-s-new-in-this-release" title="Permalink to this headline">¶</a></h2>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li>Support for native browser clipboard API</li>
-<li>Additional language and code page enhancements</li>
-<li>Centralised user parameter feature.</li>
-<li>Enhanced macro support features.</li>
-<li>New structured field to allow enable extraction of security certificate.</li>
-<li>Improved asynchronous support using SNASTAT indicator.</li>
-<li>LOGFILE feature for VSE.</li>
-<li>Hotspot enhancements including support for input fields.</li>
-<li>Virplex enhancements</li>
-</ul>
-<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
-<ul class="simple">
-<li>Enhancements to COPY$ to support multiple fields.</li>
-<li>$IF can now interrogate operator information area(OIA).</li>
-<li>ACTION$ SEND= and KEY= options.</li>
-<li>Same scenario can be used for both input and output.</li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li>Improved VWA Settings messages.</li>
-<li>Default MAXSOCKETS increased to 5000.</li>
-<li>Japanese template support.</li>
-<li>Show/Hide Virtel Tool bar option.</li>
-<li>PA3 can be mapped to PGUP.</li>
-<li>Virtel UP message VIR009I always written to syslog.</li>
-<li>Message VIRT905I. Leading zeros removed.</li>
-</ul>
-<p>Further details can be found in the “What’s new in Virtel V4.61” newsletter.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.</p>
+</div>
 </div>
 </div>
 

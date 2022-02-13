@@ -56,7 +56,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Nov 19, 2021}
+\date{Feb 13, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1157,7 +1157,7 @@ Edit member VIRTCT01 in the VIRTEL CNTL library:-
 \def\labelenumii{\theenumii )}
 \makeatletter\def\p@enumiii{\p@enumii \theenumii )}\makeatother
 \item {} 
-Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
+Set a default APPLID= parameter to the VTAM ACBNAME. You can override this in the VIRTEL PROC using the APPLID= symbolic. Use this to log on to VIRTEL (the suggested default value is APPLID=VIRTEL)
 
 \item {} 
 The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)
@@ -1218,7 +1218,7 @@ If you need to rerun the ARBOLOAD job, you must change PARM=’LOAD,NOREPL’ to
 \makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
 \setcounter{enumi}{9}
 \item {} 
-Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
+If using APPC or X25, submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
 
 \item {} 
 Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:
@@ -1267,7 +1267,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 \subsubsection{Step 1}
 \label{\detokenize{Installation_Guide:step-1}}
-Login to the Syspertec file server \sphinxhref{http://ftp-group.syspertec.com/}{http://ftp-group.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.61” \textendash{} “Products” folder and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server \sphinxhref{http://ftp-group.syspertec.com/}{http://ftp-group.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the Public directory “VIRTEL - 4.61- Products” and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.
 
 \newpage
 
@@ -1463,12 +1463,12 @@ As a general rule the application of \sphinxstylestrong{PTFs} is necessary and r
 
 A second type of PTF, known as \sphinxstylestrong{Updates} consists of web elements or artifacts such as HTML pages, style sheets, and JavaScript files, which must be uploaded into VIRTEL internal directories contained in the SAMPTRSF VSAM file. This type of PTF is delivered with the naming convention of VirtelvrrUpdtnnnnn.zip where vrr is the Virtel release number and nnnn the update number. Updates may be distributed either by e-mail, or available on Syspertec FTP Server. An update is a ZIP file containing the cumulative update for a version Virtel. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by directory, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.
 
-The Virtel Administration portal is used to upload \sphinxstylestrong{Updates} to the SAMPTRSF file. An alternative batch process, using a Virtel maintenace package (VMP), can also be deployed. Udates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section “Uploading HTML Pages” from document “Virtel Web Access User Guide” for further information.
+The Virtel Administration portal is used to upload \sphinxstylestrong{Updates} to the SAMPTRSF file. An alternative batch process, using a Virtel maintenance package (VMP), can also be deployed. Updates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section “Uploading HTML Pages” from document “Virtel Web Access User Guide” for further information.
 
 
 \subsection{Obtaining PTFs and Updates}
 \label{\detokenize{Installation_Guide:obtaining-ptfs-and-updates}}
-To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” \textendash{} “VIRTEL V.RR” \textendash{} “PTFS for version V.RR” folder, and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP’s are released periodically and are only applicable to z/OS.
+To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the Public directory “VIRTEL-V.461-PTFS” and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP’s are released periodically and are only applicable to z/OS.
 
 
 \subsection{Applying PTFs}
@@ -1507,7 +1507,8 @@ The recovered PTFs are applied to the VIRTEL LOADLIB by using AMASPZAP with the 
 VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take effect. The list of PTFs applied is displayed near the beginning of the SYSMSGLG dataset during VIRTEL startup by message VIR0018I, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-    \PYG{n}{VIR0018I} \PYG{l+m+mi}{3876}\PYG{p}{,}\PYG{l+m+mi}{3876}\PYG{n}{A}\PYG{p}{,}\PYG{l+m+mi}{3882}\PYG{p}{,}\PYG{l+m+mi}{3902}\PYG{p}{,}\PYG{l+m+mi}{3904}\PYG{p}{,}\PYG{l+m+mi}{3906}\PYG{p}{,}\PYG{l+m+mi}{3928}\PYG{p}{,}\PYG{l+m+mi}{3934}
+    \PYG{n}{VIR0018I} \PYG{n}{VIRTEL} \PYG{l+m+mf}{4.6}\PYG{n}{x} \PYG{n}{HAS} \PYG{n}{THE} \PYG{n}{FOLLOWING} \PYG{n}{PTF}\PYG{p}{(}\PYG{n}{S}\PYG{p}{)} \PYG{n}{APPLIED}
+\PYG{n}{VIR0018I} \PYG{l+m+mi}{5887}\PYG{p}{,}\PYG{l+m+mi}{5901}\PYG{p}{,}\PYG{l+m+mi}{5903}\PYG{p}{,}\PYG{l+m+mi}{5904}\PYG{p}{,}\PYG{l+m+mi}{5912}\PYG{p}{,}\PYG{l+m+mi}{5912}\PYG{n}{A}
 
 \PYG{o}{*}\PYG{n}{Validation} \PYG{n}{of} \PYG{n}{the} \PYG{n}{VIRTEL} \PYG{n}{PTF} \PYG{n}{level}\PYG{o}{*}
 \end{sphinxVerbatim}
@@ -1589,9 +1590,6 @@ Add the new VIRTnnn.LOADLIB library to the system APF list in the z/OS PARMLIB a
 
 \item {} 
 Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.
-
-\item {} 
-If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD statement to the VIRTEL procedure, as shown in the next section.
 
 \item {} 
 If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter \sphinxstyleemphasis{TN201611 - Customising Virtel in V4.56} for further details.
@@ -2967,7 +2965,7 @@ Each terminal which logs on to a VTAM application via VIRTEL requires an applica
 
 \subsection{MODETAB For X25 and APPC}
 \label{\detokenize{Installation_Guide:modetab-for-x25-and-appc}}\label{\detokenize{Installation_Guide:index-23}}
-If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided     in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.
+If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.
 
 The source for the MODVIRT mode table is defined as follows:
 
@@ -3292,7 +3290,7 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 
 \sphinxstylestrong{nappl} - The name of the primary VIRTEL ACB.
 
-The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 21 or “Executing VIRTEL in a z/VSE environment”, page 39 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*
+The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 26 or “Executing VIRTEL in a z/VSE environment”, page 46 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*
 
 If SYSPLUS=YES is specified, a ‘+’ character in the APPLID will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
@@ -4322,7 +4320,7 @@ This parameter allows you to override various VIRTEL Web Access settings. If HTP
 
 These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, …) where option can take the values listed below:
 
-\sphinxstylestrong{HTSET1} - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES, OPTION-DEFAULT-COMPATIBILITY
+\sphinxstylestrong{HTSET1} - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES
 
 \sphinxstylestrong{HTSET2} - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES
 
@@ -5843,7 +5841,7 @@ z/VSE
 \sphinxstyleemphasis{VIRCONF JCL in z/VSE to update a VIRARBO file}
 
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Update(z/OS)@\spxentry{Update(z/OS)}}\index{Update(z/OS)@\spxentry{Update(z/OS)}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
-z/VS
+z/OS
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{JOB} \PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{MSGLEVEL}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
@@ -7729,7 +7727,7 @@ Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into
 
 \section{Add RACF definitions}
 \label{\detokenize{Installation_Guide:add-racf-definitions}}\label{\detokenize{Installation_Guide:index-180}}
-The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace youruserid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
+The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace your userid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRTRACF} \PYG{n}{JOB} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{RACFDEF}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
@@ -7759,7 +7757,7 @@ The following RACF definitions are the minimum you need to get started. They sim
 
 \sphinxstyleemphasis{RACFDEF : JCL to add RACF definitions}
 
-Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction W2H-10:
+Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction CLI-10:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRTRACF} \PYG{n}{JOB} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{RACFDEF}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
@@ -7770,10 +7768,13 @@ Later you can refine the definitions so that other VIRTEL users can use VIRTEL t
     \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
     \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
     \PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
-    \PYG{o}{/}\PYG{o}{*} \PYG{n}{ALLOW} \PYG{n}{DEMOGRP} \PYG{n}{TO} \PYG{n}{USE} \PYG{n}{THE} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{p}{(}\PYG{n}{CICS}\PYG{p}{)} \PYG{n}{TRANSACTION} \PYG{o}{*}\PYG{o}{/}
+    \PYG{o}{/}\PYG{o}{*} \PYG{n}{ALLOW} \PYG{n}{DEMOGRP} \PYG{n}{TO} \PYG{n}{USE} \PYG{n}{THE} \PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{p}{(}\PYG{n}{CICS}\PYG{p}{)} \PYG{n}{TRANSACTION}    \PYG{o}{*}\PYG{o}{/}
+    \PYG{o}{/}\PYG{o}{*} \PYG{n}{AND} \PYG{n}{THE} \PYG{n}{APPLIST} \PYG{n}{TRANSACTION} \PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}                    \PYG{o}{*}\PYG{o}{/}
     \PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
-            \PYG{n}{RDEF} \PYG{n}{FACILITY} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{CICS} \PYG{o}{*}\PYG{o}{/}
-            \PYG{n}{PE} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{DEMOGRP}\PYG{p}{)}
+            \PYG{n}{RDEF} \PYG{n}{FACILITY} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{CICS} \PYG{o}{*}\PYG{o}{/}
+            \PYG{n}{PE} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{DEMOGRP}\PYG{p}{)}
+            \PYG{n}{RDEF} \PYG{n}{FACILITY} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{APPLIST} \PYG{o}{*}\PYG{o}{/}
+            \PYG{n}{PE} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{DEMOGRP}\PYG{p}{)}
     \PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
     \PYG{o}{/}\PYG{o}{*} \PYG{n}{REFRESH} \PYG{n}{THE} \PYG{n}{RACF} \PYG{n}{PROFILES} \PYG{o}{*}\PYG{o}{/}
     \PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
@@ -7881,7 +7882,7 @@ In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameter
 with the following parameters:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{RACROUTE}\PYG{p}{,}
+\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{ACF2}\PYG{p}{)}\PYG{p}{,}
 \PYG{n}{RAPPL}\PYG{o}{=}\PYG{n}{VIRTAPPL}\PYG{p}{,}\PYG{n}{RNODE}\PYG{o}{=}\PYG{n}{VIRTNODE}\PYG{p}{,}
 \end{sphinxVerbatim}
 

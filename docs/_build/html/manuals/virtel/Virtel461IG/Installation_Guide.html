@@ -710,7 +710,7 @@ sub-parameter</li>
 <li><p class="first">Edit member VIRTCT01 in the VIRTEL CNTL library:-</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li>Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)</li>
+<li>Set a default APPLID= parameter to the VTAM ACBNAME. You can override this in the VIRTEL PROC using the APPLID= symbolic. Use this to log on to VIRTEL (the suggested default value is APPLID=VIRTEL)</li>
 <li>The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)</li>
 <li>If you prefer VIRTEL to display English language panels, then set LANG=’E’</li>
 <li>Set the COUNTRY and DEFUTF8 parameters according to your country.</li>
@@ -741,7 +741,7 @@ sub-parameter</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="10">
-<li>Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.</li>
+<li>If using APPC or X25, submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.</li>
 <li>Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="n">NET</span><span class="p">,</span><span class="n">ACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTAPPL</span>
@@ -763,7 +763,7 @@ sub-parameter</li>
 <p>All the VSAM and non-VSAM datasets required for the installation of VIRTEL are contained in a zipped XMIT file which can be downloaded from the Syspertec file server. The size of the zipped file is approximately 2MB. Two JCL files ($ALOCDSU and $RESTDSU) are also     included in the zip file. The procedure for obtaining and uploading the file is as follows:</p>
 <div class="section" id="step-1">
 <h5>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h5>
-<p>Login to the Syspertec file server <a class="reference external" href="http://ftp-group.syspertec.com/">http://ftp-group.syspertec.com</a> using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.61” – “Products” folder and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.</p>
+<p>Login to the Syspertec file server <a class="reference external" href="http://ftp-group.syspertec.com/">http://ftp-group.syspertec.com</a> using the userid and password supplied to you by Syspertec. Navigate to the Public directory “VIRTEL - 4.61- Products” and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.</p>
 </div>
 <div class="section" id="step-2">
 <h5>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h5>
@@ -932,10 +932,10 @@ RENAMEUNC( -
 <span id="index-5"></span><h3>Applying Maintenance<a class="headerlink" href="#applying-maintenance" title="Permalink to this headline">¶</a></h3>
 <p>As a general rule the application of <strong>PTFs</strong> is necessary and recommended. PTFs are maintenance files which must be applied to the VIRTEL LOADLIB to correct problems which have been discovered subsequent to the building of a VIRTEL version, or to add new function which will be included as standard in the next version. PTF files are called allptfs-mvsvrr.txt.</p>
 <p>A second type of PTF, known as <strong>Updates</strong> consists of web elements or artifacts such as HTML pages, style sheets, and JavaScript files, which must be uploaded into VIRTEL internal directories contained in the SAMPTRSF VSAM file. This type of PTF is delivered with the naming convention of VirtelvrrUpdtnnnnn.zip where vrr is the Virtel release number and nnnn the update number. Updates may be distributed either by e-mail, or available on Syspertec FTP Server. An update is a ZIP file containing the cumulative update for a version Virtel. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by directory, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.</p>
-<p>The Virtel Administration portal is used to upload <strong>Updates</strong> to the SAMPTRSF file. An alternative batch process, using a Virtel maintenace package (VMP), can also be deployed. Udates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section “Uploading HTML Pages” from document “Virtel Web Access User Guide” for further information.</p>
+<p>The Virtel Administration portal is used to upload <strong>Updates</strong> to the SAMPTRSF file. An alternative batch process, using a Virtel maintenance package (VMP), can also be deployed. Updates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section “Uploading HTML Pages” from document “Virtel Web Access User Guide” for further information.</p>
 <div class="section" id="obtaining-ptfs-and-updates">
 <h4>Obtaining PTFs and Updates<a class="headerlink" href="#obtaining-ptfs-and-updates" title="Permalink to this headline">¶</a></h4>
-<p>To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” – “VIRTEL V.RR” – “PTFS for version V.RR” folder, and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP’s are released periodically and are only applicable to z/OS.</p>
+<p>To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the Public directory “VIRTEL-V.461-PTFS” and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP’s are released periodically and are only applicable to z/OS.</p>
 </div>
 <div class="section" id="applying-ptfs">
 <h4>Applying PTFs<a class="headerlink" href="#applying-ptfs" title="Permalink to this headline">¶</a></h4>
@@ -965,7 +965,8 @@ RENAMEUNC( -
 <div class="section" id="restarting-virtel-and-validation-of-ptf-level">
 <h4>Restarting VIRTEL and validation of PTF level<a class="headerlink" href="#restarting-virtel-and-validation-of-ptf-level" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take effect. The list of PTFs applied is displayed near the beginning of the SYSMSGLG dataset during VIRTEL startup by message VIR0018I, as shown in the following example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">VIR0018I</span> <span class="mi">3876</span><span class="p">,</span><span class="mi">3876</span><span class="n">A</span><span class="p">,</span><span class="mi">3882</span><span class="p">,</span><span class="mi">3902</span><span class="p">,</span><span class="mi">3904</span><span class="p">,</span><span class="mi">3906</span><span class="p">,</span><span class="mi">3928</span><span class="p">,</span><span class="mi">3934</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">VIR0018I</span> <span class="n">VIRTEL</span> <span class="mf">4.6</span><span class="n">x</span> <span class="n">HAS</span> <span class="n">THE</span> <span class="n">FOLLOWING</span> <span class="n">PTF</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="n">APPLIED</span>
+<span class="n">VIR0018I</span> <span class="mi">5887</span><span class="p">,</span><span class="mi">5901</span><span class="p">,</span><span class="mi">5903</span><span class="p">,</span><span class="mi">5904</span><span class="p">,</span><span class="mi">5912</span><span class="p">,</span><span class="mi">5912</span><span class="n">A</span>
 
 <span class="o">*</span><span class="n">Validation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">PTF</span> <span class="n">level</span><span class="o">*</span>
 </pre></div>
@@ -1023,7 +1024,6 @@ RENAMEUNC( -
 <li>If you have any scenario or user exit load modules, copy them to the VIRTnnn.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.</li>
 <li>Add the new VIRTnnn.LOADLIB library to the system APF list in the z/OS PARMLIB and use the SETPROG command to authorize the VIRTnnn.LOADLIB library.</li>
 <li>Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.</li>
-<li>If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD statement to the VIRTEL procedure, as shown in the next section.</li>
 <li>If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter <em>TN201611 - Customising Virtel in V4.56</em> for further details.</li>
 <li>Stop and restart VIRTEL.</li>
 </ol>
@@ -2132,7 +2132,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 </div>
 <div class="section" id="modetab-for-x25-and-appc">
 <span id="index-23"></span><h4>MODETAB For X25 and APPC<a class="headerlink" href="#modetab-for-x25-and-appc" title="Permalink to this headline">¶</a></h4>
-<p>If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided     in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.</p>
+<p>If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.</p>
 <p>The source for the MODVIRT mode table is defined as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MODVIRT</span> <span class="n">MODETAB</span>
 <span class="o">*</span> <span class="n">LOGMODE</span> <span class="k">for</span> <span class="n">LUTYPE2</span> <span class="n">terminals</span>
@@ -2375,7 +2375,7 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 </pre></div>
 </div>
 <p><strong>nappl</strong> - The name of the primary VIRTEL ACB.</p>
-<p>The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 21 or “Executing VIRTEL in a z/VSE environment”, page 39 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*</p>
+<p>The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 26 or “Executing VIRTEL in a z/VSE environment”, page 46 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*</p>
 <p>If SYSPLUS=YES is specified, a ‘+’ character in the APPLID will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.</p>
 </div>
 <div class="section" id="appstat-parameter">
@@ -3035,7 +3035,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </pre></div>
 </div>
 <p>These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, …) where option can take the values listed below:</p>
-<p><strong>HTSET1</strong> - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES, OPTION-DEFAULT-COMPATIBILITY</p>
+<p><strong>HTSET1</strong> - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES</p>
 <p><strong>HTSET2</strong> - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES</p>
 <p><strong>HTSET3</strong> - Reserved for future use</p>
 <p><strong>HTSET4</strong> - Reserved for future use</p>
@@ -4144,7 +4144,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 </pre></div>
 </div>
 <p><em>VIRCONF JCL in z/VSE to update a VIRARBO file</em></p>
-<p id="index-155">z/VS</p>
+<p id="index-155">z/OS</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UPDATES</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//</span><span class="n">UPDARBO</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">LOAD</span>
@@ -5481,7 +5481,7 @@ check URL prefix</td>
 </div>
 <div class="section" id="add-racf-definitions">
 <span id="index-180"></span><h3>Add RACF definitions<a class="headerlink" href="#add-racf-definitions" title="Permalink to this headline">¶</a></h3>
-<p>The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace youruserid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.</p>
+<p>The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace your userid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTRACF</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">RACFDEF</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*---------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">RACF</span> <span class="p">:</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="o">*</span>
@@ -5508,7 +5508,7 @@ check URL prefix</td>
 </pre></div>
 </div>
 <p><em>RACFDEF : JCL to add RACF definitions</em></p>
-<p>Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction W2H-10:</p>
+<p>Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction CLI-10:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTRACF</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">RACFDEF</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
     <span class="o">//*---------------------------------------------------------*</span>
     <span class="o">//*</span> <span class="n">RACF</span> <span class="p">:</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="o">*</span>
@@ -5517,10 +5517,13 @@ check URL prefix</td>
     <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
     <span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
     <span class="o">/*-------------------------------------------------------*/</span>
-    <span class="o">/*</span> <span class="n">ALLOW</span> <span class="n">DEMOGRP</span> <span class="n">TO</span> <span class="n">USE</span> <span class="n">THE</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="p">(</span><span class="n">CICS</span><span class="p">)</span> <span class="n">TRANSACTION</span> <span class="o">*/</span>
+    <span class="o">/*</span> <span class="n">ALLOW</span> <span class="n">DEMOGRP</span> <span class="n">TO</span> <span class="n">USE</span> <span class="n">THE</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">10</span> <span class="p">(</span><span class="n">CICS</span><span class="p">)</span> <span class="n">TRANSACTION</span>    <span class="o">*/</span>
+    <span class="o">/*</span> <span class="n">AND</span> <span class="n">THE</span> <span class="n">APPLIST</span> <span class="n">TRANSACTION</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">90</span>                    <span class="o">*/</span>
     <span class="o">/*-------------------------------------------------------*/</span>
-            <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">CICS</span> <span class="o">*/</span>
-            <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">DEMOGRP</span><span class="p">)</span>
+            <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">CICS</span> <span class="o">*/</span>
+            <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">DEMOGRP</span><span class="p">)</span>
+            <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">APPLIST</span> <span class="o">*/</span>
+            <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">DEMOGRP</span><span class="p">)</span>
     <span class="o">/*-------------------------------------------------------*/</span>
     <span class="o">/*</span> <span class="n">REFRESH</span> <span class="n">THE</span> <span class="n">RACF</span> <span class="n">PROFILES</span> <span class="o">*/</span>
     <span class="o">/*-------------------------------------------------------*/</span>
@@ -5612,7 +5615,7 @@ check URL prefix</td>
 </pre></div>
 </div>
 <p>with the following parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">RACROUTE</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">ACF2</span><span class="p">),</span>
 <span class="n">RAPPL</span><span class="o">=</span><span class="n">VIRTAPPL</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">VIRTNODE</span><span class="p">,</span>
 </pre></div>
 </div>

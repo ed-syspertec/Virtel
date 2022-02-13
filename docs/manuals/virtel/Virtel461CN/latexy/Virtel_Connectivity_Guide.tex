@@ -405,7 +405,7 @@ Vtam transaction identifying SPCICST
 Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
 
 \item[{W2H-80S}] \leavevmode
-A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.
+A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = uploads and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.
 
 \end{description}
 
@@ -1325,7 +1325,7 @@ Always blank.
 \sphinxstyleemphasis{SMTP terminals}
 \begin{quote}
 
-By pressing {[}PF4{]}, the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated terminal definitions may be used.
+By pressing {[}PF4{]}, the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorized. Either explicit or repeated terminal definitions may be used.
 
 The example below shows a group of 16 SMTP terminals with associated relays:
 \end{quote}
@@ -1891,7 +1891,7 @@ Specify a packet size sufficient to contain the largest message sent by either t
 \subsection{NATIVE TCP/IP Line Terminals}
 \label{\detokenize{connectivity_guide:index-33}}\label{\detokenize{connectivity_guide:native-tcp-ip-line-terminals}}\begin{quote}
 
-By pressing {[}PF4{]}, the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
+By pressing {[}PF4{]}, the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorized.
 
 The example below shows a group of 4 NATIVE TCP/IP terminals:
 \end{quote}
@@ -2529,7 +2529,7 @@ Always VIRPESIT.
 
 \end{description}
 
-By pressing {[}PF4{]}, the list of terminals associated with the VIRPESIT line will be displayed. A VIRPESIT line uses a single group of type-3 terminals having a common prefix (I001T in this example). The number of terminals defined determines the number of simultaneous file transfer sessions authorised. The example below shows a group of 8 VIRPESIT terminals:
+By pressing {[}PF4{]}, the list of terminals associated with the VIRPESIT line will be displayed. A VIRPESIT line uses a single group of type-3 terminals having a common prefix (I001T in this example). The number of terminals defined determines the number of simultaneous file transfer sessions authorized. The example below shows a group of 8 VIRPESIT terminals:
 
 \sphinxincludegraphics{{image39}.png}
 
@@ -2596,7 +2596,7 @@ Always VIRNEOX.
 \item[{Packet}] \leavevmode
 Specify a packet size sufficient to contain the largest message sent by either the host or the partner application.
 
-By pressing {[}PF4{]}, the list of terminals associated with the VIRNEOX line will be displayed. A VIRNEOX line uses a single group of type-3 terminals having a common prefix (XNE3 in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
+By pressing {[}PF4{]}, the list of terminals associated with the VIRNEOX line will be displayed. A VIRNEOX line uses a single group of type-3 terminals having a common prefix (XNE3 in this example). The number of terminals defined determines the number of simultaneous conversations authorized.
 
 The example below shows a group of 8 VIRNEOX terminals:
 
@@ -4385,10 +4385,10 @@ Represents the desired startup mode for the transaction. Permissible values are 
 \begin{quote}
 \begin{description}
 \item[{1}] \leavevmode
-The transaction is integrated in the primary list. If authorised after security checking, it will appear in the primary Multi-Session menu. User intervention will be required to access this application, unless menu programs VIR0021B or VIR0021C are used.
+The transaction is integrated in the primary list. If authorized after security checking, it will appear in the primary Multi-Session menu. User intervention will be required to access this application, unless menu programs VIR0021B or VIR0021C are used.
 
 \item[{2}] \leavevmode
-The transaction is integrated in the secondary list. If authorised after security checking, it will appear in the Multi-Session sub-menu. User intervention will be required to access this application.
+The transaction is integrated in the secondary list. If authorized after security checking, it will appear in the Multi-Session sub-menu. User intervention will be required to access this application.
 
 \item[{3}] \leavevmode
 The transaction is integrated in the primary list with automatic startup when the terminal connects to VIRTEL. If several transactions defined with automatic startup appear in the primary list, only the last one in the hierarchy is activated at connection time.

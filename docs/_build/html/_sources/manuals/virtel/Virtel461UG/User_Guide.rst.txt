@@ -14689,6 +14689,43 @@ Create an options entry to support this modification against transaction applist
 
 .. note:: You must have setup the "options" mode customization before you can generate "option" files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See :ref:`"Virtel Customization Modes"<#_V461UG_customizing_with_option>` on how to set up customising with the options mode. 
 
+.. index::
+   pair: Left align text; HOWTOs 
+
+Left align text
+===============
+
+To display languages which require left alignment, such as a character set where no monospace font is available, Thailand for example, set the W2HPARM option "leftalignpage" to true. By default, W2H displays centres each line when the font is not exactly monospace. Aligning left may give a better display.
+
+
+.. index::
+   pair: Special UNICODE character support; HOWTOs 
+
+Special UNICODE character support
+=================================
+
+Some UNICODE characters have no EBCDIC equivalent and are translated to an equivalent value. Curly quotes are an example. These are translated to striaght quotes. To disable this translation set the W2HPARM option "unicodereplactiv" to false.
+
+.. index::
+   pair: Square bracket support; HOWTOs 
+
+Square Bracket Support
+======================
+
+Characters [ and ] may be incorrectly displayed on the MVS console. The character set used natively by the MVS console is CP1047. For this reason, VIRTEL uses this codepage to write its messages to the console. To be able to view [] from VWA, the codepage IBM1047 must be used. If this is not the default Virtel codepage (as specified in the TCT), it can be forced directly in the calling URL: 
+
+::
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
+
+The entry point must refer to a scenario allowing to process the contents of the URL variable CODEPAGE. By default the SCENLOGM scenario can be used.If another identification 
+scenario is implemented, it must contain the following lines:
+
+::
+    COPY$ INPUT-TO-VARIABLE,FIELD='CODEPAGE',             *
+          VAR='CODEPAGE'
+    IF$ NOT-FOUND,THEN=NOCODEPG
+    SET$  ENCODING,UTF-8,'*CODEPAGE'
+
 ********
 Appendix
 ********
@@ -14836,6 +14873,10 @@ Default values for W2H parameters
 | "NOstretch"     | Font Size Stretch     | true, false                                       |
 +-----------------+-----------------------+---------------------------------------------------+
 | "jokerkey"      | Jokey Key value       | none                                              |
++-----------------+-----------------------+---------------------------------------------------+
+| "unicodereplactiv" | Convert UNICODE    | true                                              |
++-----------------+-----------------------+---------------------------------------------------+
+| "leftalignpage" | Align text to left    | false                                             |
 +-----------------+-----------------------+---------------------------------------------------+
 
 *Default W2H parameters: List of keywords and possible values*

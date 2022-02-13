@@ -281,7 +281,7 @@ their respective owners.</p>
 </ul>
 <p><img alt="image69" src="../../../_images/image6911.png" /></p>
 <p><em>Configurable elements of Virtel</em></p>
-<p>The diagram above describes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser’s URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use several Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention “LOC” terminals reflect units of work in supporting the browser and “VTA” terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.</p>
+<p>The diagram above describes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser’s URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert data streams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use several Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention “LOC” terminals reflect units of work in supporting the browser and “VTA” terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.</p>
 <div class="section" id="unloading-configurable-elements">
 <h4>Unloading Configurable Elements<a class="headerlink" href="#unloading-configurable-elements" title="Permalink to this headline">¶</a></h4>
 <p>The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file which contains the configurable elements. The default statements that are used to build the initial ARBO VSAM file are contained in the CNTL library as member ARBOLOAD. This member contains every statement that could potentially be used when defining the Virtel ARBO VSAM file, including optional statements which may not be applicable. To unload the default ARBO VSAM file run the following JCL:-</p>
@@ -307,7 +307,7 @@ their respective owners.</p>
 </div>
 <div class="section" id="line-element">
 <h4>Line Element<a class="headerlink" href="#line-element" title="Permalink to this headline">¶</a></h4>
-<p>The Line element is the main control element in the definition hierarchy. When Virtel receives a call in from a user, via their browser, it is targeted towards a particular port which is associated with a Line element.  The Line element points to the default entry point and also identifies the listening port. By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP associated with port 41001 and Line C-HTTP associated with port 41002. Line W-HTTP(41001) is usually associated with administration functions and should be secured for administration use only. Line C-HTTP(41002) is an example of a line for for client applications. It is not advisable to use 41001 as your client port. USe 41002 or set-up another line using 41002 as a template, for example 41003.</p>
+<p>The Line element is the main control element in the definition hierarchy. When Virtel receives a call in from a user, via their browser, it is targeted towards a particular port which is associated with a Line element.  The Line element points to the default entry point and also identifies the listening port. By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP associated with port 41001 and Line C-HTTP associated with port 41002. Line W-HTTP(41001) is usually associated with administration functions and should be secured for administration use only. Line C-HTTP(41002) is an example of a line for for client applications. It is not advisable to use 41001 as your client port. Use 41002 or set-up another line using 41002 as a template, for example 41003.</p>
 <p><img alt="image70" src="../../../_images/image7010.png" />
 <em>Line Detail Definition</em></p>
 <p>It is also defined in the Arbo Configuration statements:-</p>
@@ -446,7 +446,7 @@ REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          
 <dt>EDS-90</dt>
 <dd>Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00</dd>
 <dt>W2H-80S</dt>
-<dd>A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.</dd>
+<dd>A transaction added to the W2H Entry point to support uploading web artifacts to the EDS-DIR. When adding a new directory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = uploads and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.</dd>
 </dl>
 <p>Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTELV</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ARBOLOAD</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
@@ -749,9 +749,7 @@ the host TCP/IP. For example, 0:2048 (or 0.0.0.0:41002)</dd>
 <dt>Entry Point</dt>
 <dd>Defines the default entry point used by the line. This is a required field for HTTP and SMTP lines. It is optional in all other cases.</dd>
 <dt>Rule Set</dt>
-<dd><p class="first">The name of the rule set used by this line. The same rule set can be used by more than one line. If this field is blank, no rules are used. Rules are described in detail in section .</p>
-<p class="last">For compatability with VIRTEL versions prior to 4.26, the rule set name is usually the same as the internal name of the line.</p>
-</dd>
+<dd>The name of the rule set used by this line. The same rule set can be used by more than one line. If this field is blank, no rules are used. Rules are described in detail in section .</dd>
 <dt>Line type</dt>
 <dd><p class="first">Defines the category to which the line belongs. VIRTEL supports the following categories of lines:</p>
 <dl class="last docutils">
@@ -821,7 +819,7 @@ commands” in the VIRTEL Audit And Performance Guide)</dd>
 <dt>WAIT-PARTNER</dt>
 <dd>Waits until VIRTEL receives an SNA BIND command from its partner LU.</dd>
 <dt>MIMIC-LINE(n-xxxxxx)</dt>
-<dd>specifies that this line starts and stops in synchronisation with
+<dd>specifies that this line starts and stops in synchronization with
 line n-xxxxxx. The name specified can be either the internal or
 external name of the other line.</dd>
 </dl>
@@ -953,13 +951,13 @@ default delay is 2 seconds.</dd>
 </div>
 <div class="section" id="line-overview-sub-application">
 <span id="index-9"></span><h3>Line Overview Sub-Application<a class="headerlink" href="#line-overview-sub-application" title="Permalink to this headline">¶</a></h3>
-<p>The Lines Overiew display presents an overall view and allows the administrator to zoom in on individual definitions to display and optionally modify the detailed definition. Missing definitions (those referenced by another entity but not defined in the configuration) are highlighted in red. This sub-application allows the administrator to display and optionally modify the various entities associated with each line defined in the VIRTEL configuration. The Lines Overview sub-application is invoked by pressing [PF8] at the Configuration Menu, by pressing [PF15] at the Sub-Application Menu, or via the Multi-Session using a transaction which calls module VIR0049.</p>
+<p>The Lines Overview display presents an overall view and allows the administrator to zoom in on individual definitions to display and optionally modify the detailed definition. Missing definitions (those referenced by another entity but not defined in the configuration) are highlighted in red. This sub-application allows the administrator to display and optionally modify the various entities associated with each line defined in the VIRTEL configuration. The Lines Overview sub-application is invoked by pressing [PF8] at the Configuration Menu, by pressing [PF15] at the Sub-Application Menu, or via the Multi-Session using a transaction which calls module VIR0049.</p>
 <p><img alt="image57" src="../../../_images/image5711.png" />
 <em>Lines overview summary display</em></p>
 </div>
 <div class="section" id="http-inbound-line">
 <span id="index-10"></span><h3>HTTP Inbound line<a class="headerlink" href="#http-inbound-line" title="Permalink to this headline">¶</a></h3>
-<p>When an HTTP line is started, VIRTEL becomes an HTTP server, authorising connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.</p>
+<p>When an HTTP line is started, VIRTEL becomes an HTTP server, authorizing connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.</p>
 <p><img alt="image6" src="../../../_images/image648.png" />
 <em>Definition of an HTTP line</em></p>
 <dl class="docutils" id="index-11">
@@ -1084,7 +1082,7 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 <div class="section" id="http-outbound-line">
 <span id="v461cn-httpoutbound"></span><span id="index-15"></span><h3>HTTP Outbound line<a class="headerlink" href="#http-outbound-line" title="Permalink to this headline">¶</a></h3>
 <p>An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT.</p>
-<p>By means of the OPTION$ FOR-HTTP and SEND$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION$ FOR-HTTP instruction. The $SITE$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION$ FOR-HTTP scenario instruction.</p>
+<p>By means of the OPTION$ FOR-HTTP and SEND$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernization Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION$ FOR-HTTP instruction. The $SITE$ defines the IP address of the outbound server. It is passed via a scenario. See the OPTION$ FOR-HTTP scenario instruction.</p>
 <p><img alt="image15" src="../../../_images/image1522.png" />
 <em>Definition of an HTTP Outbound line</em></p>
 <div class="section" id="index-16">
@@ -1096,7 +1094,7 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 <dd>Should be unique. Either the internal name or the external name may be specified in the SEND$ TO-LINE instruction in the scenario.</dd>
 <dt>Remote ident</dt>
 <dd><p class="first">This is the IP address and port number of the remote HTTP server. The format is <strong>nnn.nnn.nnn.nnn:pppp</strong> where nnn.nnn.nnn.nnn is the
-IP address and pppp is the port number. The port number (normallyport 80) must be specified, there is no default.</p>
+IP address and pppp is the port number. The port number (normally port 80) must be specified, there is no default.</p>
 <p>The remote HTTP server may also be specified by its DNS name and port number, for example webservices.mycompany.com:80</p>
 <p class="last">The special value $SITE$ indicates that the name and port number of the remote HTTP server are specified in the SITE parameter of the OPTION$ FOR-HTTP instruction.</p>
 </dd>
@@ -1132,7 +1130,7 @@ IP address and pppp is the port number. The port number (normallyport 80) must b
 <dt>Description</dt>
 <dd><p class="first">The sender name generated in outgoing e-mails. Not used for incoming e-mails.</p>
 <p>Generally, the description field does not contain any significant information. However, in the case of an SMTP line, the contents of this field are used by VIRTEL.</p>
-<p class="last">The description field for an SMTP line must be in a specific format. It must contain a domain name, followed by an e-mail address enclosed in angle brackets (characters “&lt;” and “&gt;”). Everything up to the first angle bracket is the operand of the HELO command which VIRTEL sends to the SMTP server. The e-mail address in angle brackets is the default operand of the MAIL FROM command which VIRTEL sends to the SMTP server. This default e-mail address can optionally be overridden by the sending application by means of the
+<p class="last">The description field for an SMTP line must be in a specific format. It must contain a domain name, followed by an e-mail address enclosed in angle brackets (characters “&lt;” and “&gt;”). Everything up to the first angle bracket is the operand of the HELLO command which VIRTEL sends to the SMTP server. The e-mail address in angle brackets is the default operand of the MAIL FROM command which VIRTEL sends to the SMTP server. This default e-mail address can optionally be overridden by the sending application by means of the
 FAD4 structured field. The e-mail address used will normally need to be defined to the SMTP server.</p>
 </dd>
 <dt>Prefix</dt>
@@ -1160,7 +1158,7 @@ FAD4 structured field. The e-mail address used will normally need to be defined 
 </dl>
 <p><em>SMTP terminals</em></p>
 <blockquote>
-<div><p>By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated Terminal Definitions may be used.</p>
+<div><p>By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorized. Either explicit or repeated Terminal Definitions may be used.</p>
 <p>The example below shows a group of 16 SMTP terminals with associated relays:</p>
 </div></blockquote>
 <p><img alt="image17" src="../../../_images/image1716.png" />
@@ -1175,7 +1173,7 @@ FAD4 structured field. The e-mail address used will normally need to be defined 
 <dd>A relay LU must be specified if incoming e-mails are used to trigger the start of a CICS transaction (or another VTAM application). The relay LU’s must be defined by APPL statements in a VTAM application major node, as described below.</dd>
 <dt>Entry point</dt>
 <dd>Leave blank. The entry point is defined in the line (or in the rules of the line) for this type of terminal.</dd>
-<dt>Type de terminal</dt>
+<dt>Type of terminal</dt>
 <dd>Always 3.</dd>
 <dt>Compression</dt>
 <dd>Always 2.</dd>
@@ -1367,7 +1365,7 @@ END
 <tr class="row-odd"><td colspan="2" rowspan="3">4 - 11</td>
 <td rowspan="3">8</td>
 <td rowspan="3">xxxxxx</td>
-<td rowspan="3">Externql transaction name. Left
+<td rowspan="3">External transaction name. Left
 justified and padded with blanks</td>
 </tr>
 <tr class="row-even"></tr>
@@ -1528,7 +1526,7 @@ VIRTEL Installation Guide for details of the MQn parameter.</dd>
 <div class="section" id="line-terminals">
 <span id="index-36"></span><h4>Line Terminals<a class="headerlink" href="#line-terminals" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><p>By pressing [PF4], the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.</p>
+<div><p>By pressing [PF4], the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorized.</p>
 <p>The example below shows a group of 4 NATIVE TCP/IP terminals:</p>
 </div></blockquote>
 <p><img alt="image29" src="../../../_images/image2914.png" /></p>
@@ -1955,7 +1953,7 @@ VTAM application major node, as shown in the example below:</dd>
 <dt>Protocol</dt>
 <dd>Always VIRPESIT.</dd>
 </dl>
-<p>By pressing [PF4], the list of terminals associated with the VIRPESIT line will be displayed. A VIRPESIT line uses a single group of type-3 terminals having a common prefix (I001T in this example). The number of terminals defined determines the number of simultaneous file transfer sessions authorised. The example below shows a group of 8 VIRPESIT terminals:</p>
+<p>By pressing [PF4], the list of terminals associated with the VIRPESIT line will be displayed. A VIRPESIT line uses a single group of type-3 terminals having a common prefix (I001T in this example). The number of terminals defined determines the number of simultaneous file transfer sessions authorized. The example below shows a group of 8 VIRPESIT terminals:</p>
 <p><img alt="image39" src="../../../_images/image3914.png" /></p>
 </div>
 <div class="section" id="index-57">
@@ -2000,7 +1998,7 @@ of the line) for this type of terminal.</dd>
 <dd>Always VIRNEOX.</dd>
 <dt>Packet</dt>
 <dd><p class="first">Specify a packet size sufficient to contain the largest message sent by either the host or the partner application.</p>
-<p>By pressing [PF4], the list of terminals associated with the VIRNEOX line will be displayed. A VIRNEOX line uses a single group of type-3 terminals having a common prefix (XNE3 in this example). The number of terminals defined determines the number of simultaneous conversations authorised.</p>
+<p>By pressing [PF4], the list of terminals associated with the VIRNEOX line will be displayed. A VIRNEOX line uses a single group of type-3 terminals having a common prefix (XNE3 in this example). The number of terminals defined determines the number of simultaneous conversations authorized.</p>
 <p class="last">The example below shows a group of 8 VIRNEOX terminals:</p>
 </dd>
 </dl>
@@ -3323,9 +3321,9 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <blockquote>
 <div><dl class="docutils">
 <dt>1</dt>
-<dd>The transaction is integrated in the primary list. If authorised after security checking, it will appear in the primary Multi-Session menu. User intervention will be required to access this application, unless menu programs VIR0021B or VIR0021C are used.</dd>
+<dd>The transaction is integrated in the primary list. If authorized after security checking, it will appear in the primary Multi-Session menu. User intervention will be required to access this application, unless menu programs VIR0021B or VIR0021C are used.</dd>
 <dt>2</dt>
-<dd>The transaction is integrated in the secondary list. If authorised after security checking, it will appear in the Multi-Session sub-menu. User intervention will be required to access this application.</dd>
+<dd>The transaction is integrated in the secondary list. If authorized after security checking, it will appear in the Multi-Session sub-menu. User intervention will be required to access this application.</dd>
 <dt>3</dt>
 <dd>The transaction is integrated in the primary list with automatic startup when the terminal connects to VIRTEL. If several transactions defined with automatic startup appear in the primary list, only the last one in the hierarchy is activated at connection time.</dd>
 </dl>

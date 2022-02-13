@@ -16,7 +16,6 @@ Installation changes
 
 - Update installation files with correct version number.
 
-
 Migration considerations
 ------------------------
 
@@ -33,7 +32,7 @@ Versions of Virtel older than V4.58 are no longer supported.
 
 **ARBO changes**
 
-There have been no changes to the ARBO which would require migration from V4.61, V4.59 or V4.58. Customers who are migrating from older releases should review the 
+There have been no changes to the ARBO which would require migration from V4.60, V4.59 or V4.58. Customers who are migrating from older releases should review the 
 “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. 
 Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
 
@@ -42,7 +41,6 @@ Fixes, changes and new features
 
 Presentation
 ^^^^^^^^^^^^
-
 
 **5887 APL support for Omegamon**
 
@@ -105,6 +103,10 @@ Presentation
 **5924 Mouse wheel enhancement**
 
 - Initialisation process modified to avoid error messages - "language xx is not processed".
+
+**5936 Samsung Tablet support**
+
+- Add support for Samsung tablet and customization of keys.
 
 .. raw:: latex
 
@@ -170,14 +172,19 @@ Base Components
 
 - New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum of 10 messages.
 
-**5916 LOCK= terminal support**
+**5916/25/38 LOCK= terminal support**
 
 - LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.
+- Support ESC key as DISCONNECT
+- CANCEL bug when using SECU=1
 
 **5922 Correct SILENCE(YES/NO) in VIRTERM macro**
 
-- Correct SILENCE= keyword logic in VIRTERM macro. 
+- Correct SILENCE= keyword logic in VIRTERM macro.
 
+**5927 Support unsolicited BINDS**
+
+- Support for applications which use unsolicited BIND in session setup. For example IBM Debugger.
 
 
 .. raw:: latex
@@ -195,6 +202,10 @@ Scenario Language
 
 - Correct Abend in scenario when using DBCS.
 
+**5931 DECLARE$ bug**
+
+- Bug in DECLARE$ when length=79 destroys buffer. Screen garbled.
+
 
 
 .. raw:: latex
@@ -207,6 +218,18 @@ Other Enhancements
 **5907 UPLOAD fails**
 
 - Boundary processing corrected for VSR.
+
+**5937 AIEV Abend** 
+
+- Remove AEIV Abend when ARBO is updated at a higher Virtel release. Now report a LENGTH ERROR.
+
+**5940 LOCADDR updates**
+
+- When a DNS name is used as a LOCADDR= address it was capitalized and put in quotes. This has been removed. 
+
+**5941 AXIOS UPLOAD**
+
+- Data was corrupted after upload from AXIOS.
 
 
 Updates and maintenance
@@ -261,6 +284,20 @@ Appendix A
 - 5922 Correct SILENCE(YES/NO) in VIRTERM macro              
 - 5923 Unicode conversion of specific character (curly quotes to straight quote)
 - 5924 Mouse wheel enhancement, Initialization process modified to avoid message
+- 5925 ESC acts as DISCONNECT in LOCK Support
+- 5926 Correct messages in SNAPMSG display
+- 5927 Allow unsolicited BINDS
+- 5929 License statement corrected
+- 5931 DECLARE$ bug
+- 5932 Scenario assembly errors
+- 5933 Remove Compatibility support
+- 5934 Update LOCK= processing
+- 5935 WaitScreen instruction in Javascript
+- 5936 Samsung tablet support
+- 5937 Prevent AEIV abends
+- 5938 LOCK= and CANCEL support
+- 5940 Correct LOCADDR processing in ARBO LOAD/UNLOAD
+- 5941 Correct UPLOAD bug for AXIOS 
 
     
 .. |image0| image:: images/media/image1.png

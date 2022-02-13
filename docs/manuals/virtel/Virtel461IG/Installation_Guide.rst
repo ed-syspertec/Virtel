@@ -750,7 +750,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 7. Edit member VIRTCT01 in the VIRTEL CNTL library:-
 
-	a) Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
+	a) Set a default APPLID= parameter to the VTAM ACBNAME. You can override this in the VIRTEL PROC using the APPLID= symbolic. Use this to log on to VIRTEL (the suggested default value is APPLID=VIRTEL)
 
 	b) The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)
 
@@ -782,7 +782,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 	   If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'. If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.
 
-10. Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
+10. If using APPC or X25, submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
 
 11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:
 
@@ -815,7 +815,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 Step 1
 """"""
 
-Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.61” – “Products” folder and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the Public directory “VIRTEL - 4.61- Products” and download the virtel461mvs.zip file. Unzip this file into a folder on your workstation.
 
 .. raw:: latex
 
@@ -1007,12 +1007,12 @@ As a general rule the application of **PTFs** is necessary and recommended. PTFs
 
 A second type of PTF, known as **Updates** consists of web elements or artifacts such as HTML pages, style sheets, and JavaScript files, which must be uploaded into VIRTEL internal directories contained in the SAMPTRSF VSAM file. This type of PTF is delivered with the naming convention of VirtelvrrUpdtnnnnn.zip where vrr is the Virtel release number and nnnn the update number. Updates may be distributed either by e-mail, or available on Syspertec FTP Server. An update is a ZIP file containing the cumulative update for a version Virtel. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by directory, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.
 
-The Virtel Administration portal is used to upload **Updates** to the SAMPTRSF file. An alternative batch process, using a Virtel maintenace package (VMP), can also be deployed. Udates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section "Uploading HTML Pages" from document "Virtel Web Access User Guide" for further information.
+The Virtel Administration portal is used to upload **Updates** to the SAMPTRSF file. An alternative batch process, using a Virtel maintenance package (VMP), can also be deployed. Updates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format. See the section "Uploading HTML Pages" from document "Virtel Web Access User Guide" for further information.
 
 Obtaining PTFs and Updates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” – “VIRTEL V.RR” – “PTFS for version V.RR” folder, and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP's are released periodically and are only applicable to z/OS.      
+To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the Public directory “VIRTEL-V.461-PTFS" and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP's are released periodically and are only applicable to z/OS.      
 
 Applying PTFs
 ^^^^^^^^^^^^^
@@ -1048,7 +1048,8 @@ Restarting VIRTEL and validation of PTF level
 
 VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take effect. The list of PTFs applied is displayed near the beginning of the SYSMSGLG dataset during VIRTEL startup by message VIR0018I, as shown in the following example::
 
-	VIR0018I 3876,3876A,3882,3902,3904,3906,3928,3934    
+	VIR0018I VIRTEL 4.6x HAS THE FOLLOWING PTF(S) APPLIED 
+    VIR0018I 5887,5901,5903,5904,5912,5912A               	
 
     *Validation of the VIRTEL PTF level*
 
@@ -1120,11 +1121,9 @@ The procedure for upgrading from a previous version of VIRTEL (version 4.00 or l
 
 7.  Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.
 
-8.  If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD statement to the VIRTEL procedure, as shown in the next section.
+8.  If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter *TN201611 - Customising Virtel in V4.56* for further details. 
 
-9.  If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter *TN201611 - Customising Virtel in V4.56* for further details. 
-
-10. Stop and restart VIRTEL.
+9. Stop and restart VIRTEL.
 
 .. index::
    pair: Installing under z/OS  ; Applying Maintenance Updates	
@@ -2421,7 +2420,7 @@ Each terminal which logs on to a VTAM application via VIRTEL requires an applica
 MODETAB For X25 and APPC
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided     in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.
+If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.
 
 The source for the MODVIRT mode table is defined as follows::
 
@@ -2754,7 +2753,7 @@ APPLID parameter
 
 **nappl** - The name of the primary VIRTEL ACB.
 
-The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 21 or “Executing VIRTEL in a z/VSE environment”, page 39 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL* 
+The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 26 or “Executing VIRTEL in a z/VSE environment”, page 46 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL* 
 
 If SYSPLUS=YES is specified, a '+' character in the APPLID will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
@@ -3592,7 +3591,7 @@ HTSET1 to HTSET4 parameters
 
 These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, ...) where option can take the values listed below:
 
-**HTSET1** - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES, OPTION-DEFAULT-COMPATIBILITY
+**HTSET1** - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES
 
 **HTSET2** - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES
 
@@ -5218,7 +5217,7 @@ z/VSE
 .. index::
    pair: VIRCONF Utility; Update(z/OS) 
 
-z/VS
+z/OS
 
 ::
 
@@ -6100,7 +6099,7 @@ Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into
 Add RACF definitions
 --------------------
 
-The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace youruserid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
+The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace your userid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
 
 ::
 
@@ -6130,7 +6129,7 @@ The following RACF definitions are the minimum you need to get started. They sim
 
 *RACFDEF : JCL to add RACF definitions*
 
-Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction W2H-10::
+Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction CLI-10::
 
     //VIRTRACF JOB 1,RACFDEF,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
 	//*---------------------------------------------------------*
@@ -6140,10 +6139,13 @@ Later you can refine the definitions so that other VIRTEL users can use VIRTEL t
 	//SYSTSPRT DD SYSOUT=*
 	//SYSTSIN DD *
 	/*-------------------------------------------------------*/
-	/* ALLOW DEMOGRP TO USE THE W2H-10 (CICS) TRANSACTION */
+	/* ALLOW DEMOGRP TO USE THE CLI-10 (CICS) TRANSACTION    */
+	/* AND THE APPLIST TRANSACTION CLI-90                    */
 	/*-------------------------------------------------------*/
-		RDEF FACILITY VIRTEL.W2H-10 UACC(NONE) /* CICS */
-		PE VIRTEL.W2H-10 CL(FACILITY) ACC(READ) ID(DEMOGRP)
+		RDEF FACILITY VIRTEL.CLI-10 UACC(NONE) /* CICS */
+		PE VIRTEL.CLI-10 CL(FACILITY) ACC(READ) ID(DEMOGRP)
+		RDEF FACILITY VIRTEL.CLI-90 UACC(NONE) /* APPLIST */
+		PE VIRTEL.CLI-90 CL(FACILITY) ACC(READ) ID(DEMOGRP)
 	/*-------------------------------------------------------*/
 	/* REFRESH THE RACF PROFILES */
 	/*-------------------------------------------------------*/
@@ -6254,7 +6256,7 @@ In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameter
 
 with the following parameters::
  	
- 	SECUR=RACROUTE,
+ 	SECUR=(RACROUTE,ACF2),
 	RAPPL=VIRTAPPL,RNODE=VIRTNODE,
 
 This tells VIRTEL that the security definitions for calls to external servers are stored in the VIRTAPPL resource class, and that the security definitions for access to VIRTEL transactions, directories, and nodes are stored in the VIRTNODE resource class. You can choose your own resource class names for each VIRTEL. Multiple VIRTEL started tasks can share the same resource class names if their security definitions are identical.

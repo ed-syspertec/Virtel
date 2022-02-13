@@ -56,7 +56,7 @@
 
 
 \title{Virtel Customization}
-\date{Oct 15, 2021}
+\date{Feb 13, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -82,7 +82,7 @@ This is a draft version of the document.
 
 Version : 4.61 Draft
 
-Release Date : 14th October 2021. Publication Date : 10/10/2021
+Release Date : TBA. Publication Date : 10/10/2021
 
 Syspertec Communication
 
@@ -156,7 +156,7 @@ Various bug fixes
 \end{itemize}
 
 \begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.61.
+For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.
 \end{sphinxadmonition}
 
 
@@ -487,7 +487,7 @@ The Virtel User Guide contains further information on how to use GUI based contr
 
 \section{Customizable JavaScript User Exits}
 \label{\detokenize{Customization:customizable-javascript-user-exits}}\label{\detokenize{Customization:index-7}}
-Virtel provides the following JavaScript functions that can be customized to give bespoke behaviour. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
+Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
 
 \index{JavaScript User Exits@\spxentry{JavaScript User Exits}!before\_submitForm@\spxentry{before\_submitForm}}\index{before\_submitForm@\spxentry{before\_submitForm}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
 \item {} 
@@ -534,7 +534,7 @@ Virtel provides the following JavaScript functions that can be customized to giv
 
 \index{JavaScript User Exits@\spxentry{JavaScript User Exits}!when\_init()@\spxentry{when\_init()}}\index{when\_init()@\spxentry{when\_init()}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
 \item {} 
-\sphinxstylestrong{when\_init()} - Called for each sub-page after vir3270 initialisation.
+\sphinxstylestrong{when\_init()} - Called for each sub-page after vir3270 initialization.
 
 \end{itemize}
 
@@ -1916,11 +1916,11 @@ The green triangular button will display the local storage macros. From here a c
 
 Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\ignorespaces 
 
-\subsection{Centralised Macros - DDI mode}
-\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-79}}
-The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
+\subsection{centralized Macros - DDI mode}
+\label{\detokenize{Customization:centralized-macros-ddi-mode}}\label{\detokenize{Customization:index-79}}
+The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralized repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
 
 The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.
 
@@ -1928,11 +1928,11 @@ The advantage of maintaining macros in a central repository is that the administ
 To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF.
 \end{sphinxadmonition}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Implementation@\spxentry{Implementation}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Implementation@\spxentry{Implementation}}\ignorespaces 
 
 \subsubsection{Implementation}
 \label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-80}}
-To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
+To use Centralized Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{STEP0}   \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT01}\PYG{p}{,}\PYG{n}{DYNAMNBR}\PYG{o}{=}\PYG{l+m+mi}{20} \PYG{n}{COND}\PYG{o}{=}\PYG{n}{ONLY}
@@ -1975,14 +1975,14 @@ To use Centralised Macros users and Administrators must have “READ” access t
 
 \sphinxstyleemphasis{Security Resources required for DDI}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directories@\spxentry{Directories}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralized Macro mode@\spxentry{Centralized Macro mode}}\index{Centralized Macro mode@\spxentry{Centralized Macro mode}!Directories@\spxentry{Directories}}\ignorespaces 
 Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.
 
 \sphinxincludegraphics{{image38}.png}
 
 \sphinxstyleemphasis{DDI Directories}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Setting options@\spxentry{Setting options}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralized Macro mode@\spxentry{Centralized Macro mode}}\index{Centralized Macro mode@\spxentry{Centralized Macro mode}!Setting options@\spxentry{Setting options}}\ignorespaces 
 Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI\_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2020,7 +2020,7 @@ The “useVirtelMacros” is the key property required for DDI. The various valu
 \PYGZdq{}w2hparm.useVirtelMacros\PYGZdq{}:\PYGZob{}“macrosAutoRefresh”: “never” \textbar{} “once” \textbar{} “daily” \textbar{} “session” \PYGZcb{}
 \end{sphinxVerbatim}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Setting options {[}useVirtelMacros{]}@\spxentry{Setting options {[}useVirtelMacros{]}}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Setting options {[}useVirtelMacros{]}@\spxentry{Setting options {[}useVirtelMacros{]}}}\ignorespaces 
 \sphinxstylestrong{Macro Options}
 
 
@@ -2036,12 +2036,12 @@ The “useVirtelMacros” is the key property required for DDI. The various valu
 \hline
 Never
 &
-Do not synchronise with DDI unless the user presses the refresh button. Default
+Do not synchronize with DDI unless the user presses the refresh button. Default
 \\
 \hline
 Once
 &
-Synchronise with DDI only when local storage hasn’t been initialised
+Synchronize with DDI only when local storage hasn’t been initialized
 \\
 \hline
 Daily
@@ -2068,7 +2068,7 @@ This option turns on the ability to assign a macro with a shortcut or “hot key
 \end{quote}
 
 \item {} 
-\sphinxstylestrong{w2hparm.synchronizeVirtelMacros=true \textbar{} false}           Synchronize all Centralised Repositories
+\sphinxstylestrong{w2hparm.synchronizeVirtelMacros=true \textbar{} false}           Synchronize all centralized Repositories
 \begin{quote}
 
 If you are running multiple images of Virtel, say in a SYSPLEX arrangement using separate centralized repositories then the “synchronizeVirtelMacros” option should be set to true. This ensures that macro changes are reflected in all DDI repositories and associated local storage.
@@ -2076,17 +2076,17 @@ If you are running multiple images of Virtel, say in a SYSPLEX arrangement using
 
 \end{itemize}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!DDI Validation@\spxentry{DDI Validation}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!DDI Validation@\spxentry{DDI Validation}}\ignorespaces 
 
-\subsection{Centralised DDI validation}
-\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-84}}
+\subsection{centralized DDI validation}
+\label{\detokenize{Customization:centralized-ddi-validation}}\label{\detokenize{Customization:index-84}}
 After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.48}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB2AJAX}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{TSO}
 \end{sphinxVerbatim}
 
-The macro ICON should now be blue, indicating centralised DDI has been correctly configured. In local mode this ICON is green.
+The macro ICON should now be blue, indicating centralized DDI has been correctly configured. In local mode this ICON is green.
 
 \sphinxincludegraphics{{image39}.png}
 
@@ -2098,10 +2098,10 @@ Pressing the Blue ICON should display an empty macro list:
 
 \sphinxstyleemphasis{Empty Macro list}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Configuring the Centralised Repository@\spxentry{Configuring the Centralised Repository}}\ignorespaces 
-Configuring the Centralised Repository
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Configuring the centralized Repository@\spxentry{Configuring the centralized Repository}}\ignorespaces 
+Configuring the centralized Repository
 
-To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.
+To configure the centralized DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.48}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB2AJAX}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{Tso}
@@ -2111,14 +2111,14 @@ To configure the centralised DDI repository we need to create an “initial” M
 
 \sphinxstyleemphasis{Accessing a local macro facility -  Green ICON}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating an initial macro@\spxentry{Creating an initial macro}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Creating an initial macro@\spxentry{Creating an initial macro}}\ignorespaces 
 
 \subsection{Creating an initial macro}
 \label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-86}}
 
 \subsubsection{SDSF test macro}
 \label{\detokenize{Customization:sdsf-test-macro}}
-In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the Centralised DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:
+In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the centralized DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Logon} \PYG{n}{to} \PYG{n}{TSO} \PYG{o+ow}{and} \PYG{n}{bring} \PYG{n}{up} \PYG{n}{the} \PYG{n}{ISPF} \PYG{n}{primary} \PYG{n}{menu} \PYG{n}{panel}\PYG{o}{.}
@@ -2140,7 +2140,7 @@ Saved the macro with the name SDSF. Now, press the Green ICON. The macro should 
 
 Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Uploading macros through the DDI interface@\spxentry{Uploading macros through the DDI interface}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Uploading macros through the DDI interface@\spxentry{Uploading macros through the DDI interface}}\ignorespaces 
 
 \subsubsection{Uploading macros to the centralized repository}
 \label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-87}}
@@ -2173,7 +2173,7 @@ Refresh the GLOBAL directory by clicking the broken circled arrow in the top lef
 
 To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear.
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating user macros@\spxentry{Creating user macros}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Creating user macros@\spxentry{Creating user macros}}\ignorespaces 
 
 \subsection{Creating a user macro}
 \label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-88}}
@@ -2184,7 +2184,7 @@ Here is an example of a user macro called “CUSTINQ” which drives a sequence 
 
 \sphinxincludegraphics{{image47}.png}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro panel options@\spxentry{Macro panel options}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Macro panel options@\spxentry{Macro panel options}}\ignorespaces 
 
 \subsection{Macro Options}
 \label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-89}}
@@ -2198,13 +2198,13 @@ The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN th
 The “Edit” feature is for viewing only.
 \end{sphinxadmonition}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directory and Macro Administration@\spxentry{Directory and Macro Administration}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Directory and Macro Administration@\spxentry{Directory and Macro Administration}}\ignorespaces 
 
 \subsection{Directory and Macro Administration}
 \label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-90}}
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a “local” facility and export these up into the central repository to make them available to users at a Global, Group and User level.
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Making macros available@\spxentry{Making macros available}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Making macros available@\spxentry{Making macros available}}\ignorespaces 
 
 \subsubsection{Making a user’s DDI macro available to a DDI Group}
 \label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-91}}
@@ -2251,7 +2251,7 @@ It is not necessary to export a “dummy” macro from a “local mode” setup 
 
 \sphinxstyleemphasis{Dummy MACROS.JSON file}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{Centralized DDI Troubleshooting}
 \label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-92}}
@@ -2277,7 +2277,7 @@ CTRL R
 
 \end{itemize}
 
-\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro Formats@\spxentry{Macro Formats}}\ignorespaces 
+\index{Virtel Macros@\spxentry{Virtel Macros}!centralized Macro mode@\spxentry{centralized Macro mode}}\index{centralized Macro mode@\spxentry{centralized Macro mode}!Macro Formats@\spxentry{Macro Formats}}\ignorespaces 
 
 \subsection{Macro formats and Commands}
 \label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-93}}
@@ -2321,8 +2321,8 @@ The macro editor supports the following commands:-
 
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Setup@\spxentry{Setup}}\ignorespaces 
 
-\chapter{Centralised User Parameters}
-\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-94}}
+\chapter{centralized User Parameters}
+\label{\detokenize{Customization:centralized-user-parameters}}\label{\detokenize{Customization:index-94}}
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.
 
 

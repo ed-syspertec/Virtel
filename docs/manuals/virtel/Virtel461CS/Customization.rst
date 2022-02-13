@@ -55,25 +55,12 @@ Summary of Amendments
 Virtel version 4.61 (11th Oct 2021)
 -----------------------------------
 
-* Support for IPV6
-* New FTP Client interface
-* Enhanced Page Capture
-* New wizard support for VSR
-* Keyboard assignment enhancements
-* New dynamic symbolic for USSMSG10
-* Password and Passphrase support in native VTAM mode
-* DNS support on Line definition
-* Improvement to UNLOAD command. SYSPUNCH dynamically allocated
-* Scenario language updates
-* Silence command supports dynamic message updates
-* Various bug fixes
-
-.. note:: For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.61.
+.. note:: For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.
 
 IPV6 Support
 ============
 
-Virtel 4.61 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [http://[fd10:15c1:1921:a1a6::31]:41001. In all cases the square brackets are essential. 
+Virtel 4.60 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [http://[fd10:15c1:1921:a1a6::31]:41001. In all cases the square brackets are essential. 
 
 W2H Customization
 =================
@@ -373,7 +360,7 @@ The Virtel User Guide contains further information on how to use GUI based contr
 Customizable JavaScript User Exits
 ----------------------------------
 
-Virtel provides the following JavaScript functions that can be customized to give bespoke behaviour. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
+Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
 
 .. index::     
    pair: JavaScript User Exits;before_submitForm 
@@ -417,7 +404,7 @@ Virtel provides the following JavaScript functions that can be customized to giv
 .. index::     
    pair: JavaScript User Exits;when_init() 
 
-*   **when_init()** - Called for each sub-page after vir3270 initialisation.
+*   **when_init()** - Called for each sub-page after vir3270 initialization.
 
 .. index::     
    pair: JavaScript User Exits;when_focusGained 
@@ -1879,12 +1866,12 @@ The green triangular button will display the local storage macros. From here a c
 Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
+   single: Virtel Macros; centralized Macro mode
    
-Centralised Macros - DDI mode
+centralized Macros - DDI mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser's local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
+The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser's local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralized repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
 
 The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user's user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level. 
 
@@ -1893,14 +1880,14 @@ The advantage of maintaining macros in a central repository is that the administ
     To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF. 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Implementation 
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Implementation 
 
 
 Implementation
 """"""""""""""
 
-To use Centralised Macros users and Administrators must have "READ" access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
+To use Centralized Macros users and Administrators must have "READ" access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
 
 ::
 
@@ -1944,8 +1931,8 @@ To use Centralised Macros users and Administrators must have "READ" access to th
 *Security Resources required for DDI*
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Directories 
+   single: Virtel Macros; Centralized Macro mode
+   single: Centralized Macro mode; Directories 
 
 Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.
 
@@ -1954,8 +1941,8 @@ Additional Virtel transactions and directories are required to support DDI. Thes
 *DDI Directories*
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Setting options 
+   single: Virtel Macros; Centralized Macro mode
+   single: Centralized Macro mode; Setting options 
 
 Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this: 
 
@@ -1995,17 +1982,17 @@ The "useVirtelMacros" is the key property required for DDI. The various values f
     "w2hparm.useVirtelMacros":{“macrosAutoRefresh”: “never” | “once” | “daily” | “session” }
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Setting options [useVirtelMacros] 
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Setting options [useVirtelMacros] 
 
 **Macro Options**
 
 +------------+---------------------------------------------------------------------------------------+
 | **Option** |     **Description**                                                                   | 
 +============+=======================================================================================+
-| Never      |  Do not synchronise with DDI unless the user presses the refresh button. Default      | 
+| Never      |  Do not synchronize with DDI unless the user presses the refresh button. Default      | 
 +------------+---------------------------------------------------------------------------------------+
-| Once       |  Synchronise with DDI only when local storage hasn't been initialised                 |
+| Once       |  Synchronize with DDI only when local storage hasn't been initialized                 |
 +------------+---------------------------------------------------------------------------------------+
 | Daily      |  Once a Day                                                                           | 
 +------------+---------------------------------------------------------------------------------------+
@@ -2018,15 +2005,15 @@ Two other settings that can be used with DDI are: -
 
     This option turns on the ability to assign a macro with a shortcut or “hot key” made up of a combination of keys; such as ALT+F1, or CTRL+A.  Beware that some keyboard combinations may be reserved for the operating system or other Virtel functions. For example, CTRL-R is a browser refresh option.
 
-* **w2hparm.synchronizeVirtelMacros=true | false**           Synchronize all Centralised Repositories
+* **w2hparm.synchronizeVirtelMacros=true | false**           Synchronize all centralized Repositories
 
     If you are running multiple images of Virtel, say in a SYSPLEX arrangement using separate centralized repositories then the “synchronizeVirtelMacros” option should be set to true. This ensures that macro changes are reflected in all DDI repositories and associated local storage. 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; DDI Validation     
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; DDI Validation     
 
-Centralised DDI validation
+centralized DDI validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.
@@ -2035,7 +2022,7 @@ After uploading the settings objects stop and restart Virtel and then open a TSO
 
     http://192.168.170.48:41002/w2h/WEB2AJAX.htm+TSO
 
-The macro ICON should now be blue, indicating centralised DDI has been correctly configured. In local mode this ICON is green.
+The macro ICON should now be blue, indicating centralized DDI has been correctly configured. In local mode this ICON is green.
 
 |image39|
 
@@ -2048,12 +2035,12 @@ Pressing the Blue ICON should display an empty macro list:
 *Empty Macro list*
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode;Configuring the Centralised Repository 
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode;Configuring the centralized Repository 
 
-Configuring the Centralised Repository
+Configuring the centralized Repository
 
-To configure the centralised DDI repository we need to create an "initial" MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of "writing" or exporting their own macros up to the repository. This is administered by the Virtel administrator. 
+To configure the centralized DDI repository we need to create an "initial" MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of "writing" or exporting their own macros up to the repository. This is administered by the Virtel administrator. 
 
 ::
 
@@ -2064,8 +2051,8 @@ To configure the centralised DDI repository we need to create an "initial" MACRO
 *Accessing a local macro facility -  Green ICON* 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Creating an initial macro
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Creating an initial macro
 
 Creating an initial macro
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2073,7 +2060,7 @@ Creating an initial macro
 SDSF test macro
 """""""""""""""
 
-In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the Centralised DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:
+In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the centralized DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:
 
 ::
 
@@ -2096,8 +2083,8 @@ Saved the macro with the name SDSF. Now, press the Green ICON. The macro should 
 Next, we need to create a "MACROS.JSON" file by exporting the SDSF macro we have just created. 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Uploading macros through the DDI interface
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Uploading macros through the DDI interface
 
 Uploading macros to the centralized repository
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -2132,8 +2119,8 @@ Refresh the GLOBAL directory by clicking the broken circled arrow in the top lef
 To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear. 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Creating user macros
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Creating user macros
  
 Creating a user macro
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2146,8 +2133,8 @@ Here is an example of a user macro called “CUSTINQ” which drives a sequence 
 |image47| 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Macro panel options
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Macro panel options
 
 
 Macro Options
@@ -2164,8 +2151,8 @@ The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN th
     The “Edit” feature is for viewing only.
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Directory and Macro Administration
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Directory and Macro Administration
  
 Directory and Macro Administration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2173,8 +2160,8 @@ Directory and Macro Administration
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a "local" facility and export these up into the central repository to make them available to users at a Global, Group and User level. 
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Making macros available
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Making macros available
 
 Making a user's DDI macro available to a DDI Group
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -2222,8 +2209,8 @@ It is not necessary to export a "dummy" macro from a "local mode" setup to get s
 *Dummy MACROS.JSON file*
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Troubleshooting
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Troubleshooting
  
 Centralized DDI Troubleshooting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2246,8 +2233,8 @@ If the Virtel cache is out of sync with the DDI/macro settings or you are trying
     CTRL R
 
 .. index:: 
-   single: Virtel Macros; Centralised Macro mode
-   single: Centralised Macro mode; Macro Formats
+   single: Virtel Macros; centralized Macro mode
+   single: centralized Macro mode; Macro Formats
 
 Macro formats and Commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2288,7 +2275,7 @@ The macro editor supports the following commands:-
    single: Centralized USERPARM mode; Setup
 
 
-Centralised User Parameters
+centralized User Parameters
 ===========================
 
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.

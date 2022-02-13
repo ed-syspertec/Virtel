@@ -11610,6 +11610,34 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 <p class="last">You must have setup the “options” mode customization before you can generate “option” files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See <a class="reference internal" href="#v461ug-customizing-with-option"><span class="std std-ref">“Virtel Customization Modes”</span></a> on how to set up customising with the options mode.</p>
 </div>
 </div>
+<div class="section" id="left-align-text">
+<span id="index-449"></span><h4>Left align text<a class="headerlink" href="#left-align-text" title="Permalink to this headline">¶</a></h4>
+<p>To display languages which require left alignment, such as a character set where no monospace font is available, Thailand for example, set the W2HPARM option “leftalignpage” to true. By default, W2H displays centres each line when the font is not exactly monospace. Aligning left may give a better display.</p>
+</div>
+<div class="section" id="special-unicode-character-support">
+<span id="index-450"></span><h4>Special UNICODE character support<a class="headerlink" href="#special-unicode-character-support" title="Permalink to this headline">¶</a></h4>
+<p>Some UNICODE characters have no EBCDIC equivalent and are translated to an equivalent value. Curly quotes are an example. These are translated to striaght quotes. To disable this translation set the W2HPARM option “unicodereplactiv” to false.</p>
+</div>
+<div class="section" id="square-bracket-support">
+<span id="index-451"></span><h4>Square Bracket Support<a class="headerlink" href="#square-bracket-support" title="Permalink to this headline">¶</a></h4>
+<p>Characters [ and ] may be incorrectly displayed on the MVS console. The character set used natively by the MVS console is CP1047. For this reason, VIRTEL uses this codepage to write its messages to the console. To be able to view [] from VWA, the codepage IBM1047 must be used. If this is not the default Virtel codepage (as specified in the TCT), it can be forced directly in the calling URL:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd><a class="reference external" href="http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047">http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047</a></dd>
+</dl>
+<p>The entry point must refer to a scenario allowing to process the contents of the URL variable CODEPAGE. By default the SCENLOGM scenario can be used.If another identification
+scenario is implemented, it must contain the following lines:</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first docutils">
+<dt>COPY$ INPUT-TO-VARIABLE,FIELD=’CODEPAGE’,             *</dt>
+<dd>VAR=’CODEPAGE’</dd>
+</dl>
+<p class="last">IF$ NOT-FOUND,THEN=NOCODEPG
+SET$  ENCODING,UTF-8,’<a href="#id11"><span class="problematic" id="id12">*</span></a>CODEPAGE’</p>
+</dd>
+</dl>
+</div>
 </div>
 <div class="section" id="appendix">
 <h3>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h3>
@@ -11895,6 +11923,13 @@ by Typing</td>
 <tr class="row-even"><td>“jokerkey”</td>
 <td>Jokey Key value</td>
 <td>none</td>
+</tr>
+<tr class="row-odd"><td colspan="2">“unicodereplactiv” | Convert UNICODE</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td>“leftalignpage”</td>
+<td>Align text to left</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>

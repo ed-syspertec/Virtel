@@ -109,7 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#virtel-lines">Virtel Lines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-transactions">Virtel Transactions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-macros">Virtel Macros</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#centralised-user-parameters">Centralised User Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#centralized-user-parameters">centralized User Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#system-management">System Management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-msg10-usstab">Virtel MSG10 USSTAB</a></li>
@@ -232,29 +232,15 @@ their respective owners.</p>
 <span id="virtel461cs-summary-of-amendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-version-4-61-11th-oct-2021">
 <h3>Virtel version 4.61 (11th Oct 2021)<a class="headerlink" href="#virtel-version-4-61-11th-oct-2021" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Support for IPV6</li>
-<li>New FTP Client interface</li>
-<li>Enhanced Page Capture</li>
-<li>New wizard support for VSR</li>
-<li>Keyboard assignment enhancements</li>
-<li>New dynamic symbolic for USSMSG10</li>
-<li>Password and Passphrase support in native VTAM mode</li>
-<li>DNS support on Line definition</li>
-<li>Improvement to UNLOAD command. SYSPUNCH dynamically allocated</li>
-<li>Scenario language updates</li>
-<li>Silence command supports dynamic message updates</li>
-<li>Various bug fixes</li>
-</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Virtel Technical Newsletter TN202004: Whats new in Virtel 4.61.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.</p>
 </div>
 </div>
 </div>
 <div class="section" id="ipv6-support">
 <h2>IPV6 Support<a class="headerlink" href="#ipv6-support" title="Permalink to this headline">¶</a></h2>
-<p>Virtel 4.61 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [<a class="reference external" href="http://[fd10:15c1:1921:a1a6::31]:41001">http://[fd10:15c1:1921:a1a6::31]:41001</a>. In all cases the square brackets are essential.</p>
+<p>Virtel 4.60 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example [<a class="reference external" href="http://[fd10:15c1:1921:a1a6::31]:41001">http://[fd10:15c1:1921:a1a6::31]:41001</a>. In all cases the square brackets are essential.</p>
 </div>
 <div class="section" id="w2h-customization">
 <h2>W2H Customization<a class="headerlink" href="#w2h-customization" title="Permalink to this headline">¶</a></h2>
@@ -475,7 +461,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </div>
 <div class="section" id="customizable-javascript-user-exits">
 <span id="index-7"></span><h3>Customizable JavaScript User Exits<a class="headerlink" href="#customizable-javascript-user-exits" title="Permalink to this headline">¶</a></h3>
-<p>Virtel provides the following JavaScript functions that can be customized to give bespoke behaviour. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:</p>
+<p>Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:</p>
 <ul id="index-8">
 <li><p class="first"><strong>before_submitForm(pfKey,oFrom)</strong> - Called before submitting a Virtel request.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">pfKey</span><span class="o">*</span> <span class="n">The</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">key</span> <span class="n">pressed</span><span class="o">.</span> <span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;PF1&quot;</span><span class="p">,</span><span class="n">etc</span><span class="o">.</span>
@@ -508,7 +494,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </li>
 </ul>
 <ul class="simple" id="index-12">
-<li><strong>when_init()</strong> - Called for each sub-page after vir3270 initialisation.</li>
+<li><strong>when_init()</strong> - Called for each sub-page after vir3270 initialization.</li>
 </ul>
 <ul class="simple" id="index-13">
 <li><strong>when_focusGained()</strong> - Called whenever the 3270 window gains focus.</li>
@@ -1494,9 +1480,9 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.</p>
 </div>
 </div>
-<div class="section" id="centralised-macros-ddi-mode">
-<span id="index-79"></span><h4>Centralised Macros - DDI mode<a class="headerlink" href="#centralised-macros-ddi-mode" title="Permalink to this headline">¶</a></h4>
-<p>The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.</p>
+<div class="section" id="centralized-macros-ddi-mode">
+<span id="index-79"></span><h4>centralized Macros - DDI mode<a class="headerlink" href="#centralized-macros-ddi-mode" title="Permalink to this headline">¶</a></h4>
+<p>The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralized repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.</p>
 <p>The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1504,7 +1490,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 <div class="section" id="implementation">
 <span id="index-80"></span><h5>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h5>
-<p>To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:</p>
+<p>To use Centralized Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP0</span>   <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span> <span class="n">COND</span><span class="o">=</span><span class="n">ONLY</span>
 <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">SYSTSIN</span>  <span class="n">DD</span>  <span class="o">*</span>
@@ -1590,10 +1576,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Never</td>
-<td>Do not synchronise with DDI unless the user presses the refresh button. Default</td>
+<td>Do not synchronize with DDI unless the user presses the refresh button. Default</td>
 </tr>
 <tr class="row-odd"><td>Once</td>
-<td>Synchronise with DDI only when local storage hasn’t been initialised</td>
+<td>Synchronize with DDI only when local storage hasn’t been initialized</td>
 </tr>
 <tr class="row-even"><td>Daily</td>
 <td>Once a Day</td>
@@ -1610,7 +1596,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <div><p>This option turns on the ability to assign a macro with a shortcut or “hot key” made up of a combination of keys; such as ALT+F1, or CTRL+A.  Beware that some keyboard combinations may be reserved for the operating system or other Virtel functions. For example, CTRL-R is a browser refresh option.</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>w2hparm.synchronizeVirtelMacros=true | false</strong>           Synchronize all Centralised Repositories</p>
+<li><p class="first"><strong>w2hparm.synchronizeVirtelMacros=true | false</strong>           Synchronize all centralized Repositories</p>
 <blockquote>
 <div><p>If you are running multiple images of Virtel, say in a SYSPLEX arrangement using separate centralized repositories then the “synchronizeVirtelMacros” option should be set to true. This ensures that macro changes are reflected in all DDI repositories and associated local storage.</p>
 </div></blockquote>
@@ -1618,20 +1604,20 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </ul>
 </div>
 </div>
-<div class="section" id="centralised-ddi-validation">
-<span id="index-84"></span><h4>Centralised DDI validation<a class="headerlink" href="#centralised-ddi-validation" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="centralized-ddi-validation">
+<span id="index-84"></span><h4>centralized DDI validation<a class="headerlink" href="#centralized-ddi-validation" title="Permalink to this headline">¶</a></h4>
 <p>After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO</span>
 </pre></div>
 </div>
-<p>The macro ICON should now be blue, indicating centralised DDI has been correctly configured. In local mode this ICON is green.</p>
+<p>The macro ICON should now be blue, indicating centralized DDI has been correctly configured. In local mode this ICON is green.</p>
 <p><img alt="image39" src="../../../_images/image3915.png" /></p>
 <p><em>Centralized DDI is active - ICON is blue</em></p>
 <p>Pressing the Blue ICON should display an empty macro list:</p>
 <p><img alt="image40" src="../../../_images/image409.png" /></p>
 <p><em>Empty Macro list</em></p>
-<p id="index-85">Configuring the Centralised Repository</p>
-<p>To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.</p>
+<p id="index-85">Configuring the centralized Repository</p>
+<p>To configure the centralized DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span>
 </pre></div>
 </div>
@@ -1642,7 +1628,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <span id="index-86"></span><h4>Creating an initial macro<a class="headerlink" href="#creating-an-initial-macro" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="sdsf-test-macro">
 <h5>SDSF test macro<a class="headerlink" href="#sdsf-test-macro" title="Permalink to this headline">¶</a></h5>
-<p>In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the Centralised DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:</p>
+<p>In the next section we will create a macro, which performs a basic SDSF task in TSO, export it and then import it into the USR-DIR directory through the centralized DDI import facility. We will use the non-DDI macro feature on port 41001 to create a test macro using the macro record button. The macro will be called SDSF. The following key sequences where entered from the ISPF primary option menu after logging on to TSO on line 41001:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Logon</span> <span class="n">to</span> <span class="n">TSO</span> <span class="ow">and</span> <span class="n">bring</span> <span class="n">up</span> <span class="n">the</span> <span class="n">ISPF</span> <span class="n">primary</span> <span class="n">menu</span> <span class="n">panel</span><span class="o">.</span>
 <span class="n">Press</span> <span class="n">Virtel</span> <span class="n">macro</span> <span class="n">record</span> <span class="n">button</span>    <span class="p">[</span><span class="n">To</span> <span class="n">the</span> <span class="n">left</span> <span class="n">of</span> <span class="n">the</span> <span class="n">green</span> <span class="n">ICON</span><span class="p">]</span>
 <span class="o">=</span><span class="n">S</span>                                                  <span class="n">Short</span> <span class="n">cut</span> <span class="n">to</span> <span class="n">SDSF</span> <span class="p">(</span><span class="n">This</span> <span class="n">will</span> <span class="n">be</span> <span class="n">site</span> <span class="n">dependant</span><span class="p">]</span>
@@ -1780,8 +1766,8 @@ CTRL R</p>
 </div>
 </div>
 </div>
-<div class="section" id="centralised-user-parameters">
-<span id="index-94"></span><h2>Centralised User Parameters<a class="headerlink" href="#centralised-user-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="centralized-user-parameters">
+<span id="index-94"></span><h2>centralized User Parameters<a class="headerlink" href="#centralized-user-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.</p>
 <div class="section" id="userparm-setup">
 <h3>USERPARM Setup<a class="headerlink" href="#userparm-setup" title="Permalink to this headline">¶</a></h3>
