@@ -2361,9 +2361,12 @@ The response should be :
 <li>434 Certificate key not compatible with cipher suite</li>
 <li>435 Certificate authority unknown</li>
 <li>5003 Browser sent clear text (http instead of https)</li>
+<li>5006 SSL failed to initialize. Check RACF SSLSETUP job.</li>
 </ul>
 </dd>
 </dl>
+<p>For 5003, make sure your url is HTTPS and not HTTP.</p>
+<p>For 5006, list the Virtel key ring and ensure all the relevant keys are attached. There should be a client certificate (if using client certificates), a server certificate and an associated signing certificate.</p>
 <p>3   Virtel messages</p>
 <blockquote>
 <div><p><strong>VIRHT57E LINE IS NOT SET UP FOR HTTPS</strong></p>

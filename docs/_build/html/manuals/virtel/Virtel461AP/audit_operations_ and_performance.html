@@ -422,7 +422,7 @@ VIR0202I ---END OF LIST---
 </div>
 <p>This will trigger the log program VIR0021A to write messages to either the VIRLOGX DD statement or the VIRLOGY DD statement depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE option. The following DCB attributes. Recommended space allocation could be 10 tracks for each dataset.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOGFILEX</span> <span class="ow">and</span> <span class="n">LOGFILEY</span>
-<span class="n">DCB</span> <span class="n">attributes</span> <span class="p">:</span> <span class="n">PS</span><span class="p">,</span> <span class="n">LRECL</span><span class="o">=</span><span class="mi">165</span><span class="p">,</span> <span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">,</span> <span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">32000</span>
+<span class="n">DCB</span> <span class="n">attributes</span> <span class="p">:</span> <span class="n">PS</span><span class="p">,</span> <span class="n">LRECL</span><span class="o">=</span><span class="mi">166</span><span class="p">,</span> <span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">,</span> <span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">2000</span>
 </pre></div>
 </div>
 <p>If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile.</p>
@@ -434,6 +434,10 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="p">,</span><span class="n">D</span>              <span class="n">Display</span> <span class="n">active</span> <span class="n">logfile</span>
 <span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="p">,</span><span class="n">I</span>              <span class="n">Switch</span> <span class="n">logfiles</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you issue the “SWITCH” or “DISPLAY” command and LOGFILES are not in use i.e. LOG=FILE is not coded in the TCT you will receive the message VIR0068E INVALID COMMAND.</p>
 </div>
 </div>
 <div class="section" id="memdisplay-command">

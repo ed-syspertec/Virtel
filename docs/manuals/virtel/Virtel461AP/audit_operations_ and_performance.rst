@@ -317,7 +317,7 @@ This will trigger the log program VIR0021A to write messages to either the VIRLO
 ::
 
     LOGFILEX and LOGFILEY 
-    DCB attributes : PS, LRECL=165, RECFM=VB, BLKSIZE=32000
+    DCB attributes : PS, LRECL=166, RECFM=VB, BLKSIZE=2000
 
 If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. 
 
@@ -336,6 +336,10 @@ To determine the status of the LOG file, or to switch the log file manually issu
     
     F VIRTEL,LOG,D		Display active logfile
     F VIRTEL,LOG,I		Switch logfiles
+
+.. note::
+
+        If you issue the "SWITCH" or "DISPLAY" command and LOGFILES are not in use i.e. LOG=FILE is not coded in the TCT you will receive the message VIR0068E INVALID COMMAND.
 
 .. raw:: latex
 

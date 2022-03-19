@@ -3059,6 +3059,12 @@ Common PAGENT return codes:
     *   434 Certificate key not compatible with cipher suite
     *   435 Certificate authority unknown
     *   5003 Browser sent clear text (http instead of https)
+    *   5006 SSL failed to initialize. Check RACF SSLSETUP job.
+
+For 5003, make sure your url is HTTPS and not HTTP.
+
+For 5006, list the Virtel key ring and ensure all the relevant keys are attached. There should be a client certificate (if using client certificates), a server certificate and an associated signing certificate.
+
 
 3   Virtel messages
     

@@ -14721,8 +14721,9 @@ The entry point must refer to a scenario allowing to process the contents of the
 scenario is implemented, it must contain the following lines:
 
 ::
+
     COPY$ INPUT-TO-VARIABLE,FIELD='CODEPAGE',             *
-          VAR='CODEPAGE'
+        VAR='CODEPAGE'
     IF$ NOT-FOUND,THEN=NOCODEPG
     SET$  ENCODING,UTF-8,'*CODEPAGE'
 
@@ -14877,6 +14878,12 @@ Default values for W2H parameters
 | "unicodereplactiv" | Convert UNICODE    | true                                              |
 +-----------------+-----------------------+---------------------------------------------------+
 | "leftalignpage" | Align text to left    | false                                             |
++-----------------+-----------------------+---------------------------------------------------+
+| "mousewheelup"  | Allocate mouse wheel  | "PFn", "no"                                       |
+|                 | up. Default=PF7       |                                                   |
++-----------------+-----------------------+---------------------------------------------------+
+| "mousewheeldn"  | Allocate mouse wheel  | "PFn", "no"                                       |
+|                 | down. Default=PF8     |                                                   |
 +-----------------+-----------------------+---------------------------------------------------+
 
 *Default W2H parameters: List of keywords and possible values*

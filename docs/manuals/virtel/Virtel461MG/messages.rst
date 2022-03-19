@@ -3886,14 +3886,19 @@ Meaning
 Action
     Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.
         
-VIR1728E Error: Cannot open xxxxxxxx file. File control record missing.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+VIR1728E Error: Cannot open xxxxxxxx. Error description
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0017
 Meaning
+    Error : File control record missing.
     A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx and obtain the control record.
+Meaning
+    Error : ACB was not found.
+    A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL.
 Action
     Check the SYSLOG for other error messages. Contact technical support.
+
 
 VIR1729E LINE linename NOT FOUND
 """"""""""""""""""""""""""""""""

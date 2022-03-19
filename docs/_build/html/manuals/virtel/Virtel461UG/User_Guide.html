@@ -11627,16 +11627,12 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 </dl>
 <p>The entry point must refer to a scenario allowing to process the contents of the URL variable CODEPAGE. By default the SCENLOGM scenario can be used.If another identification
 scenario is implemented, it must contain the following lines:</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><dl class="first docutils">
-<dt>COPY$ INPUT-TO-VARIABLE,FIELD=’CODEPAGE’,             *</dt>
-<dd>VAR=’CODEPAGE’</dd>
-</dl>
-<p class="last">IF$ NOT-FOUND,THEN=NOCODEPG
-SET$  ENCODING,UTF-8,’<a href="#id11"><span class="problematic" id="id12">*</span></a>CODEPAGE’</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ INPUT-TO-VARIABLE,FIELD=&#39;CODEPAGE&#39;,             *
+    VAR=&#39;CODEPAGE&#39;
+IF$ NOT-FOUND,THEN=NOCODEPG
+SET$  ENCODING,UTF-8,&#39;*CODEPAGE&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="appendix">
@@ -11930,6 +11926,16 @@ by Typing</td>
 <tr class="row-even"><td>“leftalignpage”</td>
 <td>Align text to left</td>
 <td>false</td>
+</tr>
+<tr class="row-odd"><td>“mousewheelup”</td>
+<td>Allocate mouse wheel
+up. Default=PF7</td>
+<td>“PFn”, “no”</td>
+</tr>
+<tr class="row-even"><td>“mousewheeldn”</td>
+<td>Allocate mouse wheel
+down. Default=PF8</td>
+<td>“PFn”, “no”</td>
 </tr>
 </tbody>
 </table>
