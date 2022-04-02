@@ -1763,11 +1763,12 @@ CTRL R</p>
 <span class="p">],</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
 </pre></div>
 </div>
+<p id="index-94">See Appendix A - Virtel MAcro Quick Reference Sheet for further details on macro formats, commands, identifies and built in functions.</p>
 </div>
 </div>
 </div>
 <div class="section" id="centralized-user-parameters">
-<span id="index-94"></span><h2>centralized User Parameters<a class="headerlink" href="#centralized-user-parameters" title="Permalink to this headline">¶</a></h2>
+<span id="index-95"></span><h2>centralized User Parameters<a class="headerlink" href="#centralized-user-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.</p>
 <div class="section" id="userparm-setup">
 <h3>USERPARM Setup<a class="headerlink" href="#userparm-setup" title="Permalink to this headline">¶</a></h3>
@@ -1818,7 +1819,7 @@ CTRL R</p>
 <p><img alt="image53" src="../../../_images/image5313.png" /></p>
 <p><em>Example of a Sanity Check after setting up USERPARM</em></p>
 <div class="section" id="testing-the-userparm-feature">
-<span id="index-95"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
+<span id="index-96"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
 <p>To test the USERPARM feature follow the procedure below :-</p>
 <p>1   Logon to a 3270 application, say TSO
 2   Open the settings dialog
@@ -1835,14 +1836,14 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="removing-a-user-s-settings">
-<span id="index-96"></span><h4>Removing a user’s settings<a class="headerlink" href="#removing-a-user-s-settings" title="Permalink to this headline">¶</a></h4>
+<span id="index-97"></span><h4>Removing a user’s settings<a class="headerlink" href="#removing-a-user-s-settings" title="Permalink to this headline">¶</a></h4>
 <p>This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:</p>
 <p><img alt="image55" src="../../../_images/image5513.png" /></p>
 <p><em>Listing the USERPARM directory</em></p>
 <p>We can remove the entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the default user parameters as defined by the Administrator.</p>
 </div>
 <div class="section" id="userparm-problems">
-<span id="index-97"></span><h4>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h4>
+<span id="index-98"></span><h4>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h4>
 <p>When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
 <span class="mi">330</span>
@@ -1883,12 +1884,12 @@ CTRL R</p>
 </div>
 </div>
 <div class="section" id="security">
-<span id="index-98"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<span id="index-99"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-activate-ssl-at-tls">
 <h3>How To Activate SSL AT-TLS<a class="headerlink" href="#how-to-activate-ssl-at-tls" title="Permalink to this headline">¶</a></h3>
 <p>To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases. AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.</p>
 <div class="section" id="installation-steps">
-<span id="index-99"></span><h4>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h4>
+<span id="index-100"></span><h4>Installation steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="install-policy-agent-procedure">
 <h5>Install Policy Agent procedure<a class="headerlink" href="#install-policy-agent-procedure" title="Permalink to this headline">¶</a></h5>
 <p>If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.</p>
@@ -1907,7 +1908,7 @@ CTRL R</p>
 <p>The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</p>
 </div>
 <div class="section" id="create-the-server-certificate">
-<span id="index-100"></span><h5>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h5>
+<span id="index-101"></span><h5>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h5>
 <p>A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)</p>
 </div>
@@ -1920,7 +1921,7 @@ RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VI
 <p>To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.</p>
 </div>
 <div class="section" id="tcpip-definitions-for-at-tls">
-<span id="index-101"></span><h5>TCPIP Definitions for AT-TLS<a class="headerlink" href="#tcpip-definitions-for-at-tls" title="Permalink to this headline">¶</a></h5>
+<span id="index-102"></span><h5>TCPIP Definitions for AT-TLS<a class="headerlink" href="#tcpip-definitions-for-at-tls" title="Permalink to this headline">¶</a></h5>
 <p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span> <span class="n">TTLS</span>
 <span class="n">AUTOLOG</span> <span class="mi">5</span> <span class="n">PAGENT</span> <span class="n">ENDAUTOLOG</span>
@@ -1930,7 +1931,7 @@ RACF. At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VI
 </div>
 </div>
 <div class="section" id="operations">
-<span id="index-102"></span><h4>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h4>
+<span id="index-103"></span><h4>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="starting-the-policy-agent">
 <h5>Starting the Policy Agent<a class="headerlink" href="#starting-the-policy-agent" title="Permalink to this headline">¶</a></h5>
 <p>The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command S PAGENT.
@@ -1953,7 +1954,7 @@ Agent is started. Do not be tempted to authorize applications to use this RACF r
 <p>Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.</p>
 </div>
 <div class="section" id="common-error-messages">
-<span id="index-103"></span><h5>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h5>
+<span id="index-104"></span><h5>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h5>
 <p>Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="n">nnn</span> <span class="n">event</span>
 </pre></div>
@@ -1991,7 +1992,7 @@ In Firefox the cipher specifications are accessed by typing <a class="reference 
 </div>
 </div>
 <div class="section" id="ssl-signing-on-using-server-and-client-certificates">
-<span id="index-104"></span><h4>SSL - Signing On Using Server And Client Certificates<a class="headerlink" href="#ssl-signing-on-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h4>
+<span id="index-105"></span><h4>SSL - Signing On Using Server And Client Certificates<a class="headerlink" href="#ssl-signing-on-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h4>
 <p>In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:</p>
 <ul class="simple">
@@ -2011,7 +2012,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </ol>
 </div>
 <div class="section" id="what-is-a-certificates">
-<span id="index-105"></span><h4>What is a Certificates<a class="headerlink" href="#what-is-a-certificates" title="Permalink to this headline">¶</a></h4>
+<span id="index-106"></span><h4>What is a Certificates<a class="headerlink" href="#what-is-a-certificates" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="x-509-certificate">
 <h5>X.509 certificate?<a class="headerlink" href="#x-509-certificate" title="Permalink to this headline">¶</a></h5>
 <p>Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or Certification Authority (CA).</p>
@@ -2053,7 +2054,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <p>In this configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.</p>
 </div>
 <div class="section" id="configuring-the-certificates">
-<span id="index-106"></span><h5>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this headline">¶</a></h5>
+<span id="index-107"></span><h5>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this headline">¶</a></h5>
 <p>The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">DCERTCA</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span>
 <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
@@ -2131,7 +2132,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 </div>
 <div class="section" id="cerificates-and-key-rings">
-<span id="index-107"></span><h4>Cerificates and Key rings<a class="headerlink" href="#cerificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
+<span id="index-108"></span><h4>Cerificates and Key rings<a class="headerlink" href="#cerificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
 <p>Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*-----------------------------------------------------------------*/</span>
 <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> <span class="o">*/</span>
@@ -2151,7 +2152,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 <p>Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.</p>
 <div class="section" id="user-certificate">
-<span id="index-108"></span><h5>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this headline">¶</a></h5>
+<span id="index-109"></span><h5>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this headline">¶</a></h5>
 <p>The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*----------------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">Associate</span> <span class="n">certificate</span> <span class="k">with</span> <span class="n">user</span> <span class="nb">id</span> <span class="o">*</span>
@@ -2197,7 +2198,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </div>
 </div>
 <div class="section" id="importing-the-certificate-on-the-client-work-station">
-<span id="index-109"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
+<span id="index-110"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
 <p>To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.</p>
 <p><img alt="image19" src="../../../_images/image1917.png" /></p>
@@ -2207,7 +2208,7 @@ certificate import wizard is run to import the certificate.</p>
 </div>
 </div>
 <div class="section" id="passticket-support">
-<span id="index-110"></span><h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this headline">¶</a></h4>
+<span id="index-111"></span><h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this headline">¶</a></h4>
 <p>The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
@@ -2235,7 +2236,7 @@ accordingly:</p>
 <p>In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.</p>
 </div>
 <div class="section" id="pagent-configuration">
-<span id="index-111"></span><h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this headline">¶</a></h4>
+<span id="index-112"></span><h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this headline">¶</a></h4>
 <p>To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TTLSEnvironmentAction</span> <span class="n">VIRTELenvir_inSec</span>
 <span class="p">{</span>
@@ -2288,7 +2289,7 @@ you have made changes you can issue the following z/OS command:</p>
 </div>
 </div>
 <div class="section" id="configuring-virtel-cics-example">
-<span id="index-112"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
+<span id="index-113"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
 <p>The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.</p>
 <p><img alt="image21" src="../../../_images/image2130.png" /></p>
 <p><em>Note that PassTicket is set to 2.</em> This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has
@@ -2308,7 +2309,7 @@ obtained.</p>
 </div>
 </div>
 <div class="section" id="at-tls-problems">
-<span id="index-113"></span><h4>AT-TLS Problems<a class="headerlink" href="#at-tls-problems" title="Permalink to this headline">¶</a></h4>
+<span id="index-114"></span><h4>AT-TLS Problems<a class="headerlink" href="#at-tls-problems" title="Permalink to this headline">¶</a></h4>
 <p>It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.</p>
 <ol class="arabic simple">
 <li>Is AT-TLS active.</li>
@@ -2400,7 +2401,7 @@ The response should be :
 </div>
 </div>
 <div class="section" id="ntlm-support">
-<span id="index-114"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this headline">¶</a></h3>
+<span id="index-115"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this headline">¶</a></h3>
 <p>Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.</p>
 <div class="section" id="enable-windows-integrated-authentication-for-internet-exmplorer">
 <h4>Enable Windows Integrated Authentication for Internet Exmplorer<a class="headerlink" href="#enable-windows-integrated-authentication-for-internet-exmplorer" title="Permalink to this headline">¶</a></h4>
@@ -2488,7 +2489,7 @@ The response should be :
 </div>
 </div>
 <div class="section" id="ntlm-troubleshooting">
-<span id="index-115"></span><h4>NTLM Troubleshooting<a class="headerlink" href="#ntlm-troubleshooting" title="Permalink to this headline">¶</a></h4>
+<span id="index-116"></span><h4>NTLM Troubleshooting<a class="headerlink" href="#ntlm-troubleshooting" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="still-receiving-login-prompt">
 <h5>Still receiving login prompt<a class="headerlink" href="#still-receiving-login-prompt" title="Permalink to this headline">¶</a></h5>
 <p>If you still continue to receive logon prompt, please check your configuration. Most common error are:</p>
@@ -2501,9 +2502,9 @@ The response should be :
 </div>
 </div>
 <div class="section" id="system-management">
-<span id="index-116"></span><h2>System Management<a class="headerlink" href="#system-management" title="Permalink to this headline">¶</a></h2>
+<span id="index-117"></span><h2>System Management<a class="headerlink" href="#system-management" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-message-controls">
-<span id="index-117"></span><h3>Virtel Message Controls<a class="headerlink" href="#virtel-message-controls" title="Permalink to this headline">¶</a></h3>
+<span id="index-118"></span><h3>Virtel Message Controls<a class="headerlink" href="#virtel-message-controls" title="Permalink to this headline">¶</a></h3>
 <p>By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">)</span>
@@ -2513,7 +2514,7 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
 </pre></div>
 </div>
-<p id="index-118">The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:</p>
+<p id="index-119">The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span> <span class="n">Default</span><span class="o">=</span><span class="n">CONSOLE</span>
 </pre></div>
 </div>
@@ -2578,13 +2579,13 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 </div>
 </div>
 <div class="section" id="virconf-usage">
-<span id="index-119"></span><h3>VIRCONF Usage<a class="headerlink" href="#virconf-usage" title="Permalink to this headline">¶</a></h3>
+<span id="index-120"></span><h3>VIRCONF Usage<a class="headerlink" href="#virconf-usage" title="Permalink to this headline">¶</a></h3>
 <p>VIRCONF is a batch facilty you can use to add, update, delete VIRTEL definitions stored in the ARBO file. There is also an unload facility which can be invoked either in batch or dynamically through the Virtel UNLOAD command. See below.</p>
 <p><strong>VIRCONF does not open the ARBO for output.</strong></p>
 <p>If you run VIRCONF when Virtel is active you can get IEC161I error messages when performing add, update or replace options. The reason for this error is that the VIRCONF program requires exclusive control of the ARBO file. Following the performance improvements, through the introduction of VSAM LSR, VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. The unload option is not affected by this serialization.</p>
 <div class="section" id="unloading-the-arbo-dataset">
 <h4>Unloading the ARBO dataset<a class="headerlink" href="#unloading-the-arbo-dataset" title="Permalink to this headline">¶</a></h4>
-<p id="index-120">The following JCL is an example of the VIRCONF program.</p>
+<p id="index-121">The following JCL is an example of the VIRCONF program.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UNLOADS</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//*</span>
@@ -2604,7 +2605,7 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 <span class="o">//</span>             <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6080</span><span class="p">)</span>
 </pre></div>
 </div>
-<p id="index-121">A dynamic UNLOAD can be run through the following Virtel command:-</p>
+<p id="index-122">A dynamic UNLOAD can be run through the following Virtel command:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">virtel</span><span class="p">,</span><span class="n">unload</span>
 </pre></div>
 </div>
@@ -2625,7 +2626,7 @@ VIR0223I UNLOAD ENDED
 </div>
 </div>
 <div class="section" id="virtel-msg10-usstab">
-<span id="index-122"></span><h2>Virtel MSG10 USSTAB<a class="headerlink" href="#virtel-msg10-usstab" title="Permalink to this headline">¶</a></h2>
+<span id="index-123"></span><h2>Virtel MSG10 USSTAB<a class="headerlink" href="#virtel-msg10-usstab" title="Permalink to this headline">¶</a></h2>
 <p>This section discusses how to build and implement a VTAM USSMSG10 screen using the VIRTEL VIR0021W USSTAB menu program. Customers can take there existing VTAM USSMSG10 code and pace the assembled module in the VIRTEL DFHRPL load library. The VIR0021W program will interrogate the customers USSTAB module and create an equivalent VIRTEL 3270 MAP. The 3270 MAP will be passed to the module VIR0010 where it will be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL DFHRPL library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.</p>
 <div class="section" id="program-restrictions">
 <h3>Program restrictions<a class="headerlink" href="#program-restrictions" title="Permalink to this headline">¶</a></h3>
@@ -2695,7 +2696,7 @@ VIR0223I UNLOAD ENDED
 </div>
 </div>
 <div class="section" id="cappmenu-customization">
-<span id="index-123"></span><h2>cAppMenu Customization<a class="headerlink" href="#cappmenu-customization" title="Permalink to this headline">¶</a></h2>
+<span id="index-124"></span><h2>cAppMenu Customization<a class="headerlink" href="#cappmenu-customization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="tier-menu-design-overview">
 <h3>Tier Menu Design Overview<a class="headerlink" href="#tier-menu-design-overview" title="Permalink to this headline">¶</a></h3>
 <p>The Default Application Menu can be customized to the NEW enhanced feature!  The Virtel Administrator can now choose to emulate any 3270 Session Manager; making Virtel a viable replacement for any Session Manager product.</p>
@@ -3177,7 +3178,7 @@ var cAppMenuOptions = {};
 </div>
 </div>
 <div class="section" id="virtel-ftp-client">
-<span id="index-124"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
+<span id="index-125"></span><h2>Virtel FTP Client<a class="headerlink" href="#virtel-ftp-client" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL Web Access v4.59 and above supports a FTP file transfer interface through the use of FTP command templates and the local FTP client. The Virtel FTP package consists of the following elements:</p>
@@ -3440,7 +3441,7 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="faqs">
-<span id="index-125"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
+<span id="index-126"></span><h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-specify-a-codepage-in-a-url">
 <h3>How to specify a codepage in a URL<a class="headerlink" href="#how-to-specify-a-codepage-in-a-url" title="Permalink to this headline">¶</a></h3>
 <p>Some users want to see square brackets displayed in their VWA presentation, for example “C” programmers. The default UTF8 / MVS codepage translation doesn’t transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.</p>
@@ -3449,16 +3450,16 @@ w2hparm.showftp = true;
 </div>
 </div>
 <div class="section" id="how-to-use-the-tso-omvs-panel-command-with-vwa">
-<span id="index-126"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
+<span id="index-127"></span><h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
 <p>TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.</p>
 <p>Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.</p>
 </div>
 <div class="section" id="can-virtel-web-access-emulate-z-os-operator-consoles">
-<span id="index-127"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
+<span id="index-128"></span><h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
 <p>Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.</p>
 </div>
 <div class="section" id="can-i-customize-hotspot-recognition">
-<span id="index-128"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
+<span id="index-129"></span><h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
 <p>The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
 VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
@@ -3469,6 +3470,59 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{
 </div>
 <div class="section" id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="appendix-a-virtel-macro-quick-reference-sheet">
+<h3>Appendix A - Virtel Macro Quick reference Sheet<a class="headerlink" href="#appendix-a-virtel-macro-quick-reference-sheet" title="Permalink to this headline">¶</a></h3>
+<p>Virtel macros capture keystroke operations which can subsequently be used to automate 3270 functions.
+These user captured macros are stored within a file called macros.json. This file is a JavaScript array of JSON objects, with each object representing a user
+macro.</p>
+<div class="section" id="example-of-a-macro-json-file">
+<h4>Example of a Macro. JSON file<a class="headerlink" href="#example-of-a-macro-json-file" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{«macros»:[
+{«name»:»mylogon»,»rev»:2,»def»:[{«txt»:»sptholt»},»ENTER»,{«txt»:»password»},»ENTER»,»ENTER»,»ENTER»],»mapping»:{«key»:»ctrl»,»keycode»:76}},
+{«name»:»logoff»,»rev»:1,»def»:[{«txt»:»=x»},»ENTER»,{«txt»:»logoff»},»ENTER»],»mapping»:{«key»:»ctrl»,»keycode»:79}},
+{«name»:»logon»,»rev»:2,»def»:[«Tab»,»Down»,{«txt»:»sptholx»},»ENTER»,{«txt»:»PASSWORD»},»ENTER»,»ENTER»,»ENTER»],»mapping»:{«key»:»alt»,»keycode»:76}}
+],»fmt»:2}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Macro Formats and Commands<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
+* Name: The name of the macro entry.
+* Rev: The «rev» is a user revision keyword.
+* Def: The «def» keyword identifies the commands and entry values</p>
+</div>
+<div class="section" id="key-identifiers">
+<h4>Key Identifiers<a class="headerlink" href="#key-identifiers" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span><span class="p">(</span><span class="n">ENTER</span><span class="p">)</span>   <span class="n">key</span><span class="p">(</span><span class="n">PF1</span><span class="o">-</span><span class="mi">24</span><span class="p">)</span>    <span class="n">key</span><span class="p">(</span><span class="n">PA1</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>       <span class="n">key</span><span class="p">(</span><span class="n">Down</span><span class="p">)</span>       <span class="n">key</span><span class="p">(</span><span class="n">Up</span><span class="p">)</span>         <span class="n">key</span><span class="p">(</span><span class="n">Left</span><span class="p">)</span>       <span class="n">key</span><span class="p">(</span><span class="n">Right</span><span class="p">)</span>          <span class="n">key</span><span class="p">(</span><span class="n">Newline</span><span class="p">)</span>       <span class="n">Key</span><span class="p">(</span><span class="n">Tab</span><span class="p">)</span>         <span class="n">Key</span><span class="p">(</span><span class="n">Backtab</span><span class="p">)</span>
+<span class="n">key</span><span class="p">(</span><span class="n">CLEAR</span><span class="p">)</span>   <span class="n">key</span><span class="p">(</span><span class="n">Home</span><span class="p">)</span>          <span class="n">key</span><span class="p">(</span><span class="n">ATTN</span><span class="p">)</span>    <span class="n">key</span><span class="p">(</span><span class="n">End</span><span class="p">)</span>        <span class="n">key</span><span class="p">(</span><span class="n">Bksp</span><span class="p">)</span>       <span class="n">key</span><span class="p">(</span><span class="n">ErEof</span><span class="p">)</span>      <span class="n">key</span><span class="p">(</span><span class="n">InsToggle</span><span class="p">)</span>  <span class="n">key</span><span class="p">(</span><span class="n">Del</span><span class="p">)</span>       <span class="n">key</span><span class="p">(</span><span class="n">Reset</span><span class="p">)</span>
+<span class="n">key</span><span class="p">(</span><span class="n">FieldMark</span><span class="p">)</span> <span class="n">key</span><span class="p">(</span><span class="n">Dup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="built-in-functions">
+<h4>Built in functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">waitScreen</span><span class="p">()</span>    <span class="n">Virtel</span> <span class="n">will</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">a</span> <span class="mi">3270</span> <span class="n">response</span> <span class="n">before</span> <span class="n">proceeding</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="built-in-functions-literal-values-key-stroke-in-vwa-editor">
+<h4>Built in functions:Literal values - key stroke in VWA editor<a class="headerlink" href="#built-in-functions-literal-values-key-stroke-in-vwa-editor" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>::</dt>
+<dd>“ISPF”          Any string of characters to input into a 3270 screen, example ISPF</dd>
+</dl>
+</div>
+<div class="section" id="used-for-cut-paste-in-a-macro">
+<h4>Used for Cut/Paste in a Macro<a class="headerlink" href="#used-for-cut-paste-in-a-macro" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="n">copy</span><span class="p">(</span><span class="n">startRow</span><span class="p">,</span><span class="n">startCol</span><span class="p">,</span><span class="n">endRow</span><span class="p">,</span><span class="n">endCol</span><span class="p">)</span>
+<span class="n">paste</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="n">paste</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">nbRows</span><span class="p">,</span><span class="n">nbCols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="trademarks">
 <h2>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline">¶</a></h2>

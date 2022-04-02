@@ -1606,6 +1606,27 @@ Column Explanations
 
 Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
+5.0 Providing Diagnostic informtion 
+===================================
+
+When opening a support ticket with Syspertec Support you may be required to provide the following information. 
+
+Unloaded ARBO file.
+
+Assembler code for the TCT in use.
+
+A relay or line trace.
+
+A dump of the Virtel address space for IPCS analysis. Use the following z/OS commands to capture the dump.
+
+::
+
+    DUMP TITLE=(VIRTEL)
+    XX,JOBNAME=VIRTEL,CONT
+    XX,SDATA=(CSA,RGN,PSA,SQA,LSQA,LPA,TRT,GRSQ,SUM),END
+
+
+
 A. Appendix
 ===========
 

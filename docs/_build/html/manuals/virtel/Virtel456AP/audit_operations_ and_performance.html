@@ -120,6 +120,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#memory-management">4.4 Memory management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memory-trace-management">4.5 Memory trace management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setting-memory-trace-in-the-virtct">4.6 Setting Memory Trace in the VIRTCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#providing-diagnostic-informtion">5.0 Providing Diagnostic informtion</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
 </ul>
 </li>
@@ -1654,6 +1655,19 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 </dd>
 </dl>
 <p>Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.</p>
+</div>
+<div class="section" id="providing-diagnostic-informtion">
+<h2>5.0 Providing Diagnostic informtion<a class="headerlink" href="#providing-diagnostic-informtion" title="Permalink to this headline">¶</a></h2>
+<p>When opening a support ticket with Syspertec Support you may be required to provide the following information.</p>
+<p>Unloaded ARBO file.</p>
+<p>Assembler code for the TCT in use.</p>
+<p>A relay or line trace.</p>
+<p>A dump of the Virtel address space for IPCS analysis. Use the following z/OS commands to capture the dump.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DUMP</span> <span class="n">TITLE</span><span class="o">=</span><span class="p">(</span><span class="n">VIRTEL</span><span class="p">)</span>
+<span class="n">XX</span><span class="p">,</span><span class="n">JOBNAME</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">CONT</span>
+<span class="n">XX</span><span class="p">,</span><span class="n">SDATA</span><span class="o">=</span><span class="p">(</span><span class="n">CSA</span><span class="p">,</span><span class="n">RGN</span><span class="p">,</span><span class="n">PSA</span><span class="p">,</span><span class="n">SQA</span><span class="p">,</span><span class="n">LSQA</span><span class="p">,</span><span class="n">LPA</span><span class="p">,</span><span class="n">TRT</span><span class="p">,</span><span class="n">GRSQ</span><span class="p">,</span><span class="n">SUM</span><span class="p">),</span><span class="n">END</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="a-appendix">
 <h2>A. Appendix<a class="headerlink" href="#a-appendix" title="Permalink to this headline">¶</a></h2>

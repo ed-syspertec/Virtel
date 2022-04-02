@@ -2271,6 +2271,11 @@ The macro editor supports the following commands:-
     ],"fmt":1}
 
 .. index:: 
+   single: Macros; Quick Reference Guide    
+
+See Appendix A - Virtel MAcro Quick Reference Sheet for further details on macro formats, commands, identifies and built in functions. 
+
+.. index:: 
    single: Userparms; Centralized USERPARM mode
    single: Centralized USERPARM mode; Setup
 
@@ -4383,6 +4388,60 @@ The regular expressions which control hotspot recognition may be overridden by s
 
 Appendix
 ========
+
+Appendix A - Virtel Macro Quick reference Sheet
+-----------------------------------------------
+
+Virtel macros capture keystroke operations which can subsequently be used to automate 3270 functions.
+These user captured macros are stored within a file called macros.json. This file is a JavaScript array of JSON objects, with each object representing a user
+macro.
+
+Example of a Macro. JSON file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    {«macros»:[
+    {«name»:»mylogon»,»rev»:2,»def»:[{«txt»:»sptholt»},»ENTER»,{«txt»:»password»},»ENTER»,»ENTER»,»ENTER»],»mapping»:{«key»:»ctrl»,»keycode»:76}},
+    {«name»:»logoff»,»rev»:1,»def»:[{«txt»:»=x»},»ENTER»,{«txt»:»logoff»},»ENTER»],»mapping»:{«key»:»ctrl»,»keycode»:79}},
+    {«name»:»logon»,»rev»:2,»def»:[«Tab»,»Down»,{«txt»:»sptholx»},»ENTER»,{«txt»:»PASSWORD»},»ENTER»,»ENTER»,»ENTER»],»mapping»:{«key»:»alt»,»keycode»:76}}
+    ],»fmt»:2}
+
+Macro Formats and Commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
+* Name: The name of the macro entry.
+* Rev: The «rev» is a user revision keyword.
+* Def: The «def» keyword identifies the commands and entry values
+
+Key Identifiers
+^^^^^^^^^^^^^^^
+::
+
+    key(ENTER)	 key(PF1-24)	key(PA1-3)	 key(Down)	 key(Up) 	 key(Left)	 key(Right)	     key(Newline)	Key(Tab)	 Key(Backtab)
+    key(CLEAR)	 key(Home)	    key(ATTN)	 key(End)	 key(Bksp)	 key(ErEof)	 key(InsToggle)	 key(Del)       key(Reset)	 	
+    key(FieldMark) key(Dup)
+
+Built in functions
+^^^^^^^^^^^^^^^^^^
+::
+
+    waitScreen()    Virtel will wait for a 3270 response before proceeding.
+
+Built in functions:Literal values - key stroke in VWA editor
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+    "ISPF"          Any string of characters to input into a 3270 screen, example ISPF
+
+Used for Cut/Paste in a Macro
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    move(pos)
+    copy(startRow,startCol,endRow,endCol)
+    paste(pos)
+    paste(pos,nbRows,nbCols)
+
 
 Trademarks
 ==========
