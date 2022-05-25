@@ -516,7 +516,7 @@ The SILENCE command manages message suppression. The format of the command is::
     SILENCE=RESET               Reset message table and remove all entries
     SILENCE=LIST                List messages        
 
-The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W, VIRU122I and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
+The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W, VIRU122I  and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
 
 .. index::
    pair: SNAP Command; Commands         
