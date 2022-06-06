@@ -4682,6 +4682,20 @@ VTOVER parameter
 
 **xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.
 
+
+.. index::
+   pair: Virtel TCT; VWAVERS parameter  
+
+::
+
+	VWAVERS='xxxxxxxxxxxx' 
+
+Max of 12 characters. This text will replace the 'VIRTEL &VERS' message in the HTTP 40x messages. It acts as security feature to hide the identity of Virtel as the issuing program. For example: -  
+
+::
+
+	VWAVERS='Apache V99'
+
 .. index::
    pair: Virtel TCT; WARNING parameter  
 
@@ -4694,6 +4708,7 @@ WARNING parameter
   WARNING=nn, 
 
 Where nn is the number of days prior to issuing a licence warning message. If not specified, no warning is given. Virtel may shutdown on the next restart if the licence key has expired.
+
 
 .. index::
    pair: Virtel TCT; XMn parameter  
@@ -6279,7 +6294,7 @@ Create OMVS segment for VIRTEL
 ::
 
 	SET PROFILE(VIRTSTC) DIV(OMVS)
-	INSERT VIRTSTC UID(0) HOME('/') PROGRAM('/bin/sh')
+	INSERT VIRTSTC UID(nn) HOME('/') PROGRAM('/bin/sh')
 
 *ACF2DEF : ACF2 commands to create OMVS segment for VIRTEL*
 
@@ -6436,7 +6451,7 @@ Create OMVS segment for VIRTEL
 
 ::
 
-	TSS ADDTO(VIRTSTC) UID(0) DFLTGRP(OMVSGRP) GROUP(OMVSGRP) +
+	TSS ADDTO(VIRTSTC) UID(nn) DFLTGRP(OMVSGRP) GROUP(OMVSGRP) +
 		OMVSPGM('/bin/sh') HOME('/')
 
 *TOPSDEF : TSS commands to create OMVS segment for VIRTEL*
