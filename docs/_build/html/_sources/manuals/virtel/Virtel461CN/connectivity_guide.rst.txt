@@ -1404,7 +1404,7 @@ Press [PF4] at the Line Detail Definition screen to display the list of terminal
 Terminal
     The terminal name must match the prefix of the line.
 
-Relais
+Relay  
     Leave blank.
 
 Entry point
@@ -1609,7 +1609,7 @@ Terminal Parameters
 Terminal
     The terminal name must match the prefix of the line.
 
-Relais
+Relay  
     Leave blank.
 
 Entry point
@@ -2219,7 +2219,7 @@ Terminal Definitions
 Terminal
     The terminal name must match the prefix of the line.
 
-Relais
+Relay
     The name of a relay LU must be specified if incoming calls are
     routed to a type-1 transaction (VTAM application). The relay LU’s
     must be defined by APPL statements in a VTAM application major node,
@@ -4905,19 +4905,19 @@ Using the above definitions the following selection would occurr for a 3270 appl
 Terminal naming and order conventions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In selected the correct physical terminal to represent a Virtel connection Virtel uses a selection logic based on highest logical pool entry associated with a line to first physical terminal entry associated with the logical pool. For example, in the screen belowe four logical pools are defined to line E-HTTP. The line is defined with a prelix of EH.
+In selecting the correct physical terminal to represent a Virtel connection, Virtel uses a selection logic based on highest logical pool entry associated with a line and assigns it to lowest available physical terminal entry associated with the logical pool. As an example, in the screen shot below, four logical pools are defined to line E-HTTP. The line is defined to use a terminal prefix of EH.
 
 |image125|
 *Terminals definitions associated with a line*
 
 There is also a physical terminal defined to logical pool \*URLPOOL named EHTRMEH0. This has a 3270 relay name of EHVTA300 and is associated with a printer relay EHVIM300. The printer relay is also defined as a physical terminal entry EHPRTEH0.
 
-The highest entry within the logical pools associated with the line is EHVTA209 in pool \*IPPOOL. When a connection comes in this entry will be used if it is available. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.
+The highest logical pool entry within the logical pools associated with the line is EHVTA209. This is in pool \*IPPOOL. When a connection comes in this entry will be selected if it is available. This logical pool entry will now be associated with a physical terminal associated with the pool \*IPOOL. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.
 
 |image126|
 *Terminals associated with a pool IPPOOL*
 
-The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical terminal pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.
+The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.
 
 |image127|
 *Printer terminal definition IPPRT100*
@@ -4937,16 +4937,6 @@ In the console log we can see the logical pool entry to physical terminal entry 
     13.38.46 JOB01825  VIR0919I EHVTA209 RELAY EHVIM100(IPPRT100) ACTIVATED                         < Associated printer definition associated with IPTRM100 > 
 
 The naming of logical pools is important so that in rule processing the correct pool is selected. The general rule being that pools associated with rule selections should be lower in alphabetic ranking than general non-rule pools. This will ensure that non-rule or default connections use logical terminals from the higher pool definitions.  
-
-
-
-
-
-
-
-
-
-
 
 Rules for opening relay ACBs
 """"""""""""""""""""""""""""
@@ -4970,16 +4960,16 @@ The definition of the physical terminals and their association with the 3 sub-gr
 ::
 
     DEFINITION OF X25 TERMINALS
-    Terminal Repeat    Relay    Entry    Type Compression 2nd Relay
+    Terminal Repeat    Relay    Entry    Type I/O   Pool  2nd Relay
     
-    XOTF0001 0050      *POOL001 Libre    3    2           Vide
+    XOTF0001 0050      *POOL001          3    2           
     
     DEFINITION OF 3 GROUPS OF RESERVED TERMINALS
-    Terminal Repeat    Relay    Entry    Type Compression 2nd Relay
+    Terminal Repeat    Relay    Entry    Type I/O   Pool  2nd Relay
 
-    ARESA001 0005      AP01R001 Libre    3    2           Libre
-    BRESA001 0050      BP02R001 Libre    3    2           Libre
-    CRESA001 0002      CP03R001 Libre    3    2           Libre
+    ARESA001 0005      AP01R001          3    2           
+    BRESA001 0050      BP02R001          3    2           
+    CRESA001 0002      CP03R001          3    2           
 
 .. note::
     These 3 terminal groups contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they may be defined as fixed explicit or repeated entries, but they must not be placed in a logical pool.
@@ -5003,37 +4993,37 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 
     DEFINITION OF THE FIRST TRANSCACTION FOR ENTRYP01
  
-    Nom interne   ===> TRPE0101       Pour l'associer a un point d'entrée
-    Nom externe   ===> APPLI-01       Nom affiche dans le menu utilisateur
-    Description   ===> Application 01 avec terminaux ARESA
-    Application   ===> APPLI01        Application gérant la transaction
-    Alias         ===>                Nom suite a CLSDST PASS
-    Type d'application ===> 1         1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
-    Terminaux          ===> ARESA     Préfixe des terminaux associés
+    Internal Name ===> TRPE0101       Associated with Entry Point
+    External Name ===> APPLI-01       Name on the APPMENU utility list
+    Description   ===> Application 01 with terminals ARESA
+    Application   ===> APPLI01        Associated application
+    Alias         ===>                CLSDST PASS Alias Name
+    Applic. Type  ===> 1              1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+    Terminals     ===> ARESA          Terminal Prefix
 
 ::    
 
     DEFINITION OF THE SECOND TRANSCACTION FOR ENTRYP01
  
-    Nom interne    ===> TRPE0102      Pour l'associer a un point d'entrée
-    Nom externe    ===> APPLI-02      Nom affiche dans le menu utilisateur
-    Description    ===> Application 02 avec terminaux BRESA
-    Application    ===> APPLI02       Application gérant la transaction
-    Alias          ===>               Nom suite a CLSDST PASS
-    Type d'application  ===> 1        1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
-    Terminaux           ===> BRESA    Préfixe des terminaux associés
+    Internal Name ====> TRPE0102      Associated with Entry Point 
+    External Name  ===> APPLI-02      NAme on the APPMENU utility list
+    Description    ===> Application 02 with terminals BRESA
+    Application    ===> APPLI02       Associated application
+    Alias          ===>               CLSDST PASS Alias Name
+    Applic. Type   ===> 1             1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+    Terminals      ===> BRESA         Terminal Prefix
 
 ::
 
     DEFINITION OF THE FIRST TRANSCACTION FOR ENTRYP02
  
-    Nom interne    ===> TRPE0201     Pour l'associer a un point d'entrée
-    Nom externe    ===> APPLI-03     Nom affiche dans le menu utilisateur
-    Description    ===> Application 03 avec terminaux CRESA
-    Application    ===> APPLI03      Application gérant la transaction
-    Alias ===>                       Nom suite a CLSDST PASS
-    Type d'application  ===> 1       1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
-    Terminaux           ===> CRESA   Préfixe des terminaux associés
+    Internal Name ====> TRPE0201     Associated with Entry Point 
+    External Name  ===> APPLI-03     NAme on the APPMENU utility list
+    Description    ===> Application 03 with terminals CRESA
+    Application    ===> APPLI03      Associated application
+    Alias ===>                       CLSDST PASS Alias Name
+    Applic. Type   ===> 1            1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+    Terminals      ===> CRESA        Terminal prefix
 
 .. index::
    pair: Connection Modes; Virtel Terminal Connection Examples      
@@ -5061,41 +5051,41 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 
 ::
 
-    DEFINITION EXPLICITE
+    Explicit Terminal definition
  
-    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
+    Terminal Repeated  Relay    Entry    Type I/O   Pool  2nd Relay  
     
-    TERM0001 0000    RELAY001  Libre     2    Libre       Vide
-    TERM0002 0000    RELAY003  Libre     2    Libre       Vide
-    TERM0003 0000    RELAY004  Libre     2    Libre       Vide
-    TERM0004 0000    RELAY005  Libre     2    Libre       Vide
+    TERM0001 0000    RELAY001            2                
+    TERM0002 0000    RELAY003            2                
+    TERM0003 0000    RELAY004            2                
+    TERM0004 0000    RELAY005            2                
 
 ::
 
-    DEFINITION REPETEE
+    Repeated Terminal definition
  
-    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
+    Terminal Repeated  Relay    Entry    Type I/O   Pool  2nd Relay  
  
-    TERM0001 0004    RELAY001  Libre     2    Libre       Vide
+    TERM0001 0004      RELAY001          2                
 
 ::
 
-    DEFINITION DYNAMIQUE
+    Dynamic terminal definition
  
-    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
- 
-    ?***0001 0000    RELAY===  Libre     2    Libre       Vide
+      
+    Terminal Repeated  Relay    Entry    Type I/O   Pool  2nd Relay
+    ?***0001 0000      RELAY===          2                
 
 ::
 
-    DEFINITION EN POOL NON DYNAMIQUE
+    Terminal definition in non-dynamic pool
 
-    Terminal Répété Relais Entrée Type Compression 2eme Relais
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    ?***0001 0000 RELAY001 Libre 2 Libre Vide
-    ?***0002 0000 RELAY002 Libre 2 Libre Vide
-    ?***0003 0000 RELAY003 Libre 2 Libre Vide
-    ?***0004 0000 RELAY004 Libre 2 Libre Vide
+    ?***0001 0000      RELAY001         2        
+    ?***0002 0000      RELAY002         2       
+    ?***0003 0000      RELAY003         2       
+    ?***0004 0000      RELAY004         2       
 
 .. index::
    pair: Connection Modes; X25 Asynchronous Terminal Connection Example    
@@ -5108,48 +5098,48 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 ::
 
     EXPLICIT DEFINITION WITHOUT PSEUDO-PRINTER
+     
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
-
-    X25F0001 0000    RX25F001  Libre     3       2           Libre
-    X25F0002 0000    RX25F002  Libre     3       2           Libre
-    X25G0001 0000    RX25G001  Libre     1       2           Libre
-    X25G0002 0000    RX25G002  Libre     1       2           Libre
-
-::
-
-    REPEATED DEFINITION WITHOUT PSEUDO-PRINTER
-
-    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
-
-    X25F0001 0004    RX25F001  Libre     3       2           Libre
-    X25G0001 0004    RX25G001  Libre     3       2           Libre
+    X25F0001 0000      RX25F001         3    2                
+    X25F0002 0000      RX25F002         3    2                
+    X25G0001 0000      RX25G001         1    2                
+    X25G0002 0000      RX25G002         1    2                
 
 ::
 
-    EXPLICIT DEFINITION WITH PSEUDO-PRINTER
+    Repeated terminal definitions without psuedo-printer
+    
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
-
-    FICTF001 0000    IMPRF001  Vide      2       0
-    FICTF002 0000    IMPRF002  Vide      2       0
-    FICTG001 0000    IMPRG001  Vide      2       0
-    FICTG002 0000    IMPRG002  Vide      2       0
-    X25F0001 0000    RX25F001  Libre     3       2           IMPRF001
-    X25F0002 0000    RX25F002  Libre     3       2           IMPRF002
-    X25G0001 0000    RX25G001  Libre     1       2           IMPRG001
-    X25G0002 0000    RX25G002  Libre     1       2           IMPRG002
+    X25F0001 0004      RX25F001         3    2                
+    X25G0001 0004      RX25G001         3    2                
 
 ::
 
-    DEFINITION REPETEE AVEC IMPRIMANTE FICTIVE
+    Explicit terminal definitions with psuedo-printer
 
-    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    FICTF001 0002    IMPRF001  Vide      2       0
-    FICTG001 0002    IMPRG001  Vide      2       0
-    X25F0001 0002    RX25F001  Libre     3       2           IMPRF001
-    X25G0001 0002    RX25G001  Libre     1       2           IMPRG001
+    FICTF001 0000      IMPRF001         2    0
+    FICTF002 0000      IMPRF002         2    0
+    FICTG001 0000      IMPRG001         2    0
+    FICTG002 0000      IMPRG002         2    0
+    X25F0001 0000      RX25F001         3    2           IMPRF001
+    X25F0002 0000      RX25F002         3    2           IMPRF002
+    X25G0001 0000      RX25G001         1    2           IMPRG001
+    X25G0002 0000      RX25G002         1    2           IMPRG002
+
+::
+
+    Repeated terminal definitions with pseudo-printer
+
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
+
+    FICTF001 0002    IMPRF001            2   0
+    FICTG001 0002    IMPRG001            2   0
+    X25F0001 0002    RX25F001            3   2           IMPRF001
+    X25G0001 0002    RX25G001            1   2           IMPRG001
 
 The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
 
@@ -5163,21 +5153,21 @@ It is possible to assign a physical terminal to a relay when a transaction conne
 
 ::
 
-    PHYSICAL TERMINAL DEFINITION
- 
-    Terminal Repeat  Relay    Entry    Type    Compression 2nd Relay
+    Physical terminal definitions
+    
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    TERM0001 0050    *POOL001 Free     Free    2           Empty
+    TERM0001 0050      *POOL001              2           
 
 ::
 
     DEFINITION OF 3 GROUPS OF RESERVED TERMINALS
 
-    Terminal Repeat  Relay    Entry    Type    Compression 2nd Relay
+    Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay 
 
-    TRESA001 0005    RELAYA01 Free     2 or 3  2           Free
-    TRESB001 0050    RELAYB01 Free     3 or 3  2           Free
-    TRESC001 0002    RELAYC01 Free     3 or 3  2           Free
+    TRESA001 0005    RELAYA01           2||3 2           
+    TRESB001 0050    RELAYB01           3||3 2           
+    TRESC001 0002    RELAYC01           3||3 2           
 
 The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.
 

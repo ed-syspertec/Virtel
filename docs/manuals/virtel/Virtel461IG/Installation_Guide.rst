@@ -3704,6 +3704,25 @@ FILE
   Messages will be written to the DDNAMEs LOGFILEx|y               (Virtel 4.61)	
 
 .. index::
+	pair: Virtel TCT; LPKALIVE parameter
+
+LPKALIVE parameter
+^^^^^^^^^^^^^^^^^^
+
+::
+	
+	LPKALIVE=nn         LONG POLL KEEP ALIVE VALUE in Seconds.  
+    LPKALIVE=0          0 means inactive
+
+	It is possible for some intermediary equipment or firewalls to try to close the Virtel Long Poll session, because is appears as a stalled request. This causes or appears as a hung session.
+
+	Example: -
+	LPKALIVE=30 		A 304 response to the LongPoll session will be sent by Virtel 30 seconds after receiving a LP=0 request.
+
+	This parameter should only be included in the TCT if recommended by Syspertec.  
+
+
+.. index::
    pair: Virtel TCT; MARK parameter
 
 MARK parameter
@@ -3860,6 +3879,7 @@ NUMTASK parameter
 	NUMTASK=nn Default=4
 
 **nn** - The number of primary tasks waiting events on the primary VIRTEL ACB.
+
 
 .. index::
    pair: Virtel TCT; OTMAPRM parameter   

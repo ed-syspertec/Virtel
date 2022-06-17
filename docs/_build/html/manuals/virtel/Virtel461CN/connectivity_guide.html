@@ -1253,7 +1253,7 @@ FAD4 structured field. The e-mail address used will normally need to be defined 
 <dl class="docutils">
 <dt>Terminal</dt>
 <dd>The terminal name must match the prefix of the line.</dd>
-<dt>Relais</dt>
+<dt>Relay</dt>
 <dd>Leave blank.</dd>
 <dt>Entry point</dt>
 <dd>Leave blank.</dd>
@@ -1427,7 +1427,7 @@ VIRTEL Installation Guide for details of the MQn parameter.</dd>
 <dl class="docutils">
 <dt>Terminal</dt>
 <dd>The terminal name must match the prefix of the line.</dd>
-<dt>Relais</dt>
+<dt>Relay</dt>
 <dd>Leave blank.</dd>
 <dt>Entry point</dt>
 <dd>Leave blank.</dd>
@@ -1893,7 +1893,7 @@ address.</p>
 <dl class="docutils">
 <dt>Terminal</dt>
 <dd>The terminal name must match the prefix of the line.</dd>
-<dt>Relais</dt>
+<dt>Relay</dt>
 <dd>The name of a relay LU must be specified if incoming calls are
 routed to a type-1 transaction (VTAM application). The relay LU’s
 must be defined by APPL statements in a VTAM application major node,
@@ -4077,14 +4077,14 @@ P7=Page-1            P8=Page+1            P12=Details
 </div>
 <div class="section" id="terminal-naming-and-order-conventions">
 <h4>Terminal naming and order conventions<a class="headerlink" href="#terminal-naming-and-order-conventions" title="Permalink to this headline">¶</a></h4>
-<p>In selected the correct physical terminal to represent a Virtel connection Virtel uses a selection logic based on highest logical pool entry associated with a line to first physical terminal entry associated with the logical pool. For example, in the screen belowe four logical pools are defined to line E-HTTP. The line is defined with a prelix of EH.</p>
+<p>In selecting the correct physical terminal to represent a Virtel connection, Virtel uses a selection logic based on highest logical pool entry associated with a line and assigns it to lowest available physical terminal entry associated with the logical pool. As an example, in the screen shot below, four logical pools are defined to line E-HTTP. The line is defined to use a terminal prefix of EH.</p>
 <p><img alt="image125" src="../../../_images/image1252.png" />
 <em>Terminals definitions associated with a line</em></p>
 <p>There is also a physical terminal defined to logical pool *URLPOOL named EHTRMEH0. This has a 3270 relay name of EHVTA300 and is associated with a printer relay EHVIM300. The printer relay is also defined as a physical terminal entry EHPRTEH0.</p>
-<p>The highest entry within the logical pools associated with the line is EHVTA209 in pool *IPPOOL. When a connection comes in this entry will be used if it is available. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.</p>
+<p>The highest logical pool entry within the logical pools associated with the line is EHVTA209. This is in pool *IPPOOL. When a connection comes in this entry will be selected if it is available. This logical pool entry will now be associated with a physical terminal associated with the pool *IPOOL. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.</p>
 <p><img alt="image126" src="../../../_images/image1262.png" />
 <em>Terminals associated with a pool IPPOOL</em></p>
-<p>The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical terminal pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.</p>
+<p>The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.</p>
 <p><img alt="image127" src="../../../_images/image1272.png" />
 <em>Printer terminal definition IPPRT100</em></p>
 <p>Logging on with a 3270 TSO application will present the following screen. In the OIA rea, bottom left, the associated LUNAMEs can be seen - EHVTA100 and printer EHVIM100. These of course must be defined to VTAM.</p>
@@ -4113,16 +4113,16 @@ P7=Page-1            P8=Page+1            P12=Details
 <p><strong>Terminal Definitions</strong></p>
 <p>The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to the same pool is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">OF</span> <span class="n">X25</span> <span class="n">TERMINALS</span>
-<span class="n">Terminal</span> <span class="n">Repeat</span>    <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">Compression</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+<span class="n">Terminal</span> <span class="n">Repeat</span>    <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">XOTF0001</span> <span class="mi">0050</span>      <span class="o">*</span><span class="n">POOL001</span> <span class="n">Libre</span>    <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">Vide</span>
+<span class="n">XOTF0001</span> <span class="mi">0050</span>      <span class="o">*</span><span class="n">POOL001</span>          <span class="mi">3</span>    <span class="mi">2</span>
 
 <span class="n">DEFINITION</span> <span class="n">OF</span> <span class="mi">3</span> <span class="n">GROUPS</span> <span class="n">OF</span> <span class="n">RESERVED</span> <span class="n">TERMINALS</span>
-<span class="n">Terminal</span> <span class="n">Repeat</span>    <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">Compression</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+<span class="n">Terminal</span> <span class="n">Repeat</span>    <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">ARESA001</span> <span class="mi">0005</span>      <span class="n">AP01R001</span> <span class="n">Libre</span>    <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">BRESA001</span> <span class="mi">0050</span>      <span class="n">BP02R001</span> <span class="n">Libre</span>    <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">CRESA001</span> <span class="mi">0002</span>      <span class="n">CP03R001</span> <span class="n">Libre</span>    <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">Libre</span>
+<span class="n">ARESA001</span> <span class="mi">0005</span>      <span class="n">AP01R001</span>          <span class="mi">3</span>    <span class="mi">2</span>
+<span class="n">BRESA001</span> <span class="mi">0050</span>      <span class="n">BP02R001</span>          <span class="mi">3</span>    <span class="mi">2</span>
+<span class="n">CRESA001</span> <span class="mi">0002</span>      <span class="n">CP03R001</span>          <span class="mi">3</span>    <span class="mi">2</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -4141,35 +4141,35 @@ P7=Page-1            P8=Page+1            P12=Details
 <p>Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">FIRST</span> <span class="n">TRANSCACTION</span> <span class="n">FOR</span> <span class="n">ENTRYP01</span>
 
-<span class="n">Nom</span> <span class="n">interne</span>   <span class="o">===&gt;</span> <span class="n">TRPE0101</span>       <span class="n">Pour</span> <span class="n">l</span><span class="s1">&#39;associer a un point d&#39;</span><span class="n">entrée</span>
-<span class="n">Nom</span> <span class="n">externe</span>   <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">01</span>       <span class="n">Nom</span> <span class="n">affiche</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">menu</span> <span class="n">utilisateur</span>
-<span class="n">Description</span>   <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">01</span> <span class="n">avec</span> <span class="n">terminaux</span> <span class="n">ARESA</span>
-<span class="n">Application</span>   <span class="o">===&gt;</span> <span class="n">APPLI01</span>        <span class="n">Application</span> <span class="n">gérant</span> <span class="n">la</span> <span class="n">transaction</span>
-<span class="n">Alias</span>         <span class="o">===&gt;</span>                <span class="n">Nom</span> <span class="n">suite</span> <span class="n">a</span> <span class="n">CLSDST</span> <span class="n">PASS</span>
-<span class="n">Type</span> <span class="n">d</span><span class="s1">&#39;application ===&gt; 1         1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES</span>
-<span class="n">Terminaux</span>          <span class="o">===&gt;</span> <span class="n">ARESA</span>     <span class="n">Préfixe</span> <span class="n">des</span> <span class="n">terminaux</span> <span class="n">associés</span>
+<span class="n">Internal</span> <span class="n">Name</span> <span class="o">===&gt;</span> <span class="n">TRPE0101</span>       <span class="n">Associated</span> <span class="k">with</span> <span class="n">Entry</span> <span class="n">Point</span>
+<span class="n">External</span> <span class="n">Name</span> <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">01</span>       <span class="n">Name</span> <span class="n">on</span> <span class="n">the</span> <span class="n">APPMENU</span> <span class="n">utility</span> <span class="nb">list</span>
+<span class="n">Description</span>   <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">01</span> <span class="k">with</span> <span class="n">terminals</span> <span class="n">ARESA</span>
+<span class="n">Application</span>   <span class="o">===&gt;</span> <span class="n">APPLI01</span>        <span class="n">Associated</span> <span class="n">application</span>
+<span class="n">Alias</span>         <span class="o">===&gt;</span>                <span class="n">CLSDST</span> <span class="n">PASS</span> <span class="n">Alias</span> <span class="n">Name</span>
+<span class="n">Applic</span><span class="o">.</span> <span class="n">Type</span>  <span class="o">===&gt;</span> <span class="mi">1</span>              <span class="mi">1</span><span class="o">=</span><span class="n">VTAM</span> <span class="mi">2</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="mi">3</span><span class="o">=</span><span class="n">SERV</span> <span class="mi">4</span><span class="o">=</span><span class="n">PAGE</span> <span class="mi">5</span><span class="o">=</span><span class="n">LINE</span>
+<span class="n">Terminals</span>     <span class="o">===&gt;</span> <span class="n">ARESA</span>          <span class="n">Terminal</span> <span class="n">Prefix</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">SECOND</span> <span class="n">TRANSCACTION</span> <span class="n">FOR</span> <span class="n">ENTRYP01</span>
 
-<span class="n">Nom</span> <span class="n">interne</span>    <span class="o">===&gt;</span> <span class="n">TRPE0102</span>      <span class="n">Pour</span> <span class="n">l</span><span class="s1">&#39;associer a un point d&#39;</span><span class="n">entrée</span>
-<span class="n">Nom</span> <span class="n">externe</span>    <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">02</span>      <span class="n">Nom</span> <span class="n">affiche</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">menu</span> <span class="n">utilisateur</span>
-<span class="n">Description</span>    <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">02</span> <span class="n">avec</span> <span class="n">terminaux</span> <span class="n">BRESA</span>
-<span class="n">Application</span>    <span class="o">===&gt;</span> <span class="n">APPLI02</span>       <span class="n">Application</span> <span class="n">gérant</span> <span class="n">la</span> <span class="n">transaction</span>
-<span class="n">Alias</span>          <span class="o">===&gt;</span>               <span class="n">Nom</span> <span class="n">suite</span> <span class="n">a</span> <span class="n">CLSDST</span> <span class="n">PASS</span>
-<span class="n">Type</span> <span class="n">d</span><span class="s1">&#39;application  ===&gt; 1        1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES</span>
-<span class="n">Terminaux</span>           <span class="o">===&gt;</span> <span class="n">BRESA</span>    <span class="n">Préfixe</span> <span class="n">des</span> <span class="n">terminaux</span> <span class="n">associés</span>
+<span class="n">Internal</span> <span class="n">Name</span> <span class="o">====&gt;</span> <span class="n">TRPE0102</span>      <span class="n">Associated</span> <span class="k">with</span> <span class="n">Entry</span> <span class="n">Point</span>
+<span class="n">External</span> <span class="n">Name</span>  <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">02</span>      <span class="n">NAme</span> <span class="n">on</span> <span class="n">the</span> <span class="n">APPMENU</span> <span class="n">utility</span> <span class="nb">list</span>
+<span class="n">Description</span>    <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">02</span> <span class="k">with</span> <span class="n">terminals</span> <span class="n">BRESA</span>
+<span class="n">Application</span>    <span class="o">===&gt;</span> <span class="n">APPLI02</span>       <span class="n">Associated</span> <span class="n">application</span>
+<span class="n">Alias</span>          <span class="o">===&gt;</span>               <span class="n">CLSDST</span> <span class="n">PASS</span> <span class="n">Alias</span> <span class="n">Name</span>
+<span class="n">Applic</span><span class="o">.</span> <span class="n">Type</span>   <span class="o">===&gt;</span> <span class="mi">1</span>             <span class="mi">1</span><span class="o">=</span><span class="n">VTAM</span> <span class="mi">2</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="mi">3</span><span class="o">=</span><span class="n">SERV</span> <span class="mi">4</span><span class="o">=</span><span class="n">PAGE</span> <span class="mi">5</span><span class="o">=</span><span class="n">LINE</span>
+<span class="n">Terminals</span>      <span class="o">===&gt;</span> <span class="n">BRESA</span>         <span class="n">Terminal</span> <span class="n">Prefix</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">FIRST</span> <span class="n">TRANSCACTION</span> <span class="n">FOR</span> <span class="n">ENTRYP02</span>
 
-<span class="n">Nom</span> <span class="n">interne</span>    <span class="o">===&gt;</span> <span class="n">TRPE0201</span>     <span class="n">Pour</span> <span class="n">l</span><span class="s1">&#39;associer a un point d&#39;</span><span class="n">entrée</span>
-<span class="n">Nom</span> <span class="n">externe</span>    <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">03</span>     <span class="n">Nom</span> <span class="n">affiche</span> <span class="n">dans</span> <span class="n">le</span> <span class="n">menu</span> <span class="n">utilisateur</span>
-<span class="n">Description</span>    <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">03</span> <span class="n">avec</span> <span class="n">terminaux</span> <span class="n">CRESA</span>
-<span class="n">Application</span>    <span class="o">===&gt;</span> <span class="n">APPLI03</span>      <span class="n">Application</span> <span class="n">gérant</span> <span class="n">la</span> <span class="n">transaction</span>
-<span class="n">Alias</span> <span class="o">===&gt;</span>                       <span class="n">Nom</span> <span class="n">suite</span> <span class="n">a</span> <span class="n">CLSDST</span> <span class="n">PASS</span>
-<span class="n">Type</span> <span class="n">d</span><span class="s1">&#39;application  ===&gt; 1       1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES</span>
-<span class="n">Terminaux</span>           <span class="o">===&gt;</span> <span class="n">CRESA</span>   <span class="n">Préfixe</span> <span class="n">des</span> <span class="n">terminaux</span> <span class="n">associés</span>
+<span class="n">Internal</span> <span class="n">Name</span> <span class="o">====&gt;</span> <span class="n">TRPE0201</span>     <span class="n">Associated</span> <span class="k">with</span> <span class="n">Entry</span> <span class="n">Point</span>
+<span class="n">External</span> <span class="n">Name</span>  <span class="o">===&gt;</span> <span class="n">APPLI</span><span class="o">-</span><span class="mi">03</span>     <span class="n">NAme</span> <span class="n">on</span> <span class="n">the</span> <span class="n">APPMENU</span> <span class="n">utility</span> <span class="nb">list</span>
+<span class="n">Description</span>    <span class="o">===&gt;</span> <span class="n">Application</span> <span class="mi">03</span> <span class="k">with</span> <span class="n">terminals</span> <span class="n">CRESA</span>
+<span class="n">Application</span>    <span class="o">===&gt;</span> <span class="n">APPLI03</span>      <span class="n">Associated</span> <span class="n">application</span>
+<span class="n">Alias</span> <span class="o">===&gt;</span>                       <span class="n">CLSDST</span> <span class="n">PASS</span> <span class="n">Alias</span> <span class="n">Name</span>
+<span class="n">Applic</span><span class="o">.</span> <span class="n">Type</span>   <span class="o">===&gt;</span> <span class="mi">1</span>            <span class="mi">1</span><span class="o">=</span><span class="n">VTAM</span> <span class="mi">2</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="mi">3</span><span class="o">=</span><span class="n">SERV</span> <span class="mi">4</span><span class="o">=</span><span class="n">PAGE</span> <span class="mi">5</span><span class="o">=</span><span class="n">LINE</span>
+<span class="n">Terminals</span>      <span class="o">===&gt;</span> <span class="n">CRESA</span>        <span class="n">Terminal</span> <span class="n">prefix</span>
 </pre></div>
 </div>
 </div>
@@ -4185,38 +4185,38 @@ P7=Page-1            P8=Page+1            P12=Details
 <div class="section" id="terminal-in-relay-mode">
 <span id="index-146"></span><h4>3270 terminal in RELAY mode<a class="headerlink" href="#terminal-in-relay-mode" title="Permalink to this headline">¶</a></h4>
 <p>A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">EXPLICITE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explicit</span> <span class="n">Terminal</span> <span class="n">definition</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span> <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">TERM0001</span> <span class="mi">0000</span>    <span class="n">RELAY001</span>  <span class="n">Libre</span>     <span class="mi">2</span>    <span class="n">Libre</span>       <span class="n">Vide</span>
-<span class="n">TERM0002</span> <span class="mi">0000</span>    <span class="n">RELAY003</span>  <span class="n">Libre</span>     <span class="mi">2</span>    <span class="n">Libre</span>       <span class="n">Vide</span>
-<span class="n">TERM0003</span> <span class="mi">0000</span>    <span class="n">RELAY004</span>  <span class="n">Libre</span>     <span class="mi">2</span>    <span class="n">Libre</span>       <span class="n">Vide</span>
-<span class="n">TERM0004</span> <span class="mi">0000</span>    <span class="n">RELAY005</span>  <span class="n">Libre</span>     <span class="mi">2</span>    <span class="n">Libre</span>       <span class="n">Vide</span>
+<span class="n">TERM0001</span> <span class="mi">0000</span>    <span class="n">RELAY001</span>            <span class="mi">2</span>
+<span class="n">TERM0002</span> <span class="mi">0000</span>    <span class="n">RELAY003</span>            <span class="mi">2</span>
+<span class="n">TERM0003</span> <span class="mi">0000</span>    <span class="n">RELAY004</span>            <span class="mi">2</span>
+<span class="n">TERM0004</span> <span class="mi">0000</span>    <span class="n">RELAY005</span>            <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">REPETEE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Repeated</span> <span class="n">Terminal</span> <span class="n">definition</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span> <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">TERM0001</span> <span class="mi">0004</span>    <span class="n">RELAY001</span>  <span class="n">Libre</span>     <span class="mi">2</span>    <span class="n">Libre</span>       <span class="n">Vide</span>
+<span class="n">TERM0001</span> <span class="mi">0004</span>      <span class="n">RELAY001</span>          <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DEFINITION DYNAMIQUE
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Dynamic terminal definition
 
-Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
 
-?***0001 0000    RELAY===  Libre     2    Libre       Vide
+Terminal Repeated  Relay    Entry    Type I/O   Pool  2nd Relay
+?***0001 0000      RELAY===          2
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DEFINITION EN POOL NON DYNAMIQUE
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Terminal definition in non-dynamic pool
 
-Terminal Répété Relais Entrée Type Compression 2eme Relais
+Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 
-?***0001 0000 RELAY001 Libre 2 Libre Vide
-?***0002 0000 RELAY002 Libre 2 Libre Vide
-?***0003 0000 RELAY003 Libre 2 Libre Vide
-?***0004 0000 RELAY004 Libre 2 Libre Vide
+?***0001 0000      RELAY001         2
+?***0002 0000      RELAY002         2
+?***0003 0000      RELAY003         2
+?***0004 0000      RELAY004         2
 </pre></div>
 </div>
 </div>
@@ -4225,44 +4225,44 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 <p>A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXPLICIT</span> <span class="n">DEFINITION</span> <span class="n">WITHOUT</span> <span class="n">PSEUDO</span><span class="o">-</span><span class="n">PRINTER</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">X25F0001</span> <span class="mi">0000</span>    <span class="n">RX25F001</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">X25F0002</span> <span class="mi">0000</span>    <span class="n">RX25F002</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">X25G0001</span> <span class="mi">0000</span>    <span class="n">RX25G001</span>  <span class="n">Libre</span>     <span class="mi">1</span>       <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">X25G0002</span> <span class="mi">0000</span>    <span class="n">RX25G002</span>  <span class="n">Libre</span>     <span class="mi">1</span>       <span class="mi">2</span>           <span class="n">Libre</span>
+<span class="n">X25F0001</span> <span class="mi">0000</span>      <span class="n">RX25F001</span>         <span class="mi">3</span>    <span class="mi">2</span>
+<span class="n">X25F0002</span> <span class="mi">0000</span>      <span class="n">RX25F002</span>         <span class="mi">3</span>    <span class="mi">2</span>
+<span class="n">X25G0001</span> <span class="mi">0000</span>      <span class="n">RX25G001</span>         <span class="mi">1</span>    <span class="mi">2</span>
+<span class="n">X25G0002</span> <span class="mi">0000</span>      <span class="n">RX25G002</span>         <span class="mi">1</span>    <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REPEATED</span> <span class="n">DEFINITION</span> <span class="n">WITHOUT</span> <span class="n">PSEUDO</span><span class="o">-</span><span class="n">PRINTER</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Repeated</span> <span class="n">terminal</span> <span class="n">definitions</span> <span class="n">without</span> <span class="n">psuedo</span><span class="o">-</span><span class="n">printer</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">X25F0001</span> <span class="mi">0004</span>    <span class="n">RX25F001</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">Libre</span>
-<span class="n">X25G0001</span> <span class="mi">0004</span>    <span class="n">RX25G001</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">Libre</span>
+<span class="n">X25F0001</span> <span class="mi">0004</span>      <span class="n">RX25F001</span>         <span class="mi">3</span>    <span class="mi">2</span>
+<span class="n">X25G0001</span> <span class="mi">0004</span>      <span class="n">RX25G001</span>         <span class="mi">3</span>    <span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXPLICIT</span> <span class="n">DEFINITION</span> <span class="n">WITH</span> <span class="n">PSEUDO</span><span class="o">-</span><span class="n">PRINTER</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explicit</span> <span class="n">terminal</span> <span class="n">definitions</span> <span class="k">with</span> <span class="n">psuedo</span><span class="o">-</span><span class="n">printer</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">FICTF001</span> <span class="mi">0000</span>    <span class="n">IMPRF001</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">FICTF002</span> <span class="mi">0000</span>    <span class="n">IMPRF002</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">FICTG001</span> <span class="mi">0000</span>    <span class="n">IMPRG001</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">FICTG002</span> <span class="mi">0000</span>    <span class="n">IMPRG002</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">X25F0001</span> <span class="mi">0000</span>    <span class="n">RX25F001</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">IMPRF001</span>
-<span class="n">X25F0002</span> <span class="mi">0000</span>    <span class="n">RX25F002</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">IMPRF002</span>
-<span class="n">X25G0001</span> <span class="mi">0000</span>    <span class="n">RX25G001</span>  <span class="n">Libre</span>     <span class="mi">1</span>       <span class="mi">2</span>           <span class="n">IMPRG001</span>
-<span class="n">X25G0002</span> <span class="mi">0000</span>    <span class="n">RX25G002</span>  <span class="n">Libre</span>     <span class="mi">1</span>       <span class="mi">2</span>           <span class="n">IMPRG002</span>
+<span class="n">FICTF001</span> <span class="mi">0000</span>      <span class="n">IMPRF001</span>         <span class="mi">2</span>    <span class="mi">0</span>
+<span class="n">FICTF002</span> <span class="mi">0000</span>      <span class="n">IMPRF002</span>         <span class="mi">2</span>    <span class="mi">0</span>
+<span class="n">FICTG001</span> <span class="mi">0000</span>      <span class="n">IMPRG001</span>         <span class="mi">2</span>    <span class="mi">0</span>
+<span class="n">FICTG002</span> <span class="mi">0000</span>      <span class="n">IMPRG002</span>         <span class="mi">2</span>    <span class="mi">0</span>
+<span class="n">X25F0001</span> <span class="mi">0000</span>      <span class="n">RX25F001</span>         <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">IMPRF001</span>
+<span class="n">X25F0002</span> <span class="mi">0000</span>      <span class="n">RX25F002</span>         <span class="mi">3</span>    <span class="mi">2</span>           <span class="n">IMPRF002</span>
+<span class="n">X25G0001</span> <span class="mi">0000</span>      <span class="n">RX25G001</span>         <span class="mi">1</span>    <span class="mi">2</span>           <span class="n">IMPRG001</span>
+<span class="n">X25G0002</span> <span class="mi">0000</span>      <span class="n">RX25G002</span>         <span class="mi">1</span>    <span class="mi">2</span>           <span class="n">IMPRG002</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">REPETEE</span> <span class="n">AVEC</span> <span class="n">IMPRIMANTE</span> <span class="n">FICTIVE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Repeated</span> <span class="n">terminal</span> <span class="n">definitions</span> <span class="k">with</span> <span class="n">pseudo</span><span class="o">-</span><span class="n">printer</span>
 
-<span class="n">Terminal</span> <span class="n">Répété</span>  <span class="n">Relais</span>    <span class="n">Entrée</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">eme</span> <span class="n">Relais</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">FICTF001</span> <span class="mi">0002</span>    <span class="n">IMPRF001</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">FICTG001</span> <span class="mi">0002</span>    <span class="n">IMPRG001</span>  <span class="n">Vide</span>      <span class="mi">2</span>       <span class="mi">0</span>
-<span class="n">X25F0001</span> <span class="mi">0002</span>    <span class="n">RX25F001</span>  <span class="n">Libre</span>     <span class="mi">3</span>       <span class="mi">2</span>           <span class="n">IMPRF001</span>
-<span class="n">X25G0001</span> <span class="mi">0002</span>    <span class="n">RX25G001</span>  <span class="n">Libre</span>     <span class="mi">1</span>       <span class="mi">2</span>           <span class="n">IMPRG001</span>
+<span class="n">FICTF001</span> <span class="mi">0002</span>    <span class="n">IMPRF001</span>            <span class="mi">2</span>   <span class="mi">0</span>
+<span class="n">FICTG001</span> <span class="mi">0002</span>    <span class="n">IMPRG001</span>            <span class="mi">2</span>   <span class="mi">0</span>
+<span class="n">X25F0001</span> <span class="mi">0002</span>    <span class="n">RX25F001</span>            <span class="mi">3</span>   <span class="mi">2</span>           <span class="n">IMPRF001</span>
+<span class="n">X25G0001</span> <span class="mi">0002</span>    <span class="n">RX25G001</span>            <span class="mi">1</span>   <span class="mi">2</span>           <span class="n">IMPRG001</span>
 </pre></div>
 </div>
 <p>The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.</p>
@@ -4270,20 +4270,20 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 <div class="section" id="logical-terminals">
 <span id="index-148"></span><h4>Logical terminals<a class="headerlink" href="#logical-terminals" title="Permalink to this headline">¶</a></h4>
 <p>It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PHYSICAL</span> <span class="n">TERMINAL</span> <span class="n">DEFINITION</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Physical</span> <span class="n">terminal</span> <span class="n">definitions</span>
 
-<span class="n">Terminal</span> <span class="n">Repeat</span>  <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">TERM0001</span> <span class="mi">0050</span>    <span class="o">*</span><span class="n">POOL001</span> <span class="n">Free</span>     <span class="n">Free</span>    <span class="mi">2</span>           <span class="n">Empty</span>
+<span class="n">TERM0001</span> <span class="mi">0050</span>      <span class="o">*</span><span class="n">POOL001</span>              <span class="mi">2</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFINITION</span> <span class="n">OF</span> <span class="mi">3</span> <span class="n">GROUPS</span> <span class="n">OF</span> <span class="n">RESERVED</span> <span class="n">TERMINALS</span>
 
-<span class="n">Terminal</span> <span class="n">Repeat</span>  <span class="n">Relay</span>    <span class="n">Entry</span>    <span class="n">Type</span>    <span class="n">Compression</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+<span class="n">Terminal</span> <span class="n">Repeated</span>  <span class="n">Relay</span>    <span class="n">Entry</span>   <span class="n">Type</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span>   <span class="n">Pool</span>  <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
-<span class="n">TRESA001</span> <span class="mi">0005</span>    <span class="n">RELAYA01</span> <span class="n">Free</span>     <span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span>  <span class="mi">2</span>           <span class="n">Free</span>
-<span class="n">TRESB001</span> <span class="mi">0050</span>    <span class="n">RELAYB01</span> <span class="n">Free</span>     <span class="mi">3</span> <span class="ow">or</span> <span class="mi">3</span>  <span class="mi">2</span>           <span class="n">Free</span>
-<span class="n">TRESC001</span> <span class="mi">0002</span>    <span class="n">RELAYC01</span> <span class="n">Free</span>     <span class="mi">3</span> <span class="ow">or</span> <span class="mi">3</span>  <span class="mi">2</span>           <span class="n">Free</span>
+<span class="n">TRESA001</span> <span class="mi">0005</span>    <span class="n">RELAYA01</span>           <span class="mi">2</span><span class="o">||</span><span class="mi">3</span> <span class="mi">2</span>
+<span class="n">TRESB001</span> <span class="mi">0050</span>    <span class="n">RELAYB01</span>           <span class="mi">3</span><span class="o">||</span><span class="mi">3</span> <span class="mi">2</span>
+<span class="n">TRESC001</span> <span class="mi">0002</span>    <span class="n">RELAYC01</span>           <span class="mi">3</span><span class="o">||</span><span class="mi">3</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>The 3 groups of terminals contain the value *POOL001 under the heading “*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.</p>
