@@ -396,10 +396,8 @@ termid
 
 ::
     
-    TERM=termid,TRACE (or T=termid,T)
-    TERM=termid,NOTRACE (or T=termid,N)
-    RELAY=relayname,TRACE (or R=relayname,T)
-    RELAY=relayname,NOTRACE (or R=relayname,N)
+    TRACE|NOTRACE,TERM=termid (or T=termid)
+    TRACE|NOTRACE,RELAY=relayname (or R=relayname)
 
 termid
     terminal name

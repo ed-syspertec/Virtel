@@ -568,7 +568,7 @@ message
     Any message that can be issued by Virtel.
 
 search
-    Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.
+    Any seache criteria issued within the message. The search file is restricted to a maximum of 10 characters. Anything beyond will be ignored. Default search is none.
 
 action
     Possible values are S for SNAP, A for ABEND, and D to delete a message from the dynamic table. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
