@@ -2699,6 +2699,16 @@ Meaning
 Action
     None.
 
+VIR0208W POSSIBLE ARBO LINE CONFLICT
+""""""""""""""""""""""""""""""""""""
+Module
+    VIR0000
+Meaning
+    Validation of the Line has failed. Possible incorrect ARBO level. Check that the ARBO is at the correct support level. Use the LOCADDR2='N' JCL PARM parameter to use ARBO(V1) processing which applies to ARBO records @ V4.60 or lower.
+Action
+    Contact Syspertec Support if problem persists.
+
+
 VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
@@ -2953,6 +2963,15 @@ Meaning
     The Virtel logsream has been offloaded.
 Action
     None.
+
+VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED
+""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    An UNLOAD command has failed. ARBO(V1) not supported.    
+Action
+    Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file. 
 
 VIR0260W SERVICE servname IS A NEW COPY
 """"""""""""""""""""""""""""""""""""""" 

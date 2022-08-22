@@ -3361,6 +3361,17 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>None.</dd>
 </dl>
 </div>
+<div class="section" id="vir0208w-possible-arbo-line-conflict">
+<h5>VIR0208W POSSIBLE ARBO LINE CONFLICT<a class="headerlink" href="#vir0208w-possible-arbo-line-conflict" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0000</dd>
+<dt>Meaning</dt>
+<dd>Validation of the Line has failed. Possible incorrect ARBO level. Check that the ARBO is at the correct support level. Use the LOCADDR2=’N’ JCL PARM parameter to use ARBO(V1) processing which applies to ARBO records &#64; V4.60 or lower.</dd>
+<dt>Action</dt>
+<dd>Contact Syspertec Support if problem persists.</dd>
+</dl>
+</div>
 <div class="section" id="vir0210e-command-not-valid-for-linetype-line-n-xxxxxx">
 <h5>VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx<a class="headerlink" href="#vir0210e-command-not-valid-for-linetype-line-n-xxxxxx" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
@@ -3664,6 +3675,17 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>The Virtel logsream has been offloaded.</dd>
 <dt>Action</dt>
 <dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0240w-arbo-v1-not-supported-unload-failed">
+<h5>VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED<a class="headerlink" href="#vir0240w-arbo-v1-not-supported-unload-failed" title="Permalink to this headline">¶</a></h5>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002</dd>
+<dt>Meaning</dt>
+<dd>An UNLOAD command has failed. ARBO(V1) not supported.</dd>
+<dt>Action</dt>
+<dd>Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file.</dd>
 </dl>
 </div>
 <div class="section" id="vir0260w-service-servname-is-a-new-copy">

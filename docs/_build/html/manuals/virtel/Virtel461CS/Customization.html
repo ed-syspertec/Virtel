@@ -352,6 +352,7 @@ their respective owners.</p>
         <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
         <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
         <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pathToFavicon&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/cust-favicon.ico&quot;</span>
         <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -361,7 +362,7 @@ their respective owners.</p>
 <p><img alt="image33" src="../../../_images/image3315.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span> <span class="o">|</span> <span class="n">Favicon</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
 <span class="nb">id</span>      <span class="o">=</span> <span class="s2">&quot;global&quot;</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">option</span> <span class="n">identifier</span>       <span class="n">Option</span> <span class="s2">&quot;id&quot;</span>
 <span class="nb">type</span>    <span class="o">=</span> <span class="n">css</span> <span class="o">|</span> <span class="n">html</span> <span class="o">|</span> <span class="n">js</span>                                   <span class="n">Type</span>
 </pre></div>
@@ -372,6 +373,7 @@ their respective owners.</p>
 <span class="s2">&quot;pathToCssCustom&quot;</span> <span class="o">-</span> <span class="n">Customized</span> <span class="n">CSS</span> <span class="n">stylesheets</span>
 <span class="s2">&quot;pathToPrintCss&quot;</span>  <span class="o">-</span> <span class="n">Customized</span> <span class="n">Print</span> <span class="n">CSS</span> <span class="n">Style</span> <span class="n">sheets</span>
 <span class="s2">&quot;pathToHelp&quot;</span>      <span class="o">-</span> <span class="n">Customized</span> <span class="n">Help</span> <span class="n">pages</span>
+<span class="s2">&quot;pathToFavicon&quot;</span>   <span class="o">-</span> <span class="n">Customized</span> <span class="n">Favicon</span> <span class="n">image</span>
 </pre></div>
 </div>
 <p>Restart Virtel after uploading the W2HPARM.JS and other global members. Refresh the cache then check that the correct settings are being used using the following URLs to list w2hparm.js and w2hparm.global.js:</p>

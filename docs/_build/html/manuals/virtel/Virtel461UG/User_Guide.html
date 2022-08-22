@@ -3121,26 +3121,29 @@ generated only if VIRTEL has data ready to be printed.</p>
 <p class="last">Modifications to the global settings are only effective after the expiry of the w2hparm.js file in the browser’s cache which occurs at midnight each day. A user can force the use of the updated global settings file by clearing the browser cache, deleting any cookies associated with the VIRTEL server, and refreshing the 3270 page using the Ctrl-R key.</p>
 </div>
 <p>After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR directory by means of the “Upload” link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>). Then you must check the Entry Point (usually CLIWHOST) and check that the transaction whose “External name” is w2h and whose “Check URL Prefix” field is set to /w2h/w2hparm-js specifies CLI-DIR in the “Application” field. For the CLIWHOST entry point this is transaction CLI-03P. If you want your customized changes to be applicable to transactions under Entry Point WEB2HOST then change the W2H-03P transaction so that the application field points to “CLI-DIR” and not “W2H-DIR”.</p>
-<p>As of Virtel V4.56 an enhanced customisation feature is available which provides customization at a global and transaction level for Javascript, CSS and other web elements. To use this feature the w2hparm.js should include the “global-settings” attribute. The following is an example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
-<span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
-<span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
-<span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
-<span class="p">}</span>
+<p>As of Virtel V4.56 an enhanced customization feature is available which provides customization at a global and transaction level for Javascript, CSS and other web elements. To use this feature the w2hparm.js should include the “global-settings” attribute. The following is an example:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+    <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pathToFavicon&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/cust-favicon.ico&quot;</span>
+    <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 <p>The following supported global properties are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pathToJsCustom&quot;</span>  <span class="o">-</span> <span class="n">Customized</span> <span class="n">JavaSCript</span> <span class="n">elements</span>
-<span class="s2">&quot;pathToW2hparm&quot;</span>   <span class="o">-</span> <span class="n">Customized</span> <span class="n">w2hparm</span> <span class="n">parameters</span>
-<span class="s2">&quot;pathToCssCustom&quot;</span> <span class="o">-</span> <span class="n">Customized</span> <span class="n">CSS</span> <span class="n">stylesheets</span>
-<span class="s2">&quot;pathToPrintCss&quot;</span>  <span class="o">-</span> <span class="n">Customized</span> <span class="n">Print</span> <span class="n">CSS</span> <span class="n">Style</span> <span class="n">sheets</span>
-<span class="s2">&quot;pathToHelp&quot;</span>      <span class="o">-</span> <span class="n">Customized</span> <span class="n">Help</span> <span class="n">pages</span>
-</pre></div>
-</div>
-<p>Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customised CSS, Javascript and Help element pointers are defined. For further details see <a class="reference internal" href="#v461ug-customizing-with-option"><span class="std std-ref">“Customisation Modes”</span></a>.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>“pathToFavicon”   - Customized Favicon image file
+“pathToJsCustom”  - Customized JavaSCript elements
+“pathToW2hparm”   - Customized w2hparm parameters
+“pathToCssCustom” - Customized CSS stylesheets
+“pathToPrintCss”  - Customized Print CSS Style sheets
+“pathToHelp”      - Customized Help pages</dd>
+</dl>
+<p>Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customized CSS, Javascript and Help element pointers are defined. For further details see <a class="reference internal" href="#v461ug-customizing-with-option"><span class="std std-ref">“Customisation Modes”</span></a>.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
-<p class="last">Updating w2hparm.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements sucha as w2hparm.js in the CLI-DIR directory.</p>
+<p class="last">Updating w2hparm.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as w2hparm.js in the CLI-DIR directory.</p>
 </div>
 <p id="index-132">The list of keywords and possible values which can be coded in the w2hparm.js file is listed in <a class="reference internal" href="#v461ug-w2hparm-defaults"><span class="std std-ref">“Appendix A - w2hparm values”</span></a>.</p>
 </div>
@@ -11472,13 +11475,13 @@ Administrators.</p>
 </li>
 <li><p class="first">Load this file in any directory of your choice except in W2H-DIR,</p>
 </li>
-<li><p class="first">Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-css” (without the quotes) in the “URL prefix” field.</p>
+<li><p class="first">Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-css” (without the quotes) in the “URL prefix”  field. Ensure that the string  “/w2h/custom-css”  doesn’t end with slash /.</p>
 </li>
-<li><p class="first">Create (or modify) a custom.js file to reference the recently added CSS file (see below):</p>
+<li><p class="first">Create (or modify) a customized javascript file to reference the recently added CSS file (see below):</p>
 <blockquote>
 <div><ul class="simple">
 <li>Load the custom.js file in any directory of your choice except in W2H-DIR,</li>
-<li>Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-js” (without the quotes) in the “URL prefix” field.</li>
+<li>Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-js” (without the quotes) in the “URL prefix” field. Ensure that the string  “/w2h/custom-js”  doesn’t end with a slash /.</li>
 </ul>
 </div></blockquote>
 </li>

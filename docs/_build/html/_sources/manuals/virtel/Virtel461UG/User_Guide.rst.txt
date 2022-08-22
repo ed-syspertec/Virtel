@@ -3886,28 +3886,29 @@ After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR d
 .. index::
    pair: global-settings property;Web Customization 
 
-As of Virtel V4.56 an enhanced customisation feature is available which provides customization at a global and transaction level for Javascript, CSS and other web elements. To use this feature the w2hparm.js should include the "global-settings" attribute. The following is an example:-
+As of Virtel V4.56 an enhanced customization feature is available which provides customization at a global and transaction level for Javascript, CSS and other web elements. To use this feature the w2hparm.js should include the "global-settings" attribute. The following is an example:-
 ::
 
 	"global-settings":{
 	"pathToJsCustom":"../option/custJS.global.js",
 	"pathToCssCustom": "../option/custCSS.global.css",
+    "pathToFavicon": "../option/cust-favicon.ico"
 	"pathToHelp": "../option/myHelp.html"
 	}	  
 
 The following supported global properties are:-
 
 ::
-
+    "pathToFavicon"   - Customized Favicon image file
     "pathToJsCustom"  - Customized JavaSCript elements
     "pathToW2hparm"   - Customized w2hparm parameters
     "pathToCssCustom" - Customized CSS stylesheets
     "pathToPrintCss"  - Customized Print CSS Style sheets
     "pathToHelp"      - Customized Help pages   
 
-Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customised CSS, Javascript and Help element pointers are defined. For further details see :ref:`"Customisation Modes"<#_V461UG_customizing_with_option>`.
+Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customized CSS, Javascript and Help element pointers are defined. For further details see :ref:`"Customisation Modes"<#_V461UG_customizing_with_option>`.
 
-.. danger:: Updating w2hparm.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements sucha as w2hparm.js in the CLI-DIR directory.
+.. danger:: Updating w2hparm.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as w2hparm.js in the CLI-DIR directory.
 
 .. index::
    pair: w2hparm.js defaults;Web Customization 
@@ -14531,11 +14532,11 @@ To add a new display style, you must :
 
 - Create a CSS file with a “.css” extension name,
 - Load this file in any directory of your choice except in W2H-DIR,
-- Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-css” (without the quotes) in the “URL prefix” field.
-- Create (or modify) a custom.js file to reference the recently added CSS file (see below):
+- Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-css” (without the quotes) in the “URL prefix”  field. Ensure that the string  “/w2h/custom-css”  doesn’t end with slash /. 
+- Create (or modify) a customized javascript file to reference the recently added CSS file (see below):
 
     - Load the custom.js file in any directory of your choice except in W2H-DIR,
-    - Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-js” (without the quotes) in the “URL prefix” field.
+    - Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-js” (without the quotes) in the “URL prefix” field. Ensure that the string  “/w2h/custom-js”  doesn’t end with a slash /. 
 
 ::
 

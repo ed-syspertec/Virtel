@@ -212,7 +212,8 @@ Virtel implements a "global" option customized level whereby all customized elem
         "global-settings":{
             "pathToJsCustom":"../option/custJS.global.js",
             "pathToCssCustom": "../option/custCSS.global.css",
-            "pathToW2hparm":"../option/w2hparm.global.js",  
+            "pathToW2hparm":"../option/w2hparm.global.js",
+            "pathToFavicon": "../option/cust-favicon.ico"  
             "pathToHelp": "../option/myHelp.html"
         }    
     }
@@ -227,7 +228,7 @@ Each property of the global-settings object uses a "pathTo" property which has t
 
 ::
 
-    key     = W2hparm | CssCustom | JSCustom | PrintCss | Help  Case sensitive.
+    key     = W2hparm | CssCustom | JSCustom | PrintCss | Help | Favicon  Case sensitive.
     id      = "global" or a transaction option identifier       Option "id"
     type    = css | html | js                                   Type
 
@@ -239,7 +240,8 @@ Global-settings object can contain the following pathTo properties:
     "pathToW2hparm"   - Customized w2hparm parameters
     "pathToCssCustom" - Customized CSS stylesheets
     "pathToPrintCss"  - Customized Print CSS Style sheets
-    "pathToHelp"      - Customized Help pages   
+    "pathToHelp"      - Customized Help pages
+    "pathToFavicon"   - Customized Favicon image   
 
  
 
