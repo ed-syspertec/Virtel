@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="What’s new in Virtel 4.61 GA Release" href="../TN202003/TN202003.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,7 +120,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -161,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -196,9 +193,9 @@
 <p>With regard to customization, Virtel supports three modes of customization: -</p>
 <blockquote>
 <div><ul class="simple">
-<li>Default mode:      Delivered mode of operation</li>
-<li>Option mode:       Recommended mode of operation. V4.56 upwards.</li>
-<li>Compatibility mode:  To provide “backward” compatibility for older versions of Virtel (V4.56 and less).</li>
+<li><p>Default mode:      Delivered mode of operation</p></li>
+<li><p>Option mode:       Recommended mode of operation. V4.56 upwards.</p></li>
+<li><p>Compatibility mode:  To provide “backward” compatibility for older versions of Virtel (V4.56 and less).</p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="default-mode">
@@ -331,9 +328,9 @@
 <p>The option mode allows us to set options which target :-</p>
 <blockquote>
 <div><ul class="simple">
-<li>All transactions within an Entry point. Global option.</li>
-<li>Specific transactions within an entry point. Transaction option. This merges and/or overrides the global options settings.</li>
-<li>A special option member for the APPLIST transaction.</li>
+<li><p>All transactions within an Entry point. Global option.</p></li>
+<li><p>Specific transactions within an entry point. Transaction option. This merges and/or overrides the global options settings.</p></li>
+<li><p>A special option member for the APPLIST transaction.</p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="global-option-settings">
@@ -413,7 +410,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Create the file w2hparm.global.js file and define the required “Enter key” changes. Upload this file to CLI-DIR. To modify the keyboard Enter key:-</li>
+<li><p>Create the file w2hparm.global.js file and define the required “Enter key” changes. Upload this file to CLI-DIR. To modify the keyboard Enter key:-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
     <span class="o">/*</span>
@@ -424,7 +421,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. This change will run a user script to add the “PRINT” ICON to the Virtel tool bar:-</li>
+<li><p>Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. This change will run a user script to add the “PRINT” ICON to the Virtel tool bar:-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">custJS</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
 <span class="o">//</span> <span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">To</span> <span class="n">Toolbar</span>
@@ -438,8 +435,8 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The print.ico should also be uploaded to the CLI-DIR directory.</p>
+<p class="admonition-title">Note</p>
+<p>The print.ico should also be uploaded to the CLI-DIR directory.</p>
 </div>
 <p>This has the effect of changing the tool bar for all transactions which locate w2hparm.js through the XXX-03P transaction. This would include W2h and CLI transactions as both target the w2hparm.js in the CLI-DIR. This is not what is required. We only want transactions under CLI to have these “modified” options. Transactions under WEB2HOST will require their option fields to be set to “compatibility” to ensure that the default tool bar is shown. Alternatively, we could target the requirement to apply only to certain transactions in the CLI entry point by  setting up “transaction options”.</p>
 <p><img alt="image33" src="../../../_images/image332.png" />
@@ -450,7 +447,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <h3>Transaction ‘Option’ settings<a class="headerlink" href="#transaction-option-settings" title="Permalink to this headline">¶</a></h3>
 <p>Transaction “option” settings use a unique “option” identifier to associate changes with a particular transaction. This identifier is defined in the transaction. For example, if only certain transactions should have the modified tool bar, as described above, then set a unique option identifiers for those transactions. The “option” identifier will be used to associate customized elements against specific transaction(s). In the following example we use the identifier “myOptions”. A transaction level “core option file”, using the format “option.*identifier*.js”, will be used to locate customized elements. Using the option identifier “myOptions” the file will be called option.myOptions.js. It should be created and uploaded to CLI-DIR. The customized settings are held in a Javascript variable named oCustom. The following actions are taken :-</p>
 <ol class="arabic simple">
-<li>Define a option.myOptions.js file to target the transaction settings. In this example we are only introducing some user javascript code to add the Print ICON to the tool bar.</li>
+<li><p>Define a option.myOptions.js file to target the transaction settings. In this example we are only introducing some user javascript code to add the Print ICON to the tool bar.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">option</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span><span class="o">.</span> <span class="n">Transaction</span> <span class="n">level</span> <span class="n">core</span> <span class="n">option</span> <span class="n">file</span>
 <span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
@@ -459,7 +456,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>A file called custJS.myOptions.js is created which will contain the tool bar JavaScript modification code. This too is also uploaded to the CLI-DIR directory :-</li>
+<li><p>A file called custJS.myOptions.js is created which will contain the tool bar JavaScript modification code. This too is also uploaded to the CLI-DIR directory :-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">custJS</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span>
 <span class="o">//</span><span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">To</span> <span class="n">Toolbar</span>
@@ -541,8 +538,8 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <p>To get around these problems of preserving user settings, two options are available :-</p>
 <blockquote>
 <div><ul class="simple">
-<li>Export/Import Settings</li>
-<li>Setup the USERPARM feature</li>
+<li><p>Export/Import Settings</p></li>
+<li><p>Setup the USERPARM feature</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -560,8 +557,8 @@ The contents of the JSON settings file will look very much like an object defini
 <p><img alt="image7" src="../../../_images/image715.png" /></p>
 <p><em>Figure 12: Example of an exported settings file</em></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Only the settings that the user has modified are saved in local storage or an exported settings file.</p>
+<p class="admonition-title">Note</p>
+<p>Only the settings that the user has modified are saved in local storage or an exported settings file.</p>
 </div>
 </div>
 </div>
@@ -574,7 +571,7 @@ The contents of the JSON settings file will look very much like an object defini
 <div class="section" id="setting-up-to-run-userparm">
 <h3>Setting up to run USERPARM<a class="headerlink" href="#setting-up-to-run-userparm" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Run the following JCL: -</li>
+<li><p>Run the following JCL: -</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//        SET  LOAD=SPTHOLT.VIRT459.LOADLIB
 //        SET  ARBO=SPTHOLT.VIRT459.ARBO
@@ -673,7 +670,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </div>
 <p>This will add the centralized USERPARM settings required to save user definitions to the USERTRSF VSAM file on the mainframe. This includes a new USERPARM directory - identifying the USERTRSF file, some transactions and the allocation of the new TRSF VSAM  file.</p>
 <ol class="arabic simple" start="2">
-<li>Next, update and assemble the TCT to include the definitions to support the new VSAM TRSF file.</li>
+<li><p>Next, update and assemble the TCT to include the definitions to support the new VSAM TRSF file.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="o">*</span>
              <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
@@ -697,10 +694,10 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Stop Virtel and add the USERTRSF DD statement to the JCL, pointing to the newly allocated TRSF file.</li>
-<li>Restart Virtel. Refresh the cache (CTRL+SHIFT+DEL).</li>
-<li>Open a secure 3270 session, in our example we use TSO transaction in CLIWHOST. The security credentials are entered and we are logged into TSO.</li>
-<li>A change is then made to the Virtel settings. In this example we set the cursor display from BOX back to BLOCK.</li>
+<li><p>Stop Virtel and add the USERTRSF DD statement to the JCL, pointing to the newly allocated TRSF file.</p></li>
+<li><p>Restart Virtel. Refresh the cache (CTRL+SHIFT+DEL).</p></li>
+<li><p>Open a secure 3270 session, in our example we use TSO transaction in CLIWHOST. The security credentials are entered and we are logged into TSO.</p></li>
+<li><p>A change is then made to the Virtel settings. In this example we set the cursor display from BOX back to BLOCK.</p></li>
 </ol>
 <p>In the Virtel log we can see that the change has been uploaded and logged into the USERPARM TRSF :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERPARM&#39;</span> <span class="n">USER</span> <span class="s1">&#39;SPTHOLT&#39;</span>
@@ -708,8 +705,8 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>We then shut the browser, restart it, refresh the cache, and then load our TSO application from the APPSTAT menu on 41002 - the CLIWHOST entry point. On displaying the settings, it still shows “Cursor=BLOCK” which is what we want. This setting could only have come down from the mainframe when we established our TSO session. It is not the default setting for “Cursor” and local storage had been cleared through the refresh of the cache. It could have only come from the USERTRSF file.</li>
-<li>If we look at the local storage using the developer tools option of the browser, we can see it has been populated with our settings from the mainframe :-</li>
+<li><p>We then shut the browser, restart it, refresh the cache, and then load our TSO application from the APPSTAT menu on 41002 - the CLIWHOST entry point. On displaying the settings, it still shows “Cursor=BLOCK” which is what we want. This setting could only have come down from the mainframe when we established our TSO session. It is not the default setting for “Cursor” and local storage had been cleared through the refresh of the cache. It could have only come from the USERTRSF file.</p></li>
+<li><p>If we look at the local storage using the developer tools option of the browser, we can see it has been populated with our settings from the mainframe :-</p></li>
 </ol>
 <p><img alt="image8" src="../../../_images/image814.png" />
 <em>Figure 13: - Display of local storage</em></p>
@@ -855,8 +852,8 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <div class="section" id="getting-ready-for-centralized-macros">
 <h3>Getting ready for Centralized Macros.<a class="headerlink" href="#getting-ready-for-centralized-macros" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Stop Virtel</li>
-<li>Create and install additional RACF profiles to support DDI. The following is a sample RACF job to update RACF with the necessary profiles. It should be modified accordingly :-</li>
+<li><p>Stop Virtel</p></li>
+<li><p>Create and install additional RACF profiles to support DDI. The following is a sample RACF job to update RACF with the necessary profiles. It should be modified accordingly :-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Change</span> <span class="n">SPVIREH</span> <span class="n">to</span> <span class="n">the</span> <span class="n">value</span> <span class="n">specified</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">TCT</span> <span class="n">PRFSECU</span><span class="o">=</span> <span class="n">option</span><span class="o">.</span>
 <span class="n">Change</span> <span class="n">SPGPTECH</span> <span class="n">to</span> <span class="n">the</span> <span class="n">administration</span> <span class="n">group</span> <span class="k">for</span> <span class="n">Virtel</span><span class="o">.</span>
@@ -900,7 +897,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Rerun the ARBOLOAD job and specify VMACROS=YES. This will install additional transactions and directories to support centralized macros. You should see something the the following in the output.</li>
+<li><p>Rerun the ARBOLOAD job and specify VMACROS=YES. This will install additional transactions and directories to support centralized macros. You should see something the the following in the output.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBDIR</span>   <span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
 <span class="n">SUBDIR</span>   <span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
@@ -920,12 +917,12 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>After updating the ARBO with the new transactions, restart Virtel. Check that the new directories are accessible. Go to the Administration panel and bring up the Drag and Drop Interface. Three new directories should be visible ” GLB-DIR, GRP-DIR and USR-DIR.</li>
+<li><p>After updating the ARBO with the new transactions, restart Virtel. Check that the new directories are accessible. Go to the Administration panel and bring up the Drag and Drop Interface. Three new directories should be visible ” GLB-DIR, GRP-DIR and USR-DIR.</p></li>
 </ol>
 <p><img alt="image16" src="../../../_images/image164.png" /></p>
 <p><em>Figure 20: - New directories to support centralised macros</em></p>
 <ol class="arabic simple" start="5">
-<li>Update w2hparm.js</li>
+<li><p>Update w2hparm.js</p></li>
 </ol>
 <p>Next will need to add some w2hparm parameters to the w2hparm.js file. Make the changes to your w2hparm.js member and upload to the w2hparm Directory. Most likely CLI-DIR.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
@@ -971,7 +968,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Check the DDI is active. You can do this by launching a TSO session in both W2H and CLI. In each case, check that the Macro ICON in the tool bar is blue, indicating DDI is on, and not Green, which means that DDI disabled/not implemented.</li>
+<li><p>Check the DDI is active. You can do this by launching a TSO session in both W2H and CLI. In each case, check that the Macro ICON in the tool bar is blue, indicating DDI is on, and not Green, which means that DDI disabled/not implemented.</p></li>
 </ol>
 <p><img alt="image17" src="../../../_images/image174.png" />
 <em>Figure 21: - Blue ICON to indicate DDI active</em></p>
@@ -996,9 +993,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image20" src="../../../_images/image203.png" />
 <em>Figure 25: - Non DDI macro interface</em></p>
 <ol class="arabic simple">
-<li>We create a local macro called SDSF which, from the primary ISPF option menu, invokes SDSF, issues a LOG command, and then a SDSF TOP command.</li>
-<li>We save the macro and call it SDSF</li>
-<li>We select the EXPORT button to export the macro. All exported macros are called macros.json and will be written to the browser”s default download directory.</li>
+<li><p>We create a local macro called SDSF which, from the primary ISPF option menu, invokes SDSF, issues a LOG command, and then a SDSF TOP command.</p></li>
+<li><p>We save the macro and call it SDSF</p></li>
+<li><p>We select the EXPORT button to export the macro. All exported macros are called macros.json and will be written to the browser”s default download directory.</p></li>
 </ol>
 <p>The exported file will look like this :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSF&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="mi">61</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">116</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]}],</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
@@ -1009,7 +1006,8 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image21" src="../../../_images/image2111.png" />
 <em>Figure 26: Global directory zone of the DDI interface</em></p>
 <blockquote>
-<div>Drag and drop the macros.json file into the D&amp;D area (Area surrounded by dotted lines). Refresh the area by clicking the Refresh ICON button - button in the Top Left of the Global Tab. You should now be presented with the refreshed Global Directory which now contains the macros contained within the macros.json file - in our case just one macro called SDSF.</div></blockquote>
+<div><p>Drag and drop the macros.json file into the D&amp;D area (Area surrounded by dotted lines). Refresh the area by clicking the Refresh ICON button - button in the Top Left of the Global Tab. You should now be presented with the refreshed Global Directory which now contains the macros contained within the macros.json file - in our case just one macro called SDSF.</p>
+</div></blockquote>
 <p><img alt="image22" src="../../../_images/image2210.png" />
 <em>Figure 27: Global Directory with macros.json file</em></p>
 <p>If we open up a TSO or CICS session with an active DDI (blue ICON), for example under 41002, we should see that our Global Macro Area has now been populated with the SDSF macro.</p>
@@ -1037,10 +1035,10 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image27" src="../../../_images/image271.png" />
 <em>Figure 32: Administrator Options</em></p>
 <ul class="simple">
-<li>Download ” You can download a macros.json file and edit it to add additional macro entries manually. This can then be uploaded back into the DDI repository.</li>
-<li>Copy ” Copy is not really applicable here as all macros.json files must reside in the USR-DIR. You can use this function to copy the macros.json files to a backup directory. The back-directory would have to be pre-allocated using the similar JCL that was used to create the USR-DIR VSAM file.</li>
-<li>Delete ” Delete the macros.json file.</li>
-<li>Edit ” Edit the contents of the macros.json file.</li>
+<li><p>Download ” You can download a macros.json file and edit it to add additional macro entries manually. This can then be uploaded back into the DDI repository.</p></li>
+<li><p>Copy ” Copy is not really applicable here as all macros.json files must reside in the USR-DIR. You can use this function to copy the macros.json files to a backup directory. The back-directory would have to be pre-allocated using the similar JCL that was used to create the USR-DIR VSAM file.</p></li>
+<li><p>Delete ” Delete the macros.json file.</p></li>
+<li><p>Edit ” Edit the contents of the macros.json file.</p></li>
 </ul>
 <p><img alt="image28" src="../../../_images/image281.png" />
 <em>Figure 33: Editing a macro within DDI</em></p>
@@ -1081,7 +1079,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <div class="section" id="creating-the-new-virtel-line">
 <h3>Creating the new Virtel line<a class="headerlink" href="#creating-the-new-virtel-line" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Run the sample template job as listed in Appendix B.</li>
+<li><p>Run the sample template job as listed in Appendix B.</p></li>
 </ol>
 <p>Modify accordingly to your site standards. In the template example we define a line on Port 41003 with the following Virtel details :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Directory</span><span class="p">:</span>             <span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span>
@@ -1094,13 +1092,13 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Add the following definition to the Virtel VTAM major node member in VTAMLST</li>
+<li><p>Add the following definition to the Virtel VTAM major node member in VTAMLST</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEVTA??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32703,EAS=1
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Start up Virtel and display the lines with the following Virtel command :-</li>
+<li><p>Start up Virtel and display the lines with the following Virtel command :-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">Virtel</span><span class="p">,</span><span class="n">Lines</span>
 </pre></div>
@@ -1119,7 +1117,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Open a Virtel session on line 41003 with the following URL - 192.168.170.48:41003.</li>
+<li><p>Open a Virtel session on line 41003 with the following URL - 192.168.170.48:41003.</p></li>
 </ol>
 <p>The APPSTAT menu should appear with just one entry for SPCICST.</p>
 <p><img alt="image31" src="../../../_images/image3110.png" />
@@ -1160,9 +1158,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p>Step PCONFIG in the SSLSETUP sample job contains a starter configuration. In both case the following changes should be made :-</p>
 <blockquote>
 <div><ul class="simple">
-<li>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)</li>
-<li>Replace 41000-41002 by 41002 in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP.</li>
-<li>Replace “ServerWithClientAuth” by “Server” in the HandshakeRole parameter (SSLSETUP line 82). We will not be using Client Certificates at this stage.</li>
+<li><p>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)</p></li>
+<li><p>Replace 41000-41002 by 41002 in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP.</p></li>
+<li><p>Replace “ServerWithClientAuth” by “Server” in the HandshakeRole parameter (SSLSETUP line 82). We will not be using Client Certificates at this stage.</p></li>
 </ul>
 </div></blockquote>
 <p>After changing the PAGENT configuration start the PAGENT task or refresh it with F PAGENT,REFRESH. You Should see the following messages in the SYSLOG: -</p>
@@ -1175,8 +1173,8 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image32" src="../../../_images/image3210.png" />
 <em>Figure 35: Secure transaction with HTTPS</em></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The “Not Secure” warning. This will not appear if you are not using an approved CA certificate.</p>
+<p class="admonition-title">Note</p>
+<p>The “Not Secure” warning. This will not appear if you are not using an approved CA certificate.</p>
 </div>
 </div>
 </div>
@@ -1196,12 +1194,12 @@ In this configuration we will be using SSLv3.</p>
 <p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>The Client contacts the Server ;</li>
-<li>The Server sends a certificate;</li>
-<li>Server authentication is performed by the Client ;</li>
-<li>Client sends the certificate;</li>
-<li>Client authentication is performed by the Server ;</li>
-<li>An encryption algorithm and single key is chosen to encrypt / decrypt data</li>
+<li><p>The Client contacts the Server ;</p></li>
+<li><p>The Server sends a certificate;</p></li>
+<li><p>Server authentication is performed by the Client ;</p></li>
+<li><p>Client sends the certificate;</p></li>
+<li><p>Client authentication is performed by the Server ;</p></li>
+<li><p>An encryption algorithm and single key is chosen to encrypt / decrypt data</p></li>
 </ol>
 </div></blockquote>
 <p>The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in the IBM Manual z/OS Communications Server: IP Configuration Guide, Appendix B. TLS/SSL Security.</p>
@@ -1243,10 +1241,10 @@ Certification Authority (CA).</p>
 <p>There are several types of certificates, most of which are required when defining secure sessions.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Client certificate</li>
-<li>Server certificate</li>
-<li>Well-known Certificate Authority (CA) Signing certificate</li>
-<li>RACF signing certificate</li>
+<li><p>Client certificate</p></li>
+<li><p>Server certificate</p></li>
+<li><p>Well-known Certificate Authority (CA) Signing certificate</p></li>
+<li><p>RACF signing certificate</p></li>
 </ul>
 </div></blockquote>
 <p>In our test configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.</p>
@@ -1331,8 +1329,8 @@ that we generate.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.</p>
+<p class="admonition-title">Note</p>
+<p>We identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.</p>
 </div>
 </div>
 <div class="section" id="key-rings">
@@ -1523,7 +1521,7 @@ The next panel is a warning panel which identifies that the certificate we are u
 <p>This means that the browser has sent encrypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven”t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line set-up required by Virtel.  Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to through to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.</p>
 <p>Check the following :-</p>
 <ol class="arabic simple">
-<li>Is AT-TLS Service active in TCP/IP? Issue the following z/OS command ” D TCPIP,,N,TTLS. The response should be: -</li>
+<li><p>Is AT-TLS Service active in TCP/IP? Issue the following z/OS command ” D TCPIP,,N,TTLS. The response should be: -</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EZD0101I</span> <span class="n">NETSTAT</span> <span class="n">CS</span> <span class="n">V1R13</span> <span class="n">TCPIP</span> <span class="mi">706</span>
 <span class="n">TTLSGRPACTION</span> <span class="n">GROUP</span> <span class="n">ID</span> <span class="n">CONNS</span>
@@ -1558,17 +1556,17 @@ System SSL and are defined in the System SSL Programming manual. Return codes ov
 <p>The following is a list of common Pagent Error codes that can be seen in the SYSLOG: -</p>
 <blockquote>
 <div><ul class="simple">
-<li>7      No certificate</li>
-<li>8      Certificate not trusted</li>
-<li>109    No CA certificates on ring</li>
-<li>202    Keyring does not exists</li>
-<li>401    Certificate expired</li>
-<li>402/12 Client and server cannot agree cipher suite</li>
-<li>416    Virtel does not have permission to list keyring</li>
-<li>431    Certificate is revoked</li>
-<li>434    Certificate key not compatible with cipher suite</li>
-<li>435    Certificate authority unknown</li>
-<li>5003   Browser sent clear text. HTTP instead of HTTPS used in URL.</li>
+<li><p>7      No certificate</p></li>
+<li><p>8      Certificate not trusted</p></li>
+<li><p>109    No CA certificates on ring</p></li>
+<li><p>202    Keyring does not exists</p></li>
+<li><p>401    Certificate expired</p></li>
+<li><p>402/12 Client and server cannot agree cipher suite</p></li>
+<li><p>416    Virtel does not have permission to list keyring</p></li>
+<li><p>431    Certificate is revoked</p></li>
+<li><p>434    Certificate key not compatible with cipher suite</p></li>
+<li><p>435    Certificate authority unknown</p></li>
+<li><p>5003   Browser sent clear text. HTTP instead of HTTPS used in URL.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -1577,287 +1575,287 @@ System SSL and are defined in the System SSL Programming manual. Return codes ov
 <h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="default-w2hparm-parameter-values">
 <h3>Default w2hparm parameter values<a class="headerlink" href="#default-w2hparm-parameter-values" title="Permalink to this headline">¶</a></h3>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="19%" />
-<col width="25%" />
-<col width="56%" />
+<col style="width: 19%" />
+<col style="width: 25%" />
+<col style="width: 56%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Keyword</th>
-<th class="head">Caption</th>
-<th class="head">Possible values</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Caption</p></th>
+<th class="head"><p>Possible values</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>“fontsize”</td>
-<td>Font size</td>
-<td>“window”, “screen”, “8”, “10”, “12”, “14”, “16”</td>
+<tbody>
+<tr class="row-even"><td><p>“fontsize”</p></td>
+<td><p>Font size</p></td>
+<td><p>“window”, “screen”, “8”, “10”, “12”, “14”, “16”</p></td>
 </tr>
-<tr class="row-odd"><td>“font”</td>
-<td>Font family</td>
-<td>“font name”</td>
+<tr class="row-odd"><td><p>“font”</p></td>
+<td><p>Font family</p></td>
+<td><p>“font name”</p></td>
 </tr>
-<tr class="row-even"><td>“autocapture”</td>
-<td>Auto-capture</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“autocapture”</p></td>
+<td><p>Auto-capture</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“autoprint”</td>
-<td>Auto-print</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“autoprint”</p></td>
+<td><p>Auto-print</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“cursor”</td>
-<td>Cursor “Bar”,</td>
-<td>“Blink”, “Block”</td>
+<tr class="row-even"><td><p>“cursor”</p></td>
+<td><p>Cursor “Bar”,</p></td>
+<td><p>“Blink”, “Block”</p></td>
 </tr>
-<tr class="row-odd"><td>“vline”</td>
-<td>Vertical line</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“vline”</p></td>
+<td><p>Vertical line</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“hline”</td>
-<td>Horiz line</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“hline”</p></td>
+<td><p>Horiz line</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“esc”</td>
-<td>Esc key</td>
-<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+<tr class="row-odd"><td><p>“esc”</p></td>
+<td><p>Esc key</p></td>
+<td><p>“no”, “ATTN”, “CLEAR”, “Reset”</p></td>
 </tr>
-<tr class="row-even"><td>“ctrl”</td>
-<td>Ctrl key</td>
-<td>“no”, “ENTER”, “Newline”</td>
+<tr class="row-even"><td><p>“ctrl”</p></td>
+<td><p>Ctrl key</p></td>
+<td><p>“no”, “ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-odd"><td>“cmdleft”</td>
-<td>Left Cmd key</td>
-<td>“no”, “Reset”</td>
+<tr class="row-odd"><td><p>“cmdleft”</p></td>
+<td><p>Left Cmd key</p></td>
+<td><p>“no”, “Reset”</p></td>
 </tr>
-<tr class="row-even"><td>“cmdright”</td>
-<td>Right Cmd key</td>
-<td>“no”, “ENTER”</td>
+<tr class="row-even"><td><p>“cmdright”</p></td>
+<td><p>Right Cmd key</p></td>
+<td><p>“no”, “ENTER”</p></td>
 </tr>
-<tr class="row-odd"><td>“enter”</td>
-<td>Enter key</td>
-<td>“ENTER”, “Newline”</td>
+<tr class="row-odd"><td><p>“enter”</p></td>
+<td><p>Enter key</p></td>
+<td><p>“ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-even"><td>“home”</td>
-<td>Home key</td>
-<td>“no”, “Home”</td>
+<tr class="row-even"><td><p>“home”</p></td>
+<td><p>Home key</p></td>
+<td><p>“no”, “Home”</p></td>
 </tr>
-<tr class="row-odd"><td>“end”</td>
-<td>End key</td>
-<td>“no”, “ErEof”, “End”</td>
+<tr class="row-odd"><td><p>“end”</p></td>
+<td><p>End key</p></td>
+<td><p>“no”, “ErEof”, “End”</p></td>
 </tr>
-<tr class="row-even"><td>“pgup”</td>
-<td>PageUp key</td>
-<td>“PF7”, “PF19”, “PA1”, “no”</td>
+<tr class="row-even"><td><p>“pgup”</p></td>
+<td><p>PageUp key</p></td>
+<td><p>“PF7”, “PF19”, “PA1”, “no”</p></td>
 </tr>
-<tr class="row-odd"><td>“pgdn”</td>
-<td>PageDown key</td>
-<td>“PF8”, “PF20”, “PA2”, “no”</td>
+<tr class="row-odd"><td><p>“pgdn”</p></td>
+<td><p>PageDown key</p></td>
+<td><p>“PF8”, “PF20”, “PA2”, “no”</p></td>
 </tr>
-<tr class="row-even"><td>“pause”</td>
-<td>Pause key</td>
-<td>“CLEAR”, “ATTN”, “PA3”, “no”</td>
+<tr class="row-even"><td><p>“pause”</p></td>
+<td><p>Pause key</p></td>
+<td><p>“CLEAR”, “ATTN”, “PA3”, “no”</p></td>
 </tr>
-<tr class="row-odd"><td>“kpenter”</td>
-<td>Keypad Enter</td>
-<td>“ENTER”, “Newline”</td>
+<tr class="row-odd"><td><p>“kpenter”</p></td>
+<td><p>Keypad Enter</p></td>
+<td><p>“ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-even"><td>“shiftenter”</td>
-<td>Shift+Enter</td>
-<td>“no”,”ENTER”, “Newline”</td>
+<tr class="row-even"><td><p>“shiftenter”</p></td>
+<td><p>Shift+Enter</p></td>
+<td><p>“no”,”ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-odd"><td>“shiftesc”</td>
-<td>Shift+Esc</td>
-<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+<tr class="row-odd"><td><p>“shiftesc”</p></td>
+<td><p>Shift+Esc</p></td>
+<td><p>“no”, “ATTN”, “CLEAR”, “Reset”</p></td>
 </tr>
-<tr class="row-even"><td>“shiftins”</td>
-<td>Shift+Insert</td>
-<td>“no”, “Dup”</td>
+<tr class="row-even"><td><p>“shiftins”</p></td>
+<td><p>Shift+Insert</p></td>
+<td><p>“no”, “Dup”</p></td>
 </tr>
-<tr class="row-odd"><td>“shiftdel”</td>
-<td>Shift+Delete</td>
-<td>“no”, “ErEof”</td>
+<tr class="row-odd"><td><p>“shiftdel”</p></td>
+<td><p>Shift+Delete</p></td>
+<td><p>“no”, “ErEof”</p></td>
 </tr>
-<tr class="row-even"><td>“shifthome”</td>
-<td>Shift+Home</td>
-<td>“no”, “FieldMark”, “Home”</td>
+<tr class="row-even"><td><p>“shifthome”</p></td>
+<td><p>Shift+Home</p></td>
+<td><p>“no”, “FieldMark”, “Home”</p></td>
 </tr>
-<tr class="row-odd"><td>“shiftend”</td>
-<td>Shift+End</td>
-<td>“no”, “ErEof”, “End”</td>
+<tr class="row-odd"><td><p>“shiftend”</p></td>
+<td><p>Shift+End</p></td>
+<td><p>“no”, “ErEof”, “End”</p></td>
 </tr>
-<tr class="row-even"><td>“shiftpgdn”</td>
-<td>Shift+PageDown</td>
-<td>“no”, “PA3”</td>
+<tr class="row-even"><td><p>“shiftpgdn”</p></td>
+<td><p>Shift+PageDown</p></td>
+<td><p>“no”, “PA3”</p></td>
 </tr>
-<tr class="row-odd"><td>“ctrlenter”</td>
-<td>Ctrl+Enter</td>
-<td>“no”,”ENTER”, “Newline”</td>
+<tr class="row-odd"><td><p>“ctrlenter”</p></td>
+<td><p>Ctrl+Enter</p></td>
+<td><p>“no”,”ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-even"><td>“ctrlins”</td>
-<td>Ctrl+Insert</td>
-<td>“no”, “PA1”</td>
+<tr class="row-even"><td><p>“ctrlins”</p></td>
+<td><p>Ctrl+Insert</p></td>
+<td><p>“no”, “PA1”</p></td>
 </tr>
-<tr class="row-odd"><td>“ctrldel”</td>
-<td>Ctrl+Delete</td>
-<td>“no”, “PA2”, “ErEof”</td>
+<tr class="row-odd"><td><p>“ctrldel”</p></td>
+<td><p>Ctrl+Delete</p></td>
+<td><p>“no”, “PA2”, “ErEof”</p></td>
 </tr>
-<tr class="row-even"><td>“ctrlhome”</td>
-<td>Ctrl+Home</td>
-<td>“no”, “PA3”, “Home”, “ChgCur”</td>
+<tr class="row-even"><td><p>“ctrlhome”</p></td>
+<td><p>Ctrl+Home</p></td>
+<td><p>“no”, “PA3”, “Home”, “ChgCur”</p></td>
 </tr>
-<tr class="row-odd"><td>“ctrlend”</td>
-<td>Ctrl+End</td>
-<td>“no”, “ErEof”, “End”</td>
+<tr class="row-odd"><td><p>“ctrlend”</p></td>
+<td><p>Ctrl+End</p></td>
+<td><p>“no”, “ErEof”, “End”</p></td>
 </tr>
-<tr class="row-even"><td>“altins”</td>
-<td>Alt+Ins</td>
-<td>“no”, “PA1”</td>
+<tr class="row-even"><td><p>“altins”</p></td>
+<td><p>Alt+Ins</p></td>
+<td><p>“no”, “PA1”</p></td>
 </tr>
-<tr class="row-odd"><td>“althome”</td>
-<td>Alt+Home</td>
-<td>“no”, “PA2”</td>
+<tr class="row-odd"><td><p>“althome”</p></td>
+<td><p>Alt+Home</p></td>
+<td><p>“no”, “PA2”</p></td>
 </tr>
-<tr class="row-even"><td>“altpgup”</td>
-<td>Alt+PageUp</td>
-<td>“no”, “PA1”</td>
+<tr class="row-even"><td><p>“altpgup”</p></td>
+<td><p>Alt+PageUp</p></td>
+<td><p>“no”, “PA1”</p></td>
 </tr>
-<tr class="row-odd"><td rowspan="2">“altpgdn”</td>
-<td rowspan="2">Alt+PageDown</td>
-<td rowspan="2">“no”, “PA2”</td>
+<tr class="row-odd"><td rowspan="2"><p>“altpgdn”</p></td>
+<td rowspan="2"><p>Alt+PageDown</p></td>
+<td rowspan="2"><p>“no”, “PA2”</p></td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td>“altpause”</td>
-<td>Alt+Pause</td>
-<td>“no”, “ATTN”, “CLEAR”, “PA3”</td>
+<tr class="row-odd"><td><p>“altpause”</p></td>
+<td><p>Alt+Pause</p></td>
+<td><p>“no”, “ATTN”, “CLEAR”, “PA3”</p></td>
 </tr>
-<tr class="row-even"><td>“altf1”</td>
-<td>Alt+F1</td>
-<td>“no”, “PA1”, “ENTER”</td>
+<tr class="row-even"><td><p>“altf1”</p></td>
+<td><p>Alt+F1</p></td>
+<td><p>“no”, “PA1”, “ENTER”</p></td>
 </tr>
-<tr class="row-odd"><td>“altf2”</td>
-<td>Alt+F2</td>
-<td>“no”, “PA2”</td>
+<tr class="row-odd"><td><p>“altf2”</p></td>
+<td><p>Alt+F2</p></td>
+<td><p>“no”, “PA2”</p></td>
 </tr>
-<tr class="row-even"><td>“altf3”</td>
-<td>Alt+F3</td>
-<td>“no”, “PA3”, “ChgCur”</td>
+<tr class="row-even"><td><p>“altf3”</p></td>
+<td><p>Alt+F3</p></td>
+<td><p>“no”, “PA3”, “ChgCur”</p></td>
 </tr>
-<tr class="row-odd"><td>“kpslash”</td>
-<td>Keypad /</td>
-<td>“/”, “PA1”</td>
+<tr class="row-odd"><td><p>“kpslash”</p></td>
+<td><p>Keypad /</p></td>
+<td><p>“/”, “PA1”</p></td>
 </tr>
-<tr class="row-even"><td>“kpaster”</td>
-<td>Keypad *</td>
-<td>“*”, “PA2”</td>
+<tr class="row-even"><td><p>“kpaster”</p></td>
+<td><p>Keypad *</p></td>
+<td><p>“*”, “PA2”</p></td>
 </tr>
-<tr class="row-odd"><td>“kpminus”</td>
-<td>Keypad -</td>
-<td>“-“, “Backtab”</td>
+<tr class="row-odd"><td><p>“kpminus”</p></td>
+<td><p>Keypad -</p></td>
+<td><p>“-“, “Backtab”</p></td>
 </tr>
-<tr class="row-even"><td>“kpplus”</td>
-<td>Keypad +</td>
-<td>“+”, “Tab”, “Newline”</td>
+<tr class="row-even"><td><p>“kpplus”</p></td>
+<td><p>Keypad +</p></td>
+<td><p>“+”, “Tab”, “Newline”</p></td>
 </tr>
-<tr class="row-odd"><td>“kpdot”</td>
-<td>Keypad .</td>
-<td>“.”, “,”</td>
+<tr class="row-odd"><td><p>“kpdot”</p></td>
+<td><p>Keypad .</p></td>
+<td><p>“.”, “,”</p></td>
 </tr>
-<tr class="row-even"><td>“dblclick”</td>
-<td>Double Click</td>
-<td>“Word”, “ENTER”, “no”</td>
+<tr class="row-even"><td><p>“dblclick”</p></td>
+<td><p>Double Click</p></td>
+<td><p>“Word”, “ENTER”, “no”</p></td>
 </tr>
-<tr class="row-odd"><td>“urlhotspot”</td>
-<td>URL hotspots</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“urlhotspot”</p></td>
+<td><p>URL hotspots</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“pfkhotspot”</td>
-<td>PF key hotspots</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“pfkhotspot”</p></td>
+<td><p>PF key hotspots</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“pasteereof”</td>
-<td>Paste erase EOF</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“pasteereof”</p></td>
+<td><p>Paste erase EOF</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“pastetyping”</td>
-<td>Map Ctrl+V to Paste
-by Typing</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“pastetyping”</p></td>
+<td><p>Map Ctrl+V to Paste
+by Typing</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“movecursor”</td>
-<td>Move cursor on activat</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“movecursor”</p></td>
+<td><p>Move cursor on activat</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“style”</td>
-<td>Style</td>
-<td>“3270”, “gray”, “white”</td>
+<tr class="row-even"><td><p>“style”</p></td>
+<td><p>Style</p></td>
+<td><p>“3270”, “gray”, “white”</p></td>
 </tr>
-<tr class="row-odd"><td>“printstyle”</td>
-<td>Print style</td>
-<td>“3270”, “color”, “white”</td>
+<tr class="row-odd"><td><p>“printstyle”</p></td>
+<td><p>Print style</p></td>
+<td><p>“3270”, “color”, “white”</p></td>
 </tr>
-<tr class="row-even"><td>“rtm”</td>
-<td>Response time monitor</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“rtm”</p></td>
+<td><p>Response time monitor</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“omitnulls”</td>
-<td>Omit nulls from input</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“omitnulls”</p></td>
+<td><p>Omit nulls from input</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“keepmacpad”</td>
-<td>Keep macro pad open</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“keepmacpad”</p></td>
+<td><p>Keep macro pad open</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“keepkeypad”</td>
-<td>Keep keypad open</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“keepkeypad”</p></td>
+<td><p>Keep keypad open</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“hiliteinput”</td>
-<td>Highlight input fields</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“hiliteinput”</p></td>
+<td><p>Highlight input fields</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“caretnot”</td>
-<td>Remap ^ to logical not</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“caretnot”</p></td>
+<td><p>Remap ^ to logical not</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“adaptfontratio”</td>
-<td>Adapt font size ratio</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“adaptfontratio”</p></td>
+<td><p>Adapt font size ratio</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“charspace”</td>
-<td>Character spacing</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“charspace”</p></td>
+<td><p>Character spacing</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“linespace”</td>
-<td>Line spacing</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“linespace”</p></td>
+<td><p>Line spacing</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“settingsGUI”</td>
-<td>Uuser interface type</td>
-<td>v2</td>
+<tr class="row-odd"><td><p>“settingsGUI”</p></td>
+<td><p>Uuser interface type</p></td>
+<td><p>v2</p></td>
 </tr>
-<tr class="row-even"><td>“preservein”</td>
-<td>Preserve insert mode</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“preservein”</p></td>
+<td><p>Preserve insert mode</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“nolongpoll”</td>
-<td>AsynchSupport</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“nolongpoll”</p></td>
+<td><p>AsynchSupport</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td>“MirrorMode”</td>
-<td>BiDirectional mode</td>
-<td>true, false</td>
+<tr class="row-even"><td><p>“MirrorMode”</p></td>
+<td><p>BiDirectional mode</p></td>
+<td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td>“NOstretch”</td>
-<td>Font Size Stretch</td>
-<td>true, false</td>
+<tr class="row-odd"><td><p>“NOstretch”</p></td>
+<td><p>Font Size Stretch</p></td>
+<td><p>true, false</p></td>
 </tr>
 </tbody>
 </table>
 <p><em>Default W2H parameters: List of keywords and possible values</em></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.</p>
+<p class="admonition-title">Note</p>
+<p>Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.</p>
 </div>
 </div>
 </div>
@@ -2041,19 +2039,11 @@ by Typing</td>
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2064,6 +2054,7 @@ by Typing</td>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

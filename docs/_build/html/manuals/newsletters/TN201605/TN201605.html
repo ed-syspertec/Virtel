@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Virtel Screen Redesigner in action" href="../TN201606/TN201606.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -120,7 +118,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -159,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -211,8 +208,8 @@ settings are associated with the printer’s Terminal and Typterm CICS
 table entries.</p>
 <p>Two issues associated with CICS printing are:-</p>
 <ol class="arabic simple">
-<li>The formatting considerations.</li>
-<li>Associating a task to the printer.</li>
+<li><p>The formatting considerations.</p></li>
+<li><p>Associating a task to the printer.</p></li>
 </ol>
 <p>In our examples there are no formatting considerations other than
 pagination and newline processing. This is taken care of by the CICS
@@ -395,10 +392,10 @@ then the print request will more than likely fail. For example in the
 following scenario we have modified CICS so that printer EHS0 is now a
 SCS printer. We did this by executing the following CICS commands.</p>
 <ol class="arabic simple">
-<li>Change the TypeTerm definition from IMP3270P to SCS on the CICS EHS0
-terminal definition.</li>
-<li>Place EHS0 out of service.</li>
-<li>Install EHS0.</li>
+<li><p>Change the TypeTerm definition from IMP3270P to SCS on the CICS EHS0
+terminal definition.</p></li>
+<li><p>Place EHS0 out of service.</p></li>
+<li><p>Install EHS0.</p></li>
 </ol>
 <p>When will select PF9 from the CICS application Virtel pops up a box
 which indicates a print failure. Note that different printer ICON. This
@@ -422,10 +419,10 @@ display.</p>
 <p>We can see that no input scenario is associated this application. SCS
 printing will require a scenario. Three scenarios are available:-</p>
 <ol class="arabic simple">
-<li>SCENFPDF Converts SCS data stream into PDF document.</li>
-<li>SCENFPCL Downloads raw data as a file.</li>
-<li>SCENPPDF Sends SCS data to external server to be converted to a PDF.
-PDF file is returned to Virtel as an attachment.</li>
+<li><p>SCENFPDF Converts SCS data stream into PDF document.</p></li>
+<li><p>SCENFPCL Downloads raw data as a file.</p></li>
+<li><p>SCENPPDF Sends SCS data to external server to be converted to a PDF.
+PDF file is returned to Virtel as an attachment.</p></li>
 </ol>
 <p>Attaching SCENFPCL as an input scenario to the CICS transaction will
 enable Virtel to process the print request sent by CICS. We update our
@@ -506,19 +503,11 @@ to right click “print” in the printer template window.</p>
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -529,6 +518,7 @@ to right click “print” in the printer template window.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

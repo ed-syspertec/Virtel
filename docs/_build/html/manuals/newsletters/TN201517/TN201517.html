@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Processing the VTAM USS MSG10 buffer" href="../TN201519/TN201519.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -120,7 +118,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -159,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -277,7 +274,7 @@ sample entry looks like:-</p>
 altered and recompiled and the Transaction Entry point and transactions
 altered/added to the ARBO file.</p>
 <ol class="arabic">
-<li><p class="first"><strong>Virtel TCT Modifications</strong></p>
+<li><p><strong>Virtel TCT Modifications</strong></p>
 <blockquote>
 <div><p>In the TCT modify the CHARSET key word to include the Chinese DBCS
 Codepage. In the example that follows we have modified the character
@@ -296,7 +293,7 @@ Codepage used by Virtel:-</p>
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p class="first"><strong>Virtel Transaction Modifications</strong></p>
+<li><p><strong>Virtel Transaction Modifications</strong></p>
 <blockquote>
 <div><p>To support DBCS the entry type that is being used by VIRTEL must be
 configured with the EXTCOLOR=X option. In our example we are using
@@ -311,8 +308,7 @@ Transactions, Sub directories and Entry changes. The changes to the
 ARBO are as follows:-</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>New Transactions</strong></p>
-</li>
+<li><p><strong>New Transactions</strong></p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">C</span> <span class="n">Enable</span> <span class="n">upload</span> <span class="n">of</span> <span class="n">pages</span> <span class="n">to</span> <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">directory</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">07</span> <span class="n">Support</span> <span class="n">English</span> <span class="n">display</span> <span class="n">of</span> <span class="n">IMS</span> <span class="n">screens</span>
@@ -321,7 +317,7 @@ ARBO are as follows:-</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><strong>New Sub-Directory</strong></li>
+<li><p><strong>New Sub-Directory</strong></p></li>
 </ol>
 <p>A new sub directory is required, CHI-DIR, to hold the Chinese pages produced by Virtel Screen Redesigner</p>
 <p><strong>Updated Transaction Entry</strong></p>
@@ -332,7 +328,7 @@ ARBO are as follows:-</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><strong>Virtel TRSF changes</strong></li>
+<li><p><strong>Virtel TRSF changes</strong></p></li>
 </ol>
 <p>The relevant templates and scenarios used in the IMS demonstration
 must be uploaded to the TRSF. These web elements can be found in the
@@ -343,7 +339,8 @@ product must be uploaded to the relevant sub directories. Unless
 stated all source references are directories and all members must be
 copied up.</p>
 <blockquote>
-<div><strong>Source Target Directory</strong></div></blockquote>
+<div><p><strong>Source Target Directory</strong></p>
+</div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span> <span class="n">VirtelSR</span>\<span class="n">upload</span>                 <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 \<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span> <span class="n">VirtelSR</span>\\<span class="n">VSRwithOwn</span>\\<span class="n">upload</span>    <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 \<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span>
@@ -355,7 +352,7 @@ copied up.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li><strong>Scenario GAPPOCSC</strong></li>
+<li><p><strong>Scenario GAPPOCSC</strong></p></li>
 </ol>
 <p>The source for the scenario is listed in Appendix C. This can be
 used to create a load module version of the scenario rather than a
@@ -568,19 +565,11 @@ CLASSIC     DS 0H
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -591,6 +580,7 @@ CLASSIC     DS 0H
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

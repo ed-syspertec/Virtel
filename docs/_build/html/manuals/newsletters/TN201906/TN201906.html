@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Converting a VBA macro" href="../TN202001/TN202001.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,7 +120,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -161,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -202,11 +199,11 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Using FTP or IND$FILE to upload the members in the SAMPLIB directory to your Virtel SAMPLIB library.</li>
-<li>Likewise, using FTP or IND$FILE, upload the members in the CNTL directory to your Virtel CNTL library.</li>
-<li>Using the Virtel Administration Portal, ‘Drag and Drop’ the members in the W2H directory to the Virtel W2H directory.</li>
-<li>Modify the W2H entry point WEB2HOST and remove SCE-DIR as the default search directory for scenarios. Search for scenarios from the loadlib instead.</li>
-<li>Run the DB2ARBO and DB2COMP jobs.</li>
+<li><p>Using FTP or IND$FILE to upload the members in the SAMPLIB directory to your Virtel SAMPLIB library.</p></li>
+<li><p>Likewise, using FTP or IND$FILE, upload the members in the CNTL directory to your Virtel CNTL library.</p></li>
+<li><p>Using the Virtel Administration Portal, ‘Drag and Drop’ the members in the W2H directory to the Virtel W2H directory.</p></li>
+<li><p>Modify the W2H entry point WEB2HOST and remove SCE-DIR as the default search directory for scenarios. Search for scenarios from the loadlib instead.</p></li>
+<li><p>Run the DB2ARBO and DB2COMP jobs.</p></li>
 </ol>
 <div class="section" id="cntl-members">
 <h3>CNTL Members<a class="headerlink" href="#cntl-members" title="Permalink to this headline">¶</a></h3>
@@ -236,9 +233,9 @@
 <div class="section" id="running-the-db2-demo-package">
 <h2>Running the DB2 Demo Package<a class="headerlink" href="#running-the-db2-demo-package" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Stop and restart Virtel to pick up the JCL changes, in particular the addition of the DB2 SDSNLOAD library.</li>
-<li>Refresh the Virtel Cache</li>
-<li>Enter the URL virtel.com:41001/demohttp.htm. The following screen should appear: -</li>
+<li><p>Stop and restart Virtel to pick up the JCL changes, in particular the addition of the DB2 SDSNLOAD library.</p></li>
+<li><p>Refresh the Virtel Cache</p></li>
+<li><p>Enter the URL virtel.com:41001/demohttp.htm. The following screen should appear: -</p></li>
 </ol>
 <p><img alt="image1" src="../../../_images/image156.png" /></p>
 <p>This web page template provides two demonstration links, demonstration 1 and demomonstartion 2.</p>
@@ -477,19 +474,11 @@ SQLQERR  EQU   *
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -500,6 +489,7 @@ SQLQERR  EQU   *
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

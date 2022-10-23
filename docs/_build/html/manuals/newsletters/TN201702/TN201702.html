@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Passticket support with CA Top Secret" href="../TN201703/TN201703.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -118,7 +116,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -157,7 +154,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -196,9 +193,8 @@ reference.</p>
 <p><a class="reference internal" href="../../../_images/image18.jpg"><img alt="image0" src="../../../_images/image18.jpg" style="width: 6.26806in; height: 3.68681in;" /></a></p>
 <p>Fig.1 - Overview of logon sequence</p>
 <ol class="arabic">
-<li><p class="first">User accesses Virtel entity through the protected URL <a class="reference external" href="https://sp.syspertec.com/Virtel">https://sp.syspertec.com/Virtel</a></p>
-</li>
-<li><p class="first">Service provider requests userid and password through logon template:-</p>
+<li><p>User accesses Virtel entity through the protected URL <a class="reference external" href="https://sp.syspertec.com/Virtel">https://sp.syspertec.com/Virtel</a></p></li>
+<li><p>Service provider requests userid and password through logon template:-</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image226.png"><img alt="image1" src="../../../_images/image226.png" style="width: 4.79057in; height: 3.17708in;" /></a></p>
 </div></blockquote>
@@ -206,13 +202,10 @@ reference.</p>
 </ol>
 <p>Fig.2 - Identity Provider logon</p>
 <ol class="arabic" start="3">
-<li><p class="first">IDP validates user credentials against LDAP attributes.</p>
-</li>
-<li><p class="first">IDP returns selected attributes to SP. In this case only the UID, representing the UID, is required.</p>
-</li>
-<li><p class="first">SP redirects user to Virtel APPMENU transaction passing the UID information, the USERID, as a header in  the HTTP request – SM_USER.</p>
-</li>
-<li><p class="first">Virtel presents application menu.</p>
+<li><p>IDP validates user credentials against LDAP attributes.</p></li>
+<li><p>IDP returns selected attributes to SP. In this case only the UID, representing the UID, is required.</p></li>
+<li><p>SP redirects user to Virtel APPMENU transaction passing the UID information, the USERID, as a header in  the HTTP request – SM_USER.</p></li>
+<li><p>Virtel presents application menu.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image323.png"><img alt="image2" src="../../../_images/image323.png" style="width: 5.26604in; height: 4.00000in;" /></a></p>
 </div></blockquote>
@@ -220,7 +213,7 @@ reference.</p>
 </ol>
 <p>Fig.3 - Virtel application menu</p>
 <ol class="arabic" start="7">
-<li><p class="first">User selects applications and logs on without specifying userid or password. Virtel uses the SM_USER header and generates a PASSTICKET to associate with the userid.</p>
+<li><p>User selects applications and logs on without specifying userid or password. Virtel uses the SM_USER header and generates a PASSTICKET to associate with the userid.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image419.png"><img alt="image3" src="../../../_images/image419.png" style="width: 5.30208in; height: 4.04323in;" /></a></p>
 </div></blockquote>
@@ -423,19 +416,11 @@ userid /PASSTICKET combination will then be used to sign on to any secure applic
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -446,6 +431,7 @@ userid /PASSTICKET combination will then be used to sign on to any secure applic
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

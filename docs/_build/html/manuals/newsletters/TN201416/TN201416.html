@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="RACF Grouping Class and Virtel" href="../TN201417/TN201417.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,7 +120,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -161,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -213,17 +210,17 @@ by system SSL. System SSL has three supported protocol levels:</p>
 <p>In this configuration we will be using SSLv3.</p>
 <p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <ol class="arabic simple">
-<li>The Client contacts the Server with “Hello” message:
-<em>Incorporates a list of supported cipher suites and a random byte string.</em></li>
-<li>The Server sends “Hello” message back:
-<em>Incorporates selected cipher suite from client list, Session ID, random byte string, servers digital certificate and optional client certificate request.</em></li>
-<li>Server authentication is performed by the Client.</li>
-<li>Client responds to server:
-<em>Incorporates a random byte string that is used to compute a secret key for subsequent messages. The random byte string is encrypted with the server’s public key. Optionally sends client’s digital certificate or “no digital certificate’ alert. This may be rejected by server if a client certificate is required.</em></li>
-<li>Client authentication is performed by the Server.</li>
-<li>Client sends “Finished” message encrypted with secret key.</li>
-<li>Server sends “Finished” message encrypted with secret key.</li>
-<li>An encryption algorithm and secret key is chosen to encrypt / decrypt data further data transmission.</li>
+<li><p>The Client contacts the Server with “Hello” message:
+<em>Incorporates a list of supported cipher suites and a random byte string.</em></p></li>
+<li><p>The Server sends “Hello” message back:
+<em>Incorporates selected cipher suite from client list, Session ID, random byte string, servers digital certificate and optional client certificate request.</em></p></li>
+<li><p>Server authentication is performed by the Client.</p></li>
+<li><p>Client responds to server:
+<em>Incorporates a random byte string that is used to compute a secret key for subsequent messages. The random byte string is encrypted with the server’s public key. Optionally sends client’s digital certificate or “no digital certificate’ alert. This may be rejected by server if a client certificate is required.</em></p></li>
+<li><p>Client authentication is performed by the Server.</p></li>
+<li><p>Client sends “Finished” message encrypted with secret key.</p></li>
+<li><p>Server sends “Finished” message encrypted with secret key.</p></li>
+<li><p>An encryption algorithm and secret key is chosen to encrypt / decrypt data further data transmission.</p></li>
 </ol>
 <p>The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP
 Configuration Guide.</p>
@@ -618,7 +615,7 @@ id/password. Our initial URL is</p>
 </div>
 <p>You will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image4" src="../../../_images/image54.png" /></p>
-<p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
+<p>We are presented with a «  Select a certificate » window from the
 browser requesting the certificate we wish to user for authenication
 purposes. We select the certificate we downloaded.</p>
 <p>The next panel is a warning panel which identifes that the certificate
@@ -638,7 +635,7 @@ password.</p>
 Here are some general guidelines that should help in debugging
 configuration errors.</p>
 <ol class="arabic simple">
-<li>Is AT-TLS active.</li>
+<li><p>Is AT-TLS active.</p></li>
 </ol>
 <p>Issue the following z/OS command – D TCPIP,,N,TTLS</p>
 <p>The response should be :-</p>
@@ -650,7 +647,7 @@ configuration errors.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>PAGENT return codes</li>
+<li><p>PAGENT return codes</p></li>
 </ol>
 <p>Common session startup/handshake errors are reported through messqge
 EZD1287I. In the example below we can see that the handshake has failed
@@ -676,55 +673,55 @@ URL.</p>
 </pre></div>
 </div>
 <p>Common PAGENT return codes:-</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="19%" />
-<col width="81%" />
+<col style="width: 19%" />
+<col style="width: 81%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Code</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>7</td>
-<td>No certificate</td>
+<tbody>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>No certificate</p></td>
 </tr>
-<tr class="row-odd"><td>8</td>
-<td>Certificate not trusted</td>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Certificate not trusted</p></td>
 </tr>
-<tr class="row-even"><td>109</td>
-<td>No CA certificates on ring</td>
+<tr class="row-even"><td><p>109</p></td>
+<td><p>No CA certificates on ring</p></td>
 </tr>
-<tr class="row-odd"><td>202</td>
-<td>Keyring does not exists</td>
+<tr class="row-odd"><td><p>202</p></td>
+<td><p>Keyring does not exists</p></td>
 </tr>
-<tr class="row-even"><td>401</td>
-<td>Certificate expired</td>
+<tr class="row-even"><td><p>401</p></td>
+<td><p>Certificate expired</p></td>
 </tr>
-<tr class="row-odd"><td>402/12</td>
-<td>Client and server cannot agree cipher suite</td>
+<tr class="row-odd"><td><p>402/12</p></td>
+<td><p>Client and server cannot agree cipher suite</p></td>
 </tr>
-<tr class="row-even"><td>403</td>
-<td>Client Certificate not available or invalid.</td>
+<tr class="row-even"><td><p>403</p></td>
+<td><p>Client Certificate not available or invalid.</p></td>
 </tr>
-<tr class="row-odd"><td>416</td>
-<td>Virtel does not have permission to list keyring</td>
+<tr class="row-odd"><td><p>416</p></td>
+<td><p>Virtel does not have permission to list keyring</p></td>
 </tr>
-<tr class="row-even"><td>431</td>
-<td>Certificate is revoked</td>
+<tr class="row-even"><td><p>431</p></td>
+<td><p>Certificate is revoked</p></td>
 </tr>
-<tr class="row-odd"><td>434</td>
-<td>Certificate key not compatible with cipher suite</td>
+<tr class="row-odd"><td><p>434</p></td>
+<td><p>Certificate key not compatible with cipher suite</p></td>
 </tr>
-<tr class="row-even"><td>435</td>
-<td>Certificate authority unknown</td>
+<tr class="row-even"><td><p>435</p></td>
+<td><p>Certificate authority unknown</p></td>
 </tr>
-<tr class="row-odd"><td>5003</td>
-<td>Browser sent clear text.</td>
+<tr class="row-odd"><td><p>5003</p></td>
+<td><p>Browser sent clear text.</p></td>
 </tr>
-<tr class="row-even"><td>5006</td>
-<td>SSL failed to initialize. Check RACF SSLSETUP job.</td>
+<tr class="row-even"><td><p>5006</p></td>
+<td><p>SSL failed to initialize. Check RACF SSLSETUP job.</p></td>
 </tr>
 </tbody>
 </table>
@@ -759,33 +756,33 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 </div></blockquote>
 <p><strong>z/OS IBM References</strong></p>
 <ul>
-<li><p class="first">SA22-7683 Security Server: RACF Security Administrator’s Guide</p>
+<li><p>SA22-7683 Security Server: RACF Security Administrator’s Guide</p>
 <blockquote>
 <div><p>Chapter 21. RACF and Digital Certificates</p>
 </div></blockquote>
 </li>
-<li><p class="first">SC24-5901 Cryptographic Services: System SSL Programming</p>
+<li><p>SC24-5901 Cryptographic Services: System SSL Programming</p>
 <blockquote>
 <div><p>Chapter 12. Messages and Codes</p>
 </div></blockquote>
 </li>
-<li><p class="first">SC31-8775 Communications Server: IP Configuration Guide</p>
+<li><p>SC31-8775 Communications Server: IP Configuration Guide</p>
 <blockquote>
 <div><p>Chapter 14. Policy-based networking</p>
 <p>Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</p>
 </div></blockquote>
 </li>
-<li><p class="first">SC31-8776 Communications Server: IP Configuration Reference</p>
+<li><p>SC31-8776 Communications Server: IP Configuration Reference</p>
 <blockquote>
 <div><p>Chapter 21. Policy Agent and policy applications</p>
 </div></blockquote>
 </li>
-<li><p class="first">GC31-8782 Communications Server: IP Diagnosis Guide</p>
+<li><p>GC31-8782 Communications Server: IP Diagnosis Guide</p>
 <blockquote>
 <div><p>Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</p>
 </div></blockquote>
 </li>
-<li><p class="first">SC31-8784 Communications Server: IP Messages: Volume 2</p>
+<li><p>SC31-8784 Communications Server: IP Messages: Volume 2</p>
 <blockquote>
 <div><p>Chapter 10. EZD1xxxx messages</p>
 </div></blockquote>
@@ -793,18 +790,18 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 </ul>
 <p><strong>Virtel References</strong></p>
 <ul>
-<li><p class="first">VIRTEL Installation Guide</p>
+<li><p>VIRTEL Installation Guide</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../virtel/Virtel456IG/Installation_Guide.html#virt456ig-passtck"><span class="std std-ref">PASSTCK parameter</span></a></p>
 </div></blockquote>
 </li>
-<li><p class="first">VIRTEL Connectivity Reference</p>
+<li><p>VIRTEL Connectivity Reference</p>
 <blockquote>
 <div><p>Transactions – PassTicket Parameter Page 93</p>
 <p>Transactions – Security Parameter Page 94</p>
 </div></blockquote>
 </li>
-<li><p class="first">VIRTEL Web Access Guide</p>
+<li><p>VIRTEL Web Access Guide</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../virtel/Virtel456UG/User_Guide.html#v456ug-data-encryption-ssl"><span class="std std-ref">Security – Data encryption by SSL</span></a></p>
 </div></blockquote>
@@ -832,19 +829,11 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -855,6 +844,7 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

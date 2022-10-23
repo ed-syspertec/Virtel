@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Field Level Encryption" href="../TN201603/TN201603.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -120,7 +118,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -159,7 +156,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -202,56 +199,42 @@ following job:-:</p>
 </div>
 <p><strong>Getting the software</strong></p>
 <ol class="arabic">
-<li><p class="first">Download relevant files from the FTP server: <a class="reference external" href="https://ftp-group.syspertec.com">https://ftp-group.syspertec.com</a></p>
+<li><p>Download relevant files from the FTP server: <a class="reference external" href="https://ftp-group.syspertec.com">https://ftp-group.syspertec.com</a></p>
 <blockquote>
 <div><ul class="simple">
-<li>/VIRTEL 4.53/Produits/virtel453mvs.zip</li>
-<li>/VIRTEL 4.53/Produits/allptfs-mvs453.txt</li>
-<li>/VIRTEL 4.53/Produits/virtel453updt5380.zip</li>
+<li><p>/VIRTEL 4.53/Produits/virtel453mvs.zip</p></li>
+<li><p>/VIRTEL 4.53/Produits/allptfs-mvs453.txt</p></li>
+<li><p>/VIRTEL 4.53/Produits/virtel453updt5380.zip</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">Unzip “virtel453mvs.zip” into a folder on your workstation.</p>
-</li>
-<li><p class="first">Print off the “install.txt” document.</p>
-</li>
-<li><p class="first">Unzip “/VIRTEL 4.53/Produits/virtel453updt5380.zip” into a folder on your workstation.</p>
-</li>
-<li><p class="first">Print off the readme document.</p>
-</li>
+<li><p>Unzip “virtel453mvs.zip” into a folder on your workstation.</p></li>
+<li><p>Print off the “install.txt” document.</p></li>
+<li><p>Unzip “/VIRTEL 4.53/Produits/virtel453updt5380.zip” into a folder on your workstation.</p></li>
+<li><p>Print off the readme document.</p></li>
 </ol>
 <p><strong>Installing the software</strong></p>
 <ol class="arabic">
-<li><p class="first">Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</p>
-</li>
-<li><p class="first">Upload the XMIT file virt453.xmit to the file allocated by $alocdsu.</p>
-</li>
-<li><p class="first">Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</p>
-</li>
-<li><p class="first">Upload text file allptfs-mvs453.txt to <em>yourqual.VIRT453.CNTL(PTF453MV).</em></p>
-</li>
-<li><p class="first">Modify and run job <em>yourqual.VIRT453.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</p>
-</li>
-<li><p class="first">Authorize the VIRTEL load library. Use the z/OS SETPROG APF command:-:</p>
+<li><p>Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</p></li>
+<li><p>Upload the XMIT file virt453.xmit to the file allocated by $alocdsu.</p></li>
+<li><p>Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</p></li>
+<li><p>Upload text file allptfs-mvs453.txt to <em>yourqual.VIRT453.CNTL(PTF453MV).</em></p></li>
+<li><p>Modify and run job <em>yourqual.VIRT453.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</p></li>
+<li><p>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command:-:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">LOADLIB</span><span class="p">,[</span><span class="n">VOL</span><span class="o">=</span><span class="n">volser</span><span class="o">|</span><span class="n">SMS</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Edit the VIRTEL TCT member <em>yourqual.VIRT453.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT453.CNTL(ASMTCT).</em> See note 6 of
-“install.txt” for further information.</p>
-</li>
-<li><p class="first">Edit <em>yourqual.VIRT453.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</p>
-</li>
-<li><p class="first">Copy <em>yourqual.VIRT453.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</p>
-</li>
-<li><p class="first">Edit member <em>yourqual.VIRT453.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</p>
-</li>
-<li><p class="first">Start Virtel.</p>
-</li>
+<li><p>Edit the VIRTEL TCT member <em>yourqual.VIRT453.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT453.CNTL(ASMTCT).</em> See note 6 of
+“install.txt” for further information.</p></li>
+<li><p>Edit <em>yourqual.VIRT453.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</p></li>
+<li><p>Copy <em>yourqual.VIRT453.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</p></li>
+<li><p>Edit member <em>yourqual.VIRT453.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</p></li>
+<li><p>Start Virtel.</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-</p>
+<p class="admonition-title">Note</p>
+<p>You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="p">,</span>
@@ -298,19 +281,17 @@ opened sessions to ports 41001 and 41002. Issue the following command:-</p>
 <p><strong>Applying maintenance to Virtel.</strong></p>
 <p>Stop VIRTEL if it is running. ARBO updates can only be applied when Virtel is not running.</p>
 <p><strong>ARBO Changes</strong></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">ARBOMIGR:</th><td class="field-body">Adds the SCE-DIR (Scenario directory) for loading scenarios.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">ARBOMACR:</th><td class="field-body">Turns on the new macro support.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">ARBOMIGR</dt>
+<dd class="field-odd"><p>Adds the SCE-DIR (Scenario directory) for loading scenarios.</p>
+</dd>
+<dt class="field-even">ARBOMACR</dt>
+<dd class="field-even"><p>Turns on the new macro support.</p>
+</dd>
+</dl>
 <ol class="arabic simple">
-<li>Upload the text files ARBOMACR and ARBOMIGR to yourqual.VIRT453.SAMPLIB.</li>
-<li>Edit and run ARBOMACR and ARBOMIGR to apply maintenance to the ARBO file in preparation for the TRSF maintenance. Change the following SET XXXX=keywords in the JCL to reflect the relevant library names:-</li>
+<li><p>Upload the text files ARBOMACR and ARBOMIGR to yourqual.VIRT453.SAMPLIB.</p></li>
+<li><p>Edit and run ARBOMACR and ARBOMIGR to apply maintenance to the ARBO file in preparation for the TRSF maintenance. Change the following SET XXXX=keywords in the JCL to reflect the relevant library names:-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span>
@@ -318,60 +299,56 @@ opened sessions to ports 41001 and 41002. Issue the following command:-</p>
 </div>
 <p><strong>MACLIB changes</strong></p>
 <ol class="arabic simple">
-<li>Upload the text file VIRTERM to yourqual.VIRT453.MACLIB. Reassemble TCT01 using <em>yourqual.VIRT453.CNTL(ASMTCT</em>).</li>
+<li><p>Upload the text file VIRTERM to yourqual.VIRT453.MACLIB. Reassemble TCT01 using <em>yourqual.VIRT453.CNTL(ASMTCT</em>).</p></li>
 </ol>
 <p>Note: If the assembly fails because the at (&#64;) character has been translated to a French accent à using codepage 1147 (French Euro) when doing the file upload.</p>
 <p><strong>TRSF changes</strong></p>
 <ol class="arabic simple">
-<li>Start Virtel.</li>
-<li>Using a Chrome Browser navigate to the Administration Virtel Portal which can be accessed through port 41001. The Drag and Drop upload feature is supported by Chrome and Firefox only.-</li>
+<li><p>Start Virtel.</p></li>
+<li><p>Using a Chrome Browser navigate to the Administration Virtel Portal which can be accessed through port 41001. The Drag and Drop upload feature is supported by Chrome and Firefox only.-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span>
 </pre></div>
 </div>
 <ol class="arabic">
-<li><p class="first">The following screen image should appear:-</p>
+<li><p>The following screen image should appear:-</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image126.png"><img alt="image0" src="../../../_images/image126.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 </div></blockquote>
 </li>
-<li><p class="first">Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
+<li><p>Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image215.png"><img alt="image1" src="../../../_images/image215.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
 </div></blockquote>
 </li>
-<li><p class="first">Keeping this browser window open, go to your desktop directory where you unzipped the virtel453updt5380.zip file.</p>
+<li><p>Keeping this browser window open, go to your desktop directory where you unzipped the virtel453updt5380.zip file.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image316.png"><img alt="image2" src="../../../_images/image316.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
 </div></blockquote>
 </li>
-<li><p class="first">Open the SCE directory and select all the files (CTRL-A). Drag this selection across to the browser window and drop over the SCE-DIR ICON. This should start an upload of all the files in the SCE directory on your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file. There should be 4 files.</p>
+<li><p>Open the SCE directory and select all the files (CTRL-A). Drag this selection across to the browser window and drop over the SCE-DIR ICON. This should start an upload of all the files in the SCE directory on your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file. There should be 4 files.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image413.png"><img alt="image3" src="../../../_images/image413.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
 </div></blockquote>
 </li>
-<li><p class="first">Repeat the exercise, but this time with the W2H directory, dragging the 83 elements into the W2H-DIR directory.</p>
-</li>
-<li><p class="first">After all the elements have been uploaded into the TRSF VSAM file, press CTRL-R in your browser to refresh the browser’s cache.</p>
-</li>
+<li><p>Repeat the exercise, but this time with the W2H directory, dragging the 83 elements into the W2H-DIR directory.</p></li>
+<li><p>After all the elements have been uploaded into the TRSF VSAM file, press CTRL-R in your browser to refresh the browser’s cache.</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>With some versions of Chrome there is a bug which prevents the upload from starting. In this case:-</p>
-<ul class="last">
-<li><p class="first">Close the browser.</p>
-</li>
-<li><p class="first">Re-open a browser window and type in the following URL replacing the IP stack address (192.168.170.30) with yours. The rest of the URL should be the same. For example:-</p>
+<ul>
+<li><p>Close the browser.</p></li>
+<li><p>Re-open a browser window and type in the following URL replacing the IP stack address (192.168.170.30) with yours. The rest of the URL should be the same. For example:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">SECURE</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">dirlist</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">This will open the Drag and Drop interface Window. Continue to upload the “w2h” and “sce” directories. Once these uploads have completed, CTRL-R in the browser to refresh the browser’s cache. Close the browser window and reopen the Virtel portal with the URL <a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
-</li>
+<li><p>This will open the Drag and Drop interface Window. Continue to upload the “w2h” and “sce” directories. Once these uploads have completed, CTRL-R in the browser to refresh the browser’s cache. Close the browser window and reopen the Virtel portal with the URL <a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p></li>
 </ul>
 </div>
 <ol class="arabic">
-<li><p class="first">The last thing to do is to modify the WEB2HOST entry point to use the SCE-DIR. Stop VIRTEL and then run the following JCL:-</p>
+<li><p>The last thing to do is to modify the WEB2HOST entry point to use the SCE-DIR. Stop VIRTEL and then run the following JCL:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//--------------------------------------------------------------*</span>
 <span class="o">//*</span>                                                             <span class="o">*</span>
 <span class="o">//*</span> <span class="n">ARBO</span> <span class="n">MIGRATION</span><span class="o">.</span> <span class="n">UPDATE</span> <span class="n">ARBO</span> <span class="n">TO</span> <span class="n">CHANGE</span> <span class="n">WEB2HOSTS</span>             <span class="o">*</span>
@@ -404,8 +381,7 @@ opened sessions to ports 41001 and 41002. Issue the following command:-</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Start VIRTEL.</p>
-</li>
+<li><p>Start VIRTEL.</p></li>
 </ol>
 <p>Virtel 4.53 maintenance is now complete.</p>
 <p><strong>Basic health test of Virtel</strong></p>
@@ -720,9 +696,9 @@ backup.</p>
 <p>We have mention terminals throughout the document so far but have not really looked into them in great detail. A terminal in Virtel represents a task or function that virtel has to do. Several different types of work will run under a terminal definition with Virtel. If you look at the Virtel log you will see terminals being allocated and deallocated as URLs are processed – dealing with session connection, disconnection etc. Terminals also have a counterpart which is related to VTAM units of work, for example a CICS session. These related terminals are known as relay terminals and are only ever used when a VTAM transaction is involved. You defined some relay definitions in VTAM. By default they began RHTVT***, RHTIM*** and RHTIP***. The IM and IP group relays are terminals to support SCS and 3270 printers. Printer terminals are associated with a screen terminal (RHTVT***).</p>
 <p>Let’s take a look at the terminal definitions that are delivered with the base Virtel product. We can do in in one of three ways:-</p>
 <ol class="arabic simple">
-<li>Logon to Virtel Administration through its VTAM interface.</li>
-<li>Access the 3270 Administration through a browser</li>
-<li>Access the HTML GUI Administration interface through a browser.</li>
+<li><p>Logon to Virtel Administration through its VTAM interface.</p></li>
+<li><p>Access the 3270 Administration through a browser</p></li>
+<li><p>Access the HTML GUI Administration interface through a browser.</p></li>
 </ol>
 <p>I go for option 2, we will user the browser to access the Administration panels. Start up Virtel and access the W2H domain using just the port number in the URL.</p>
 <p><a class="reference external" href="http://192.168.0.1:41001">http://192.168.0.1:41001</a></p>
@@ -750,7 +726,7 @@ If we look at our previous CICS failure we can see these terminals being allocat
 </div>
 <p>The terminal types and I/O fields are described in the Virtel Connectivity Guide. If we look in the ARBO configuration file we can see the definitions that support the TERMINAL configuration.</p>
 <blockquote>
-<div>TERMINAL ID=CLLOC000, -
+<div><p>TERMINAL ID=CLLOC000, -
 DESC=’HTTP terminals (no relay)’, -
 TYPE=3, -
 COMPRESS=2, -
@@ -774,7 +750,8 @@ TYPE=3, -
 COMPRESS=2, -
 INOUT=3, -
 STATS=26, -
-REPEAT=0080</div></blockquote>
+REPEAT=0080</p>
+</div></blockquote>
 <p><a class="reference internal" href="../../../_images/image161.jpg"><img alt="image15" src="../../../_images/image161.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
 <p>Close the terminal screen by pressing PF3 the RETURN/ENTER key. You should be back to the Administration Portal.</p>
 <p><strong>Adding a terminal definition pool</strong></p>
@@ -870,10 +847,10 @@ REPEAT=0080</div></blockquote>
 </div>
 <p>You will notice that the two rules, defined as C100FWD1 and C100FWD2 control the Entry point selection by comparing the incoming callers IP address. If the IP address matches then the call will be routed towards Entry Point CLIWFWD1. There are also some Administration transactions that have been added to support administration functions within the Entry Point. These are:-</p>
 <ul class="simple">
-<li>FWD-00 Entry Point Transaction. Identifies our default domain directory CLI-DIR.</li>
-<li>FWD-03W Identifies the Administration directory and provides a link to it.</li>
-<li>FWD-11 CICSPROD transaction. Type=1 (VTAM Application).</li>
-<li>FWD-90 APPLIST MENU transaction</li>
+<li><p>FWD-00 Entry Point Transaction. Identifies our default domain directory CLI-DIR.</p></li>
+<li><p>FWD-03W Identifies the Administration directory and provides a link to it.</p></li>
+<li><p>FWD-11 CICSPROD transaction. Type=1 (VTAM Application).</p></li>
+<li><p>FWD-90 APPLIST MENU transaction</p></li>
 </ul>
 </div>
 
@@ -897,19 +874,11 @@ REPEAT=0080</div></blockquote>
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -920,6 +889,7 @@ REPEAT=0080</div></blockquote>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

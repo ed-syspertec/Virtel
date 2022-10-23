@@ -12,7 +12,7 @@ Audit, Administration, Operations and Performance V4.61
 
 Version : 4.61
 
-Release Date : TBA. Publication Date : 10/10/2021
+Release Date : TBA. Publication Date : 23/10/2022
 
 Syspertec Communication
 

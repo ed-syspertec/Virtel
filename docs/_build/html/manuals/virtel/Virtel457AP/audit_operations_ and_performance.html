@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Connectivity Reference V4.57" href="../Virtel457CN/connectivity_guide.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -121,7 +119,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -160,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
@@ -188,8 +185,8 @@
 <p><a class="reference internal" href="../../../_images/logo_virtel_web5.png"><img alt="imagelogo" src="../../../_images/logo_virtel_web5.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Audit, Administration, Operations and Performance</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a draft version of the document.</p>
+<p class="admonition-title">Warning</p>
+<p>This is a draft version of the document.</p>
 </div>
 <p>Version : 4.57</p>
 <p>Release Date : 08 Jan 2018. Publication Date : 08/02/2018</p>
@@ -197,7 +194,7 @@
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Reproduction, transfer, distribution, or storage, in any form, of all or any part of
 the contents of this document, except by prior authorization of SysperTec
 Communication, is prohibited.</p>
@@ -208,7 +205,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
+<p>“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -223,11 +220,11 @@ their respective owners.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">stcvirte</span><span class="p">,</span><span class="n">virtel</span><span class="o">-</span><span class="n">command</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>stcvirte</dt>
-<dd>the name of the VIRTEL started task STC</dd>
-<dt>virtel-cmd</dt>
-<dd>a VIRTEL command, as described in the following section.</dd>
+<dl class="simple">
+<dt>stcvirte</dt><dd><p>the name of the VIRTEL started task STC</p>
+</dd>
+<dt>virtel-cmd</dt><dd><p>a VIRTEL command, as described in the following section.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="z-vse-environment">
@@ -236,19 +233,18 @@ their respective owners.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">virtel</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span><span class="n">cirtel</span><span class="o">-</span><span class="n">command</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>virtel</dt>
-<dd>The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)</dd>
-<dt>virtel-cmd</dt>
-<dd>A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:</dd>
+<dl class="simple">
+<dt>virtel</dt><dd><p>The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)</p>
+</dd>
+<dt>virtel-cmd</dt><dd><p>A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:</p>
+</dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">Fx</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>Fx</dt>
-<dd><p class="first">Partition in which VIRTEL is executing</p>
-<p class="last">The system responds with:</p>
+<dl>
+<dt>Fx</dt><dd><p>Partition in which VIRTEL is executing</p>
+<p>The system responds with:</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AR</span> <span class="mi">0015</span> <span class="mi">1</span><span class="n">I40I</span> <span class="n">READY</span>
@@ -256,17 +252,17 @@ their respective owners.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note the reply number (nnnn) and issue the following command:</p>
+<p class="admonition-title">Note</p>
+<p>Note the reply number (nnnn) and issue the following command:</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nnnn</span> <span class="n">virtel</span><span class="o">-</span><span class="n">cmd</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>nnnn</dt>
-<dd>reply number</dd>
-<dt>virtel-cmd</dt>
-<dd>A VIRTEL command, as described in the following section</dd>
+<dl class="simple">
+<dt>nnnn</dt><dd><p>reply number</p>
+</dd>
+<dt>virtel-cmd</dt><dd><p>A VIRTEL command, as described in the following section</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -276,9 +272,9 @@ their respective owners.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">KILL</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
+<dl class="simple">
+<dt>termid</dt><dd><p>terminal name</p>
+</dd>
 </dl>
 <p>The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.</p>
 </div>
@@ -319,9 +315,9 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
+<dl class="simple">
+<dt>linename</dt><dd><p>Internal or external name of the line</p>
+</dd>
 </dl>
 <p>The LINE DISPLAY command displays the status of a line and its associated terminals.</p>
 <p>Example:</p>
@@ -376,9 +372,9 @@ VIR0202I ---END OF LIST---
 <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">P</span> <span class="o">|</span> <span class="n">S</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
+<dl class="simple">
+<dt>linename</dt><dd><p>Internal or external name of the line</p>
+</dd>
 </dl>
 <p>The LINE START and LINE STOP commands perform the same function as the <a class="reference external" href="#_bookmark12">“S” and “P” commands</a> on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.</p>
 </div>
@@ -392,11 +388,11 @@ VIR0202I ---END OF LIST---
 <p>where</p>
 <blockquote>
 <div><ul class="simple">
-<li>CONSOLE means switch console messages back to the console.</li>
-<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
-<li>BOTH means write console messages to the console and SYSOUT.</li>
-<li>SPIN means spin off the current SYSOUT dataset.</li>
-<li>FILE means write messages to file.</li>
+<li><p>CONSOLE means switch console messages back to the console.</p></li>
+<li><p>SYSOUT means switch to spooling consoles messages to SYSOUT.</p></li>
+<li><p>BOTH means write console messages to the console and SYSOUT.</p></li>
+<li><p>SPIN means spin off the current SYSOUT dataset.</p></li>
+<li><p>FILE means write messages to file.</p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="log-sysout-tct-definition">
@@ -497,8 +493,8 @@ VIR0202I ---END OF LIST---
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.</p>
+<p class="admonition-title">Note</p>
+<p>This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.</p>
 </div>
 </div>
 </div>
@@ -516,9 +512,9 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NEW</span><span class="o">=</span><span class="n">progname</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
+<dl class="simple">
+<dt>progname</dt><dd><p>program name</p>
+</dd>
 </dl>
 <p>The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.</p>
 </div>
@@ -553,8 +549,8 @@ VIR0202I ---END OF LIST---
 </div>
 <p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
+<p class="admonition-title">Note</p>
+<p>Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
 </div>
 </div>
 <div class="section" id="snap-command">
@@ -569,11 +565,11 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SNAP</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span> <span class="o">|</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>relayname</dt>
-<dd>name of VTAM relay LU currently associated with the terminal</dd>
+<dl class="simple">
+<dt>termid</dt><dd><p>terminal name</p>
+</dd>
+<dt>relayname</dt><dd><p>name of VTAM relay LU currently associated with the terminal</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -587,13 +583,13 @@ VIR0202I ---END OF LIST---
 </pre></div>
 </div>
 <p>The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.</p>
-<dl class="docutils">
-<dt>message</dt>
-<dd>Any message that can be issued by Virtel.</dd>
-<dt>search</dt>
-<dd>Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.</dd>
-<dt>action</dt>
-<dd>Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</dd>
+<dl class="simple">
+<dt>message</dt><dd><p>Any message that can be issued by Virtel.</p>
+</dd>
+<dt>search</dt><dd><p>Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.</p>
+</dd>
+<dt>action</dt><dd><p>Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</p>
+</dd>
 </dl>
 <p>Default action is SNAP.</p>
 <p>Example:</p>
@@ -677,20 +673,20 @@ VIR0202I ---END OF LIST---
 <span class="n">NOTRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-<dt>relayname</dt>
-<dd>relay associated to the terminal</dd>
+<dl class="simple">
+<dt>termid</dt><dd><p>terminal name</p>
+</dd>
+<dt>linename</dt><dd><p>Internal or external name of the line</p>
+</dd>
+<dt>relayname</dt><dd><p>relay associated to the terminal</p>
+</dd>
 </dl>
 <p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
 <p><img alt="image23" src="../../../_images/image2310.png" />
 <em>Associated relay names</em></p>
-<dl class="docutils">
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
+<dl class="simple">
+<dt>linename</dt><dd><p>Internal or external name of the line</p>
+</dd>
 </dl>
 <p>The following alternate forms of the TRACE/NOTRACE commands are also  valid</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
@@ -701,13 +697,13 @@ VIR0202I ---END OF LIST---
 <span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-<dt>relayname</dt>
-<dd>Name of VTAM relay LU currently associated with the terminal</dd>
+<dl class="simple">
+<dt>termid</dt><dd><p>terminal name</p>
+</dd>
+<dt>linename</dt><dd><p>Internal or external name of the line</p>
+</dd>
+<dt>relayname</dt><dd><p>Name of VTAM relay LU currently associated with the terminal</p>
+</dd>
 </dl>
 <div class="section" id="display-a-list-of-active-traces">
 <span id="index-29"></span><h4>Display a list of active traces<a class="headerlink" href="#display-a-list-of-active-traces" title="Permalink to this headline">¶</a></h4>
@@ -750,9 +746,9 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRSV</span><span class="p">,</span><span class="n">NEW</span><span class="o">=</span><span class="n">servname</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>servname</dt>
-<dd>service name</dd>
+<dl class="simple">
+<dt>servname</dt><dd><p>service name</p>
+</dd>
 </dl>
 <p>The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W</p>
 <p>SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.</p>
@@ -763,15 +759,15 @@ VIR0202I ---END OF LIST---
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ZAP</span><span class="o">=</span><span class="n">progname</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span><span class="n">verify</span><span class="p">,</span><span class="n">replace</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
-<dt>offset</dt>
-<dd>offset into program</dd>
-<dt>verify</dt>
-<dd>verify value (2 to 8 hexadecimal digits)</dd>
-<dt>replace</dt>
-<dd>replacement value (2 to 8 hexadecimal digits)</dd>
+<dl class="simple">
+<dt>progname</dt><dd><p>program name</p>
+</dd>
+<dt>offset</dt><dd><p>offset into program</p>
+</dd>
+<dt>verify</dt><dd><p>verify value (2 to 8 hexadecimal digits)</p>
+</dd>
+<dt>replace</dt><dd><p>replacement value (2 to 8 hexadecimal digits)</p>
+</dd>
 </dl>
 <p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
 </div>
@@ -789,53 +785,51 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <p>The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.</p>
 <p><img alt="image21" src="../../../_images/image2114.png" /></p>
 <p><em>Fig.1 - Line Status Display screen</em></p>
-<dl class="docutils">
-<dt>STATUS OF-LINES</dt>
-<dd>Allows the administrator to display a subset of lines, by typing the
+<dl class="simple">
+<dt>STATUS OF-LINES</dt><dd><p>Allows the administrator to display a subset of lines, by typing the
 first character of the name of each desired line into this field and
-pressing [Enter]. If the field is blank, all lines are displayed.</dd>
-<dt>C</dt>
-<dd>Command input field.</dd>
-<dt>Name</dt>
-<dd>The internal name of the line.</dd>
-<dt>In</dt>
-<dd>The number of virtual circuits currently in use by incoming calls.</dd>
-<dt>Out</dt>
-<dd>The number of virtual circuits currently in use by outgoing calls.</dd>
-<dt>Links</dt>
-<dd>The number of terminals linked to the line.</dd>
-<dt>Description</dt>
-<dd>Comments.</dd>
-<dt>Seen</dt>
-<dd>User name.</dd>
+pressing [Enter]. If the field is blank, all lines are displayed.</p>
+</dd>
+<dt>C</dt><dd><p>Command input field.</p>
+</dd>
+<dt>Name</dt><dd><p>The internal name of the line.</p>
+</dd>
+<dt>In</dt><dd><p>The number of virtual circuits currently in use by incoming calls.</p>
+</dd>
+<dt>Out</dt><dd><p>The number of virtual circuits currently in use by outgoing calls.</p>
+</dd>
+<dt>Links</dt><dd><p>The number of terminals linked to the line.</p>
+</dd>
+<dt>Description</dt><dd><p>Comments.</p>
+</dd>
+<dt>Seen</dt><dd><p>User name.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="positioning-the-list">
 <h4>Positioning the list<a class="headerlink" href="#positioning-the-list" title="Permalink to this headline">¶</a></h4>
 <p>If the line status display occupies more than one screen, you can scroll through the list of lines by using [PF5], [PF7] and [PF8].</p>
-<dl class="docutils">
-<dt>[PF5]</dt>
-<dd>return to the first page of the list.</dd>
-<dt>[PF7]</dt>
-<dd>scroll back to previous page.</dd>
-<dt>[PF8]</dt>
-<dd>scroll forward to next page.</dd>
+<dl class="simple">
+<dt>[PF5]</dt><dd><p>return to the first page of the list.</p>
+</dd>
+<dt>[PF7]</dt><dd><p>scroll back to previous page.</p>
+</dd>
+<dt>[PF8]</dt><dd><p>scroll forward to next page.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="sending-a-command">
 <span id="index-37"></span><h4>Sending a command<a class="headerlink" href="#sending-a-command" title="Permalink to this headline">¶</a></h4>
 <p>To send a command to a line, place the cursor in the “C” field in front of the line name, type the command, then press [Enter]. The  commands available are:</p>
-<dl class="docutils">
-<dt>S</dt>
-<dd><dl class="first last docutils">
-<dt>Starts a line.</dt>
-<dd>If the line is already started, VIRTEL attempts to start or restart any terminals associated with the line but not currently linked. This allows VIRTEL to recover LU’s which have been     deactivated and reactivated by VTAM, without stopping the line.</dd>
+<dl class="simple">
+<dt>S</dt><dd><dl class="simple">
+<dt>Starts a line.</dt><dd><p>If the line is already started, VIRTEL attempts to start or restart any terminals associated with the line but not currently linked. This allows VIRTEL to recover LU’s which have been     deactivated and reactivated by VTAM, without stopping the line.</p>
+</dd>
 </dl>
 </dd>
-<dt>p</dt>
-<dd><dl class="first last docutils">
-<dt>Stops a line.</dt>
-<dd>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line”</dd>
+<dt>p</dt><dd><dl class="simple">
+<dt>Stops a line.</dt><dd><p>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line”</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -848,53 +842,51 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
 <p><img alt="image22" src="../../../_images/image2212.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
-<dl class="docutils">
-<dt>ACTIVE TERMINALS for LINE</dt>
-<dd>Indicates the internal name of the line whose virtual circuits are being displayed.</dd>
-<dt>Prefix</dt>
-<dd>The terminal name prefix associated with this line.</dd>
-<dt>Type</dt>
-<dd>The line type, as defined in the line definition.</dd>
-<dt>Defined</dt>
-<dd>The number of terminals defined for this line.</dd>
-<dt>Linked</dt>
-<dd>The number of terminals currently linked to this line.</dd>
-<dt>Number of occupied circuits</dt>
-<dd>The number of terminals or virtual circuits currently in use.</dd>
-<dt>Number of connections</dt>
-<dd>The total number of calls received.</dd>
-<dt>Maximum simultaneously used</dt>
-<dd>The maximum number of terminals or virtual circuits in use at any one time.</dd>
-<dt>Total time connected</dt>
-<dd>The total connection time.</dd>
-<dt>Terminal</dt>
-<dd>The terminal name (name of the virtual circuit).</dd>
-<dt>User</dt>
-<dd>User name if signed on to VIRTEL.</dd>
-<dt>Sends</dt>
-<dd>The number of messages sent to the terminal.</dd>
-<dt>Time</dt>
-<dd>The connection time in minutes.</dd>
-<dt>Node (for Minitel)</dt>
-<dd>The name of the node to which the terminal is currently connected.</dd>
-<dt>Node (for HTTP lines)</dt>
-<dd>The relay name (3270 LU name) used to connect to the host application.</dd>
-<dt>Remote number (for X25 lines)</dt>
-<dd>The X25 called number for an outgoing call, or the X25 calling number for an incoming call.</dd>
-<dt>Remote number (for HTTP lines)</dt>
-<dd>The IP address of the client.</dd>
-<dt>Call Data (for X25 lines)</dt>
-<dd>The call user data field of the call packet (for both incoming and outgoing calls).</dd>
-<dt>Call Data (for HTTP lines)</dt>
-<dd><p class="first">The external name of the transaction which represents the directory (pathname) in the URL.</p>
-<p class="last">If the Virtual Circuit Status Display occupies more than one screen, you can scroll through the list of terminals by using [PF7] and [PF8].</p>
+<dl>
+<dt>ACTIVE TERMINALS for LINE</dt><dd><p>Indicates the internal name of the line whose virtual circuits are being displayed.</p>
 </dd>
-<dt>[PF7]</dt>
-<dd>scroll back to previous page.</dd>
-<dt>[PF8]</dt>
-<dd><p class="first">scroll forward to next page.</p>
+<dt>Prefix</dt><dd><p>The terminal name prefix associated with this line.</p>
+</dd>
+<dt>Type</dt><dd><p>The line type, as defined in the line definition.</p>
+</dd>
+<dt>Defined</dt><dd><p>The number of terminals defined for this line.</p>
+</dd>
+<dt>Linked</dt><dd><p>The number of terminals currently linked to this line.</p>
+</dd>
+<dt>Number of occupied circuits</dt><dd><p>The number of terminals or virtual circuits currently in use.</p>
+</dd>
+<dt>Number of connections</dt><dd><p>The total number of calls received.</p>
+</dd>
+<dt>Maximum simultaneously used</dt><dd><p>The maximum number of terminals or virtual circuits in use at any one time.</p>
+</dd>
+<dt>Total time connected</dt><dd><p>The total connection time.</p>
+</dd>
+<dt>Terminal</dt><dd><p>The terminal name (name of the virtual circuit).</p>
+</dd>
+<dt>User</dt><dd><p>User name if signed on to VIRTEL.</p>
+</dd>
+<dt>Sends</dt><dd><p>The number of messages sent to the terminal.</p>
+</dd>
+<dt>Time</dt><dd><p>The connection time in minutes.</p>
+</dd>
+<dt>Node (for Minitel)</dt><dd><p>The name of the node to which the terminal is currently connected.</p>
+</dd>
+<dt>Node (for HTTP lines)</dt><dd><p>The relay name (3270 LU name) used to connect to the host application.</p>
+</dd>
+<dt>Remote number (for X25 lines)</dt><dd><p>The X25 called number for an outgoing call, or the X25 calling number for an incoming call.</p>
+</dd>
+<dt>Remote number (for HTTP lines)</dt><dd><p>The IP address of the client.</p>
+</dd>
+<dt>Call Data (for X25 lines)</dt><dd><p>The call user data field of the call packet (for both incoming and outgoing calls).</p>
+</dd>
+<dt>Call Data (for HTTP lines)</dt><dd><p>The external name of the transaction which represents the directory (pathname) in the URL.</p>
+<p>If the Virtual Circuit Status Display occupies more than one screen, you can scroll through the list of terminals by using [PF7] and [PF8].</p>
+</dd>
+<dt>[PF7]</dt><dd><p>scroll back to previous page.</p>
+</dd>
+<dt>[PF8]</dt><dd><p>scroll forward to next page.</p>
 <p>You can use the [PF4] and [PF5] keys to display information about the other lines under VIRTEL control. To view the terminal or Virtual Circuit Status Display screen for the following line, press [PF4]. To return to the Detail Usage Status Display screen for the first line defined in VIRTEL, press [PF5].</p>
-<p class="last">To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].</p>
+<p>To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].</p>
 </dd>
 </dl>
 </div>
@@ -909,12 +901,12 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p>Permanently allocated memory blocks are represented by the following character types:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space.</li>
-<li>Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.</li>
-<li>Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.</li>
-<li>Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.</li>
-<li>Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.</li>
-<li>Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.</li>
+<li><p>To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space.</p></li>
+<li><p>Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.</p></li>
+<li><p>Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.</p></li>
+<li><p>Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.</p></li>
+<li><p>Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.</p></li>
+<li><p>Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.</p></li>
 </ol>
 </div></blockquote>
 <div class="section" id="memory-display-in-memory-test-mode">
@@ -929,8 +921,8 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p>5.2 Virtual Memory Display</p>
 <p>The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This diagnostic tool should only be used when recommended by Technical Support.</p>
+<p class="admonition-title">Note</p>
+<p>This diagnostic tool should only be used when recommended by Technical Support.</p>
 </div>
 </div>
 <div class="section" id="memory-trace-management">
@@ -979,19 +971,18 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
 <p><img alt="image27" src="../../../_images/image273.png" /></p>
 <p><em>Example of a memory allocataion history</em></p>
-<dl class="docutils">
-<dt>Column Explanations</dt>
-<dd><ol class="first last arabic simple">
-<li>Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.</li>
-<li>Task number behind the allocation request.</li>
-<li>Register 14 value.</li>
-<li>Register 15 value.</li>
-<li>Program name + offset of the origin request.</li>
-<li>Memory allocation type. (8040 = GETMAIN).</li>
-<li>Memory block state.</li>
-<li>Time of the allocation.</li>
-<li>Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.</li>
-<li>Reserved for internal use.</li>
+<dl class="simple">
+<dt>Column Explanations</dt><dd><ol class="arabic simple">
+<li><p>Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.</p></li>
+<li><p>Task number behind the allocation request.</p></li>
+<li><p>Register 14 value.</p></li>
+<li><p>Register 15 value.</p></li>
+<li><p>Program name + offset of the origin request.</p></li>
+<li><p>Memory allocation type. (8040 = GETMAIN).</p></li>
+<li><p>Memory block state.</p></li>
+<li><p>Time of the allocation.</p></li>
+<li><p>Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.</p></li>
+<li><p>Reserved for internal use.</p></li>
 </ol>
 </dd>
 </dl>
@@ -1089,35 +1080,32 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 </div>
 <div class="section" id="field-contents">
 <span id="index-51"></span><h4>Field Contents<a class="headerlink" href="#field-contents" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Id</dt>
-<dd>For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.</dd>
-<dt>Type of Id</dt>
-<dd><ol class="first last arabic simple">
-<li>this is an e-mail correspondent</li>
-<li>this is a local correspondent whose security code is generated at activation time and subsequently remains constant</li>
-<li>this is a local correspondent whose security code changes each time it is accessed.</li>
+<dl>
+<dt>Id</dt><dd><p>For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.</p>
+</dd>
+<dt>Type of Id</dt><dd><ol class="arabic simple">
+<li><p>this is an e-mail correspondent</p></li>
+<li><p>this is a local correspondent whose security code is generated at activation time and subsequently remains constant</p></li>
+<li><p>this is a local correspondent whose security code changes each time it is accessed.</p></li>
 </ol>
 </dd>
-<dt>Activation message</dt>
-<dd><p class="first">Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>The activation message may include the following variables:</dt>
-<dd><p class="first">&amp;R meaning “insert a blank line”.</p>
-<p class="last">&amp;C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx.</p>
+<dt>Activation message</dt><dd><p>Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie.</p>
+<blockquote>
+<div><dl>
+<dt>The activation message may include the following variables:</dt><dd><p>&amp;R meaning “insert a blank line”.</p>
+<p>&amp;C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx.</p>
 </dd>
 </dl>
 </div></blockquote>
 </dd>
-<dt>Rule Set</dt>
-<dd>(optional) The name of the rule set associated with this user.</dd>
-<dt>Directory</dt>
-<dd>(optional) Name of the directory into which this correspondent may upload files.</dd>
-<dt>Last contact</dt>
-<dd>Date and time of the last transfer, and the IP address of the correspondent.</dd>
-<dt>Contacts</dt>
-<dd>The number of contacts since the last activation.</dd>
+<dt>Rule Set</dt><dd><p>(optional) The name of the rule set associated with this user.</p>
+</dd>
+<dt>Directory</dt><dd><p>(optional) Name of the directory into which this correspondent may upload files.</p>
+</dd>
+<dt>Last contact</dt><dd><p>Date and time of the last transfer, and the IP address of the correspondent.</p>
+</dd>
+<dt>Contacts</dt><dd><p>The number of contacts since the last activation.</p>
+</dd>
 </dl>
 <span class="target" id="v457ap-account-activation"></span></div>
 <div class="section" id="account-activation">
@@ -1125,8 +1113,8 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 <p>In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
 correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.</p>
+<p class="admonition-title">Note</p>
+<p>To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.</p>
 </div>
 </div>
 <div class="section" id="account-deactivation">
@@ -1142,10 +1130,10 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <span id="index-55"></span><h3>Web Entity Management<a class="headerlink" href="#web-entity-management" title="Permalink to this headline">¶</a></h3>
 <p>Web Entity Management is concerned with maintaining the Virtel Web entities, such as HTML template pages, CSS, JavaScript elements and images etc. These can all be uploaded to the VIRTEL directories by any of the following methods:</p>
 <ol class="arabic simple">
-<li>by web browser (HTTP) from a PC, with signon security. Provided by Administration Portal.</li>
-<li>Via a batch process from a PC.</li>
-<li>by e-mail (SMTP). (Corresspondence Management only)</li>
-<li>by web browser (HTTP), with cookie security. (Corresspondence Management only)</li>
+<li><p>by web browser (HTTP) from a PC, with signon security. Provided by Administration Portal.</p></li>
+<li><p>Via a batch process from a PC.</p></li>
+<li><p>by e-mail (SMTP). (Corresspondence Management only)</p></li>
+<li><p>by web browser (HTTP), with cookie security. (Corresspondence Management only)</p></li>
 </ol>
 <span class="target" id="v457ap-http-uploading-pages-signon"></span><div class="section" id="uploading-by-web-browser-http-secured-by-signon">
 <span id="index-56"></span><h4>Uploading by web browser (HTTP) (secured by signon)<a class="headerlink" href="#uploading-by-web-browser-http-secured-by-signon" title="Permalink to this headline">¶</a></h4>
@@ -1156,45 +1144,45 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <p>All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.</p>
 <p>The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.</p>
 <ol class="arabic simple">
-<li>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</li>
+<li><p>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</p></li>
 </ol>
 <p><img alt="image77" src="../../../_images/image772.png" />
 <em>Page upload by HTTP with signon : Transaction dirlist</em></p>
 <ol class="arabic simple" start="2">
-<li>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</li>
+<li><p>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</p></li>
 </ol>
 <p><img alt="image78" src="../../../_images/image782.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
 <p><img alt="image79" src="../../../_images/image792.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
 <p><img alt="image80" src="../../../_images/image801.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
 <ol class="arabic simple" start="3">
-<li>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.</li>
+<li><p>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.</p></li>
 </ol>
 </div>
 <div class="section" id="procedure-for-upload-secured-by-signon">
 <span id="index-58"></span><h4>Procedure for upload (secured by signon)<a class="headerlink" href="#procedure-for-upload-secured-by-signon" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
-<li>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</li>
+<li><p>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</p></li>
 </ol>
 <p><img alt="image8" src="../../../_images/image818.png" /></p>
 <p><em>Page upload by HTTP with signon : Entering the userid and password</em></p>
 <p>The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.</p>
 <ol class="arabic simple" start="2">
-<li>After entering the user name and password, the upload4.htm page will be displayed:</li>
+<li><p>After entering the user name and password, the upload4.htm page will be displayed:</p></li>
 </ol>
 <p><img alt="image9" src="../../../_images/image916.png" /></p>
 <p><em>Page upload by HTTP with signon : Displaying the upload4.htm page</em></p>
 <ol class="arabic simple" start="3">
-<li>Press the “Browse” button to display the file selection dialog:</li>
+<li><p>Press the “Browse” button to display the file selection dialog:</p></li>
 </ol>
 <p><img alt="image10" src="../../../_images/image1015.png" /></p>
 <p><em>Page upload by HTTP with signon : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
-<li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
+<li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
 <p><img alt="image11" src="../../../_images/image1119.png" /></p>
 <p><em>Page upload by HTTP with signon : Sending the file</em></p>
 <ol class="arabic simple" start="5">
-<li>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</li>
+<li><p>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</p></li>
 </ol>
 <p><img alt="image12" src="../../../_images/image1217.png" /></p>
 <p><em>Page upload by HTTP with signon : Confirmation of file upload</em></p>
@@ -1228,30 +1216,30 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <div class="section" id="extracting-upload-results-as-an-excel-spreadsheet">
 <span id="index-60"></span><h4>Extracting upload results as an Excel spreadsheet<a class="headerlink" href="#extracting-upload-results-as-an-excel-spreadsheet" title="Permalink to this headline">¶</a></h4>
 <p><img alt="image16" src="../../../_images/image167.png" /> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="17%" />
-<col width="24%" />
-<col width="27%" />
-<col width="32%" />
+<col style="width: 17%" />
+<col style="width: 24%" />
+<col style="width: 27%" />
+<col style="width: 32%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Directory</th>
-<th class="head">File name</th>
-<th class="head">Report</th>
-<th class="head">Time</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Directory</p></th>
+<th class="head"><p>File name</p></th>
+<th class="head"><p>Report</p></th>
+<th class="head"><p>Time</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>CLI-DIR</td>
-<td>custom.css</td>
-<td>RETURN CODE IS: 00</td>
-<td>Thu, 13 Sep 2012 08:13:16 GMT</td>
+<tbody>
+<tr class="row-even"><td><p>CLI-DIR</p></td>
+<td><p>custom.css</p></td>
+<td><p>RETURN CODE IS: 00</p></td>
+<td><p>Thu, 13 Sep 2012 08:13:16 GMT</p></td>
 </tr>
-<tr class="row-odd"><td>CLI-DIR</td>
-<td>custom.js</td>
-<td>RETURN CODE IS: 00</td>
-<td>Thu, 13 Sep 2012 08:13:16 GMT</td>
+<tr class="row-odd"><td><p>CLI-DIR</p></td>
+<td><p>custom.js</p></td>
+<td><p>RETURN CODE IS: 00</p></td>
+<td><p>Thu, 13 Sep 2012 08:13:16 GMT</p></td>
 </tr>
 </tbody>
 </table>
@@ -1268,22 +1256,23 @@ The following example shows a Windows command to upload all files of type .htm f
 </pre></div>
 </div>
 <p>In this example:</p>
-<dl class="docutils">
-<dt>*.htm</dt>
-<dd>the files to be uploaded</dd>
-<dt>virdba:virdbapw</dt>
-<dd>userid and password for VIRTEL</dd>
-<dt>192.168.235.30:41001</dt>
-<dd>identifies the VIRTEL HTTP line</dd>
-<dt>virmsg.txt</dt>
-<dd>page template for displaying upload result messages</dd>
-<dt>uplbas</dt>
-<dd>external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See <a class="reference internal" href="#v457ap-http-uploading-pages-signon"><span class="std std-ref">“Uploading pages by HTTP (secured by signon)”</span></a> for a list of upload transactions.</dd>
+<dl class="simple">
+<dt>*.htm</dt><dd><p>the files to be uploaded</p>
+</dd>
+<dt>virdba:virdbapw</dt><dd><p>userid and password for VIRTEL</p>
+</dd>
+<dt>192.168.235.30:41001</dt><dd><p>identifies the VIRTEL HTTP line</p>
+</dd>
+<dt>virmsg.txt</dt><dd><p>page template for displaying upload result messages</p>
+</dd>
+<dt>uplbas</dt><dd><p>external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See <a class="reference internal" href="#v457ap-http-uploading-pages-signon"><span class="std std-ref">“Uploading pages by HTTP (secured by signon)”</span></a> for a list of upload transactions.</p>
+</dd>
 </dl>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<blockquote class="last">
-<div>%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.</div></blockquote>
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><p>%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.</p>
+</div></blockquote>
 <span class="target" id="index-64"></span></div>
 </div>
 <div class="section" id="uploading-in-batch-using-the-upl2virt-command">
@@ -1306,29 +1295,29 @@ the command window.</p>
 </pre></div>
 </div>
 <p>In the above command:</p>
-<dl class="docutils">
-<dt>userid:password</dt>
-<dd>is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.</dd>
-<dt>directory</dt>
-<dd>is the name of the target VIRTEL directory (for example, CLI-DIR)</dd>
-<dt>n.n.n.n</dt>
-<dd>is the IP address of VIRTEL</dd>
-<dt>port</dt>
-<dd>is the VIRTEL administration port number (default 41001).</dd>
+<dl class="simple">
+<dt>userid:password</dt><dd><p>is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.</p>
+</dd>
+<dt>directory</dt><dd><p>is the name of the target VIRTEL directory (for example, CLI-DIR)</p>
+</dd>
+<dt>n.n.n.n</dt><dd><p>is the IP address of VIRTEL</p>
+</dd>
+<dt>port</dt><dd><p>is the VIRTEL administration port number (default 41001).</p>
+</dd>
 </dl>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.</p>
+<p class="admonition-title">Note</p>
+<p>This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.</p>
 </div>
-<dl class="docutils">
-<dt>ctlfile</dt>
-<dd>specifies the name of a control file containing a list of file names to be uploaded</dd>
-<dt>file1 file2 …</dt>
-<dd>are the names of files to be uploaded</dd>
-<dt>-r</dt>
-<dd>specifies recursion into subdirectories</dd>
-<dt>-k</dt>
-<dd>keeps the command window open after the last upload</dd>
+<dl class="simple">
+<dt>ctlfile</dt><dd><p>specifies the name of a control file containing a list of file names to be uploaded</p>
+</dd>
+<dt>file1 file2 …</dt><dd><p>are the names of files to be uploaded</p>
+</dd>
+<dt>-r</dt><dd><p>specifies recursion into subdirectories</p>
+</dd>
+<dt>-k</dt><dd><p>keeps the command window open after the last upload</p>
+</dd>
 </dl>
 <p>If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).</p>
 <p id="index-67"><strong>Using upl2virt from Windows Explorer</strong></p>
@@ -1338,13 +1327,13 @@ the command window.</p>
 </pre></div>
 </div>
 <p>where:</p>
-<dl class="docutils">
-<dt>MYUSERID</dt>
-<dd>is your VIRTEL userid</dd>
-<dt>CLI-DIR</dt>
-<dd>is the name of the VIRTEL directory that this shortcut will upload to</dd>
-<dt>10.1.12.101</dt>
-<dd>is the IP address of VIRTEL.</dd>
+<dl class="simple">
+<dt>MYUSERID</dt><dd><p>is your VIRTEL userid</p>
+</dd>
+<dt>CLI-DIR</dt><dd><p>is the name of the VIRTEL directory that this shortcut will upload to</p>
+</dd>
+<dt>10.1.12.101</dt><dd><p>is the IP address of VIRTEL.</p>
+</dd>
 </dl>
 <p>You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.</p>
 <span class="target" id="v457ap-http-uploading-pages-smtp"></span></div>
@@ -1354,8 +1343,8 @@ the command window.</p>
 <div class="section" id="definitions-for-page-upload-by-smtp">
 <span id="index-69"></span><h5>Definitions for page upload by SMTP<a class="headerlink" href="#definitions-for-page-upload-by-smtp" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</li>
-<li>Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:</li>
+<li><p>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</p></li>
+<li><p>Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">33</span>
 <span class="n">Id</span>                  <span class="o">===&gt;</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
@@ -1384,7 +1373,7 @@ the command window.</p>
 <div class="section" id="procedure-for-page-upload-by-smtp">
 <span id="index-70"></span><h5>Procedure for page upload by SMTP<a class="headerlink" href="#procedure-for-page-upload-by-smtp" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic simple">
-<li>Activate the e-mail correspondent: see “Account activation” under the heading <a class="reference internal" href="#v457ap-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:-</li>
+<li><p>Activate the e-mail correspondent: see “Account activation” under the heading <a class="reference internal" href="#v457ap-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:-</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">12</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">40</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
@@ -1400,8 +1389,8 @@ the command window.</p>
 </div>
 <p><em>Page upload by SMTP : activation e-mail</em></p>
 <ol class="arabic simple" start="2">
-<li>Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.</li>
-<li>VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail contains the new security code. You can reply to this e-mail the next time you have files to upload.</li>
+<li><p>Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.</p></li>
+<li><p>VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail contains the new security code. You can reply to this e-mail the next time you have files to upload.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">12</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">14</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
@@ -1441,10 +1430,10 @@ cookie named VirtelRef= whose value changes after each upload. The value of the 
 code used for uploading by SMTP.</p>
 <p>To upload a page, a user must:</p>
 <ul class="simple">
-<li>have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)</li>
-<li>click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)</li>
-<li>click the “Browse” button and select a file</li>
-<li>click the “Send” button</li>
+<li><p>have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)</p></li>
+<li><p>click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)</p></li>
+<li><p>click the “Browse” button and select a file</p></li>
+<li><p>click the “Send” button</p></li>
 </ul>
 <p>The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
 SMTP.</p>
@@ -1463,8 +1452,8 @@ that the name of the target directory is to be found in the definition of the e-
 <p><img alt="image76" src="../../../_images/image762.png" /></p>
 <p><em>Page upload by HTTP with cookie : Creating the ‘upload’ transaction</em></p>
 <ol class="arabic simple" start="2">
-<li>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</li>
-<li>Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :</li>
+<li><p>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</p></li>
+<li><p>Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">04</span>
 <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="n">address</span> <span class="o">===&gt;</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
@@ -1493,7 +1482,7 @@ that the name of the target directory is to be found in the definition of the e-
 </div>
 <p><em>Page upload by HTTP with cookie : Creating the e-mail correspondent</em></p>
 <ol class="arabic simple" start="4">
-<li>Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :</li>
+<li><p>Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DETAIL</span> <span class="n">of</span> <span class="n">RULE</span> <span class="kn">from</span> <span class="nn">RULE</span> <span class="n">SET</span><span class="p">:</span> <span class="n">ADMRSET1</span> <span class="o">-------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">59</span>
 
@@ -1521,7 +1510,7 @@ that the name of the target directory is to be found in the definition of the e-
 </div>
 <p><em>Page upload by HTTP with cookie : Creating rule UPLOAD1B</em></p>
 <ol class="arabic simple" start="5">
-<li>Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:</li>
+<li><p>Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2     14:44:14
 
@@ -1586,7 +1575,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <div class="section" id="procedure-for-page-upload-secured-by-cookie">
 <h5>Procedure for page upload (secured by cookie)<a class="headerlink" href="#procedure-for-page-upload-secured-by-cookie" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic simple">
-<li>(First time only) Activate the e-mail correspondent: see <a class="reference internal" href="#v457ap-account-activation"><span class="std std-ref">“Account activation”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:</li>
+<li><p>(First time only) Activate the e-mail correspondent: see <a class="reference internal" href="#v457ap-account-activation"><span class="std std-ref">“Account activation”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">13</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">44</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
@@ -1604,22 +1593,22 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 </div>
 <p><em>Page upload by HTTP with cookie : activation e-mail</em></p>
 <ol class="arabic simple" start="2">
-<li>Click the link in the e-mail to open the upload.htm page:</li>
+<li><p>Click the link in the e-mail to open the upload.htm page:</p></li>
 </ol>
 <p><img alt="image4" src="../../../_images/image433.png" /></p>
 <p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
 <ol class="arabic simple" start="3">
-<li>Click the “Browse” button and the file selection dialog will be displayed:</li>
+<li><p>Click the “Browse” button and the file selection dialog will be displayed:</p></li>
 </ol>
 <p><img alt="image5" src="../../../_images/image524.png" /></p>
 <p><em>Page upload by HTTP with cookie : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
-<li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
+<li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
 <p><img alt="image6" src="../../../_images/image622.png" /></p>
 <p><em>Page upload by HTTP with cookie : Sending the file</em></p>
 <ol class="arabic simple" start="5">
-<li>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</li>
+<li><p>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</p></li>
 </ol>
 <p><img alt="image7" src="../../../_images/image719.png" /></p>
 <p><em>Page upload by HTTP with cookie : Confirmation of file uploadr</em></p>
@@ -1633,11 +1622,11 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <span id="index-72"></span><h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <p>The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:</p>
 <ul class="simple">
-<li>the CONSOLE file</li>
-<li>the VIRLOG file</li>
-<li>the VIRTEL Logger</li>
-<li>the TRACE in the VIRTRACE file</li>
-<li>the SNAP in the SYSPRINT file</li>
+<li><p>the CONSOLE file</p></li>
+<li><p>the VIRLOG file</p></li>
+<li><p>the VIRTEL Logger</p></li>
+<li><p>the TRACE in the VIRTRACE file</p></li>
+<li><p>the SNAP in the SYSPRINT file</p></li>
 </ul>
 <div class="section" id="console-file">
 <span id="index-73"></span><h3>CONSOLE file<a class="headerlink" href="#console-file" title="Permalink to this headline">¶</a></h3>
@@ -1645,8 +1634,8 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p>In <strong>VSE environment</strong>, the CONSOLE file is written to the VIRTEL partition’s POWER LST file (LISTLOG)</p>
 <p>The CONSOLE file allows the administrator to monitor the startup and subsequent activity of VIRTEL. Using the console file, the administrator can check that the VSAM files are correctly opened, verify that the customer key has been correctly recognized, check the initialization of the TCP/IP sockets interface using the correct IP address and port, and monitor connections and disconnections of terminals and applications.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
+<p class="admonition-title">Note</p>
+<p>The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
 </div>
 <p><img alt="image24" src="../../../_images/image245.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
@@ -1678,10 +1667,10 @@ The PSEUDO column shows the VIRTEL terminal name used.</p>
 The next column contains the HTTP status code (for static pages) The last three 8-byte columns represent:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The external name of the VIRTEL transaction which represents the HTTP path name.</li>
-<li>The name of the HTML page.</li>
-<li>For static pages: The name of the VIRTEL directory containing the HTML page.</li>
-<li>For dynamic pages: The internal name of the HTTP transaction which was used to populate the page.</li>
+<li><p>The external name of the VIRTEL transaction which represents the HTTP path name.</p></li>
+<li><p>The name of the HTML page.</p></li>
+<li><p>For static pages: The name of the VIRTEL directory containing the HTML page.</p></li>
+<li><p>For dynamic pages: The internal name of the HTTP transaction which was used to populate the page.</p></li>
 </ul>
 </div></blockquote>
 <p>The figure below shows an example of VIRLOG entries for X25 calls:</p>
@@ -1750,14 +1739,14 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <p>All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.</p>
 <p>Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A terminal or line trace remains active until a corresponding NOTRACE command is issued or until the VIRTEL started task terminates.</p>
+<p class="admonition-title">Note</p>
+<p>A terminal or line trace remains active until a corresponding NOTRACE command is issued or until the VIRTEL started task terminates.</p>
 </div>
 <p>It is also possible to trace specific incoming calls (“tracing by rule”). In this case, activation of the trace is specified in the definition of the rule which VIRTEL uses to route the incoming call. For example, a rule can be created to activate the trace for calls which originate from a specific terminal address (X25 or IP). The trace can be activated for commands and/or data packets.</p>
 <p>Activation or deactivation of a “trace by rule” is performed via the VIRTEL on-line configuration menus, and consists of updating the “Trace” field in the rule definition, followed by pressing the F1 key. See “Rules” in the VIRTEL Connectivity Reference manual for more details.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A “trace by rule” remains active as long as the “Trace” field in the rule definition is not empty. Message VIR0036W confirms the activation of the trace.</p>
+<p class="admonition-title">Note</p>
+<p>A “trace by rule” remains active as long as the “Trace” field in the rule definition is not empty. Message VIR0036W confirms the activation of the trace.</p>
 </div>
 <p>In <strong>z/OS environment</strong>, the trace data is written to the VIRTRACE file in the VIRTEL started task.
 In <strong>VSE environment</strong>, the trace data is written to the POWER LST file of the VIRTEL partition.</p>
@@ -1765,99 +1754,99 @@ In <strong>VSE environment</strong>, the trace data is written to the POWER LST 
 <div class="section" id="contents-of-the-trace">
 <span id="index-78"></span><h4>Contents of the trace<a class="headerlink" href="#contents-of-the-trace" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><table class="docutils align-center">
 <colgroup>
-<col width="11%" />
-<col width="42%" />
-<col width="47%" />
+<col style="width: 11%" />
+<col style="width: 42%" />
+<col style="width: 47%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head" rowspan="2">Line type</th>
-<th class="head" rowspan="2">Contents of line trace</th>
-<th class="head" rowspan="2">Contents of terminal trace or trace by rule</th>
+<thead>
+<tr class="row-odd"><th class="head" rowspan="2"><p>Line type</p></th>
+<th class="head" rowspan="2"><p>Contents of line trace</p></th>
+<th class="head" rowspan="2"><p>Contents of terminal trace or trace by rule</p></th>
 </tr>
 <tr class="row-even"></tr>
 </thead>
-<tbody valign="top">
-<tr class="row-odd"><td rowspan="5">HTTP</td>
-<td rowspan="5">All messages flowing  between the VIRTEL
-HTTP server and client browsers</td>
-<td rowspan="5">Terminal without relay: None
+<tbody>
+<tr class="row-odd"><td rowspan="5"><p>HTTP</p></td>
+<td rowspan="5"><p>All messages flowing  between the VIRTEL
+HTTP server and client browsers</p></td>
+<td rowspan="5"><p>Terminal without relay: None
 Terminal with relay: Contents of the 3270
 datastream between VIRTEL and the host
-application</td>
+application</p></td>
 </tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
-<tr class="row-even"><td rowspan="3">SMTP</td>
-<td rowspan="3"><dl class="first last docutils">
-<dt>All messages flowing to and from the</dt>
-<dd>VIRTEL SMTP server</dd>
+<tr class="row-even"><td rowspan="3"><p>SMTP</p></td>
+<td rowspan="3"><dl class="simple">
+<dt>All messages flowing to and from the</dt><dd><p>VIRTEL SMTP server</p>
+</dd>
 </dl>
 </td>
-<td rowspan="3">None</td>
+<td rowspan="3"><p>None</p></td>
 </tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="3">XOT</td>
-<td rowspan="3">All messages flowing between VIRTEL and
-the router, including the XOT headers</td>
-<td rowspan="3">All X25 messages (excluding the XOT header)
-belonging to the specified virtual circuit.</td>
+<tr class="row-odd"><td rowspan="3"><p>XOT</p></td>
+<td rowspan="3"><p>All messages flowing between VIRTEL and
+the router, including the XOT headers</p></td>
+<td rowspan="3"><p>All X25 messages (excluding the XOT header)
+belonging to the specified virtual circuit.</p></td>
 </tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
-<tr class="row-even"><td rowspan="5"><p class="first">/GATE</p>
-<p class="last">/FASTC</p>
+<tr class="row-even"><td rowspan="5"><p>/GATE</p>
+<p>/FASTC</p>
 </td>
-<td rowspan="5">Messages on the control session between
+<td rowspan="5"><p>Messages on the control session between
 the MCH LU and the CTCP
-(call packet and call acknowledgement)</td>
-<td rowspan="5">Messages on the data session between the CVC
+(call packet and call acknowledgement)</p></td>
+<td rowspan="5"><p>Messages on the data session between the CVC
 LU and the CTCP (data packets, X25 RESET and
-CLEAR commands)</td>
+CLEAR commands)</p></td>
 </tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="3">/PCNE</td>
-<td rowspan="3">None</td>
-<td rowspan="3">Data flowing between the terminal LU and the
-application.</td>
+<tr class="row-odd"><td rowspan="3"><p>/PCNE</p></td>
+<td rowspan="3"><p>None</p></td>
+<td rowspan="3"><p>Data flowing between the terminal LU and the
+application.</p></td>
 </tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
-<tr class="row-even"><td rowspan="2">APPC</td>
-<td rowspan="2">N/A</td>
-<td rowspan="2">Messages on the LU6.2 session</td>
+<tr class="row-even"><td rowspan="2"><p>APPC</p></td>
+<td rowspan="2"><p>N/A</p></td>
+<td rowspan="2"><p>Messages on the LU6.2 session</p></td>
 </tr>
 <tr class="row-odd"></tr>
-<tr class="row-even"><td rowspan="3">GATE
-FASTC</td>
-<td rowspan="3">N/A</td>
-<td rowspan="3">Messages on the data session between the NCP
-and VIRTEL.</td>
+<tr class="row-even"><td rowspan="3"><p>GATE
+FASTC</p></td>
+<td rowspan="3"><p>N/A</p></td>
+<td rowspan="3"><p>Messages on the data session between the NCP
+and VIRTEL.</p></td>
 </tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="4">3270</td>
-<td rowspan="4">N/A</td>
-<td rowspan="4">The 3270 datastream between the terminal and
+<tr class="row-odd"><td rowspan="4"><p>3270</p></td>
+<td rowspan="4"><p>N/A</p></td>
+<td rowspan="4"><p>The 3270 datastream between the terminal and
 VIRTEL, and the 3270 datastream between VIRTEL
-and the host application.</td>
+and the host application.</p></td>
 </tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td rowspan="4">PCNE
-(Minitel)</td>
-<td rowspan="4">N/A</td>
-<td rowspan="4">The Vidéotex datastream between the terminal
+<tr class="row-odd"><td rowspan="4"><p>PCNE
+(Minitel)</p></td>
+<td rowspan="4"><p>N/A</p></td>
+<td rowspan="4"><p>The Vidéotex datastream between the terminal
 and VIRTEL, and the 3270 datastream between
-VIRTEL and the host application.</td>
+VIRTEL and the host application.</p></td>
 </tr>
 <tr class="row-even"></tr>
 <tr class="row-odd"></tr>
@@ -1932,8 +1921,8 @@ P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.55
 <p>VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.</p>
 <p>The SNAP listing is primarily intended for use by VIRTEL development personnel and will normally need to be forwarded to Syspertec for analysis. For customer diagnostics, the TRACE command (described     above) may often be more useful.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The format, the contents, and the size of the SNAP depend on the SNAPW, TRACBIG, TRACEB, TRACEON parameters in the VIRTCT.</p>
+<p class="admonition-title">Note</p>
+<p>The format, the contents, and the size of the SNAP depend on the SNAPW, TRACBIG, TRACEB, TRACEON parameters in the VIRTCT.</p>
 </div>
 <p>The internal trace table is recorded in a circular fashion, so that each new event added to the table overlays and replaces the oldest event in the table. The table contains a fixed number of event slots (determined by the TRACBIG parameter in the VIRTCT), and additionally certain events may have a variable amount (up to 256 bytes) of data recorded. The variable data is stored in a separate area whose size is determined by the TRACEB parameter in the VIRTCT, and this area is also filled in a circular manner, with the oldest information being dropped from the table when new information is added. Thus, depending on the values of the TRACBIG and TRACB parameters, older entries in the trace table may no longer have data associated with them.</p>
 <p>Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.</p>
@@ -1942,8 +1931,8 @@ P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.55
 <p>In <strong>z/OS environment</strong>, the SNAP output is written to the SYSPRINT file in the VIRTEL started task.
 In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER LST file of the VIRTEL partition.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
+<p class="admonition-title">Note</p>
+<p>Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
 </div>
 <p><img alt="image25" src="../../../_images/image255.png" /></p>
 <p><em>Example of SNAP listing</em></p>
@@ -1959,20 +1948,20 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 <span id="index-83"></span><h3>VIRSTAT file<a class="headerlink" href="#virstat-file" title="Permalink to this headline">¶</a></h3>
 <p>The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>When the STATS=YES parameter is coded in the VIRTCT, the VIRSTAT file is reinitialised at each VIRTEL startup. With STATS=YES, VIRTEL must be stopped periodically in order to avoid filling the VIRSTAT
 file, and the file should be defined as a GDG in order not to lose the information from a previous run. The STATS=MULTI parameter may be coded in the z/OS environment to permit continuous operation.</p>
-<p class="last">Trying to browse the contents of the file from ISPF while it is in use by VIRTEL, can result to the obtain a system message indicating that the file is empty. In reality this is not true, because in fact
+<p>Trying to browse the contents of the file from ISPF while it is in use by VIRTEL, can result to the obtain a system message indicating that the file is empty. In reality this is not true, because in fact
 the records are buffered in memory before being written in block.</p>
 </div>
 <p>The format of the statistics records depends on the value specified in the “Write Stats to” field of the VIRTEL terminal definition (refer to the VIRTEL Connectivity Reference manual for details of terminal definitions). Each terminal may request statistics in one or more of the possible formats:</p>
-<dl class="docutils">
-<dt>Classic</dt>
-<dd>VIRSTAT classic format recording is intended for use with Minitel calls on terminals associated with NPSI lines (Gate or Fast Connect).</dd>
-<dt>Alternate X25</dt>
-<dd>VIRSTAT alternate format recording may be requested for terminals associated with any X25 line (GATE, FASTC, XOT).</dd>
-<dt>Web</dt>
-<dd>VIRSTAT format suitable for terminals associated with an HTTP line.</dd>
+<dl class="simple">
+<dt>Classic</dt><dd><p>VIRSTAT classic format recording is intended for use with Minitel calls on terminals associated with NPSI lines (Gate or Fast Connect).</p>
+</dd>
+<dt>Alternate X25</dt><dd><p>VIRSTAT alternate format recording may be requested for terminals associated with any X25 line (GATE, FASTC, XOT).</p>
+</dd>
+<dt>Web</dt><dd><p>VIRSTAT format suitable for terminals associated with an HTTP line.</p>
+</dd>
 </dl>
 <p>For terminals associated with all other line types (including /GATE, /PCNE, and /FASTC) the statistics record may not contain meaningful information and the statistics field in the terminal definition     should be left blank.</p>
 <p>The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.</p>
@@ -2010,13 +1999,13 @@ the records are buffered in memory before being written in block.</p>
 </div>
 <p><em>Format of VIRSTAT record (classic format)</em></p>
 <p>For NPSI Fast Connect lines, the X25 accounting statistics are recorded in billing units provided by NPSI at virtual circuit disconnection time. Their interpretation depends on the TAXUNIT parameter in the NPSI X25.MCH macro. Similarly, the session start and end times (Fast Connect only) are provided by NPSI and depend on the clock settings in the NCP. For other types of lines, accounting statistics and times are generated by VIRTEL.</p>
-<dl class="docutils">
-<dt>Type C (cumulative)</dt>
-<dd>Records are implemented at terminal disconnection.</dd>
-<dt>Type P (partial)</dt>
-<dd>Records are implemented at regular intervals.</dd>
-<dt>Type E (end of job)</dt>
-<dd>Records are implemented at VIRTEL shutdown.</dd>
+<dl class="simple">
+<dt>Type C (cumulative)</dt><dd><p>Records are implemented at terminal disconnection.</p>
+</dd>
+<dt>Type P (partial)</dt><dd><p>Records are implemented at regular intervals.</p>
+</dd>
+<dt>Type E (end of job)</dt><dd><p>Records are implemented at VIRTEL shutdown.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="virstat-alternative-x25-format">
@@ -2052,11 +2041,11 @@ the records are buffered in memory before being written in block.</p>
 </div>
 <p><em>Format of VIRSTAT record (alternate X25 format)</em></p>
 <p>For NPSI Fast Connect lines, the X25 session start and end times are provided by NPSI at virtual circuit disconnection time and depend on the clock settings in the NCP. For other types of lines, times are     generated by VIRTEL.</p>
-<dl class="docutils">
-<dt>Type I (inbound)</dt>
-<dd>Records relate to X25 incoming calls.</dd>
-<dt>Type O (outbound)</dt>
-<dd>Records relate to X25 outgoing calls.</dd>
+<dl class="simple">
+<dt>Type I (inbound)</dt><dd><p>Records relate to X25 incoming calls.</p>
+</dd>
+<dt>Type O (outbound)</dt><dd><p>Records relate to X25 outgoing calls.</p>
+</dd>
 </dl>
 <p>For terminals which specify web format recording (STATS=5 or STATS=6), the VIRSTAT record format is shown in the following  tables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Position        Format          Type of information
@@ -2270,11 +2259,10 @@ SELTERM DEVTA* CLVTA*
 </pre></div>
 </div>
 <p><em>PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)</em></p>
-<dl class="docutils">
-<dt>This JCL consists of two main steps:</dt>
-<dd><ul class="first last simple">
-<li>a first step to sort the file</li>
-<li>a second step to PRINT or COUNT the records</li>
+<dl class="simple">
+<dt>This JCL consists of two main steps:</dt><dd><ul class="simple">
+<li><p>a first step to sort the file</p></li>
+<li><p>a second step to PRINT or COUNT the records</p></li>
 </ul>
 </dd>
 </dl>
@@ -2313,21 +2301,21 @@ PRTSTATW PRINT                BREAK USER          NNN  PPPP
 </pre></div>
 </div>
 <p><em>PRTSTATW first SYSIN card</em></p>
-<dl class="docutils">
-<dt>Columns 1 to 8</dt>
-<dd>Program name: must be PRTSTATW</dd>
-<dt>Columns 11 to 16</dt>
-<dd>Report type: specify PRINT (print report) or COUNT (calculate number of distinct users)</dd>
-<dt>Columns 31 to 35</dt>
-<dd>Optionally specify BREAK if report break is desired (up to 2 levels) for printing (PRINT) or $ALL$ if counting (COUNT)</dd>
-<dt>Columns 37 to 40</dt>
-<dd>Optionally indicates the type of report break: TERM (break on change of terminal name), USER (break on change of user name), DATE (break on change of date) or PARM (break on change of URL parameter)</dd>
-<dt>Columns 43 to 46</dt>
-<dd>Optionally indicates the second level report break (TERM, USER, DATE, or PARM)</dd>
-<dt>Columns 51 to 53</dt>
-<dd>Optionally specify N (no) or O (yes) to print additional trace information (program trace, input/output trace, and miscellaneous trace respectively). The default is N for each trace.</dd>
-<dt>Columns 56 to 59</dt>
-<dd>Maximum number of pages to be printed (default 50 pages)</dd>
+<dl class="simple">
+<dt>Columns 1 to 8</dt><dd><p>Program name: must be PRTSTATW</p>
+</dd>
+<dt>Columns 11 to 16</dt><dd><p>Report type: specify PRINT (print report) or COUNT (calculate number of distinct users)</p>
+</dd>
+<dt>Columns 31 to 35</dt><dd><p>Optionally specify BREAK if report break is desired (up to 2 levels) for printing (PRINT) or $ALL$ if counting (COUNT)</p>
+</dd>
+<dt>Columns 37 to 40</dt><dd><p>Optionally indicates the type of report break: TERM (break on change of terminal name), USER (break on change of user name), DATE (break on change of date) or PARM (break on change of URL parameter)</p>
+</dd>
+<dt>Columns 43 to 46</dt><dd><p>Optionally indicates the second level report break (TERM, USER, DATE, or PARM)</p>
+</dd>
+<dt>Columns 51 to 53</dt><dd><p>Optionally specify N (no) or O (yes) to print additional trace information (program trace, input/output trace, and miscellaneous trace respectively). The default is N for each trace.</p>
+</dd>
+<dt>Columns 56 to 59</dt><dd><p>Maximum number of pages to be printed (default 50 pages)</p>
+</dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Second</span> <span class="n">card</span> <span class="p">(</span><span class="n">Optional</span><span class="p">)</span>
          <span class="mi">1</span>         <span class="mi">2</span>         <span class="mi">3</span>         <span class="mi">4</span>         <span class="mi">5</span>         <span class="mi">6</span>
@@ -2343,21 +2331,21 @@ PRTSTATW PRINT                BREAK USER          NNN  PPPP
 <p><em>PRTSTATW second SYSIN card</em></p>
 <p>This card allows records to be selected according to 4 fields: DATE (selection by date range), TERM (selection of up to 4 different terminal names, otherwise 4 different HTTP lines), USER (selection by user name), PARM (selection by URL parameter).</p>
 <p>It is possible to make a <strong>generic</strong> selection by coding a ‘*’ character at the end of a field. For example, specifying a terminal selection value of DEVT* allows the program to select all records whose terminal name begins with DEVT.</p>
-<dl class="docutils">
-<dt>Columns 1 to 7</dt>
-<dd>Optional, indicates the selection type: SELDATE (for DATE), SELTERM (for terminal), SELUSER (for user), or SELPARM (for URL parameter).</dd>
-<dt>Columns 11 to 19</dt>
-<dd>Indicates up to 8 characters for the chosen value (SELDATE and SELTERM). The value may end in ‘*’ for a generic search.</dd>
-<dt>Columns 21 to 29</dt>
-<dd>For SELDATE: second date in the range, for SELTERM: second terminal name (optional)</dd>
-<dt>Columns 31 to 39</dt>
-<dd>For SELTERM: third terminal name (optional)</dd>
-<dt>Columns 41 to 49</dt>
-<dd>For SELTERM: fourth terminal name (optional)</dd>
-<dt>Columns 21 to 40</dt>
-<dd>For SELUSER:up to 20 characters for the user name. The value may end in ‘*’ for a generic search.</dd>
-<dt>Columns 21 to 36</dt>
-<dd>For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘*’ for a generic search.</dd>
+<dl class="simple">
+<dt>Columns 1 to 7</dt><dd><p>Optional, indicates the selection type: SELDATE (for DATE), SELTERM (for terminal), SELUSER (for user), or SELPARM (for URL parameter).</p>
+</dd>
+<dt>Columns 11 to 19</dt><dd><p>Indicates up to 8 characters for the chosen value (SELDATE and SELTERM). The value may end in ‘*’ for a generic search.</p>
+</dd>
+<dt>Columns 21 to 29</dt><dd><p>For SELDATE: second date in the range, for SELTERM: second terminal name (optional)</p>
+</dd>
+<dt>Columns 31 to 39</dt><dd><p>For SELTERM: third terminal name (optional)</p>
+</dd>
+<dt>Columns 41 to 49</dt><dd><p>For SELTERM: fourth terminal name (optional)</p>
+</dd>
+<dt>Columns 21 to 40</dt><dd><p>For SELUSER:up to 20 characters for the user name. The value may end in ‘*’ for a generic search.</p>
+</dd>
+<dt>Columns 21 to 36</dt><dd><p>For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘*’ for a generic search.</p>
+</dd>
 </dl>
 <div class="section" id="counter-report">
 <h5>Counter Report<a class="headerlink" href="#counter-report" title="Permalink to this headline">¶</a></h5>
@@ -2426,14 +2414,14 @@ SELDATE 01012010 30122011
 <h3>Open Source Software<a class="headerlink" href="#open-source-software" title="Permalink to this headline">¶</a></h3>
 <p>The current VIRTEL Web Access product uses the following open source software:</p>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>jQuery</dt>
-<dd>Under MIT license - <a class="reference external" href="https://jquery.org/license/">https://jquery.org/license/</a></dd>
+<li><dl class="simple">
+<dt>jQuery</dt><dd><p>Under MIT license - <a class="reference external" href="https://jquery.org/license/">https://jquery.org/license/</a></p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>jQuery_UI</dt>
-<dd>Under MIT license - <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a></dd>
+<li><dl class="simple">
+<dt>jQuery_UI</dt><dd><p>Under MIT license - <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a></p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -2461,19 +2449,11 @@ SELDATE 01012010 30122011
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2484,6 +2464,7 @@ SELDATE 01012010 30122011
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

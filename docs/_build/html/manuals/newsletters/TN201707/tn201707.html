@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Virtel Batch Maintenance" href="../TN201709/TN201709.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,7 +120,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -161,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -189,72 +186,67 @@
 <p>Software Requirements. [not all may be required]</p>
 <p><em>Most of the software and related PDFs can be found on \HOLT-WIN7\Partage\readthedocs</em></p>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>Pandoc.</dt>
-<dd>Convert word documents to RST format</dd>
+<li><dl class="simple">
+<dt>Pandoc.</dt><dd><p>Convert word documents to RST format</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Python.</dt>
-<dd>Install 2.7 (requires at least version 2.7.9)</dd>
+<li><dl class="simple">
+<dt>Python.</dt><dd><p>Install 2.7 (requires at least version 2.7.9)</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>PIP</dt>
-<dd>Python installer</dd>
+<li><dl class="simple">
+<dt>PIP</dt><dd><p>Python installer</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Sphinx</dt>
-<dd>Requires Python</dd>
+<li><dl class="simple">
+<dt>Sphinx</dt><dd><p>Requires Python</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>RTD</dt>
-<dd>Read-The-Docs theme template</dd>
+<li><dl class="simple">
+<dt>RTD</dt><dd><p>Read-The-Docs theme template</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Microsoft C++</dt>
-<dd>Compiler package for Python 2.7</dd>
+<li><dl class="simple">
+<dt>Microsoft C++</dt><dd><p>Compiler package for Python 2.7</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Basic-MiTex</dt>
-<dd>Latex and PDF generator. Incorporates TexWorks Application.</dd>
+<li><dl class="simple">
+<dt>Basic-MiTex</dt><dd><p>Latex and PDF generator. Incorporates TexWorks Application.</p>
+</dd>
 </dl>
 </li>
 </ul>
 <p><strong>Installation</strong></p>
 <ol class="arabic">
-<li><dl class="first docutils">
-<dt>Install Python</dt>
-<dd><p class="first last">Go to <a class="reference external" href="https://www.python.org">https://www.python.org</a> and install Python on your PC. Ensure you tick the “SET PATH” environment box.</p>
+<li><dl class="simple">
+<dt>Install Python</dt><dd><p>Go to <a class="reference external" href="https://www.python.org">https://www.python.org</a> and install Python on your PC. Ensure you tick the “SET PATH” environment box.</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Install PIP</dt>
-<dd><p class="first last">To install pip, download <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> and save it somewhere. After download, invoke the command prompt, go to the directory with get-pip.py and run this command: python get-pip.py</p>
+<li><dl class="simple">
+<dt>Install PIP</dt><dd><p>To install pip, download <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> and save it somewhere. After download, invoke the command prompt, go to the directory with get-pip.py and run this command: python get-pip.py</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Install Sphinx</dt>
-<dd><p class="first">Type this into a command line: <em>pip install sphinx</em></p>
-<p class="last">To validate the installation, type in the following: <em>sphinx-build -h</em></p>
+<li><dl>
+<dt>Install Sphinx</dt><dd><p>Type this into a command line: <em>pip install sphinx</em></p>
+<p>To validate the installation, type in the following: <em>sphinx-build -h</em></p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Install Sphinx Read-The-Docs theme template (RTD)</dt>
-<dd><p class="first last">Type this into a command line: <em>pip install sphinx_rtd_theme</em></p>
+<li><dl class="simple">
+<dt>Install Sphinx Read-The-Docs theme template (RTD)</dt><dd><p>Type this into a command line: <em>pip install sphinx_rtd_theme</em></p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>Install Basic-MiTex application.</dt>
-<dd><p class="first last">You’ll need this to generate PDFs from the LATEX files that Sphinx produces.</p>
+<li><dl class="simple">
+<dt>Install Basic-MiTex application.</dt><dd><p>You’ll need this to generate PDFs from the LATEX files that Sphinx produces.</p>
 </dd>
 </dl>
 </li>
@@ -262,11 +254,11 @@
 <p><strong>Sphinx Project</strong></p>
 <p>That’s the software installation done. Now let’s set up our first sphinx project.</p>
 <ol class="arabic simple">
-<li>Go to your route drive, something like c:\ or a directory c:\mystuff</li>
-<li>Enter sphinx-quickstart</li>
-<li>On the first prompt (root directory) enter myDocument</li>
-<li>Answer the questions. In most case take the defaults except for things like name of project etc. Note, be sure to say <strong>yes</strong> to the “autodoc” extension.</li>
-<li>You should end up with a myDocuments folder with a bunch of files.</li>
+<li><p>Go to your route drive, something like c:\ or a directory c:\mystuff</p></li>
+<li><p>Enter sphinx-quickstart</p></li>
+<li><p>On the first prompt (root directory) enter myDocument</p></li>
+<li><p>Answer the questions. In most case take the defaults except for things like name of project etc. Note, be sure to say <strong>yes</strong> to the “autodoc” extension.</p></li>
+<li><p>You should end up with a myDocuments folder with a bunch of files.</p></li>
 </ol>
 <p><strong>Health Check</strong></p>
 <p><em>Testing the HTML builder</em></p>
@@ -281,7 +273,7 @@ You should have a bunch of latex related files, in particular a TEX file. We wil
 Press the green button and the builder process will start. When it’s finished a PDF will appear in another window. This PDF will be located in the _build\latex directory.</p>
 <p>If the above all works than we have proven the software and we can now continue to play with the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at <a class="reference external" href="http://docutils.sourceforg.net/rst.html">http://docutils.sourceforg.net/rst.html</a>.</p>
 <p><strong>Starting out with the ReSTructured Language</strong></p>
-<p>If you viewing this document as a PDF or online as a HTML page then you are about to embark on a learning exercise that will teach you how to create PDFs and online documents using a bunch of tools such as Sphinx and Latex. The source document for both the PDF and HTML outputs is the same; a ReSTructured document. The source material for this newsletter is a ReSTructured or RST file that can be found on the server at <code class="file docutils literal notranslate"><span class="pre">\\HOLT-WIN7\Partage\readthedocs\TN201707.RST</span></code>. So lets start with your first document.</p>
+<p>If you viewing this document as a PDF or online as a HTML page then you are about to embark on a learning exercise that will teach you how to create PDFs and online documents using a bunch of tools such as Sphinx and Latex. The source document for both the PDF and HTML outputs is the same; a ReSTructured document. The source material for this newsletter is a ReSTructured or RST file that can be found on the server at <code class="file docutils literal notranslate"><span class="pre">\HOLT-WIN7\Partage\readthedocs\TN201707.RST</span></code>. So lets start with your first document.</p>
 <p>Create a document called mydocument.rst in your myDocument folder and copy in the following text:</p>
 <p><strong>Paragraphs</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Restructured</span> <span class="n">text</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">building</span> <span class="n">block</span> <span class="k">with</span> <span class="n">a</span> <span class="n">reST</span> <span class="n">document</span><span class="o">.</span> <span class="n">Paragraphs</span> <span class="n">are</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">line</span><span class="o">.</span>
@@ -304,7 +296,8 @@ This is not a paragraph as no is no blank line between these two lines.</p>
 <p><strong>Indentation</strong></p>
 <p>Hello.</p>
 <blockquote>
-<div>I am indented.</div></blockquote>
+<div><p>I am indented.</p>
+</div></blockquote>
 <p><strong>Inline markup</strong></p>
 <p>The standard reST inline markup is quite simple: use</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>one asterisk: *text* for emphasis (italics),
@@ -360,15 +353,15 @@ If you need to code \*this is not bold\* in your text you will to escape the ast
 </pre></div>
 </div>
 <ul class="simple">
-<li>This is a bulleted list.</li>
-<li>It has two items, the second
-item uses two lines.</li>
+<li><p>This is a bulleted list.</p></li>
+<li><p>It has two items, the second
+item uses two lines.</p></li>
 </ul>
 <ol class="arabic simple">
-<li>This is a numbered list.</li>
-<li>It has two items too.</li>
-<li>This is a numbered list.</li>
-<li>It has two items too.</li>
+<li><p>This is a numbered list.</p></li>
+<li><p>It has two items too.</p></li>
+<li><p>This is a numbered list.</p></li>
+<li><p>It has two items too.</p></li>
 </ol>
 <p>Nested lists are possible, but be aware that they must be separated from the parent list items by blank lines:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">this</span> <span class="ow">is</span>
@@ -381,18 +374,16 @@ item uses two lines.</li>
 </pre></div>
 </div>
 <ul>
-<li><p class="first">this is</p>
-</li>
-<li><p class="first">a list</p>
+<li><p>this is</p></li>
+<li><p>a list</p>
 <blockquote>
 <div><ul class="simple">
-<li>with a nested list</li>
-<li>and some subitems</li>
+<li><p>with a nested list</p></li>
+<li><p>and some subitems</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">and here the parent list continues</p>
-</li>
+<li><p>and here the parent list continues</p></li>
 </ul>
 <p><strong>Definition List</strong></p>
 <p>Here is a defintion list.</p>
@@ -409,13 +400,12 @@ item uses two lines.</li>
 </div>
 <p>Definition lists are created as follows:</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>term (up to a line of text)</dt>
-<dd><p class="first">Definition of the term, which must be indented</p>
-<p class="last">and can even consist of multiple paragraphs</p>
+<div><dl>
+<dt>term (up to a line of text)</dt><dd><p>Definition of the term, which must be indented</p>
+<p>and can even consist of multiple paragraphs</p>
 </dd>
-<dt>next term</dt>
-<dd>Description.</dd>
+<dt>next term</dt><dd><p>Description.</p>
+</dd>
 </dl>
 </div></blockquote>
 <p><strong>Line Blocks</strong></p>
@@ -448,9 +438,9 @@ item uses two lines.</li>
 </div>
 <p>The handling of the :: marker is smart:</p>
 <ul class="simple">
-<li>If it occurs as a paragraph of its own, that paragraph is completely left out of the document.</li>
-<li>If it is preceded by whitespace, the marker is removed.</li>
-<li>If it is preceded by non-whitespace, the marker is replaced by a single colon.</li>
+<li><p>If it occurs as a paragraph of its own, that paragraph is completely left out of the document.</p></li>
+<li><p>If it is preceded by whitespace, the marker is removed.</p></li>
+<li><p>If it is preceded by non-whitespace, the marker is replaced by a single colon.</p></li>
 </ul>
 <p>That way, the second sentence in the above example’s first paragraph would be rendered as “The next paragraph is a code sample:”.</p>
 <p>This is a normal text paragraph. The next paragraph is a code sample:</p>
@@ -474,34 +464,34 @@ item uses two lines.</li>
 </pre></div>
 </div>
 <p>Simple tables are easier to write, but limited: they must contain more than one row, and the first column cells cannot contain multiple lines. They look like this:</p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="29%" />
-<col width="29%" />
-<col width="41%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 41%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">A</th>
-<th class="head">B</th>
-<th class="head">A and B</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A and B</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>False</td>
-<td>False</td>
-<td>False</td>
+<tbody>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
 </tr>
-<tr class="row-odd"><td>True</td>
-<td>False</td>
-<td>False</td>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
 </tr>
-<tr class="row-even"><td>False</td>
-<td>True</td>
-<td>False</td>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
 </tr>
-<tr class="row-odd"><td>True</td>
-<td>True</td>
-<td>True</td>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
 </tr>
 </tbody>
 </table>
@@ -510,8 +500,8 @@ item uses two lines.</li>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">There must be a space before the &lt;</p>
+<p class="admonition-title">Note</p>
+<p>There must be a space before the &lt;</p>
 </div>
 <p>The above was an <strong>admonition</strong>. In this case a ‘note’. Here is the full text:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">note</span> <span class="p">::</span>
@@ -520,8 +510,8 @@ item uses two lines.</li>
 </div>
 <p>Supported admonitions are: attention, caution, danger, error, hint, important, note, tip, warning and the generic admonition. (Most themes style only “note” and “warning” specially.). Here is a danger example:</p>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">This is a dangerous piece of code.</p>
+<p class="admonition-title">Danger</p>
+<p>This is a dangerous piece of code.</p>
 </div>
 <p><strong>Sections</strong></p>
 <p>Section headers are created by underlining (and optionally overlining) the section title with a punctuation character, at least as long as the text:</p>
@@ -533,12 +523,12 @@ item uses two lines.</li>
 <div class="section" id="this-is-a-chapter">
 <h2>This is a chapter<a class="headerlink" href="#this-is-a-chapter" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li># with overline, for parts</li>
-<li>* with overline, for chapters</li>
-<li>=, for sections</li>
-<li>-, for subsections</li>
-<li>^, for subsubsections</li>
-<li>“, for paragraphs</li>
+<li><p># with overline, for parts</p></li>
+<li><p>* with overline, for chapters</p></li>
+<li><p>=, for sections</p></li>
+<li><p>-, for subsections</p></li>
+<li><p>^, for subsubsections</p></li>
+<li><p>“, for paragraphs</p></li>
 </ul>
 <p>Here is an example of sections:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>
@@ -657,19 +647,11 @@ Indices and tables
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -680,6 +662,7 @@ Indices and tables
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

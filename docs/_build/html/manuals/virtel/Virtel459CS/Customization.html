@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -11,18 +12,12 @@
   
 
   
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
   
   
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -34,6 +29,10 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Getting Started with Virtel" href="../Virtel459GS/Getting_Started.html" />
@@ -51,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+            <a href="../../../index.html" class="icon icon-home"> Virtel
           
 
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -132,7 +130,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -171,7 +168,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
@@ -201,8 +198,8 @@
 <p><a class="reference internal" href="../../../_images/logo_virtel_web17.png"><img alt="image0" src="../../../_images/logo_virtel_web17.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL How to Guide</strong></p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This is a draft version of the document.</p>
+<p class="admonition-title">Warning</p>
+<p>This is a draft version of the document.</p>
 </div>
 <p>Version : 4.59 Draft</p>
 <p>Release Date : 27 October 2019. Publication Date : 27/10/2019</p>
@@ -210,7 +207,7 @@
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Reproduction, transfer, distribution, or storage, in any form, of all or any part of
 the contents of this document, except by prior authorization of SysperTec
 Communication, is prohibited.</p>
@@ -221,7 +218,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
+<p>“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -230,8 +227,8 @@ their respective owners.</p>
 <div class="section" id="virtel-version-4-59-27th-oct-2019">
 <h3>Virtel version 4.59 (27th Oct 2019)<a class="headerlink" href="#virtel-version-4-59-27th-oct-2019" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.</p>
+<p class="admonition-title">Note</p>
+<p>For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.</p>
 </div>
 </div>
 </div>
@@ -239,10 +236,10 @@ their respective owners.</p>
 <h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
 <p>Customization of Virtel can be implemented through customization of the following elements:</p>
 <ul class="simple">
-<li>Custom CSS files, including Print Style CSS files.</li>
-<li>Custom JavaScript files.</li>
-<li>Custom setting parameters.</li>
-<li>Custom Help pages.</li>
+<li><p>Custom CSS files, including Print Style CSS files.</p></li>
+<li><p>Custom JavaScript files.</p></li>
+<li><p>Custom setting parameters.</p></li>
+<li><p>Custom Help pages.</p></li>
 </ul>
 <p>As delivered, Virtel provides a dummy settings member, W2HPARM.JS, which is located in both the W2H-DIR and CLI-DIR. Note that any customization should only be made to the CLI-DIR or any other customer directories. No changes should be made to the W2H-DIR as these changes will be lost during any Virtel upgrade or migration.</p>
 <div class="section" id="levels-of-customization">
@@ -283,8 +280,8 @@ their respective owners.</p>
 <p><em>Example of W2H-03P pointing at the CLI-DIR</em></p>
 <p>The following JCL may also be used to modify the W2H-03P transaction.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Virtel must not be running when using the VIRCONF program to update transactions:</p>
+<p class="admonition-title">Note</p>
+<p>Virtel must not be running when using the VIRCONF program to update transactions:</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
@@ -389,14 +386,14 @@ their respective owners.</p>
 </div>
 <p><em>Example of customized JavaScript element associated with a transaction</em></p>
 <p>To support this customized transaction the following two files are uploaded to the OPT-DIR or options directory:</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>option.myOptions.js  - core option file for identifier “myOptions”. Points to the custom javascript file for transactions which have option=myOptions set.
-custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
+<dl class="simple">
+<dt>::</dt><dd><p>option.myOptions.js  - core option file for identifier “myOptions”. Points to the custom javascript file for transactions which have option=myOptions set.
+custjJS.myOptions.js - customized java script file for “myOptions”.</p>
+</dd>
 </dl>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">More than one transaction within an Entry Point can point to the same “id” option files.</p>
+<p class="admonition-title">Note</p>
+<p>More than one transaction within an Entry Point can point to the same “id” option files.</p>
 </div>
 </div>
 <div class="section" id="defining-transaction-options">
@@ -407,7 +404,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <span id="index-6"></span><h3>Customizable JavaScript User Exits<a class="headerlink" href="#customizable-javascript-user-exits" title="Permalink to this headline">¶</a></h3>
 <p>Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:</p>
 <ul id="index-7">
-<li><p class="first"><strong>before_submitForm(pfKey,oFrom)</strong> - Called before submitting a Virtel request.</p>
+<li><p><strong>before_submitForm(pfKey,oFrom)</strong> - Called before submitting a Virtel request.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">pfKey</span><span class="o">*</span> <span class="n">The</span> <span class="n">Name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">key</span> <span class="n">pressed</span><span class="o">.</span> <span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;PF1&quot;</span><span class="p">,</span><span class="n">etc</span><span class="o">.</span>
             <span class="o">*</span><span class="n">oForm</span><span class="o">*</span> <span class="n">Form</span> <span class="n">DOM</span> <span class="nb">object</span> <span class="n">to</span> <span class="n">be</span> <span class="n">submitted</span><span class="o">.</span> <span class="p">(</span><span class="n">usually</span> <span class="n">document</span><span class="o">.</span><span class="n">virtelForm</span><span class="p">)</span>
 </pre></div>
@@ -415,10 +412,10 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </li>
 </ul>
 <ul class="simple" id="index-8">
-<li><strong>after_standardInit()</strong> - Called after a session with the host application has started.</li>
+<li><p><strong>after_standardInit()</strong> - Called after a session with the host application has started.</p></li>
 </ul>
 <ul id="index-9">
-<li><p class="first"><strong>after_responseHandle(o,url,xtim)</strong> - Called after receiving a response from the VIRTEL server.</p>
+<li><p><strong>after_responseHandle(o,url,xtim)</strong> - Called after receiving a response from the VIRTEL server.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">o</span><span class="o">*</span>     <span class="n">XMLHttpRequest</span> <span class="nb">object</span> <span class="p">(</span><span class="n">status</span> <span class="ow">and</span> <span class="n">responseText</span><span class="p">)</span>
             <span class="o">*</span><span class="n">url</span><span class="o">*</span>   <span class="n">The</span> <span class="n">URL</span> <span class="n">which</span> <span class="n">was</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">request</span>
             <span class="o">*</span><span class="n">xtim</span><span class="o">*</span>  <span class="n">JavaScript</span> <span class="n">Date</span> <span class="nb">object</span> <span class="n">of</span> <span class="n">time</span> <span class="n">request</span> <span class="n">was</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">the</span> <span class="n">server</span>
@@ -427,7 +424,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </li>
 </ul>
 <ul id="index-10">
-<li><p class="first"><strong>modify_settingsValues(name,values)</strong> -  Allows modification of settings before parameters are displayed in the Settings Menu. It allows the list of values to be modified.</p>
+<li><p><strong>modify_settingsValues(name,values)</strong> -  Allows modification of settings before parameters are displayed in the Settings Menu. It allows the list of values to be modified.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Arguments</span>   <span class="o">*</span><span class="n">name</span><span class="o">*</span>  <span class="n">The</span> <span class="n">parameter</span> <span class="n">name</span>
             <span class="o">*</span><span class="n">values</span><span class="o">*</span> <span class="n">The</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">possible</span> <span class="n">values</span><span class="o">.</span>
 
@@ -438,13 +435,13 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 </li>
 </ul>
 <ul class="simple" id="index-11">
-<li><strong>when_init()</strong> - Called for each sub-page after vir3270 initialisation.</li>
+<li><p><strong>when_init()</strong> - Called for each sub-page after vir3270 initialisation.</p></li>
 </ul>
 <ul class="simple" id="index-12">
-<li><strong>when_focusGained()</strong> - Called whenever the 3270 window gains focus.</li>
+<li><p><strong>when_focusGained()</strong> - Called whenever the 3270 window gains focus.</p></li>
 </ul>
 <ul class="simple" id="index-13">
-<li><strong>when_focusLost()</strong> - Called whenever the 3270 window loses focus.</li>
+<li><p><strong>when_focusLost()</strong> - Called whenever the 3270 window loses focus.</p></li>
 </ul>
 </div>
 </div>
@@ -454,9 +451,9 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <span id="index-14"></span><h3>VWA User Interface<a class="headerlink" href="#vwa-user-interface" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL Web Access user interface is in the form of a conventional 3270 screen divided into three areas:</p>
 <ul class="simple">
-<li>The Tool Bar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).</li>
-<li>The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).</li>
-<li>The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.</li>
+<li><p>The Tool Bar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).</p></li>
+<li><p>The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).</p></li>
+<li><p>The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.</p></li>
 </ul>
 <p><img alt="image1" src="../../../_images/image188.png" />
 <em>The VWA 3270 screen areas</em></p>
@@ -644,8 +641,8 @@ information. Some of those component can be removed, added or modified.</p>
 </div>
 <p><em>Example custom.css for replacing the Virtel logo by a company logo</em></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.</p>
+<p class="admonition-title">Note</p>
+<p>If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.</p>
 </div>
 </div>
 </div>
@@ -703,26 +700,26 @@ information. Some of those component can be removed, added or modified.</p>
 <p><em>Example custom.js to remove selected Tool Bar icons</em></p>
 <p>The names of the other Tool Bar icons which can be removed in this way are:</p>
 <ul class="simple">
-<li>capture,</li>
-<li>disconnect,</li>
-<li>document-print-preview,</li>
-<li>edit-copy,</li>
-<li>edit-cut,</li>
-<li>edit-paste,</li>
-<li>emptybuf,</li>
-<li>file-rcv,</li>
-<li>file-send,</li>
-<li>help,</li>
-<li>keypad,</li>
-<li>playback,</li>
-<li>printer,</li>
-<li>settings,</li>
-<li>settingsV2,</li>
-<li>startrecording.</li>
+<li><p>capture,</p></li>
+<li><p>disconnect,</p></li>
+<li><p>document-print-preview,</p></li>
+<li><p>edit-copy,</p></li>
+<li><p>edit-cut,</p></li>
+<li><p>edit-paste,</p></li>
+<li><p>emptybuf,</p></li>
+<li><p>file-rcv,</p></li>
+<li><p>file-send,</p></li>
+<li><p>help,</p></li>
+<li><p>keypad,</p></li>
+<li><p>playback,</p></li>
+<li><p>printer,</p></li>
+<li><p>settings,</p></li>
+<li><p>settingsV2,</p></li>
+<li><p>startrecording.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">(settingsV2 is présent only if w2hparms.js contains “settingsGUI”:{“version”:”V2”}, or “settingsGUI”:{“version”:”V1+V2”},)</p>
+<p class="admonition-title">Note</p>
+<p>(settingsV2 is présent only if w2hparms.js contains “settingsGUI”:{“version”:”V2”}, or “settingsGUI”:{“version”:”V1+V2”},)</p>
 </div>
 <span class="target" id="index-27"></span></div>
 </div>
@@ -932,12 +929,12 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example to assign a default langage</em></p>
 <p>Possible values for the language code are:</p>
 <ul class="simple">
-<li>DE for Deutsch</li>
-<li>EN for English</li>
-<li>ES for Spanish</li>
-<li>FR for French</li>
-<li>HR for Croatian</li>
-<li>IT for Italian</li>
+<li><p>DE for Deutsch</p></li>
+<li><p>EN for English</p></li>
+<li><p>ES for Spanish</p></li>
+<li><p>FR for French</p></li>
+<li><p>HR for Croatian</p></li>
+<li><p>IT for Italian</p></li>
 </ul>
 <p>They must be entered in lower case.</p>
 </div>
@@ -953,12 +950,12 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p><em>Example to assign a permanent default language</em></p>
 <p>Possible values for the language code are:</p>
 <ul class="simple">
-<li>DE for Deutsch</li>
-<li>EN for English</li>
-<li>ES for Spanish</li>
-<li>FR for French</li>
-<li>HR for Croatian</li>
-<li>IT for Italian</li>
+<li><p>DE for Deutsch</p></li>
+<li><p>EN for English</p></li>
+<li><p>ES for Spanish</p></li>
+<li><p>FR for French</p></li>
+<li><p>HR for Croatian</p></li>
+<li><p>IT for Italian</p></li>
 </ul>
 <p>They must be entered in lower case.</p>
 </div>
@@ -992,14 +989,16 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <p>The area (5) of the VWA user interface contains information about the terminals used during the session. The name of the 3270 relay terminal is shown in the leftmost portion of the area while the name of the virtual printer terminal is shown in the rightmost portion of the area. The presence of a printer device is optional and depends on the terminal
 definition itself. The information in this area can be managed using the following functions:</p>
 <ul class="simple">
-<li>Editing functions<ul>
-<li>vwaStatusBar.setRelay(“some txt”) to customize the 3270 relay area</li>
-<li>vwaStatusBar.setPrintRelay(“some txt”) to customize the print relay area</li>
+<li><p>Editing functions</p>
+<ul>
+<li><p>vwaStatusBar.setRelay(“some txt”) to customize the 3270 relay area</p></li>
+<li><p>vwaStatusBar.setPrintRelay(“some txt”) to customize the print relay area</p></li>
 </ul>
 </li>
-<li>Retrieval functions<ul>
-<li>vwaStatusBar.getRelay(P1) to retrieve the content of the 3270 relay area</li>
-<li>vwaStatusBar.getPrintRelay(P1) to retrieve the content of the print relay area</li>
+<li><p>Retrieval functions</p>
+<ul>
+<li><p>vwaStatusBar.getRelay(P1) to retrieve the content of the 3270 relay area</p></li>
+<li><p>vwaStatusBar.getPrintRelay(P1) to retrieve the content of the print relay area</p></li>
 </ul>
 </li>
 </ul>
@@ -1087,10 +1086,10 @@ was sent by VWA to the browser.</p>
 <p><strong>Initialization through “Possible Calls” definition</strong></p>
 <p>A “Possible Calls” determines the possible direction of communication and can have one of four values:-</p>
 <ul class="simple">
-<li>0 - No Calls</li>
-<li>1 - Inbound Calls.</li>
-<li>2 - Outbound Calls.</li>
-<li>3 - Inbound and Outbound Calls.</li>
+<li><p>0 - No Calls</p></li>
+<li><p>1 - Inbound Calls.</p></li>
+<li><p>2 - Outbound Calls.</p></li>
+<li><p>3 - Inbound and Outbound Calls.</p></li>
 </ul>
 <p>If the value is 0 then the line is not initialized at Virtel start-up. It must be started manually. For values 1, 2, 3 the line is initialized automatically at Virtel start-up except for the cases below.</p>
 <p><strong>Initialization permanently completely inhibited</strong></p>
@@ -1139,12 +1138,12 @@ established before accepting inbound messages.</p>
 whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser. In this section we describes the following types of LU nailing:</p>
 <ul class="simple">
-<li>LU nailing by work station name</li>
-<li>LU nailing by LU (Pre-defined terminal)</li>
-<li>LU nailing by LU (Non-predefined terminal)</li>
-<li>LU nailing by IP address</li>
-<li>LU nailing by cookie</li>
-<li>LU nailing by URL</li>
+<li><p>LU nailing by work station name</p></li>
+<li><p>LU nailing by LU (Pre-defined terminal)</p></li>
+<li><p>LU nailing by LU (Non-predefined terminal)</p></li>
+<li><p>LU nailing by IP address</p></li>
+<li><p>LU nailing by cookie</p></li>
+<li><p>LU nailing by URL</p></li>
 </ul>
 <div class="section" id="lu-nailing-using-the-work-station-name-predefined-terminals">
 <span id="index-56"></span><h3>LU nailing using the work station name (Predefined terminals)<a class="headerlink" href="#lu-nailing-using-the-work-station-name-predefined-terminals" title="Permalink to this headline">¶</a></h3>
@@ -1175,9 +1174,9 @@ While most mainframe applications will accept a connection from any LU name, cer
 </div>
 <p>In this entry point you would define the relevant transactions. In our case we have defined the following:</p>
 <ul class="simple">
-<li>A transaction using EHLOC terminals to access the /w2h directory</li>
-<li>A Virtel transaction using EHLOC terminals to support the application menu list</li>
-<li>VTAM transaction using EHVTS terminal to establish a relationship with the VTAM application</li>
+<li><p>A transaction using EHLOC terminals to access the /w2h directory</p></li>
+<li><p>A Virtel transaction using EHLOC terminals to support the application menu list</p></li>
+<li><p>VTAM transaction using EHVTS terminal to establish a relationship with the VTAM application</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">EDSW</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span> <span class="o">-</span>
 <span class="n">NAME</span><span class="o">=</span><span class="n">EDSWHOST</span><span class="p">,</span> <span class="o">-</span>
@@ -1334,9 +1333,9 @@ NETMASK=255.255.255.255
 <p>Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
 grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this set-up certain conditions must be in place. Also note that no rules are required. Those definitions required are:</p>
 <ul class="simple">
-<li>The HTTP Line must specify a pool name,</li>
-<li>A pool name needs to be defined,</li>
-<li>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</li>
+<li><p>The HTTP Line must specify a pool name,</p></li>
+<li><p>A pool name needs to be defined,</p></li>
+<li><p>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</p></li>
 </ul>
 <p>Line definition</p>
 <p><img alt="image12" src="../../../_images/image1223.png" /></p>
@@ -1345,8 +1344,8 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <p><em>Transaction definition</em></p>
 <p><img alt="image14" src="../../../_images/image1419.png" /></p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that the Pseudo-Terminal is defined as $LINE$. We have also assign a printer definition to this set-up. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for DYNPOOL,but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.</p>
+<p class="admonition-title">Note</p>
+<p>Note that the Pseudo-Terminal is defined as $LINE$. We have also assign a printer definition to this set-up. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for DYNPOOL,but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.</p>
 </div>
 <p><img alt="image15" src="../../../_images/image1518.png" /></p>
 </div>
@@ -1358,43 +1357,43 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <span id="index-60"></span><h3>LU Nailing by IP<a class="headerlink" href="#lu-nailing-by-ip" title="Permalink to this headline">¶</a></h3>
 <p>This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool. Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx. The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.</p>
 <p><strong>Comparison Table</strong></p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="29%" />
-<col width="27%" />
-<col width="26%" />
-<col width="18%" />
+<col style="width: 29%" />
+<col style="width: 27%" />
+<col style="width: 26%" />
+<col style="width: 18%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
-<th class="head" colspan="3">Rule definition                  |    Terminal Definition            |  Cookies Used</th>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head" colspan="3"><p>Rule definition                  |    Terminal Definition            |  Cookies Used</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Work Station Name in URL</td>
-<td><strong>Yes. 1 per work station</strong></td>
-<td><strong>Yes. Individual or Group</strong></td>
-<td>No</td>
+<tbody>
+<tr class="row-even"><td><p>Work Station Name in URL</p></td>
+<td><p><strong>Yes. 1 per work station</strong></p></td>
+<td><p><strong>Yes. Individual or Group</strong></p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>LUNAME in URL</td>
-<td><strong>Yes. 1 per work station</strong></td>
-<td><strong>Yes. Individual or Group</strong></td>
-<td>No</td>
+<tr class="row-odd"><td><p>LUNAME in URL</p></td>
+<td><p><strong>Yes. 1 per work station</strong></p></td>
+<td><p><strong>Yes. Individual or Group</strong></p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-even"><td>Using Forced LU</td>
-<td>No</td>
-<td>Pool Only</td>
-<td>No</td>
+<tr class="row-even"><td><p>Using Forced LU</p></td>
+<td><p>No</p></td>
+<td><p>Pool Only</p></td>
+<td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td>Correspondent</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<tr class="row-odd"><td><p>Correspondent</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-even"><td>By IP</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td>No</td>
+<tr class="row-even"><td><p>By IP</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>No</p></td>
 </tr>
 </tbody>
 </table>
@@ -1435,15 +1434,15 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <span id="index-65"></span><h4>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h4>
 <p>Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:</p>
 <ul class="simple">
-<li>model 2 : 24x80 (logmode SNX32702)</li>
-<li>model 3 : 32x80 (logmode SNX32703)</li>
-<li>model 4 : 43x80 (logmode SNX32704)</li>
-<li>model 5 : 27x132 (logmode SNX32705)</li>
+<li><p>model 2 : 24x80 (logmode SNX32702)</p></li>
+<li><p>model 3 : 32x80 (logmode SNX32703)</p></li>
+<li><p>model 4 : 43x80 (logmode SNX32704)</p></li>
+<li><p>model 5 : 27x132 (logmode SNX32705)</p></li>
 </ul>
 <p>There are two different ways that the VIRTEL administrator can set up the configuration to allow the VIRTEL Web Access user to select the desired logmode:</p>
 <ul class="simple">
-<li>Define a separate VIRTEL transaction for each screen size, and allow the user to select the appropriate transaction.</li>
-<li>Group the VTAM relay LUs into pools, each pool having a different logmode, and allow the user to select the pool by coding an appropriate parameter on the URL.</li>
+<li><p>Define a separate VIRTEL transaction for each screen size, and allow the user to select the appropriate transaction.</p></li>
+<li><p>Group the VTAM relay LUs into pools, each pool having a different logmode, and allow the user to select the pool by coding an appropriate parameter on the URL.</p></li>
 </ul>
 </div>
 <div class="section" id="logmode-defined-by-the-transaction">
@@ -1535,8 +1534,8 @@ P1=Update               P3=Return                           Enter=Add
 </div>
 <p>The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).</p>
+<p class="admonition-title">Note</p>
+<p>To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).</p>
 </div>
 </div>
 <div class="section" id="dynamic-logmode-with-user-specified-screen-size">
@@ -1568,8 +1567,8 @@ P1=Update               P3=Return                           Enter=Add
 <h5>Restrictions<a class="headerlink" href="#restrictions" title="Permalink to this headline">¶</a></h5>
 <p>Opening simultaneous sessions in different tabs imposes certain restrictions:</p>
 <ul class="simple">
-<li>Browsers deliberately limit the opening of multiple simultaneous HTTP sessions on the same domain. This number varies depending on the browser itself and the version used. A detailed census is available on the BrowserScope website.</li>
-<li>Each new session gives rise to the opening of a specific IP socket, and therefore the use of a separate relay terminal for each session. The LU Nailing is therefore not always possible or easy to implement in such situation.</li>
+<li><p>Browsers deliberately limit the opening of multiple simultaneous HTTP sessions on the same domain. This number varies depending on the browser itself and the version used. A detailed census is available on the BrowserScope website.</p></li>
+<li><p>Each new session gives rise to the opening of a specific IP socket, and therefore the use of a separate relay terminal for each session. The LU Nailing is therefore not always possible or easy to implement in such situation.</p></li>
 </ul>
 </div>
 </div>
@@ -1578,9 +1577,9 @@ P1=Update               P3=Return                           Enter=Add
 <span id="index-72"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
 <p>When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available: -</p>
 <ul class="simple">
-<li>Return to the application selection menu</li>
-<li>Display a specific HTML page</li>
-<li>Close the browser window and return to the desktop</li>
+<li><p>Return to the application selection menu</p></li>
+<li><p>Display a specific HTML page</p></li>
+<li><p>Close the browser window and return to the desktop</p></li>
 </ul>
 <p>Remember that it is always best to exit cleanly from the host application by pressing the “Disconnect” button, rather than closing the browser window. If the browser window is closed abruptly, the host session resources may not be freed until the expiry of the time-out period specified in the entry point definition.</p>
 <div class="section" id="return-to-the-application-selection-menu">
@@ -1663,9 +1662,9 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p><em>w2hparm.js</em></p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>w2hparm.keymapping=true;</dd>
+<dl class="simple">
+<dt>::</dt><dd><p>w2hparm.keymapping=true;</p>
+</dd>
 </dl>
 <p><em>w2hparm.global.js</em></p>
 <p>These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true.</p>
@@ -1682,8 +1681,8 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.</p>
 <p>The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF.</p>
+<p class="admonition-title">Note</p>
+<p>To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF.</p>
 </div>
 <div class="section" id="implementation">
 <span id="index-84"></span><h5>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h5>
@@ -1761,39 +1760,39 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p id="index-87"><strong>Macro Options</strong></p>
-<table border="1" class="docutils">
+<table class="docutils align-center">
 <colgroup>
-<col width="12%" />
-<col width="88%" />
+<col style="width: 12%" />
+<col style="width: 88%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head"><strong>Option</strong></th>
-<th class="head"><strong>Description</strong></th>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Option</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>Never</td>
-<td>Do not synchronise with DDI unless the user presses the refresh button. Default</td>
+<tbody>
+<tr class="row-even"><td><p>Never</p></td>
+<td><p>Do not synchronise with DDI unless the user presses the refresh button. Default</p></td>
 </tr>
-<tr class="row-odd"><td>Once</td>
-<td>Synchronise with DDI only when local storage hasn’t been initialised</td>
+<tr class="row-odd"><td><p>Once</p></td>
+<td><p>Synchronise with DDI only when local storage hasn’t been initialised</p></td>
 </tr>
-<tr class="row-even"><td>Daily</td>
-<td>Once a Day</td>
+<tr class="row-even"><td><p>Daily</p></td>
+<td><p>Once a Day</p></td>
 </tr>
-<tr class="row-odd"><td>Session</td>
-<td>Every time a new browser session is opened</td>
+<tr class="row-odd"><td><p>Session</p></td>
+<td><p>Every time a new browser session is opened</p></td>
 </tr>
 </tbody>
 </table>
 <p>Two other settings that can be used with DDI are: -</p>
 <ul>
-<li><p class="first"><strong>w2hparm.keymapping=true | false</strong>                        Turn on keymapping</p>
+<li><p><strong>w2hparm.keymapping=true | false</strong>                        Turn on keymapping</p>
 <blockquote>
 <div><p>This option turns on the ability to assign a macro with a shortcut or “hot key” made up of a combination of keys; such as ALT+F1, or CTRL+A.  Beware that some keyboard combinations may be reserved for the operating system or other Virtel functions. For example, CTRL-R is a browser refresh option.</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>w2hparm.synchronizeVirtelMacros=true | false</strong>           Synchronize all Centralised Repositories</p>
+<li><p><strong>w2hparm.synchronizeVirtelMacros=true | false</strong>           Synchronize all Centralised Repositories</p>
 <blockquote>
 <div><p>If you are running multiple images of Virtel, say in a SYSPLEX arrangement using separate centralized repositories then the “synchronizeVirtelMacros” option should be set to true. This ensures that macro changes are reflected in all DDI repositories and associated local storage.</p>
 </div></blockquote>
@@ -1874,8 +1873,8 @@ Creating a “user” macro follows the same process as before. The user clicks 
 <p><img alt="image48" src="../../../_images/image485.png" /></p>
 <p>The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN the macro. Whatever changes are made will be synchronized with the central repository.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The “Edit” feature is for viewing only.</p>
+<p class="admonition-title">Note</p>
+<p>The “Edit” feature is for viewing only.</p>
 </div>
 </div>
 <div class="section" id="directory-and-macro-administration">
@@ -1895,8 +1894,8 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <p><em>Populated Group macro</em></p>
 <p>From this display you can see that the User Macro CUSTINQ has been moved to the Group area. The CUSTINQ macro can now be delete the user’s MACROS.JSON list using the DDI interface. To do this, enter the Administration Portal DDI interface, select the USERTAB, enter the userid into the username, press the Green tick to list the user’s MACROS.JSON file. Select the MACROS.JSON file, right click and press the DELETE tab. Confirm the deletion. The user’s MACRO.JSON fill will be deleted from the DDI USR-DIR directory and will no longer appear in the User macros list when listing the macros in the TSO session.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Press the Refresh button after “deleting” the user macro.</p>
+<p class="admonition-title">Note</p>
+<p>Press the Refresh button after “deleting” the user macro.</p>
 </div>
 <p><img alt="image51" src="../../../_images/image5114.png" />
 <em>Deleting macros from user’s list</em></p>
@@ -1921,9 +1920,8 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
-<li><p class="first">Make sure you are using a transaction with security set.</p>
-</li>
-<li><p class="first">Refresh the cache with the following commands.</p>
+<li><p>Make sure you are using a transaction with security set.</p></li>
+<li><p>Refresh the cache with the following commands.</p>
 <p>CTRL-SHIFT-DEL
 CTRL R</p>
 </li>
@@ -1934,9 +1932,9 @@ CTRL R</p>
 <span id="index-97"></span><h4>Macro formats and Commands<a class="headerlink" href="#macro-formats-and-commands" title="Permalink to this headline">¶</a></h4>
 <p>The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.</p>
 <ul class="simple">
-<li>Name : The name of the macro entry.</li>
-<li>Rev : The “rev” is a user revision keyword.</li>
-<li>Def : The “def” keyword identifies the commands and entry values.</li>
+<li><p>Name : The name of the macro entry.</p></li>
+<li><p>Rev : The “rev” is a user revision keyword.</p></li>
+<li><p>Def : The “def” keyword identifies the commands and entry values.</p></li>
 </ul>
 <p>The macro editor supports the following commands:-
 *   “any string of characters to input into 3270 screen”
@@ -1979,7 +1977,8 @@ CTRL R</p>
 </div></blockquote>
 <p>2   Run HLQ.VIRTxxx.SAMPLIB(USERPARM)</p>
 <blockquote>
-<div>You will need to modify the JCL before running the Job. This job will allocate the USERTRSF VSAM file which will be the repository for user parameters.</div></blockquote>
+<div><p>You will need to modify the JCL before running the Job. This job will allocate the USERTRSF VSAM file which will be the repository for user parameters.</p>
+</div></blockquote>
 <p>3   Update RACF to support the USERPARM transactions</p>
 <blockquote>
 <div><p>The following security definitions will be needed to support the USERPARM feature. For example, for RACF the following FACILITY profile definitions need to be added and users given READ access.</p>
@@ -2094,9 +2093,9 @@ CTRL R</p>
 <h5>Create the Policy Agent configuration file<a class="headerlink" href="#create-the-policy-agent-configuration-file" title="Permalink to this headline">¶</a></h5>
 <p>If you do not already run the Policy Agent, you will need to create a configuration file /etc/pagent.conf using z/OS Unix System Services. If you already run Policy Agent, you will need to find the existing configuration file and add the TTLS definitions to it. Step PCONFIG in the SSLSETUP sample job contains a starter configuration. The following changes should be made:</p>
 <ul class="simple">
-<li>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)</li>
-<li>Replace 41000-41002 by 41002 in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</li>
-<li>Replace ServerWithClientAuth by Server in the HandshakeRole parameter (SSLSETUP line 82) as we will not be using Client Certificates.</li>
+<li><p>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)</p></li>
+<li><p>Replace 41000-41002 by 41002 in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</p></li>
+<li><p>Replace ServerWithClientAuth by Server in the HandshakeRole parameter (SSLSETUP line 82) as we will not be using Client Certificates.</p></li>
 </ul>
 </div>
 <div class="section" id="allow-the-policy-agent-to-run-during-tcp-ip-initialization">
@@ -2157,17 +2156,17 @@ Agent is started. Do not be tempted to authorize applications to use this RACF r
 </div>
 <p>where nnn represents a return code. Return codes under 5000 are generated by System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. Some commonly encountered return codes are:</p>
 <ul class="simple">
-<li>7 No certificate</li>
-<li>8 Certificate not trusted</li>
-<li>109 No certification authority certificates</li>
-<li>202 Keyring does not exist</li>
-<li>401 Certificate expired or not yet valid</li>
-<li>402 or 412 Client and server cannot agree on cipher suite</li>
-<li>416 VIRTEL does not have permission to list the keyring</li>
-<li>431 Certificate is revoked</li>
-<li>434 Certificate key not compatible with cipher suite</li>
-<li>435 Certificate authority unknown</li>
-<li>5003 Browser sent clear text (http instead of https)</li>
+<li><p>7 No certificate</p></li>
+<li><p>8 Certificate not trusted</p></li>
+<li><p>109 No certification authority certificates</p></li>
+<li><p>202 Keyring does not exist</p></li>
+<li><p>401 Certificate expired or not yet valid</p></li>
+<li><p>402 or 412 Client and server cannot agree on cipher suite</p></li>
+<li><p>416 VIRTEL does not have permission to list the keyring</p></li>
+<li><p>431 Certificate is revoked</p></li>
+<li><p>434 Certificate key not compatible with cipher suite</p></li>
+<li><p>435 Certificate authority unknown</p></li>
+<li><p>5003 Browser sent clear text (http instead of https)</p></li>
 </ul>
 </div>
 <div class="section" id="cipher-suite">
@@ -2178,12 +2177,12 @@ In Firefox the cipher specifications are accessed by typing <a class="reference 
 <div class="section" id="bibliography">
 <h5>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator’s Guide Chapter 21. RACF and Digital Certificates</li>
-<li>SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming Chapter 12. Messages and Codes</li>
-<li>SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide Chapter 14. Policy-based networking Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</li>
-<li>SC31-8776-08 z/OS V1R7 Communications Server: IP Configuration Reference Chapter 21. Policy Agent and policy applications</li>
-<li>GC31-8782-06 z/OS V1R7 Communications Server: IP Diagnosis Guide Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</li>
-<li>SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) Chapter 10. EZD1xxxx messages</li>
+<li><p>SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator’s Guide Chapter 21. RACF and Digital Certificates</p></li>
+<li><p>SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming Chapter 12. Messages and Codes</p></li>
+<li><p>SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide Chapter 14. Policy-based networking Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</p></li>
+<li><p>SC31-8776-08 z/OS V1R7 Communications Server: IP Configuration Reference Chapter 21. Policy Agent and policy applications</p></li>
+<li><p>GC31-8782-06 z/OS V1R7 Communications Server: IP Diagnosis Guide Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</p></li>
+<li><p>SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) Chapter 10. EZD1xxxx messages</p></li>
 </ul>
 </div>
 </div>
@@ -2192,19 +2191,19 @@ In Firefox the cipher specifications are accessed by typing <a class="reference 
 <p>In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:</p>
 <ul class="simple">
-<li>TLSv1</li>
-<li>SSLv2</li>
-<li>SSLv3</li>
+<li><p>TLSv1</p></li>
+<li><p>SSLv2</p></li>
+<li><p>SSLv3</p></li>
 </ul>
 <p>In this configuration we will be using SSLv3. The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements
 the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <ol class="arabic simple">
-<li>The Client contacts the Server ;</li>
-<li>The Server sends a certificate;</li>
-<li>Server authentication is performed by the Client ;</li>
-<li>Client sends the certificate;</li>
-<li>Client authentication is performed by the Server ;</li>
-<li>An encryption algorithm and single key is chosen to encrypt / decrypt data The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP Configuration Guide.</li>
+<li><p>The Client contacts the Server ;</p></li>
+<li><p>The Server sends a certificate;</p></li>
+<li><p>Server authentication is performed by the Client ;</p></li>
+<li><p>Client sends the certificate;</p></li>
+<li><p>Client authentication is performed by the Server ;</p></li>
+<li><p>An encryption algorithm and single key is chosen to encrypt / decrypt data The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP Configuration Guide.</p></li>
 </ol>
 </div>
 <div class="section" id="what-is-a-certificates">
@@ -2242,10 +2241,10 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <div class="section" id="types-of-certificates">
 <h5>Types of certificates<a class="headerlink" href="#types-of-certificates" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Client certificate</li>
-<li>Server certificate</li>
-<li>Well-known Certificate Authority (CA) Signing certificate</li>
-<li>RACF signing certificate</li>
+<li><p>Client certificate</p></li>
+<li><p>Server certificate</p></li>
+<li><p>Well-known Certificate Authority (CA) Signing certificate</p></li>
+<li><p>RACF signing certificate</p></li>
 </ul>
 <p>In this configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.</p>
 </div>
@@ -2508,7 +2507,7 @@ obtained.</p>
 <span id="index-117"></span><h4>AT-TLS Problems<a class="headerlink" href="#at-tls-problems" title="Permalink to this headline">¶</a></h4>
 <p>It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.</p>
 <ol class="arabic simple">
-<li>Is AT-TLS active.</li>
+<li><p>Is AT-TLS active.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Issue the following z/OS command – D TCPIP,,N,TTLS
 The response should be :
@@ -2519,9 +2518,9 @@ The response should be :
     END OF THE REPORT
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>2   PAGENT return codes.</dt>
-<dd>Common session startup/handshake errors are reported through messqge EZD1287I. In the example below we can see that the handshake has failed with a return code of 5003. Return codes under 5000 are generated by System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. In the following the 5013 suggests that the browser has sent clear text; in other words, http was used instead of https in the URL.</dd>
+<dl class="simple">
+<dt>2   PAGENT return codes.</dt><dd><p>Common session startup/handshake errors are reported through messqge EZD1287I. In the example below we can see that the handshake has failed with a return code of 5003. Return codes under 5000 are generated by System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. In the following the 5013 suggests that the browser has sent clear text; in other words, http was used instead of https in the URL.</p>
+</dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">367</span>
 <span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
@@ -2544,20 +2543,19 @@ The response should be :
 <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>Common PAGENT return codes:</dt>
-<dd><ul class="first last simple">
-<li>7 No certificate</li>
-<li>8 Certificate not trusted</li>
-<li>109 No certification authority certificates</li>
-<li>202 Keyring does not exist</li>
-<li>401 Certificate expired or not yet valid</li>
-<li>402 or 412 Client and server cannot agree on cipher suite</li>
-<li>416 VIRTEL does not have permission to list the keyring</li>
-<li>431 Certificate is revoked</li>
-<li>434 Certificate key not compatible with cipher suite</li>
-<li>435 Certificate authority unknown</li>
-<li>5003 Browser sent clear text (http instead of https)</li>
+<dl class="simple">
+<dt>Common PAGENT return codes:</dt><dd><ul class="simple">
+<li><p>7 No certificate</p></li>
+<li><p>8 Certificate not trusted</p></li>
+<li><p>109 No certification authority certificates</p></li>
+<li><p>202 Keyring does not exist</p></li>
+<li><p>401 Certificate expired or not yet valid</p></li>
+<li><p>402 or 412 Client and server cannot agree on cipher suite</p></li>
+<li><p>416 VIRTEL does not have permission to list the keyring</p></li>
+<li><p>431 Certificate is revoked</p></li>
+<li><p>434 Certificate key not compatible with cipher suite</p></li>
+<li><p>435 Certificate authority unknown</p></li>
+<li><p>5003 Browser sent clear text (http instead of https)</p></li>
 </ul>
 </dd>
 </dl>
@@ -2575,20 +2573,20 @@ The response should be :
 <div class="section" id="z-os-ibm-references">
 <h5>z/OS IBM References<a class="headerlink" href="#z-os-ibm-references" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator’s Guide Chapter 21. RACF and Digital Certificates</li>
-<li>SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming Chapter 12. Messages and Codes</li>
-<li>SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide Chapter 14. Policy-based networking Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</li>
-<li>SC31-8776-08 z/OS V1R7 Communications Server: IP Configuration Reference Chapter 21. Policy Agent and policy applications</li>
-<li>GC31-8782-06 z/OS V1R7 Communications Server: IP Diagnosis Guide Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</li>
-<li>SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) Chapter 10. EZD1xxxx messages</li>
+<li><p>SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator’s Guide Chapter 21. RACF and Digital Certificates</p></li>
+<li><p>SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming Chapter 12. Messages and Codes</p></li>
+<li><p>SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide Chapter 14. Policy-based networking Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</p></li>
+<li><p>SC31-8776-08 z/OS V1R7 Communications Server: IP Configuration Reference Chapter 21. Policy Agent and policy applications</p></li>
+<li><p>GC31-8782-06 z/OS V1R7 Communications Server: IP Diagnosis Guide Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</p></li>
+<li><p>SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) Chapter 10. EZD1xxxx messages</p></li>
 </ul>
 </div>
 <div class="section" id="virtel-references">
 <h5>Virtel References<a class="headerlink" href="#virtel-references" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>VIRTEL Installation Guide PASSTCK parameter</li>
-<li>VIRTEL Connectivity Reference Transactions – PassTicket Parameter / Transactions – Security Parameter</li>
-<li>VIRTEL Web Access Guide Security – Data encryption by SSL</li>
+<li><p>VIRTEL Installation Guide PASSTCK parameter</p></li>
+<li><p>VIRTEL Connectivity Reference Transactions – PassTicket Parameter / Transactions – Security Parameter</p></li>
+<li><p>VIRTEL Web Access Guide Security – Data encryption by SSL</p></li>
 </ul>
 </div>
 </div>
@@ -2601,13 +2599,13 @@ The response should be :
 <div class="section" id="for-internet-explorer-11">
 <h5>For Internet Explorer 11<a class="headerlink" href="#for-internet-explorer-11" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
-<li>Open Internet Explorer and select “Tools” Pull-down menu,</li>
-<li>Select the “Internet Option” line,</li>
-<li>In the opened Pop Up window, select the “Advanced” tab,</li>
-<li>Scroll down to the “Security” section until you see “Enable Integrated Windows Authentication”. Select the box next to this field to enable,</li>
-<li>Select the “Security” tab,</li>
-<li>Select the “Local Intranet Area”,</li>
-<li>Add the web server address (DNS or IP address) to the list.</li>
+<li><p>Open Internet Explorer and select “Tools” Pull-down menu,</p></li>
+<li><p>Select the “Internet Option” line,</p></li>
+<li><p>In the opened Pop Up window, select the “Advanced” tab,</p></li>
+<li><p>Scroll down to the “Security” section until you see “Enable Integrated Windows Authentication”. Select the box next to this field to enable,</p></li>
+<li><p>Select the “Security” tab,</p></li>
+<li><p>Select the “Local Intranet Area”,</p></li>
+<li><p>Add the web server address (DNS or IP address) to the list.</p></li>
 </ul>
 </div>
 </div>
@@ -2626,50 +2624,50 @@ The response should be :
 <p>Configure the following registry settings with the corresponding values:</p>
 <p>Registry AuthSchemes</p>
 <ul class="simple">
-<li>Data type: String (REG_SZ)</li>
-<li>Windows registry location: SoftwarePoliciesGoogleChromeAuthSchemes</li>
-<li>Mac/Linux preference name: AuthSchemes</li>
-<li>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</li>
-<li>Supported features: Dynamic Policy Refresh: No, Per Profile: No</li>
-<li>Description: Specifies which HTTP Authentication schemes are supported by Google Chrome. Possible values are ‘basic’, ‘digest’, ‘ntlm’ and ‘negotiate’. Separate multiple values with commas. If this policy is left not set, all four schemes will be used.</li>
-<li>Value: “basic,digest,ntlm,negotiate”</li>
+<li><p>Data type: String (REG_SZ)</p></li>
+<li><p>Windows registry location: SoftwarePoliciesGoogleChromeAuthSchemes</p></li>
+<li><p>Mac/Linux preference name: AuthSchemes</p></li>
+<li><p>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</p></li>
+<li><p>Supported features: Dynamic Policy Refresh: No, Per Profile: No</p></li>
+<li><p>Description: Specifies which HTTP Authentication schemes are supported by Google Chrome. Possible values are ‘basic’, ‘digest’, ‘ntlm’ and ‘negotiate’. Separate multiple values with commas. If this policy is left not set, all four schemes will be used.</p></li>
+<li><p>Value: “basic,digest,ntlm,negotiate”</p></li>
 </ul>
 <p>AuthServerWhitelist</p>
 <ul class="simple">
-<li>Data type: String (REG_SZ)</li>
-<li>Windows registry location: SoftwarePoliciesGoogleChromeAuthServerWhitelist</li>
-<li>Mac/Linux preference name: AuthServerWhitelist</li>
-<li>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</li>
-<li>Supported features: Dynamic Policy Refresh: No, Per Profile: No</li>
-<li>Description: Specifies which servers should be whitelisted for integrated authentication. Integrated authentication is only enabled when Google Chrome receives an authentication challenge from a proxy or from a server which is in this permitted list. Separate multiple server names with commas. Wildcards (*) are allowed. If you leave this policy not set Chrome will try to detect if a server is on the Intranet and only then will it respond to IWA requests. If a server is detected as Internet then IWA requests from it will be ignored by Chrome.</li>
-<li>Value: “MyVirtel.Domain.Name”</li>
+<li><p>Data type: String (REG_SZ)</p></li>
+<li><p>Windows registry location: SoftwarePoliciesGoogleChromeAuthServerWhitelist</p></li>
+<li><p>Mac/Linux preference name: AuthServerWhitelist</p></li>
+<li><p>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</p></li>
+<li><p>Supported features: Dynamic Policy Refresh: No, Per Profile: No</p></li>
+<li><p>Description: Specifies which servers should be whitelisted for integrated authentication. Integrated authentication is only enabled when Google Chrome receives an authentication challenge from a proxy or from a server which is in this permitted list. Separate multiple server names with commas. Wildcards (*) are allowed. If you leave this policy not set Chrome will try to detect if a server is on the Intranet and only then will it respond to IWA requests. If a server is detected as Internet then IWA requests from it will be ignored by Chrome.</p></li>
+<li><p>Value: “MyVirtel.Domain.Name”</p></li>
 </ul>
 <p>AuthNegotiateDelegateWhitelist</p>
 <ul class="simple">
-<li>Data type: String (REG_SZ)</li>
-<li>Windows registry location: SoftwarePoliciesGoogleChromeAuthNegotiateDelegateWhitelist</li>
-<li>Mac/Linux preference name: AuthServerWhitelist</li>
-<li>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</li>
-<li>Supported features: Dynamic Policy Refresh: No, Per Profile: No</li>
-<li>Description: Servers that Google Chrome may delegate to. Separate multiple server names with commas. Wildcards (*) are allowed. If you leave this policy not set Chrome will not delegate user credentials even if a server is detected as Intranet.</li>
-<li>Value: “MyVirtel.Domain.Name”</li>
+<li><p>Data type: String (REG_SZ)</p></li>
+<li><p>Windows registry location: SoftwarePoliciesGoogleChromeAuthNegotiateDelegateWhitelist</p></li>
+<li><p>Mac/Linux preference name: AuthServerWhitelist</p></li>
+<li><p>Supported on: Google Chrome (Linux, Mac, Windows) since version 9</p></li>
+<li><p>Supported features: Dynamic Policy Refresh: No, Per Profile: No</p></li>
+<li><p>Description: Servers that Google Chrome may delegate to. Separate multiple server names with commas. Wildcards (*) are allowed. If you leave this policy not set Chrome will not delegate user credentials even if a server is detected as Intranet.</p></li>
+<li><p>Value: “MyVirtel.Domain.Name”</p></li>
 </ul>
 <p>To use ADM/ADMX templates through Group Policy to configure Google Chrome:</p>
 <ul class="simple">
-<li>Download Zip file of ADM/ADMX templates and documentation from: <a class="reference external" href="http://www.chromium.org/administrators/">http://www.chromium.org/administrators/</a> policy-templates,</li>
-<li>Add the ADMX template to your central store, if you are using a central store,</li>
-<li>Configure a GPO with your application server DNS host name with Kerberos Delegation Server Whitelist and Authentication Server Whitelist enabled.</li>
+<li><p>Download Zip file of ADM/ADMX templates and documentation from: <a class="reference external" href="http://www.chromium.org/administrators/">http://www.chromium.org/administrators/</a> policy-templates,</p></li>
+<li><p>Add the ADMX template to your central store, if you are using a central store,</p></li>
+<li><p>Configure a GPO with your application server DNS host name with Kerberos Delegation Server Whitelist and Authentication Server Whitelist enabled.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="enable-windows-integrated-authentication-for-mozilla-firefox">
 <h4>Enable Windows Integrated Authentication for Mozilla Firefox<a class="headerlink" href="#enable-windows-integrated-authentication-for-mozilla-firefox" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>Open Firefox,</li>
-<li>In the address bar type <a class="reference external" href="about:config">about:config</a></li>
-<li>In the opened Pop Up window, select the “Advanced” tab,</li>
-<li>You will receive a security warning. To continue, click “I’ll be careful, I promise”,</li>
-<li>You will see a list of preferences listed. Find the settings below by browsing through the list or searching for them in the search box. Once you have located each setting, update the value to the following:</li>
+<li><p>Open Firefox,</p></li>
+<li><p>In the address bar type <a class="reference external" href="about:config">about:config</a></p></li>
+<li><p>In the opened Pop Up window, select the “Advanced” tab,</p></li>
+<li><p>You will receive a security warning. To continue, click “I’ll be careful, I promise”,</p></li>
+<li><p>You will see a list of preferences listed. Find the settings below by browsing through the list or searching for them in the search box. Once you have located each setting, update the value to the following:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Setting</span> <span class="n">Value</span>
 
@@ -2687,8 +2685,8 @@ The response should be :
 <h5>Still receiving login prompt<a class="headerlink" href="#still-receiving-login-prompt" title="Permalink to this headline">¶</a></h5>
 <p>If you still continue to receive logon prompt, please check your configuration. Most common error are:</p>
 <ul class="simple">
-<li>The accessed server is not listed in the NTLM trusted uris section (Local Intranet Area for Internet Explorer).</li>
-<li>The invoked Virtel transaction is not defined with security = 2.</li>
+<li><p>The accessed server is not listed in the NTLM trusted uris section (Local Intranet Area for Internet Explorer).</p></li>
+<li><p>The invoked Virtel transaction is not defined with security = 2.</p></li>
 </ul>
 </div>
 </div>
@@ -2714,10 +2712,10 @@ message issuance to SYSLOG or restrict their diffusion to another direction. Fro
 <p><strong>LOG</strong></p>
 <p>The following parameters are available:</p>
 <ul class="simple">
-<li>CONSOLE: Routes all WTO message to the system console. This is the default action.</li>
-<li>SYSOUT : Routes all WTO messages to a VIRTEL SYSOUT dataset which is dynamically allocated.</li>
-<li>BOTH : Routes all WTO messages to both the system console and a dynamically allocated SYSOUT dataset.</li>
-<li>SPIN : Forces Virtel to release the current SYSOUT dataset for further processing and allocates a new SYSOUT dataset.</li>
+<li><p>CONSOLE: Routes all WTO message to the system console. This is the default action.</p></li>
+<li><p>SYSOUT : Routes all WTO messages to a VIRTEL SYSOUT dataset which is dynamically allocated.</p></li>
+<li><p>BOTH : Routes all WTO messages to both the system console and a dynamically allocated SYSOUT dataset.</p></li>
+<li><p>SPIN : Forces Virtel to release the current SYSOUT dataset for further processing and allocates a new SYSOUT dataset.</p></li>
 </ul>
 <p>Virtel will direct messages to an allocated SYSOUT data set and | or the console (default). If SYSOUT processing is being used you will see a dynamically allocated dataset in the SDSF display panel named SYSnnnnn. You can spin this dataset off using the Virtel command LOG=SPIN . VIRTEL will release the SYSOUT dataset from JES2 and allocate a new one.</p>
 <p>Once the LOG command activated, only the following messages will be displayed at the SYSLOG during startup process :</p>
@@ -2852,19 +2850,11 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
   <div role="contentinfo">
     <p>
-        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2875,6 +2865,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
