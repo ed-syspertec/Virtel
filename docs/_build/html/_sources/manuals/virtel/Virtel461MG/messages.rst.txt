@@ -5031,12 +5031,12 @@ Meaning
 Action
     None.
 
-VIRHT04I HTTP LINE linename WAS STOPPED
-"""""""""""""""""""""""""""""""""""""""
+VIRHT07I HTTP LINE linename(n-xxxxxx), IS USING A GENERIC ADDRESS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
-    HTTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
+    HTTP line linename is using a generic VTAM resource name.
 Action
     None.
 

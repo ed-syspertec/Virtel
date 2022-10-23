@@ -6532,6 +6532,16 @@ Resource W2H is a generic resource which permits access to VIRTEL Web Access tra
 
 Resource CLI is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) and to the directory CLI-DIR.
 
+Set Facility to resident
+""""""""""""""""""""""""
+
+Set the facility to resident using the following command.
+
+::
+
+	TSS MODIFY FAC(VIRTFAC=RES)
+
+
 Create administrator profile
 """"""""""""""""""""""""""""
 

@@ -5807,6 +5807,13 @@ TSS ADDTO(VIRTDEP) VIRTNODE(CLI) Client transactions
 <p>Resource W2H is a generic resource which permits access to VIRTEL Web Access transactions (internal name W2H-nn) and to the directory W2H-DIR. The resource W2H-10 permits specific access to the CICS Web Access transaction.</p>
 <p>Resource CLI is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) and to the directory CLI-DIR.</p>
 </div>
+<div class="section" id="set-facility-to-resident">
+<h5>Set Facility to resident<a class="headerlink" href="#set-facility-to-resident" title="Permalink to this headline">¶</a></h5>
+<p>Set the facility to resident using the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TSS</span> <span class="n">MODIFY</span> <span class="n">FAC</span><span class="p">(</span><span class="n">VIRTFAC</span><span class="o">=</span><span class="n">RES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="create-administrator-profile">
 <h5>Create administrator profile<a class="headerlink" href="#create-administrator-profile" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TSS CREATE(VIRTADP) NAME(&#39;VIRTEL ADMINISTRATOR&#39;) +
