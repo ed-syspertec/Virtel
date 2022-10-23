@@ -13,6 +13,9 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
+
+
+
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -27,24 +30,7 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
-\makeatletter
-\def\fnum@figure{\figurename\thefigure{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\tablename}{Table }}
-\makeatletter
-\def\fnum@table{\tablename\thetable{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
-\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
-\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 \setcounter{tocdepth}{2}
 
 
@@ -56,7 +42,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Feb 13, 2022}
+\date{Oct 23, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2990,12 +2976,12 @@ The source for the MODVIRT mode table is defined as follows:
   \PYG{n}{FMPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{TSPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{PRIPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{SECPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{90}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{X}
   \PYG{n}{COMPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{3040}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{RUSIZES}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{8989}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{X}
   \PYG{n}{PSERVIC}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{010000000000000000000000}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{o}{*} \PYG{n}{LOGMODE} \PYG{k}{for} \PYG{n}{inversed} \PYG{n}{PCNE} \PYG{o}{@}\PYG{l+m+mi}{416}
-\PYG{n}{DLOGPCNE} \PYG{n}{MODEENT} \PYG{n}{LOGMODE}\PYG{o}{=}\PYG{n}{DLOGPCNE}\PYG{p}{,} \PYG{o}{@}\PYG{l+m+mi}{416}\PYG{n}{X}
-  \PYG{n}{FMPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{TSPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{@}\PYG{l+m+mi}{416}\PYG{n}{X}
-  \PYG{n}{PRIPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{SECPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{@}\PYG{l+m+mi}{416}\PYG{n}{X}
-  \PYG{n}{COMPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{0040}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{RUSIZES}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{8989}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{@}\PYG{l+m+mi}{416}\PYG{n}{X}
-  \PYG{n}{PSERVIC}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{000000000000000000000000}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{@}\PYG{l+m+mi}{416}
+\PYG{o}{*} \PYG{n}{LOGMODE} \PYG{k}{for} \PYG{n}{inversed} \PYG{n}{PCNE} \PYG{n+nd}{@416}
+\PYG{n}{DLOGPCNE} \PYG{n}{MODEENT} \PYG{n}{LOGMODE}\PYG{o}{=}\PYG{n}{DLOGPCNE}\PYG{p}{,} \PYG{n+nd}{@416X}
+  \PYG{n}{FMPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{TSPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{03}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n+nd}{@416X}
+  \PYG{n}{PRIPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{SECPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n+nd}{@416X}
+  \PYG{n}{COMPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{0040}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{RUSIZES}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{8989}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n+nd}{@416X}
+  \PYG{n}{PSERVIC}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{000000000000000000000000}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n+nd}{@416}
 \PYG{o}{*} \PYG{n}{LOGMODE} \PYG{k}{for} \PYG{n}{APPC} \PYG{n}{lines} \PYG{p}{(}\PYG{n}{LU6}\PYG{o}{.}\PYG{l+m+mi}{2}\PYG{p}{)}
 \PYG{n}{LU62CONV} \PYG{n}{MODEENT} \PYG{n}{LOGMODE}\PYG{o}{=}\PYG{n}{LU62CONV}\PYG{p}{,}\PYG{n}{FMPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{13}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{TSPROF}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{07}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{X}
   \PYG{n}{PRIPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{SECPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{B0}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{COMPROT}\PYG{o}{=}\PYG{n}{X}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{D0B1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{X}
@@ -4420,10 +4406,26 @@ Messages will be written to the DDNAMEs LOGFILEx\textbar{}y               (Virte
 
 \end{description}
 
+\index{Virtel TCT@\spxentry{Virtel TCT}!LPKALIVE parameter@\spxentry{LPKALIVE parameter}}\index{LPKALIVE parameter@\spxentry{LPKALIVE parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
+
+\subsection{LPKALIVE parameter}
+\label{\detokenize{Installation_Guide:lpkalive-parameter}}\label{\detokenize{Installation_Guide:index-88}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+    \PYG{n}{LPKALIVE}\PYG{o}{=}\PYG{n}{nn}         \PYG{n}{LONG} \PYG{n}{POLL} \PYG{n}{KEEP} \PYG{n}{ALIVE} \PYG{n}{VALUE} \PYG{o+ow}{in} \PYG{n}{Seconds}\PYG{o}{.}
+\PYG{n}{LPKALIVE}\PYG{o}{=}\PYG{l+m+mi}{0}          \PYG{l+m+mi}{0} \PYG{n}{means} \PYG{n}{inactive}
+
+    \PYG{n}{It} \PYG{o+ow}{is} \PYG{n}{possible} \PYG{k}{for} \PYG{n}{some} \PYG{n}{intermediary} \PYG{n}{equipment} \PYG{o+ow}{or} \PYG{n}{firewalls} \PYG{n}{to} \PYG{k}{try} \PYG{n}{to} \PYG{n}{close} \PYG{n}{the} \PYG{n}{Virtel} \PYG{n}{Long} \PYG{n}{Poll} \PYG{n}{session}\PYG{p}{,} \PYG{n}{because} \PYG{o+ow}{is} \PYG{n}{appears} \PYG{k}{as} \PYG{n}{a} \PYG{n}{stalled} \PYG{n}{request}\PYG{o}{.} \PYG{n}{This} \PYG{n}{causes} \PYG{o+ow}{or} \PYG{n}{appears} \PYG{k}{as} \PYG{n}{a} \PYG{n}{hung} \PYG{n}{session}\PYG{o}{.}
+
+    \PYG{n}{Example}\PYG{p}{:} \PYG{o}{\PYGZhy{}}
+    \PYG{n}{LPKALIVE}\PYG{o}{=}\PYG{l+m+mi}{30}             \PYG{n}{A} \PYG{l+m+mi}{304} \PYG{n}{response} \PYG{n}{to} \PYG{n}{the} \PYG{n}{LongPoll} \PYG{n}{session} \PYG{n}{will} \PYG{n}{be} \PYG{n}{sent} \PYG{n}{by} \PYG{n}{Virtel} \PYG{l+m+mi}{30} \PYG{n}{seconds} \PYG{n}{after} \PYG{n}{receiving} \PYG{n}{a} \PYG{n}{LP}\PYG{o}{=}\PYG{l+m+mi}{0} \PYG{n}{request}\PYG{o}{.}
+
+    \PYG{n}{This} \PYG{n}{parameter} \PYG{n}{should} \PYG{n}{only} \PYG{n}{be} \PYG{n}{included} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{TCT} \PYG{k}{if} \PYG{n}{recommended} \PYG{n}{by} \PYG{n}{Syspertec}\PYG{o}{.}
+\end{sphinxVerbatim}
+
 \index{Virtel TCT@\spxentry{Virtel TCT}!MARK parameter@\spxentry{MARK parameter}}\index{MARK parameter@\spxentry{MARK parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{MARK parameter}
-\label{\detokenize{Installation_Guide:mark-parameter}}\label{\detokenize{Installation_Guide:index-88}}
+\label{\detokenize{Installation_Guide:mark-parameter}}\label{\detokenize{Installation_Guide:index-89}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MARK}\PYG{o}{=}\PYG{n}{xx}                              \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{n}{E}\PYG{p}{(}\PYG{n}{EndField}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -4433,7 +4435,7 @@ Messages will be written to the DDNAMEs LOGFILEx\textbar{}y               (Virte
 \index{Virtel TCT@\spxentry{Virtel TCT}!MAXAPPL parameter@\spxentry{MAXAPPL parameter}}\index{MAXAPPL parameter@\spxentry{MAXAPPL parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{MAXAPPL parameter}
-\label{\detokenize{Installation_Guide:maxappl-parameter}}\label{\detokenize{Installation_Guide:index-89}}
+\label{\detokenize{Installation_Guide:maxappl-parameter}}\label{\detokenize{Installation_Guide:index-90}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MAXAPPL}\PYG{o}{=}\PYG{n}{n}                            \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{64}
 \end{sphinxVerbatim}
@@ -4443,7 +4445,7 @@ Messages will be written to the DDNAMEs LOGFILEx\textbar{}y               (Virte
 \index{Virtel TCT@\spxentry{Virtel TCT}!MEMORY parameter@\spxentry{MEMORY parameter}}\index{MEMORY parameter@\spxentry{MEMORY parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{MEMORY parameter}
-\label{\detokenize{Installation_Guide:memory-parameter}}\label{\detokenize{Installation_Guide:index-90}}
+\label{\detokenize{Installation_Guide:memory-parameter}}\label{\detokenize{Installation_Guide:index-91}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MEMORY}\PYG{o}{=}\PYG{p}{(}\PYG{n}{BELOW}\PYG{o}{/}\PYG{n}{ABOVE}\PYG{p}{[}\PYG{p}{,}\PYG{n}{DEBUG}\PYG{p}{]}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{BELOW}
 \PYG{n}{MEMORY}\PYG{o}{=}\PYG{n}{NATIVE}\PYG{o}{/}\PYG{n}{TEST}
@@ -4468,7 +4470,7 @@ MEMORY=ABOVE is recommended under z/OS. MEMORY=(ABOVE,DEBUG) consumes more resou
 \index{Virtel TCT@\spxentry{Virtel TCT}!MQn parameter@\spxentry{MQn parameter}}\index{MQn parameter@\spxentry{MQn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{MQ1 parameter}
-\label{\detokenize{Installation_Guide:mq1-parameter}}\label{\detokenize{Installation_Guide:index-91}}
+\label{\detokenize{Installation_Guide:mq1-parameter}}\label{\detokenize{Installation_Guide:index-92}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MQ1}\PYG{o}{=}\PYG{p}{(}\PYG{n}{mqmname}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{prefix}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{p}{[}\PYG{n}{pgmname}\PYG{p}{]}\PYG{p}{)}         \PYG{n}{Default}\PYG{o}{=}\PYG{n}{no} \PYG{n}{MQ} \PYG{n}{connection}
 \end{sphinxVerbatim}
@@ -4511,7 +4513,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!MULTI parameter@\spxentry{MULTI parameter}}\index{MULTI parameter@\spxentry{MULTI parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{MULTI parameter}
-\label{\detokenize{Installation_Guide:multi-parameter}}\label{\detokenize{Installation_Guide:index-92}}
+\label{\detokenize{Installation_Guide:multi-parameter}}\label{\detokenize{Installation_Guide:index-93}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MULTI}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{YES}
 \end{sphinxVerbatim}
@@ -4522,7 +4524,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!NBCVC parameter@\spxentry{NBCVC parameter}}\index{NBCVC parameter@\spxentry{NBCVC parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{NBCVC parameter}
-\label{\detokenize{Installation_Guide:nbcvc-parameter}}\label{\detokenize{Installation_Guide:index-93}}
+\label{\detokenize{Installation_Guide:nbcvc-parameter}}\label{\detokenize{Installation_Guide:index-94}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{NBCVC}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{8}
 \end{sphinxVerbatim}
@@ -4532,7 +4534,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!NBDYNAM parameter@\spxentry{NBDYNAM parameter}}\index{NBDYNAM parameter@\spxentry{NBDYNAM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{NBDYNAM parameter}
-\label{\detokenize{Installation_Guide:nbdynam-parameter}}\label{\detokenize{Installation_Guide:index-94}}
+\label{\detokenize{Installation_Guide:nbdynam-parameter}}\label{\detokenize{Installation_Guide:index-95}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{NBDYNAM}\PYG{o}{=}\PYG{p}{(}\PYG{n}{t1}\PYG{p}{,}\PYG{n}{t2}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -4543,7 +4545,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!NBTERM parameter@\spxentry{NBTERM parameter}}\index{NBTERM parameter@\spxentry{NBTERM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{NBTERM parameter}
-\label{\detokenize{Installation_Guide:nbterm-parameter}}\label{\detokenize{Installation_Guide:index-95}}
+\label{\detokenize{Installation_Guide:nbterm-parameter}}\label{\detokenize{Installation_Guide:index-96}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{NBTERM}\PYG{o}{=}\PYG{n}{nbterm} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{500}
 \end{sphinxVerbatim}
@@ -4553,7 +4555,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!NUMTASK parameter@\spxentry{NUMTASK parameter}}\index{NUMTASK parameter@\spxentry{NUMTASK parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{NUMTASK parameter}
-\label{\detokenize{Installation_Guide:numtask-parameter}}\label{\detokenize{Installation_Guide:index-96}}
+\label{\detokenize{Installation_Guide:numtask-parameter}}\label{\detokenize{Installation_Guide:index-97}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{NUMTASK}\PYG{o}{=}\PYG{n}{nn} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{4}
 \end{sphinxVerbatim}
@@ -4563,7 +4565,7 @@ This parameter defines the characteristics of the connection to the message-queu
 \index{Virtel TCT@\spxentry{Virtel TCT}!OTMAPRM parameter@\spxentry{OTMAPRM parameter}}\index{OTMAPRM parameter@\spxentry{OTMAPRM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{OTMAPRM parameter}
-\label{\detokenize{Installation_Guide:otmaprm-parameter}}\label{\detokenize{Installation_Guide:index-97}}
+\label{\detokenize{Installation_Guide:otmaprm-parameter}}\label{\detokenize{Installation_Guide:index-98}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{OTMAPRM}\PYG{o}{=}\PYG{p}{(}\PYG{n}{exitname}\PYG{p}{,}\PYG{n}{userid}\PYG{p}{,}\PYG{n}{group}\PYG{p}{,}\PYG{n}{password}\PYG{p}{,}\PYG{n}{applname}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{p}{(}\PYG{o}{*}\PYG{n}{SAMPLE}\PYG{o}{*}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -4576,7 +4578,7 @@ This parameter defines the data which is passed to OTMA/IMSConnect in the header
 \index{Virtel TCT@\spxentry{Virtel TCT}!OSCORE parameter@\spxentry{OSCORE parameter}}\index{OSCORE parameter@\spxentry{OSCORE parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{OSCORE parameter}
-\label{\detokenize{Installation_Guide:oscore-parameter}}\label{\detokenize{Installation_Guide:index-98}}
+\label{\detokenize{Installation_Guide:oscore-parameter}}\label{\detokenize{Installation_Guide:index-99}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{OSCORE}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{384}
 \end{sphinxVerbatim}
@@ -4586,7 +4588,7 @@ This parameter defines the data which is passed to OTMA/IMSConnect in the header
 \index{Virtel TCT@\spxentry{Virtel TCT}!PACKET parameter@\spxentry{PACKET parameter}}\index{PACKET parameter@\spxentry{PACKET parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{PACKET parameter}
-\label{\detokenize{Installation_Guide:packet-parameter}}\label{\detokenize{Installation_Guide:index-99}}
+\label{\detokenize{Installation_Guide:packet-parameter}}\label{\detokenize{Installation_Guide:index-100}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{PACKET}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{128}
 \end{sphinxVerbatim}
@@ -4597,7 +4599,7 @@ This parameter defines the data which is passed to OTMA/IMSConnect in the header
 \index{Virtel TCT@\spxentry{Virtel TCT}!PASSTCK parameter@\spxentry{PASSTCK parameter}}\index{PASSTCK parameter@\spxentry{PASSTCK parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{PASSTCK parameter}
-\label{\detokenize{Installation_Guide:passtck-parameter}}\label{\detokenize{Installation_Guide:index-100}}
+\label{\detokenize{Installation_Guide:passtck-parameter}}\label{\detokenize{Installation_Guide:index-101}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{PASSTCK}\PYG{o}{=}\PYG{n}{YES} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -4609,7 +4611,7 @@ This parameter activates PassTicket support in VIRTEL. The following values are 
 \index{Virtel TCT@\spxentry{Virtel TCT}!PREZ900 parameter@\spxentry{PREZ900 parameter}}\index{PREZ900 parameter@\spxentry{PREZ900 parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{PREZ900 parameter}
-\label{\detokenize{Installation_Guide:prez900-parameter}}\label{\detokenize{Installation_Guide:index-101}}
+\label{\detokenize{Installation_Guide:prez900-parameter}}\label{\detokenize{Installation_Guide:index-102}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{PREZ900}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -4627,7 +4629,7 @@ VIRTEL does not support 9672-G1, ES/9000, or any earlier processor.
 \index{Virtel TCT@\spxentry{Virtel TCT}!PRFSECU parameter@\spxentry{PRFSECU parameter}}\index{PRFSECU parameter@\spxentry{PRFSECU parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{PRFSECU parameter}
-\label{\detokenize{Installation_Guide:prfsecu-parameter}}\label{\detokenize{Installation_Guide:index-102}}
+\label{\detokenize{Installation_Guide:prfsecu-parameter}}\label{\detokenize{Installation_Guide:index-103}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{PRFSECU}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{xxxxxxxx}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{Default}\PYG{o}{=}
 \end{sphinxVerbatim}
@@ -4637,7 +4639,7 @@ VIRTEL does not support 9672-G1, ES/9000, or any earlier processor.
 \index{Virtel TCT@\spxentry{Virtel TCT}!PWPROT parameter@\spxentry{PWPROT parameter}}\index{PWPROT parameter@\spxentry{PWPROT parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{PWPROT parameter}
-\label{\detokenize{Installation_Guide:pwprot-parameter}}\label{\detokenize{Installation_Guide:index-103}}
+\label{\detokenize{Installation_Guide:pwprot-parameter}}\label{\detokenize{Installation_Guide:index-104}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{PWPROT}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -4649,7 +4651,7 @@ VIRTEL does not support 9672-G1, ES/9000, or any earlier processor.
 \index{Virtel TCT@\spxentry{Virtel TCT}!RACAPPL parameter@\spxentry{RACAPPL parameter}}\index{RACAPPL parameter@\spxentry{RACAPPL parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RACAPPL parameter}
-\label{\detokenize{Installation_Guide:racappl-parameter}}\label{\detokenize{Installation_Guide:index-104}}
+\label{\detokenize{Installation_Guide:racappl-parameter}}\label{\detokenize{Installation_Guide:index-105}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RACAPPL}\PYG{o}{=}\PYG{n}{NONE}\PYG{o}{/}\PYG{n}{APPLID}\PYG{o}{/}\PYG{n}{GRNAME}\PYG{o}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{name}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NONE}
 \end{sphinxVerbatim}
@@ -4667,7 +4669,7 @@ The RACAPPL parameter specifies the VIRTEL application name as it is known to RA
 \index{Virtel TCT@\spxentry{Virtel TCT}!RAPPL parameter@\spxentry{RAPPL parameter}}\index{RAPPL parameter@\spxentry{RAPPL parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RAPPL parameter}
-\label{\detokenize{Installation_Guide:rappl-parameter}}\label{\detokenize{Installation_Guide:index-105}}
+\label{\detokenize{Installation_Guide:rappl-parameter}}\label{\detokenize{Installation_Guide:index-106}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RAPPL}\PYG{o}{=}\PYG{n}{rappl} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{USERA}
 \end{sphinxVerbatim}
@@ -4677,7 +4679,7 @@ The RACAPPL parameter specifies the VIRTEL application name as it is known to RA
 \index{Virtel TCT@\spxentry{Virtel TCT}!REALM parameter@\spxentry{REALM parameter}}\index{REALM parameter@\spxentry{REALM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{REALM parameter}
-\label{\detokenize{Installation_Guide:realm-parameter}}\label{\detokenize{Installation_Guide:index-106}}
+\label{\detokenize{Installation_Guide:realm-parameter}}\label{\detokenize{Installation_Guide:index-107}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{REALM}\PYG{o}{=}\PYG{n}{TRANSACT}\PYG{o}{/}\PYG{n}{APPLID}\PYG{o}{/}\PYG{n}{GRNAME} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{TRANSACT}
 \end{sphinxVerbatim}
@@ -4693,7 +4695,7 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 \index{Virtel TCT@\spxentry{Virtel TCT}!REPET parameter@\spxentry{REPET parameter}}\index{REPET parameter@\spxentry{REPET parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{REPET parameter}
-\label{\detokenize{Installation_Guide:repet-parameter}}\label{\detokenize{Installation_Guide:index-107}}
+\label{\detokenize{Installation_Guide:repet-parameter}}\label{\detokenize{Installation_Guide:index-108}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{REPET}\PYG{o}{=}\PYG{n}{xx} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{F2} \PYG{p}{(}\PYG{n}{PF2}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -4703,7 +4705,7 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 \index{Virtel TCT@\spxentry{Virtel TCT}!RESO parameter@\spxentry{RESO parameter}}\index{RESO parameter@\spxentry{RESO parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RESO parameter}
-\label{\detokenize{Installation_Guide:reso-parameter}}\label{\detokenize{Installation_Guide:index-108}}
+\label{\detokenize{Installation_Guide:reso-parameter}}\label{\detokenize{Installation_Guide:index-109}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RESO}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{YES}
 \end{sphinxVerbatim}
@@ -4715,7 +4717,7 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 \index{Virtel TCT@\spxentry{Virtel TCT}!RETOUR parameter@\spxentry{RETOUR parameter}}\index{RETOUR parameter@\spxentry{RETOUR parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RETOUR parameter}
-\label{\detokenize{Installation_Guide:retour-parameter}}\label{\detokenize{Installation_Guide:index-109}}
+\label{\detokenize{Installation_Guide:retour-parameter}}\label{\detokenize{Installation_Guide:index-110}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RETOUR}\PYG{o}{=}\PYG{n}{xx} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{00}
 \end{sphinxVerbatim}
@@ -4725,7 +4727,7 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 \index{Virtel TCT@\spxentry{Virtel TCT}!RNODE parameter@\spxentry{RNODE parameter}}\index{RNODE parameter@\spxentry{RNODE parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RNODE parameter}
-\label{\detokenize{Installation_Guide:rnode-parameter}}\label{\detokenize{Installation_Guide:index-110}}
+\label{\detokenize{Installation_Guide:rnode-parameter}}\label{\detokenize{Installation_Guide:index-111}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RNODE}\PYG{o}{=}\PYG{n}{rnode} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{USERB}
 \end{sphinxVerbatim}
@@ -4735,7 +4737,7 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 \index{Virtel TCT@\spxentry{Virtel TCT}!RTERM parameter@\spxentry{RTERM parameter}}\index{RTERM parameter@\spxentry{RTERM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{RTERM parameter}
-\label{\detokenize{Installation_Guide:rterm-parameter}}\label{\detokenize{Installation_Guide:index-111}}
+\label{\detokenize{Installation_Guide:rterm-parameter}}\label{\detokenize{Installation_Guide:index-112}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RTERM}\PYG{o}{=}\PYG{k}{class}
 \end{sphinxVerbatim}
@@ -4751,7 +4753,7 @@ For example:-
 \index{Virtel TCT@\spxentry{Virtel TCT}!SECUR parameter@\spxentry{SECUR parameter}}\index{SECUR parameter@\spxentry{SECUR parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SECUR parameter}
-\label{\detokenize{Installation_Guide:secur-parameter}}\label{\detokenize{Installation_Guide:index-112}}
+\label{\detokenize{Installation_Guide:secur-parameter}}\label{\detokenize{Installation_Guide:index-113}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{NO}\PYG{o}{/}\PYG{n}{VIRTEL}\PYG{o}{/}\PYG{n}{RACF}\PYG{o}{/}\PYG{n}{TOPS}\PYG{o}{/}\PYG{n}{ACF2}\PYG{o}{/}\PYG{n}{RACROUTE}\PYG{o}{/}\PYG{n}{MIXEDCASE}\PYG{o}{/}\PYG{n}{PASSPHRASE}\PYG{o}{/}\PYG{n}{PASSPHRASELEN} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -4812,7 +4814,7 @@ MIXEDCASE support prevents a password being automatically “UPPERCASED” prior
 \index{Virtel TCT@\spxentry{Virtel TCT}!SILENCE parameter@\spxentry{SILENCE parameter}}\index{SILENCE parameter@\spxentry{SILENCE parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SILENCE parameter}
-\label{\detokenize{Installation_Guide:silence-parameter}}\label{\detokenize{Installation_Guide:index-113}}
+\label{\detokenize{Installation_Guide:silence-parameter}}\label{\detokenize{Installation_Guide:index-114}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -4826,7 +4828,7 @@ The VIRTEL command SILENCE can be used to dynamically modify this parameter.
 \index{Virtel TCT@\spxentry{Virtel TCT}!SNAPMSG parameter@\spxentry{SNAPMSG parameter}}\index{SNAPMSG parameter@\spxentry{SNAPMSG parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SNAPMSG parameter}
-\label{\detokenize{Installation_Guide:snapmsg-parameter}}\label{\detokenize{Installation_Guide:index-114}}
+\label{\detokenize{Installation_Guide:snapmsg-parameter}}\label{\detokenize{Installation_Guide:index-115}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SNAPMSG}\PYG{o}{=}\PYG{p}{(}\PYG{n}{message}\PYG{p}{,}\PYG{n}{search}\PYG{p}{,}\PYG{n}{action}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -4847,7 +4849,7 @@ Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 ab
 \index{Virtel TCT@\spxentry{Virtel TCT}!SNAPW parameter@\spxentry{SNAPW parameter}}\index{SNAPW parameter@\spxentry{SNAPW parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SNAPW parameter}
-\label{\detokenize{Installation_Guide:snapw-parameter}}\label{\detokenize{Installation_Guide:index-115}}
+\label{\detokenize{Installation_Guide:snapw-parameter}}\label{\detokenize{Installation_Guide:index-116}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SNAPW}\PYG{o}{=}\PYG{l+m+mi}{80}\PYG{o}{/}\PYG{l+m+mi}{132} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{132}
 \end{sphinxVerbatim}
@@ -4868,7 +4870,7 @@ By default, the {[}SUMMARY{]} key is not transmitted to the application but serv
 \index{Virtel TCT@\spxentry{Virtel TCT}!STATDSN parameter@\spxentry{STATDSN parameter}}\index{STATDSN parameter@\spxentry{STATDSN parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{STATDSN parameter}
-\label{\detokenize{Installation_Guide:statdsn-parameter}}\label{\detokenize{Installation_Guide:index-116}}
+\label{\detokenize{Installation_Guide:statdsn-parameter}}\label{\detokenize{Installation_Guide:index-117}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{STATDSN}\PYG{o}{=}\PYG{p}{(}\PYG{n}{dsn1}\PYG{p}{,}\PYG{n}{dsn2}\PYG{p}{,}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -4878,7 +4880,7 @@ By default, the {[}SUMMARY{]} key is not transmitted to the application but serv
 \index{Virtel TCT@\spxentry{Virtel TCT}!STATS parameter@\spxentry{STATS parameter}}\index{STATS parameter@\spxentry{STATS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{STATS parameter}
-\label{\detokenize{Installation_Guide:stats-parameter}}\label{\detokenize{Installation_Guide:index-117}}
+\label{\detokenize{Installation_Guide:stats-parameter}}\label{\detokenize{Installation_Guide:index-118}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{STATS}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO}\PYG{o}{/}\PYG{p}{(}\PYG{n}{MULTI}\PYG{p}{,}\PYG{n}{CONTINUE}\PYG{o}{/}\PYG{n}{TERMINATE}\PYG{p}{)} \PYG{o}{\textbar{}} \PYG{n}{SMF} \PYG{o}{\textbar{}} \PYG{p}{(}\PYG{n}{SMF}\PYG{p}{,}\PYG{n}{nnn}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{YES}
 \end{sphinxVerbatim}
@@ -4907,7 +4909,7 @@ The STATS=MULTI option is only available in the z/OS environment.
 \index{Virtel TCT@\spxentry{Virtel TCT}!STRNO parameter@\spxentry{STRNO parameter}}\index{STRNO parameter@\spxentry{STRNO parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{STRNO parameter}
-\label{\detokenize{Installation_Guide:strno-parameter}}\label{\detokenize{Installation_Guide:index-118}}
+\label{\detokenize{Installation_Guide:strno-parameter}}\label{\detokenize{Installation_Guide:index-119}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{STRNO}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{8}
 \end{sphinxVerbatim}
@@ -4917,7 +4919,7 @@ The STATS=MULTI option is only available in the z/OS environment.
 \index{Virtel TCT@\spxentry{Virtel TCT}!SUITE parameter@\spxentry{SUITE parameter}}\index{SUITE parameter@\spxentry{SUITE parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SUITE parameter}
-\label{\detokenize{Installation_Guide:suite-parameter}}\label{\detokenize{Installation_Guide:index-119}}
+\label{\detokenize{Installation_Guide:suite-parameter}}\label{\detokenize{Installation_Guide:index-120}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SUITE}\PYG{o}{=}\PYG{n}{xx} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{00}
 \end{sphinxVerbatim}
@@ -4927,7 +4929,7 @@ The STATS=MULTI option is only available in the z/OS environment.
 \index{Virtel TCT@\spxentry{Virtel TCT}!SWAP parameter@\spxentry{SWAP parameter}}\index{SWAP parameter@\spxentry{SWAP parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SWAP parameter}
-\label{\detokenize{Installation_Guide:swap-parameter}}\label{\detokenize{Installation_Guide:index-120}}
+\label{\detokenize{Installation_Guide:swap-parameter}}\label{\detokenize{Installation_Guide:index-121}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SWAP}\PYG{o}{=}\PYG{n}{Pnn} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{P24}
 \end{sphinxVerbatim}
@@ -4937,7 +4939,7 @@ The STATS=MULTI option is only available in the z/OS environment.
 \index{Virtel TCT@\spxentry{Virtel TCT}!SYSPLUS parameter@\spxentry{SYSPLUS parameter}}\index{SYSPLUS parameter@\spxentry{SYSPLUS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{SYSPLUS parameter}
-\label{\detokenize{Installation_Guide:sysplus-parameter}}\label{\detokenize{Installation_Guide:index-121}}
+\label{\detokenize{Installation_Guide:sysplus-parameter}}\label{\detokenize{Installation_Guide:index-122}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SYSPLUS}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -4948,7 +4950,7 @@ The STATS=MULTI option is only available in the z/OS environment.
 \index{Virtel TCT@\spxentry{Virtel TCT}!TCPn parameter@\spxentry{TCPn parameter}}\index{TCPn parameter@\spxentry{TCPn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TCP1 parameter}
-\label{\detokenize{Installation_Guide:tcp1-parameter}}\label{\detokenize{Installation_Guide:index-122}}
+\label{\detokenize{Installation_Guide:tcp1-parameter}}\label{\detokenize{Installation_Guide:index-123}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TCP1}\PYG{o}{=}\PYG{n}{tcpname} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{no} \PYG{n}{TCP}\PYG{o}{/}\PYG{n}{IP} \PYG{n}{connection}
 \PYG{n}{TCP1}\PYG{o}{=}\PYG{p}{(}\PYG{p}{[}\PYG{n}{tcpname}\PYG{p}{]}\PYG{p}{,}\PYG{p}{,}\PYG{p}{[}\PYG{n}{DNS}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{maxsock}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{pgmname}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{adsname}\PYG{p}{]}\PYG{p}{)}
@@ -4985,7 +4987,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 \index{Virtel TCT@\spxentry{Virtel TCT}!TIMEOUT parameter@\spxentry{TIMEOUT parameter}}\index{TIMEOUT parameter@\spxentry{TIMEOUT parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TIMEOUT parameter}
-\label{\detokenize{Installation_Guide:timeout-parameter}}\label{\detokenize{Installation_Guide:index-123}}
+\label{\detokenize{Installation_Guide:timeout-parameter}}\label{\detokenize{Installation_Guide:index-124}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{5}
 \end{sphinxVerbatim}
@@ -4995,7 +4997,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 \index{Virtel TCT@\spxentry{Virtel TCT}!TIMERQS parameter@\spxentry{TIMERQS parameter}}\index{TIMERQS parameter@\spxentry{TIMERQS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TIMERQS parameter}
-\label{\detokenize{Installation_Guide:timerqs-parameter}}\label{\detokenize{Installation_Guide:index-124}}
+\label{\detokenize{Installation_Guide:timerqs-parameter}}\label{\detokenize{Installation_Guide:index-125}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TIMERQS}\PYG{o}{=}\PYG{p}{(}\PYG{n}{n1}\PYG{p}{,}\PYG{n}{n2}\PYG{p}{,}\PYG{n}{n3}\PYG{p}{,}\PYG{n}{n4}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -5013,7 +5015,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TITREn parameter@\spxentry{TITREn parameter}}\index{TITREn parameter@\spxentry{TITREn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TITRE1 parameter}
-\label{\detokenize{Installation_Guide:titre1-parameter}}\label{\detokenize{Installation_Guide:index-125}}
+\label{\detokenize{Installation_Guide:titre1-parameter}}\label{\detokenize{Installation_Guide:index-126}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TITRE1}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ccccc}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{Default}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SYSPERTEC}\PYG{l+s+s1}{\PYGZsq{}}
 \end{sphinxVerbatim}
@@ -5032,7 +5034,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACALL parameter@\spxentry{TRACALL parameter}}\index{TRACALL parameter@\spxentry{TRACALL parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACALL parameter}
-\label{\detokenize{Installation_Guide:tracall-parameter}}\label{\detokenize{Installation_Guide:index-126}}
+\label{\detokenize{Installation_Guide:tracall-parameter}}\label{\detokenize{Installation_Guide:index-127}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRACALL}\PYG{o}{=}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{,}\PYG{n}{p2}\PYG{p}{,}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -5048,7 +5050,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACBIG parameter@\spxentry{TRACBIG parameter}}\index{TRACBIG parameter@\spxentry{TRACBIG parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACBIG parameter}
-\label{\detokenize{Installation_Guide:tracbig-parameter}}\label{\detokenize{Installation_Guide:index-127}}
+\label{\detokenize{Installation_Guide:tracbig-parameter}}\label{\detokenize{Installation_Guide:index-128}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRACBIG}\PYG{o}{=}\PYG{n}{n} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{40}
 \end{sphinxVerbatim}
@@ -5058,7 +5060,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACEB parameter@\spxentry{TRACEB parameter}}\index{TRACEB parameter@\spxentry{TRACEB parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACEB parameter}
-\label{\detokenize{Installation_Guide:traceb-parameter}}\label{\detokenize{Installation_Guide:index-128}}
+\label{\detokenize{Installation_Guide:traceb-parameter}}\label{\detokenize{Installation_Guide:index-129}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRACEB}\PYG{o}{=}\PYG{n}{nn} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{200}
 \end{sphinxVerbatim}
@@ -5068,7 +5070,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACEOJ parameter@\spxentry{TRACEOJ parameter}}\index{TRACEOJ parameter@\spxentry{TRACEOJ parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACEOJ parameter}
-\label{\detokenize{Installation_Guide:traceoj-parameter}}\label{\detokenize{Installation_Guide:index-129}}
+\label{\detokenize{Installation_Guide:traceoj-parameter}}\label{\detokenize{Installation_Guide:index-130}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRACEOJ}\PYG{o}{=}\PYG{n}{STANDARD}\PYG{o}{/}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -5082,7 +5084,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACEON parameter@\spxentry{TRACEON parameter}}\index{TRACEON parameter@\spxentry{TRACEON parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACEON parameter}
-\label{\detokenize{Installation_Guide:traceon-parameter}}\label{\detokenize{Installation_Guide:index-130}}
+\label{\detokenize{Installation_Guide:traceon-parameter}}\label{\detokenize{Installation_Guide:index-131}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 TRACEON= ON \textbar{} OFF \textbar{} (Y\textbar{}N,Y\textbar{}N,Y\textbar{}N)
 
@@ -5140,7 +5142,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRACTIM parameter@\spxentry{TRACTIM parameter}}\index{TRACTIM parameter@\spxentry{TRACTIM parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRACTIM parameter}
-\label{\detokenize{Installation_Guide:tractim-parameter}}\label{\detokenize{Installation_Guide:index-131}}
+\label{\detokenize{Installation_Guide:tractim-parameter}}\label{\detokenize{Installation_Guide:index-132}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRACTIM}\PYG{o}{=}\PYG{n}{CPU}\PYG{o}{/}\PYG{n}{LOCAL}\PYG{o}{/}\PYG{n}{TOD} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{LOCAL}
 \end{sphinxVerbatim}
@@ -5160,7 +5162,7 @@ CPU option only works on z/OS and on a machine having support for the ECTG (Extr
 \index{Virtel TCT@\spxentry{Virtel TCT}!TRAN parameter@\spxentry{TRAN parameter}}\index{TRAN parameter@\spxentry{TRAN parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{TRAN parameter}
-\label{\detokenize{Installation_Guide:tran-parameter}}\label{\detokenize{Installation_Guide:index-132}}
+\label{\detokenize{Installation_Guide:tran-parameter}}\label{\detokenize{Installation_Guide:index-133}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRAN}\PYG{o}{=}\PYG{n}{EVEN}\PYG{o}{/}\PYG{n}{ODD}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{Even}
 \end{sphinxVerbatim}
@@ -5170,7 +5172,7 @@ This parameter should be coded in the same way as for the X25MCH macro in NPSI.
 \index{Virtel TCT@\spxentry{Virtel TCT}!UFIELnn parameter@\spxentry{UFIELnn parameter}}\index{UFIELnn parameter@\spxentry{UFIELnn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{UFILE1 to UFILE20 parameters}
-\label{\detokenize{Installation_Guide:ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:index-133}}
+\label{\detokenize{Installation_Guide:ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}}\label{\detokenize{Installation_Guide:index-134}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{UFILEx}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ddname}\PYG{p}{,}\PYG{n}{acbcard}\PYG{p}{,}\PYG{n}{rkp}\PYG{p}{,}\PYG{n}{keylen}\PYG{p}{,}\PYG{n}{mode}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{ }\PYG{l+s+s1}{\PYGZsq{}}
 \end{sphinxVerbatim}
@@ -5205,7 +5207,7 @@ The UFILEx parameters must be defined in sequence with no intervening gaps in th
 \index{Virtel TCT@\spxentry{Virtel TCT}!UPARMS parameter@\spxentry{UPARMS parameter}}\index{UPARMS parameter@\spxentry{UPARMS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{UPARMS parameter}
-\label{\detokenize{Installation_Guide:uparms-parameter}}\label{\detokenize{Installation_Guide:index-134}}
+\label{\detokenize{Installation_Guide:uparms-parameter}}\label{\detokenize{Installation_Guide:index-135}}
 The keyword enables the centralized saving of user settings on the host. Based upon a userid key, user settings can be maintained in a mainframe repository identified bu the name specified in the UPARMS parameter. For example UPARMS=(USERPARM). Here, the value USERPARM would be a Virtel transaction that identfied the repository. A sub-directory definition of the same name is also required to aasociate the repositry with a physical VSAM file. See the sample definitions below. The ARBOLOAD JCL can be used to load sample definitions into the ARBO through the USERPARM=YES option.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5237,7 +5239,7 @@ Sample ARBO definitions to support the USERPARM feature:-
 \index{Virtel TCT@\spxentry{Virtel TCT}!VIRSECU parameter@\spxentry{VIRSECU parameter}}\index{VIRSECU parameter@\spxentry{VIRSECU parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{VIRSECU parameter}
-\label{\detokenize{Installation_Guide:virsecu-parameter}}\label{\detokenize{Installation_Guide:index-135}}
+\label{\detokenize{Installation_Guide:virsecu-parameter}}\label{\detokenize{Installation_Guide:index-136}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VIRSECU}\PYG{o}{=}\PYG{n}{YES}\PYG{o}{/}\PYG{n}{NO} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
@@ -5249,7 +5251,7 @@ Sample ARBO definitions to support the USERPARM feature:-
 \index{Virtel TCT@\spxentry{Virtel TCT}!VIRSV1 parameter@\spxentry{VIRSV1 parameter}}\index{VIRSV1 parameter@\spxentry{VIRSV1 parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{VIRSV1 parameter}
-\label{\detokenize{Installation_Guide:virsv1-parameter}}\label{\detokenize{Installation_Guide:index-136}}
+\label{\detokenize{Installation_Guide:virsv1-parameter}}\label{\detokenize{Installation_Guide:index-137}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VIRSV1}\PYG{o}{=}\PYG{p}{(}\PYG{n}{vsvname}\PYG{p}{)} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -5261,7 +5263,7 @@ This parameter defines the characteristics of the interface to the VIRSV service
 \index{Virtel TCT@\spxentry{Virtel TCT}!VSAMTYP parameter@\spxentry{VSAMTYP parameter}}\index{VSAMTYP parameter@\spxentry{VSAMTYP parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{VSAMTYP parameter}
-\label{\detokenize{Installation_Guide:vsamtyp-parameter}}\label{\detokenize{Installation_Guide:index-137}}
+\label{\detokenize{Installation_Guide:vsamtyp-parameter}}\label{\detokenize{Installation_Guide:index-138}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VSAMTYP}\PYG{o}{=}\PYG{p}{[}\PYG{n}{READONLY}\PYG{o}{\textbar{}}\PYG{n}{NORMAL}\PYG{o}{\textbar{}}\PYG{n}{WRITER}\PYG{p}{]} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NORMAL}
 \end{sphinxVerbatim}
@@ -5281,7 +5283,7 @@ VSAMTYP=WRITER should be used to suppport the Virplex writer instance of Virtel.
 \index{Virtel TCT@\spxentry{Virtel TCT}!VTKEYS parameter@\spxentry{VTKEYS parameter}}\index{VTKEYS parameter@\spxentry{VTKEYS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{VTKEYS parameter}
-\label{\detokenize{Installation_Guide:vtkeys-parameter}}\label{\detokenize{Installation_Guide:index-138}}
+\label{\detokenize{Installation_Guide:vtkeys-parameter}}\label{\detokenize{Installation_Guide:index-139}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VTKEYS}\PYG{o}{=}\PYG{n}{xxxxxxxx} \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{0}
 \end{sphinxVerbatim}
@@ -5291,17 +5293,29 @@ VSAMTYP=WRITER should be used to suppport the Virplex writer instance of Virtel.
 \index{Virtel TCT@\spxentry{Virtel TCT}!VTOVER parameter@\spxentry{VTOVER parameter}}\index{VTOVER parameter@\spxentry{VTOVER parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{VTOVER parameter}
-\label{\detokenize{Installation_Guide:index-139}}\label{\detokenize{Installation_Guide:id7}}
+\label{\detokenize{Installation_Guide:index-140}}\label{\detokenize{Installation_Guide:id7}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VTOVER}\PYG{o}{=}\PYG{n}{xxxxxxxx} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{xxxxxxxx} - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.
 
+\index{Virtel TCT@\spxentry{Virtel TCT}!VWAVERS parameter@\spxentry{VWAVERS parameter}}\index{VWAVERS parameter@\spxentry{VWAVERS parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
+\def\sphinxLiteralBlockLabel{\label{\detokenize{Installation_Guide:index-141}}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VWAVERS}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{xxxxxxxxxxxx}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
+
+Max of 12 characters. This text will replace the ‘VIRTEL \&VERS’ message in the HTTP 40x messages. It acts as security feature to hide the identity of Virtel as the issuing program. For example: -
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VWAVERS}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Apache V99}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
+
 \index{Virtel TCT@\spxentry{Virtel TCT}!WARNING parameter@\spxentry{WARNING parameter}}\index{WARNING parameter@\spxentry{WARNING parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{WARNING parameter}
-\label{\detokenize{Installation_Guide:warning-parameter}}\label{\detokenize{Installation_Guide:index-140}}
+\label{\detokenize{Installation_Guide:warning-parameter}}\label{\detokenize{Installation_Guide:index-142}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{WARNING}\PYG{o}{=}\PYG{n}{nn}\PYG{p}{,}
 \end{sphinxVerbatim}
@@ -5311,7 +5325,7 @@ Where nn is the number of days prior to issuing a licence warning message. If no
 \index{Virtel TCT@\spxentry{Virtel TCT}!XMn parameter@\spxentry{XMn parameter}}\index{XMn parameter@\spxentry{XMn parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{XM1 parameter}
-\label{\detokenize{Installation_Guide:xm1-parameter}}\label{\detokenize{Installation_Guide:index-141}}
+\label{\detokenize{Installation_Guide:xm1-parameter}}\label{\detokenize{Installation_Guide:index-143}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{XM1}\PYG{o}{=}\PYG{n}{xmname} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{no} \PYG{n}{XM} \PYG{n}{connection}
 \PYG{n}{XM1}\PYG{o}{=}\PYG{p}{(}\PYG{n}{xmname}\PYG{p}{,}\PYG{p}{,}\PYG{p}{,}\PYG{p}{,}\PYG{p}{[}\PYG{n}{pgmname}\PYG{p}{]}\PYG{p}{)}
@@ -5344,7 +5358,7 @@ This parameter defines the characteristics of the connection to the cross-memory
 \index{Virtel TCT@\spxentry{Virtel TCT}!ZAPH parameter@\spxentry{ZAPH parameter}}\index{ZAPH parameter@\spxentry{ZAPH parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{ZAPH parameter}
-\label{\detokenize{Installation_Guide:zaph-parameter}}\label{\detokenize{Installation_Guide:index-142}}
+\label{\detokenize{Installation_Guide:zaph-parameter}}\label{\detokenize{Installation_Guide:index-144}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{ZAPH}\PYG{o}{=}\PYG{n}{xxxxxxxx} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -5356,7 +5370,7 @@ This parameter defines the characteristics of the connection to the cross-memory
 \index{VSAM Files@\spxentry{VSAM Files}!Additional Parameters@\spxentry{Additional Parameters}}\index{Additional Parameters@\spxentry{Additional Parameters}!VSAM Files@\spxentry{VSAM Files}}\ignorespaces 
 
 \section{Additional Parameters For VSAM Files}
-\label{\detokenize{Installation_Guide:additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:index-143}}
+\label{\detokenize{Installation_Guide:additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}}\label{\detokenize{Installation_Guide:index-145}}
 VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. These VSAM files must be defined in the VIRTCT by means of a parameter UFILEx and an ACBHx macro for each file. The ACB macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5382,7 +5396,7 @@ The value OUT should be omitted from MACRF if you want the mode (read-only or re
 \index{Batch@\spxentry{Batch}!Additional Parameters@\spxentry{Additional Parameters}}\index{Additional Parameters@\spxentry{Additional Parameters}!Batch@\spxentry{Batch}}\ignorespaces 
 
 \section{Additional Parameters For Batch Files}
-\label{\detokenize{Installation_Guide:additional-parameters-for-batch-files}}\label{\detokenize{Installation_Guide:index-144}}
+\label{\detokenize{Installation_Guide:additional-parameters-for-batch-files}}\label{\detokenize{Installation_Guide:index-146}}
 VIRTEL uses sequential files for batch input and output when the BATCHx parameter is defined in the VIRTCT, and a batch line is present in the configuration. These sequential files must be defined in the VIRTCT by means of a pair of DCB/DCBE macros for each file. The DCB/DCBE macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5437,7 +5451,7 @@ The example below shows how to code DCB/DCBE macros when the BATCH1 parameter is
 \index{Virtel@\spxentry{Virtel}!Sharing files@\spxentry{Sharing files}}\index{Sharing files@\spxentry{Sharing files}!Virtel@\spxentry{Virtel}}\ignorespaces 
 
 \subsection{How To Share VSAM Files Between Multiple Instances Of VIRTEL}
-\label{\detokenize{Installation_Guide:how-to-share-vsam-files-between-multiple-instances-of-virtel}}\label{\detokenize{Installation_Guide:index-145}}
+\label{\detokenize{Installation_Guide:how-to-share-vsam-files-between-multiple-instances-of-virtel}}\label{\detokenize{Installation_Guide:index-147}}
 Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in “write” mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel.
 
 For more detailed informations on this subject, see {\hyperref[\detokenize{Installation_Guide:v461ig-ufile1-to-ufile20-parameters}]{\sphinxcrossref{\DUrole{std,std-ref}{“UFILE1 to UFILE20”,}}}} and also {\hyperref[\detokenize{Installation_Guide:v461ig-additional-parameters-for-vsam-files}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for VSAM files”,}}}}.
@@ -5541,13 +5555,13 @@ An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB fo
 \index{Virtel TCT@\spxentry{Virtel TCT}!Assembly@\spxentry{Assembly}}\index{Assembly@\spxentry{Assembly}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \section{Assembling The VIRTCT}
-\label{\detokenize{Installation_Guide:index-146}}\label{\detokenize{Installation_Guide:id8}}
+\label{\detokenize{Installation_Guide:index-148}}\label{\detokenize{Installation_Guide:id8}}
 The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the z/VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.
 
 \index{Virtel TCT@\spxentry{Virtel TCT}!Assembly - Z/OS@\spxentry{Assembly - Z/OS}}\index{Assembly - Z/OS@\spxentry{Assembly - Z/OS}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{z/OS example}
-\label{\detokenize{Installation_Guide:z-os-example}}\label{\detokenize{Installation_Guide:index-147}}
+\label{\detokenize{Installation_Guide:z-os-example}}\label{\detokenize{Installation_Guide:index-149}}
 A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTEL SAMPLIB:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5592,7 +5606,7 @@ A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTE
 \index{Virtel TCT@\spxentry{Virtel TCT}!Assembly - z/VSE@\spxentry{Assembly - z/VSE}}\index{Assembly - z/VSE@\spxentry{Assembly - z/VSE}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{z/VSE example}
-\label{\detokenize{Installation_Guide:z-vse-example}}\label{\detokenize{Installation_Guide:index-148}}
+\label{\detokenize{Installation_Guide:z-vse-example}}\label{\detokenize{Installation_Guide:index-150}}
 A sample job for assembling the VIRTCT is supplied on the installation tape:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5618,7 +5632,7 @@ A sample job for assembling the VIRTCT is supplied on the installation tape:
 \index{Virtel TCT@\spxentry{Virtel TCT}!Dynamic Overrides@\spxentry{Dynamic Overrides}}\index{Dynamic Overrides@\spxentry{Dynamic Overrides}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \subsection{Dynamic VIRTCT Overrides}
-\label{\detokenize{Installation_Guide:dynamic-virtct-overrides}}\label{\detokenize{Installation_Guide:index-149}}
+\label{\detokenize{Installation_Guide:dynamic-virtct-overrides}}\label{\detokenize{Installation_Guide:index-151}}
 Data may be passed to the VIRTEL procedure via the start command which allows the value of certain parameters in the VIRTCT (APPLID, MQ1, MQ2) to be modified. For example the VIRTEL started task procedure should contain the TCT, APPLID, and VTOVER parameters which are substituted into the PARM as shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5674,7 +5688,7 @@ At the end of the VIRTCT, define the VTDYNAM table with the rules for substituti
 \PYG{n}{MQ22}    \PYG{n}{VTOVER} \PYG{n}{PARM}\PYG{o}{=}\PYG{p}{(}\PYG{n}{MQ2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{n}{TARGET}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZpc{}\PYGZpc{}}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{FROM}\PYG{o}{=}\PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
-With these definitions and VTOVER=’12345’, the MQ1 and MQ2 parameters of the VIRTCT will have the values shown below:
+With these definitions and VTOVER=‘12345’, the MQ1 and MQ2 parameters of the VIRTCT will have the values shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MQ1}\PYG{o}{=}\PYG{n}{CSQ1}\PYG{p}{,}
@@ -5688,7 +5702,7 @@ If an error occurs during substitution, VIRTEL will issue message VIR0025E indic
 \index{Virtel TCT@\spxentry{Virtel TCT}!Applying patches@\spxentry{Applying patches}}\index{Applying patches@\spxentry{Applying patches}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
 \section{Applying Patches Via The VIRTCT}
-\label{\detokenize{Installation_Guide:applying-patches-via-the-virtct}}\label{\detokenize{Installation_Guide:index-150}}
+\label{\detokenize{Installation_Guide:applying-patches-via-the-virtct}}\label{\detokenize{Installation_Guide:index-152}}
 The “ZAPH parameter” of the VIRTCT allows one or more patches to be applied to the VIRTEL kernel after the resident modules have been loaded into memory at startup. This parameter is intended to be used only under the advice of Syspertec technical support personnel.
 
 For example, if the VIRTCT contains the parameter:
@@ -5726,7 +5740,7 @@ The format of each ZAPD instruction is as follows:
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \chapter{VIRCONF UTILITY}
-\label{\detokenize{Installation_Guide:virconf-utility}}\label{\detokenize{Installation_Guide:index-151}}
+\label{\detokenize{Installation_Guide:virconf-utility}}\label{\detokenize{Installation_Guide:index-153}}
 
 \section{Introduction}
 \label{\detokenize{Installation_Guide:id9}}
@@ -5752,7 +5766,7 @@ Scan a SYSIN cards file for checking the right syntax
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Define and Upload(z/VSE)@\spxentry{Define and Upload(z/VSE)}}\index{Define and Upload(z/VSE)@\spxentry{Define and Upload(z/VSE)}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \section{JCL}
-\label{\detokenize{Installation_Guide:jcl}}\label{\detokenize{Installation_Guide:index-152}}
+\label{\detokenize{Installation_Guide:jcl}}\label{\detokenize{Installation_Guide:index-154}}
 Below are some JCL examples to define and upload a new VIRARBO file:-
 
 z/VSE
@@ -5870,7 +5884,7 @@ Submitting VIRCONF with PARM=LOAD for an existing VIRARBO file allows definition
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Unloading the ARBO@\spxentry{Unloading the ARBO}}\index{Unloading the ARBO@\spxentry{Unloading the ARBO}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \subsection{Unloading a VIRARBO file}
-\label{\detokenize{Installation_Guide:unloading-a-virarbo-file}}\label{\detokenize{Installation_Guide:index-156}}
+\label{\detokenize{Installation_Guide:unloading-a-virarbo-file}}\label{\detokenize{Installation_Guide:index-158}}
 Below are some JCL examples to obtain existing VIRARBO definitions in the form of control cards:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5905,7 +5919,7 @@ When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definit
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Syntax checking@\spxentry{Syntax checking}}\index{Syntax checking@\spxentry{Syntax checking}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \subsection{Verify control card syntax}
-\label{\detokenize{Installation_Guide:verify-control-card-syntax}}\label{\detokenize{Installation_Guide:index-157}}
+\label{\detokenize{Installation_Guide:verify-control-card-syntax}}\label{\detokenize{Installation_Guide:index-159}}
 Below are some JCL examples to verify the control card syntax:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5940,7 +5954,7 @@ Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (z/V
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Multi-language Support@\spxentry{Multi-language Support}}\index{Multi-language Support@\spxentry{Multi-language Support}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \subsection{Multi-language support}
-\label{\detokenize{Installation_Guide:multi-language-support}}\label{\detokenize{Installation_Guide:index-158}}
+\label{\detokenize{Installation_Guide:multi-language-support}}\label{\detokenize{Installation_Guide:index-160}}
 When uploading the VIRARBO file, VIRCONF may select one among several versions of a control card, based on the LANG=xx parameter defined in the JCL. In this way, the same SYSIN file may be used to generate several different language versions of the VIRARBO file. For example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5990,7 +6004,7 @@ When uploading the VIRARBO file, VIRCONF may select one among several versions o
 \index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Control Cards@\spxentry{Control Cards}}\index{Control Cards@\spxentry{Control Cards}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\ignorespaces 
 
 \section{VIRCONF Control Cards}
-\label{\detokenize{Installation_Guide:virconf-control-cards}}\label{\detokenize{Installation_Guide:index-159}}
+\label{\detokenize{Installation_Guide:virconf-control-cards}}\label{\detokenize{Installation_Guide:index-161}}
 
 \subsection{VIRCONF control card syntax}
 \label{\detokenize{Installation_Guide:virconf-control-card-syntax}}
@@ -6039,7 +6053,7 @@ You can generate some examples by submitting a job using the PARM=UNLOAD paramet
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!APPLIC statement@\spxentry{APPLIC statement}}\index{APPLIC statement@\spxentry{APPLIC statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{APPLIC}
-\label{\detokenize{Installation_Guide:applic}}\label{\detokenize{Installation_Guide:index-160}}
+\label{\detokenize{Installation_Guide:applic}}\label{\detokenize{Installation_Guide:index-162}}
 This operation adds or replaces an APPLIC entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Applications Management” on page 123
 
@@ -6089,7 +6103,7 @@ Quotes allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!DELETE statement@\spxentry{DELETE statement}}\index{DELETE statement@\spxentry{DELETE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{DELETE}
-\label{\detokenize{Installation_Guide:delete}}\label{\detokenize{Installation_Guide:index-161}}
+\label{\detokenize{Installation_Guide:delete}}\label{\detokenize{Installation_Guide:index-163}}
 This operation deletes an entity of the specified type from the VIRARBO file.
 
 
@@ -6126,7 +6140,7 @@ Quotes allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!DEPT statement@\spxentry{DEPT statement}}\index{DEPT statement@\spxentry{DEPT statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{DEPT}
-\label{\detokenize{Installation_Guide:dept}}\label{\detokenize{Installation_Guide:index-162}}
+\label{\detokenize{Installation_Guide:dept}}\label{\detokenize{Installation_Guide:index-164}}
 This operation adds or replaces a DEPT entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Create a department” or “Profile lent to a department”.
 
@@ -6174,7 +6188,7 @@ Separated by commas, the whole between parenthesis
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!ENTRY statement@\spxentry{ENTRY statement}}\index{ENTRY statement@\spxentry{ENTRY statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{ENTRY}
-\label{\detokenize{Installation_Guide:entry}}\label{\detokenize{Installation_Guide:index-163}}
+\label{\detokenize{Installation_Guide:entry}}\label{\detokenize{Installation_Guide:index-165}}
 This operation adds or replaces an ENTRY entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Parameters of the Entry Point”.
 
@@ -6285,7 +6299,7 @@ Extended colors
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!INDEX statement@\spxentry{INDEX statement}}\index{INDEX statement@\spxentry{INDEX statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{INDEX}
-\label{\detokenize{Installation_Guide:index}}\label{\detokenize{Installation_Guide:index-164}}
+\label{\detokenize{Installation_Guide:index}}\label{\detokenize{Installation_Guide:index-166}}
 This operation adds or replaces an INDEX entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Updating the keywords”.
 
 
@@ -6329,7 +6343,7 @@ Characters 7-8: Choice
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!LINE statement@\spxentry{LINE statement}}\index{LINE statement@\spxentry{LINE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{LINE}
-\label{\detokenize{Installation_Guide:line}}\label{\detokenize{Installation_Guide:index-165}}
+\label{\detokenize{Installation_Guide:line}}\label{\detokenize{Installation_Guide:index-167}}
 This operation adds or replaces a LINE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the line”.
 
 
@@ -6491,7 +6505,7 @@ Y or N
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!NODE statement@\spxentry{NODE statement}}\index{NODE statement@\spxentry{NODE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{NODE}
-\label{\detokenize{Installation_Guide:node}}\label{\detokenize{Installation_Guide:index-166}}
+\label{\detokenize{Installation_Guide:node}}\label{\detokenize{Installation_Guide:index-168}}
 This operation adds or replaces a NODE entity in the VIRARBO file. The parameters correspond to the various items described under the heading ”Defining a native node”.
 
 
@@ -6542,7 +6556,7 @@ Quotes allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!PC statement@\spxentry{PC statement}}\index{PC statement@\spxentry{PC statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{PC}
-\label{\detokenize{Installation_Guide:pc}}\label{\detokenize{Installation_Guide:index-167}}
+\label{\detokenize{Installation_Guide:pc}}\label{\detokenize{Installation_Guide:index-169}}
 This operation adds or replaces a PC entity in the VIRARBO file. The parameters correspond to the various items described under the heading “PC management”.
 
 
@@ -6596,7 +6610,7 @@ Quotes allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!PROFILE statement@\spxentry{PROFILE statement}}\index{PROFILE statement@\spxentry{PROFILE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{PROFILE}
-\label{\detokenize{Installation_Guide:profile}}\label{\detokenize{Installation_Guide:index-168}}
+\label{\detokenize{Installation_Guide:profile}}\label{\detokenize{Installation_Guide:index-170}}
 This operation adds or replaces one entity with PROFILE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a profile”.
 
 
@@ -6645,7 +6659,7 @@ Separated by commas, and surrounded by parenthesesUnused field
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!RESOURCE statement@\spxentry{RESOURCE statement}}\index{RESOURCE statement@\spxentry{RESOURCE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{RESOURCE}
-\label{\detokenize{Installation_Guide:resource}}\label{\detokenize{Installation_Guide:index-169}}
+\label{\detokenize{Installation_Guide:resource}}\label{\detokenize{Installation_Guide:index-171}}
 This operation adds or replaces a RESOURCE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a resource”.
 
 
@@ -6692,7 +6706,7 @@ Unused field
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!RULE statement@\spxentry{RULE statement}}\index{RULE statement@\spxentry{RULE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{RULE}
-\label{\detokenize{Installation_Guide:rule}}\label{\detokenize{Installation_Guide:index-170}}
+\label{\detokenize{Installation_Guide:rule}}\label{\detokenize{Installation_Guide:index-172}}
 This operation adds or replaces a RULE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the rule”.
 
 
@@ -6842,7 +6856,7 @@ HHMMSSHHMMSS
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!SERVER statement@\spxentry{SERVER statement}}\index{SERVER statement@\spxentry{SERVER statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{SERVER}
-\label{\detokenize{Installation_Guide:server}}\label{\detokenize{Installation_Guide:index-171}}
+\label{\detokenize{Installation_Guide:server}}\label{\detokenize{Installation_Guide:index-173}}
 This operation adds or replaces a SERVER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of external server”.
 
 
@@ -6970,7 +6984,7 @@ Quotes allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!SSERV statement@\spxentry{SSERV statement}}\index{SSERV statement@\spxentry{SSERV statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{SSERV}
-\label{\detokenize{Installation_Guide:sserv}}\label{\detokenize{Installation_Guide:index-172}}
+\label{\detokenize{Installation_Guide:sserv}}\label{\detokenize{Installation_Guide:index-174}}
 This operation adds or replaces an SSERV entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a sub-server node”.
 
 
@@ -7247,7 +7261,7 @@ PF23
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!SUBDIR statement@\spxentry{SUBDIR statement}}\index{SUBDIR statement@\spxentry{SUBDIR statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{SUBDIR}
-\label{\detokenize{Installation_Guide:subdir}}\label{\detokenize{Installation_Guide:index-173}}
+\label{\detokenize{Installation_Guide:subdir}}\label{\detokenize{Installation_Guide:index-175}}
 This operation adds or replaces a SUBDIR entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of directory”.
 
 
@@ -7328,7 +7342,7 @@ X=File deletion is allowed
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!TERMINAL statement@\spxentry{TERMINAL statement}}\index{TERMINAL statement@\spxentry{TERMINAL statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{TERMINAL}
-\label{\detokenize{Installation_Guide:terminal}}\label{\detokenize{Installation_Guide:index-174}}
+\label{\detokenize{Installation_Guide:terminal}}\label{\detokenize{Installation_Guide:index-176}}
 This operation adds or replaces a TERMINAL entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the terminal”.
 
 
@@ -7416,7 +7430,7 @@ Numeric
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!TRANSACT statement@\spxentry{TRANSACT statement}}\index{TRANSACT statement@\spxentry{TRANSACT statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{TRANSACT}
-\label{\detokenize{Installation_Guide:transact}}\label{\detokenize{Installation_Guide:index-175}}
+\label{\detokenize{Installation_Guide:transact}}\label{\detokenize{Installation_Guide:index-177}}
 This operation adds or replaces a TRANSACT entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the transaction”.
 
 
@@ -7562,7 +7576,7 @@ Output scenario
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!UPDATE statement@\spxentry{UPDATE statement}}\index{UPDATE statement@\spxentry{UPDATE statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{UPDATE}
-\label{\detokenize{Installation_Guide:update}}\label{\detokenize{Installation_Guide:index-176}}
+\label{\detokenize{Installation_Guide:update}}\label{\detokenize{Installation_Guide:index-178}}
 This operation updates one or more parameters of an entity in the VIRARBO file.
 
 
@@ -7606,7 +7620,7 @@ See the precedding description of entity.
 \index{VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}!USER statement@\spxentry{USER statement}}\index{USER statement@\spxentry{USER statement}!VIRCONF Control Cards@\spxentry{VIRCONF Control Cards}}\ignorespaces 
 
 \subsection{USER}
-\label{\detokenize{Installation_Guide:user}}\label{\detokenize{Installation_Guide:index-177}}
+\label{\detokenize{Installation_Guide:user}}\label{\detokenize{Installation_Guide:index-179}}
 This operation adds or replaces a USER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Managing users”.
 
 
@@ -7687,13 +7701,13 @@ List of profiles assigned
 \index{Security@\spxentry{Security}}\ignorespaces 
 
 \chapter{Security}
-\label{\detokenize{Installation_Guide:security}}\label{\detokenize{Installation_Guide:index-178}}
+\label{\detokenize{Installation_Guide:security}}\label{\detokenize{Installation_Guide:index-180}}
 Perform the following steps to activate RACF security for VIRTEL in the z/OS environment.
 
 \index{Security@\spxentry{Security}!Setting up the TCT parameters@\spxentry{Setting up the TCT parameters}}\index{Setting up the TCT parameters@\spxentry{Setting up the TCT parameters}!Security@\spxentry{Security}}\ignorespaces 
 
 \section{Modify the VIRTCT}
-\label{\detokenize{Installation_Guide:modify-the-virtct}}\label{\detokenize{Installation_Guide:index-179}}
+\label{\detokenize{Installation_Guide:modify-the-virtct}}\label{\detokenize{Installation_Guide:index-181}}
 In the VIRTCTxx member of the VIRTEL CNTL library,
 \begin{itemize}
 \item {} 
@@ -7726,7 +7740,7 @@ Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into
 \index{Security@\spxentry{Security}!RACF definitions@\spxentry{RACF definitions}}\index{RACF definitions@\spxentry{RACF definitions}!Security@\spxentry{Security}}\ignorespaces 
 
 \section{Add RACF definitions}
-\label{\detokenize{Installation_Guide:add-racf-definitions}}\label{\detokenize{Installation_Guide:index-180}}
+\label{\detokenize{Installation_Guide:add-racf-definitions}}\label{\detokenize{Installation_Guide:index-182}}
 The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace your userid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7789,7 +7803,7 @@ Later you can refine the definitions so that other VIRTEL users can use VIRTEL t
 \index{Security@\spxentry{Security}!Virtel Administrators@\spxentry{Virtel Administrators}}\index{Virtel Administrators@\spxentry{Virtel Administrators}!Security@\spxentry{Security}}\ignorespaces 
 
 \section{Virtel Administrators}
-\label{\detokenize{Installation_Guide:virtel-administrators}}\label{\detokenize{Installation_Guide:index-181}}
+\label{\detokenize{Installation_Guide:virtel-administrators}}\label{\detokenize{Installation_Guide:index-183}}
 Virtel Administrators have access to all the features of Virtel and are rsponsible for the administration of the product. For example this includes defining transactions and maintaining macros in the DDI central repository. Virtel uses the security subsystem to protect transactions. The following job shows an example of setting up the security profiles for Administrators in group SPGPTECH. This will enable them to control DDI and macro administration:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7867,7 +7881,7 @@ For more information about protecting VIRTEL Web Access resources, refer to the 
 \index{Security@\spxentry{Security}!ACF Security@\spxentry{ACF Security}}\index{ACF Security@\spxentry{ACF Security}!Security@\spxentry{Security}}\ignorespaces 
 
 \section{How to activate ACF2 Security}
-\label{\detokenize{Installation_Guide:how-to-activate-acf2-security}}\label{\detokenize{Installation_Guide:index-182}}
+\label{\detokenize{Installation_Guide:how-to-activate-acf2-security}}\label{\detokenize{Installation_Guide:index-184}}
 Perform the following steps to activate ACF2 security for VIRTEL in the z/OS environment.
 
 
@@ -7905,7 +7919,7 @@ A example job to add VIRTEL definitions for ACF2 can be found in member ACF2DEF 
 \label{\detokenize{Installation_Guide:create-omvs-segment-for-virtel}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{SET} \PYG{n}{PROFILE}\PYG{p}{(}\PYG{n}{VIRTSTC}\PYG{p}{)} \PYG{n}{DIV}\PYG{p}{(}\PYG{n}{OMVS}\PYG{p}{)}
-\PYG{n}{INSERT} \PYG{n}{VIRTSTC} \PYG{n}{UID}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{HOME}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{PROGRAM}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/bin/sh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{INSERT} \PYG{n}{VIRTSTC} \PYG{n}{UID}\PYG{p}{(}\PYG{n}{nn}\PYG{p}{)} \PYG{n}{HOME}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{PROGRAM}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/bin/sh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{ACF2DEF : ACF2 commands to create OMVS segment for VIRTEL}
@@ -7926,7 +7940,7 @@ This command permits users in group admin-group-name to access all VIRTEL transa
 \index{Security@\spxentry{Security}!ACF Security - Adding Users@\spxentry{ACF Security - Adding Users}}\index{ACF Security - Adding Users@\spxentry{ACF Security - Adding Users}!Security@\spxentry{Security}}\ignorespaces 
 
 \subsubsection{Add permissions for VIRTEL general users}
-\label{\detokenize{Installation_Guide:add-permissions-for-virtel-general-users}}\label{\detokenize{Installation_Guide:index-183}}
+\label{\detokenize{Installation_Guide:add-permissions-for-virtel-general-users}}\label{\detokenize{Installation_Guide:index-185}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYGZdl{}KEY(W2H\PYGZhy{}10) TYPE(VIR) UID(******** user\PYGZhy{}group\PYGZhy{}name) SERVICE(READ)
 \PYGZdl{}KEY(CLI\PYGZhy{}****) TYPE(VIR) UID(******** user\PYGZhy{}group\PYGZhy{}name) SERVICE(READ)
@@ -7954,7 +7968,7 @@ This command permits all users to use the 3270 Logoff transaction, whose interna
 \index{Security@\spxentry{Security}!Top Secret Security platform.@\spxentry{Top Secret Security platform.}}\index{Top Secret Security platform.@\spxentry{Top Secret Security platform.}!Security@\spxentry{Security}}\ignorespaces 
 
 \section{How To Activate Top Secret (TSS) Security Perform}
-\label{\detokenize{Installation_Guide:how-to-activate-top-secret-tss-security-perform}}\label{\detokenize{Installation_Guide:index-184}}
+\label{\detokenize{Installation_Guide:how-to-activate-top-secret-tss-security-perform}}\label{\detokenize{Installation_Guide:index-186}}
 Perform the following steps to activate TSS security for VIRTEL in the z/OS environment.
 
 
@@ -7980,7 +7994,7 @@ Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into
 \index{Security@\spxentry{Security}!Adding TSS definitions@\spxentry{Adding TSS definitions}}\index{Adding TSS definitions@\spxentry{Adding TSS definitions}!Security@\spxentry{Security}}\ignorespaces 
 
 \subsection{Add TSS definitions}
-\label{\detokenize{Installation_Guide:add-tss-definitions}}\label{\detokenize{Installation_Guide:index-185}}
+\label{\detokenize{Installation_Guide:add-tss-definitions}}\label{\detokenize{Installation_Guide:index-187}}
 A example job to add VIRTEL definitions for TSS can be found in member TOPSDEF in the VIRTEL SAMPLIB. The commands in this job are explained in the following paragraphs.
 
 8.3.2.1 Add TSS definitions
@@ -8055,7 +8069,7 @@ This command associates the VIRTEL started task with the VIRTSTC ACID. VIRTEL is
 \subsubsection{Create OMVS segment for VIRTEL}
 \label{\detokenize{Installation_Guide:id11}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TSS} \PYG{n}{ADDTO}\PYG{p}{(}\PYG{n}{VIRTSTC}\PYG{p}{)} \PYG{n}{UID}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{DFLTGRP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{n}{GROUP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{TSS} \PYG{n}{ADDTO}\PYG{p}{(}\PYG{n}{VIRTSTC}\PYG{p}{)} \PYG{n}{UID}\PYG{p}{(}\PYG{n}{nn}\PYG{p}{)} \PYG{n}{DFLTGRP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{n}{GROUP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{o}{+}
         \PYG{n}{OMVSPGM}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/bin/sh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{HOME}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 \end{sphinxVerbatim}
 
@@ -8118,6 +8132,15 @@ The resource named PC is a generic resource which permits access to the VIRTEL a
 Resource W2H is a generic resource which permits access to VIRTEL Web Access transactions (internal name W2H-nn) and to the directory W2H-DIR. The resource W2H-10 permits specific access to the CICS Web Access transaction.
 
 Resource CLI is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) and to the directory CLI-DIR.
+
+
+\subsubsection{Set Facility to resident}
+\label{\detokenize{Installation_Guide:set-facility-to-resident}}
+Set the facility to resident using the following command.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TSS} \PYG{n}{MODIFY} \PYG{n}{FAC}\PYG{p}{(}\PYG{n}{VIRTFAC}\PYG{o}{=}\PYG{n}{RES}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Create administrator profile}
@@ -8213,7 +8236,7 @@ These commands define admin1 and admin2 as VIRTEL administrators by adding the V
 \index{Virtel@\spxentry{Virtel}!Library Authorization.@\spxentry{Library Authorization.}}\index{Library Authorization.@\spxentry{Library Authorization.}!Virtel@\spxentry{Virtel}}\ignorespaces 
 
 \subsubsection{Authorize the VIRTEL LOADLIB}
-\label{\detokenize{Installation_Guide:authorize-the-virtel-loadlib}}\label{\detokenize{Installation_Guide:index-186}}
+\label{\detokenize{Installation_Guide:authorize-the-virtel-loadlib}}\label{\detokenize{Installation_Guide:index-188}}
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
 
 
@@ -8222,7 +8245,7 @@ The VIRTEL load library should normally be APF-authorized. If this is not the ca
 \index{Virtel Modules@\spxentry{Virtel Modules}}\ignorespaces 
 
 \section{Appendix A. Virtel Modules}
-\label{\detokenize{Installation_Guide:appendix-a-virtel-modules}}\label{\detokenize{Installation_Guide:index-187}}
+\label{\detokenize{Installation_Guide:appendix-a-virtel-modules}}\label{\detokenize{Installation_Guide:index-189}}
 
 \subsection{Virtel Modules}
 \label{\detokenize{Installation_Guide:virtel-modules}}

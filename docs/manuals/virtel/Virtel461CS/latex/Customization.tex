@@ -13,6 +13,9 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
+
+
+
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -27,24 +30,7 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
-\makeatletter
-\def\fnum@figure{\figurename\thefigure{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\tablename}{Table }}
-\makeatletter
-\def\fnum@table{\tablename\thetable{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
-\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
-\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 \setcounter{tocdepth}{2}
 
 
@@ -56,7 +42,7 @@
 
 
 \title{Virtel Customization}
-\date{Feb 13, 2022}
+\date{Oct 23, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -116,45 +102,7 @@ their respective owners.
 \label{\detokenize{Customization:summary-of-amendments}}\label{\detokenize{Customization:virtel461cs-summary-of-amendments}}
 
 \section{Virtel version 4.61 (11th Oct 2021)}
-\label{\detokenize{Customization:virtel-version-4-61-11th-oct-2021}}\begin{itemize}
-\item {} 
-Support for IPV6
-
-\item {} 
-New FTP Client interface
-
-\item {} 
-Enhanced Page Capture
-
-\item {} 
-New wizard support for VSR
-
-\item {} 
-Keyboard assignment enhancements
-
-\item {} 
-New dynamic symbolic for USSMSG10
-
-\item {} 
-Password and Passphrase support in native VTAM mode
-
-\item {} 
-DNS support on Line definition
-
-\item {} 
-Improvement to UNLOAD command. SYSPUNCH dynamically allocated
-
-\item {} 
-Scenario language updates
-
-\item {} 
-Silence command supports dynamic message updates
-
-\item {} 
-Various bug fixes
-
-\end{itemize}
-
+\label{\detokenize{Customization:virtel-version-4-61-11th-oct-2021}}
 \begin{sphinxadmonition}{note}{Note:}
 For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.
 \end{sphinxadmonition}
@@ -162,7 +110,7 @@ For further details see the Virtel Technical Newsletter TN202101: Whats new in V
 
 \chapter{IPV6 Support}
 \label{\detokenize{Customization:ipv6-support}}
-Virtel 4.61 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example {[}\sphinxurl{http://{[}fd10:15c1:1921:a1a6::31{]}:41001}. In all cases the square brackets are essential.
+Virtel 4.60 introduces support of IPV6. Throughout this document IP addresses default to the IPV4 construct - 192.168.048.002:41001 but this can also be read as an IPV6 construct. For example {[}\sphinxurl{http://{[}fd10:15c1:1921:a1a6::31{]}:41001}. In all cases the square brackets are essential.
 
 
 \chapter{W2H Customization}
@@ -333,6 +281,7 @@ Virtel implements a “global” option customized level whereby all customized 
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToJsCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custJS.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToCssCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custCSS.global.css}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToW2hparm}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/w2hparm.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToFavicon}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/cust\PYGZhy{}favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToHelp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/myHelp.html}\PYG{l+s+s2}{\PYGZdq{}}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
@@ -347,7 +296,7 @@ The “option” pathname is normally associated with the OPT-DIR. The directory
 Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{key}     \PYG{o}{=} \PYG{n}{W2hparm} \PYG{o}{\textbar{}} \PYG{n}{CssCustom} \PYG{o}{\textbar{}} \PYG{n}{JSCustom} \PYG{o}{\textbar{}} \PYG{n}{PrintCss} \PYG{o}{\textbar{}} \PYG{n}{Help}  \PYG{n}{Case} \PYG{n}{sensitive}\PYG{o}{.}
+\PYG{n}{key}     \PYG{o}{=} \PYG{n}{W2hparm} \PYG{o}{\textbar{}} \PYG{n}{CssCustom} \PYG{o}{\textbar{}} \PYG{n}{JSCustom} \PYG{o}{\textbar{}} \PYG{n}{PrintCss} \PYG{o}{\textbar{}} \PYG{n}{Help} \PYG{o}{\textbar{}} \PYG{n}{Favicon}  \PYG{n}{Case} \PYG{n}{sensitive}\PYG{o}{.}
 \PYG{n+nb}{id}      \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{global}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o+ow}{or} \PYG{n}{a} \PYG{n}{transaction} \PYG{n}{option} \PYG{n}{identifier}       \PYG{n}{Option} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{id}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{n+nb}{type}    \PYG{o}{=} \PYG{n}{css} \PYG{o}{\textbar{}} \PYG{n}{html} \PYG{o}{\textbar{}} \PYG{n}{js}                                   \PYG{n}{Type}
 \end{sphinxVerbatim}
@@ -360,6 +309,7 @@ Global-settings object can contain the following pathTo properties:
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToCssCustom}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZhy{}} \PYG{n}{Customized} \PYG{n}{CSS} \PYG{n}{stylesheets}
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToPrintCss}\PYG{l+s+s2}{\PYGZdq{}}  \PYG{o}{\PYGZhy{}} \PYG{n}{Customized} \PYG{n}{Print} \PYG{n}{CSS} \PYG{n}{Style} \PYG{n}{sheets}
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToHelp}\PYG{l+s+s2}{\PYGZdq{}}      \PYG{o}{\PYGZhy{}} \PYG{n}{Customized} \PYG{n}{Help} \PYG{n}{pages}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToFavicon}\PYG{l+s+s2}{\PYGZdq{}}   \PYG{o}{\PYGZhy{}} \PYG{n}{Customized} \PYG{n}{Favicon} \PYG{n}{image}
 \end{sphinxVerbatim}
 
 Restart Virtel after uploading the W2HPARM.JS and other global members. Refresh the cache then check that the correct settings are being used using the following URLs to list w2hparm.js and w2hparm.global.js:
@@ -2319,10 +2269,13 @@ The macro editor supports the following commands:-
 \PYG{p}{]}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fmt}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
+\index{Macros@\spxentry{Macros}!Quick Reference Guide@\spxentry{Quick Reference Guide}}\ignorespaces 
+See Appendix A - Virtel MAcro Quick Reference Sheet for further details on macro formats, commands, identifies and built in functions.
+
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Setup@\spxentry{Setup}}\ignorespaces 
 
 \chapter{centralized User Parameters}
-\label{\detokenize{Customization:centralized-user-parameters}}\label{\detokenize{Customization:index-94}}
+\label{\detokenize{Customization:centralized-user-parameters}}\label{\detokenize{Customization:index-95}}
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.
 
 
@@ -2395,7 +2348,7 @@ If every has been configured correctly you should get a “GREEN” light.
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Validation@\spxentry{Validation}}\ignorespaces 
 
 \subsection{Testing the USERPARM feature}
-\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-95}}
+\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-96}}
 To test the USERPARM feature follow the procedure below :-
 
 1   Logon to a 3270 application, say TSO
@@ -2417,7 +2370,7 @@ In the Virtel log you should see the following “upload” message:-
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Removing a users settings@\spxentry{Removing a users settings}}\ignorespaces 
 
 \subsection{Removing a user’s settings}
-\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-96}}
+\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-97}}
 This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:
 
 \sphinxincludegraphics{{image55}.png}
@@ -2429,7 +2382,7 @@ We can remove the entry by using the delete option. This will remove any user se
 \index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{USERPARM Problems}
-\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-97}}
+\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-98}}
 When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2486,7 +2439,7 @@ This is normally related to configuration. Try the “sanity” URL test to make
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!How to activate@\spxentry{How to activate}}\ignorespaces 
 
 \chapter{Security}
-\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-98}}
+\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-99}}
 
 \section{How To Activate SSL AT-TLS}
 \label{\detokenize{Customization:how-to-activate-ssl-at-tls}}
@@ -2495,7 +2448,7 @@ To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Appl
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Installation@\spxentry{Installation}}\ignorespaces 
 
 \subsection{Installation steps}
-\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-99}}
+\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-100}}
 
 \subsubsection{Install Policy Agent procedure}
 \label{\detokenize{Customization:install-policy-agent-procedure}}
@@ -2525,7 +2478,7 @@ The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RA
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Certificates@\spxentry{Certificates}}\ignorespaces 
 
 \subsubsection{Create the server certificate}
-\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-100}}
+\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-101}}
 A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace \%virtssl\% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
 
@@ -2542,7 +2495,7 @@ To allow VIRTEL to access its own keyring and server certificate, the VIRTEL sta
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!TCPIP definitions@\spxentry{TCPIP definitions}}\ignorespaces 
 
 \subsubsection{TCPIP Definitions for AT-TLS}
-\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-101}}
+\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-102}}
 To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2555,7 +2508,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Operations@\spxentry{Operations}}\ignorespaces 
 
 \subsection{Operations}
-\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-102}}
+\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-103}}
 
 \subsubsection{Starting the Policy Agent}
 \label{\detokenize{Customization:starting-the-policy-agent}}
@@ -2584,7 +2537,7 @@ Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Un
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshootings@\spxentry{Troubleshootings}}\ignorespaces 
 
 \subsubsection{Common error messages}
-\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-103}}
+\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-104}}
 Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2660,7 +2613,7 @@ SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) C
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Using Server and Client certificates@\spxentry{Using Server and Client certificates}}\ignorespaces 
 
 \subsection{SSL - Signing On Using Server And Client Certificates}
-\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-104}}
+\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-105}}
 In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT\_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:
 \begin{itemize}
@@ -2704,7 +2657,7 @@ An encryption algorithm and single key is chosen to encrypt / decrypt data The p
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!What is a X.509 certificate@\spxentry{What is a X.509 certificate}}\ignorespaces 
 
 \subsection{What is a Certificates}
-\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-105}}
+\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-106}}
 
 \subsubsection{X.509 certificate?}
 \label{\detokenize{Customization:x-509-certificate}}
@@ -2761,7 +2714,7 @@ In this configuration we will be using self-signed server and client certificate
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring certificates@\spxentry{Configuring certificates}}\index{RACF@\spxentry{RACF}!Configuring a X.509 certificate@\spxentry{Configuring a X.509 certificate}}\ignorespaces 
 
 \subsubsection{Configuring the certificates}
-\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-106}}
+\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-107}}
 The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2846,7 +2799,7 @@ Note how we identify the signing certificate with the SIGNWITH parameter using t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring key rings@\spxentry{Configuring key rings}}\index{RACF@\spxentry{RACF}!Configuring key rings@\spxentry{Configuring key rings}}\ignorespaces 
 
 \subsection{Cerificates and Key rings}
-\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-107}}
+\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-108}}
 Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2871,7 +2824,7 @@ Again it is the label that identifies the key(certificate) that we want to add t
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!User certificates@\spxentry{User certificates}}\index{RACF@\spxentry{RACF}!User certificates@\spxentry{User certificates}}\ignorespaces 
 
 \subsubsection{User Certificate}
-\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-108}}
+\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-109}}
 The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2922,7 +2875,7 @@ The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and 
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Importing certificates@\spxentry{Importing certificates}}\index{RACF@\spxentry{RACF}!Importing certificates@\spxentry{Importing certificates}}\ignorespaces 
 
 \subsubsection{Importing the certificate on the client work station.}
-\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-109}}
+\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-110}}
 To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.
 
@@ -2937,7 +2890,7 @@ At this stage we have completed our certificate generation. Through the use of t
 \index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Setting up RACF for PassTicket@\spxentry{Setting up RACF for PassTicket}}\ignorespaces 
 
 \subsection{PassTicket support}
-\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-110}}
+\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-111}}
 The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:
 
@@ -2969,7 +2922,7 @@ In order for Virtel to generate PassTickets, you must also modify your VIRTCT to
 \index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Pagent Configuration@\spxentry{Pagent Configuration}}\ignorespaces 
 
 \subsection{PAGENT Configuration}
-\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-111}}
+\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-112}}
 To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3035,7 +2988,7 @@ you have made changes you can issue the following z/OS command:
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Example of Passtick support with CICS@\spxentry{Example of Passtick support with CICS}}\ignorespaces 
 
 \subsection{Configuring Virtel - CICS Example}
-\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-112}}
+\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-113}}
 The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.
 
 \sphinxincludegraphics{{image21}.png}
@@ -3069,7 +3022,7 @@ We are signed into CICS without having to specify any user id or password.
 \index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{AT-TLS Problems}
-\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-113}}
+\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-114}}
 It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.
 \begin{enumerate}
 \def\theenumi{\arabic{enumi}}
@@ -3151,9 +3104,16 @@ Common session startup/handshake errors are reported through messqge EZD1287I. I
 \item {} 
 5003 Browser sent clear text (http instead of https)
 
+\item {} 
+5006 SSL failed to initialize. Check RACF SSLSETUP job.
+
 \end{itemize}
 
 \end{description}
+
+For 5003, make sure your url is HTTPS and not HTTP.
+
+For 5006, list the Virtel key ring and ensure all the relevant keys are attached. There should be a client certificate (if using client certificates), a server certificate and an associated signing certificate.
 
 3   Virtel messages
 \begin{quote}
@@ -3212,7 +3172,7 @@ VIRTEL Web Access Guide Security \textendash{} Data encryption by SSL
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\ignorespaces 
 
 \section{NTLM Support}
-\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-114}}
+\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-115}}
 Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.
 
 
@@ -3385,7 +3345,7 @@ You will see a list of preferences listed. Find the settings below by browsing t
 \index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\index{NTLM Support@\spxentry{NTLM Support}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{NTLM Troubleshooting}
-\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-115}}
+\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-116}}
 
 \subsubsection{Still receiving login prompt}
 \label{\detokenize{Customization:still-receiving-login-prompt}}
@@ -3402,11 +3362,11 @@ The invoked Virtel transaction is not defined with security = 2.
 \index{System Managment@\spxentry{System Managment}}\ignorespaces 
 
 \chapter{System Management}
-\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-116}}
+\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-117}}
 \index{System Management@\spxentry{System Management}!Message controls@\spxentry{Message controls}}\index{Message controls@\spxentry{Message controls}!Messages to SYSOUT@\spxentry{Messages to SYSOUT}}\ignorespaces 
 
 \section{Virtel Message Controls}
-\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-117}}
+\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-118}}
 By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:
 
@@ -3504,7 +3464,7 @@ The display of message VIR0099I requires the PTF 5530 be applied. Similarly the 
 \index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Running@\spxentry{Running}}\ignorespaces 
 
 \section{VIRCONF Usage}
-\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-119}}
+\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-120}}
 VIRCONF is a batch facilty you can use to add, update, delete VIRTEL definitions stored in the ARBO file. There is also an unload facility which can be invoked either in batch or dynamically through the Virtel UNLOAD command. See below.
 
 \sphinxstylestrong{VIRCONF does not open the ARBO for output.}
@@ -3564,7 +3524,7 @@ VIR0223I UNLOAD ENDED
 \index{Virtel MSG10 USSTAB@\spxentry{Virtel MSG10 USSTAB}!VIR0021W@\spxentry{VIR0021W}}\ignorespaces 
 
 \chapter{Virtel MSG10 USSTAB}
-\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-122}}
+\label{\detokenize{Customization:virtel-msg10-usstab}}\label{\detokenize{Customization:index-123}}
 This section discusses how to build and implement a VTAM USSMSG10 screen using the VIRTEL VIR0021W USSTAB menu program. Customers can take there existing VTAM USSMSG10 code and pace the assembled module in the VIRTEL DFHRPL load library. The VIR0021W program will interrogate the customers USSTAB module and create an equivalent VIRTEL 3270 MAP. The 3270 MAP will be passed to the module VIR0010 where it will be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL DFHRPL library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.
 
 
@@ -3573,10 +3533,10 @@ This section discusses how to build and implement a VTAM USSMSG10 screen using t
 In most cases no changes are required but that only applies if certain caveats are met. Those being
 \begin{itemize}
 \item {} 
-There is only one unprotected field with an IC instruction (x’13’). The maximum length of 50 characters. This area is for command entry.
+There is only one unprotected field with an IC instruction (x‘13’). The maximum length of 50 characters. This area is for command entry.
 
 \item {} 
-Data areas are broken up with Start Field (x’1D’) or extended Start Field (x’29’) instructions. Each area cannot be greater than 240 characters.
+Data areas are broken up with Start Field (x‘1D’) or extended Start Field (x‘29’) instructions. Each area cannot be greater than 240 characters.
 
 \item {} 
 Displacement addresses, such as AL2(((24-1)*80)+(80-1)), are not supported. Only use 3270 Buffer addresses such as x’C1C1’, representing Columun 1 Row 1.
@@ -3662,7 +3622,7 @@ Should your user USSATAB fail to load , or breaks one of the caveats listed abov
 \index{Virtel Tier Menu@\spxentry{Virtel Tier Menu}!cAppMenu Customization@\spxentry{cAppMenu Customization}}\ignorespaces 
 
 \chapter{cAppMenu Customization}
-\label{\detokenize{Customization:cappmenu-customization}}\label{\detokenize{Customization:index-123}}
+\label{\detokenize{Customization:cappmenu-customization}}\label{\detokenize{Customization:index-124}}
 
 \section{Tier Menu Design Overview}
 \label{\detokenize{Customization:tier-menu-design-overview}}
@@ -4198,7 +4158,7 @@ var cAppMenuOptions = \PYGZob{}\PYGZcb{};
 \index{Virtel FTP Client@\spxentry{Virtel FTP Client}!FTP@\spxentry{FTP}}\ignorespaces 
 
 \chapter{Virtel FTP Client}
-\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-124}}
+\label{\detokenize{Customization:virtel-ftp-client}}\label{\detokenize{Customization:index-125}}
 
 \section{Introduction}
 \label{\detokenize{Customization:id1}}
@@ -4548,7 +4508,7 @@ Users may find that the an error message appears when invoking the Power Shell S
 \index{FAQ Questions@\spxentry{FAQ Questions}!Square Brackets and codepages@\spxentry{Square Brackets and codepages}}\index{Codepage in the URL@\spxentry{Codepage in the URL}}\ignorespaces 
 
 \chapter{FAQs}
-\label{\detokenize{Customization:faqs}}\label{\detokenize{Customization:index-125}}
+\label{\detokenize{Customization:faqs}}\label{\detokenize{Customization:index-126}}
 
 \section{How to specify a codepage in a URL}
 \label{\detokenize{Customization:how-to-specify-a-codepage-in-a-url}}
@@ -4561,7 +4521,7 @@ http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
 \index{FAQ Questions@\spxentry{FAQ Questions}!OMVS panel@\spxentry{OMVS panel}}\ignorespaces 
 
 \section{How to use the TSO OMVS panel command with VWA}
-\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}\label{\detokenize{Customization:index-126}}
+\label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}\label{\detokenize{Customization:index-127}}
 TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.
 
 Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.
@@ -4569,13 +4529,13 @@ Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port
 \index{FAQ Questions@\spxentry{FAQ Questions}!z/OS Consoles@\spxentry{z/OS Consoles}}\ignorespaces 
 
 \section{Can VIRTEL WEB ACCESS emulate z/OS Operator consoles}
-\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-127}}
+\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-128}}
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
 \index{FAQ Questions@\spxentry{FAQ Questions}!Hotspot recognition with regular expressions@\spxentry{Hotspot recognition with regular expressions}}\ignorespaces 
 
 \section{Can I customize hotspot recognition}
-\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-128}}
+\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-129}}
 The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4587,6 +4547,66 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\PYGZbs{}d\PYGZob{}1,2\PYGZcb{}\textbar{
 
 \chapter{Appendix}
 \label{\detokenize{Customization:appendix}}
+
+\section{Appendix A - Virtel Macro Quick reference Sheet}
+\label{\detokenize{Customization:appendix-a-virtel-macro-quick-reference-sheet}}
+Virtel macros capture keystroke operations which can subsequently be used to automate 3270 functions.
+These user captured macros are stored within a file called macros.json. This file is a JavaScript array of JSON objects, with each object representing a user
+macro.
+
+
+\subsection{Example of a Macro. JSON file}
+\label{\detokenize{Customization:example-of-a-macro-json-file}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZob{}«macros»:[
+\PYGZob{}«name»:»mylogon»,»rev»:2,»def»:[\PYGZob{}«txt»:»sptholt»\PYGZcb{},»ENTER»,\PYGZob{}«txt»:»password»\PYGZcb{},»ENTER»,»ENTER»,»ENTER»],»mapping»:\PYGZob{}«key»:»ctrl»,»keycode»:76\PYGZcb{}\PYGZcb{},
+\PYGZob{}«name»:»logoff»,»rev»:1,»def»:[\PYGZob{}«txt»:»=x»\PYGZcb{},»ENTER»,\PYGZob{}«txt»:»logoff»\PYGZcb{},»ENTER»],»mapping»:\PYGZob{}«key»:»ctrl»,»keycode»:79\PYGZcb{}\PYGZcb{},
+\PYGZob{}«name»:»logon»,»rev»:2,»def»:[«Tab»,»Down»,\PYGZob{}«txt»:»sptholx»\PYGZcb{},»ENTER»,\PYGZob{}«txt»:»PASSWORD»\PYGZcb{},»ENTER»,»ENTER»,»ENTER»],»mapping»:\PYGZob{}«key»:»alt»,»keycode»:76\PYGZcb{}\PYGZcb{}
+],»fmt»:2\PYGZcb{}
+\end{sphinxVerbatim}
+
+
+\subsection{Macro Formats and Commands}
+\label{\detokenize{Customization:id2}}
+The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
+* Name: The name of the macro entry.
+* Rev: The «rev» is a user revision keyword.
+* Def: The «def» keyword identifies the commands and entry values
+
+
+\subsection{Key Identifiers}
+\label{\detokenize{Customization:key-identifiers}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{key}\PYG{p}{(}\PYG{n}{ENTER}\PYG{p}{)}   \PYG{n}{key}\PYG{p}{(}\PYG{n}{PF1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{24}\PYG{p}{)}    \PYG{n}{key}\PYG{p}{(}\PYG{n}{PA1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)}       \PYG{n}{key}\PYG{p}{(}\PYG{n}{Down}\PYG{p}{)}       \PYG{n}{key}\PYG{p}{(}\PYG{n}{Up}\PYG{p}{)}         \PYG{n}{key}\PYG{p}{(}\PYG{n}{Left}\PYG{p}{)}       \PYG{n}{key}\PYG{p}{(}\PYG{n}{Right}\PYG{p}{)}          \PYG{n}{key}\PYG{p}{(}\PYG{n}{Newline}\PYG{p}{)}       \PYG{n}{Key}\PYG{p}{(}\PYG{n}{Tab}\PYG{p}{)}         \PYG{n}{Key}\PYG{p}{(}\PYG{n}{Backtab}\PYG{p}{)}
+\PYG{n}{key}\PYG{p}{(}\PYG{n}{CLEAR}\PYG{p}{)}   \PYG{n}{key}\PYG{p}{(}\PYG{n}{Home}\PYG{p}{)}          \PYG{n}{key}\PYG{p}{(}\PYG{n}{ATTN}\PYG{p}{)}    \PYG{n}{key}\PYG{p}{(}\PYG{n}{End}\PYG{p}{)}        \PYG{n}{key}\PYG{p}{(}\PYG{n}{Bksp}\PYG{p}{)}       \PYG{n}{key}\PYG{p}{(}\PYG{n}{ErEof}\PYG{p}{)}      \PYG{n}{key}\PYG{p}{(}\PYG{n}{InsToggle}\PYG{p}{)}  \PYG{n}{key}\PYG{p}{(}\PYG{n}{Del}\PYG{p}{)}       \PYG{n}{key}\PYG{p}{(}\PYG{n}{Reset}\PYG{p}{)}
+\PYG{n}{key}\PYG{p}{(}\PYG{n}{FieldMark}\PYG{p}{)} \PYG{n}{key}\PYG{p}{(}\PYG{n}{Dup}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+
+\subsection{Built in functions}
+\label{\detokenize{Customization:built-in-functions}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{waitScreen}\PYG{p}{(}\PYG{p}{)}    \PYG{n}{Virtel} \PYG{n}{will} \PYG{n}{wait} \PYG{k}{for} \PYG{n}{a} \PYG{l+m+mi}{3270} \PYG{n}{response} \PYG{n}{before} \PYG{n}{proceeding}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+
+\subsection{Built in functions:Literal values - key stroke in VWA editor}
+\label{\detokenize{Customization:built-in-functions-literal-values-key-stroke-in-vwa-editor}}\begin{description}
+\item[{::}] \leavevmode
+“ISPF”          Any string of characters to input into a 3270 screen, example ISPF
+
+\end{description}
+
+
+\subsection{Used for Cut/Paste in a Macro}
+\label{\detokenize{Customization:used-for-cut-paste-in-a-macro}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{move}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)}
+\PYG{n}{copy}\PYG{p}{(}\PYG{n}{startRow}\PYG{p}{,}\PYG{n}{startCol}\PYG{p}{,}\PYG{n}{endRow}\PYG{p}{,}\PYG{n}{endCol}\PYG{p}{)}
+\PYG{n}{paste}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{)}
+\PYG{n}{paste}\PYG{p}{(}\PYG{n}{pos}\PYG{p}{,}\PYG{n}{nbRows}\PYG{p}{,}\PYG{n}{nbCols}\PYG{p}{)}
+\end{sphinxVerbatim}
+
 
 \chapter{Trademarks}
 \label{\detokenize{Customization:trademarks}}

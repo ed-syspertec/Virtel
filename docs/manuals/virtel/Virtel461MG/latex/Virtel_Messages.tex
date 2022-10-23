@@ -13,6 +13,9 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
+
+
+
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -27,24 +30,7 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
-\makeatletter
-\def\fnum@figure{\figurename\thefigure{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\tablename}{Table }}
-\makeatletter
-\def\fnum@table{\tablename\thetable{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
-\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
-\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 \setcounter{tocdepth}{2}
 
 
@@ -56,7 +42,7 @@
 
 
 \title{Virtel Messages}
-\date{Feb 13, 2022}
+\date{Oct 23, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2543,7 +2529,7 @@ VIR0000
 Error code xx has occurred when generating the VSAM buffer pools.
 
 \item[{Action}] \leavevmode
-Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X’08’ indicates that the memory allocated to VIRTEL is insufficient.
+Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X‘08’ indicates that the memory allocated to VIRTEL is insufficient.
 
 \end{description}
 
@@ -2557,7 +2543,7 @@ VIR0000
 VSAM error xx occurred when opening file filename.
 
 \item[{Action}] \leavevmode
-Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X’5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
+Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X‘5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
 
 \end{description}
 
@@ -4138,6 +4124,20 @@ None.
 \end{description}
 
 
+\subsubsection{VIR0208W POSSIBLE ARBO LINE CONFLICT}
+\label{\detokenize{messages:vir0208w-possible-arbo-line-conflict}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0000
+
+\item[{Meaning}] \leavevmode
+Validation of the Line has failed. Possible incorrect ARBO level. Check that the ARBO is at the correct support level. Use the LOCADDR2=’N’ JCL PARM parameter to use ARBO(V1) processing which applies to ARBO records @ V4.60 or lower.
+
+\item[{Action}] \leavevmode
+Contact Syspertec Support if problem persists.
+
+\end{description}
+
+
 \subsubsection{VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx}
 \label{\detokenize{messages:vir0210e-command-not-valid-for-linetype-line-n-xxxxxx}}\begin{description}
 \item[{Module}] \leavevmode
@@ -4523,6 +4523,20 @@ The Virtel logsream has been offloaded.
 
 \item[{Action}] \leavevmode
 None.
+
+\end{description}
+
+
+\subsubsection{VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED}
+\label{\detokenize{messages:vir0240w-arbo-v1-not-supported-unload-failed}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+An UNLOAD command has failed. ARBO(V1) not supported.
+
+\item[{Action}] \leavevmode
+Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file.
 
 \end{description}
 
@@ -5942,13 +5956,18 @@ Check the TCT definitions. VSAMTYPE=READONLY and UFILE options.
 \end{description}
 
 
-\subsubsection{VIR1728E Error: Cannot open xxxxxxxx file. File control record missing.}
-\label{\detokenize{messages:vir1728e-error-cannot-open-xxxxxxxx-file-file-control-record-missing}}\begin{description}
+\subsubsection{VIR1728E Error: Cannot open xxxxxxxx. Error description}
+\label{\detokenize{messages:vir1728e-error-cannot-open-xxxxxxxx-error-description}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0017
 
 \item[{Meaning}] \leavevmode
+Error : File control record missing.
 A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx and obtain the control record.
+
+\item[{Meaning}] \leavevmode
+Error : ACB was not found.
+A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL.
 
 \item[{Action}] \leavevmode
 Check the SYSLOG for other error messages. Contact technical support.
@@ -6024,7 +6043,7 @@ Correct the module name in the VIR0021W transaction or determine why the module 
 VIR0021W
 
 \item[{Meaning}] \leavevmode
-The user USSTAB has data lengths greater than 240 characters without an intervening SF 3270 code (x’1D60’).
+The user USSTAB has data lengths greater than 240 characters without an intervening SF 3270 code (x‘1D60’).
 
 \item[{Action}] \leavevmode
 Static data in the USSTAB must be separated by an SF 3270 code every 240 characters or less. For example DATA,SF,DATA,SF,DATA,SF. The DATA portion of this 3270 string cannot be greater than 240 characters. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
@@ -6041,7 +6060,7 @@ VIR0021W
 In input field greater than 50 characters has been detected in the users USSTAB.
 
 \item[{Action}] \leavevmode
-A user USSTAB should only have one input field identified by the Insert Cursor 3270 code X’13’. This input field should not be greater than 50 characters. Correct the USSTAB source and reassemble the module. Ensure that the input field is terminated with a SF code. For example x’1d40’,x’13’,CL49’ ‘,X’1d60’ means SFUNINH\_FIELD,INSRT CURSOR,INPUT AREA,SFINH\_FIELD. The IC also takes up one character of the input area so X’13’,CL49’ ‘ equates to 50 characters. The default USSVIRT table will be loaded.
+A user USSTAB should only have one input field identified by the Insert Cursor 3270 code X‘13’. This input field should not be greater than 50 characters. Correct the USSTAB source and reassemble the module. Ensure that the input field is terminated with a SF code. For example x‘1d40’,x‘13’,CL49’ ‘,X‘1d60’ means SFUNINH\_FIELD,INSRT CURSOR,INPUT AREA,SFINH\_FIELD. The IC also takes up one character of the input area so X‘13’,CL49’ ‘ equates to 50 characters. The default USSVIRT table will be loaded.
 
 \end{description}
 
@@ -6066,10 +6085,10 @@ The default USSVIRT table will be loaded or the USSTAB= table as defined in the 
 VIR0021W
 
 \item[{Meaning}] \leavevmode
-Multiple input fields have been found in the users USSTAB. Input fields are identified by the Insert Cursor 3270 code X’13’.
+Multiple input fields have been found in the users USSTAB. Input fields are identified by the Insert Cursor 3270 code X‘13’.
 
 \item[{Action}] \leavevmode
-A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X’13’. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X‘13’. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
 
 \end{description}
 
@@ -7617,13 +7636,13 @@ None.
 \end{description}
 
 
-\subsubsection{VIRHT04I HTTP LINE linename WAS STOPPED}
-\label{\detokenize{messages:virht04i-http-line-linename-was-stopped}}\begin{description}
+\subsubsection{VIRHT07I HTTP LINE linename(n-xxxxxx), IS USING A GENERIC ADDRESS}
+\label{\detokenize{messages:virht07i-http-line-linename-n-xxxxxx-is-using-a-generic-address}}\begin{description}
 \item[{Module}] \leavevmode
 VIRHTTP
 
 \item[{Meaning}] \leavevmode
-HTTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
+HTTP line linename is using a generic VTAM resource name.
 
 \item[{Action}] \leavevmode
 None.

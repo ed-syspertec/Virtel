@@ -1,0 +1,460 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}What’s new in Virtel 4.61}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}The Virtel Engine}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Introduction}{3}{subsection.1.1.1}
+\contentsline {subsubsection}{What is Virtel}{3}{subsubsection*.3}
+\contentsline {subsubsection}{VIRTEL Web Access (VWA)}{6}{subsubsection*.4}
+\contentsline {subsubsection}{VIRTEL Web Modernisation (VWM)}{9}{subsubsection*.5}
+\contentsline {subsubsection}{VIRTEL Web Integration (VWI)}{12}{subsubsection*.6}
+\contentsline {subsubsection}{VIRTEL Service Transactions}{13}{subsubsection*.8}
+\contentsline {subsection}{\numberline {1.1.2}VIRTEL URL Formats}{14}{subsection.1.1.2}
+\contentsline {subsubsection}{Static pages}{14}{subsubsection*.10}
+\contentsline {subsubsection}{How the path name corresponds to a VIRTEL directory}{15}{subsubsection*.12}
+\contentsline {paragraph}{Examples}{16}{paragraph*.13}
+\contentsline {paragraph}{Example 1: Neither pathname nor pagename specified}{17}{paragraph*.14}
+\contentsline {paragraph}{Example 2: pagename specified}{17}{paragraph*.15}
+\contentsline {paragraph}{Example 3: Pathname specified}{17}{paragraph*.16}
+\contentsline {paragraph}{Example 4: Pathname and pagename specified}{18}{paragraph*.17}
+\contentsline {paragraph}{Example 5: Undefined pathname specified}{18}{paragraph*.18}
+\contentsline {paragraph}{Example 6: Partly-defined pathname specified}{18}{paragraph*.19}
+\contentsline {paragraph}{Example 7: Entry point with default URL}{18}{paragraph*.20}
+\contentsline {subsubsection}{Dynamic pages}{20}{subsubsection*.21}
+\contentsline {paragraph}{Dynamic URL with userdata}{20}{paragraph*.23}
+\contentsline {paragraph}{Dynamic URL with parameters}{21}{paragraph*.24}
+\contentsline {paragraph}{Dynamic URL with userdata and parameters}{21}{paragraph*.25}
+\contentsline {subsubsection}{3270 session management}{22}{subsubsection*.27}
+\contentsline {paragraph}{VirtelSession parameter}{22}{paragraph*.28}
+\contentsline {paragraph}{PrintVirtelSession parameter}{22}{paragraph*.29}
+\contentsline {paragraph}{ValidateVirtelSession parameter}{22}{paragraph*.30}
+\contentsline {paragraph}{\$UseCookieSession\$ parameter}{23}{paragraph*.31}
+\contentsline {subsubsection}{Capability URLs}{24}{subsubsection*.32}
+\contentsline {subsubsection}{Transmission of Security Tokens by URL}{24}{subsubsection*.34}
+\contentsline {subsubsection}{Propagation of signon by URL}{25}{subsubsection*.36}
+\contentsline {subsubsection}{The Universal Transaction}{25}{subsubsection*.37}
+\contentsline {subsection}{\numberline {1.1.3}Directory Management}{26}{subsection.1.1.3}
+\contentsline {subsubsection}{Accessing the administration application}{26}{subsubsection*.38}
+\contentsline {subsubsection}{Access through 3270}{26}{subsubsection*.39}
+\contentsline {subsubsection}{Security}{27}{subsubsection*.40}
+\contentsline {subsubsection}{Creating, modifying, and deleting directories}{27}{subsubsection*.41}
+\contentsline {paragraph}{Using the associated Admin(3270) functions}{28}{paragraph*.42}
+\contentsline {paragraph}{Deleting a directory definition}{28}{paragraph*.43}
+\contentsline {paragraph}{Displaying directory contents}{28}{paragraph*.44}
+\contentsline {paragraph}{Adding a directory definition}{28}{paragraph*.45}
+\contentsline {paragraph}{Scrolling the list of directories}{29}{paragraph*.46}
+\contentsline {paragraph}{Exiting from directory management}{29}{paragraph*.47}
+\contentsline {subsubsection}{Defining directory parameters}{29}{subsubsection*.48}
+\contentsline {subsubsection}{Associated functions}{30}{subsubsection*.49}
+\contentsline {paragraph}{Deleting an element}{30}{paragraph*.50}
+\contentsline {paragraph}{Copying an element to another directory}{31}{paragraph*.51}
+\contentsline {paragraph}{Scrolling the list}{31}{paragraph*.52}
+\contentsline {paragraph}{Exiting from directory contents management}{31}{paragraph*.53}
+\contentsline {subsubsection}{Acccess administration portal via the web}{31}{subsubsection*.54}
+\contentsline {subsection}{\numberline {1.1.4}Creating Virtel Template Pages}{34}{subsection.1.1.4}
+\contentsline {subsubsection}{Introduction}{34}{subsubsection*.56}
+\contentsline {subsubsection}{Defining the tag delimiters}{34}{subsubsection*.57}
+\contentsline {subsubsection}{Session and context management}{35}{subsubsection*.59}
+\contentsline {paragraph}{SESSION-CODE tag}{35}{paragraph*.60}
+\contentsline {paragraph}{AJAX-SESSION-CODE tag}{35}{paragraph*.61}
+\contentsline {paragraph}{SET-INITIAL-TIMEOUT tag}{35}{paragraph*.62}
+\contentsline {subsubsection}{Transmitting data to the host}{36}{subsubsection*.64}
+\contentsline {subsubsection}{Where to position the elements of an HTML page}{36}{subsubsection*.65}
+\contentsline {subsubsection}{Inserting host application data into a page}{37}{subsubsection*.67}
+\contentsline {paragraph}{GENERATE-HTML tag}{38}{paragraph*.68}
+\contentsline {paragraph}{COPY-FROM tag}{38}{paragraph*.69}
+\contentsline {paragraph}{CREATE-VARIABLE-FROM tag}{39}{paragraph*.71}
+\contentsline {paragraph}{DEFINE-HTML-FIELD-NAME tag}{39}{paragraph*.72}
+\contentsline {paragraph}{DEFINE-HTML-FIELD tag}{40}{paragraph*.73}
+\contentsline {paragraph}{DEFINE-DFHMDF-NAME tag}{40}{paragraph*.74}
+\contentsline {paragraph}{DEFINE-DFHMDF-COLUMN tag}{41}{paragraph*.76}
+\contentsline {paragraph}{GENERATE-VARIABLES tag}{42}{paragraph*.77}
+\contentsline {paragraph}{GENERATE-VIR3270 tag}{42}{paragraph*.78}
+\contentsline {subsubsection}{Colour and font management}{43}{subsubsection*.79}
+\contentsline {paragraph}{ON-ATTRIBUTE tag}{43}{paragraph*.80}
+\contentsline {paragraph}{ON-END-OF-ATTRIBUTE tag}{44}{paragraph*.81}
+\contentsline {paragraph}{ON-CHARACTER-ATTRIBUTE tag}{45}{paragraph*.82}
+\contentsline {paragraph}{ON-END-OF-CHARACTER-ATTRIBUTE tag}{45}{paragraph*.83}
+\contentsline {paragraph}{ADD-TO-FIELDS tag}{45}{paragraph*.84}
+\contentsline {subsubsection}{Cursor management}{46}{subsubsection*.86}
+\contentsline {paragraph}{DEFINE-HTML-FOCUS-FIELD tag}{46}{paragraph*.87}
+\contentsline {paragraph}{DEFINE-CURSOR-POSITION-FIELD tag}{46}{paragraph*.88}
+\contentsline {paragraph}{FIELD-WITH-CURSOR tag}{47}{paragraph*.89}
+\contentsline {paragraph}{DEFAULT-FIELD-WITH-CURSOR tag}{47}{paragraph*.90}
+\contentsline {paragraph}{Positioning the focus when a message is sent to the browser}{47}{paragraph*.91}
+\contentsline {paragraph}{Positioning the focus in the browser}{48}{paragraph*.92}
+\contentsline {paragraph}{POSITION-OF-THE-CURSOR tag}{48}{paragraph*.93}
+\contentsline {subsubsection}{Function key management}{48}{subsubsection*.94}
+\contentsline {paragraph}{Definition of the pfkField field}{48}{paragraph*.96}
+\contentsline {paragraph}{Updating the pfkField}{49}{paragraph*.97}
+\contentsline {paragraph}{Disallowed function keys}{49}{paragraph*.98}
+\contentsline {paragraph}{PF key processing by scenario}{50}{paragraph*.99}
+\contentsline {paragraph}{The Null PF key}{50}{paragraph*.100}
+\contentsline {subsubsection}{Setting and unsetting local options}{50}{subsubsection*.102}
+\contentsline {paragraph}{SET-LOCAL-OPTIONS tag}{51}{paragraph*.103}
+\contentsline {paragraph}{UNSET-LOCAL-OPTIONS tag}{52}{paragraph*.104}
+\contentsline {subsubsection}{Handling table variables}{52}{subsubsection*.106}
+\contentsline {paragraph}{FOR-EACH-VALUE-IN tag}{52}{paragraph*.107}
+\contentsline {paragraph}{CURRENT-VALUE-OF tag}{52}{paragraph*.108}
+\contentsline {paragraph}{NO-BLANKS-VALUE-OF tag}{53}{paragraph*.109}
+\contentsline {paragraph}{TRIMMED-VALUE-OF tag}{53}{paragraph*.110}
+\contentsline {paragraph}{END-FOR tag}{53}{paragraph*.111}
+\contentsline {paragraph}{ADVANCE-TO-NEXT-VALUE-OF}{54}{paragraph*.112}
+\contentsline {paragraph}{DO-COUNT-UP-WITH tag}{54}{paragraph*.113}
+\contentsline {paragraph}{END-DO-COUNT tag}{54}{paragraph*.114}
+\contentsline {paragraph}{DEFINE-AUTOMATIC-COUNTER tag}{54}{paragraph*.115}
+\contentsline {paragraph}{DEFINE-SUB-VARIABLE tag}{54}{paragraph*.116}
+\contentsline {paragraph}{DELETE-ALL-VARIABLES tag}{55}{paragraph*.117}
+\contentsline {subsubsection}{Inserting VIRTEL configuration values into a template}{55}{subsubsection*.118}
+\contentsline {paragraph}{IP-ADDRESS-OF-LINE tag}{55}{paragraph*.119}
+\contentsline {paragraph}{IP-PORT-OF-LINE tag}{56}{paragraph*.120}
+\contentsline {paragraph}{NAME-OF tag}{56}{paragraph*.121}
+\contentsline {paragraph}{NUMBER-OF tag}{57}{paragraph*.122}
+\contentsline {subsubsection}{Conditional generation}{57}{subsubsection*.123}
+\contentsline {paragraph}{AFTER-NOT-LAST-VALUE-OF tag}{57}{paragraph*.124}
+\contentsline {paragraph}{IF-USER-IS-ALLOWED-TO tag}{58}{paragraph*.125}
+\contentsline {paragraph}{WHEN-EXISTS and END-WHEN-EXISTS tags}{58}{paragraph*.126}
+\contentsline {paragraph}{WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags}{58}{paragraph*.127}
+\contentsline {paragraph}{WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags}{58}{paragraph*.128}
+\contentsline {paragraph}{WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags}{59}{paragraph*.129}
+\contentsline {paragraph}{WHILE-EVENT and END-WHILE-EVENT tags}{59}{paragraph*.130}
+\contentsline {subsubsection}{Debugging facilities}{59}{subsubsection*.132}
+\contentsline {paragraph}{CREATE-VARIABLE-IF(TRACING-SCENARIO) tag}{59}{paragraph*.134}
+\contentsline {subsubsection}{Signon and password management}{60}{subsubsection*.135}
+\contentsline {paragraph}{CREATE-VARIABLE-IF(Condition) tag}{60}{paragraph*.136}
+\contentsline {paragraph}{DECLARE-FIELD-AS tag}{60}{paragraph*.137}
+\contentsline {subsubsection}{Encryption management}{61}{subsubsection*.139}
+\contentsline {paragraph}{PUBLIC-KEY tag}{62}{paragraph*.140}
+\contentsline {paragraph}{DECLARE-FIELD-AS tag}{62}{paragraph*.141}
+\contentsline {paragraph}{SET-LOCAL-OPTIONS tag}{62}{paragraph*.143}
+\contentsline {subsubsection}{EBCDIC translation management}{63}{subsubsection*.144}
+\contentsline {paragraph}{COUNTRY-CODE tag}{63}{paragraph*.147}
+\contentsline {paragraph}{SET-OUTPUT-ENCODING-UTF-8 tag}{63}{paragraph*.148}
+\contentsline {subsubsection}{HTTP protocol management}{64}{subsubsection*.149}
+\contentsline {paragraph}{SET-HTTP-RETURN-CODE tag}{65}{paragraph*.150}
+\contentsline {subsubsection}{Cache management}{65}{subsubsection*.151}
+\contentsline {paragraph}{SET-PAGE-CACHEABLE tag}{65}{paragraph*.152}
+\contentsline {paragraph}{SET-PAGE-NOT-CACHEABLE tag}{65}{paragraph*.153}
+\contentsline {paragraph}{SET-MAX-AGE tag}{65}{paragraph*.154}
+\contentsline {subsubsection}{MIME type management}{66}{subsubsection*.155}
+\contentsline {paragraph}{SET-CONTENT-TYPE tag}{66}{paragraph*.156}
+\contentsline {subsubsection}{Capability tokens}{66}{subsubsection*.158}
+\contentsline {subsubsection}{Template Page upload}{67}{subsubsection*.161}
+\contentsline {paragraph}{SECURITY-TOKEN tag}{67}{paragraph*.162}
+\contentsline {paragraph}{IF-SECURITY-TOKEN-IS-READY tag}{68}{paragraph*.163}
+\contentsline {subsubsection}{3287 printing}{68}{subsubsection*.165}
+\contentsline {paragraph}{IF-PRINT-IS-READY tag}{68}{paragraph*.166}
+\contentsline {paragraph}{SESSION-CODE tag}{68}{paragraph*.167}
+\contentsline {paragraph}{PRINT tag}{69}{paragraph*.168}
+\contentsline {subsubsection}{Generating PDF output}{69}{subsubsection*.169}
+\contentsline {paragraph}{PDF-LINES-PER-PAGE tag}{69}{paragraph*.170}
+\contentsline {paragraph}{PDF-NEW-DOCOPT tag}{69}{paragraph*.171}
+\contentsline {paragraph}{PDF-NEW-INPUT tag}{70}{paragraph*.172}
+\contentsline {paragraph}{PDF-NEW-LAYOUT tag}{70}{paragraph*.173}
+\contentsline {paragraph}{PDF-OUTLINE tag}{70}{paragraph*.174}
+\contentsline {paragraph}{PDF-PAGE-BREAK tag}{70}{paragraph*.175}
+\contentsline {paragraph}{PDF-USE-DOCOPT tag}{70}{paragraph*.176}
+\contentsline {paragraph}{PDF-USE-LAYOUT tag}{70}{paragraph*.177}
+\contentsline {subsection}{\numberline {1.1.5}Web Access Customization}{71}{subsection.1.1.5}
+\contentsline {subsubsection}{Uploading HTML Pages}{71}{subsubsection*.178}
+\contentsline {subsubsection}{Web Access Settings}{71}{subsubsection*.179}
+\contentsline {paragraph}{Web Access Settings menu}{71}{paragraph*.181}
+\contentsline {paragraph}{Display Tab}{72}{paragraph*.182}
+\contentsline {paragraph}{Miscellaneous Display}{74}{paragraph*.183}
+\contentsline {paragraph}{Key Mappings Display}{76}{paragraph*.184}
+\contentsline {paragraph}{Import/Export parameters}{78}{paragraph*.185}
+\contentsline {paragraph}{Associated functions}{78}{paragraph*.186}
+\contentsline {paragraph}{Where user settings are stored}{79}{paragraph*.187}
+\contentsline {paragraph}{Global modification of Web Access settings}{79}{paragraph*.189}
+\contentsline {paragraph}{Choosing Web Access settings mode}{80}{paragraph*.190}
+\contentsline {paragraph}{Hiding Web Access settings}{81}{paragraph*.191}
+\contentsline {subsection}{\numberline {1.1.6}Application Selection Menu}{82}{subsection.1.1.6}
+\contentsline {subsubsection}{Contents of menu}{82}{subsubsection*.192}
+\contentsline {subsubsection}{Presentation modes}{83}{subsubsection*.194}
+\contentsline {paragraph}{The appmenu.htm template}{83}{paragraph*.195}
+\contentsline {paragraph}{Definition of the applist transaction}{83}{paragraph*.196}
+\contentsline {paragraph}{Application menu as the default transaction for the entry point}{84}{paragraph*.197}
+\contentsline {subsection}{\numberline {1.1.7}Printing With Web Access}{86}{subsection.1.1.7}
+\contentsline {subsubsection}{VIRTEL definitions for virtual printers}{86}{subsubsection*.198}
+\contentsline {subsubsection}{Associating virtual printers with terminals}{87}{subsubsection*.199}
+\contentsline {subsubsection}{Autoconnect for virtual printers}{88}{subsubsection*.200}
+\contentsline {subsubsection}{VTAM definitions for virtual printers}{89}{subsubsection*.201}
+\contentsline {subsubsection}{CICS definitions for virtual printers}{89}{subsubsection*.202}
+\contentsline {subsubsection}{Scenarios for SCS printing}{90}{subsubsection*.203}
+\contentsline {subsubsection}{SCS to PDF conversion}{90}{subsubsection*.204}
+\contentsline {subsubsection}{PCL printing}{90}{subsubsection*.205}
+\contentsline {subsubsection}{PCL to PDF conversion}{90}{subsubsection*.206}
+\contentsline {subsection}{\numberline {1.1.8}TSO File Transfer}{92}{subsection.1.1.8}
+\contentsline {subsubsection}{Definitions required for file transfer}{92}{subsubsection*.207}
+\contentsline {subsubsection}{Toolbar icons for file transfer}{92}{subsubsection*.208}
+\contentsline {subsubsection}{Receiving a file}{93}{subsubsection*.209}
+\contentsline {subsubsection}{Sending a file}{96}{subsubsection*.210}
+\contentsline {subsubsection}{Selecting PC Codepage for file transfer}{100}{subsubsection*.211}
+\contentsline {subsubsection}{Saving and reusing file transfer parameters}{100}{subsubsection*.212}
+\contentsline {subsection}{\numberline {1.1.9}Accessing VTAM Applications}{102}{subsection.1.1.9}
+\contentsline {subsubsection}{VTAM logon screen}{102}{subsubsection*.213}
+\contentsline {subsubsection}{Installing the VTAM logon transaction}{103}{subsubsection*.214}
+\contentsline {subsection}{\numberline {1.1.10}Site Customization - Colors And Logo}{104}{subsection.1.1.10}
+\contentsline {subsubsection}{Using a CSS file for customization}{104}{subsubsection*.215}
+\contentsline {subsubsection}{Customizing the toolbar color by application}{105}{subsubsection*.216}
+\contentsline {subsubsection}{Adding custom text to the toolbar}{105}{subsubsection*.217}
+\contentsline {subsubsection}{Showing / Hiding server informations}{106}{subsubsection*.219}
+\contentsline {subsubsection}{Hiding the toolbar}{107}{subsubsection*.221}
+\contentsline {paragraph}{Modifying the 3270 colors}{107}{paragraph*.222}
+\contentsline {subsubsection}{Adding a company logo}{108}{subsubsection*.223}
+\contentsline {subsubsection}{Removing 3D/hover effects on the toolbar buttons}{108}{subsubsection*.224}
+\contentsline {subsubsection}{Changing background color of the toolbar buttons}{109}{subsubsection*.225}
+\contentsline {subsubsection}{Icon display troubleshooting}{109}{subsubsection*.226}
+\contentsline {subsection}{\numberline {1.1.11}Site Customization - Javascript Functions}{110}{subsection.1.1.11}
+\contentsline {subsubsection}{Javascript Exits which can be customized}{110}{subsubsection*.227}
+\contentsline {subsubsection}{Customizing Toolbar icons}{111}{subsubsection*.236}
+\contentsline {subsubsection}{Centering non-standard icons}{112}{subsubsection*.237}
+\contentsline {subsubsection}{Removing unwanted toolbar icons}{112}{subsubsection*.239}
+\contentsline {subsubsection}{Positioning Toolbar Icons}{113}{subsubsection*.240}
+\contentsline {subsubsection}{Modifying the text of the status bar}{114}{subsubsection*.241}
+\contentsline {subsubsection}{Custom hotspot recognition}{115}{subsubsection*.242}
+\contentsline {subsubsection}{Adding a watermark to the 3270 screen}{115}{subsubsection*.243}
+\contentsline {subsubsection}{Modifying Web Access Settings}{116}{subsubsection*.244}
+\contentsline {subsection}{\numberline {1.1.12}Site Customization - The Help Page}{117}{subsection.1.1.12}
+\contentsline {subsubsection}{Standard Help Page}{117}{subsubsection*.245}
+\contentsline {subsubsection}{Installing a Custom Help Page}{118}{subsubsection*.246}
+\contentsline {subsection}{\numberline {1.1.13}Enable Copy, Cut And Paste}{120}{subsection.1.1.13}
+\contentsline {subsubsection}{Internet Explorer}{120}{subsubsection*.247}
+\contentsline {subsubsection}{Firefox}{120}{subsubsection*.248}
+\contentsline {paragraph}{Additional Installation requirements}{121}{paragraph*.249}
+\contentsline {subsubsection}{Chrome}{124}{subsubsection*.250}
+\contentsline {paragraph}{Additional installation requirements}{124}{paragraph*.251}
+\contentsline {subsubsection}{Manage the settings on Host with chrome}{127}{subsubsection*.252}
+\contentsline {subsubsection}{Using Extensions}{129}{subsubsection*.253}
+\contentsline {subsubsection}{Edge}{131}{subsubsection*.254}
+\contentsline {subsection}{\numberline {1.1.14}Virtel Customization Modes}{132}{subsection.1.1.14}
+\contentsline {subsubsection}{Option mode}{132}{subsubsection*.255}
+\contentsline {subsubsection}{Default Mode}{133}{subsubsection*.256}
+\contentsline {subsubsection}{Global level modifications (All transactions under one Entry Point)}{133}{subsubsection*.257}
+\contentsline {subsubsection}{Transaction level modifications (Individual transactions)}{134}{subsubsection*.258}
+\contentsline {subsubsection}{Compatibility Option id}{135}{subsubsection*.259}
+\contentsline {subsubsection}{Defining Transaction Options}{135}{subsubsection*.260}
+\contentsline {paragraph}{Basic Mode}{137}{paragraph*.261}
+\contentsline {paragraph}{Advanced Mode}{138}{paragraph*.262}
+\contentsline {subsection}{\numberline {1.1.15}Macros}{140}{subsection.1.1.15}
+\contentsline {subsubsection}{Storing the Macros}{140}{subsubsection*.263}
+\contentsline {subsubsection}{Macros in Local Storage}{141}{subsubsection*.264}
+\contentsline {subsubsection}{Macro controls}{142}{subsubsection*.265}
+\contentsline {paragraph}{Key Mapping}{142}{paragraph*.266}
+\contentsline {paragraph}{Keep\_Macro\_Pad}{143}{paragraph*.267}
+\contentsline {paragraph}{Macro\_Pad}{144}{paragraph*.268}
+\contentsline {subsubsection}{Macros in VIRTEL Storage}{144}{subsubsection*.269}
+\contentsline {subsubsection}{Setting up to use DDI and macros}{144}{subsubsection*.270}
+\contentsline {paragraph}{Enabeling macros in Virtel Storage}{146}{paragraph*.271}
+\contentsline {subsubsection}{User Macros synchronization}{147}{subsubsection*.272}
+\contentsline {subsubsection}{Managing macros with DDI}{147}{subsubsection*.273}
+\contentsline {paragraph}{Uploading a macro.json file to the DDI directory}{147}{paragraph*.274}
+\contentsline {paragraph}{Making macros available to users}{150}{paragraph*.275}
+\contentsline {paragraph}{Editing a Users macro}{151}{paragraph*.276}
+\contentsline {paragraph}{Updating DDI macros at the Group level}{152}{paragraph*.277}
+\contentsline {paragraph}{Notes:}{153}{paragraph*.278}
+\contentsline {subsubsection}{Automatic refresh of macros in local storage}{154}{subsubsection*.279}
+\contentsline {subsubsection}{Format of the macros.json file}{154}{subsubsection*.280}
+\contentsline {subsubsection}{Available macro commands}{154}{subsubsection*.281}
+\contentsline {subsubsection}{DDI Macro Errors}{155}{subsubsection*.282}
+\contentsline {subsection}{\numberline {1.1.16}VIRTEL Web Modernisation}{157}{subsection.1.1.16}
+\contentsline {subsubsection}{VIRTEL Presentation modules and Scenarios}{157}{subsubsection*.283}
+\contentsline {subsubsection}{Scenarios stored in a load library}{157}{subsubsection*.284}
+\contentsline {subsubsection}{Scenarios stored in a VSAM directory}{157}{subsubsection*.285}
+\contentsline {subsubsection}{Using a presentation module}{158}{subsubsection*.286}
+\contentsline {subsubsection}{Types of scenario}{158}{subsubsection*.287}
+\contentsline {paragraph}{Identification scenario}{159}{paragraph*.288}
+\contentsline {paragraph}{Initial scenario}{159}{paragraph*.289}
+\contentsline {paragraph}{Final scenario}{159}{paragraph*.290}
+\contentsline {paragraph}{Input scenario}{159}{paragraph*.291}
+\contentsline {paragraph}{Output scenario}{159}{paragraph*.292}
+\contentsline {paragraph}{Developing presentation modules with Virtel Studio}{159}{paragraph*.293}
+\contentsline {subsubsection}{Virtel Scenario language}{160}{subsubsection*.294}
+\contentsline {paragraph}{SCENARIO instructions}{160}{paragraph*.295}
+\contentsline {paragraph}{SCREENS instruction}{161}{paragraph*.296}
+\contentsline {paragraph}{SCRNEND instruction}{161}{paragraph*.297}
+\contentsline {paragraph}{ACTION\$ instruction}{161}{paragraph*.298}
+\contentsline {paragraph}{CASE\$ instruction}{164}{paragraph*.300}
+\contentsline {paragraph}{CONVERT\$ instruction}{166}{paragraph*.301}
+\contentsline {paragraph}{COPY\$ instruction}{167}{paragraph*.303}
+\contentsline {paragraph}{DEBUG\$ instruction}{178}{paragraph*.304}
+\contentsline {paragraph}{DECLARE\$ instruction}{179}{paragraph*.305}
+\contentsline {paragraph}{ENDFOR\$ instruction}{181}{paragraph*.307}
+\contentsline {paragraph}{ERROR\$ instruction}{182}{paragraph*.308}
+\contentsline {paragraph}{FIELD\$ instruction}{182}{paragraph*.309}
+\contentsline {paragraph}{FILTER\$ instruction}{183}{paragraph*.310}
+\contentsline {paragraph}{FOREACH\$}{184}{paragraph*.311}
+\contentsline {paragraph}{GOTO\$ instruction}{184}{paragraph*.313}
+\contentsline {paragraph}{HANDLE\$ instruction}{185}{paragraph*.314}
+\contentsline {paragraph}{IF\$ instruction}{185}{paragraph*.316}
+\contentsline {paragraph}{INDSCEN\$ instruction}{187}{paragraph*.317}
+\contentsline {paragraph}{LABEL\$ instruction}{187}{paragraph*.318}
+\contentsline {paragraph}{MAP\$ instruction}{187}{paragraph*.320}
+\contentsline {paragraph}{OPTION\$ instruction}{196}{paragraph*.327}
+\contentsline {paragraph}{PERFORM\$ instruction}{201}{paragraph*.328}
+\contentsline {paragraph}{POP\$ instruction}{202}{paragraph*.329}
+\contentsline {paragraph}{RETURN\$ instruction}{203}{paragraph*.330}
+\contentsline {paragraph}{SEND\$ instruction}{203}{paragraph*.331}
+\contentsline {paragraph}{SET\$ instruction}{205}{paragraph*.332}
+\contentsline {paragraph}{TOVAR\$ instruction}{208}{paragraph*.337}
+\contentsline {paragraph}{VIRSV\$ instruction}{209}{paragraph*.339}
+\contentsline {paragraph}{Subroutine scenario}{211}{paragraph*.340}
+\contentsline {paragraph}{Multi-Session scenarios}{212}{paragraph*.341}
+\contentsline {subsubsection}{Examples of VIRTEL Web Modernisation Scenarios}{212}{subsubsection*.342}
+\contentsline {paragraph}{Creation of a list of values for a selected field}{212}{paragraph*.343}
+\contentsline {paragraph}{Making clickable fields}{213}{paragraph*.344}
+\contentsline {paragraph}{Adding calendars to date fields}{214}{paragraph*.345}
+\contentsline {paragraph}{VIRTEL SUGGUEST}{215}{paragraph*.346}
+\contentsline {subsubsection}{Scenario AUTOREFRESH}{217}{subsubsection*.347}
+\contentsline {subsubsection}{PDF output generation}{219}{subsubsection*.349}
+\contentsline {subsection}{\numberline {1.1.17}VIRTEL Web Integration}{221}{subsection.1.1.17}
+\contentsline {subsubsection}{Parsing Query input}{221}{subsubsection*.351}
+\contentsline {paragraph}{HTTP request with Query data (GET method)}{221}{paragraph*.352}
+\contentsline {paragraph}{HTTP request with Query data (POST method)}{221}{paragraph*.353}
+\contentsline {paragraph}{Presentation module for Query input data}{222}{paragraph*.354}
+\contentsline {paragraph}{Contents of generated commarea}{222}{paragraph*.355}
+\contentsline {paragraph}{Transaction definition for Query input data}{222}{paragraph*.356}
+\contentsline {subsubsection}{Parsing XML input}{223}{subsubsection*.359}
+\contentsline {paragraph}{HTTP request with XML input data}{223}{paragraph*.360}
+\contentsline {paragraph}{Presentation module for XML input data}{224}{paragraph*.361}
+\contentsline {paragraph}{Contents of generated commarea}{224}{paragraph*.362}
+\contentsline {paragraph}{Sending XML input as URL-encoded data}{224}{paragraph*.364}
+\contentsline {paragraph}{Transaction definition for XML input data}{225}{paragraph*.365}
+\contentsline {paragraph}{XML input with attributes and repeating groups}{226}{paragraph*.366}
+\contentsline {paragraph}{XML input with redefinition of fields}{227}{paragraph*.367}
+\contentsline {subsubsection}{Presentation of XML output}{229}{subsubsection*.368}
+\contentsline {paragraph}{Presentation module for XML output}{229}{paragraph*.369}
+\contentsline {paragraph}{Page template for XML output}{229}{paragraph*.370}
+\contentsline {subsubsection}{VIRTEL as an XML parser/generator}{230}{subsubsection*.372}
+\contentsline {paragraph}{Communication via VIRKIX}{230}{paragraph*.373}
+\contentsline {paragraph}{Example MAP\$ statements}{230}{paragraph*.374}
+\contentsline {paragraph}{XML-to-commarea conversion using the VIRTEL XML parser}{231}{paragraph*.375}
+\contentsline {paragraph}{Commarea-to-XML conversion using the VIRTEL XML generator}{232}{paragraph*.377}
+\contentsline {subsubsection}{Automatic scenario generation}{234}{subsubsection*.379}
+\contentsline {paragraph}{MAPGEN program}{234}{paragraph*.380}
+\contentsline {subsection}{\numberline {1.1.18}Incoming E-mails}{237}{subsection.1.1.18}
+\contentsline {subsubsection}{Rules of the SMTP line}{237}{subsubsection*.382}
+\contentsline {subsubsection}{File transfer by e-mail}{237}{subsubsection*.383}
+\contentsline {subsubsection}{Starting an application by E-Mail}{238}{subsubsection*.384}
+\contentsline {subsection}{\numberline {1.1.19}VIRTEL Batch}{241}{subsection.1.1.19}
+\contentsline {subsubsection}{Assembling the VIRTCT for VIRTEL Batch}{241}{subsubsection*.386}
+\contentsline {subsubsection}{Allocating the page template file for VIRTEL Batch}{243}{subsubsection*.387}
+\contentsline {subsubsection}{Allocating work files for VIRTEL Batch}{243}{subsubsection*.388}
+\contentsline {subsubsection}{Running the VIRTEL Batch job}{244}{subsubsection*.389}
+\contentsline {subsubsection}{VIRTEL Batch commands}{245}{subsubsection*.390}
+\contentsline {paragraph}{VIRTEL Batch GET command}{245}{paragraph*.391}
+\contentsline {paragraph}{VIRTEL Batch POST command}{246}{paragraph*.392}
+\contentsline {subsubsection}{VIRTEL Batch RAW command}{246}{subsubsection*.393}
+\contentsline {subsubsection}{VIRTEL Batch return codes}{247}{subsubsection*.394}
+\contentsline {section}{\numberline {1.2}Outgoing Calls}{248}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Outgoing E-mails}{248}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}Programming Interfaces}{249}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Structred Fields}{249}{subsection.1.3.1}
+\contentsline {subsubsection}{General format of a 3270 structured field}{249}{subsubsection*.395}
+\contentsline {subsubsection}{Sending structured fields via the Write Structured Field command}{249}{subsubsection*.396}
+\contentsline {subsubsection}{Sending structured fields using the SRTVIRTEL prefix}{250}{subsubsection*.397}
+\contentsline {subsubsection}{How To Determine If Running Under Virtel}{250}{subsubsection*.398}
+\contentsline {paragraph}{Use a different transaction code}{250}{paragraph*.399}
+\contentsline {paragraph}{Include parameters after the transaction code}{251}{paragraph*.400}
+\contentsline {paragraph}{Use a specific range of terminal names}{252}{paragraph*.401}
+\contentsline {subsubsection}{FA88: Transmit large data message to application}{253}{subsubsection*.402}
+\contentsline {subsubsection}{FAC8: Selection of page template}{254}{subsubsection*.403}
+\contentsline {paragraph}{Structured field FAC8 code 06}{254}{paragraph*.404}
+\contentsline {paragraph}{Structured field FAC8 code 07}{254}{paragraph*.405}
+\contentsline {paragraph}{COBOL example using FAC8}{254}{paragraph*.406}
+\contentsline {subsubsection}{FAE5, FAE6: Sending a table variable}{255}{subsubsection*.407}
+\contentsline {paragraph}{Structured field FAE5}{256}{paragraph*.409}
+\contentsline {paragraph}{Structured field FAE6}{256}{paragraph*.410}
+\contentsline {paragraph}{COBOL example using FAE5}{256}{paragraph*.411}
+\contentsline {subsubsection}{Call Interface}{257}{subsubsection*.412}
+\contentsline {paragraph}{CALL VIRSETA}{257}{paragraph*.413}
+\contentsline {paragraph}{CALL VIRSETA parameters}{257}{paragraph*.414}
+\contentsline {paragraph}{CALL VIRSETA example}{258}{paragraph*.415}
+\contentsline {paragraph}{CALL VIRSETA return codes}{258}{paragraph*.416}
+\contentsline {paragraph}{CALL VIRSETV (CICS)}{259}{paragraph*.417}
+\contentsline {paragraph}{CALL VIRSETV parameters}{259}{paragraph*.418}
+\contentsline {paragraph}{CALL VIRSETV example}{259}{paragraph*.419}
+\contentsline {paragraph}{CALL VIRSETV return codes}{259}{paragraph*.420}
+\contentsline {paragraph}{CALL VIRSETAI (IMS)}{260}{paragraph*.421}
+\contentsline {paragraph}{CALL VIRSETAI parameters}{260}{paragraph*.422}
+\contentsline {paragraph}{CALL VIRSETAI example}{260}{paragraph*.423}
+\contentsline {paragraph}{CALL VIRSETVI (IMS)}{261}{paragraph*.424}
+\contentsline {paragraph}{CALL VIRSETVI parameters}{261}{paragraph*.425}
+\contentsline {paragraph}{CALL VIRSETVI example}{261}{paragraph*.426}
+\contentsline {paragraph}{CALL VIRTEL (CICS)}{261}{paragraph*.427}
+\contentsline {paragraph}{CALL VIRTEL example}{262}{paragraph*.428}
+\contentsline {paragraph}{CALL VIRTEL return codes}{263}{paragraph*.429}
+\contentsline {subsubsection}{HOST4WEB commands}{265}{subsubsection*.431}
+\contentsline {paragraph}{Processing conditions}{265}{paragraph*.432}
+\contentsline {paragraph}{2VIRTEL prefix}{265}{paragraph*.433}
+\contentsline {paragraph}{List of commands}{265}{paragraph*.434}
+\contentsline {paragraph}{C AUTO VARIABLES (Command Auto Variables)}{265}{paragraph*.435}
+\contentsline {paragraph}{C KEEP VARIABLES (Command Keep Variables)}{266}{paragraph*.436}
+\contentsline {paragraph}{C KILL VARIABLES (Command Kill Variables)}{266}{paragraph*.437}
+\contentsline {paragraph}{C RETURN (Command Return)}{266}{paragraph*.438}
+\contentsline {paragraph}{C SCAN NEXT SCREEN (Command Scan)}{266}{paragraph*.439}
+\contentsline {paragraph}{C WAIT NEXT SCREEN (Command Wait)}{266}{paragraph*.440}
+\contentsline {paragraph}{C TERMSESS (Command Terminate Session)}{267}{paragraph*.441}
+\contentsline {paragraph}{G EMULATION TYPE (Get Emulation Type)}{267}{paragraph*.442}
+\contentsline {paragraph}{G PAGE NAME (Get Current Template Name)}{267}{paragraph*.443}
+\contentsline {paragraph}{G URL PARAMETER (Get URL Parameter)}{267}{paragraph*.444}
+\contentsline {paragraph}{S DIRECTORY (Set Temporary Directory Name)}{267}{paragraph*.445}
+\contentsline {paragraph}{S GLOBAL PAGE (Set Global Template Name)}{267}{paragraph*.446}
+\contentsline {paragraph}{S PAGE (Set Temporary Template Name)}{267}{paragraph*.447}
+\contentsline {paragraph}{S VARIABLE (Set Variable)}{268}{paragraph*.449}
+\contentsline {section}{\numberline {1.4}Incoming Calls}{269}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Incoming E-mails}{269}{subsection.1.4.1}
+\contentsline {subsubsection}{FAC8: Retrieve data from an e-mail}{269}{subsubsection*.451}
+\contentsline {paragraph}{FAC8 - Structured field code 13}{269}{paragraph*.452}
+\contentsline {paragraph}{FAC8 - Structured field code 13}{270}{paragraph*.453}
+\contentsline {paragraph}{COBOL FAC8 example}{270}{paragraph*.454}
+\contentsline {subsubsection}{FAD4: Sending an e-mail from a host application}{272}{subsubsection*.455}
+\contentsline {paragraph}{COBOL FAD4 example}{273}{paragraph*.456}
+\contentsline {section}{\numberline {1.5}Security}{275}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}VIRTEL Web Access Security}{275}{subsection.1.5.1}
+\contentsline {subsubsection}{Password and Passphrase constraints}{275}{subsubsection*.457}
+\contentsline {subsubsection}{Specifying security in the entry point}{275}{subsubsection*.458}
+\contentsline {subsubsection}{Specifying security in the transaction}{276}{subsubsection*.459}
+\contentsline {subsubsection}{Mixed-case password support}{276}{subsubsection*.460}
+\contentsline {subsubsection}{Automatic retrieval of username}{276}{subsubsection*.461}
+\contentsline {subsubsection}{Data encryption by AT-TLS/SSL}{277}{subsubsection*.463}
+\contentsline {subsubsection}{Identification by certificate}{277}{subsubsection*.464}
+\contentsline {subsubsection}{Password encryption}{277}{subsubsection*.466}
+\contentsline {subsubsection}{Signon using HTML fields}{278}{subsubsection*.468}
+\contentsline {subsubsection}{Virtel Rules}{279}{subsubsection*.469}
+\contentsline {section}{\numberline {1.6}HOWTOs}{282}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}How To Use Different Screen Sizes}{282}{subsection.1.6.1}
+\contentsline {subsubsection}{LOGMODE defined by the transaction}{282}{subsubsection*.470}
+\contentsline {subsubsection}{Assigning a LOGMODE by URL parameter}{283}{subsubsection*.471}
+\contentsline {subsubsection}{User-specified LOGMODE}{284}{subsubsection*.472}
+\contentsline {subsubsection}{Dynamic logmode with user-specified screen size}{284}{subsubsection*.473}
+\contentsline {subsection}{\numberline {1.6.2}How To Support Multiple Codes Pages}{285}{subsection.1.6.2}
+\contentsline {subsubsection}{Defining Code Pages translation defaults}{285}{subsubsection*.474}
+\contentsline {paragraph}{Override the TCT defaults at URL level}{285}{paragraph*.475}
+\contentsline {paragraph}{Override the TCT defaults at business logic level}{285}{paragraph*.476}
+\contentsline {subsubsection}{Supporting multiple countries.}{285}{subsubsection*.477}
+\contentsline {subsection}{\numberline {1.6.3}How To Handle Host Session Termination}{286}{subsection.1.6.3}
+\contentsline {subsubsection}{Return to the application selection menu}{286}{subsubsection*.478}
+\contentsline {subsubsection}{Displaying a specific page on disconnection}{286}{subsubsection*.479}
+\contentsline {subsubsection}{Closing the browser window automatically}{286}{subsubsection*.480}
+\contentsline {subsection}{\numberline {1.6.4}How To Access A Host Application Directly}{287}{subsection.1.6.4}
+\contentsline {subsubsection}{Full path URL}{287}{subsubsection*.481}
+\contentsline {subsubsection}{Default URL for the entry point}{287}{subsubsection*.482}
+\contentsline {subsection}{\numberline {1.6.5}How To Change The Font For Web Access}{288}{subsection.1.6.5}
+\contentsline {subsection}{\numberline {1.6.6}How To Change The 3270 Display Style}{288}{subsection.1.6.6}
+\contentsline {subsection}{\numberline {1.6.7}How To Customize The Enter Key Settings}{288}{subsection.1.6.7}
+\contentsline {subsubsection}{Managing CTRL keydown being lost}{289}{subsubsection*.483}
+\contentsline {subsection}{\numberline {1.6.8}How To Customize Display Styles}{289}{subsection.1.6.8}
+\contentsline {subsubsection}{Add or remove a display style}{289}{subsubsection*.485}
+\contentsline {subsubsection}{Add or remove a print style}{290}{subsubsection*.486}
+\contentsline {subsubsection}{3270 support blinking fields}{291}{subsubsection*.487}
+\contentsline {subsection}{\numberline {1.6.9}How To Change The Default User Settings}{291}{subsection.1.6.9}
+\contentsline {subsection}{\numberline {1.6.10}How To Support A Reverse Proxy}{291}{subsection.1.6.10}
+\contentsline {subsection}{\numberline {1.6.11}How To Support Virtual Hosting}{292}{subsection.1.6.11}
+\contentsline {subsection}{\numberline {1.6.12}How To Control APPLIST behaviour}{292}{subsection.1.6.12}
+\contentsline {subsection}{\numberline {1.6.13}Left align text}{292}{subsection.1.6.13}
+\contentsline {subsection}{\numberline {1.6.14}Special UNICODE character support}{292}{subsection.1.6.14}
+\contentsline {subsection}{\numberline {1.6.15}Square Bracket Support}{292}{subsection.1.6.15}
+\contentsline {section}{\numberline {1.7}Appendix}{293}{section.1.7}
+\contentsline {subsection}{\numberline {1.7.1}Appendix A}{293}{subsection.1.7.1}
+\contentsline {subsubsection}{Default values for W2H parameters}{293}{subsubsection*.488}
+\contentsline {subsection}{\numberline {1.7.2}Trademarks}{295}{subsection.1.7.2}
+\contentsline {subsection}{\numberline {1.7.3}Open Source Software}{295}{subsection.1.7.3}

@@ -13,6 +13,9 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
+
+
+
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -27,24 +30,7 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
-\makeatletter
-\def\fnum@figure{\figurename\thefigure{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\tablename}{Table }}
-\makeatletter
-\def\fnum@table{\tablename\thetable{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
-\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
-\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 \setcounter{tocdepth}{2}
 
 
@@ -56,7 +42,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Feb 13, 2022}
+\date{Oct 23, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1492,7 +1478,7 @@ Press {[}PF4{]} at the Line Detail Definition screen to display the list of term
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
-\item[{Relais}] \leavevmode
+\item[{Relay}] \leavevmode
 Leave blank.
 
 \item[{Entry point}] \leavevmode
@@ -1784,7 +1770,7 @@ Press {[}PF4{]} at the line definition screen to display the list of terminals a
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
-\item[{Relais}] \leavevmode
+\item[{Relay}] \leavevmode
 Leave blank.
 
 \item[{Entry point}] \leavevmode
@@ -2140,7 +2126,7 @@ This is a 32-bit unsigned binary number in big-endian format
 
 All data following the header is treated as binary data which is passed to the CICS application without translation. The maximum message length is specified in the definition of the NATIVE TCP/IP line.
 
-The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X’7D4040’ to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X’F1C1’) from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
+The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X‘7D4040’ to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X’F1C1’) from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
 
 \newpage
 
@@ -2487,7 +2473,7 @@ Press {[}PF4{]} at the line definition screen to display the list of terminals a
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
-\item[{Relais}] \leavevmode
+\item[{Relay}] \leavevmode
 The name of a relay LU must be specified if incoming calls are
 routed to a type-1 transaction (VTAM application). The relay LU’s
 must be defined by APPL statements in a VTAM application major node,
@@ -2789,7 +2775,7 @@ Each Minitel or PC wishing to benefit from VIRTEL functionality must be defined 
 \item[{Note 1}] \leavevmode
 IDNUM takes the value xxyyy with xx equal to the value of the parameter IDNUMH in the NPSI X25MCH MACRO; yyy is a hexadecimal value decrementing in steps of 2 from the CVC number assigned to the LU.
 
-Let us suppose for example that we have a configuration made up of two TRANSPAC lines, L1 and L2, containing respectively 16 and 8 entries. The Minitels are installed on line L2. The value yyy assigned to the first Minitel is X’030’ ((16 + 8) x 2) in hexadecimal. The values of yyy respectively assigned to the other Minitels are X’02E’, X’02C’, X’02A’, X’028’, etc.
+Let us suppose for example that we have a configuration made up of two TRANSPAC lines, L1 and L2, containing respectively 16 and 8 entries. The Minitels are installed on line L2. The value yyy assigned to the first Minitel is X‘030’ ((16 + 8) x 2) in hexadecimal. The values of yyy respectively assigned to the other Minitels are X‘02E’, X‘02C’, X‘02A’, X‘028’, etc.
 
 \item[{Note 2}] \leavevmode
 The value of MAXDATA must not exceed MAXBFRU times UNITSZ, nor must it exceed the NCP MAXDATA value.
@@ -5487,19 +5473,19 @@ Using the above definitions the following selection would occurr for a 3270 appl
 
 \subsection{Terminal naming and order conventions}
 \label{\detokenize{connectivity_guide:terminal-naming-and-order-conventions}}
-In selected the correct physical terminal to represent a Virtel connection Virtel uses a selection logic based on highest logical pool entry associated with a line to first physical terminal entry associated with the logical pool. For example, in the screen belowe four logical pools are defined to line E-HTTP. The line is defined with a prelix of EH.
+In selecting the correct physical terminal to represent a Virtel connection, Virtel uses a selection logic based on highest logical pool entry associated with a line and assigns it to lowest available physical terminal entry associated with the logical pool. As an example, in the screen shot below, four logical pools are defined to line E-HTTP. The line is defined to use a terminal prefix of EH.
 
 \sphinxincludegraphics{{image125}.png}
 \sphinxstyleemphasis{Terminals definitions associated with a line}
 
 There is also a physical terminal defined to logical pool *URLPOOL named EHTRMEH0. This has a 3270 relay name of EHVTA300 and is associated with a printer relay EHVIM300. The printer relay is also defined as a physical terminal entry EHPRTEH0.
 
-The highest entry within the logical pools associated with the line is EHVTA209 in pool *IPPOOL. When a connection comes in this entry will be used if it is available. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.
+The highest logical pool entry within the logical pools associated with the line is EHVTA209. This is in pool *IPPOOL. When a connection comes in this entry will be selected if it is available. This logical pool entry will now be associated with a physical terminal associated with the pool *IPOOL. To see the physical terminals associated with this pool we have to list all the terminals defined to Virtel.
 
 \sphinxincludegraphics{{image126}.png}
 \sphinxstyleemphasis{Terminals associated with a pool IPPOOL}
 
-The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical terminal pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.
+The first entry is IPTRM100. This entry will be used in supporting the session associated with the logical pool entry EHVTA209. This entry has a 3270 relay of EHVTA100 and a printer LUNAME of EHVM100. Again the printer entry would be defined as a physical terminal. In this case it is defined as physical entry IPPRT100.
 
 \sphinxincludegraphics{{image127}.png}
 \sphinxstyleemphasis{Printer terminal definition IPPRT100}
@@ -5542,16 +5528,16 @@ The definition of the physical terminals and their association with the 3 sub-gr
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{n}{X25} \PYG{n}{TERMINALS}
-\PYG{n}{Terminal} \PYG{n}{Repeat}    \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
+\PYG{n}{Terminal} \PYG{n}{Repeat}    \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{XOTF0001} \PYG{l+m+mi}{0050}      \PYG{o}{*}\PYG{n}{POOL001} \PYG{n}{Libre}    \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{Vide}
+\PYG{n}{XOTF0001} \PYG{l+m+mi}{0050}      \PYG{o}{*}\PYG{n}{POOL001}          \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
 
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{l+m+mi}{3} \PYG{n}{GROUPS} \PYG{n}{OF} \PYG{n}{RESERVED} \PYG{n}{TERMINALS}
-\PYG{n}{Terminal} \PYG{n}{Repeat}    \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
+\PYG{n}{Terminal} \PYG{n}{Repeat}    \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{ARESA001} \PYG{l+m+mi}{0005}      \PYG{n}{AP01R001} \PYG{n}{Libre}    \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{BRESA001} \PYG{l+m+mi}{0050}      \PYG{n}{BP02R001} \PYG{n}{Libre}    \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{CRESA001} \PYG{l+m+mi}{0002}      \PYG{n}{CP03R001} \PYG{n}{Libre}    \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{Libre}
+\PYG{n}{ARESA001} \PYG{l+m+mi}{0005}      \PYG{n}{AP01R001}          \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
+\PYG{n}{BRESA001} \PYG{l+m+mi}{0050}      \PYG{n}{BP02R001}          \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
+\PYG{n}{CRESA001} \PYG{l+m+mi}{0002}      \PYG{n}{CP03R001}          \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -5576,37 +5562,37 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{n}{THE} \PYG{n}{FIRST} \PYG{n}{TRANSCACTION} \PYG{n}{FOR} \PYG{n}{ENTRYP01}
 
-\PYG{n}{Nom} \PYG{n}{interne}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0101}       \PYG{n}{Pour} \PYG{n}{l}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{associer a un point d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{entrée}
-\PYG{n}{Nom} \PYG{n}{externe}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{01}       \PYG{n}{Nom} \PYG{n}{affiche} \PYG{n}{dans} \PYG{n}{le} \PYG{n}{menu} \PYG{n}{utilisateur}
-\PYG{n}{Description}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{01} \PYG{n}{avec} \PYG{n}{terminaux} \PYG{n}{ARESA}
-\PYG{n}{Application}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI01}        \PYG{n}{Application} \PYG{n}{gérant} \PYG{n}{la} \PYG{n}{transaction}
-\PYG{n}{Alias}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                \PYG{n}{Nom} \PYG{n}{suite} \PYG{n}{a} \PYG{n}{CLSDST} \PYG{n}{PASS}
-\PYG{n}{Type} \PYG{n}{d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{application ===\PYGZgt{} 1         1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES}
-\PYG{n}{Terminaux}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ARESA}     \PYG{n}{Préfixe} \PYG{n}{des} \PYG{n}{terminaux} \PYG{n}{associés}
+\PYG{n}{Internal} \PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0101}       \PYG{n}{Associated} \PYG{k}{with} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{External} \PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{01}       \PYG{n}{Name} \PYG{n}{on} \PYG{n}{the} \PYG{n}{APPMENU} \PYG{n}{utility} \PYG{n+nb}{list}
+\PYG{n}{Description}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{01} \PYG{k}{with} \PYG{n}{terminals} \PYG{n}{ARESA}
+\PYG{n}{Application}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI01}        \PYG{n}{Associated} \PYG{n}{application}
+\PYG{n}{Alias}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                \PYG{n}{CLSDST} \PYG{n}{PASS} \PYG{n}{Alias} \PYG{n}{Name}
+\PYG{n}{Applic}\PYG{o}{.} \PYG{n}{Type}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}              \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{VTAM} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{VIRTEL} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{SERV} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{PAGE} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{LINE}
+\PYG{n}{Terminals}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ARESA}          \PYG{n}{Terminal} \PYG{n}{Prefix}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{n}{THE} \PYG{n}{SECOND} \PYG{n}{TRANSCACTION} \PYG{n}{FOR} \PYG{n}{ENTRYP01}
 
-\PYG{n}{Nom} \PYG{n}{interne}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0102}      \PYG{n}{Pour} \PYG{n}{l}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{associer a un point d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{entrée}
-\PYG{n}{Nom} \PYG{n}{externe}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{02}      \PYG{n}{Nom} \PYG{n}{affiche} \PYG{n}{dans} \PYG{n}{le} \PYG{n}{menu} \PYG{n}{utilisateur}
-\PYG{n}{Description}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{02} \PYG{n}{avec} \PYG{n}{terminaux} \PYG{n}{BRESA}
-\PYG{n}{Application}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI02}       \PYG{n}{Application} \PYG{n}{gérant} \PYG{n}{la} \PYG{n}{transaction}
-\PYG{n}{Alias}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}               \PYG{n}{Nom} \PYG{n}{suite} \PYG{n}{a} \PYG{n}{CLSDST} \PYG{n}{PASS}
-\PYG{n}{Type} \PYG{n}{d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{application  ===\PYGZgt{} 1        1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES}
-\PYG{n}{Terminaux}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{BRESA}    \PYG{n}{Préfixe} \PYG{n}{des} \PYG{n}{terminaux} \PYG{n}{associés}
+\PYG{n}{Internal} \PYG{n}{Name} \PYG{o}{==}\PYG{o}{==}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0102}      \PYG{n}{Associated} \PYG{k}{with} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{External} \PYG{n}{Name}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{02}      \PYG{n}{NAme} \PYG{n}{on} \PYG{n}{the} \PYG{n}{APPMENU} \PYG{n}{utility} \PYG{n+nb}{list}
+\PYG{n}{Description}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{02} \PYG{k}{with} \PYG{n}{terminals} \PYG{n}{BRESA}
+\PYG{n}{Application}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI02}       \PYG{n}{Associated} \PYG{n}{application}
+\PYG{n}{Alias}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}               \PYG{n}{CLSDST} \PYG{n}{PASS} \PYG{n}{Alias} \PYG{n}{Name}
+\PYG{n}{Applic}\PYG{o}{.} \PYG{n}{Type}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}             \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{VTAM} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{VIRTEL} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{SERV} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{PAGE} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{LINE}
+\PYG{n}{Terminals}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{BRESA}         \PYG{n}{Terminal} \PYG{n}{Prefix}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{n}{THE} \PYG{n}{FIRST} \PYG{n}{TRANSCACTION} \PYG{n}{FOR} \PYG{n}{ENTRYP02}
 
-\PYG{n}{Nom} \PYG{n}{interne}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0201}     \PYG{n}{Pour} \PYG{n}{l}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{associer a un point d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{entrée}
-\PYG{n}{Nom} \PYG{n}{externe}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}     \PYG{n}{Nom} \PYG{n}{affiche} \PYG{n}{dans} \PYG{n}{le} \PYG{n}{menu} \PYG{n}{utilisateur}
-\PYG{n}{Description}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{03} \PYG{n}{avec} \PYG{n}{terminaux} \PYG{n}{CRESA}
-\PYG{n}{Application}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI03}      \PYG{n}{Application} \PYG{n}{gérant} \PYG{n}{la} \PYG{n}{transaction}
-\PYG{n}{Alias} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{Nom} \PYG{n}{suite} \PYG{n}{a} \PYG{n}{CLSDST} \PYG{n}{PASS}
-\PYG{n}{Type} \PYG{n}{d}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{application  ===\PYGZgt{} 1       1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES}
-\PYG{n}{Terminaux}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{CRESA}   \PYG{n}{Préfixe} \PYG{n}{des} \PYG{n}{terminaux} \PYG{n}{associés}
+\PYG{n}{Internal} \PYG{n}{Name} \PYG{o}{==}\PYG{o}{==}\PYG{o}{\PYGZgt{}} \PYG{n}{TRPE0201}     \PYG{n}{Associated} \PYG{k}{with} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{External} \PYG{n}{Name}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}     \PYG{n}{NAme} \PYG{n}{on} \PYG{n}{the} \PYG{n}{APPMENU} \PYG{n}{utility} \PYG{n+nb}{list}
+\PYG{n}{Description}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Application} \PYG{l+m+mi}{03} \PYG{k}{with} \PYG{n}{terminals} \PYG{n}{CRESA}
+\PYG{n}{Application}    \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{APPLI03}      \PYG{n}{Associated} \PYG{n}{application}
+\PYG{n}{Alias} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{CLSDST} \PYG{n}{PASS} \PYG{n}{Alias} \PYG{n}{Name}
+\PYG{n}{Applic}\PYG{o}{.} \PYG{n}{Type}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}            \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{VTAM} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{VIRTEL} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{SERV} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{PAGE} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{LINE}
+\PYG{n}{Terminals}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{CRESA}        \PYG{n}{Terminal} \PYG{n}{prefix}
 \end{sphinxVerbatim}
 
 \index{Connection Modes@\spxentry{Connection Modes}!Virtel Terminal Connection Examples@\spxentry{Virtel Terminal Connection Examples}}\index{Virtel Terminal Connection Examples@\spxentry{Virtel Terminal Connection Examples}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
@@ -5628,41 +5614,41 @@ This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the V
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{DEFINITION} \PYG{n}{EXPLICITE}
+\PYG{n}{Explicit} \PYG{n}{Terminal} \PYG{n}{definition}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type} \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{TERM0001} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY001}  \PYG{n}{Libre}     \PYG{l+m+mi}{2}    \PYG{n}{Libre}       \PYG{n}{Vide}
-\PYG{n}{TERM0002} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY003}  \PYG{n}{Libre}     \PYG{l+m+mi}{2}    \PYG{n}{Libre}       \PYG{n}{Vide}
-\PYG{n}{TERM0003} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY004}  \PYG{n}{Libre}     \PYG{l+m+mi}{2}    \PYG{n}{Libre}       \PYG{n}{Vide}
-\PYG{n}{TERM0004} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY005}  \PYG{n}{Libre}     \PYG{l+m+mi}{2}    \PYG{n}{Libre}       \PYG{n}{Vide}
+\PYG{n}{TERM0001} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY001}            \PYG{l+m+mi}{2}
+\PYG{n}{TERM0002} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY003}            \PYG{l+m+mi}{2}
+\PYG{n}{TERM0003} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY004}            \PYG{l+m+mi}{2}
+\PYG{n}{TERM0004} \PYG{l+m+mi}{0000}    \PYG{n}{RELAY005}            \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{DEFINITION} \PYG{n}{REPETEE}
+\PYG{n}{Repeated} \PYG{n}{Terminal} \PYG{n}{definition}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type} \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{TERM0001} \PYG{l+m+mi}{0004}    \PYG{n}{RELAY001}  \PYG{n}{Libre}     \PYG{l+m+mi}{2}    \PYG{n}{Libre}       \PYG{n}{Vide}
+\PYG{n}{TERM0001} \PYG{l+m+mi}{0004}      \PYG{n}{RELAY001}          \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-DEFINITION DYNAMIQUE
+Dynamic terminal definition
 
-Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
 
-?***0001 0000    RELAY===  Libre     2    Libre       Vide
+Terminal Repeated  Relay    Entry    Type I/O   Pool  2nd Relay
+?***0001 0000      RELAY===          2
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-DEFINITION EN POOL NON DYNAMIQUE
+Terminal definition in non\PYGZhy{}dynamic pool
 
-Terminal Répété Relais Entrée Type Compression 2eme Relais
+Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 
-?***0001 0000 RELAY001 Libre 2 Libre Vide
-?***0002 0000 RELAY002 Libre 2 Libre Vide
-?***0003 0000 RELAY003 Libre 2 Libre Vide
-?***0004 0000 RELAY004 Libre 2 Libre Vide
+?***0001 0000      RELAY001         2
+?***0002 0000      RELAY002         2
+?***0003 0000      RELAY003         2
+?***0004 0000      RELAY004         2
 \end{sphinxVerbatim}
 
 \index{Connection Modes@\spxentry{Connection Modes}!X25 Asynchronous Terminal Connection Example@\spxentry{X25 Asynchronous Terminal Connection Example}}\index{X25 Asynchronous Terminal Connection Example@\spxentry{X25 Asynchronous Terminal Connection Example}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
@@ -5674,47 +5660,47 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{EXPLICIT} \PYG{n}{DEFINITION} \PYG{n}{WITHOUT} \PYG{n}{PSEUDO}\PYG{o}{\PYGZhy{}}\PYG{n}{PRINTER}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{X25F0001} \PYG{l+m+mi}{0000}    \PYG{n}{RX25F001}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{X25F0002} \PYG{l+m+mi}{0000}    \PYG{n}{RX25F002}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{X25G0001} \PYG{l+m+mi}{0000}    \PYG{n}{RX25G001}  \PYG{n}{Libre}     \PYG{l+m+mi}{1}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{X25G0002} \PYG{l+m+mi}{0000}    \PYG{n}{RX25G002}  \PYG{n}{Libre}     \PYG{l+m+mi}{1}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
+\PYG{n}{X25F0001} \PYG{l+m+mi}{0000}      \PYG{n}{RX25F001}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
+\PYG{n}{X25F0002} \PYG{l+m+mi}{0000}      \PYG{n}{RX25F002}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
+\PYG{n}{X25G0001} \PYG{l+m+mi}{0000}      \PYG{n}{RX25G001}         \PYG{l+m+mi}{1}    \PYG{l+m+mi}{2}
+\PYG{n}{X25G0002} \PYG{l+m+mi}{0000}      \PYG{n}{RX25G002}         \PYG{l+m+mi}{1}    \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{REPEATED} \PYG{n}{DEFINITION} \PYG{n}{WITHOUT} \PYG{n}{PSEUDO}\PYG{o}{\PYGZhy{}}\PYG{n}{PRINTER}
+\PYG{n}{Repeated} \PYG{n}{terminal} \PYG{n}{definitions} \PYG{n}{without} \PYG{n}{psuedo}\PYG{o}{\PYGZhy{}}\PYG{n}{printer}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{X25F0001} \PYG{l+m+mi}{0004}    \PYG{n}{RX25F001}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
-\PYG{n}{X25G0001} \PYG{l+m+mi}{0004}    \PYG{n}{RX25G001}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{Libre}
+\PYG{n}{X25F0001} \PYG{l+m+mi}{0004}      \PYG{n}{RX25F001}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
+\PYG{n}{X25G0001} \PYG{l+m+mi}{0004}      \PYG{n}{RX25G001}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{EXPLICIT} \PYG{n}{DEFINITION} \PYG{n}{WITH} \PYG{n}{PSEUDO}\PYG{o}{\PYGZhy{}}\PYG{n}{PRINTER}
+\PYG{n}{Explicit} \PYG{n}{terminal} \PYG{n}{definitions} \PYG{k}{with} \PYG{n}{psuedo}\PYG{o}{\PYGZhy{}}\PYG{n}{printer}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{FICTF001} \PYG{l+m+mi}{0000}    \PYG{n}{IMPRF001}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{FICTF002} \PYG{l+m+mi}{0000}    \PYG{n}{IMPRF002}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{FICTG001} \PYG{l+m+mi}{0000}    \PYG{n}{IMPRG001}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{FICTG002} \PYG{l+m+mi}{0000}    \PYG{n}{IMPRG002}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{X25F0001} \PYG{l+m+mi}{0000}    \PYG{n}{RX25F001}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRF001}
-\PYG{n}{X25F0002} \PYG{l+m+mi}{0000}    \PYG{n}{RX25F002}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRF002}
-\PYG{n}{X25G0001} \PYG{l+m+mi}{0000}    \PYG{n}{RX25G001}  \PYG{n}{Libre}     \PYG{l+m+mi}{1}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRG001}
-\PYG{n}{X25G0002} \PYG{l+m+mi}{0000}    \PYG{n}{RX25G002}  \PYG{n}{Libre}     \PYG{l+m+mi}{1}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRG002}
+\PYG{n}{FICTF001} \PYG{l+m+mi}{0000}      \PYG{n}{IMPRF001}         \PYG{l+m+mi}{2}    \PYG{l+m+mi}{0}
+\PYG{n}{FICTF002} \PYG{l+m+mi}{0000}      \PYG{n}{IMPRF002}         \PYG{l+m+mi}{2}    \PYG{l+m+mi}{0}
+\PYG{n}{FICTG001} \PYG{l+m+mi}{0000}      \PYG{n}{IMPRG001}         \PYG{l+m+mi}{2}    \PYG{l+m+mi}{0}
+\PYG{n}{FICTG002} \PYG{l+m+mi}{0000}      \PYG{n}{IMPRG002}         \PYG{l+m+mi}{2}    \PYG{l+m+mi}{0}
+\PYG{n}{X25F0001} \PYG{l+m+mi}{0000}      \PYG{n}{RX25F001}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{IMPRF001}
+\PYG{n}{X25F0002} \PYG{l+m+mi}{0000}      \PYG{n}{RX25F002}         \PYG{l+m+mi}{3}    \PYG{l+m+mi}{2}           \PYG{n}{IMPRF002}
+\PYG{n}{X25G0001} \PYG{l+m+mi}{0000}      \PYG{n}{RX25G001}         \PYG{l+m+mi}{1}    \PYG{l+m+mi}{2}           \PYG{n}{IMPRG001}
+\PYG{n}{X25G0002} \PYG{l+m+mi}{0000}      \PYG{n}{RX25G002}         \PYG{l+m+mi}{1}    \PYG{l+m+mi}{2}           \PYG{n}{IMPRG002}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{DEFINITION} \PYG{n}{REPETEE} \PYG{n}{AVEC} \PYG{n}{IMPRIMANTE} \PYG{n}{FICTIVE}
+\PYG{n}{Repeated} \PYG{n}{terminal} \PYG{n}{definitions} \PYG{k}{with} \PYG{n}{pseudo}\PYG{o}{\PYGZhy{}}\PYG{n}{printer}
 
-\PYG{n}{Terminal} \PYG{n}{Répété}  \PYG{n}{Relais}    \PYG{n}{Entrée}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{eme} \PYG{n}{Relais}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{FICTF001} \PYG{l+m+mi}{0002}    \PYG{n}{IMPRF001}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{FICTG001} \PYG{l+m+mi}{0002}    \PYG{n}{IMPRG001}  \PYG{n}{Vide}      \PYG{l+m+mi}{2}       \PYG{l+m+mi}{0}
-\PYG{n}{X25F0001} \PYG{l+m+mi}{0002}    \PYG{n}{RX25F001}  \PYG{n}{Libre}     \PYG{l+m+mi}{3}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRF001}
-\PYG{n}{X25G0001} \PYG{l+m+mi}{0002}    \PYG{n}{RX25G001}  \PYG{n}{Libre}     \PYG{l+m+mi}{1}       \PYG{l+m+mi}{2}           \PYG{n}{IMPRG001}
+\PYG{n}{FICTF001} \PYG{l+m+mi}{0002}    \PYG{n}{IMPRF001}            \PYG{l+m+mi}{2}   \PYG{l+m+mi}{0}
+\PYG{n}{FICTG001} \PYG{l+m+mi}{0002}    \PYG{n}{IMPRG001}            \PYG{l+m+mi}{2}   \PYG{l+m+mi}{0}
+\PYG{n}{X25F0001} \PYG{l+m+mi}{0002}    \PYG{n}{RX25F001}            \PYG{l+m+mi}{3}   \PYG{l+m+mi}{2}           \PYG{n}{IMPRF001}
+\PYG{n}{X25G0001} \PYG{l+m+mi}{0002}    \PYG{n}{RX25G001}            \PYG{l+m+mi}{1}   \PYG{l+m+mi}{2}           \PYG{n}{IMPRG001}
 \end{sphinxVerbatim}
 
 The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
@@ -5726,21 +5712,21 @@ The value entered in the “2nd Relay” field of an X25 terminal corresponds to
 It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{PHYSICAL} \PYG{n}{TERMINAL} \PYG{n}{DEFINITION}
+\PYG{n}{Physical} \PYG{n}{terminal} \PYG{n}{definitions}
 
-\PYG{n}{Terminal} \PYG{n}{Repeat}  \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{TERM0001} \PYG{l+m+mi}{0050}    \PYG{o}{*}\PYG{n}{POOL001} \PYG{n}{Free}     \PYG{n}{Free}    \PYG{l+m+mi}{2}           \PYG{n}{Empty}
+\PYG{n}{TERM0001} \PYG{l+m+mi}{0050}      \PYG{o}{*}\PYG{n}{POOL001}              \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{DEFINITION} \PYG{n}{OF} \PYG{l+m+mi}{3} \PYG{n}{GROUPS} \PYG{n}{OF} \PYG{n}{RESERVED} \PYG{n}{TERMINALS}
 
-\PYG{n}{Terminal} \PYG{n}{Repeat}  \PYG{n}{Relay}    \PYG{n}{Entry}    \PYG{n}{Type}    \PYG{n}{Compression} \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
+\PYG{n}{Terminal} \PYG{n}{Repeated}  \PYG{n}{Relay}    \PYG{n}{Entry}   \PYG{n}{Type} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{n}{Pool}  \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}
 
-\PYG{n}{TRESA001} \PYG{l+m+mi}{0005}    \PYG{n}{RELAYA01} \PYG{n}{Free}     \PYG{l+m+mi}{2} \PYG{o+ow}{or} \PYG{l+m+mi}{3}  \PYG{l+m+mi}{2}           \PYG{n}{Free}
-\PYG{n}{TRESB001} \PYG{l+m+mi}{0050}    \PYG{n}{RELAYB01} \PYG{n}{Free}     \PYG{l+m+mi}{3} \PYG{o+ow}{or} \PYG{l+m+mi}{3}  \PYG{l+m+mi}{2}           \PYG{n}{Free}
-\PYG{n}{TRESC001} \PYG{l+m+mi}{0002}    \PYG{n}{RELAYC01} \PYG{n}{Free}     \PYG{l+m+mi}{3} \PYG{o+ow}{or} \PYG{l+m+mi}{3}  \PYG{l+m+mi}{2}           \PYG{n}{Free}
+\PYG{n}{TRESA001} \PYG{l+m+mi}{0005}    \PYG{n}{RELAYA01}           \PYG{l+m+mi}{2}\PYG{o}{\textbar{}}\PYG{o}{\textbar{}}\PYG{l+m+mi}{3} \PYG{l+m+mi}{2}
+\PYG{n}{TRESB001} \PYG{l+m+mi}{0050}    \PYG{n}{RELAYB01}           \PYG{l+m+mi}{3}\PYG{o}{\textbar{}}\PYG{o}{\textbar{}}\PYG{l+m+mi}{3} \PYG{l+m+mi}{2}
+\PYG{n}{TRESC001} \PYG{l+m+mi}{0002}    \PYG{n}{RELAYC01}           \PYG{l+m+mi}{3}\PYG{o}{\textbar{}}\PYG{o}{\textbar{}}\PYG{l+m+mi}{3} \PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
 The 3 groups of terminals contain the value *POOL001 under the heading “*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries \textendash{} they cannot be placed in a logical pool.
@@ -6445,8 +6431,44 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS 
 
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
+\chapter{Virtel and Long Poll protocol}
+\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-163}}
+
+\section{Understanding HTTP Connections}
+\label{\detokenize{connectivity_guide:understanding-http-connections}}
+3270 TE users (clients) connect from their web browsers to Virtel (server) through HTTP connections. HTTP connections are client-driven simplex (not duplex) connections:
+1.      The clients (web browsers) are allowed to transmit to the server (Virtel).
+2.      The server (Virtel) can only “listen” (and reply) to the clients (web browsers).
+
+When a 3270 transaction sends a reply to a user request, the reply sometimes comes in the form of not one but several messages. Those messages must be aggregated before being returned back to the user. In some infrequent circumstances, Virtel receives a late-coming message(s) from the 3270 application when it has already aggregated and returned all prior messages to the user or must handle some other asynchronous event. But with HTTP:
+1.      Virtel is not authorized to transmit anything back to the user.
+2.      Virtel can only wait to be called again by the browser/user to transmit the late-coming message(s) or handle the asynchronous event.This is when Virtel uses a Long Poll (LP) session.
+
+
+\section{Understanding Virtel Long Poll (LP) Sessions}
+\label{\detokenize{connectivity_guide:understanding-virtel-long-poll-lp-sessions}}
+The JavaScript code of the 3270 TE webpages served by Virtel to users/browsers contains the following LP session management logic:
+1.      It creates a main session through which 3270 data will be exchanged between the browser/user and the 3270 application: Virtel immediately acknowledges and answers to this session, which initiates the flow of requests and responses.
+2.      It creates an LP session, which Virtel acknowledges but does not answer until some asynchronous event (such as the need to transmit late-coming 3270 data) occurs.
+3.      When Virtel gets a late-coming message from the 3270 application after all prior messages for the same reply have already been sent back to the user/browser, or need to handle some other asynchronous event:
+a.      Virtel answers the LP session.
+b.      The JavaScript in the 3270 TE page “understands” the situation, and:
+i.      Closes the existing LP session then reopens a new one that Virtel acknowledges but does not answer.
+ii.     “Refreshes” the main session i.e. asks Virtel to send whatever it has to send and aggregates it to what it already received and served to the user.
+In other words:
+1.      Virtel uses the main session to exchange 3270 data between itself and the user/browser.
+2.      Virtel uses the LP session to flag the user/browser when Virtel needs to be called.
+
+
+\section{Understanding Network Components Interference}
+\label{\detokenize{connectivity_guide:understanding-network-components-interference}}
+Network components (Firewalls, PROXY, routers, etc.) can only handle a limited number of IP sessions at any given time, and therefore periodically do some housekeeping to close any session that seems to be inactive.Virtel LP sessions initiated by users/browsers remain acknowledged but unanswered for long periods of time and seem therefore inactive. Some network components/routers close Virtel’s seemingly inactive (unanswered) LP sessions as part of their periodic housekeeping. When Virtel needs to send a late-coming message or handle another asynchronous event by answering the LP session, it finds that it is no longer there. This may result in VIRT924E messages in the Virtel log and in X SYSTEM screen freezes. To identify and eliminate the interference of network components/routers with Virtel LP sessions, network SEs should:
+1.      Review all network components/routers to find which one(s) is(are) closing “apparently inactive” Virtel LP sessions.
+2.      ‘Tell’ the network components/routers to accept or ignore LP requests, i.e. URLs to VIRTEL ending with ‘LP=0’ (LP=zero).
+
+
 \chapter{SSO, PassTickets and Proxy Servers}
-\label{\detokenize{connectivity_guide:sso-passtickets-and-proxy-servers}}\label{\detokenize{connectivity_guide:index-163}}
+\label{\detokenize{connectivity_guide:sso-passtickets-and-proxy-servers}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id74}}
@@ -7498,7 +7520,7 @@ TYPE=1,
 TERMINAL=VPVTA,
 STARTUP=1,
 SECURITY=1,
-TIOASTA=”Signon\&/F\&*7D4EC9\&’114BE9’\&U\&’114CF9’\&P\&/A”
+TIOASTA=”Signon\&/F\&*7D4EC9\&‘114BE9’\&U\&‘114CF9’\&P\&/A”
 
 \end{description}
 \end{quote}
