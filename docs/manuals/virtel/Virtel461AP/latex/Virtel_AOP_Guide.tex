@@ -13,6 +13,9 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
+
+
+
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -26,24 +29,7 @@
 % Set up styles of URL: it should be placed after hyperref.
 \urlstyle{same}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
-\makeatletter
-\def\fnum@figure{\figurename\thefigure{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\tablename}{Table }}
-\makeatletter
-\def\fnum@table{\tablename\thetable{}}
-\makeatother
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
-\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
-\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 
 
 
@@ -55,7 +41,7 @@
 
 
 \title{Virtel Audit, Administration, Operations and Performance Guide}
-\date{Dec 23, 2021}
+\date{Oct 23, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -389,7 +375,7 @@ This will trigger the log program VIR0021A to write messages to either the VIRLO
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{LOGFILEX} \PYG{o+ow}{and} \PYG{n}{LOGFILEY}
-\PYG{n}{DCB} \PYG{n}{attributes} \PYG{p}{:} \PYG{n}{PS}\PYG{p}{,} \PYG{n}{LRECL}\PYG{o}{=}\PYG{l+m+mi}{165}\PYG{p}{,} \PYG{n}{RECFM}\PYG{o}{=}\PYG{n}{VB}\PYG{p}{,} \PYG{n}{BLKSIZE}\PYG{o}{=}\PYG{l+m+mi}{32000}
+\PYG{n}{DCB} \PYG{n}{attributes} \PYG{p}{:} \PYG{n}{PS}\PYG{p}{,} \PYG{n}{LRECL}\PYG{o}{=}\PYG{l+m+mi}{166}\PYG{p}{,} \PYG{n}{RECFM}\PYG{o}{=}\PYG{n}{VB}\PYG{p}{,} \PYG{n}{BLKSIZE}\PYG{o}{=}\PYG{l+m+mi}{2000}
 \end{sphinxVerbatim}
 
 If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile.
@@ -405,6 +391,10 @@ To determine the status of the LOG file, or to switch the log file manually issu
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{LOG}\PYG{p}{,}\PYG{n}{D}              \PYG{n}{Display} \PYG{n}{active} \PYG{n}{logfile}
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{LOG}\PYG{p}{,}\PYG{n}{I}              \PYG{n}{Switch} \PYG{n}{logfiles}
 \end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+If you issue the “SWITCH” or “DISPLAY” command and LOGFILES are not in use i.e. LOG=FILE is not coded in the TCT you will receive the message VIR0068E INVALID COMMAND.
+\end{sphinxadmonition}
 
 \newpage
 
@@ -566,7 +556,7 @@ The SILENCE command manages message suppression. The format of the command is:
 \PYG{n}{SILENCE}\PYG{o}{=}\PYG{n}{LIST}                \PYG{n}{List} \PYG{n}{messages}
 \end{sphinxVerbatim}
 
-The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
+The SILENCE command initially reverses the state of the SILENCE parameter as defined in the VIRTCT. A default static message table of connection and disconnection messages is built at initialization. This table includes the following messages - VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W, VIR0002W, VIRU122I  and VIR0914E. These messages ids are not effected by the RESET or LIST option of the SILENCE command.
 
 \index{SNAP Command@\spxentry{SNAP Command}!Commands@\spxentry{Commands}}\index{Commands@\spxentry{Commands}!SNAP Command@\spxentry{SNAP Command}}\ignorespaces 
 
@@ -617,7 +607,7 @@ The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular mes
 Any message that can be issued by Virtel.
 
 \item[{search}] \leavevmode
-Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.
+Any seache criteria issued within the message. The search file is restricted to a maximum of 10 characters. Anything beyond will be ignored. Default search is none.
 
 \item[{action}] \leavevmode
 Possible values are S for SNAP, A for ABEND, and D to delete a message from the dynamic table. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
@@ -2433,7 +2423,7 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
 \label{\detokenize{audit_operations_ and_performance:contents-of-the-trace}}\label{\detokenize{audit_operations_ and_performance:index-79}}\begin{quote}
 
 
-\begin{savenotes}\sphinxatlongtablestart\begin{longtable}{|*{3}{\X{1}{3}|}}
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|*{3}{\X{1}{3}|}}
 \hline
 \sphinxmultirow{2}{1}{%
 \begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
@@ -3376,43 +3366,88 @@ Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS record
 
 \subsection{Printing the VIRSTAT SMF record}
 \label{\detokenize{audit_operations_ and_performance:printing-the-virstat-smf-record}}\label{\detokenize{audit_operations_ and_performance:index-92}}
-The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
-
-The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print SMF records that have been written to the SMF LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM.
+The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel. SMFREXXL must be used to format the records from V4.60 onwards.
 
 Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.
 
 
 \subsection{Structure of the Binary STATS record.}
 \label{\detokenize{audit_operations_ and_performance:structure-of-the-binary-stats-record}}
-The segment within the SMF record starts at offset X’0E’ within the record.
+The segment within the SMF record starts at offset X‘0E’. For Virtel V4.59 or less the following structure is used: -
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
-*        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT3)
-*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
-*
-BSTATS   DSECT
-B\PYGZdl{}LUNAME DS    CL8                     NOM DU TERMINAL
-B\PYGZdl{}DATE   DS    PL4                     DATE STATISTIQUES
-B\PYGZdl{}TIME   DS    PL4                     HEURE STATISTIQUES
-B\PYGZdl{}CUMPAR DS    CL1                     B Binaire HTTP entrant
-         DS    CL3                     filler
-B\PYGZdl{}IPADDR DS    CL40  (was 15)          CALLER IP ADDRESS
-B\PYGZdl{}ENTRY  DS    CL8                     ENTRY POINT
-B\PYGZdl{}TRANS  DS    CL8                     TRANSACTION
-B\PYGZdl{}RULE   DS    CL8                     RULE (default to LINE)
-B\PYGZdl{}STATUS DS    CL4                     HTTP STATUS
-B\PYGZdl{}RELAY  DS    CL8                     NOM DU RELAY
-B\PYGZdl{}SPENT  DS    XL4                     Dur e d\PYGZsq{}appel en 1/100s
-B\PYGZdl{}BYTRD  DS    XL4                     BYTES RECEIVED
-B\PYGZdl{}BYTST  DS    XL4                     BYTES SENT
-B\PYGZdl{}USERID DS    CL20                    USERID
-B\PYGZdl{}PARM   DS    CL16                    PARAMETER
-B\PYGZdl{}PXYADR DS    CL40                    PROXY IP ADDRESS
-        ORG   BSTATS+255
-LBSTATS  EQU   *\PYGZhy{}BSTATS                LONGUEUR ENREGISTREMENT
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}* 42310349
+*        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}* 42310349
+*                                                              42310349
+HSTATS   DSECT                                                 42310349
+H\PYGZdl{}LUNAME DS    CL8                     NOM DU TERMINAL         42310349
+H\PYGZdl{}DATE   DS    PL4                     DATE STATISTIQUES       42310349
+H\PYGZdl{}TIME   DS    PL4                     HEURE STATISTIQUES      42310349
+H\PYGZdl{}IPADDR DS    CL15                    CALLER IP ADDRESS       42310349
+H\PYGZdl{}IPPORT DS    CL5                     CALLER IP PORT          42310349
+H\PYGZdl{}ENTRY  DS    CL8                     ENTRY POINT             42310349
+H\PYGZdl{}TRANS  DS    CL8                     TRANSACTION             42310349
+H\PYGZdl{}RULE   DS    CL8                     RULE (default to LINE)  42310349
+H\PYGZdl{}CUMPAR DS    CL1                     H HTTP entrant          42310349
+         DS    CL3                     filler                  42310349
+H\PYGZdl{}STATUS DS    CL4                     HTTP STATUS             42310349
+H\PYGZdl{}RELAY  DS    CL8                     NOM DU RELAY            42310349
+H\PYGZdl{}SPENT  DS    CL8                     Durée d\PYGZsq{}appel en 1/100s 42310349
+*H\PYGZdl{}NBIN1  DS    XL4                    INPUT COUNT             42310349
+*H\PYGZdl{}NBOUT2 DS    XL4                    OUTPUT COUNT            42310349
+H\PYGZdl{}BYTRD  DS    CL8                     BYTES RECEIVED          42310349
+H\PYGZdl{}BYTST  DS    CL8                     BYTES SENT              42310349
+H\PYGZdl{}START1 DS    CL8              SESSION START DATE GREGORIENNE 42310349
+H\PYGZdl{}START3 DS    CL8                     SESSION START TIME      42310349
+H\PYGZdl{}END3   DS    CL8                     SESSION END TIME        42310349
+LHSTATS  EQU   *\PYGZhy{}HSTATS                LONGUEUR ENREGISTREMENT 42310349
 \end{sphinxVerbatim}
+
+Example of output :-
+
+\sphinxincludegraphics{{image82}.png}
+
+For Virtel V4.60 onwards, the record structure is as follows: -
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}* 42310349
+*        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
+*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}* 42310349
+*                                                              42310349
+HSTATS   DSECT                                                 42310349
+H\PYGZdl{}LUNAME DS    CL8                     NOM DU TERMINAL         42310349
+H\PYGZdl{}DATE   DS    PL4                     DATE STATISTIQUES       42310349
+H\PYGZdl{}TIME   DS    PL4                     HEURE STATISTIQUES      42310349
+H\PYGZdl{}CUMPAR DS    CL1                     H HTTP entrant          58530289
+         DS    CL3                     filler                  58530289
+H\PYGZdl{}IPADDR DS    CL40  (was 15\PYGZcb{}          CALLER IP ADDRESS       58530289
+* H\PYGZdl{}IPPORT DS    CL5                   CALLER IP PORT          58530289
+H\PYGZdl{}ENTRY  DS    CL8                     ENTRY POINT             42310349
+H\PYGZdl{}TRANS  DS    CL8                     TRANSACTION             42310349
+H\PYGZdl{}RULE   DS    CL8                     RULE (default to LINE)  42310349
+* H\PYGZdl{}CUMPAR DS    CL1                   H HTTP entrant          58530289
+*          DS    CL3                   filler                  58530289
+H\PYGZdl{}STATUS DS    CL4                     HTTP STATUS             42310349
+H\PYGZdl{}RELAY  DS    CL8                     NOM DU RELAY            42310349
+H\PYGZdl{}SPENT  DS    CL8                     Durée d\PYGZsq{}appel en 1/100s 42310349
+*H\PYGZdl{}NBIN1  DS    XL4                    INPUT COUNT             42310349
+*H\PYGZdl{}NBOUT2 DS    XL4                    OUTPUT COUNT            42310349
+H\PYGZdl{}BYTRD  DS    CL8                     BYTES RECEIVED          42310349
+H\PYGZdl{}BYTST  DS    CL8                     BYTES SENT              42310349
+H\PYGZdl{}START1 DS    CL8              SESSION START DATE GREGORIENNE 42310349
+H\PYGZdl{}START3 DS    CL8                     SESSION START TIME      42310349
+H\PYGZdl{}END3   DS    CL8                     SESSION END TIME        42310349
+* H\PYGZdl{}SRCADR DS    CL15                  SOURCE IP ADDRESS       58530289
+* H\PYGZdl{}HSTADR DS    CL15                  HOST IP ADDRESS         58530289
+H\PYGZdl{}PXYADR DS    CL40                    PROXY IP ADDRESS        58530289
+        ORG   HSTATS+255                                      58360198
+LHSTATS  EQU   *\PYGZhy{}HSTATS                LONGUEUR ENREGISTREMENT 42310349
+\end{sphinxVerbatim}
+
+Example of output : -
+
+\sphinxincludegraphics{{image81}.png}
 
 
 \chapter{Appendix}

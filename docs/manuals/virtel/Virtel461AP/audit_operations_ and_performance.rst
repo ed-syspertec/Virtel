@@ -2931,9 +2931,7 @@ Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS record
 Printing the VIRSTAT SMF record
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
-
-The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print SMF records that have been written to the SMF LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM.
+The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel. SMFREXXL must be used to format the records from V4.60 onwards. 
 
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
 
@@ -2941,34 +2939,79 @@ Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECOR
 Structure of the Binary STATS record.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The segment within the SMF record starts at offset X'0E' within the record.  
-
+The segment within the SMF record starts at offset X'0E'. For Virtel V4.59 or less the following structure is used: -
 ::
 
-    *------------------------------------------------------------* 
-    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT3)    
-    *------------------------------------------------------------* 
-    *                                                              
-    BSTATS   DSECT                                                 
-    B$LUNAME DS    CL8                     NOM DU TERMINAL         
-    B$DATE   DS    PL4                     DATE STATISTIQUES       
-    B$TIME   DS    PL4                     HEURE STATISTIQUES      
-    B$CUMPAR DS    CL1                     B Binaire HTTP entrant  
-             DS    CL3                     filler                  
-    B$IPADDR DS    CL40  (was 15)          CALLER IP ADDRESS           
-    B$ENTRY  DS    CL8                     ENTRY POINT             
-    B$TRANS  DS    CL8                     TRANSACTION             
-    B$RULE   DS    CL8                     RULE (default to LINE)  
-    B$STATUS DS    CL4                     HTTP STATUS             
-    B$RELAY  DS    CL8                     NOM DU RELAY            
-    B$SPENT  DS    XL4                     Dur e d'appel en 1/100s 
-    B$BYTRD  DS    XL4                     BYTES RECEIVED          
-    B$BYTST  DS    XL4                     BYTES SENT              
-    B$USERID DS    CL20                    USERID                  
-    B$PARM   DS    CL16                    PARAMETER                   
-    B$PXYADR DS    CL40                    PROXY IP ADDRESS        
-            ORG   BSTATS+255                                      
-    LBSTATS  EQU   *-BSTATS                LONGUEUR ENREGISTREMENT 
+    *------------------------------------------------------------* 42310349
+    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
+    *------------------------------------------------------------* 42310349
+    *                                                              42310349
+    HSTATS   DSECT                                                 42310349
+    H$LUNAME DS    CL8                     NOM DU TERMINAL         42310349
+    H$DATE   DS    PL4                     DATE STATISTIQUES       42310349
+    H$TIME   DS    PL4                     HEURE STATISTIQUES      42310349
+    H$IPADDR DS    CL15                    CALLER IP ADDRESS       42310349
+    H$IPPORT DS    CL5                     CALLER IP PORT          42310349
+    H$ENTRY  DS    CL8                     ENTRY POINT             42310349
+    H$TRANS  DS    CL8                     TRANSACTION             42310349
+    H$RULE   DS    CL8                     RULE (default to LINE)  42310349
+    H$CUMPAR DS    CL1                     H HTTP entrant          42310349
+             DS    CL3                     filler                  42310349
+    H$STATUS DS    CL4                     HTTP STATUS             42310349
+    H$RELAY  DS    CL8                     NOM DU RELAY            42310349
+    H$SPENT  DS    CL8                     Durée d'appel en 1/100s 42310349
+    *H$NBIN1  DS    XL4                    INPUT COUNT             42310349
+    *H$NBOUT2 DS    XL4                    OUTPUT COUNT            42310349
+    H$BYTRD  DS    CL8                     BYTES RECEIVED          42310349
+    H$BYTST  DS    CL8                     BYTES SENT              42310349
+    H$START1 DS    CL8              SESSION START DATE GREGORIENNE 42310349
+    H$START3 DS    CL8                     SESSION START TIME      42310349
+    H$END3   DS    CL8                     SESSION END TIME        42310349
+    LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 42310349
+
+Example of output :-
+
+|image82|
+
+For Virtel V4.60 onwards, the record structure is as follows: -
+::
+
+    *------------------------------------------------------------* 42310349
+    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
+    *------------------------------------------------------------* 42310349
+    *                                                              42310349
+    HSTATS   DSECT                                                 42310349
+    H$LUNAME DS    CL8                     NOM DU TERMINAL         42310349
+    H$DATE   DS    PL4                     DATE STATISTIQUES       42310349
+    H$TIME   DS    PL4                     HEURE STATISTIQUES      42310349
+    H$CUMPAR DS    CL1                     H HTTP entrant          58530289
+             DS    CL3                     filler                  58530289
+    H$IPADDR DS    CL40  (was 15}          CALLER IP ADDRESS       58530289
+    * H$IPPORT DS    CL5                   CALLER IP PORT          58530289
+    H$ENTRY  DS    CL8                     ENTRY POINT             42310349
+    H$TRANS  DS    CL8                     TRANSACTION             42310349
+    H$RULE   DS    CL8                     RULE (default to LINE)  42310349
+    * H$CUMPAR DS    CL1                   H HTTP entrant          58530289
+    *          DS    CL3                   filler                  58530289
+    H$STATUS DS    CL4                     HTTP STATUS             42310349
+    H$RELAY  DS    CL8                     NOM DU RELAY            42310349
+    H$SPENT  DS    CL8                     Durée d'appel en 1/100s 42310349
+    *H$NBIN1  DS    XL4                    INPUT COUNT             42310349
+    *H$NBOUT2 DS    XL4                    OUTPUT COUNT            42310349
+    H$BYTRD  DS    CL8                     BYTES RECEIVED          42310349
+    H$BYTST  DS    CL8                     BYTES SENT              42310349
+    H$START1 DS    CL8              SESSION START DATE GREGORIENNE 42310349
+    H$START3 DS    CL8                     SESSION START TIME      42310349
+    H$END3   DS    CL8                     SESSION END TIME        42310349
+    * H$SRCADR DS    CL15                  SOURCE IP ADDRESS       58530289
+    * H$HSTADR DS    CL15                  HOST IP ADDRESS         58530289
+    H$PXYADR DS    CL40                    PROXY IP ADDRESS        58530289
+            ORG   HSTATS+255                                      58360198
+    LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 42310349
+
+Example of output : -
+
+|image81|
 
 
 Appendix
@@ -3037,3 +3080,5 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image78| image:: images/media/image78.png
 .. |image79| image:: images/media/image79.png
 .. |image80| image:: images/media/image80.png
+.. |image81| image:: images/media/image81.png
+.. |image82| image:: images/media/image82.png    
