@@ -16,6 +16,26 @@ Installation changes
 
 - Update installation files with correct version number.
 
+**5944 Wrong DDNAME for SAMPTRSF in VSE installation**
+
+- For VSE the DDNAME for the SAMPTRSF file is SAMPTRF
+
+**5950 ARBOLOAD JCL OPTION Section**
+
+- The ARBOLOAD JCL has a new OPTION section for including transactions CLI-03CO and W2H-03CO
+
+**5976 Samplib changes**
+
+- TCT   			Remove redundant VSAM options for US,FR and 01
+- ABROLOAD		    Separate out CLI-31U and CLI-31C
+- VIR4INST		    Update level no.	
+
+**5974 ARBOLOAD Sample**
+
+- Timeout value reduced
+
+
+
 Migration considerations
 ------------------------
 
@@ -108,13 +128,51 @@ Presentation
 
 - Add support for Samsung tablet and customization of keys.
 
+**5946 Make scroll up/down mouse actions customizable**
+
+- Mouse actions can be controlled (ON/OFF) or associated to PF7/PF8 keys through new options in the settings panel.
+
+**5949 Remove the "VIRTEL 4.61 Web Access" text from the "401 unauthorized" screen**
+
+- Security enhancement to define, through then new TCT option VWAVERS=, the text that appears in HTTP 40x templates.
+
+**5954 Updates to WA key mapping**
+
+- Improved calling by passing it a JSON object or a string. 
+- Compression of code vir3270.js
+
+ **5959/66 Adding of a favicon.ico to .htm pages**
+
+ - Avoid the console error message on browsers searching for favicon.ico. Add "pathToFavicon" to oCustom variable. 
+
+**5960/66 Enhancement to cAppMenu**
+
+- Updated cAppMenu templates
+
+**5961 Support for IBM Debugger**
+
+- Correctly process BIND protocols when in session with IBM Debugger.
+
+**5965/8 TBT Web Access**
+
+- Support input fields with FER attribute.  
+
+**5972 IPAD Support**
+
+- Improved Toolbar / Enter key usage.  
+
+
+ **5973 X-UserSignonCode may fail upload**
+
+ - Prevent upload failures if code contains a valid  "X-UserSignonCode: " header
+
+
 .. raw:: latex
 
     \newpage 
 
 Base Components
 ^^^^^^^^^^^^^^^
-
 
 **5893 VIRPLEX startup corrected**
 
@@ -172,7 +230,7 @@ Base Components
 
 - New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum of 10 messages.
 
-**5916/25/38 LOCK= terminal support**
+**5916/25/30/38/42 LOCK= terminal support**
 
 - LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.
 - Support ESC key as DISCONNECT
@@ -185,6 +243,43 @@ Base Components
 **5927 Support unsolicited BINDS**
 
 - Support for applications which use unsolicited BIND in session setup. For example IBM Debugger.
+
+**5943 Fix S0C1 bug after VIR0010 DETACH**
+
+- Registers in an inactive terminal were reloaded from the TIOA following a call of a DETACH function in VIR0010. This resulted in a S0C1 Abend.
+
+**5945 Abend ASRA VIRHTTP**
+
+- The abend is caused by Virtel not correctly processing a GET request that contains spaces in the URL.
+
+**5947 New TCT keyword LPKALIVE= LONG POLL KEEP ALIVE**
+
+- The Long poll timeout can now be set through a TCT parameter.
+
+**5948 Enhancement to the RULE =HTFORWD IS or IS NOT option.**
+
+- Rule now supports a list of proxy server through the HTFORWD option.
+
+**5957 VirtelUserSignon= or USER-SIGNON-CODE data removed**
+
+- Prior to thus change user name and password were included in the (encrypted) VirtelUserSignon code.
+
+**5958 Fix bug in VIRSV REQUEST**
+
+- Error message VIRS125E MQSAEH34 VIRSV REQUEST ERROR - R15 : 0000080C. Number of NBCELL increased from 6 to 12.
+
+**5963 VSE abend on /READ on CLOSED session**
+
+- Correct bug in VIR0010
+
+**5964/67/70 VIRCONF Updates**
+
+- Remove LOCADDR2 and PARTNER2 support. VIRCONF and ARBO fields now support larger fields for LOCADDR and PARTNER values in the LINE record. 
+
+**5969 New Security type 5**
+
+- Implements a new Security type 5 for transaction which allows a user signon to bypass the security manager (eg RACF) if already connected with a valid VirtelUserSignon code. 
+
 
 
 .. raw:: latex
@@ -227,10 +322,22 @@ Other Enhancements
 
 - When a DNS name is used as a LOCADDR= address it was capitalized and put in quotes. This has been removed. 
 
-**5941 AXIOS UPLOAD**
+**5941 AXIOS UPLOAD corruption**
 
 - Data was corrupted after upload from AXIOS.
 
+**5956/62 AXIOS UPLOAD stalls**
+
+- Processes of chunked data improved to avoid stalling during upload.
+
+**5971 Update SSLSETUP in SAMPLIB**
+
+- Correct keysize in sample member
+
+**5975 Update SMFREXX procedures in SAMPLIB**
+
+- SMFPRINT and SMFPRNTL updated
+- REXX procedures SMFREXXP and SMFREXXL updated 
 
 Updates and maintenance
 -----------------------
@@ -247,8 +354,7 @@ Appendix A
 **Maintenance list**
 
 - 5887 APL support for Omegamon                                                 
-- 5888 Minor Javascript updates                                                              
-- 5889 Missing SVN Update 5874                                                  
+- 5888 Minor Javascript updates                                                                                                            
 - 5890 update backspace key to left arrow to settings panel.
 - 5891 expired password panel correction in security 4                          
 - 5892 #2031 Translation of delete PF Key description on Virtel Rule List Panel 
@@ -297,7 +403,40 @@ Appendix A
 - 5937 Prevent AEIV abends
 - 5938 LOCK= and CANCEL support
 - 5940 Correct LOCADDR processing in ARBO LOAD/UNLOAD
-- 5941 Correct UPLOAD bug for AXIOS 
+- 5941 Correct UPLOAD bug for AXIOS
+- 5942 LOCK= various complements
+- 5943 protect against execution after VIR0010 DETACH
+- 5944 Wrong DDNAME SAMPTRSF for DOC-DIR in VSE installation
+- 5945 Abend ASRA VIRHTTP +45E2 when receiving invalid URL
+- 5946 Make scroll up/down mouse actions customizable
+- 5947 LPKALIVE=         LONG POLL KEEP ALIVE  sample SNAP
+- 5948 RULE allow =HTFORWD IS or IS NOT sample rule
+- 5949 Remove the "VIRTEL 4.61 Web Access" statement from the "401 unauthorized" screen
+- 5950 ARBOLOAD de base - Les libellés des transaction CLI-03CO et W2H-03CO ne sont pas adaptés
+- 5954 Ajustement WA key mapping : Correction de la non-prise en compte au moment de la sauvegardedu raccourci à la création d'une Macro.
+- 5955 CA-TS user specific PTF5955
+- 5956 AXIOS chunked upload may stall
+- 5957 VirtelUserSignon= or USER-SIGNON-CODE changed to no longer contain user info
+- 5958 VIRS125E MQSAEH34 VIRSV REQUEST ERROR - R15 : 0000080C
+- 5959 Update of the current version : Adding of a favicon.ico in the pages .htm - Mise à jour de la versioncourante : Ajout d'un lien favicon.ico dans certaines pages .htm
+- 5960 Evolution cAppMenu et Ajout de l'option d'inhibition du mode de Copier/Coller Append - cAppMenu Enhancement and Adding of the Option to Inhibit Copy/Paste Append Mode
+- 5961 completes 5927 Allow Unsolicited BIND from an application like IBM Debugger
+- 5962 Upload file still failing
+- 5963 VSE abend on /READ on CLOSED session
+- 5964 Support new ARBO Line format in VIRCONF. LOCADDR2/PARTNER2 support removed.
+- 5965 Support for input fields with FER attribute (TBT WebAccess) and minor change in WEB2HOST.htmtemplate (Virtel WebAccess )
+- 5966 pathToFavicon enhancement and minor correction to cAppMenu-main in 460
+- 5967 Improvement on UPDT5964
+- 5968 Improvement on UPDT5965
+- 5969 VirtelUserSignon and security 5
+- 5970 Correct VIR0046 following 5964. Abend S0C1 when creating a Line Record
+- 5971 Correct Keysize in SSLSETUP job
+- 5972 Jquery Update, IPAD version : landscape mode correction to make the ENTER toolbar
+- 5973 X-UserSignonCode may conflict with capabilities
+- 5974 Reduce default timeout value in sample ARBOLOAD
+- 5975 Update SMF REXX procedures
+- 5976 SAMPLIB Updates
+- 5977 display modified/distorted after LOCK= 
 
     
 .. |image0| image:: images/media/image1.png
