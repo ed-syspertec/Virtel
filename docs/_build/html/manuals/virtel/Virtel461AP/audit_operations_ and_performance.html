@@ -2427,7 +2427,11 @@ SELDATE 01012010 30122011
 <p>Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.</p>
 <div class="section" id="printing-the-virstat-smf-record">
 <span id="index-92"></span><h4>Printing the VIRSTAT SMF record<a class="headerlink" href="#printing-the-virstat-smf-record" title="Permalink to this headline">¶</a></h4>
-<p>The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel. SMFREXXL must be used to format the records from V4.60 onwards.</p>
+<p>The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to changes in the stats record formats the REXX procedure SMFREXXL must be used to format records from V4.60 onwards.</p>
+</div>
 <p>Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.</p>
 </div>
 <div class="section" id="structure-of-the-binary-stats-record">

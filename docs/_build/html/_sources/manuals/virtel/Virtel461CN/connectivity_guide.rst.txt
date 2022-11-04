@@ -4087,6 +4087,9 @@ Security
             Secure transaction (Certificate security). A transaction with type 3 security must be accessed via HTTPS (secure session), and the client browser must present a certificate recognized by the active security tool (RACF). The userid associated with the certificate must be granted permission by the security tool to access the transaction. Type 3 security is only possible when running z/OS V1R7 or later, using a secure connection provided by AT-TLS
         4
             Secure transaction (HTML security). Used with HTTP access, security type 4 allows VIRTEL to obtain the userid and password of the user from fields supplied in the HTML page. The fields must be declared by means of the DECLARE-FIELD-AS tag in the page template. For more details, refer to the section “Creating HTML and XML template pages: Signon and password management” in the VIRTEL Web Access Guide.
+        5
+            For transaction which allows a user signon without connecting to the security manager (e.g. RACF) if the user has already connected with a valid VirtelUserSignon code. A VirtelUserSignon code may be reused, but not after it has been invalidated.
+    
 
 Translation(s)
     Type(s) of translation supported for MINITEL connections. Specify one or more of the following values:

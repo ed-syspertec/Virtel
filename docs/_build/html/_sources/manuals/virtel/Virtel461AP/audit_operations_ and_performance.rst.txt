@@ -2931,7 +2931,11 @@ Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS record
 Printing the VIRSTAT SMF record
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel. SMFREXXL must be used to format the records from V4.60 onwards. 
+The SMFPRINT/SMFPRINTL jobs in VIRTEL.SAMPLIB can be used to print the Virtel SMF records. The SMFPRINT job is an example of printing SYS1.MANx datasets and calls a REXX procedure called SMFREXX. SMFPRINT can be used to process Virtel SMF stats records written by Virtel V4.59. The SMFPRNTL job in VIRTEL.SAMPLIB can Be used to print Virtel SMF records that have been written to a z/OS LOGSTREAM. This job calls the SMFREXXL REXX procedure to format and print the SMF records extracted from the LOGSTREAM. Virtel V4.60 onwards has a different SMF record format to older versions of Virtel. 
+
+.. note::
+
+    Due to changes in the stats record formats the REXX procedure SMFREXXL must be used to format records from V4.60 onwards.   
 
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
 

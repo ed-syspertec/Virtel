@@ -3300,6 +3300,8 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 </dd>
 <dt>4</dt><dd><p>Secure transaction (HTML security). Used with HTTP access, security type 4 allows VIRTEL to obtain the userid and password of the user from fields supplied in the HTML page. The fields must be declared by means of the DECLARE-FIELD-AS tag in the page template. For more details, refer to the section “Creating HTML and XML template pages: Signon and password management” in the VIRTEL Web Access Guide.</p>
 </dd>
+<dt>5</dt><dd><p>For transaction which allows a user signon without connecting to the security manager (e.g. RACF) if the user has already connected with a valid VirtelUserSignon code. A VirtelUserSignon code may be reused, but not after it has been invalidated.</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>

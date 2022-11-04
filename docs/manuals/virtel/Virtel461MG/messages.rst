@@ -2704,7 +2704,7 @@ VIR0208W POSSIBLE ARBO LINE CONFLICT
 Module
     VIR0000
 Meaning
-    Validation of the Line has failed. Possible incorrect ARBO level. Check that the ARBO is at the correct support level. Use the LOCADDR2='N' JCL PARM parameter to use ARBO(V1) processing which applies to ARBO records @ V4.60 or lower.
+    Validation of the Line has failed. Possible incorrect ARBO level. Check that the ARBO is at the correct support level. 
 Action
     Contact Syspertec Support if problem persists.
 
