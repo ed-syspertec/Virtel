@@ -178,7 +178,7 @@
             
   <div class="section" id="whats-new-in-virtel-4-61-ga-release">
 <span id="tn202101"></span><h1>What’s new in Virtel 4.61 GA Release<a class="headerlink" href="#whats-new-in-virtel-4-61-ga-release" title="Permalink to this headline">¶</a></h1>
-<p>The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61.</p>
+<p>The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61 &#64; update level 5977.</p>
 <div class="section" id="installation-changes">
 <h2>Installation changes<a class="headerlink" href="#installation-changes" title="Permalink to this headline">¶</a></h2>
 <p><strong>5900 VIRTERM/Samplib changes</strong></p>
@@ -217,9 +217,10 @@
 <p><strong>Version support</strong></p>
 <p>Versions of Virtel older than V4.58 are no longer supported.</p>
 <p><strong>ARBO changes</strong></p>
-<p>There have been no changes to the ARBO which would require migration from V4.60, V4.59 or V4.58. Customers who are migrating from older releases should review the
-“What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features.
-Depending on requirements not all actions may be applicable. These newsletters are available online at <a class="reference external" href="https://virtel.readthedocs.io/en/latest/">https://virtel.readthedocs.io/en/latest/</a></p>
+<ul class="simple">
+<li><p>There have been no changes to the ARBO which would require migration from V4.60 or V4.59. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at <a class="reference external" href="https://virtel.readthedocs.io/en/latest/">https://virtel.readthedocs.io/en/latest/</a></p></li>
+<li><p>LINE enhancement. LOCADDR2 and PARTNER2 keywords are deprecated in V4.61 VIRCONF. LOCADDR and PARTNER fields have been expanded to accommodate IPV6 addresses and DNS values upto 52 characters. ARBO files from V4.59 and V4.60 will still be usable with V4.61 with migration. It is recommended that you migrate you ARBO to V4.61 by unloading in V4.59 or V4.60 to create a SYSIN deck for input to V4.61 VIRCONF LOAD. Any LOCADDR2 or PARTNER2 fields will have to be removed and the extended field data moved to the corressponding LOCADDR and PARTNER fields prior to loading with V4.61 VIRCONF.</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="fixes-changes-and-new-features">
@@ -303,12 +304,10 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <li><p>Improved calling by passing it a JSON object or a string.</p></li>
 <li><p>Compression of code vir3270.js</p></li>
 </ul>
-<blockquote>
-<div><p><strong>5959/66 Adding of a favicon.ico to .htm pages</strong></p>
+<p><strong>5959/66 Adding of a favicon.ico to .htm pages</strong></p>
 <ul class="simple">
 <li><p>Avoid the console error message on browsers searching for favicon.ico. Add “pathToFavicon” to oCustom variable.</p></li>
 </ul>
-</div></blockquote>
 <p><strong>5960/66 Enhancement to cAppMenu</strong></p>
 <ul class="simple">
 <li><p>Updated cAppMenu templates</p></li>
@@ -325,12 +324,10 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <ul class="simple">
 <li><p>Improved Toolbar / Enter key usage.</p></li>
 </ul>
-<blockquote>
-<div><p><strong>5973 X-UserSignonCode may fail upload</strong></p>
+<p><strong>5973 X-UserSignonCode may fail upload</strong></p>
 <ul class="simple">
 <li><p>Prevent upload failures if code contains a valid  “X-UserSignonCode: ” header</p></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="base-components">
 <h3>Base Components<a class="headerlink" href="#base-components" title="Permalink to this headline">¶</a></h3>

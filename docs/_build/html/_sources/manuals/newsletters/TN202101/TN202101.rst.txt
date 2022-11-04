@@ -1,9 +1,9 @@
 .. _tn202101:
 
 What’s new in Virtel 4.61 GA Release
-=====================================================
+====================================
 
-The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61. 
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61 @ update level 5977. 
 
 Installation changes
 --------------------
@@ -52,9 +52,9 @@ Versions of Virtel older than V4.58 are no longer supported.
 
 **ARBO changes**
 
-There have been no changes to the ARBO which would require migration from V4.60, V4.59 or V4.58. Customers who are migrating from older releases should review the 
-“What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. 
-Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+- There have been no changes to the ARBO which would require migration from V4.60 or V4.59. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+
+- LINE enhancement. LOCADDR2 and PARTNER2 keywords are deprecated in V4.61 VIRCONF. LOCADDR and PARTNER fields have been expanded to accommodate IPV6 addresses and DNS values upto 52 characters. ARBO files from V4.59 and V4.60 will still be usable with V4.61 with migration. It is recommended that you migrate you ARBO to V4.61 by unloading in V4.59 or V4.60 to create a SYSIN deck for input to V4.61 VIRCONF LOAD. Any LOCADDR2 or PARTNER2 fields will have to be removed and the extended field data moved to the corressponding LOCADDR and PARTNER fields prior to loading with V4.61 VIRCONF. 
 
 Fixes, changes and new features
 -------------------------------
@@ -141,9 +141,9 @@ Presentation
 - Improved calling by passing it a JSON object or a string. 
 - Compression of code vir3270.js
 
- **5959/66 Adding of a favicon.ico to .htm pages**
+**5959/66 Adding of a favicon.ico to .htm pages**
 
- - Avoid the console error message on browsers searching for favicon.ico. Add "pathToFavicon" to oCustom variable. 
+- Avoid the console error message on browsers searching for favicon.ico. Add "pathToFavicon" to oCustom variable. 
 
 **5960/66 Enhancement to cAppMenu**
 
@@ -159,12 +159,11 @@ Presentation
 
 **5972 IPAD Support**
 
-- Improved Toolbar / Enter key usage.  
+- Improved Toolbar / Enter key usage. 
 
+**5973 X-UserSignonCode may fail upload**
 
- **5973 X-UserSignonCode may fail upload**
-
- - Prevent upload failures if code contains a valid  "X-UserSignonCode: " header
+- Prevent upload failures if code contains a valid  "X-UserSignonCode: " header
 
 
 .. raw:: latex
