@@ -42,7 +42,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Oct 23, 2022}
+\date{Nov 06, 2022}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4382,7 +4382,7 @@ Is the number of the licence attributed to the client as it is specified in the 
 \PYG{n}{LOCK}\PYG{o}{=}\PYG{n}{n}                               \PYG{n}{Default}\PYG{o}{=}\PYG{l+m+mi}{32767}
 \end{sphinxVerbatim}
 
-\sphinxstylestrong{n} - Inactivity delay in minutes, after which a VIRTEL will lock a terminal and request the user to resubmit his password.
+\sphinxstylestrong{n} - Inactivity delay in minutes, after which a VIRTEL will lock a terminal and request the user to resubmit his password. When the LOCK is triggered, a VIR0510W message appears on the console.
 
 \index{Virtel TCT@\spxentry{Virtel TCT}!LOG parameter@\spxentry{LOG parameter}}\index{LOG parameter@\spxentry{LOG parameter}!Virtel TCT@\spxentry{Virtel TCT}}\ignorespaces 
 
@@ -4755,7 +4755,7 @@ For example:-
 \subsection{SECUR parameter}
 \label{\detokenize{Installation_Guide:secur-parameter}}\label{\detokenize{Installation_Guide:index-113}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{NO}\PYG{o}{/}\PYG{n}{VIRTEL}\PYG{o}{/}\PYG{n}{RACF}\PYG{o}{/}\PYG{n}{TOPS}\PYG{o}{/}\PYG{n}{ACF2}\PYG{o}{/}\PYG{n}{RACROUTE}\PYG{o}{/}\PYG{n}{MIXEDCASE}\PYG{o}{/}\PYG{n}{PASSPHRASE}\PYG{o}{/}\PYG{n}{PASSPHRASELEN} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
+\PYG{n}{SECUR}\PYG{o}{=}\PYG{n}{NO}\PYG{o}{/}\PYG{n}{VIRTEL}\PYG{o}{/}\PYG{n}{RACF}\PYG{o}{/}\PYG{n}{TOPS}\PYG{o}{/}\PYG{n}{ACF2}\PYG{o}{/}\PYG{n}{RACROUTE}\PYG{o}{/}\PYG{n}{MIXEDCASE}\PYG{o}{/}\PYG{n}{PASSPHRASE}\PYG{o}{/}\PYG{p}{,}\PYG{n}{PASSPHRASELEN} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{NO}
 \end{sphinxVerbatim}
 
 For the z/OS environment, the following options can be specified:
@@ -4774,9 +4774,9 @@ For the z/OS environment, the following options can be specified:
 Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: \sphinxstylestrong{SECUR=(RACROUTE,{[}RACF\textbar{}TOPS\textbar{}ACF2{]},PASSPHRASE)}
 You can also specify the minimum passphrase length using the Passphrase Length option. Default is 14 characters long.
 The following sets the Passphrase length to 10 :
-\sphinxstylestrong{SECURE=(RACROUTE,RACF,PASSPHRASE(10))}
+\sphinxstylestrong{SECURE=(RACROUTE,RACF,PASSPHRASE,10)}
 
-Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase.
+Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase. Passphrases will always be mixed characters (Upper and Lower case) and will never be “UPPERCASED”.
 \end{sphinxadmonition}
 
 For the z/VSE environment, the following options can be specified:
