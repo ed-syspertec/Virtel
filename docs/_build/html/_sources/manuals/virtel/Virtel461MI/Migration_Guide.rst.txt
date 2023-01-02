@@ -269,6 +269,11 @@ Upgrading from a version prior to 4.60
 
 HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT option removed.
 
+Upgrading from a version prior to 4.61
+--------------------------------------
+
+LOCADDR2 and PARTNER2 LINE keywords are no longer supported in VIRCONF.
+
 .. raw:: latex
 
     \newpage   

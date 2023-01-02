@@ -4008,6 +4008,63 @@ Full reference document for cAppMenuOptions object
 
 
 .. index::   
+   single: Language Support; Chinese
+
+Virtel Language Support
+=======================
+
+Introduction
+------------
+
+VIRTEL Web Access v4.59 and above supports a variety of SBDC and DBCS code pages. To support DBCS the Entry Point must have EXTCOLOR=X set.
+
+Chinese
+^^^^^^^
+
+Add IBM1388 into the CHARSET parameter list in the VIRTCT and the use the WEB2AJAC.HTM page instead of the (default) WEB2AJAX.HTM in the URL. See the Technical newsletter 2015/17 Virtel Chinese Character Language Support. TCT example follows: -
+
+..
+
+    DEFUTF8=IBM1388,        DEFAULT OUTPUT ENCODING         *
+    CHARSET=(IBM1388,       CHINESE SIMPLIFIED              *
+    IBM1047,                US OPEN SYSTEMS                 *
+    IBM933A,                KOREAN                          *
+    IBM0037,                US EBCDIC                       *
+    IBM1390,IBM1399),       JAPANESE                        * 
+    
+
+Thai 
+^^^^
+
+The Thai character set is implement using the following TCT options : -
+
+..
+    CHARSET=(IBM0838,IBM1160),            Load Thai Charsets                   * 
+    DEFUTF8=IBM1160,                      Default to Thai Charset              *
+
+A W2H parm option also needs to be set. “w2hparm.leftalignpage” should be set to true. This value can also be set in the Miscellaneous options tab. This will allow left alignement of the W2H page. This may be useful when no monospace font is available (e.g. for Thailand). 
+
+
+Arabic
+^^^^^^^
+
+The Alt-ENTER key is used to globally switch the screen display from 'left to right' to 'right to left' and return. In this way Arabic 3270 is supported. Alternate.Enter Mirror mode option needs to be set in the w2hparm defaults and Bi-Direction screen write. 
+
+.. note::
+
+	- the Alt-ENTER is active only if the 'Bidirectional data' Display option is set.
+	- the Alt-ENTER key may be unset by going to w2h key mappings options.
+	- w2hparm.mirrorMode may be set in a w2hparm.js file to preset the option (e.g. for user screens defaulting to arabic) use w2hparm.mirrorMode = true
+
+When the 'Bidirectional Data' option is active, the Alt+Shift key combination toggles data entry to/from Right-to-Left. This may be disturbing in contextes other than Hebrew, e.g. in Tunisia, where this key combination is used to switch keyboards. This option can be disabled by setting the w2hparm.altshift = no.  See the Key Mapping option in the Alt modifiers section.
+
+..
+
+    altshift = "RTLinput" is the default, altshift = "no" may be specified.
+
+Contact Sysypertec support for more information on setting the correct w2hparm options to support Arabic.
+
+.. index::   
    single: Virtel FTP Client; FTP
 
 Virtel FTP Client

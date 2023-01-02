@@ -4801,7 +4801,8 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx and obtain the control record.</p>
 </dd>
 <dt>Meaning</dt><dd><p>Error : ACB was not found.
-A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL.</p>
+A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL. Also check that the file has been correctly initialized. See SAMPLIB
+member DEFTRSF for an example of initializing a TRSF VSAM file.</p>
 </dd>
 <dt>Action</dt><dd><p>Check the SYSLOG for other error messages. Contact technical support.</p>
 </dd>

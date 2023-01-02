@@ -11681,25 +11681,41 @@ SET$  ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 <td><p>Shift+PageDown</p></td>
 <td><p>“no”, “PA3”</p></td>
 </tr>
-<tr class="row-odd"><td><p>“ctrlenter”</p></td>
+<tr class="row-odd"><td><p>“shiftjoker”</p></td>
+<td><p>Shift+Joker</p></td>
+<td><p>“no”, “Reset”, “ATTN”, “CLEAR”, “Ins”</p></td>
+</tr>
+<tr class="row-even"><td><p>“ctrlenter”</p></td>
 <td><p>Ctrl+Enter</p></td>
 <td><p>“no”,”ENTER”, “Newline”</p></td>
 </tr>
-<tr class="row-even"><td><p>“ctrlins”</p></td>
+<tr class="row-odd"><td><p>“ctrlins”</p></td>
 <td><p>Ctrl+Insert</p></td>
 <td><p>“no”, “PA1”</p></td>
 </tr>
-<tr class="row-odd"><td><p>“ctrldel”</p></td>
+<tr class="row-even"><td><p>“ctrldel”</p></td>
 <td><p>Ctrl+Delete</p></td>
 <td><p>“no”, “PA2”, “ErEof”</p></td>
 </tr>
-<tr class="row-even"><td><p>“ctrlhome”</p></td>
+<tr class="row-odd"><td><p>“ctrlhome”</p></td>
 <td><p>Ctrl+Home</p></td>
 <td><p>“no”, “PA3”, “Home”, “ChgCur”</p></td>
 </tr>
-<tr class="row-odd"><td><p>“ctrlend”</p></td>
+<tr class="row-even"><td><p>“ctrlend”</p></td>
 <td><p>Ctrl+End</p></td>
 <td><p>“no”, “ErEof”, “End”</p></td>
+</tr>
+<tr class="row-odd"><td><p>“ctrlr”</p></td>
+<td><p>Ctrl+Right</p></td>
+<td><p>“no”, “Refresh”</p></td>
+</tr>
+<tr class="row-even"><td><p>“altenter”</p></td>
+<td><p>Alt+Enter</p></td>
+<td><p>“no”, “MirrorToggle”</p></td>
+</tr>
+<tr class="row-odd"><td><p>“altshift”</p></td>
+<td><p>Alt+Shift</p></td>
+<td><p>“RTLinput”, “no”</p></td>
 </tr>
 <tr class="row-even"><td><p>“altins”</p></td>
 <td><p>Alt+Ins</p></td>
@@ -11711,7 +11727,7 @@ SET$  ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 </tr>
 <tr class="row-even"><td><p>“altjoker”</p></td>
 <td><p>Alternate Joker</p></td>
-<td><p>“no”, “PA2”</p></td>
+<td><p>“no”, “”no”, “ATTN”, “CLEAR”, “PA3”</p></td>
 </tr>
 <tr class="row-odd"><td><p>“altpgup”</p></td>
 <td><p>Alt+PageUp</p></td>
@@ -11770,86 +11786,94 @@ SET$  ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 <td><p>PF key hotspots</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“pasteereof”</p></td>
+<tr class="row-even"><td><p>“inputhotspot”</p></td>
+<td><p>Input field hotspots</p></td>
+<td><p>true, false</p></td>
+</tr>
+<tr class="row-odd"><td><p>“pasteereof”</p></td>
 <td><p>Paste erase EOF</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“pastetyping”</p></td>
+<tr class="row-even"><td><p>“pastetyping”</p></td>
 <td><p>Map Ctrl+V to Paste
 by Typing</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“movecursor”</p></td>
+<tr class="row-odd"><td><p>“movecursor”</p></td>
 <td><p>Move cursor on activat</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“style”</p></td>
+<tr class="row-even"><td><p>“style”</p></td>
 <td><p>Style</p></td>
 <td><p>“3270”, “gray”, “white”, “3270classic”</p></td>
 </tr>
-<tr class="row-even"><td><p>“printstyle”</p></td>
+<tr class="row-odd"><td><p>“printstyle”</p></td>
 <td><p>Print style</p></td>
 <td><p>“3270”, “color”, “white”</p></td>
 </tr>
-<tr class="row-odd"><td><p>“rtm”</p></td>
+<tr class="row-even"><td><p>“rtm”</p></td>
 <td><p>Response time monitor</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“omitnulls”</p></td>
+<tr class="row-odd"><td><p>“omitnulls”</p></td>
 <td><p>Omit nulls from input</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“keepmacpad”</p></td>
+<tr class="row-even"><td><p>“keepmacpad”</p></td>
 <td><p>Keep macro pad open</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“keepkeypad”</p></td>
+<tr class="row-odd"><td><p>“keepkeypad”</p></td>
 <td><p>Keep keypad open</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“hiliteinput”</p></td>
+<tr class="row-even"><td><p>“hiliteinput”</p></td>
 <td><p>Highlight input fields</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“caretnot”</p></td>
+<tr class="row-odd"><td><p>“caretnot”</p></td>
 <td><p>Remap ^ to logical not</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“adaptfontratio”</p></td>
+<tr class="row-even"><td><p>“adaptfontratio”</p></td>
 <td><p>Adapt font size ratio</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“charspace”</p></td>
+<tr class="row-odd"><td><p>“charspace”</p></td>
 <td><p>Character spacing</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“linespace”</p></td>
+<tr class="row-even"><td><p>“linespace”</p></td>
 <td><p>Line spacing</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“settingsGUI”</p></td>
+<tr class="row-odd"><td><p>“settingsGUI”</p></td>
 <td><p>Uuser interface type</p></td>
 <td><p>v2</p></td>
 </tr>
-<tr class="row-odd"><td><p>“preservein”</p></td>
+<tr class="row-even"><td><p>“preservein”</p></td>
 <td><p>Preserve insert mode</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-even"><td><p>“nolongpoll”</p></td>
+<tr class="row-odd"><td><p>“nolongpoll”</p></td>
 <td><p>AsynchSupport</p></td>
 <td><p>true, false</p></td>
 </tr>
-<tr class="row-odd"><td><p>“MirrorMode”</p></td>
+<tr class="row-even"><td><p>“MirrorMode”</p></td>
 <td><p>BiDirectional mode</p></td>
-<td><p>true, false</p></td>
+<td><p>false, true</p></td>
 </tr>
-<tr class="row-even"><td><p>“NOstretch”</p></td>
+<tr class="row-odd"><td><p>“NOstretch”</p></td>
 <td><p>Font Size Stretch</p></td>
 <td><p>true, false</p></td>
 </tr>
+<tr class="row-even"><td><p>“joker”</p></td>
+<td><p>Jokey Key</p></td>
+<td><p>“no”, “Reset”, “ATTN”, “CLEAR”</p></td>
+</tr>
 <tr class="row-odd"><td><p>“jokerkey”</p></td>
-<td><p>Jokey Key value</p></td>
-<td><p>none</p></td>
+<td><p>Jokey Key Value</p></td>
+<td><p>222,value</p></td>
 </tr>
 <tr class="row-even"><td colspan="2"><p>“unicodereplactiv” | Convert UNICODE</p></td>
 <td><p>true, false</p></td>
@@ -11875,6 +11899,40 @@ up. Default=PF7</p></td>
 </dd>
 </dl>
 </td>
+</tr>
+<tr class="row-odd"><td><p>“backspace”</p></td>
+<td><p>Backspace</p></td>
+<td><p>“no”, “Backtab”, “Newline”, “Ins”</p></td>
+</tr>
+<tr class="row-even"><td><p>“shiftbackspace</p></td>
+<td><p>SHIFT+Backspace</p></td>
+<td><p>“no”, “Backtab”, “CLEAR”, “Ins”</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>“escapeGraphicChars” | Escape Graphics</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-even"><td><p>“hideinfo”</p></td>
+<td><p>Hide Server info.</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-odd"><td><p>“macroPad”</p></td>
+<td><p>Macros in Window</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-even"><td><p>“pasteCursor”</p></td>
+<td><p>Move cusor when paste.</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>“preserveinsmode” | Keep INS mode</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-even"><td><p>“show3278T”</p></td>
+<td><p>3278T ICON in toolbar</p></td>
+<td><p>false, true</p></td>
+</tr>
+<tr class="row-odd"><td><p>“showFTP”</p></td>
+<td><p>FTP ICON in toolbar</p></td>
+<td><p>false, true</p></td>
 </tr>
 </tbody>
 </table>

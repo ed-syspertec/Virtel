@@ -3914,7 +3914,8 @@ Meaning
     A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx and obtain the control record.
 Meaning
     Error : ACB was not found.
-    A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL.
+    A VSAM error occurred when VIRTEL attempted to open file xxxxxxxx. Check that the DDNAME is correctly coded in the JCL. Also check that the file has been correctly initialized. See SAMPLIB 
+    member DEFTRSF for an example of initializing a TRSF VSAM file.
 Action
     Check the SYSLOG for other error messages. Contact technical support.
 
