@@ -4173,7 +4173,7 @@ Meaning
 Action
     None.    
 
-VIR6010E VIRSV ERROR VSVPCMDE RC=x
+VIR6010I VIRSV ERROR VSVPCMDE RC=x
 """"""""""""""""""""""""""""""""""
 Module
     VIR6000
@@ -7347,15 +7347,15 @@ Meaning
 Action
     Contact technical support.    
 
-VSV0303E RC VSVPCLTR=rc
+VSV0303I RC VSVPCLTR=rc
 """""""""""""""""""""""
 Module
     VSVTINIT
 Meaning
-    Service VSVPCLTR ended in error
+    Service VSVPCLTR has terminated
 
 Action
-    Contact technical support.    
+    No action required.    
 
 VSV0304E PARMLIST AT addr NOT IN PRIVATE AREA
 """""""""""""""""""""""""""""""""""""""""""""
