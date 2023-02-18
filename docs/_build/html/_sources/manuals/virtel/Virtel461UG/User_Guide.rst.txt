@@ -14170,7 +14170,7 @@ The URL to access this transaction could be of the format:
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso5
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso5
 
 Assigning a LOGMODE by URL parameter
 ------------------------------------
@@ -14179,7 +14179,7 @@ The URL which allows the browser to connect to a host application via VIRTEL may
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso+model5
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso+model5
 
 This form of a VIRTEL URL is described in the section :ref:`“Dynamic URL with user data” <#_V461UG_dynamic_URL>`.
 
@@ -14270,13 +14270,13 @@ default logmode by appending an additional parameter LOGMODE=modename to the URL
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?logmode=SNX32705
 
 The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
 
 .. note::
 
-    To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition)
+    To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition). Also, the transaction definition must not have a LOGMODE= value.
 
 Dynamic logmode with user-specified screen size
 -----------------------------------------------
@@ -14287,7 +14287,7 @@ scenario” field, the user may also append ROWS and COLS parameters to the URL,
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&rows=54&cols=132
+    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&rows=54&cols=132
 
 VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of
 non-standard screen sizes.
@@ -14366,7 +14366,7 @@ application selection menu.
 Displaying a specific page on disconnection
 -------------------------------------------
 
-Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB3270.htm).
+Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB2AJAX.htm).
 
 The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.)
 

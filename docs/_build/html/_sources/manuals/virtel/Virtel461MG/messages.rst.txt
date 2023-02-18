@@ -2708,6 +2708,14 @@ Meaning
 Action
     Contact Syspertec Support if problem persists.
 
+VIR0209I PROCESSED MEMBER membername
+""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    The command member membername has been processed. Modify commands located in membername have been actioned by Virtel. If the member name does not exist in the VIRCNTL PDS library an error message will be issued. 
+Action
+    None.
 
 VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx
 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -2745,8 +2753,12 @@ Meaning
 Action
     None.
 
+ VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 .. 
-    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid VIR0214I TERMINAL RELAY    APPLID  CLIENT
+   
+    VIR0214I TERMINAL RELAY    APPLID  CLIENT
     VIR0214I -------- -------- -------- ---------------
     VIR0214I termid luname  applname n.n.n.n VIR0214I ---END OF LIST---
 
@@ -2765,6 +2777,43 @@ Meaning
     This message is displayed in response to a VIRTEL RELAYS command when VIRTEL has no VTAM ACB open except for the main VIRTEL application ACB applid.
 Action
     None.
+
+VIR0216W  OPEN ERROR PROCESSING MEMBER membername 
+"""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    This message is displayed when there is an open error opening the VIRCNTL PDS.
+Action
+    Check that the VIRCNTL PDS has been allocated. Contact Syspertec Support if problem persists.
+
+VIR0217W  NOT FOUND IN VIRCNTL PDS. MEMBER membername 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    This message is displayed when command member could not be located in the VIRCNTL PDS.
+Action
+    Check that the VIRCNTL PDS contains the member. Contact Syspertec Support if problem persists.
+
+VIR0218I  EXECUTED COMMAND command 
+""""""""""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    This message is displayed when a command has been executed from the CNTL membername PDS member.
+Action
+    None
+
+VIR0219W  AUTOEXEC DISABLED 
+"""""""""""""""""""""""""""
+Module
+    VIR0002
+Meaning
+    The AUTOEXEC feature could not locate the DDNAME VIRCNTL.
+Action
+    Add the PDS DDNAME VIRCNTL to the VIRTEL startup procedure.
+
 
 VIR0220I termid SCENARIO STOP REQUESTED
 """""""""""""""""""""""""""""""""""""""
@@ -2964,14 +3013,14 @@ Meaning
 Action
     None.
 
-VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED
-""""""""""""""""""""""""""""""""""""""""""""""
+VIR0240W LOGGER request. STRNAME=stringname RC=XX, RS=XX
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
-    An UNLOAD command has failed. ARBO(V1) not supported.    
+    An error has occured writing to the LOGGER datastream.    
 Action
-    Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file. 
+    Contact Syspertec Support 
 
 VIR0260W SERVICE servname IS A NEW COPY
 """"""""""""""""""""""""""""""""""""""" 

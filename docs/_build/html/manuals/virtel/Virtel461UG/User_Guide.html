@@ -11117,14 +11117,14 @@ P1=Update                         P3=Return                          P12=Server
 </div>
 <p><em>Example of TSO transaction TSO specifying logmode SNX32705</em></p>
 <p>The URL to access this transaction could be of the format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="assigning-a-logmode-by-url-parameter">
 <h5>Assigning a LOGMODE by URL parameter<a class="headerlink" href="#assigning-a-logmode-by-url-parameter" title="Permalink to this headline">¶</a></h5>
 <p>The URL which allows the browser to connect to a host application via VIRTEL may contain a parameter, such as “model5” as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
 </pre></div>
 </div>
 <p>This form of a VIRTEL URL is described in the section <a class="reference internal" href="#v461ug-dynamic-url"><span class="std std-ref">“Dynamic URL with user data”</span></a>.</p>
@@ -11202,13 +11202,13 @@ P1=Update                         P3=Return                         Enter=Add
 <h5>User-specified LOGMODE<a class="headerlink" href="#user-specified-logmode" title="Permalink to this headline">¶</a></h5>
 <p>When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may override the
 default logmode by appending an additional parameter LOGMODE=modename to the URL, as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?logmode=SNX32705
 </pre></div>
 </div>
 <p>The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition)</p>
+<p>To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition). Also, the transaction definition must not have a LOGMODE= value.</p>
 </div>
 </div>
 <div class="section" id="dynamic-logmode-with-user-specified-screen-size">
@@ -11216,7 +11216,7 @@ default logmode by appending an additional parameter LOGMODE=modename to the URL
 <p>VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a
 non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification
 scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&amp;rows=54&amp;cols=132
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&amp;rows=54&amp;cols=132
 </pre></div>
 </div>
 <p>VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of
@@ -11282,7 +11282,7 @@ application selection menu.</p>
 </div>
 <div class="section" id="displaying-a-specific-page-on-disconnection">
 <h5>Displaying a specific page on disconnection<a class="headerlink" href="#displaying-a-specific-page-on-disconnection" title="Permalink to this headline">¶</a></h5>
-<p>Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB3270.htm).</p>
+<p>Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB2AJAX.htm).</p>
 <p>The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.)</p>
 </div>
 <div class="section" id="closing-the-browser-window-automatically">

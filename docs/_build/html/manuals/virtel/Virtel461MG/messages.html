@@ -3364,6 +3364,17 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dd>
 </dl>
 </div>
+<div class="section" id="vir0209i-processed-member-membername">
+<h5>VIR0209I PROCESSED MEMBER membername<a class="headerlink" href="#vir0209i-processed-member-membername" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0002</p>
+</dd>
+<dt>Meaning</dt><dd><p>The command member membername has been processed. Modify commands located in membername have been actioned by Virtel. If the member name does not exist in the VIRCNTL PDS library an error message will be issued.</p>
+</dd>
+<dt>Action</dt><dd><p>None.</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="vir0210e-command-not-valid-for-linetype-line-n-xxxxxx">
 <h5>VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx<a class="headerlink" href="#vir0210e-command-not-valid-for-linetype-line-n-xxxxxx" title="Permalink to this headline">¶</a></h5>
 <dl class="simple">
@@ -3399,14 +3410,23 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </div>
 <div class="section" id="vir0213i-no-active-traces">
 <h5>VIR0213I NO ACTIVE TRACES<a class="headerlink" href="#vir0213i-no-active-traces" title="Permalink to this headline">¶</a></h5>
-<dl class="simple">
+<dl>
 <dt>Module</dt><dd><p>VIR0002</p>
 </dd>
 <dt>Meaning</dt><dd><p>A NOTRACE,ALL command was entered, but no traces were active.</p>
 </dd>
-<dt>Action</dt><dd><p>None.</p>
+<dt>Action</dt><dd><blockquote>
+<div><p>None.</p>
+</div></blockquote>
+<p>VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid</p>
 </dd>
 </dl>
+<hr class="docutils" />
+<blockquote>
+<div><p>VIR0214I TERMINAL RELAY    APPLID  CLIENT
+VIR0214I ——– ——– ——– —————
+VIR0214I termid luname  applname n.n.n.n VIR0214I —END OF LIST—</p>
+</div></blockquote>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0002</p>
 </dd>
@@ -3424,6 +3444,50 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dt>Meaning</dt><dd><p>This message is displayed in response to a VIRTEL RELAYS command when VIRTEL has no VTAM ACB open except for the main VIRTEL application ACB applid.</p>
 </dd>
 <dt>Action</dt><dd><p>None.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="vir0216w-open-error-processing-member-membername">
+<h5>VIR0216W  OPEN ERROR PROCESSING MEMBER membername<a class="headerlink" href="#vir0216w-open-error-processing-member-membername" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0002</p>
+</dd>
+<dt>Meaning</dt><dd><p>This message is displayed when there is an open error opening the VIRCNTL PDS.</p>
+</dd>
+<dt>Action</dt><dd><p>Check that the VIRCNTL PDS has been allocated. Contact Syspertec Support if problem persists.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="vir0217w-not-found-in-vircntl-pds-member-membername">
+<h5>VIR0217W  NOT FOUND IN VIRCNTL PDS. MEMBER membername<a class="headerlink" href="#vir0217w-not-found-in-vircntl-pds-member-membername" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0002</p>
+</dd>
+<dt>Meaning</dt><dd><p>This message is displayed when command member could not be located in the VIRCNTL PDS.</p>
+</dd>
+<dt>Action</dt><dd><p>Check that the VIRCNTL PDS contains the member. Contact Syspertec Support if problem persists.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="vir0218i-executed-command-command">
+<h5>VIR0218I  EXECUTED COMMAND command<a class="headerlink" href="#vir0218i-executed-command-command" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0002</p>
+</dd>
+<dt>Meaning</dt><dd><p>This message is displayed when a command has been executed from the CNTL membername PDS member.</p>
+</dd>
+<dt>Action</dt><dd><p>None</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="vir0219w-autoexec-disabled">
+<h5>VIR0219W  AUTOEXEC DISABLED<a class="headerlink" href="#vir0219w-autoexec-disabled" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0002</p>
+</dd>
+<dt>Meaning</dt><dd><p>The AUTOEXEC feature could not locate the DDNAME VIRCNTL.</p>
+</dd>
+<dt>Action</dt><dd><p>Add the PDS DDNAME VIRCNTL to the VIRTEL startup procedure.</p>
 </dd>
 </dl>
 </div>
@@ -3669,14 +3733,14 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dd>
 </dl>
 </div>
-<div class="section" id="vir0240w-arbo-v1-not-supported-unload-failed">
-<h5>VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED<a class="headerlink" href="#vir0240w-arbo-v1-not-supported-unload-failed" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="vir0240w-logger-request-strname-stringname-rc-xx-rs-xx">
+<h5>VIR0240W LOGGER request. STRNAME=stringname RC=XX, RS=XX<a class="headerlink" href="#vir0240w-logger-request-strname-stringname-rc-xx-rs-xx" title="Permalink to this headline">¶</a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0002</p>
 </dd>
-<dt>Meaning</dt><dd><p>An UNLOAD command has failed. ARBO(V1) not supported.</p>
+<dt>Meaning</dt><dd><p>An error has occured writing to the LOGGER datastream.</p>
 </dd>
-<dt>Action</dt><dd><p>Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file.</p>
+<dt>Action</dt><dd><p>Contact Syspertec Support</p>
 </dd>
 </dl>
 </div>

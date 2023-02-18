@@ -728,7 +728,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 1. Download the following files from our FTP server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__
 
-   -  Virtelvrr.zip.
+   -  Virtelvrrmvs.zip.
 
    -  allptfs-mvsvrr.txt if available.
 
