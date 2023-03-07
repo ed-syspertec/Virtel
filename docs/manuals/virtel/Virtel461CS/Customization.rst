@@ -4113,7 +4113,7 @@ Download and apply the Virtel 4.59 UPDT5799 update from the Virtel FTP website. 
                 APPL=$NONE$,                                            -
                 TYPE=2,                                                 -
                 TERMINAL=DELOC,                                         -
-                STARTUP=1,                                              -
+                STARTUP=2,                                              -
                 SECURITY=0,                                             -
                 TIOASTA=&/S,                                            -
                 EXITSTA=FTPPARM                                          
@@ -4123,7 +4123,7 @@ Download and apply the Virtel 4.59 UPDT5799 update from the Virtel FTP website. 
                 APPL=$NONE$,                                            -
                 TYPE=2,                                                 -
                 TERMINAL=CLLOC,                                         -
-                STARTUP=1,                                              -
+                STARTUP=2,                                              -
                 SECURITY=0,                                             -
                 TIOASTA=&/S,                                            -
                 EXITSTA=FTPPARM                                          
