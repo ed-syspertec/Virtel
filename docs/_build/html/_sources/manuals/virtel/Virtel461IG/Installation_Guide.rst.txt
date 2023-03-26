@@ -5752,7 +5752,7 @@ This operation adds or replaces a RULE entity in the VIRARBO file. The parameter
 +------------+-----------------------+----------------------------------------------------+ 
 | EMAIL=     |   eMail               | [1] ; Quotes allowed                               |
 +------------+-----------------------+----------------------------------------------------+ 
-| CALLER=    |   Calling DTE         | [1] ; Numeric; or IP address                       |
+| CALLER=    |   Calling DTE         | [1] ; Numeric IP address or string =HTFORWD        |
 +------------+-----------------------+----------------------------------------------------+
 | CALLED=    |   Called              | [1] ; Numeric          	                          |
 +------------+-----------------------+----------------------------------------------------+

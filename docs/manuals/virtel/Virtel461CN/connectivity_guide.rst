@@ -3405,9 +3405,9 @@ Calling DTE
     - X-Forwarded-For:
 
     .. note::
-       When the “Calling DTE” field contains an IP address, leading zeroes must be included where necessary. For example, 192.168.001.020
+       When the “Calling DTE” field contains an IP address, leading zeroes must be included where necessary. For example, 192.168.001.020. 
 
-    Reverse proxy addresses may also be specified in the HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
+    Reverse proxy addresses may also be specified in the HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide). The parameter '=HTFORWD' can be specified as a calling DTE parameter instead of an IP address. This will compare the reverse proxy address against the list of addresess specified in the TCT.
 
 Called
     For an X25 line: The called number specified in the X25 call packet. CUD0 (Hex)For an X25 line: Up to 8 hexadecimal digits representing the first 4 bytes of the CUD field of the X25 call packet. For example, 01000000 (PAD), C0123450 (PCNE), C4 (GATE).
