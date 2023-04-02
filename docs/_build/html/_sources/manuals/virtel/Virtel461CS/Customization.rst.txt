@@ -2768,7 +2768,7 @@ Note how we identify the signing certificate with the SIGNWITH parameter using t
    single: RACF; Configuring key rings
 
 
-Cerificates and Key rings
+Certificates and Key rings
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
@@ -2993,7 +2993,7 @@ In the following screen shots we demonstrate logging into a CICS application via
 
 |image22|
 
-We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.
+We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifies that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certificate.
 
 |image23|
 
@@ -3077,7 +3077,7 @@ For 5006, list the Virtel key ring and ensure all the relevant keys are attached
     
     **VIRHT57E LINE IS NOT SET UP FOR HTTPS**
     
-    This means that the browser has sent encypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven’t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel. 
+    This means that the browser has sent encrypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven’t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel. 
     
     Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate. 
     
@@ -3113,8 +3113,8 @@ NTLM Support
 
 Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.
 
-Enable Windows Integrated Authentication for Internet Exmplorer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Enable Windows Integrated Authentication for Internet Explorer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For Internet Explorer 11
 """"""""""""""""""""""""
@@ -3219,7 +3219,7 @@ If you still continue to receive logon prompt, please check your configuration. 
 *   The invoked Virtel transaction is not defined with security = 2.
 
 .. index:: 
-   single: System Managment
+   single: System Management
 
 System Management
 =================
@@ -3712,7 +3712,7 @@ Example of appmenu.[keyname].js
     cAppMenuOptions["levels"] = [];
 
     // First Group (Level 0). Any transaction name with cicsp becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][0] = {
     "title":"CICS Production Regions",
     "criteria":"tran",
@@ -3720,7 +3720,7 @@ Example of appmenu.[keyname].js
     };
 
     // Second Group (Level 1). Any transaction name with cicsd becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][1] = {
     "title":"CICS Development Regions",
     "criteria":"tran",
@@ -3728,7 +3728,7 @@ Example of appmenu.[keyname].js
     };
 
     // Third Group (Level 2). Any transaction name with cicst becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][2] = {
     "title":"CICS Test Regions",
     "criteria":"tran",
@@ -3736,7 +3736,7 @@ Example of appmenu.[keyname].js
     };
 
     // Fourth Group (Level 3). Any transaction name with tsop becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][3] = {
     "title":"TSO Production Systems",
     "criteria":"tran",
@@ -3744,7 +3744,7 @@ Example of appmenu.[keyname].js
     };
 
     // Fifth Group (Level 4). Any transaction name with tsod becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][4] = {
     "title":"TSO Development Systems",
     "criteria":"tran",
@@ -3752,7 +3752,7 @@ Example of appmenu.[keyname].js
     };
 
     // Sixth Group (Level 5). Any transaction name with tsod becomes part of this level.
-    // Regular experession is used to filter out qualifying applications
+    // Regular expression is used to filter out qualifying applications
     cAppMenuOptions["levels"][5] = {
     "title":"VTAM USSTAB Sessions",
     "criteria":"tran",
@@ -3760,10 +3760,48 @@ Example of appmenu.[keyname].js
     };
 
     // Final Group (Level 6). Any transaction not caught by the previous levels. 
-    // Note that the Criteria and Regular experession properties are not used.
+    // Note that the Criteria and Regular expression properties are not used.
     cAppMenuOptions["levels"][6] = {
     "title":"Other Sessions",    
     };
+
+PFK key assignment
+------------------
+
+PFK's can be assigned to transactions within the CappMenu display as shortcuts.  
+
+|image87|
+
+The pf2tran array needs to be added to the cAppmenOptions array. The following is an example.
+
+::
+    // Titles with PFKs
+    cAppMenuOptions = {
+        "texts": {
+        "main-title": "Virtel Demo Application Tier Menu Session Manager",
+        "sub-title": "SYSPERTEC Virtel V4.61 Application Menu"
+    },
+    // mapping of the pf keys connected to VIRTEL transactions
+    "pf2tran": [
+       { "pf"  : "PF 2"     ,  "tran" : "CICSP1"         },
+       { "pf"  : "PF 10"    ,  "tran" : "CICST1"         },
+       { "pf"  : "PF 12"    ,  "tran" : "TSOP1"          },
+       { "pf"  : "PF 9"     ,  "tran" : "TSOT1"          },
+       { "pf"  : "PF 4"     ,  "tran" : "TSOT2"          }
+        ]
+    }                  
+
+PassThru Security
+-----------------
+
+The CappMenu has a feature which allows security information to be passed through to the application rather than presenting the user with the transaction Virtel HTML sigon panel. This passthru feature is triggered by specifying the "passOnIdentification" option.
+
+::
+
+    var cAppMenuOptions = {
+      "passOnIdentification": true,
+      "close_VWA_when_disconnects": true
+    }
 
 .. raw:: latex
 
@@ -3774,19 +3812,19 @@ Full reference document for cAppMenuOptions object
 
 ::
 
-    // v 10/10/2018
+    // v 02/04/2023
     // Customer version
-    // cusomer directory.
-    
+    // customer directory.
+
     // This file is related to the option of the application menu list VIRTEL transaction definition.
-     
-    
+
+
     // This file builds the javascript object cAppMenuOptions,
     // that defines the customizations.
-    
+
     // Create the javascript object that contains the options.
     var cAppMenuOptions = {};
-    
+
     // ====================
     // Customize some texts
     // ====================
@@ -3805,11 +3843,11 @@ Full reference document for cAppMenuOptions object
     // remove the // comment mark on the next line, to create the sub title customization:
     // cAppMenuOptions.texts["sub-title"] = "xxx";
     //
-    // customize texts of signon form 
+    // customize texts of signon form
     // ------------------------------
     // Remove the // comment mark on the next line, to create the level for signon texts customization:
     // cAppMenuOptions.texts.signon = {};
-    
+
     // Replace the English standard text on the right part of the assignments,
     // remove the leading // comment mark on the modified lines
     //  cAppMenuOptions.texts.signon["signon-invite"]="Enter your username and password";
@@ -3827,9 +3865,16 @@ Full reference document for cAppMenuOptions object
     //  cAppMenuOptions.texts.signon["password-incorrect"]="INCORRECT PASSWORD";	
     //  cAppMenuOptions.texts.signon["password-expired"]="Password expired";
     //  cAppMenuOptions.texts.signon["newpassword-invalid"]="Newpassword is invalid.";
-    
-    
-    
+
+    // From VIRTE 4.61 onwards:
+    // -----------------------
+    // customize credentials transmission logic
+    // in case the VIRTEL is set up with the screen lock feature.
+    // By default, you need to signon again when opening the session for the transaction selectged by the user on th application menu.
+    // This can be overriden by removing the leading // comment mark on the next line to activate it:
+    // cAppMenuOptions.passOnIdentification = true;
+
+
     // =====================================
     // Customize transaction opening options
     // =====================================
@@ -3839,14 +3884,14 @@ Full reference document for cAppMenuOptions object
     // Use: Each time you click a line of the application menu, you will open a new window for the session of the selected transaction.
     // remove the // comment mark on the next line to set this option:
     // cAppMenuOptions.open_name = "_blank";
-    
+
     //
     // open to the current window
     // --------------------------
     // Use: Clicking a application menu item will replace the application menu page with the session of the selected transaction.
     // remove the // comment mark on the next line to set this option:
     // cAppMenuOptions.open_name = "_self";
-    
+
     //
     // open to a dedicated window
     // --------------------------
@@ -3855,7 +3900,7 @@ Full reference document for cAppMenuOptions object
     // Below, you can keep the name "VWA", or replace it with the name you want;
     // remove the // comment mark on the next line to set this option:
     // cAppMenuOptions.open_name = "VWA";
-    
+
     //
     // open specs
     // ----------
@@ -3863,9 +3908,9 @@ Full reference document for cAppMenuOptions object
     // replace specs by your specs (e.g."location=no"),
     // remove the // comment mark on the next line to set this option:
     // cAppMenuOptions.open_specs = specs;
-    
-    
-     
+
+
+
     //
     // skip the application menu in case of a single transaction
     // ----------------------------------------------------------
@@ -3874,12 +3919,20 @@ Full reference document for cAppMenuOptions object
     // and the window will be opened of the VIRTEL transaction session.
     // Remove the // comment mark on the next line to set this option:
     // cAppMenuOptions.skip_menu_if_single = true;
-    
-    
-    
-    
-    
-    
+
+
+
+    //
+    // close the VWA window after disconnection
+    // ----------------------------------------
+    // Remove the // comment mark on the next line to set this option:
+    // cAppMenuOptions.close_VWA_when_disconnects = true;
+
+
+
+
+
+
     // =====================================
     // Customize user selectable information
     // =====================================
@@ -3890,80 +3943,80 @@ Full reference document for cAppMenuOptions object
     // Some user selectable information can be taken into account to build it.
     // Remove the // comment mark on the next line to prepare the user selectable design:
     // cAppMenuOptions.userSelectable = {};
-    
+
     //
     // Prepare query parameters definition
     // -----------------------------------
-    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window. 
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
     // Some query parameters might be taken into account, e.g. (after the question mark):
     // http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&rows=43&cols=132
     // Remove the // comment mark on the next line to prepare the definition of query parameters:
     // cAppMenuOptions.userSelectable.queryParameter = {};
-    
-    
+
+
     //
-    // Define query parameters 
+    // Define query parameters
     // -----------------------
-    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window. 
+    // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.
     // Some query parameters might be taken into account, e.g. (after the question mark):
     // http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso?logmode=D4A32XX3&rows=43&cols=132
-    
+
     // - Define the name of the query parameter
     // Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
     // Remove the // comment mark on the next line to Start the definition for this query parameter:
     // cAppMenuOptions.userSelectable.queryParameter["xxx"] = {"label":"", "values":[]};
-    
+
     // - Define the label to be displayed on the application menu for the query parameter
     // Replace xxx by the name of your query parameter, making sure that your VIRTEL is set up to take it into account.
     // Replace yyy by the label.
     // Remove the // comment mark on the next line to Start the definition for this query parameter:
     // cAppMenuOptions.userSelectable.queryParameter["xxx"]["label"] = "yyy";
-    
+
     // - Define the values of the query parameter
     // Duplicate this last line as much as the number of values you want to take into account.
-    // For each of those lines 
+    // For each of those lines
     // - replace xxx by the value of your query parameter,
     // - replace aaa by the label for the current value,
     // - replace bbb by the current value.
     // Remove the // comment mark on all of those lines to take these values into account:
     // cAppMenuOptions.userSelectable.queryParameter["xxx"]["items"].push({"label":"aaaa", "value":"bbbb"});
-    
-    
-    // You can define an additionnal query parameter in the same way.
-    // You can define as much query parameters as you want, 
+
+
+    // You can define an additional query parameter in the same way.
+    // You can define as much query parameters as you want,
     // provided that your VIRTEL is set up to take them into account.
-    
-    
-    
+
+
+
     //
-    // Define templates 
+    // Define templates
     // ----------------
     // Use: Each time you click a line of the application menu, an url is build for starting the VIRTEL transaction session in its window.  This url contains a template name.
     // e.g. "WEB2AJAX.htm" in http://my-VIRTEL-line-address/w2h/WEB2AJAX.htm+Tso
     // e Various templates, even customer templates in case of specific projets, can be made available for the user selection.
-    
+
     // - Start the templates definition
     // Replace "xxx" by your label for templates.
     // Remove the // comment mark on the next lines to Start the templates definition:
     // cAppMenuOptions.userSelectable.template =  {"label":"", "items":[]};
-    
-    
+
+
     // - Define the information for each template:
     // Duplicate the last lines of this block ( with push("xxx")) as much as the number of templates you want to take into account.
-    // For each of those lines, replace 
+    // For each of those lines, replace
     // - "xxx" by the label for this template (e.g. "Standard VWA")
     // - "yyy" by the path to the template (e.g. "../w2h/web2ajax.htm"), making sure that your VIRTEL is set up to take it into account.
     // Remove the // comment mark on all of those lines to take these values into account:
     // cAppMenuOptions.userSelectable.template.items.push({"label":"xxx", "value":"yyy"});
-    
-       
-       
-       
-       
+
+
+
+
+
     // ==================
     // Subdivide the list
     // ==================
-    // Remove the // comment mark on the next line, to prepare a the first level of subdivision. 
+    // Remove the // comment mark on the next line, to prepare a the first level of subdivision.
     // cAppMenuOptions.levels = [];
     //
     // Design a selection definition
@@ -3984,27 +4037,40 @@ Full reference document for cAppMenuOptions object
     // cAppMenuOptions.levels[0].criteria = "description";  // description of the VIRTEL transaction
     //
     // - Define the regular expression of the selection:
-    // Replace xxx by the regular expression for your selection 
+    // Replace xxx by the regular expression for your selection
     // Examples:
     //   /cics/      // to select the transactions where the criteria contains "cics" (case sensitive)
     //   /cics/i     // to select the transactions where the criteria contains "cics" (case insensitive)
     //   /^cics/     // to select the transactions where the criteria starts with "cics"
     //   /cics$/     // to select the transactions where the criteria ends with "cics"
-    
+
     // remove the // comment mark on the next line to define this regular expression
     // cAppMenuOptions.levels[0].regexp = /xxx/;
-    
+
     // - Define an additional level of subdivision:
     // Advanced!
-    // You could divide further this selection, by adding a level, and defining it following the same instructiuons at the next level, and add recursively further levels.
+    // You could divide further this selection, by adding a level, and defining it following the same instructions at the next level, and add recursively further levels.
     // remove the // comment mark on the next line to start this next level definition:
     // cAppMenuOptions.levels[0].levels = [];
-    
-    
-    
+
+
+
     // You can add a second ([1]) definition following the same instructions.
     // If an additional definition does not contain a criteria,
     // all the remaining list transactions will be kept.
+
+
+
+    // ==================
+    // Menu with pf keys
+    // ==================
+    // Remove the // comment mark on the next line, to prepare a the table connecting pf key values to transaction names:
+    // cAppMenuOptions.pf2tran = [];
+
+    // Remove the // comment mark on the next line and replace "xxx" by the target pf key value, and "yyy" by the external name of target VIRTEL transaction to be accessed by pressing the pf key.
+    // cAppMenuOptions.pf2tran.push({ "pf"  : "xxx" , "tran" : "yyy" })
+    // Duplicate the step above for as much connexion pf / tran as needed.
+
 
 
 .. index::   
@@ -4042,7 +4108,7 @@ The Thai character set is implement using the following TCT options : -
     CHARSET=(IBM0838,IBM1160),            Load Thai Charsets                   * 
     DEFUTF8=IBM1160,                      Default to Thai Charset              *
 
-A W2H parm option also needs to be set. “w2hparm.leftalignpage” should be set to true. This value can also be set in the Miscellaneous options tab. This will allow left alignement of the W2H page. This may be useful when no monospace font is available (e.g. for Thailand). 
+A W2H parm option also needs to be set. “w2hparm.leftalignpage” should be set to true. This value can also be set in the Miscellaneous options tab. This will allow left alignment of the W2H page. This may be useful when no monospace font is available (e.g. for Thailand). 
 
 
 Arabic
@@ -4056,7 +4122,7 @@ The Alt-ENTER key is used to globally switch the screen display from 'left to ri
 	- the Alt-ENTER key may be unset by going to w2h key mappings options.
 	- w2hparm.mirrorMode may be set in a w2hparm.js file to preset the option (e.g. for user screens defaulting to arabic) use w2hparm.mirrorMode = true
 
-When the 'Bidirectional Data' option is active, the Alt+Shift key combination toggles data entry to/from Right-to-Left. This may be disturbing in contextes other than Hebrew, e.g. in Tunisia, where this key combination is used to switch keyboards. This option can be disabled by setting the w2hparm.altshift = no.  See the Key Mapping option in the Alt modifiers section.
+When the 'Bidirectional Data' option is active, the Alt+Shift key combination toggles data entry to/from Right-to-Left. This may be disturbing in contexts other than Hebrew, e.g. in Tunisia, where this key combination is used to switch keyboards. This option can be disabled by setting the w2hparm.altshift = no.  See the Key Mapping option in the Alt modifiers section.
 
 ..
 
@@ -4082,7 +4148,7 @@ VIRTEL Web Access v4.59 and above supports a FTP file transfer interface through
 How does it work?
 -----------------
 
-Virtel runs in a browser and, for sceurity reasons, cannot directly call the local FTP client program. Other than through the use of IND$FILE, Virtel does not provide direct FTP connection to the mainframe. The Virtel FTP package centralizes the FTP file transfer parameters, where they can be configured by the Virtel Administrator. When an end-user requests for an FTP transfer to be initiated, an FTP parameter file is downloaded to the browser default download directory. The file transfer can then be executed by calling a batch script on the user’s desktop, that will use the parameter file as an input.
+Virtel runs in a browser and, for security reasons, cannot directly call the local FTP client program. Other than through the use of IND$FILE, Virtel does not provide direct FTP connection to the mainframe. The Virtel FTP package centralizes the FTP file transfer parameters, where they can be configured by the Virtel Administrator. When an end-user requests for an FTP transfer to be initiated, an FTP parameter file is downloaded to the browser default download directory. The file transfer can then be executed by calling a batch script on the user’s desktop, that will use the parameter file as an input.
 
 Pre-requisites
 ^^^^^^^^^^^^^^
@@ -4612,3 +4678,4 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image83| image:: images/media/image83.png
 .. |image84| image:: images/media/image84.png
 .. |image85| image:: images/media/image85.png
+.. |image87| image:: images/media/image87.png    

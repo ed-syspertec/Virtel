@@ -2133,8 +2133,8 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <p>Note how we identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.</p>
 </div>
 </div>
-<div class="section" id="cerificates-and-key-rings">
-<span id="index-108"></span><h4>Cerificates and Key rings<a class="headerlink" href="#cerificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="certificates-and-key-rings">
+<span id="index-108"></span><h4>Certificates and Key rings<a class="headerlink" href="#certificates-and-key-rings" title="Permalink to this headline">¶</a></h4>
 <p>Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*-----------------------------------------------------------------*/</span>
 <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> <span class="o">*/</span>
@@ -2301,7 +2301,7 @@ obtained.</p>
 <h5>Logon Example<a class="headerlink" href="#logon-example" title="Permalink to this headline">¶</a></h5>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image22" src="../../../_images/image2228.png" /></p>
-<p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.</p>
+<p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifies that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certificate.</p>
 <p><img alt="image23" src="../../../_images/image2322.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
 <p><img alt="image24" src="../../../_images/image2418.png" /></p>
@@ -2372,7 +2372,7 @@ The response should be :
 <p>3   Virtel messages</p>
 <blockquote>
 <div><p><strong>VIRHT57E LINE IS NOT SET UP FOR HTTPS</strong></p>
-<p>This means that the browser has sent encypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven’t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel.</p>
+<p>This means that the browser has sent encrypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven’t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel.</p>
 <p>Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.</p>
 <p>In the normal case, you should specify HandshakeRole Server, ClientAuthType Full, and ApplicationControlled Off in the AT-TLS rules, as in the example in VIRT447.SAMPLIB(SSLSETUP). VIRTEL does not issue an IOCTL to turn decryption on and off, so if you specified ApplicationControlled On then you would get VIRHT57E because AT-TLS has not been instructed to start decryption.</p>
 <p>If you still get an error when you have ApplicationControlled Off then we will need to see the SYSLOG (for the EZD TTLS messages), the JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting from a z/OS command F VIRTEL,SNAP immediately after the error occurs. We would also like to see the exact URL which was entered at the browser, as well as the AT-TLS pagent.conf file.</p>
@@ -2404,8 +2404,8 @@ The response should be :
 <div class="section" id="ntlm-support">
 <span id="index-115"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this headline">¶</a></h3>
 <p>Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.</p>
-<div class="section" id="enable-windows-integrated-authentication-for-internet-exmplorer">
-<h4>Enable Windows Integrated Authentication for Internet Exmplorer<a class="headerlink" href="#enable-windows-integrated-authentication-for-internet-exmplorer" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="enable-windows-integrated-authentication-for-internet-explorer">
+<h4>Enable Windows Integrated Authentication for Internet Explorer<a class="headerlink" href="#enable-windows-integrated-authentication-for-internet-explorer" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="for-internet-explorer-11">
 <h5>For Internet Explorer 11<a class="headerlink" href="#for-internet-explorer-11" title="Permalink to this headline">¶</a></h5>
 <ul class="simple">
@@ -2887,7 +2887,7 @@ var oCustom={
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
 
 <span class="o">//</span> <span class="n">First</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicsp</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Production Regions&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2895,7 +2895,7 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Second</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicsd</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Development Regions&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2903,7 +2903,7 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Third</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">cicst</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Test Regions&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2911,7 +2911,7 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Fourth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsop</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;TSO Production Systems&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2919,7 +2919,7 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Fifth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsod</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;TSO Development Systems&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2927,7 +2927,7 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Sixth</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="n">name</span> <span class="k">with</span> <span class="n">tsod</span> <span class="n">becomes</span> <span class="n">part</span> <span class="n">of</span> <span class="n">this</span> <span class="n">level</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
+<span class="o">//</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="n">qualifying</span> <span class="n">applications</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;VTAM USSTAB Sessions&quot;</span><span class="p">,</span>
 <span class="s2">&quot;criteria&quot;</span><span class="p">:</span><span class="s2">&quot;tran&quot;</span><span class="p">,</span>
@@ -2935,18 +2935,58 @@ var oCustom={
 <span class="p">};</span>
 
 <span class="o">//</span> <span class="n">Final</span> <span class="n">Group</span> <span class="p">(</span><span class="n">Level</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span> <span class="n">Any</span> <span class="n">transaction</span> <span class="ow">not</span> <span class="n">caught</span> <span class="n">by</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">levels</span><span class="o">.</span>
-<span class="o">//</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Criteria</span> <span class="ow">and</span> <span class="n">Regular</span> <span class="n">experession</span> <span class="n">properties</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">used</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Criteria</span> <span class="ow">and</span> <span class="n">Regular</span> <span class="n">expression</span> <span class="n">properties</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">used</span><span class="o">.</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Other Sessions&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="pfk-key-assignment">
+<h3>PFK key assignment<a class="headerlink" href="#pfk-key-assignment" title="Permalink to this headline">¶</a></h3>
+<p>PFK’s can be assigned to transactions within the CappMenu display as shortcuts.</p>
+<p><img alt="image87" src="../../../_images/image876.png" /></p>
+<p>The pf2tran array needs to be added to the cAppmenOptions array. The following is an example.</p>
+<dl>
+<dt>::</dt><dd><p>// Titles with PFKs
+cAppMenuOptions = {</p>
+<blockquote>
+<div><p>“texts”: {
+“main-title”: “Virtel Demo Application Tier Menu Session Manager”,
+“sub-title”: “SYSPERTEC Virtel V4.61 Application Menu”</p>
+</div></blockquote>
+<p>},
+// mapping of the pf keys connected to VIRTEL transactions
+“pf2tran”: [</p>
+<blockquote>
+<div><p>{ “pf”  : “PF 2”     ,  “tran” : “CICSP1”         },
+{ “pf”  : “PF 10”    ,  “tran” : “CICST1”         },
+{ “pf”  : “PF 12”    ,  “tran” : “TSOP1”          },
+{ “pf”  : “PF 9”     ,  “tran” : “TSOT1”          },
+{ “pf”  : “PF 4”     ,  “tran” : “TSOT2”          }</p>
+<blockquote>
+<div><p>]</p>
+</div></blockquote>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="passthru-security">
+<h3>PassThru Security<a class="headerlink" href="#passthru-security" title="Permalink to this headline">¶</a></h3>
+<p>The CappMenu has a feature which allows security information to be passed through to the application rather than presenting the user with the transaction Virtel HTML sigon panel. This passthru feature is triggered by specifying the “passOnIdentification” option.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;passOnIdentification&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;close_VWA_when_disconnects&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="full-reference-document-for-cappmenuoptions-object">
 <h3>Full reference document for cAppMenuOptions object<a class="headerlink" href="#full-reference-document-for-cappmenuoptions-object" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// v 10/10/2018
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// v 02/04/2023
 // Customer version
-// cusomer directory.
+// customer directory.
 
 // This file is related to the option of the application menu list VIRTEL transaction definition.
 
@@ -2998,6 +3038,13 @@ var cAppMenuOptions = {};
 //  cAppMenuOptions.texts.signon[&quot;password-expired&quot;]=&quot;Password expired&quot;;
 //  cAppMenuOptions.texts.signon[&quot;newpassword-invalid&quot;]=&quot;Newpassword is invalid.&quot;;
 
+// From VIRTE 4.61 onwards:
+// -----------------------
+// customize credentials transmission logic
+// in case the VIRTEL is set up with the screen lock feature.
+// By default, you need to signon again when opening the session for the transaction selectged by the user on th application menu.
+// This can be overriden by removing the leading // comment mark on the next line to activate it:
+// cAppMenuOptions.passOnIdentification = true;
 
 
 // =====================================
@@ -3044,6 +3091,14 @@ var cAppMenuOptions = {};
 // and the window will be opened of the VIRTEL transaction session.
 // Remove the // comment mark on the next line to set this option:
 // cAppMenuOptions.skip_menu_if_single = true;
+
+
+
+//
+// close the VWA window after disconnection
+// ----------------------------------------
+// Remove the // comment mark on the next line to set this option:
+// cAppMenuOptions.close_VWA_when_disconnects = true;
 
 
 
@@ -3099,7 +3154,7 @@ var cAppMenuOptions = {};
 // cAppMenuOptions.userSelectable.queryParameter[&quot;xxx&quot;][&quot;items&quot;].push({&quot;label&quot;:&quot;aaaa&quot;, &quot;value&quot;:&quot;bbbb&quot;});
 
 
-// You can define an additionnal query parameter in the same way.
+// You can define an additional query parameter in the same way.
 // You can define as much query parameters as you want,
 // provided that your VIRTEL is set up to take them into account.
 
@@ -3166,7 +3221,7 @@ var cAppMenuOptions = {};
 
 // - Define an additional level of subdivision:
 // Advanced!
-// You could divide further this selection, by adding a level, and defining it following the same instructiuons at the next level, and add recursively further levels.
+// You could divide further this selection, by adding a level, and defining it following the same instructions at the next level, and add recursively further levels.
 // remove the // comment mark on the next line to start this next level definition:
 // cAppMenuOptions.levels[0].levels = [];
 
@@ -3175,6 +3230,18 @@ var cAppMenuOptions = {};
 // You can add a second ([1]) definition following the same instructions.
 // If an additional definition does not contain a criteria,
 // all the remaining list transactions will be kept.
+
+
+
+// ==================
+// Menu with pf keys
+// ==================
+// Remove the // comment mark on the next line, to prepare a the table connecting pf key values to transaction names:
+// cAppMenuOptions.pf2tran = [];
+
+// Remove the // comment mark on the next line and replace &quot;xxx&quot; by the target pf key value, and &quot;yyy&quot; by the external name of target VIRTEL transaction to be accessed by pressing the pf key.
+// cAppMenuOptions.pf2tran.push({ &quot;pf&quot;  : &quot;xxx&quot; , &quot;tran&quot; : &quot;yyy&quot; })
+// Duplicate the step above for as much connexion pf / tran as needed.
 </pre></div>
 </div>
 </div>
@@ -3199,7 +3266,7 @@ IBM1390,IBM1399),       JAPANESE                        *</p>
 <div class="section" id="thai">
 <h4>Thai<a class="headerlink" href="#thai" title="Permalink to this headline">¶</a></h4>
 <p>The Thai character set is implement using the following TCT options : -</p>
-<p>A W2H parm option also needs to be set. “w2hparm.leftalignpage” should be set to true. This value can also be set in the Miscellaneous options tab. This will allow left alignement of the W2H page. This may be useful when no monospace font is available (e.g. for Thailand).</p>
+<p>A W2H parm option also needs to be set. “w2hparm.leftalignpage” should be set to true. This value can also be set in the Miscellaneous options tab. This will allow left alignment of the W2H page. This may be useful when no monospace font is available (e.g. for Thailand).</p>
 </div>
 <div class="section" id="arabic">
 <h4>Arabic<a class="headerlink" href="#arabic" title="Permalink to this headline">¶</a></h4>
@@ -3212,7 +3279,7 @@ IBM1390,IBM1399),       JAPANESE                        *</p>
 <li><p>w2hparm.mirrorMode may be set in a w2hparm.js file to preset the option (e.g. for user screens defaulting to arabic) use w2hparm.mirrorMode = true</p></li>
 </ul>
 </div>
-<p>When the ‘Bidirectional Data’ option is active, the Alt+Shift key combination toggles data entry to/from Right-to-Left. This may be disturbing in contextes other than Hebrew, e.g. in Tunisia, where this key combination is used to switch keyboards. This option can be disabled by setting the w2hparm.altshift = no.  See the Key Mapping option in the Alt modifiers section.</p>
+<p>When the ‘Bidirectional Data’ option is active, the Alt+Shift key combination toggles data entry to/from Right-to-Left. This may be disturbing in contexts other than Hebrew, e.g. in Tunisia, where this key combination is used to switch keyboards. This option can be disabled by setting the w2hparm.altshift = no.  See the Key Mapping option in the Alt modifiers section.</p>
 <blockquote>
 <div><p>altshift = “RTLinput” is the default, altshift = “no” may be specified.</p>
 </div></blockquote>
@@ -3233,7 +3300,7 @@ IBM1390,IBM1399),       JAPANESE                        *</p>
 </div>
 <div class="section" id="how-does-it-work">
 <h3>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h3>
-<p>Virtel runs in a browser and, for sceurity reasons, cannot directly call the local FTP client program. Other than through the use of IND$FILE, Virtel does not provide direct FTP connection to the mainframe. The Virtel FTP package centralizes the FTP file transfer parameters, where they can be configured by the Virtel Administrator. When an end-user requests for an FTP transfer to be initiated, an FTP parameter file is downloaded to the browser default download directory. The file transfer can then be executed by calling a batch script on the user’s desktop, that will use the parameter file as an input.</p>
+<p>Virtel runs in a browser and, for security reasons, cannot directly call the local FTP client program. Other than through the use of IND$FILE, Virtel does not provide direct FTP connection to the mainframe. The Virtel FTP package centralizes the FTP file transfer parameters, where they can be configured by the Virtel Administrator. When an end-user requests for an FTP transfer to be initiated, an FTP parameter file is downloaded to the browser default download directory. The file transfer can then be executed by calling a batch script on the user’s desktop, that will use the parameter file as an input.</p>
 <div class="section" id="pre-requisites">
 <h4>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">

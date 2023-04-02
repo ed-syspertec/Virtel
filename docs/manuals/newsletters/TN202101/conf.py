@@ -47,7 +47,7 @@ master_doc = 'TN202101'
 
 # General information about the project.
 project = 'Virtel'
-copyright = '2021, Syspertec Communications. All rights reserved'
+copyright = '2023, Syspertec Communications. All rights reserved'
 author = 'Ed Holt'
 
 # The version info for the project you're documenting, acts as replacement for

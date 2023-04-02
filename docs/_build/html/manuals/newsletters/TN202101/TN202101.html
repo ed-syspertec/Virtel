@@ -178,7 +178,7 @@
             
   <div class="section" id="whats-new-in-virtel-4-61-ga-release">
 <span id="tn202101"></span><h1>What’s new in Virtel 4.61 GA Release<a class="headerlink" href="#whats-new-in-virtel-4-61-ga-release" title="Permalink to this headline">¶</a></h1>
-<p>The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61 &#64; update level 5977.</p>
+<p>The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.61 &#64; update level 6023.</p>
 <div class="section" id="installation-changes">
 <h2>Installation changes<a class="headerlink" href="#installation-changes" title="Permalink to this headline">¶</a></h2>
 <p><strong>5900 VIRTERM/Samplib changes</strong></p>
@@ -219,7 +219,7 @@
 <p><strong>ARBO changes</strong></p>
 <ul class="simple">
 <li><p>There have been no changes to the ARBO which would require migration from V4.60 or V4.59. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at <a class="reference external" href="https://virtel.readthedocs.io/en/latest/">https://virtel.readthedocs.io/en/latest/</a></p></li>
-<li><p>LINE enhancement. LOCADDR2 and PARTNER2 keywords are deprecated in V4.61 VIRCONF. LOCADDR and PARTNER fields have been expanded to accommodate IPV6 addresses and DNS values upto 52 characters. ARBO files from V4.59 and V4.60 will still be usable with V4.61 with migration. It is recommended that you migrate you ARBO to V4.61 by unloading in V4.59 or V4.60 to create a SYSIN deck for input to V4.61 VIRCONF LOAD. Any LOCADDR2 or PARTNER2 fields will have to be removed and the extended field data moved to the corressponding LOCADDR and PARTNER fields prior to loading with V4.61 VIRCONF.</p></li>
+<li><p>LINE enhancement. LOCADDR2 and PARTNER2 keywords are deprecated in V4.61 VIRCONF. LOCADDR and PARTNER fields have been expanded to accommodate IPV6 addresses and DNS values upto 52 characters. ARBO files from V4.59 and V4.60 will still be usable with V4.61 with migration. It is recommended that you migrate you ARBO to V4.61 by unloading in V4.59 or V4.60 to create a SYSIN deck for input to V4.61 VIRCONF LOAD. Any LOCADDR2 or PARTNER2 fields will have to be removed and the extended field data moved to the corresponding LOCADDR and PARTNER fields prior to loading with V4.61 VIRCONF.</p></li>
 </ul>
 </div>
 </div>
@@ -328,6 +328,50 @@
 <ul class="simple">
 <li><p>Prevent upload failures if code contains a valid  “X-UserSignonCode: ” header</p></li>
 </ul>
+<p><strong>5985 Update TCT command</strong></p>
+<ul class="simple">
+<li><p>Add LOCK and LPKALIVE values</p></li>
+</ul>
+<p><strong>5986 Update messages VIRC121E/VIRHT54E</strong></p>
+<ul class="simple">
+<li><p>Put CALLER in front of messages VIRC121E and VIRHT54E</p></li>
+</ul>
+<p><strong>5991/5996 New Search Facility</strong></p>
+<ul class="simple">
+<li><p>3270 Adminisatration panels now have a Search Facility</p></li>
+</ul>
+<p><strong>5995 Correct Cursor position</strong></p>
+<ul class="simple">
+<li><p>Correct cursor position in 3270 Administration panels</p></li>
+</ul>
+<p><strong>5998 Correct terminal status display</strong></p>
+<ul class="simple">
+<li><p>Invalid display in terminal status screen</p></li>
+</ul>
+<p><strong>6002/3 Correct Line display</strong></p>
+<ul class="simple">
+<li><p>Correct PF4 terminal list in ADMIN 3270 Line display</p></li>
+</ul>
+<p><strong>6009 Correct messages at Virtel shutdown</strong></p>
+<ul class="simple">
+<li><p>VIRSV message is confusing error messages at Virtel shutdown</p></li>
+</ul>
+<p><strong>6012 Message Update</strong></p>
+<ul class="simple">
+<li><p>Correct message VIR0072I</p></li>
+</ul>
+<p><strong>6016 Correct 3270 transaction display</strong></p>
+<ul class="simple">
+<li><p>Values are mis-aligned in French display.</p></li>
+</ul>
+<p><strong>6017 VIRCONF Updates</strong></p>
+<ul class="simple">
+<li><p>Add LOCK= keyword to VIRCONF Entry Point</p></li>
+</ul>
+<p><strong>6022 Correct TCT display</strong></p>
+<ul class="simple">
+<li><p>VSAMTYP not correct formatted.</p></li>
+</ul>
 </div>
 <div class="section" id="base-components">
 <h3>Base Components<a class="headerlink" href="#base-components" title="Permalink to this headline">¶</a></h3>
@@ -387,7 +431,7 @@
 <ul class="simple">
 <li><p>New feature. Messages can now be dynamically added to the SNAPMSG table. Maximum of 10 messages.</p></li>
 </ul>
-<p><strong>5916/25/30/38/42 LOCK= terminal support</strong></p>
+<p><strong>5916/25/30/38/42/84 LOCK= terminal support</strong></p>
 <ul class="simple">
 <li><p>LOCK= keyword in TCT for HTML terminals. Force users to re-enter password after LOCK period has expired.</p></li>
 <li><p>Support ESC key as DISCONNECT</p></li>
@@ -425,17 +469,85 @@
 <ul class="simple">
 <li><p>Error message VIRS125E MQSAEH34 VIRSV REQUEST ERROR - R15 : 0000080C. Number of NBCELL increased from 6 to 12.</p></li>
 </ul>
-<p><strong>5963 VSE abend on /READ on CLOSED session</strong></p>
+<p><strong>5963/82 VSE abend on /READ on CLOSED session</strong></p>
 <ul class="simple">
 <li><p>Correct bug in VIR0010</p></li>
 </ul>
-<p><strong>5964/67/70 VIRCONF Updates</strong></p>
+<p><strong>5964/67/70/80 VIRCONF Updates</strong></p>
 <ul class="simple">
 <li><p>Remove LOCADDR2 and PARTNER2 support. VIRCONF and ARBO fields now support larger fields for LOCADDR and PARTNER values in the LINE record.</p></li>
 </ul>
 <p><strong>5969 New Security type 5</strong></p>
 <ul class="simple">
-<li><p>Implements a new Security type 5 for transaction which allows a user signon to bypass the security manager (eg RACF) if already connected with a valid VirtelUserSignon code.</p></li>
+<li><p>Implements a new Security type 5 for transaction which allows a user signon to bypass the security manager (e.g. RACF) if already connected with a valid VirtelUserSignon code.</p></li>
+</ul>
+<p><strong>5978 RTM Update</strong></p>
+<ul class="simple">
+<li><p>Correct Response Time Monitor if time out occurs. Avoid Screen locked</p></li>
+</ul>
+<p><strong>5979 VIRCONF Update</strong></p>
+<ul class="simple">
+<li><p>Add ESTAE to VIRCONF to avoid bring down Virtel should VIRCONF abend in UNLOAD command.</p></li>
+</ul>
+<p><strong>5981 Performance Issue</strong></p>
+<ul class="simple">
+<li><p>Possible Bad performance for VTAM applications</p></li>
+</ul>
+<p><strong>5988 404 return code</strong></p>
+<ul class="simple">
+<li><p>Correct Long Poll issue. A 404 return code is presented after a 304 LP0</p></li>
+</ul>
+<p><strong>5990 403 return code</strong></p>
+<ul class="simple">
+<li><p>Correct Signon Code. A 403 can occur if Signon box is cancelled</p></li>
+</ul>
+<p><strong>PF=DISCONNECT ignored</strong></p>
+<ul class="simple">
+<li><p>PF=DISCONNECT is ignored following a conflicting intermediary requests.</p></li>
+</ul>
+<p><strong>6000 VSE CSI TCP/IP stack error</strong></p>
+<ul class="simple">
+<li><p>Provide support for Stack error x002e</p></li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>6001 Menu locked **</p>
+<ul class="simple">
+<li><p>if a menu is locked out, the User Signon Code should not work</p></li>
+</ul>
+<p><strong>6004 Implement Auto startup feature</strong></p>
+<ul class="simple">
+<li><p>Implement a startup auto message function and add new support to message table.</p></li>
+</ul>
+<p><strong>6005 USS table processing</strong></p>
+<ul class="simple">
+<li><p>Default USSTAB is incorrect.</p></li>
+</ul>
+<p><strong>6006 STATS=SMF</strong></p>
+<ul class="simple">
+<li><p>Correct B37 processing for STATS=SMF</p></li>
+</ul>
+<p><strong>6007 Chrome Browser Error</strong></p>
+<ul class="simple">
+<li><p>Correct a change in the implementation of (new Date).toLocaleTimeString() in Chrome</p></li>
+</ul>
+<p><strong>6008 LastPage Error</strong></p>
+<ul class="simple">
+<li><p>No LastPage displayed after LOCK and TSO Timeout</p></li>
+</ul>
+<p><strong>6010 Edge Browser Error</strong></p>
+<ul class="simple">
+<li><p>Avoid blocking Virtel with EDGE in IE11 compatibility mode</p></li>
+</ul>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>6013 Virtel Parameters **</p>
+<ul class="simple">
+<li><p>Conflict between LPKALIVE= and LOCK= parameters</p></li>
+</ul>
+<p><strong>6015 Virtel CPU loop</strong></p>
+<ul class="simple">
+<li><p>A CPU loop can occur following Telnet ping</p></li>
+</ul>
+<p><strong>6023 Virtel ABEND S0C4</strong></p>
+<ul class="simple">
+<li><p>VirtelUserSignon= can cause a SC4 due to VUSC/cookie conflict</p></li>
 </ul>
 </div>
 <div class="section" id="scenario-language">
@@ -451,6 +563,10 @@
 <p><strong>5931 DECLARE$ bug</strong></p>
 <ul class="simple">
 <li><p>Bug in DECLARE$ when length=79 destroys buffer. Screen garbled.</p></li>
+</ul>
+<p><strong>5999/6019 Updates to MAP$</strong></p>
+<ul class="simple">
+<li><p>Support for MAP$ FROM-VARIABLE,JSON,VAR=</p></li>
 </ul>
 </div>
 <div class="section" id="other-enhancements">
@@ -483,6 +599,14 @@
 <ul class="simple">
 <li><p>SMFPRINT and SMFPRNTL updated</p></li>
 <li><p>REXX procedures SMFREXXP and SMFREXXL updated</p></li>
+</ul>
+<p><strong>5997 SAMPLIB Update</strong></p>
+<ul class="simple">
+<li><p>Update ARBOLOAD Samplib Member. New resources added to allow password change.</p></li>
+</ul>
+<p><strong>6021 SAMPLIB Update</strong></p>
+<ul class="simple">
+<li><p>Update SSLSETUP with new CipherSuites</p></li>
 </ul>
 </div>
 </div>
@@ -578,6 +702,53 @@
 <li><p>5975 Update SMF REXX procedures</p></li>
 <li><p>5976 SAMPLIB Updates</p></li>
 <li><p>5977 display modified/distorted after LOCK=</p></li>
+<li><p>5978 : Response Time Monitor update, Screen-Lock parameter action if time out</p></li>
+<li><p>5978 correction for VSE assemblies</p></li>
+<li><p>5979 Add ESTAE to VIRCONF</p></li>
+<li><p>5980 Update support for PARTNER/LOCADDR fields when greater than 22 characters.</p></li>
+<li><p>5981 Possible Bad performance for a VTAM application</p></li>
+<li><p>5982 VSE abend after /READ completes on CLOSED session</p></li>
+<li><p>5983 Various tweaks to Virtel installation for 4.61</p></li>
+<li><p>5984 no LOCK if unsigned</p></li>
+<li><p>5985 TCT command: add LOCK and LPKALIVE</p></li>
+<li><p>5986 put CALLER in front of messages VIRC121E and VIRHT54E</p></li>
+<li><p>5987 Fix various 4.61 package generation issues</p></li>
+<li><p>5988 404 return code after 304 LP0</p></li>
+<li><p>5989 Fix RC4 in CLIENTM.JCL Virtel 4.61</p></li>
+<li><p>5990 403 on cancel of signon box</p></li>
+<li><p>5991 Search Facility on 3270 Admin Panels</p></li>
+<li><p>5992 Remove ARBO V2 check at startup.</p></li>
+<li><p>5993 PF=DISCONNECT ignored after conflicting intermediary requests</p></li>
+<li><p>5994 RC4 in compilation of ADMINVWM</p></li>
+<li><p>5995 Change Initial Cursor position for Admin 3270 panels</p></li>
+<li><p>5996 Add Search to Transaction List Display</p></li>
+<li><p>5997 Update ARBOLOAD Samplib Member</p></li>
+<li><p>5998 Invalid display in terminal status screen</p></li>
+<li><p>5999 Support for MAP$ FROM-VARIABLE,JSON,VAR=</p></li>
+<li><p>6000 VSE CSI TCP/IP stack error x002e not supported</p></li>
+<li><p>6001 if menu is locked, User Signon Code should not work</p></li>
+<li><p>6002 Correct PF4 terminal list in ADMIN 3270 Line display</p></li>
+<li><p>6003 Correct cursor position on DELETE in ADMIN 3270 screens</p></li>
+<li><p>6004 Implement startup auto message function</p></li>
+<li><p>6005 Correct USSVIRT USS table</p></li>
+<li><p>6006 B37 on VIRSTAT  FOR STATS=SMF</p></li>
+<li><p>6007 Correct a change in the implementation of (new Date).toLocaleTimeString() in Chrome</p></li>
+<li><p>6008 No LastPage after LOCK and TSO Timeout</p></li>
+<li><p>6009 VIRSV confusing error messages at Virtel shutdown</p></li>
+<li><p>6010 Avoid the Update 6007 blocking Virtel with EDGE in IE11 compatibility mode</p></li>
+<li><p>6011 Fix more 4.61 installation issues</p></li>
+<li><p>6012 Correct message VIR0072I</p></li>
+<li><p>6013 Conflict between LPKALIVE= and LOCK= parameters</p></li>
+<li><p>6014 Screenlock and its consequences on the macros sources code + a cleanup between w2h and w2h/sources + Compression scripts modifications</p></li>
+<li><p>6015 Virtel CPU loop can occur following Telnet ping</p></li>
+<li><p>6016 Correct 3270 transaction display.</p></li>
+<li><p>6017 Add LOCK= to VIRCONF</p></li>
+<li><p>6018 Modification of the ADMINVWM scenario to reflect the SECU 5 already present in the 3270 Administration Page</p></li>
+<li><p>6019 SCENARIO containing MAP$ no longer working</p></li>
+<li><p>6020 identical to 5994 RC4 in compilation of ADMINVWM</p></li>
+<li><p>6021 Update SSLSETUP with new CipherSuites</p></li>
+<li><p>6022 Correct TCT display. VSAMTYP not set</p></li>
+<li><p>6023 VirtelUserSignon= possible s0C4 due to VUSC / cookie conflict</p></li>
 </ul>
 </div>
 </div>
