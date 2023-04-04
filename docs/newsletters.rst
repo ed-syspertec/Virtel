@@ -65,4 +65,20 @@ Technical Newsletters
    
    manuals/newsletters/TN2021*/*
 
+2022
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2022*/*
 
+                                                
+2023
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2023*/*         
+                                                
