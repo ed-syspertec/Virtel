@@ -55,7 +55,7 @@ Summary of Amendments
 Virtel version 4.61 (10th Oct 2021)
 -----------------------------------
 
-.. note:: For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.61.
+.. note:: For further details see the Virtel Technical Newsletter TN202303: Whats new in Virtel 4.61.
 
 Virtel version 4.60 (11th Nov 2020)
 -----------------------------------
