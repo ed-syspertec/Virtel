@@ -90,8 +90,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
@@ -184,7 +182,7 @@
             
   <div class="section" id="audit-administration-operations-and-performance-v4-61">
 <span id="virtel461ap"></span><h1>Audit, Administration, Operations and Performance V4.61<a class="headerlink" href="#audit-administration-operations-and-performance-v4-61" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web29.png"><img alt="imagelogo" src="../../../_images/logo_virtel_web29.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web19.png"><img alt="imagelogo" src="../../../_images/logo_virtel_web19.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Audit, Administration, Operations and Performance</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -707,7 +705,7 @@ VIR0202I ---END OF LIST---
 </dd>
 </dl>
 <p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image23" src="../../../_images/image2320.png" />
+<p><img alt="image23" src="../../../_images/image2316.png" />
 <em>Associated relay names</em></p>
 <dl class="simple">
 <dt>linename</dt><dd><p>Internal or external name of the line</p>
@@ -817,7 +815,7 @@ VIR0202I ---END OF LIST---
 <p>When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
 When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 5 of the VIRTEL Users Guide.</p>
 <p>The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.</p>
-<p><img alt="image21" src="../../../_images/image2128.png" /></p>
+<p><img alt="image21" src="../../../_images/image2123.png" /></p>
 <p><em>Fig.1 - Line Status Display screen</em></p>
 <dl class="simple">
 <dt>STATUS OF-LINES</dt><dd><p>Allows the administrator to display a subset of lines, by typing the
@@ -874,7 +872,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</p>
 <p>To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
-<p><img alt="image22" src="../../../_images/image2226.png" /></p>
+<p><img alt="image22" src="../../../_images/image2222.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
 <dl>
 <dt>ACTIVE TERMINALS for LINE</dt><dd><p>Indicates the internal name of the line whose virtual circuits are being displayed.</p>
@@ -929,7 +927,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</p>
 <span id="index-40"></span><h3>Memory Display Application<a class="headerlink" href="#memory-display-application" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
 <p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
-<p><img alt="image26" src="../../../_images/image2615.png" /></p>
+<p><img alt="image26" src="../../../_images/image2611.png" /></p>
 <p><em>Fig 25. Memory display of VIRTEL address space</em></p>
 <p>Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.</p>
 <p>Permanently allocated memory blocks are represented by the following character types:</p>
@@ -946,7 +944,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</p>
 <div class="section" id="memory-display-in-memory-test-mode">
 <span id="index-41"></span><h4>Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h4>
 <p>If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.</p>
-<p><img alt="image28" src="../../../_images/image2817.png" /></p>
+<p><img alt="image28" src="../../../_images/image2812.png" /></p>
 <p><em>Fig. 26 - Memory display in MEMORY=TEST mode</em></p>
 <p>Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.</p>
 <p>Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.</p>
@@ -1003,7 +1001,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</p>
 <p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
 <p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
-<p><img alt="image27" src="../../../_images/image2717.png" /></p>
+<p><img alt="image27" src="../../../_images/image2713.png" /></p>
 <p><em>Example of a memory allocataion history</em></p>
 <dl class="simple">
 <dt>Column Explanations</dt><dd><ol class="arabic simple">
@@ -1030,7 +1028,7 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 <div class="section" id="applying-z-os-maintenance">
 <span id="index-45"></span><h4>Applying z/OS maintenance.<a class="headerlink" href="#applying-z-os-maintenance" title="Permalink to this headline">¶</a></h4>
 <p>By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as an accumulation file called either <em>allptfs-mshpvrr.txt</em> (z/VSE) or <em>allptfs-mvsvrr-txt</em> (z/OS).</p>
-<p><img alt="image29" src="../../../_images/image2913.png" /></p>
+<p><img alt="image29" src="../../../_images/image2910.png" /></p>
 <p><em>Syspertec ftp web server</em></p>
 <p>Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTFvrrMV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTFvrrMV file. As the PTFvrrMV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0018I</span> <span class="n">VIRTEL</span> <span class="mf">4.61</span> <span class="n">HAS</span> <span class="n">THE</span> <span class="n">FOLLOWING</span> <span class="n">PTF</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="n">APPLIED</span>
@@ -1042,13 +1040,13 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 <div class="section" id="applying-maintenance-to-the-trsf-files">
 <span id="index-46"></span><h4>Applying maintenance to the TRSF files<a class="headerlink" href="#applying-maintenance-to-the-trsf-files" title="Permalink to this headline">¶</a></h4>
 <p>The updates to the web entities are delivered as an accumulation update file called <em>virtelvrrupdtnnnn1.zip</em> where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.</p>
-<p><img alt="image30" src="../../../_images/image3012.png" /></p>
+<p><img alt="image30" src="../../../_images/image309.png" /></p>
 <p><em>Unzipped update file</em></p>
 <p>In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the “Drag and Drop” upload option of the Virtel Administration portal, normally setup on port 41001.</p>
-<p><img alt="image31" src="../../../_images/image3122.png" /></p>
+<p><img alt="image31" src="../../../_images/image3119.png" /></p>
 <p><em>Virtel Administration Portal</em></p>
 <p>Open the “Drag and Drop” interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.</p>
-<p><img alt="image32" src="../../../_images/image3222.png" /></p>
+<p><img alt="image32" src="../../../_images/image3219.png" /></p>
 <p><em>Virtel Drag and Drop Interface</em></p>
 </div>
 <div class="section" id="applying-maintenance-via-batch">
@@ -1084,9 +1082,9 @@ Security management is described under the heading “Security” 282.</p>
 <span id="index-51"></span><h4>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h4>
 <p>This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].</p>
-<p><img alt="image74" src="../../../_images/image7411.png" /></p>
+<p><img alt="image74" src="../../../_images/image748.png" /></p>
 <p><em>Summary of correspondence</em></p>
-<p><img alt="image75" src="../../../_images/image7511.png" />
+<p><img alt="image75" src="../../../_images/image758.png" />
 <em>Correspondent detail screen (e-mail correspondent)</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">04</span>
 <span class="n">Id</span>                 <span class="o">===&gt;</span> <span class="n">WKSTN</span><span class="o">-</span><span class="n">A2FE</span><span class="o">/</span><span class="n">SYSPERTEC</span>
@@ -1180,14 +1178,14 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <ol class="arabic simple">
 <li><p>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</p></li>
 </ol>
-<p><img alt="image77" src="../../../_images/image7711.png" />
+<p><img alt="image77" src="../../../_images/image778.png" />
 <em>Page upload by HTTP with signon : Transaction dirlist</em></p>
 <ol class="arabic simple" start="2">
 <li><p>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</p></li>
 </ol>
-<p><img alt="image78" src="../../../_images/image7811.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
-<p><img alt="image79" src="../../../_images/image7911.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
-<p><img alt="image80" src="../../../_images/image8010.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
+<p><img alt="image78" src="../../../_images/image788.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
+<p><img alt="image79" src="../../../_images/image798.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
+<p><img alt="image80" src="../../../_images/image807.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.</p></li>
 </ol>
@@ -1197,28 +1195,28 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <ol class="arabic simple">
 <li><p>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</p></li>
 </ol>
-<p><img alt="image8" src="../../../_images/image837.png" /></p>
+<p><img alt="image8" src="../../../_images/image827.png" /></p>
 <p><em>Page upload by HTTP with signon : Entering the userid and password</em></p>
 <p>The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.</p>
 <ol class="arabic simple" start="2">
 <li><p>After entering the user name and password, the upload4.htm page will be displayed:</p></li>
 </ol>
-<p><img alt="image9" src="../../../_images/image940.png" /></p>
+<p><img alt="image9" src="../../../_images/image928.png" /></p>
 <p><em>Page upload by HTTP with signon : Displaying the upload4.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Press the “Browse” button to display the file selection dialog:</p></li>
 </ol>
-<p><img alt="image10" src="../../../_images/image1029.png" /></p>
+<p><img alt="image10" src="../../../_images/image1025.png" /></p>
 <p><em>Page upload by HTTP with signon : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
-<p><img alt="image11" src="../../../_images/image1139.png" /></p>
+<p><img alt="image11" src="../../../_images/image1130.png" /></p>
 <p><em>Page upload by HTTP with signon : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li><p>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</p></li>
 </ol>
-<p><img alt="image12" src="../../../_images/image1227.png" /></p>
+<p><img alt="image12" src="../../../_images/image1223.png" /></p>
 <p><em>Page upload by HTTP with signon : Confirmation of file upload</em></p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
 </div>
@@ -1228,13 +1226,13 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <div class="section" id="upload-interface-in-the-virtel-menu">
 <h5>Upload interface in the VIRTEL menu<a class="headerlink" href="#upload-interface-in-the-virtel-menu" title="Permalink to this headline">¶</a></h5>
 <p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
-<p><img alt="image13" src="../../../_images/image1323.png" /></p>
+<p><img alt="image13" src="../../../_images/image1320.png" /></p>
 <p><em>Drag and drop upload interface</em></p>
 <p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
 </div>
 <div class="section" id="displaying-upload-results">
 <h5>Displaying upload results<a class="headerlink" href="#displaying-upload-results" title="Permalink to this headline">¶</a></h5>
-<p><img alt="image14" src="../../../_images/image1422.png" /></p>
+<p><img alt="image14" src="../../../_images/image1418.png" /></p>
 <p><em>Displaying upload results</em></p>
 <p>The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.</p>
 </div>
@@ -1243,13 +1241,13 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <p>After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.</p>
 <p>The summary is not displayed when files are dragged and dropped one at a time.</p>
 <p>In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:</p>
-<p><img alt="image15" src="../../../_images/image1521.png" /></p>
+<p><img alt="image15" src="../../../_images/image1517.png" /></p>
 <p><em>Upload summary report</em></p>
 </div>
 </div>
 <div class="section" id="extracting-upload-results-as-an-excel-spreadsheet">
 <span id="index-61"></span><h4>Extracting upload results as an Excel spreadsheet<a class="headerlink" href="#extracting-upload-results-as-an-excel-spreadsheet" title="Permalink to this headline">¶</a></h4>
-<p><img alt="image16" src="../../../_images/image1616.png" /> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
+<p><img alt="image16" src="../../../_images/image1612.png" /> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
 <table class="docutils align-center">
 <colgroup>
 <col style="width: 17%" />
@@ -1277,7 +1275,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 </tr>
 </tbody>
 </table>
-<p><img alt="image17" src="../../../_images/image1715.png" /> The Delete button allows the administrator to clear the results log.</p>
+<p><img alt="image17" src="../../../_images/image1711.png" /> The Delete button allows the administrator to clear the results log.</p>
 <blockquote>
 <div><span class="target" id="index-62"></span></div></blockquote>
 </div>
@@ -1483,7 +1481,7 @@ directory using the existing SMTP upload method.</p>
 <p>1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
 VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
 that the name of the target directory is to be found in the definition of the e-mail correspondent:</p>
-<p><img alt="image76" src="../../../_images/image7611.png" /></p>
+<p><img alt="image76" src="../../../_images/image768.png" /></p>
 <p><em>Page upload by HTTP with cookie : Creating the ‘upload’ transaction</em></p>
 <ol class="arabic simple" start="2">
 <li><p>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</p></li>
@@ -1629,22 +1627,22 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple" start="2">
 <li><p>Click the link in the e-mail to open the upload.htm page:</p></li>
 </ol>
-<p><img alt="image4" src="../../../_images/image470.png" /></p>
+<p><img alt="image4" src="../../../_images/image449.png" /></p>
 <p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Click the “Browse” button and the file selection dialog will be displayed:</p></li>
 </ol>
-<p><img alt="image5" src="../../../_images/image548.png" /></p>
+<p><img alt="image5" src="../../../_images/image538.png" /></p>
 <p><em>Page upload by HTTP with cookie : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
-<p><img alt="image6" src="../../../_images/image640.png" /></p>
+<p><img alt="image6" src="../../../_images/image630.png" /></p>
 <p><em>Page upload by HTTP with cookie : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li><p>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</p></li>
 </ol>
-<p><img alt="image7" src="../../../_images/image760.png" /></p>
+<p><img alt="image7" src="../../../_images/image738.png" /></p>
 <p><em>Page upload by HTTP with cookie : Confirmation of file uploadr</em></p>
 <p>From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.</p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
@@ -1671,7 +1669,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p class="admonition-title">Note</p>
 <p>The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
 </div>
-<p><img alt="image24" src="../../../_images/image2416.png" />
+<p><img alt="image24" src="../../../_images/image2412.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
 </div>
 <div class="section" id="virlog-file">
@@ -1968,7 +1966,7 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 <p class="admonition-title">Note</p>
 <p>Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
 </div>
-<p><img alt="image25" src="../../../_images/image2515.png" /></p>
+<p><img alt="image25" src="../../../_images/image2511.png" /></p>
 <p><em>Example of SNAP listing</em></p>
 <div class="section" id="message-triggered-snapmsg">
 <span id="index-82"></span><h4>Message-triggered SNAPMSG<a class="headerlink" href="#message-triggered-snapmsg" title="Permalink to this headline">¶</a></h4>
@@ -2466,7 +2464,7 @@ LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 42310349
 </pre></div>
 </div>
 <p>Example of output :-</p>
-<p><img alt="image82" src="../../../_images/image8212.png" /></p>
+<p><img alt="image82" src="../../../_images/image828.png" /></p>
 <p>For Virtel V4.60 onwards, the record structure is as follows: -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*------------------------------------------------------------* 42310349
 *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
@@ -2503,7 +2501,7 @@ LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 42310349
 </pre></div>
 </div>
 <p>Example of output : -</p>
-<p><img alt="image81" src="../../../_images/image8118.png" /></p>
+<p><img alt="image81" src="../../../_images/image8115.png" /></p>
 </div>
 </div>
 </div>

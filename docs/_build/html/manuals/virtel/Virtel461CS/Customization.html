@@ -90,8 +90,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
@@ -199,7 +197,7 @@
 </div>
 <div class="section" id="customization-guide-v4-61">
 <span id="virtel461cs"></span><h1>Customization Guide V4.61<a class="headerlink" href="#customization-guide-v4-61" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web31.png"><img alt="image0" src="../../../_images/logo_virtel_web31.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web21.png"><img alt="image0" src="../../../_images/logo_virtel_web21.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Customization</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -294,7 +292,7 @@ their respective owners.</p>
 <p class="admonition-title">Note</p>
 <p>A user can set the function assigned to the Joker Key through the user settings.</p>
 </div>
-<p><img alt="image69" src="../../../_images/image6912.png" />
+<p><img alt="image69" src="../../../_images/image699.png" />
 <em>Settings Panel showing SHIFT Joker key assignments</em></p>
 </div>
 <div class="section" id="displaying-customized-members">
@@ -313,7 +311,7 @@ their respective owners.</p>
 <div class="section" id="common-settings-member">
 <span id="index-3"></span><h4>Common settings member<a class="headerlink" href="#common-settings-member" title="Permalink to this headline">¶</a></h4>
 <p>If it is required that a common set of settings member be used for both W2H-DIR and CLI-DIR than a small modification to the W2H-DIR transaction, W2H-03P, is required. Changing the location directory from W2H-DIR to CLI-DIR will ensure that settings will be derived from the CLI-DIR W2HPARM.JS member. For example if you modify a key settings, which keyboard key reflects they “ENTER” key for example, than this change can used by both W2H and CLI transactions. An example of a modified W2H-03P transaction is displayed below:</p>
-<p><img alt="image56" src="../../../_images/image5613.png" /></p>
+<p><img alt="image56" src="../../../_images/image5610.png" /></p>
 <p><em>Example of W2H-03P pointing at the CLI-DIR</em></p>
 <p>The following JCL may also be used to modify the W2H-03P transaction.</p>
 <div class="admonition note">
@@ -357,7 +355,7 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p>The “option” pathname is normally associated with the OPT-DIR. The directory is pointed to by the OPTION transaction CLI-03CO and by default is the CLI-DIR:</p>
-<p><img alt="image33" src="../../../_images/image3315.png" /></p>
+<p><img alt="image33" src="../../../_images/image3313.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span> <span class="o">|</span> <span class="n">Favicon</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
@@ -406,14 +404,14 @@ their respective owners.</p>
 <li><p>custCSS.[key name].css      Cascading style sheet customisation for company logo</p></li>
 </ol>
 <p>Append to you existing Cascading Style sheet the following additional style sheet definitions along with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size.</p>
-<p><img alt="image83" src="../../../_images/image839.png" /></p>
+<p><img alt="image83" src="../../../_images/image835.png" /></p>
 <ol class="arabic simple" start="2">
 <li><p>w2hparm.js                  Update or add a Global settings w2hparm.js file.</p></li>
 </ol>
 <p>The Global VWA display setting file also has 2 parameters used to apply .css customization to all transactions. Add the last two lines below to your existing w2hparm.js file.  This will apply the custCSS.CLIENT.css setting to all defined Virtel Transactions.</p>
-<p><img alt="image84" src="../../../_images/image847.png" /></p>
+<p><img alt="image84" src="../../../_images/image845.png" /></p>
 <p>From the Administration panel select the VWA customized files, the custCSS,[key name],css and the w2hparm.js file with the global setting, and upload to your CLI directory using the Virtel Drap and drop function.</p>
-<p><img alt="image85" src="../../../_images/image857.png" /></p>
+<p><img alt="image85" src="../../../_images/image855.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refresh your browser cache and Reconnect to the Application Menu to see the results.</p>
@@ -514,7 +512,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</p>
 <li><p>The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).</p></li>
 <li><p>The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.</p></li>
 </ul>
-<p><img alt="image1" src="../../../_images/image1149.png" />
+<p><img alt="image1" src="../../../_images/image1100.png" />
 <em>The VWA 3270 screen areas</em></p>
 <div class="section" id="title">
 <h4>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h4>
@@ -556,7 +554,7 @@ information. Some of those component can be removed, added or modified.</p>
 </div>
 <p><em>Example w2hparm.js to allow users to enable/disable the Tool Bar display</em></p>
 <p>If this option is enabled, the “Alt + Insert” and “Alt + Home” keys in the Key Mappings tab control the “Tool bar” display. The user can these key assignments to control the Tool Bar display.</p>
-<p><a class="reference internal" href="../../../_images/image2100.png"><img alt="image2" src="../../../_images/image2100.png" style="width: 390.0px; height: 592.5px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image280.png"><img alt="image2" src="../../../_images/image280.png" style="width: 390.0px; height: 592.5px;" /></a></p>
 <p><em>Key Mappings Setting Tab</em></p>
 <p id="index-19">These two assignments can also be predefined in the w2hparm.js file by using the commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -621,9 +619,9 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
-<p><img alt="image3" src="../../../_images/image370.png" />
+<p><img alt="image3" src="../../../_images/image358.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image489.png" />
+<p><img alt="image4" src="../../../_images/image458.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -913,7 +911,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image5" src="../../../_images/image550.png" />
+<p><img alt="image5" src="../../../_images/image540.png" />
 <em>Web Access screen with custom text in the Tool Bar</em></p>
 </div>
 <div class="section" id="adding-transaction-application-name-to-the-tool-bar">
@@ -947,13 +945,13 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image6" src="../../../_images/image650.png" />
+<p><img alt="image6" src="../../../_images/image637.png" />
 <em>Web Access screen with custom application name in the Tool Bar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-information">
 <span id="index-38"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image7" src="../../../_images/image780.png" /></p>
+<p><img alt="image7" src="../../../_images/image750.png" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be <strong>permanently</strong> removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">name</span> <span class="n">connected</span> <span class="n">to</span><span class="o">.</span>
@@ -1023,7 +1021,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="status-bar">
 <span id="index-42"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
 <p>The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).</p>
-<p><img alt="image7" src="../../../_images/image780.png" />
+<p><img alt="image7" src="../../../_images/image750.png" />
 <em>The VWA 3270 screen’s areas</em></p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <span id="index-43"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
@@ -1131,7 +1129,7 @@ was sent by VWA to the browser.</p>
 <div class="section" id="dynamic-directory-interface-ddi">
 <span id="index-48"></span><h2>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h2>
 <p>The Dynamic Directory Interface is intended for use by Virtel Administrators in managing dynamic directories dedicated to supporting centralized macros associated with users and user groups. The DDI interface is accessible from the Administration Portal, normally served by port 40001 and the associated W-HTTP line.</p>
-<p><img alt="image26" src="../../../_images/image2617.png" /></p>
+<p><img alt="image26" src="../../../_images/image2613.png" /></p>
 <p><em>Accessing the Dynamic Directory Interface</em></p>
 </div>
 <div class="section" id="virtel-lines">
@@ -1140,7 +1138,7 @@ was sent by VWA to the browser.</p>
 <span id="index-50"></span><h3>Starting and stopping a line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h3>
 <p>By default, a line is automatically initialized at Virtel startup, and is terminated when Virtel stops. In some cases, the handling of line initialization/termination needs to be managed differently:</p>
 <p id="index-51">Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.</p>
-<p><img alt="image27" src="../../../_images/image2719.png" /></p>
+<p><img alt="image27" src="../../../_images/image2715.png" /></p>
 <p><em>Line definition - Possible Calls Parameter</em></p>
 <p><strong>Initialization through “Possible Calls” definition</strong></p>
 <p>A “Possible Calls” determines the possible direction of communication and can have one of four values:-</p>
@@ -1196,7 +1194,7 @@ established before accepting inbound messages.</p>
 <div class="section" id="virtel-multi-session-within-virtel-web-access">
 <span id="index-57"></span><h3>Virtel Multi-session Within Virtel Web Access<a class="headerlink" href="#virtel-multi-session-within-virtel-web-access" title="Permalink to this headline">¶</a></h3>
 <p>In some situations, it is necessary to allow a group of users to simultaneously access several distinct 3270 applications. This can be solved by using the “appmenu.htm” associated with the “applist” transaction, or by using the 3270 Multi-session function of Virtel. In the first situation, for a same original calling terminal, Virtel uses as many relays as VTAM open sessions, in the second configuration, a single relay is used for all sessions, Virtel ensuring the swapping between the opened session. To access the Multi-session function of Virtel, you must define a transaction whose application name is the same as the main Virtel ACB name. This transaction is accessible in the same way as any other VTAM application. As the first screen shown is a signature screen, the transaction does not necessarily need to be secured. The lists of applications presented to the user depends on the selected parameter setting (See the Virtel Multi-session documented section for further information on this subject). Use of the multi-session Virtel module, even in a VWA context, requires an appropriate license agreement.</p>
-<p><img alt="image29" src="../../../_images/image2915.png" /></p>
+<p><img alt="image29" src="../../../_images/image2912.png" /></p>
 <p><em>Transaction definition for the Virtel Multi-session module</em></p>
 </div>
 <div class="section" id="directly-access-host-applications-by-url">
@@ -1218,7 +1216,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 </pre></div>
 </div>
 <p>The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:</p>
-<p><img alt="image30" src="../../../_images/image3014.png" /></p>
+<p><img alt="image30" src="../../../_images/image3011.png" /></p>
 <p><em>Example of default URL</em></p>
 <p>For more information see Virtel URL formats in the Virtel Web Access Users Guide.</p>
 </div>
@@ -1241,7 +1239,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <span id="index-61"></span><h4>LOGMODE defined by the transaction<a class="headerlink" href="#logmode-defined-by-the-transaction" title="Permalink to this headline">¶</a></h4>
 <p>With this method, the administrator defines multiple VIRTEL transactions for a single application, each transaction specifying a different logmode. For example, transactions Tso2 and Tso5 delivered in the sample configuration both define TSO as the target application, but specify different logmodes SNX32702 and SNX32705 respectively. The user selects the desired transaction from the applist menu displayed by the “Other applications” link in the VIRTEL Web Access menu.</p>
 <p>The figure below shows the definition of the Tso5 transaction defined under the WEB2HOST entry point:</p>
-<p><img alt="image31" src="../../../_images/image3124.png" /></p>
+<p><img alt="image31" src="../../../_images/image3121.png" /></p>
 <p><em>Example of TSO transaction TSO specifying logmode SNX32705</em></p>
 <p>The URL to access this transaction could be of the format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
@@ -1402,7 +1400,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <span id="index-71"></span><h4>Closing the browser window automatically<a class="headerlink" href="#closing-the-browser-window-automatically" title="Permalink to this headline">¶</a></h4>
 <p>Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.</p>
 <p>The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:</p>
-<p><img alt="image32" src="../../../_images/image3224.png" /></p>
+<p><img alt="image32" src="../../../_images/image3221.png" /></p>
 <p><em>Example of entry point with last page</em></p>
 </div>
 </div>
@@ -1445,10 +1443,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <h5>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h5>
 <p id="index-74"><strong>Macro functions</strong></p>
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.</p>
-<p><img alt="image34" src="../../../_images/image3413.png" /></p>
+<p><img alt="image34" src="../../../_images/image3411.png" /></p>
 <p><em>The local storage record and play/display macro buttons</em></p>
 <p>The record function is an on/off button that will record key strokes. When recording, the ICON will flash until it is clicked at which point it will stop recording and save the key strokes. A save panel will be displayed asking for the name of the macro entry. Note that an ENTER/PFK key must be pressed at least once, i.e. data must be sent by some key operation in order to create and save an entry within the macro.JSON file.</p>
-<p><img alt="image35" src="../../../_images/image3511.png" /></p>
+<p><img alt="image35" src="../../../_images/image359.png" /></p>
 <p><em>Creating a new macro</em></p>
 <p id="index-75"><strong>Keyboard mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:</p>
@@ -1456,7 +1454,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.</p>
-<p><img alt="image36" src="../../../_images/image3610.png" /></p>
+<p><img alt="image36" src="../../../_images/image368.png" /></p>
 <p><em>Saving a macro with keyboard mapping</em></p>
 <p id="index-76"><strong>Settings for macros</strong></p>
 <p>Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002. Create the following two JavaScript members and upload them to the CLI-DIR directory:</p>
@@ -1476,7 +1474,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true.</p>
 <p id="index-77"><strong>The Display Record/Play Buttons</strong></p>
 <p>The green triangular button will display the local storage macros. From here a context menu can be opened against each macro using the mouse right click. This will provide delete, edit, save as and run functions.</p>
-<p><img alt="image37" src="../../../_images/image3710.png" /></p>
+<p><img alt="image37" src="../../../_images/image378.png" /></p>
 <p><em>Displaying the local macros</em></p>
 <p id="index-78"><strong>Export and Import Options</strong></p>
 <p>Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.</p>
@@ -1533,7 +1531,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </div>
 <p><em>Security Resources required for DDI</em></p>
 <p id="index-81">Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.</p>
-<p><img alt="image38" src="../../../_images/image3815.png" /></p>
+<p><img alt="image38" src="../../../_images/image3811.png" /></p>
 <p><em>DDI Directories</em></p>
 <p id="index-82">Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
@@ -1613,17 +1611,17 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>The macro ICON should now be blue, indicating centralized DDI has been correctly configured. In local mode this ICON is green.</p>
-<p><img alt="image39" src="../../../_images/image3915.png" /></p>
+<p><img alt="image39" src="../../../_images/image3911.png" /></p>
 <p><em>Centralized DDI is active - ICON is blue</em></p>
 <p>Pressing the Blue ICON should display an empty macro list:</p>
-<p><img alt="image40" src="../../../_images/image409.png" /></p>
+<p><img alt="image40" src="../../../_images/image407.png" /></p>
 <p><em>Empty Macro list</em></p>
 <p id="index-85">Configuring the centralized Repository</p>
 <p>To configure the centralized DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span>
 </pre></div>
 </div>
-<p><img alt="image41" src="../../../_images/image4124.png" /></p>
+<p><img alt="image41" src="../../../_images/image4120.png" /></p>
 <p><em>Accessing a local macro facility -  Green ICON</em></p>
 </div>
 <div class="section" id="creating-an-initial-macro">
@@ -1639,10 +1637,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>The following panel should now pop up:</p>
-<p><img alt="image42" src="../../../_images/image4217.png" /></p>
+<p><img alt="image42" src="../../../_images/image4216.png" /></p>
 <p><em>Creating a MACROS.JSON file</em></p>
 <p>Saved the macro with the name SDSF. Now, press the Green ICON. The macro should appear in the local list and would have been saved to local browser storage. To run the macro press the green arrow to the left of the macro name SDSF.</p>
-<p><img alt="image43" src="../../../_images/image4315.png" /></p>
+<p><img alt="image43" src="../../../_images/image4313.png" /></p>
 <p>Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.</p>
 </div>
 <div class="section" id="uploading-macros-to-the-centralized-repository">
@@ -1656,12 +1654,12 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>We now have a macro which we can import to the centralized repository. From the Administration portal, select the Dynamic Directory Interface option:</p>
-<p><img alt="image44" src="../../../_images/image4413.png" /></p>
+<p><img alt="image44" src="../../../_images/image4411.png" /></p>
 <p>This will open the Dynamic directories main panel. Select the Global tab. The Global Drag and Drop area will be displayed. Drag the MACROS.JSON file from the “downloads” folder on to the Global D&amp;D upload zone delineated by a dotted line. The MACROS.JSON file will be uploaded to the GLOBAL-DIR. The upload results will be shown on the D&amp;D zone area.</p>
-<p><img alt="image45" src="../../../_images/image4512.png" /></p>
+<p><img alt="image45" src="../../../_images/image459.png" /></p>
 <p><em>Global DDI Upload</em></p>
 <p>Refresh the GLOBAL directory by clicking the broken circled arrow in the top left of the screen. The MACROS.JSON file will be displayed. We can validate the Global macro upload by opening a TSO or CICS session with the DDI configured line (41002). Press the “Blue” ICON to display all available macros. It should now show that the SDSF macro has indeed been imported to the GLOBAL area.</p>
-<p><img alt="image46" src="../../../_images/image4615.png" /></p>
+<p><img alt="image46" src="../../../_images/image4611.png" /></p>
 <p><em>Uploaded Global Macro</em></p>
 <p>To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear.</p>
 </div>
@@ -1671,12 +1669,12 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>With centralized macros, users can create “local” macros which will by synchronized with the centralized repository. They will not have the ability to import/export any macro.
 Creating a “user” macro follows the same process as before. The user clicks the “record” button, records their macro, stops recording by pressing the record button again. As before, a popup window will open allowing the user to name the macro and associate with a “keyboard mapping” if that option has been set. The macro will then appear in the users list of macros.</p>
 <p>Here is an example of a user macro called “CUSTINQ” which drives a sequence of CICS keyboard sequences to display a customer Inquiry panel within a CICS transaction. The macro has been associated with key mapping “ALT+6”.</p>
-<p><img alt="image47" src="../../../_images/image4714.png" /></p>
+<p><img alt="image47" src="../../../_images/image4710.png" /></p>
 </div>
 <div class="section" id="macro-options">
 <span id="index-89"></span><h4>Macro Options<a class="headerlink" href="#macro-options" title="Permalink to this headline">¶</a></h4>
 <p>Pressing the “right click” button against the macro name will reveal a small popup which provides the user with some options.</p>
-<p><img alt="image48" src="../../../_images/image4810.png" /></p>
+<p><img alt="image48" src="../../../_images/image487.png" /></p>
 <p>The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN the macro. Whatever changes are made will be synchronized with the central repository.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1689,21 +1687,21 @@ Creating a “user” macro follows the same process as before. The user clicks 
 <div class="section" id="making-a-user-s-ddi-macro-available-to-a-ddi-group">
 <span id="index-91"></span><h5>Making a user’s DDI macro available to a DDI Group<a class="headerlink" href="#making-a-user-s-ddi-macro-available-to-a-ddi-group" title="Permalink to this headline">¶</a></h5>
 <p>The following procedure describes how to move a user’s DDI macro to a DDI GROUP level. Start by opening the DDI interface from the main Administration Portal and select the USER tab;specify the userid in the user name field. Press the Green tick. The macros associated with the userid will be listed.</p>
-<p><img alt="image49" src="../../../_images/image499.png" /></p>
+<p><img alt="image49" src="../../../_images/image497.png" /></p>
 <p><em>Moving macros to a Group</em></p>
 <p>Select the MACROS.JSON file. This file contains all the macros associated with this userid. Right click to reveal the options available - Valid options are EDIT, DOWNLOAD or DELETE.
 Note, the “COPY” option cannot be used to move MACRO.JSON files to another directory, such as GRP-DIR. To move the macro to GRP-DIR the MACRO.JSON must be downloaded and then uploaded, through the DDI upload interface, to the target group DDI zone.</p>
 <p>Select the “DOWNLOAD” tab. The MACROS.JSON will be downloaded to the default download directory.</p>
 <p>Now, select the GROUP TAB and specify the target RACF GROUP name. Press the GREEN tick. The GROUP directory for the group name will be displayed in a delineated DDI zone area. Select the MACROS.JSON file from the default download directory, or another directory where you might have a customised MACROS.JSON file, and drag it into the zone area, delineated by a row of dots. The macro will be uploaded to the selected GROUP.</p>
 <p>If you now go to the TSO session under port 41002, the centralized DDI line, and list the macros by pressing the Blue ICON, you should see that the Group Macros now contains a list of macros. In our example it should be the macro CUSTINQ.</p>
-<p><img alt="image50" src="../../../_images/image508.png" /></p>
+<p><img alt="image50" src="../../../_images/image506.png" /></p>
 <p><em>Populated Group macro</em></p>
 <p>From this display you can see that the User Macro CUSTINQ has been moved to the Group area. The CUSTINQ macro can now be delete the user’s MACROS.JSON list using the DDI interface. To do this, enter the Administration Portal DDI interface, select the USERTAB, enter the userid into the username, press the Green tick to list the user’s MACROS.JSON file. Select the MACROS.JSON file, right click and press the DELETE tab. Confirm the deletion. The user’s MACRO.JSON fill will be deleted from the DDI USR-DIR directory and will no longer appear in the User macros list when listing the macros in the TSO session.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Press the Refresh button after “deleting” the user macro.</p>
 </div>
-<p><img alt="image51" src="../../../_images/image5118.png" />
+<p><img alt="image51" src="../../../_images/image5116.png" />
 <em>Deleting macros from user’s list</em></p>
 <p>The process of moving macros between the various DDI levels, USER, GROUP and GLOBAL, can be applied using the procedure described above. You must “download” and then “upload” using the DDI drag and drop interface to move macros between levels. Also, remember that all macros are associated with a JSON file – MACROS.JSON. One such file will exist for each USER,  GROUP and there will be only one global MARCOS.JSON file available to all users.</p>
 <p>It is not recommended that you EDIT a downloaded MACROS.JSON file unless you have an understanding of JavaScript and JSON objects. It is better the use the online “EDIT” functions associated with the DDI interface or that of the Macro display list. Right click either against the MACROS.JSON file or the individual Macros listed in the TSO session will bring up the Editor function.</p>
@@ -1722,7 +1720,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
-<p><img alt="image52" src="../../../_images/image5219.png" /></p>
+<p><img alt="image52" src="../../../_images/image5214.png" /></p>
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
@@ -1818,7 +1816,7 @@ CTRL R</p>
 </div>
 <p>If every has been configured correctly you should get a “GREEN” light.</p>
 </div></blockquote>
-<p><img alt="image53" src="../../../_images/image5313.png" /></p>
+<p><img alt="image53" src="../../../_images/image5311.png" /></p>
 <p><em>Example of a Sanity Check after setting up USERPARM</em></p>
 <div class="section" id="testing-the-userparm-feature">
 <span id="index-96"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
@@ -1840,7 +1838,7 @@ CTRL R</p>
 <div class="section" id="removing-a-user-s-settings">
 <span id="index-97"></span><h4>Removing a user’s settings<a class="headerlink" href="#removing-a-user-s-settings" title="Permalink to this headline">¶</a></h4>
 <p>This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with HLQ is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:</p>
-<p><img alt="image55" src="../../../_images/image5513.png" /></p>
+<p><img alt="image55" src="../../../_images/image5510.png" /></p>
 <p><em>Listing the USERPARM directory</em></p>
 <p>We can remove the entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the default user parameters as defined by the Administrator.</p>
 </div>
@@ -1858,7 +1856,7 @@ CTRL R</p>
 <span class="n">definedPARAMETERS</span><span class="o">-</span><span class="n">CODE</span><span class="o">.</span><span class="n">txt</span><span class="o">++</span><span class="n">AjaxSession</span><span class="o">=</span><span class="n">ADvzWAAAAAAeu</span>
 </pre></div>
 </div>
-<p><img alt="image54" src="../../../_images/image5411.png" /></p>
+<p><img alt="image54" src="../../../_images/image547.png" /></p>
 <p><em>Userparm Error</em></p>
 <p><strong>Solution</strong></p>
 <p>Apply the latest maintenance. You must be at UPDT5708 or higher.</p>
@@ -2043,7 +2041,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </pre></div>
 </div>
 <p>Similar details can be found in the browser settings. For example here is what Chrome displays in the HTTPS/SSL certificate database.</p>
-<p><img alt="image18" src="../../../_images/image1813.png" /></p>
+<p><img alt="image18" src="../../../_images/image1811.png" /></p>
 </div>
 <div class="section" id="types-of-certificates">
 <h5>Types of certificates<a class="headerlink" href="#types-of-certificates" title="Permalink to this headline">¶</a></h5>
@@ -2203,9 +2201,9 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <span id="index-110"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
 <p>To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.</p>
-<p><img alt="image19" src="../../../_images/image1917.png" /></p>
+<p><img alt="image19" src="../../../_images/image1913.png" /></p>
 <p>After importing the following panel is displayed:</p>
-<p><img alt="image20" src="../../../_images/image2017.png" /></p>
+<p><img alt="image20" src="../../../_images/image2013.png" /></p>
 <p>At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.</p>
 </div>
 </div>
@@ -2293,20 +2291,20 @@ you have made changes you can issue the following z/OS command:</p>
 <div class="section" id="configuring-virtel-cics-example">
 <span id="index-113"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
 <p>The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.</p>
-<p><img alt="image21" src="../../../_images/image2130.png" /></p>
+<p><img alt="image21" src="../../../_images/image2125.png" /></p>
 <p><em>Note that PassTicket is set to 2.</em> This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has
 obtained.</p>
 <p>With this configuration we can logon to our CICS application without the user presenting any user id or password. This is very much like the Express Logon Facility implemented in our Telnet clients.</p>
 <div class="section" id="logon-example">
 <h5>Logon Example<a class="headerlink" href="#logon-example" title="Permalink to this headline">¶</a></h5>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
-<p><img alt="image22" src="../../../_images/image2228.png" /></p>
+<p><img alt="image22" src="../../../_images/image2224.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifies that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certificate.</p>
-<p><img alt="image23" src="../../../_images/image2322.png" /></p>
+<p><img alt="image23" src="../../../_images/image2318.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
-<p><img alt="image24" src="../../../_images/image2418.png" /></p>
+<p><img alt="image24" src="../../../_images/image2414.png" /></p>
 <p>We select the “Proceed” link.</p>
-<p><img alt="image25" src="../../../_images/image2517.png" /></p>
+<p><img alt="image25" src="../../../_images/image2513.png" /></p>
 <p>We are signed into CICS without having to specify any user id or password.</p>
 </div>
 </div>
@@ -2656,7 +2654,7 @@ VIR0223I UNLOAD ENDED
         <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;usstab=myusstab,errmsg=y&#39;</span>
 </pre></div>
 </div>
-<p><img alt="image57" src="../../../_images/image5712.png" /></p>
+<p><img alt="image57" src="../../../_images/image579.png" /></p>
 <p><em>Example of a USSMSG transaction</em></p>
 </div>
 <div class="section" id="create-your-usstab-load-module">
@@ -2666,7 +2664,7 @@ VIR0223I UNLOAD ENDED
 <div class="section" id="test-the-ussmsg10-display">
 <h4>Test the USSMSG10 display<a class="headerlink" href="#test-the-ussmsg10-display" title="Permalink to this headline">¶</a></h4>
 <p>To display the USSMSG10 buffer you will need to use a VIRTEL URL that invokes the Virtel transaction. For example, <a class="reference external" href="http://192.168.170.48:41002/w2h/WEB2AJAX.htm+VTAMUSS">http://192.168.170.48:41002/w2h/WEB2AJAX.htm+VTAMUSS</a>. Here is the default example that is shipped with Virtel. The source can be found in the SAMPLIB library as member USSVIRT.</p>
-<p><img alt="image58" src="../../../_images/image5813.png" /></p>
+<p><img alt="image58" src="../../../_images/image589.png" /></p>
 <p><em>Default USSMSG display</em></p>
 <p>You can, of course, make this transaction the default transaction for the Entry Point, so that the USSMSG display is shown whenever a user enters just the line and port. For example, <a class="reference external" href="http://192.168.170.48:41002">http://192.168.170.48:41002</a>. You would specify the USSMSG transaction in the TIOA at logon field in the Entry Point definition - w2h/WEB2AJAX.HTM+VTAMUSS</p>
 </div>
@@ -2704,19 +2702,19 @@ VIR0223I UNLOAD ENDED
 </div>
 <div class="section" id="default-virtel-application-menu-design">
 <h3>Default Virtel Application Menu design<a class="headerlink" href="#default-virtel-application-menu-design" title="Permalink to this headline">¶</a></h3>
-<p><img alt="image70" src="../../../_images/image7011.png" /></p>
+<p><img alt="image70" src="../../../_images/image708.png" /></p>
 <p><em>Default Virtel Application Menu</em></p>
 </div>
 <div class="section" id="the-new-virtel-tier-menu-style">
 <h3>The New Virtel Tier Menu Style<a class="headerlink" href="#the-new-virtel-tier-menu-style" title="Permalink to this headline">¶</a></h3>
 <p>The application user list displayed after logon is dynamically linked to their security profile, i.e.; RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list in collapsible (&gt;) expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications.</p>
-<p><img alt="image71" src="../../../_images/image7120.png" /></p>
+<p><img alt="image71" src="../../../_images/image7116.png" /></p>
 <p><em>cAppMenu Application Tier Menu</em></p>
 </div>
 <div class="section" id="required-files-for-tier-menu-support">
 <h3>Required files for Tier Menu Support<a class="headerlink" href="#required-files-for-tier-menu-support" title="Permalink to this headline">¶</a></h3>
 <p>For the purpose of this document, the value [key name] can be replaced with your company name. In this document, we use the key name equal to “level3”.</p>
-<p><img alt="image72" src="../../../_images/image7215.png" />
+<p><img alt="image72" src="../../../_images/image7213.png" />
 <em>Example of required files using a key name of level3</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">Custom</span> <span class="n">parameter</span> <span class="n">values</span> <span class="k">for</span> <span class="n">the</span> <span class="n">cAppMenu</span><span class="o">.</span><span class="n">htm</span> <span class="n">page</span>
 <span class="n">custCSS</span><span class="o">.</span><span class="p">[</span><span class="n">key</span> <span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>       <span class="n">CSS</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
@@ -2747,7 +2745,7 @@ VIR0223I UNLOAD ENDED
 </div>
 <div class="section" id="virtel-cappmenu-tier-menu-description">
 <h4>Virtel cAppMenu Tier Menu description<a class="headerlink" href="#virtel-cappmenu-tier-menu-description" title="Permalink to this headline">¶</a></h4>
-<p><img alt="image73" src="../../../_images/image7314.png" /></p>
+<p><img alt="image73" src="../../../_images/image7310.png" /></p>
 <div class="section" id="modify-the-main-and-sub-titles">
 <h5>Modify the <em>Main</em> and <em>Sub</em> titles<a class="headerlink" href="#modify-the-main-and-sub-titles" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
@@ -2766,7 +2764,7 @@ VIR0223I UNLOAD ENDED
 <blockquote>
 <div><p>Level 0 is setup as CICS Productions Regions. Using KEY <em>tran</em> so all defined transactions with an External name of cicsp anywhere in the transaction name; the /i means any case.</p>
 </div></blockquote>
-<p><img alt="image74" src="../../../_images/image7413.png" /></p>
+<p><img alt="image74" src="../../../_images/image7410.png" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cAppMenuOptions[&quot;levels&quot;] = []
 
 // First group - CICS Production - criteria: the VIRTEL transaction name that contains “CICSP&quot;
@@ -2781,7 +2779,7 @@ cAppMenuOptions[&quot;levels&quot;][0] =  {
 <div class="section" id="setup-level-1-of-the-tier-menu-cics-development-regions">
 <h5>Setup Level 1 of the Tier menu - <strong>CICS Development Regions</strong><a class="headerlink" href="#setup-level-1-of-the-tier-menu-cics-development-regions" title="Permalink to this headline">¶</a></h5>
 <p>Level  1 defined as CICS Development Regions.  Using KEY <em>tran</em> so all defined transactions with an External name of cicsd anywhere in the transaction name, the /i means any case</p>
-<p><img alt="image75" src="../../../_images/image7513.png" /></p>
+<p><img alt="image75" src="../../../_images/image7510.png" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Second</span> <span class="n">group</span> <span class="o">-</span> <span class="n">CICS</span> <span class="n">development</span>  <span class="o">-</span> <span class="n">criteria</span> <span class="p">:</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">name</span> <span class="n">starts</span> <span class="k">with</span> <span class="s2">&quot;CICSD&quot;</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;CICS Development Regions&quot;</span><span class="p">,</span>
@@ -2798,7 +2796,7 @@ cAppMenuOptions[&quot;levels&quot;][0] =  {
 <div class="section" id="setup-final-level-as-other-applications-if-required">
 <h5>Setup Final Level as Other Applications if Required<a class="headerlink" href="#setup-final-level-as-other-applications-if-required" title="Permalink to this headline">¶</a></h5>
 <p>The final Level, level 6,  would be a catch all, called Other Applications.  In this Tier any application that did not match the previous criteria will be displayed here. This level can also be used simply as a list of Generic Applications, or merely as a temporary level to show remaining applications that need to be added to a previously defined level. Note that there is no “criteria” or “regexp” properties.</p>
-<p><img alt="image76" src="../../../_images/image7613.png" /></p>
+<p><img alt="image76" src="../../../_images/image7610.png" /></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Other</span> <span class="n">Applications</span>  <span class="o">-</span> <span class="n">criteria</span> <span class="p">:</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">names</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">previous</span> <span class="n">levels</span><span class="s2">&quot;</span>
 <span class="n">cAppMenuOptions</span><span class="p">[</span><span class="s2">&quot;levels&quot;</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;Other Sessions&quot;</span>
@@ -2812,7 +2810,7 @@ cAppMenuOptions[&quot;levels&quot;][0] =  {
 <div class="section" id="customizing-the-css-custcss-key-name-css-style-sheet">
 <h3>Customizing the CSS custCSS.[key name].css style sheet<a class="headerlink" href="#customizing-the-css-custcss-key-name-css-style-sheet" title="Permalink to this headline">¶</a></h3>
 <p>Add company logo to the Virtel cAppMenu Tier Menu Syspertec group</p>
-<p><img alt="image77" src="../../../_images/image7713.png" /></p>
+<p><img alt="image77" src="../../../_images/image7710.png" /></p>
 <p>Create a Cascading Style sheet using the following code with a .jpeg or .png file containing the company logo. Use the Chrome debugger tool to help determine the proper logo size. This example also adds the Company Logo to the Toolbar.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">company</span> <span class="n">logo</span>
@@ -2845,27 +2843,27 @@ var oCustom={
 <div class="section" id="create-a-company-logo-file">
 <h3>Create a Company Logo file<a class="headerlink" href="#create-a-company-logo-file" title="Permalink to this headline">¶</a></h3>
 <p>Download a company logo that will look best on the cAppMenu application Menu, save the image as a .JPEG or .PNG.</p>
-<p><img alt="image78" src="../../../_images/image7813.png" /></p>
+<p><img alt="image78" src="../../../_images/image7810.png" /></p>
 </div>
 <div class="section" id="update-the-required-virtel-transactions">
 <h3>Update the required Virtel Transactions<a class="headerlink" href="#update-the-required-virtel-transactions" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="cli-90">
 <h4>CLI-90<a class="headerlink" href="#cli-90" title="Permalink to this headline">¶</a></h4>
 <p>Update the CLI-90 Applist Transaction to invoke the customization by adding an option field with your [key name], for example level3. In the example below the value CLIENT has been used as the option.</p>
-<p><img alt="image79" src="../../../_images/image7913.png" /></p>
+<p><img alt="image79" src="../../../_images/image7910.png" /></p>
 </div>
 <div class="section" id="cli-00">
 <h4>CLI-00<a class="headerlink" href="#cli-00" title="Permalink to this headline">¶</a></h4>
 <p>Modify the default Entry Point transaction CLI-00 and update the TIOA at logon fiedl to call cAppMenu.htm</p>
-<p><img alt="image80" src="../../../_images/image8012.png" /></p>
+<p><img alt="image80" src="../../../_images/image809.png" /></p>
 </div>
 </div>
 <div class="section" id="update-the-cli-dir-directoy">
 <h3>Update the CLI-DIR directoy<a class="headerlink" href="#update-the-cli-dir-directoy" title="Permalink to this headline">¶</a></h3>
 <p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.</p>
-<p><img alt="image81" src="../../../_images/image8120.png" /></p>
+<p><img alt="image81" src="../../../_images/image8117.png" /></p>
 <p>From the Administration Panel, select the customized files and Drop &amp; Drag them into the CLI-DIR.</p>
-<p><img alt="image82" src="../../../_images/image8213.png" /></p>
+<p><img alt="image82" src="../../../_images/image8210.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.</p>
@@ -2945,7 +2943,7 @@ var oCustom={
 <div class="section" id="pfk-key-assignment">
 <h3>PFK key assignment<a class="headerlink" href="#pfk-key-assignment" title="Permalink to this headline">¶</a></h3>
 <p>PFK’s can be assigned to transactions within the CappMenu display as shortcuts.</p>
-<p><img alt="image87" src="../../../_images/image876.png" /></p>
+<p><img alt="image87" src="../../../_images/image874.png" /></p>
 <p>The pf2tran array needs to be added to the cAppmenOptions array. The following is an example.</p>
 <dl>
 <dt>::</dt><dd><p>// Titles with PFKs
@@ -3346,7 +3344,7 @@ IBM1390,IBM1399),       JAPANESE                        *</p>
 </pre></div>
 </div>
 <p>The new transactions will provide the support for the FTP feature. The external/internal must be called FTPPARM. The transactions update both the administration entry point (W2H) and the client entry point (CLI).</p>
-<p><img alt="image59" src="../../../_images/image5913.png" /></p>
+<p><img alt="image59" src="../../../_images/image599.png" /></p>
 <p><em>FTP transaction definition for FTP file transfer</em></p>
 <div class="section" id="ftp-scenario">
 <h4>FTP Scenario<a class="headerlink" href="#ftp-scenario" title="Permalink to this headline">¶</a></h4>
@@ -3409,7 +3407,7 @@ FTPLIST[1] = alink;
 <div class="section" id="activate-the-toolbar-icons-for-file-transfer">
 <h4>Activate the Toolbar icons for file transfer<a class="headerlink" href="#activate-the-toolbar-icons-for-file-transfer" title="Permalink to this headline">¶</a></h4>
 <p>A new icon for FTP package will displayed on the VIRTEL Web Access toolbar via a setting in the user parameter settings dialog. When the settings Option “Show the toggle button for VirtelFtp” is checked, a blue FTP icon will appear, as shown below:</p>
-<p><img alt="image60" src="../../../_images/image6012.png" /></p>
+<p><img alt="image60" src="../../../_images/image608.png" /></p>
 <p><em>VIRTEL Web Access toolbar for FTP file transfer</em></p>
 </div>
 <div class="section" id="installing-the-bat-files-shortcut-and-ancillary-programs">
@@ -3471,7 +3469,7 @@ FTPLIST[1] = alink;
 <div class="section" id="sending-and-receiving-a-file">
 <h4>Sending and Receiving a file<a class="headerlink" href="#sending-and-receiving-a-file" title="Permalink to this headline">¶</a></h4>
 <p>To send a file from your workstation to a target FTP site, click the FTP icon on the Virtel toolbar. The “VIRTEL FTP” dialog will open:</p>
-<p><img alt="image61" src="../../../_images/image6122.png" /></p>
+<p><img alt="image61" src="../../../_images/image6118.png" /></p>
 <p><em>VIRTEL FTP Dialog Part 1</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*   Select « Send ip Target » in the action list box.
 *   Specify the Username to be used for the FTP connection.
@@ -3491,17 +3489,17 @@ FTPLIST[1] = alink;
 </pre></div>
 </div>
 <p>When the Generate Parameter is complete, the browser’s “VIRTEL FTP Save Parameter” dialog appears:</p>
-<p><img alt="image62" src="../../../_images/image6214.png" /></p>
+<p><img alt="image62" src="../../../_images/image6212.png" /></p>
 <p><em>VIRTEL FTP Dialog Part 2</em></p>
 <p>Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on your workstation:</p>
-<p><img alt="image63" src="../../../_images/image6312.png" /></p>
+<p><img alt="image63" src="../../../_images/image638.png" /></p>
 <p><em>VIRTEL FTP Dialog part 3</em></p>
 <p>Now select the destination file and click “Save”. If the file already exists, you will be prompted for permission to overwrite it. The “Download Complete” dialog appears when the file has been saved. Once the file has downloaded, run the PSVirtelFtp.bat procedure. This should be setup as a shortcut on your desktop.</p>
 <p>If the password was defined by a”?” in the template, the following dialog will appear.</p>
-<p><img alt="image64" src="../../../_images/image6410.png" /></p>
+<p><img alt="image64" src="../../../_images/image646.png" /></p>
 <p><em>VIRTEL FTP Entering your password</em></p>
 <p>After entering the password, the transfer will be executed, and the following console log should be displayed.</p>
-<p><img alt="image65" src="../../../_images/image6513.png" /></p>
+<p><img alt="image65" src="../../../_images/image659.png" /></p>
 <p><em>VIRTEL FTP Console Log</em></p>
 <p>.The last line of the execution report in the DOS window provides information on the execution status.</p>
 </div>
@@ -3516,10 +3514,10 @@ FTPLIST[1] = alink;
 <div class="section" id="saving-and-reusing-ftp-file-transfer-parameters">
 <h4>Saving and reusing FTP file transfer parameters<a class="headerlink" href="#saving-and-reusing-ftp-file-transfer-parameters" title="Permalink to this headline">¶</a></h4>
 <p>Users who frequently use the same FTP file transfers can save the parameters for later reuse. To save a FTP file transfer, enter the dataset name and the type of transfer, and click the “Save” button: -</p>
-<p><img alt="image66" src="../../../_images/image668.png" /></p>
+<p><img alt="image66" src="../../../_images/image666.png" /></p>
 <p><em>VIRTEL FTP Receive dialog saved transfers</em></p>
 <p>The user can then choose a name for the saved transfer and click “OK” to save the parameters. At the next transfer, the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Generate Parameter” to start the generate.</p>
-<p><img alt="image67" src="../../../_images/image6713.png" /></p>
+<p><img alt="image67" src="../../../_images/image679.png" /></p>
 <p><em>VIRTEL FTP Saving the FTP file transfer parameters</em></p>
 <p>Users can save transfer parameters for “Generate Parameter”. The parameters are saved in browser local storage. The number of sets of parameters which can be saved is limited only by the amount of local storage available.</p>
 </div>
@@ -3534,7 +3532,7 @@ w2hparm.showftp = true;
 </div>
 <p><em>Example w2hparm.js for hiding FTP File Transfer</em></p>
 <p>Users may also use the Virtel Settings Display options and deselect the VirtelFTP toggle.</p>
-<p><img alt="image68" src="../../../_images/image6813.png" /></p>
+<p><img alt="image68" src="../../../_images/image689.png" /></p>
 <p><em>VIRTEL FTP Toggle the FTP button in the settings panel</em></p>
 <p>If the default value is used, users can show this function for their own usage by checking “Show the toggle button for VirtelFtp” in the Display tab of the settings panel.</p>
 </div>

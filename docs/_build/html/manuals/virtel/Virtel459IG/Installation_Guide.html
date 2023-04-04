@@ -90,8 +90,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Virtel459AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.59</a></li>
@@ -190,7 +188,7 @@
 </div>
 <div class="section" id="installation-guide-v4-59">
 <span id="virtelvrrig59"></span><h1>Installation Guide V4.59<a class="headerlink" href="#installation-guide-v4-59" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web19.png"><img alt="image1" src="../../../_images/logo_virtel_web19.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web9.png"><img alt="image1" src="../../../_images/logo_virtel_web9.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Installation Guide</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2184,7 +2182,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;usstab=USSVIRT&#39;</span>
 </pre></div>
 </div>
-<p><img alt="image3" src="../../../_images/image348.png" /></p>
+<p><img alt="image3" src="../../../_images/image340.png" /></p>
 <p><strong>System Symbolic support</strong></p>
 <p>VIR0021W supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command <em>D SYMBOLS</em> can be use to list the defined system symbolics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="n">CL80</span><span class="s1">&#39; This is system &amp;&amp;SYSNAME. running on SYSPLEX &amp;&amp;SYSPLEX.&#39;</span>
@@ -2206,7 +2204,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <p>Will load a USSTAB module depending on the &amp;SYSCLONE. system symbolic value and report error messages to line 24.</p>
 <p><strong>Default USSTAB module USSVIRT</strong>
 A default USSTAB module is shipped in the VIRTEL loadlib called USSVIRT. This USS module is loaded by default should the user’s USSTAB fail to load. The default USSTAB looks like:- The source is maintained in the SAMPLIB library.</p>
-<p><img alt="image4" src="../../../_images/image449.png" /></p>
+<p><img alt="image4" src="../../../_images/image438.png" /></p>
 <p><strong>Constraints</strong></p>
 <p>The user USSTAB MSG10 module that VIR0021W processes must adhere to certian constraints else results will be unpredicatble. The constraints are:-</p>
 <ul class="simple">
