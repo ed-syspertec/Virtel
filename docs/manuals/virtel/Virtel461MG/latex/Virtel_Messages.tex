@@ -42,7 +42,7 @@
 
 
 \title{Virtel Messages}
-\date{Jan 02, 2023}
+\date{Jun 12, 2023}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4138,6 +4138,20 @@ Contact Syspertec Support if problem persists.
 \end{description}
 
 
+\subsubsection{VIR0209I PROCESSED MEMBER membername}
+\label{\detokenize{messages:vir0209i-processed-member-membername}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+The command member membername has been processed. Modify commands located in membername have been actioned by Virtel. If the member name does not exist in the VIRCNTL PDS library an error message will be issued.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
+
 \subsubsection{VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx}
 \label{\detokenize{messages:vir0210e-command-not-valid-for-linetype-line-n-xxxxxx}}\begin{description}
 \item[{Module}] \leavevmode
@@ -4192,6 +4206,15 @@ A NOTRACE,ALL command was entered, but no traces were active.
 None.
 
 \end{description}
+
+
+\subsubsection{VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid}
+\label{\detokenize{messages:vir0214i-active-relay-acbs-for-virtel-4-xx-applid-applid}}\begin{quote}
+
+VIR0214I TERMINAL RELAY    APPLID  CLIENT
+VIR0214I ——\textendash{} ——\textendash{} ——\textendash{} —————
+VIR0214I termid luname  applname n.n.n.n VIR0214I —END OF LIST—
+\end{quote}
 \begin{description}
 \item[{Module}] \leavevmode
 VIR0002
@@ -4215,6 +4238,62 @@ This message is displayed in response to a VIRTEL RELAYS command when VIRTEL has
 
 \item[{Action}] \leavevmode
 None.
+
+\end{description}
+
+
+\subsubsection{VIR0216W  OPEN ERROR PROCESSING MEMBER membername}
+\label{\detokenize{messages:vir0216w-open-error-processing-member-membername}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+This message is displayed when there is an open error opening the VIRCNTL PDS.
+
+\item[{Action}] \leavevmode
+Check that the VIRCNTL PDS has been allocated. Contact Syspertec Support if problem persists.
+
+\end{description}
+
+
+\subsubsection{VIR0217W  NOT FOUND IN VIRCNTL PDS. MEMBER membername}
+\label{\detokenize{messages:vir0217w-not-found-in-vircntl-pds-member-membername}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+This message is displayed when command member could not be located in the VIRCNTL PDS.
+
+\item[{Action}] \leavevmode
+Check that the VIRCNTL PDS contains the member. Contact Syspertec Support if problem persists.
+
+\end{description}
+
+
+\subsubsection{VIR0218I  EXECUTED COMMAND command}
+\label{\detokenize{messages:vir0218i-executed-command-command}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+This message is displayed when a command has been executed from the CNTL membername PDS member.
+
+\item[{Action}] \leavevmode
+None
+
+\end{description}
+
+
+\subsubsection{VIR0219W  AUTOEXEC DISABLED}
+\label{\detokenize{messages:vir0219w-autoexec-disabled}}\begin{description}
+\item[{Module}] \leavevmode
+VIR0002
+
+\item[{Meaning}] \leavevmode
+The AUTOEXEC feature could not locate the DDNAME VIRCNTL.
+
+\item[{Action}] \leavevmode
+Add the PDS DDNAME VIRCNTL to the VIRTEL startup procedure.
 
 \end{description}
 
@@ -4527,16 +4606,16 @@ None.
 \end{description}
 
 
-\subsubsection{VIR0240W ARBO(V1) NOT SUPPORTED. UNLOAD FAILED}
-\label{\detokenize{messages:vir0240w-arbo-v1-not-supported-unload-failed}}\begin{description}
+\subsubsection{VIR0240W LOGGER request. STRNAME=stringname RC=XX, RS=XX}
+\label{\detokenize{messages:vir0240w-logger-request-strname-stringname-rc-xx-rs-xx}}\begin{description}
 \item[{Module}] \leavevmode
 VIR0002
 
 \item[{Meaning}] \leavevmode
-An UNLOAD command has failed. ARBO(V1) not supported.
+An error has occured writing to the LOGGER datastream.
 
 \item[{Action}] \leavevmode
-Convert the ARBO(V1) records to ARBO(V2) by rebuilding the ARBO file.
+Contact Syspertec Support
 
 \end{description}
 
@@ -6355,8 +6434,8 @@ None.
 \end{description}
 
 
-\subsubsection{VIR6010E VIRSV ERROR VSVPCMDE RC=x}
-\label{\detokenize{messages:vir6010e-virsv-error-vsvpcmde-rc-x}}\begin{description}
+\subsubsection{VIR6010I VIRSV ERROR VSVPCMDE RC=x}
+\label{\detokenize{messages:vir6010i-virsv-error-vsvpcmde-rc-x}}\begin{description}
 \item[{Module}] \leavevmode
 VIR6000
 
@@ -11196,16 +11275,16 @@ Contact technical support.
 \end{description}
 
 
-\subsubsection{VSV0303E RC VSVPCLTR=rc}
-\label{\detokenize{messages:vsv0303e-rc-vsvpcltr-rc}}\begin{description}
+\subsubsection{VSV0303I RC VSVPCLTR=rc}
+\label{\detokenize{messages:vsv0303i-rc-vsvpcltr-rc}}\begin{description}
 \item[{Module}] \leavevmode
 VSVTINIT
 
 \item[{Meaning}] \leavevmode
-Service VSVPCLTR ended in error
+Service VSVPCLTR has terminated
 
 \item[{Action}] \leavevmode
-Contact technical support.
+No action required.
 
 \end{description}
 

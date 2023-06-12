@@ -605,6 +605,24 @@ invoked from the Configuration Menu, gives access to all of the sub-applications
 <li><p>To exiting a sub-application, return to the previous menu, press [PF3]. To return to the Configuration Menu, press [Clear].</p></li>
 </ul>
 </div>
+<div class="section" id="search-feature">
+<h4>Search feature<a class="headerlink" href="#search-feature" title="Permalink to this headline">¶</a></h4>
+<p>The Line, Terminal, Application and Entry Point sub-applications have a search facility which makes is easy to locate an element by key or by descriptive text. This feature is only available in the 3270 displays. It is not available in the GUI administration panels. This feature uses the command area field located in the top right corner of the displayed identified by the ===&gt; character string.</p>
+<p><img alt="image132" src="../../../_images/image1321.png" /></p>
+<p><em>Key and Text search field in 3270 Sub Applications</em></p>
+<div class="section" id="searching-by-key">
+<h5>Searching by key<a class="headerlink" href="#searching-by-key" title="Permalink to this headline">¶</a></h5>
+<p>To search by key, just over type the red key field in column 1 and press enter. Virtel will attempt to locate the element identified by the key and display it on the screen. IN the following example the key CLI-90 has been entered as the key to search for. After pressing Enter, Virtel displays the elements starting with CLI-90 at the top of the screen.</p>
+<p><img alt="image133" src="../../../_images/image1331.png" />
+<em>Searching for key CLI-90</em></p>
+</div>
+<div class="section" id="searching-by-text">
+<h5>Searching by text<a class="headerlink" href="#searching-by-text" title="Permalink to this headline">¶</a></h5>
+<p>To search by text enter the find command (F or FIND) followed by the text string to search for, then press enter. Virtel will attempt to locate the element using the text string and if found will be displayed at the top of the screen.</p>
+<p><img alt="image134" src="../../../_images/image1341.png" />
+<em>Searching for text password</em></p>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="lines">
@@ -4320,7 +4338,7 @@ NETMASK=255.255.255.255
 <p><img alt="image12" src="../../../_images/image1224.png" />
 <em>Transaction definition using non-predefined LU names</em></p>
 <p>The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:</p>
-<p><img alt="image13" src="../../../_images/image1321.png" />
+<p><img alt="image13" src="../../../_images/image1322.png" />
 <em>HTTP line definition using non-predefined LU names</em></p>
 <p>The definition of the terminal pool *MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:</p>
 <p><img alt="image14" src="../../../_images/image1419.png" />

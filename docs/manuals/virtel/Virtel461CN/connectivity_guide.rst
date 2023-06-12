@@ -568,6 +568,33 @@ The sub-applications have certain common operational characteristics:
 
 - To exiting a sub-application, return to the previous menu, press [PF3]. To return to the Configuration Menu, press [Clear].
 
+Search feature
+^^^^^^^^^^^^^^
+
+The Line, Terminal, Application and Entry Point sub-applications have a search facility which makes is easy to locate an element by key or by descriptive text. This feature is only available in the 3270 displays. It is not available in the GUI administration panels. This feature uses the command area field located in the top right corner of the displayed identified by the ===> character string. 
+
+|image132|
+
+*Key and Text search field in 3270 Sub Applications*
+
+Searching by key
+""""""""""""""""
+
+To search by key, just over type the red key field in column 1 and press enter. Virtel will attempt to locate the element identified by the key and display it on the screen. IN the following example the key CLI-90 has been entered as the key to search for. After pressing Enter, Virtel displays the elements starting with CLI-90 at the top of the screen.
+
+|image133|
+*Searching for key CLI-90*
+
+Searching by text
+"""""""""""""""""
+
+To search by text enter the find command (F or FIND) followed by the text string to search for, then press enter. Virtel will attempt to locate the element using the text string and if found will be displayed at the top of the screen.
+
+|image134|
+*Searching for text password*
+
+
+
 .. index::
    single: Lines
 
@@ -7532,3 +7559,6 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image129| image:: images/media/image129.png
 .. |image130| image:: images/media/image130.png
 .. |image131| image:: images/media/image131.png
+.. |image132| image:: images/media/image132.png    
+.. |image133| image:: images/media/image133.png
+.. |image134| image:: images/media/image134.png     

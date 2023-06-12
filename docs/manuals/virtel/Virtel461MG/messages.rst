@@ -2753,8 +2753,8 @@ Meaning
 Action
     None.
 
- VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. 
    
