@@ -317,7 +317,7 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p>The “option” pathname is normally associated with the OPT-DIR. The directory is pointed to by the OPTION transaction CLI-03CO and by default is the CLI-DIR:</p>
-<p><img alt="image33" src="../../../_images/image338.png" /></p>
+<p><img alt="image33" src="../../../_images/image3310.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
@@ -453,7 +453,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</p>
 <li><p>The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).</p></li>
 <li><p>The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.</p></li>
 </ul>
-<p><img alt="image1" src="../../../_images/image170.png" />
+<p><img alt="image1" src="../../../_images/image179.png" />
 <em>The VWA 3270 screen areas</em></p>
 <div class="section" id="title">
 <h4>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h4>
@@ -495,7 +495,7 @@ information. Some of those component can be removed, added or modified.</p>
 </div>
 <p><em>Example w2hparm.js to allow users to enable/disable the Tool Bar display</em></p>
 <p>If this option is enabled, the “Alt + Insert” and “Alt + Home” keys in the Key Mappings tab control the “Tool bar” display. The user can these key assignments to control the Tool Bar display.</p>
-<p><a class="reference internal" href="../../../_images/image247.png"><img alt="image2" src="../../../_images/image247.png" style="width: 390.0px; height: 592.5px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image248.png"><img alt="image2" src="../../../_images/image248.png" style="width: 390.0px; height: 592.5px;" /></a></p>
 <p><em>Key Mappings Setting Tab</em></p>
 <p id="index-18">These two assignments can also be predefined in the w2hparm.js file by using the commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -560,9 +560,9 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
-<p><img alt="image3" src="../../../_images/image339.png" />
+<p><img alt="image3" src="../../../_images/image340.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image436.png" />
+<p><img alt="image4" src="../../../_images/image438.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -852,7 +852,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image5" src="../../../_images/image527.png" />
+<p><img alt="image5" src="../../../_images/image529.png" />
 <em>Web Access screen with custom text in the Tool Bar</em></p>
 </div>
 <div class="section" id="adding-transaction-application-name-to-the-tool-bar">
@@ -886,13 +886,13 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image6" src="../../../_images/image625.png" />
+<p><img alt="image6" src="../../../_images/image627.png" />
 <em>Web Access screen with custom application name in the Tool Bar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-information">
 <span id="index-37"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image7" src="../../../_images/image725.png" /></p>
+<p><img alt="image7" src="../../../_images/image726.png" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be <strong>permanently</strong> removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">name</span> <span class="n">connected</span> <span class="n">to</span><span class="o">.</span>
@@ -962,7 +962,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="status-bar">
 <span id="index-41"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
 <p>The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).</p>
-<p><img alt="image7" src="../../../_images/image725.png" />
+<p><img alt="image7" src="../../../_images/image726.png" />
 <em>The VWA 3270 screen’s areas</em></p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <span id="index-42"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
@@ -1274,7 +1274,7 @@ EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 </div>
 <p><em>Example of a batch job to pass the work station name</em></p>
 <p>The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:</p>
-<p><img alt="image10" src="../../../_images/image1019.png" /></p>
+<p><img alt="image10" src="../../../_images/image1020.png" /></p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
 <p><img alt="image11" src="../../../_images/image1125.png" /></p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA00* to be used from the the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. In the VTAM display we can see that a session has been set up using that LU name:</p>
@@ -1336,7 +1336,7 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <li><p>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</p></li>
 </ul>
 <p>Line definition</p>
-<p><img alt="image12" src="../../../_images/image1219.png" /></p>
+<p><img alt="image12" src="../../../_images/image1220.png" /></p>
 <p><em>Pool definition for non-predefined LU Names</em></p>
 <p><img alt="image13" src="../../../_images/image1316.png" /></p>
 <p><em>Transaction definition</em></p>
@@ -1834,7 +1834,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p><img alt="image42" src="../../../_images/image4212.png" /></p>
 <p><em>Creating a MACROS.JSON file</em></p>
 <p>Saved the macro with the name SDSF. Now, press the Green ICON. The macro should appear in the local list and would have been saved to local browser storage. To run the macro press the green arrow to the left of the macro name SDSF.</p>
-<p><img alt="image43" src="../../../_images/image437.png" /></p>
+<p><img alt="image43" src="../../../_images/image439.png" /></p>
 <p>Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.</p>
 </div>
 <div class="section" id="uploading-macros-to-the-centralized-repository">
@@ -1914,7 +1914,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
-<p><img alt="image52" src="../../../_images/image528.png" /></p>
+<p><img alt="image52" src="../../../_images/image5210.png" /></p>
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
@@ -2493,9 +2493,9 @@ obtained.</p>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image22" src="../../../_images/image2216.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.</p>
-<p><img alt="image23" src="../../../_images/image2312.png" /></p>
+<p><img alt="image23" src="../../../_images/image2313.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
-<p><img alt="image24" src="../../../_images/image248.png" /></p>
+<p><img alt="image24" src="../../../_images/image249.png" /></p>
 <p>We select the “Proceed” link.</p>
 <p><img alt="image25" src="../../../_images/image257.png" /></p>
 <p>We are signed into CICS without having to specify any user id or password.</p>

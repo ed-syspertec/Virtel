@@ -355,7 +355,7 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p>The “option” pathname is normally associated with the OPT-DIR. The directory is pointed to by the OPTION transaction CLI-03CO and by default is the CLI-DIR:</p>
-<p><img alt="image33" src="../../../_images/image3313.png" /></p>
+<p><img alt="image33" src="../../../_images/image3314.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span> <span class="o">|</span> <span class="n">Favicon</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
@@ -619,9 +619,9 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
-<p><img alt="image3" src="../../../_images/image358.png" />
+<p><img alt="image3" src="../../../_images/image359.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image458.png" />
+<p><img alt="image4" src="../../../_images/image460.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -945,7 +945,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image6" src="../../../_images/image637.png" />
+<p><img alt="image6" src="../../../_images/image638.png" />
 <em>Web Access screen with custom application name in the Tool Bar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-information">
@@ -1446,7 +1446,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p><img alt="image34" src="../../../_images/image3411.png" /></p>
 <p><em>The local storage record and play/display macro buttons</em></p>
 <p>The record function is an on/off button that will record key strokes. When recording, the ICON will flash until it is clicked at which point it will stop recording and save the key strokes. A save panel will be displayed asking for the name of the macro entry. Note that an ENTER/PFK key must be pressed at least once, i.e. data must be sent by some key operation in order to create and save an entry within the macro.JSON file.</p>
-<p><img alt="image35" src="../../../_images/image359.png" /></p>
+<p><img alt="image35" src="../../../_images/image3510.png" /></p>
 <p><em>Creating a new macro</em></p>
 <p id="index-75"><strong>Keyboard mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:</p>
@@ -1656,7 +1656,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>We now have a macro which we can import to the centralized repository. From the Administration portal, select the Dynamic Directory Interface option:</p>
 <p><img alt="image44" src="../../../_images/image4411.png" /></p>
 <p>This will open the Dynamic directories main panel. Select the Global tab. The Global Drag and Drop area will be displayed. Drag the MACROS.JSON file from the “downloads” folder on to the Global D&amp;D upload zone delineated by a dotted line. The MACROS.JSON file will be uploaded to the GLOBAL-DIR. The upload results will be shown on the D&amp;D zone area.</p>
-<p><img alt="image45" src="../../../_images/image459.png" /></p>
+<p><img alt="image45" src="../../../_images/image4510.png" /></p>
 <p><em>Global DDI Upload</em></p>
 <p>Refresh the GLOBAL directory by clicking the broken circled arrow in the top left of the screen. The MACROS.JSON file will be displayed. We can validate the Global macro upload by opening a TSO or CICS session with the DDI configured line (41002). Press the “Blue” ICON to display all available macros. It should now show that the SDSF macro has indeed been imported to the GLOBAL area.</p>
 <p><img alt="image46" src="../../../_images/image4611.png" /></p>
@@ -1720,7 +1720,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
-<p><img alt="image52" src="../../../_images/image5214.png" /></p>
+<p><img alt="image52" src="../../../_images/image5216.png" /></p>
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
@@ -2300,9 +2300,9 @@ obtained.</p>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image22" src="../../../_images/image2224.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifies that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certificate.</p>
-<p><img alt="image23" src="../../../_images/image2318.png" /></p>
+<p><img alt="image23" src="../../../_images/image2319.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
-<p><img alt="image24" src="../../../_images/image2414.png" /></p>
+<p><img alt="image24" src="../../../_images/image2415.png" /></p>
 <p>We select the “Proceed” link.</p>
 <p><img alt="image25" src="../../../_images/image2513.png" /></p>
 <p>We are signed into CICS without having to specify any user id or password.</p>
@@ -2708,7 +2708,7 @@ VIR0223I UNLOAD ENDED
 <div class="section" id="the-new-virtel-tier-menu-style">
 <h3>The New Virtel Tier Menu Style<a class="headerlink" href="#the-new-virtel-tier-menu-style" title="Permalink to this headline">¶</a></h3>
 <p>The application user list displayed after logon is dynamically linked to their security profile, i.e.; RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list in collapsible (&gt;) expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications.</p>
-<p><img alt="image71" src="../../../_images/image7116.png" /></p>
+<p><img alt="image71" src="../../../_images/image7117.png" /></p>
 <p><em>cAppMenu Application Tier Menu</em></p>
 </div>
 <div class="section" id="required-files-for-tier-menu-support">
@@ -2745,7 +2745,7 @@ VIR0223I UNLOAD ENDED
 </div>
 <div class="section" id="virtel-cappmenu-tier-menu-description">
 <h4>Virtel cAppMenu Tier Menu description<a class="headerlink" href="#virtel-cappmenu-tier-menu-description" title="Permalink to this headline">¶</a></h4>
-<p><img alt="image73" src="../../../_images/image7310.png" /></p>
+<p><img alt="image73" src="../../../_images/image7311.png" /></p>
 <div class="section" id="modify-the-main-and-sub-titles">
 <h5>Modify the <em>Main</em> and <em>Sub</em> titles<a class="headerlink" href="#modify-the-main-and-sub-titles" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
@@ -2861,7 +2861,7 @@ var oCustom={
 <div class="section" id="update-the-cli-dir-directoy">
 <h3>Update the CLI-DIR directoy<a class="headerlink" href="#update-the-cli-dir-directoy" title="Permalink to this headline">¶</a></h3>
 <p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.</p>
-<p><img alt="image81" src="../../../_images/image8117.png" /></p>
+<p><img alt="image81" src="../../../_images/image8118.png" /></p>
 <p>From the Administration Panel, select the customized files and Drop &amp; Drag them into the CLI-DIR.</p>
 <p><img alt="image82" src="../../../_images/image8210.png" /></p>
 <div class="admonition note">
@@ -3489,10 +3489,10 @@ FTPLIST[1] = alink;
 </pre></div>
 </div>
 <p>When the Generate Parameter is complete, the browser’s “VIRTEL FTP Save Parameter” dialog appears:</p>
-<p><img alt="image62" src="../../../_images/image6212.png" /></p>
+<p><img alt="image62" src="../../../_images/image6213.png" /></p>
 <p><em>VIRTEL FTP Dialog Part 2</em></p>
 <p>Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on your workstation:</p>
-<p><img alt="image63" src="../../../_images/image638.png" /></p>
+<p><img alt="image63" src="../../../_images/image639.png" /></p>
 <p><em>VIRTEL FTP Dialog part 3</em></p>
 <p>Now select the destination file and click “Save”. If the file already exists, you will be prompted for permission to overwrite it. The “Download Complete” dialog appears when the file has been saved. Once the file has downloaded, run the PSVirtelFtp.bat procedure. This should be setup as a shortcut on your desktop.</p>
 <p>If the password was defined by a”?” in the template, the following dialog will appear.</p>

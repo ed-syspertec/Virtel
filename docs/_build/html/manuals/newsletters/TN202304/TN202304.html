@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customizable Application Menu - cAppMenu &mdash; Virtel 9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="What’s new in Virtel 4.61 GA Release" href="../TN202303/TN202303.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.61
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id8">2023</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN202302/TN202302.html">Security Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN202303/TN202303.html">What’s new in Virtel 4.61 GA Release</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customizable Application Menu - cAppMenu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-a-cappmenu">Building a cAppMenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defining-the-transactions-for-cappmenu">Defining the Transactions for cAppMenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customization-of-cappmenu">Customization of cAppMenu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-pfk-key-support">Adding PFK key support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-cappmenuoptions">Updating cAppMenuOptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-html-security-type-5">Using HTML Security Type 5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-cappmenu-as-part-of-the-virtel-installation">Implementing cAppMenu as part of the Virtel Installation.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-b">Appendix B</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Customizable Application Menu - cAppMenu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN202304/TN202304.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customizable-application-menu-cappmenu">
+<span id="tn202304"></span><h1>Customizable Application Menu - cAppMenu<a class="headerlink" href="#customizable-application-menu-cappmenu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Virtel’s default Application Menu can now be customized using the NEW Customizable Application Menu (cAppMenu) feature. This provides a collapsible menu which can be customized to users’ requirements. This new feature can emulate any 3270 Session Manager setup, making Virtel a viable replacement for any Session Manager product.</p>
+<p>Today, the default Virtel Application Menu looks like : -</p>
+<p><img alt="image0" src="../../../_images/image0.png" />
+<em>Fig 1: Example of Current Virtel Application Menu</em></p>
+<p>With the new cAppMenu a Tier Menu Style can be displayed. The application user list displayed after logon is dynamically linked to their security profile i.e. RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list into collapsible (&gt;) and expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications.</p>
+<p><img alt="image1" src="../../../_images/image165.png" /></p>
+<p><em>Fig 2: Example of the cAppMenu Application Tier Menu</em></p>
+</div>
+<div class="section" id="building-a-cappmenu">
+<h2>Building a cAppMenu<a class="headerlink" href="#building-a-cappmenu" title="Permalink to this headline">¶</a></h2>
+<p>The Virtel Administration can build a cAppMenu using the following files. The files will be uploaded to the supporting user Virtel Sub-Directory using the Virtel Administration upload tool.
+For the purpose of this document the value [key-name] should be replaced with a user value, such as a company name. For example the file appmenu.[key-name].js could be called : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">js</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="section" id="file-requirements">
+<h3>File requirements<a class="headerlink" href="#file-requirements" title="Permalink to this headline">¶</a></h3>
+<p>The following customization files are required to support the cAppMenu : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="p">[</span><span class="n">key</span><span class="o">-</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Defines the custom values of the parameters used on the cAppMenu.htm page. See the guide “appmenu.xxx.js” in the DOC-DIR Virtel Directory for full details on the cAppMenuOptions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">custCSS</span><span class="o">.</span><span class="p">[</span><span class="n">key</span><span class="o">-</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+<p>Cascading style sheet for graphical customization (e.g. for company logo) and also as (You might change more: the colors for example)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="o">.</span><span class="p">[</span><span class="n">key</span><span class="o">-</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Master Customization file for a VIRTEL transaction defined with the option [key-name] used to direct to the customization logic files custCSS.[key-name].css &amp; appmenu.[key-name].js</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">companyLogo</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>Company logo file e.g., syspertec.png</p>
+<p><img alt="image2" src="../../../_images/image238.png" /></p>
+<p><em>Fig 3: Example of the cAppMenu Files</em></p>
+<p>cAppMenu utilizes an option file and related option directory to point to relevant directories using the “pathTo” directives. This file is uploaded to the Users Sub Directory. Modify the following file, change [key-name] to your user value. This value [key-name] will be used in step “Update the Required Virtel Transactions”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../../option/appmenu.[key-name].js&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pathToCssCustom&quot;</span> <span class="p">:</span> <span class="s2">&quot;../option/custCSS.[key-name].css&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>The cAppMenu uses a user or company logo. This should be downloaded and sized correctly. The image should be saved and will be used within the cAppMenu customization and will be displayed within the Application Menu. The file should be saved as a png file.</p>
+<p><img alt="image3" src="../../../_images/image334.png" /></p>
+<p><em>Fig 4: Example of a Company Logo</em></p>
+</div>
+</div>
+<div class="section" id="defining-the-transactions-for-cappmenu">
+<h2>Defining the Transactions for cAppMenu<a class="headerlink" href="#defining-the-transactions-for-cappmenu" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cappmenu-transaction">
+<h3>cAppMenu Transaction<a class="headerlink" href="#cappmenu-transaction" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example transaction, CLI-90, used to support the cAppMenu feature. The Option field should have your user value – [key-name].</p>
+<p><img alt="image4" src="../../../_images/image429.png" />
+<em>Fig 5: cAppMenu transaction</em></p>
+</div>
+<div class="section" id="entry-point-transaction">
+<h3>Entry point transaction<a class="headerlink" href="#entry-point-transaction" title="Permalink to this headline">¶</a></h3>
+<p>The Entry Point transaction should point to the cappmenu.htm file and pass in the applist transaction parameter. The TIOA must be set to the following value: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">cappmenu</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">applist</span>
+</pre></div>
+</div>
+<p><img alt="image5" src="../../../_images/image521.png" />
+<em>Fig 6: Entry Point Transaction</em></p>
+</div>
+<div class="section" id="upload-the-cappmenu-files">
+<h3>Upload the cAppMenu files<a class="headerlink" href="#upload-the-cappmenu-files" title="Permalink to this headline">¶</a></h3>
+<p>Us the Virtel Drag &amp; Drop to upload the cAppMenu files to the user directory, by default the user directory is CLI-DIR.</p>
+<p><img alt="image6" src="../../../_images/image620.png" /></p>
+<p><em>Fig 6 Files to be uploaded to the user directory</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Refresh the browser after uploading the files – CTRL-R</p></li>
+</ul>
+</div>
+<p><img alt="image7" src="../../../_images/image717.png" />
+<em>Fig 7 File upload using Virtel Drag and Drop</em></p>
+</div>
+</div>
+<div class="section" id="customization-of-cappmenu">
+<h2>Customization of cAppMenu<a class="headerlink" href="#customization-of-cappmenu" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-the-logo">
+<h3>Adding the logo<a class="headerlink" href="#adding-the-logo" title="Permalink to this headline">¶</a></h3>
+<p>A core piece of the customization is the CSS file. Append to you existing Cascading Style sheet the following code in for Toolbar logo, the file will be either a .jpeg or .png file containing the user logo. Use the Chrome debugger tool to help determine the proper logo size.</p>
+<p>Update the custCSS.[key-name].css file with the user logo file.</p>
+<p><img alt="image8" src="../../../_images/image816.png" /></p>
+<p><em>Fig 8 cAppMenu customized CSS file</em></p>
+</div>
+<div class="section" id="vwa-customized-file-options">
+<h3>VWA Customized file options<a class="headerlink" href="#vwa-customized-file-options" title="Permalink to this headline">¶</a></h3>
+<p>There are two ways of implementing VWA customization, either globally or transaction specific: -</p>
+<p><img alt="image9" src="../../../_images/image914.png" /></p>
+<p><em>Fig 9 Virtel VWA Customization</em></p>
+<ol class="arabic simple">
+<li><p>Modify the following files, change [key-name] to your user value or company name e.g. “Syspertec”</p></li>
+<li><p>See Cascading Style Sheet custCSS.[key-name].css</p></li>
+<li><p>Add the following statements to “w2hparm.js”:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="p">[</span><span class="s2">&quot;global-settings&quot;</span><span class="p">]</span><span class="o">=</span><span class="p">{};</span>
+<span class="n">w2hparm</span><span class="p">[</span><span class="s2">&quot;global-settings&quot;</span><span class="p">][</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;../option/custCSS.[key-name].css&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Create an VWA option.[key-name].js JavaScript file. Enter following statements as the content:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
+<span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../../option/appmenu.[key-name].js&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pathToCssCustom&quot;</span> <span class="p">:</span> <span class="s2">&quot;../option/custCSS.[key-name].css&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>From the Administration Panel Select the VWA customized files according to the implementation way you have decided and Drop &amp; Drag the files into the user directory, for example CLI-DIR.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>-Refresh your browser cache and Reconnect to the Application Menu to see the results.</p>
+</div>
+</div>
+</div>
+<div class="section" id="adding-pfk-key-support">
+<h2>Adding PFK key support<a class="headerlink" href="#adding-pfk-key-support" title="Permalink to this headline">¶</a></h2>
+<p>In Virtel V4.61 PFK key support was added to the cAppMenu feature. This means a transaction in the cAppMenu list can know be associated with a PFK key. The feature is implemented with the coding of a new JS array, called “pf2tran” within the cAppMenuOptions object file. Details of the cAppMenuOptions file and its customizable values are presented in the Virtel DOC-DIR subdirectory.</p>
+<p>The following is an example of a cAppMenuOptions file with the additional pf2tran array. The cAppMenuOptions array is maintained in the appmenu.[key-name].js file : -</p>
+<p><img alt="image10" src="../../../_images/image1013.png" /></p>
+<p><em>Fig 10 - pf2tran JS example in cAppMenuOptions</em></p>
+<p>After updating the cAppMenuOptions array upload the appmenu.[key-name].js file to the user directory and refresh the browser – CTRL-R.</p>
+<p><img alt="image11" src="../../../_images/image1117.png" /></p>
+<p><em>Fig 11 - Example of cAppMenu with PFK Actions</em></p>
+</div>
+<div class="section" id="updating-cappmenuoptions">
+<h2>Updating cAppMenuOptions<a class="headerlink" href="#updating-cappmenuoptions" title="Permalink to this headline">¶</a></h2>
+<p>Updates to the pf2tran array can be made through the following JS statements : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cAppMenuOptions.pf2tran.push({ &quot;pf&quot;  : &quot;xxx&quot; , &quot;tran&quot; : &quot;yyy&quot; })
+where : -
+
+xxx = pf key| p|pf|P|PF + an integer 1-24. For example “PF 10”
+yyy = transaction external name.
+</pre></div>
+</div>
+<p>See Appendix B for a full example. See the guide “appmenu.xxx.js” in the DOC-DIR Virtel Directory for full details on the cAppMenuOptions array.</p>
+</div>
+<div class="section" id="using-html-security-type-5">
+<h2>Using HTML Security Type 5<a class="headerlink" href="#using-html-security-type-5" title="Permalink to this headline">¶</a></h2>
+<p>HTML Security Type 5 provides an authentication feature where the password is only validated once. This potentially avoids multiple calls to the security subsystem during Virtel session setup. To use this feature with cAppMenu you must specify the following in the cAppMenuOptions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>“passOnIdentification”: true
+</pre></div>
+</div>
+<p>Example of cAppMenuOptions object in appmenu.[key-name].js</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// my context information…
+// The application menu contains 4 columns of data :
+// 1 - key=&quot;status&quot;
+// 2 - key=&quot;tran&quot;
+// 3 - key=&quot;application&quot;
+// 4 - key=&quot;description&quot;
+// Each key can be taken as a criteria for a level selection
+
+var cAppMenuOptions = {
+    &quot;passOnIdentification&quot;: true,
+    &quot;close_VWA_when_disconnects&quot;: true
+}
+
+// Titles
+cAppMenuOptions[&quot;texts&quot;]= {
+    &quot;main-title&quot;:&quot;Virtel Sample Application Tier Menu&quot;,
+    &quot;sub-title&quot;: &quot;Syspertec Virtel V4.61 Application Menu&quot;,
+};
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-cappmenu-as-part-of-the-virtel-installation">
+<h2>Implementing cAppMenu as part of the Virtel Installation.<a class="headerlink" href="#implementing-cappmenu-as-part-of-the-virtel-installation" title="Permalink to this headline">¶</a></h2>
+<p>The ARBOLOAD installation job has an option CAPP=NO.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">CAPP</span><span class="o">=</span><span class="n">NO</span>
+</pre></div>
+</div>
+<p>If this is changed to CAPP=YES then additional Virtel VIRCONF statements will be generated and added to the Virtel ARBO as part of the Virtel installation process.</p>
+<p>The addition statements will : -</p>
+<ol class="arabic simple">
+<li><p>Add CAP-DIR as a User Sub directory.</p></li>
+<li><p>Add LINE definition.</p></li>
+<li><p>Add Local terminals and supporting pools.</p></li>
+<li><p>Add the Entry point CAPHOST.</p></li>
+<li><p>Add supporting transactions.</p></li>
+</ol>
+<p>To complete the cAppMenu installation, download the zip file CAPPMENU.ZIP from the W2H directory. Enter the following URL to download the file : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.71</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">cappmen</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p>This will trigger a download option to download the zip file. Unzip the file to a local directory. Inside you will find the following files: -</p>
+<p><img alt="image12" src="../../../_images/image1215.png" /></p>
+<p><em>Fig 12 - Contents of cappmenu.zip</em></p>
+<p>The following should be uploaded to the CAP-DIR : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">appmenu</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">js</span>       <span class="n">appMenu</span> <span class="n">Customization</span> <span class="n">file</span>
+<span class="n">custCSS</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">css</span>      <span class="n">appMenu</span> <span class="n">CSS</span> <span class="n">file</span>
+<span class="n">option</span><span class="o">.</span><span class="n">sample</span><span class="o">.</span><span class="n">js</span>        <span class="n">option</span> <span class="n">file</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">png</span>              <span class="n">logo</span> <span class="n">file</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>              <span class="n">customization</span> <span class="n">file</span>
+</pre></div>
+</div>
+<p>Refresh the browser after the upload.</p>
+<p>Goto Virtel URL using port 51000. For example, <a class="reference external" href="http://10.20.170:51000">http://10.20.170:51000</a>. This should open a cAppMenu sample.</p>
+</div>
+<div class="section" id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sample-appmenu-key-name-js">
+<h3>Sample appmenu.[key-name].js<a class="headerlink" href="#sample-appmenu-key-name-js" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// my context information…
+// The application menu contains 4 columns of data :
+// 1 - key=&quot;status&quot;
+// 2 - key=&quot;tran&quot;
+// 3 - key=&quot;application&quot;
+// 4 - key=&quot;description&quot;
+// Each key can be taken as a criteria for a level selection
+
+var cAppMenuOptions = {}
+cAppMenuOptions[&quot;texts&quot;] =  {
+        &quot;main-title&quot;: &quot;Virtel Demo Application Tier Menu Session Manager&quot;,
+        &quot;sub-title&quot;: &quot;SYSPERTEC Virtel V4.60 Application Menu&quot;,
+    };
+
+cAppMenuOptions[&quot;levels&quot;] = []
+
+// Level 1 - CICS Production - criteria : the VIRTEL transaction name starts with &quot;CICSP&quot;
+cAppMenuOptions[&quot;levels&quot;][0] =  {
+        &quot;title&quot;:&quot;CICS Production Regions&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /cicsp/i
+        };
+
+// Level 2 - CICS development  - criteria : the VIRTEL transaction name starts with &quot;CICSD&quot;
+cAppMenuOptions[&quot;levels&quot;][1] =  {
+        &quot;title&quot;:&quot;CICS Development Regions&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /cicsd/i
+        };
+// Level 3 - CICS test  - criteria : the VIRTEL transaction name starts with &quot;CICSD&quot;
+cAppMenuOptions[&quot;levels&quot;][2] =  {
+        &quot;title&quot;:&quot;CICS Test Regions&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /cicst/i
+        };
+// Level 4 - TSO Production - criteria : the VIRTEL transaction name starts with &quot;TSOP&quot;
+cAppMenuOptions[&quot;levels&quot;][3] =  {
+        &quot;title&quot;:&quot;TSO Production Systems&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /tsop/i
+        };
+// Level 5 - TSO development  - criteria : the VIRTEL transaction name starts with &quot;TSOD&quot;
+cAppMenuOptions[&quot;levels&quot;][4] =  {
+        &quot;title&quot;:&quot;TSO Development Systems&quot;,
+    &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /tsod/i
+        };
+// Level 6  - USSTAB  Sessions  - criteria : the VIRTEL transaction name starts with &quot;VTAM&quot;
+cAppMenuOptions[&quot;levels&quot;][5] =  {
+        &quot;title&quot;:&quot;VTAM USSTAB Sessions&quot;,
+        &quot;criteria&quot; : &quot;tran&quot;,
+        &quot;regexp&quot; : /vtam/i
+        };
+// Level 7 Other Applications  - criteria : the VIRTEL transaction name not in previous levels&quot;
+cAppMenuOptions[&quot;levels&quot;][6] =  {
+        &quot;title&quot;:&quot;Other Sessions&quot;
+        };
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="appendix-b">
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// my context information…
+// The application menu contains 4 columns of data :
+// 1 - key=&quot;status&quot;
+// 2 - key=&quot;tran&quot;
+// 3 - key=&quot;application&quot;
+// 4 - key=&quot;description&quot;
+// Each key can be taken as a criteria for a level selection
+
+var cAppMenuOptions = {
+&quot;passOnIdentification&quot;: true,
+&quot;close_VWA_when_disconnects&quot;: true
+}
+
+// Titles
+cAppMenuOptions[&quot;texts&quot;]= {
+    &quot;main-title&quot;:&quot;Virtel Sample Application Tier Menu&quot;,
+    &quot;sub-title&quot;: &quot;Syspertec Virtel V4.61 Application Menu&quot;,
+};
+
+cAppMenuOptions.pf2tran = [];
+cAppMenuOptions.pf2tran.push ({ &quot;pf&quot;  : &quot;PF 2&quot;     ,  &quot;tran&quot; : &quot;CICSP1&quot;         });
+cAppMenuOptions.pf2tran.push ({ &quot;pf&quot;  : &quot;PF 9&quot;     ,  &quot;tran&quot; : &quot;TSOT1&quot;          });
+
+cAppMenuOptions[&quot;levels&quot;] = []
+
+// Level 1 - CICS Production - criteria : the VIRTEL transaction name starts with &quot;CICSP&quot;
+cAppMenuOptions[&quot;levels&quot;][0] =  {
+&quot;title&quot;:&quot;CICS Production Regions&quot;,
+    &quot;criteria&quot; : &quot;tran&quot;,
+    &quot;regexp&quot; : /cicsp/i
+};
+
+// Level 2 - CICS development  - criteria : the VIRTEL transaction name starts with &quot;CICSD&quot;
+cAppMenuOptions[&quot;levels&quot;][1] =  {
+&quot;title&quot;:&quot;CICS Development Regions&quot;,
+    &quot;criteria&quot; : &quot;tran&quot;,
+    &quot;regexp&quot; : /cicsd/i
+};
+// Level 3 - CICS test  - criteria : the VIRTEL transaction name starts with &quot;CICST&quot;
+cAppMenuOptions[&quot;levels&quot;][2] =  {
+&quot;title&quot;:&quot;CICS Test Regions&quot;,
+    &quot;criteria&quot; : &quot;tran&quot;,
+    &quot;regexp&quot; : /cicst/i
+};
+// Level 4 - TSO Production - criteria : the VIRTEL transaction name starts with &quot;TSOP&quot;
+cAppMenuOptions[&quot;levels&quot;][3] =  {
+&quot;title&quot;:&quot;TSO Production Systems&quot;,
+    &quot;criteria&quot; : &quot;tran&quot;,
+    &quot;regexp&quot; : /tsop/i
+};
+// Level 5 - TSO test  - criteria : the VIRTEL transaction name starts with &quot;TSOT&quot;
+cAppMenuOptions[&quot;levels&quot;][4] =  {
+&quot;title&quot;:&quot;TSO Test Systems&quot;,
+            &quot;criteria&quot;:&quot;tran&quot;,
+            &quot;regexp&quot;: /tsot/i
+};
+// Level 6 - USSTAB  Sessions  - criteria : the VIRTEL transaction name starts with &quot;VTAM&quot;
+cAppMenuOptions[&quot;levels&quot;][5] =  {
+&quot;title&quot;:&quot;VTAM USSTAB Sessions&quot;,
+&quot;criteria&quot; : &quot;tran&quot;,
+&quot;regexp&quot; : /vtam/i
+};
+// Level 7 - Other Applications  - criteria : the VIRTEL transaction name not in previous levels&quot;
+cAppMenuOptions[&quot;levels&quot;][6] =  {
+&quot;title&quot;:&quot;Other Sessions&quot;
+};
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../TN202303/TN202303.html" class="btn btn-neutral float-left" title="What’s new in Virtel 4.61 GA Release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

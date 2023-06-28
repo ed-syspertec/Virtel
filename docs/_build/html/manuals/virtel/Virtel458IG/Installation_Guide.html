@@ -2169,7 +2169,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;usstab=USSVIRT&#39;</span>
 </pre></div>
 </div>
-<p><img alt="image3" src="../../../_images/image335.png" /></p>
+<p><img alt="image3" src="../../../_images/image337.png" /></p>
 <p><strong>System Symbolic support</strong></p>
 <p>VIR0021W supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command <em>D SYMBOLS</em> can be use to list the defined system symbolics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="n">CL80</span><span class="s1">&#39; This is system &amp;&amp;SYSNAME. running on SYSPLEX &amp;&amp;SYSPLEX.&#39;</span>
@@ -2191,7 +2191,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <p>Will load a USSTAB module depending on the &amp;SYSCLONE. system symbolic value and report error messages to line 24.</p>
 <p><strong>Default USSTAB module USSVIRT</strong>
 A default USSTAB module is shipped in the VIRTEL loadlib called USSVIRT. This USS module is loaded by default should the user’s USSTAB fail to load. The default USSTAB looks like:- The source is maintained in the SAMPLIB library.</p>
-<p><img alt="image4" src="../../../_images/image430.png" /></p>
+<p><img alt="image4" src="../../../_images/image434.png" /></p>
 <p><strong>Constraints</strong></p>
 <p>The user USSTAB MSG10 module that VIR0021W processes must adhere to certian constraints else results will be unpredicatble. The constraints are:-</p>
 <ul class="simple">

@@ -363,7 +363,7 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p>The “option” pathname is normally associated with the OPT-DIR. The directory is pointed to by the OPTION transaction CLI-03CO and by default is the CLI-DIR:</p>
-<p><img alt="image33" src="../../../_images/image3311.png" /></p>
+<p><img alt="image33" src="../../../_images/image3312.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
@@ -626,9 +626,9 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
-<p><img alt="image3" src="../../../_images/image347.png" />
+<p><img alt="image3" src="../../../_images/image348.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image446.png" />
+<p><img alt="image4" src="../../../_images/image448.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -952,13 +952,13 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image6" src="../../../_images/image629.png" />
+<p><img alt="image6" src="../../../_images/image630.png" />
 <em>Web Access screen with custom application name in the Tool Bar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-information">
 <span id="index-38"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image7" src="../../../_images/image730.png" /></p>
+<p><img alt="image7" src="../../../_images/image736.png" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be <strong>permanently</strong> removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">name</span> <span class="n">connected</span> <span class="n">to</span><span class="o">.</span>
@@ -1028,7 +1028,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="status-bar">
 <span id="index-42"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
 <p>The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).</p>
-<p><img alt="image7" src="../../../_images/image730.png" />
+<p><img alt="image7" src="../../../_images/image736.png" />
 <em>The VWA 3270 screen’s areas</em></p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <span id="index-43"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
@@ -1450,7 +1450,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <h5>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h5>
 <p id="index-74"><strong>Macro functions</strong></p>
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.</p>
-<p><img alt="image34" src="../../../_images/image348.png" /></p>
+<p><img alt="image34" src="../../../_images/image349.png" /></p>
 <p><em>The local storage record and play/display macro buttons</em></p>
 <p>The record function is an on/off button that will record key strokes. When recording, the ICON will flash until it is clicked at which point it will stop recording and save the key strokes. A save panel will be displayed asking for the name of the macro entry. Note that an ENTER/PFK key must be pressed at least once, i.e. data must be sent by some key operation in order to create and save an entry within the macro.JSON file.</p>
 <p><img alt="image35" src="../../../_images/image356.png" /></p>
@@ -1661,7 +1661,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>We now have a macro which we can import to the centralized repository. From the Administration portal, select the Dynamic Directory Interface option:</p>
-<p><img alt="image44" src="../../../_images/image447.png" /></p>
+<p><img alt="image44" src="../../../_images/image449.png" /></p>
 <p>This will open the Dynamic directories main panel. Select the Global tab. The Global Drag and Drop area will be displayed. Drag the MACROS.JSON file from the “downloads” folder on to the Global D&amp;D upload zone delineated by a dotted line. The MACROS.JSON file will be uploaded to the GLOBAL-DIR. The upload results will be shown on the D&amp;D zone area.</p>
 <p><img alt="image45" src="../../../_images/image456.png" /></p>
 <p><em>Global DDI Upload</em></p>
@@ -1727,7 +1727,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
-<p><img alt="image52" src="../../../_images/image5211.png" /></p>
+<p><img alt="image52" src="../../../_images/image5213.png" /></p>
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
@@ -2306,9 +2306,9 @@ obtained.</p>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image22" src="../../../_images/image2220.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.</p>
-<p><img alt="image23" src="../../../_images/image2315.png" /></p>
+<p><img alt="image23" src="../../../_images/image2316.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
-<p><img alt="image24" src="../../../_images/image2411.png" /></p>
+<p><img alt="image24" src="../../../_images/image2412.png" /></p>
 <p>We select the “Proceed” link.</p>
 <p><img alt="image25" src="../../../_images/image2510.png" /></p>
 <p>We are signed into CICS without having to specify any user id or password.</p>
@@ -2711,7 +2711,7 @@ VIR0223I UNLOAD ENDED
 <div class="section" id="the-new-virtel-tier-menu-style">
 <h3>The New Virtel Tier Menu Style<a class="headerlink" href="#the-new-virtel-tier-menu-style" title="Permalink to this headline">¶</a></h3>
 <p>The application user list displayed after logon is dynamically linked to their security profile, i.e.; RACF, ACF2, or TSS authorizations. Virtel administrators can organize the application list in collapsible (&gt;) expandable (+) sections. All levels are displayed in expanded form, at first logon. Users can collapse levels containing less used applications, therefore highlighting focus on frequently used applications.</p>
-<p><img alt="image71" src="../../../_images/image7113.png" /></p>
+<p><img alt="image71" src="../../../_images/image7114.png" /></p>
 <p><em>cAppMenu Application Tier Menu</em></p>
 </div>
 <div class="section" id="required-files-for-tier-menu-support">
@@ -2748,7 +2748,7 @@ VIR0223I UNLOAD ENDED
 </div>
 <div class="section" id="virtel-cappmenu-tier-menu-description">
 <h4>Virtel cAppMenu Tier Menu description<a class="headerlink" href="#virtel-cappmenu-tier-menu-description" title="Permalink to this headline">¶</a></h4>
-<p><img alt="image73" src="../../../_images/image736.png" /></p>
+<p><img alt="image73" src="../../../_images/image737.png" /></p>
 <div class="section" id="modify-the-main-and-sub-titles">
 <h5>Modify the <em>Main</em> and <em>Sub</em> titles<a class="headerlink" href="#modify-the-main-and-sub-titles" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
@@ -2864,9 +2864,9 @@ var oCustom={
 <div class="section" id="update-the-cli-dir-directoy">
 <h3>Update the CLI-DIR directoy<a class="headerlink" href="#update-the-cli-dir-directoy" title="Permalink to this headline">¶</a></h3>
 <p>Using the Virtel Drag and Drop feature upload the customized files to the CLI-DIR.</p>
-<p><img alt="image81" src="../../../_images/image8113.png" /></p>
+<p><img alt="image81" src="../../../_images/image8114.png" /></p>
 <p>From the Administration Panel, select the customized files and Drop &amp; Drag them into the CLI-DIR.</p>
-<p><img alt="image82" src="../../../_images/image825.png" /></p>
+<p><img alt="image82" src="../../../_images/image826.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Refresh the browser cache after uploading and reconnect to the Application Menu to see the results.</p>
@@ -3384,7 +3384,7 @@ FTPLIST[1] = alink;
 </pre></div>
 </div>
 <p>When the Generate Parameter is complete, the browser’s “VIRTEL FTP Save Parameter” dialog appears:</p>
-<p><img alt="image62" src="../../../_images/image6210.png" /></p>
+<p><img alt="image62" src="../../../_images/image6211.png" /></p>
 <p><em>VIRTEL FTP Dialog Part 2</em></p>
 <p>Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on your workstation:</p>
 <p><img alt="image63" src="../../../_images/image634.png" /></p>
