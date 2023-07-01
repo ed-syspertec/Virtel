@@ -1,0 +1,1125 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running multiple instances of Virtel &mdash; Virtel 9 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Customizable Application Menu - cAppMenu" href="../TN202304/TN202304.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.61
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id8">2023</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN202302/TN202302.html">Security Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN202303/TN202303.html">What’s new in Virtel 4.61 GA Release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN202304/TN202304.html">Customizable Application Menu - cAppMenu</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running multiple instances of Virtel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xvtam-example">XVTAM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multisys-example-using-qlnk">MultiSys Example using QLNK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virplex-example-using-sysplex-distributor">VirPlex Example using Sysplex Distributor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-naming-conventions-with-multiple-tasks-on-different-lpars">Virtel naming conventions with multiple tasks on different LPARS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xserver-using-virtel-with-apache-proxy-as-a-load-balancing-mechanism">XSERVER Using Virtel with Apache Proxy as a load balancing mechanism.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-a-sample-definitions">Appendix A – Sample Definitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Running multiple instances of Virtel</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN202305/TN202305.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-multiple-instances-of-virtel">
+<span id="tn202305"></span><h1>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The ability to run multiple instances of Virtel across a mainframe platform provides the reliability, availability and serviceability (RAS) components that today’s software demands. Virtel exploits the IBM z/OS platform to achieve High Availability and Load Balancing across the Virtel instances that are running in a client environment. Virtel can be installed in multiple instances and provide a single access point. This can be as several instances running on one LPAR, known as a Multiplex installation, or across several LPARS, known as a Virplex. Also, Virtel can be front ended by an external reverse proxy server. This server will deal with load balancing across the Virtel instances and maintaining a single point of entry. This newsletter discusses the issues raised when implementing these multi-instance scenarios. the different setups required and how Virtel exploits the IBM technologies to achieve the desired results.</p>
+<p>In the following example we look at three Virtel scenarios: -</p>
+<ol class="arabic simple">
+<li><p>XVTAM        Using VTAM Generic Resources to access 3270 applications</p></li>
+<li><p>MultiSys Running multiple Virtel instances on one LPAR using QLNK definitions.</p></li>
+<li><p>Virplex      Running multiple Virtel instances using IBM’s Sysplex Distributor.</p></li>
+<li><p>XServer      Using an external reverse proxy server to access multiply instances.</p></li>
+</ol>
+<p>In each case, the user access is through a single point of entry using one port. ARBO and TRSF files can be shared across the Virtel instances if required. A separate Administration Virtel is normally used to maintain the Virtel environment.</p>
+</div>
+<div class="section" id="xvtam-example">
+<h2>XVTAM Example<a class="headerlink" href="#xvtam-example" title="Permalink to this headline">¶</a></h2>
+<p><img alt="image0" src="../../../_images/image03.png" /></p>
+<p><em>Fig 1 - Using VTAM Generic Resources</em></p>
+<p>Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools.</p>
+<p>Here are the relevant definitions required to support the VTAM generic resource within Virtel.</p>
+<div class="section" id="virtel-tct">
+<h3>VIRTEL TCT<a class="headerlink" href="#virtel-tct" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GRNAME</span><span class="o">=</span><span class="n">VIRTPLEX</span><span class="p">,</span>        <span class="n">VTAM</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sysplex-definitions">
+<h3>SYSPLEX definitions<a class="headerlink" href="#sysplex-definitions" title="Permalink to this headline">¶</a></h3>
+<p>The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM. Use the following command to display coupling allocation details for ISTGENERIC.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
+</pre></div>
+</div>
+<p>VTAM display of the generic resource
+The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel instances which are grouped into the generic resource name VIRTPLEX. The example below shows VIRTEL1A and VIRTEL2A as participating in the VIRTRPLEX resource name group.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTPLEX</span><span class="p">,</span><span class="n">E</span>
+<span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
+<span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">VIRTPLEX</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="mi">917</span>
+<span class="n">IST1359I</span> <span class="n">MEMBER</span> <span class="n">NAME</span>        <span class="n">OWNING</span> <span class="n">CP</span>   <span class="n">SELECTABLE</span>  <span class="n">APPC</span>
+<span class="n">IST1360I</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span>     <span class="n">ZAM1SSCP</span>       <span class="n">YES</span>       <span class="n">NO</span>
+<span class="n">IST1360I</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL2A</span>     <span class="n">ZAM2SSCP</span>       <span class="n">YES</span>       <span class="n">NO</span>
+<span class="n">IST2210I</span> <span class="n">GR</span> <span class="n">PREFERENCE</span> <span class="n">TABLE</span> <span class="n">ENTRY</span> <span class="o">=</span> <span class="o">**</span><span class="n">DEFAULT</span><span class="o">**</span>
+<span class="n">IST2202I</span> <span class="n">GREXIT</span>   <span class="o">=</span> <span class="n">NO</span>       <span class="n">WLM</span>      <span class="o">=</span> <span class="n">YES</span>      <span class="n">LOCLU</span>    <span class="o">=</span> <span class="n">YES</span>
+<span class="n">IST2204I</span> <span class="n">LOCAPPL</span>  <span class="o">=</span> <span class="n">YES</span>      <span class="n">PASSOLU</span>  <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST314I</span> <span class="n">END</span>
+</pre></div>
+</div>
+<p>When the VIRTEL*A application is display in VTAM the following messages are written to the console log:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTEL1A</span><span class="p">,</span><span class="n">E</span>
+<span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
+<span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">APPL</span> <span class="mi">925</span>
+<span class="n">IST486I</span> <span class="n">STATUS</span><span class="o">=</span> <span class="n">ACT</span><span class="o">/</span><span class="n">S</span><span class="p">,</span> <span class="n">DESIRED</span> <span class="n">STATE</span><span class="o">=</span> <span class="n">ACTIV</span>
+<span class="n">IST1447I</span> <span class="n">REGISTRATION</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">CDSERVR</span>
+<span class="n">IST1363I</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">VIRTPLEX</span> <span class="n">REPRESENTS</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span>
+<span class="n">IST977I</span> <span class="n">MDLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">ASLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST861I</span> <span class="n">MODETAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USSTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">LOGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST934I</span> <span class="n">DLOGMOD</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USS</span> <span class="n">LANGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST1632I</span> <span class="n">VPACING</span> <span class="o">=</span>  <span class="mi">7</span>
+<span class="n">IST1938I</span> <span class="n">APPC</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST597I</span> <span class="n">CAPABILITY</span><span class="o">-</span><span class="n">PLU</span> <span class="n">ENABLED</span>  <span class="p">,</span><span class="n">SLU</span> <span class="n">ENABLED</span>  <span class="p">,</span><span class="n">SESSION</span> <span class="n">LIMIT</span> <span class="n">NONE</span>
+<span class="n">IST231I</span> <span class="n">APPL</span> <span class="n">MAJOR</span> <span class="n">NODE</span> <span class="o">=</span> <span class="n">APPLVIPX</span>
+<span class="n">IST654I</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">BUFFER</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST1500I</span> <span class="n">STATE</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST271I</span> <span class="n">JOBNAME</span> <span class="o">=</span> <span class="n">SPVIR1A</span><span class="p">,</span> <span class="n">STEPNAME</span> <span class="o">=</span> <span class="n">SPVIR1A</span><span class="p">,</span> <span class="n">DSPNAME</span> <span class="o">=</span> <span class="n">ISTEBBDB</span>
+<span class="n">IST228I</span> <span class="n">ENCRYPTION</span> <span class="o">=</span> <span class="n">OPTIONAL</span> <span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">DES</span>
+<span class="n">IST1563I</span> <span class="n">CKEYNAME</span> <span class="o">=</span> <span class="n">VIRTEL1A</span> <span class="n">CKEY</span> <span class="o">=</span> <span class="n">PRIMARY</span> <span class="n">CERTIFY</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST1552I</span> <span class="n">MAC</span> <span class="o">=</span> <span class="n">NONE</span> <span class="n">MACTYPE</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">IST1050I</span> <span class="n">MAXIMUM</span> <span class="n">COMPRESSION</span> <span class="n">LEVEL</span> <span class="o">-</span> <span class="n">INPUT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">OUTPUT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IST1633I</span> <span class="n">ASRCVLM</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">IST1634I</span> <span class="n">DATA</span> <span class="n">SPACE</span> <span class="n">USAGE</span><span class="p">:</span> <span class="n">CURRENT</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">MAXIMUM</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="n">IST171I</span> <span class="n">ACTIVE</span> <span class="n">SESSIONS</span> <span class="o">=</span> <span class="mi">0000000001</span><span class="p">,</span> <span class="n">SESSION</span> <span class="n">REQUESTS</span> <span class="o">=</span> <span class="mi">0000000000</span>
+<span class="n">IST206I</span> <span class="n">SESSIONS</span><span class="p">:</span>
+<span class="n">IST634I</span> <span class="n">NAME</span>     <span class="n">STATUS</span>         <span class="n">SID</span>          <span class="n">SEND</span> <span class="n">RECV</span> <span class="n">VR</span> <span class="n">TP</span> <span class="n">NETID</span>
+<span class="n">IST635I</span> <span class="n">SC0TCP13</span> <span class="n">ACTIV</span><span class="o">-</span><span class="n">S</span>    <span class="n">CA7B8B52D125F31F</span> <span class="mi">0003</span> <span class="mi">0001</span>       <span class="n">SPNET</span>
+<span class="n">IST314I</span> <span class="n">END</span>
+</pre></div>
+</div>
+<p>Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX. Using Virtel and VTAM Generic Resource Names to balance workload in a SYSPLEX environment. In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.</p>
+<p><img alt="image1" src="../../../_images/image1109.png" /></p>
+<p><em>Fig 2 - Using VTAM Generic resources to balance workload</em></p>
+<p>From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM Generic Resource or CICSPLEX group name.</p>
+</div>
+</div>
+<div class="section" id="multisys-example-using-qlnk">
+<h2>MultiSys Example using QLNK<a class="headerlink" href="#multisys-example-using-qlnk" title="Permalink to this headline">¶</a></h2>
+<p>In this scenario we run three instances of Virtel on the same LPAR to front end 3270 applications like TSO and CICS. The IBM TCPIP SHARED PORT feature is utilized to provide a single access point to all three Virtel instances. In this case PORT 31020. An Administration of Virtel is run as an administration instance. The administration instance has read write access to the shared files.</p>
+<p><img alt="image2" src="../../../_images/image290.png" /></p>
+<p><em>Fig 3 – MultiSys Example using 1 LPAR</em></p>
+<p>The Virtel instances communicate through internal QLNK paths. This internal communication provides session affinity across the Virtel instances. The shared IBM TCPIP PORT provides a single point of entry and load balancing, either RoundRobin or WLM, across the Virtel User instances. The shared port is configured within TCPIP using an obey file. An example is provide below : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">VARY</span> <span class="n">TCPIP</span><span class="p">,,</span><span class="n">O</span><span class="p">,</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRMULTI</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">OBPROF00</span><span class="p">)</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH0</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH1</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH2</span>
+
+<span class="n">PORT</span>
+<span class="p">;</span> <span class="n">VIRPLEX</span>  <span class="n">Range</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH0</span> <span class="n">SHAREPORT</span>    <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH1</span>              <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH2</span>              <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+</pre></div>
+</div>
+<div class="section" id="sharing-the-arbo-and-other-vsam-files">
+<h3>Sharing the ARBO and other VSAM files<a class="headerlink" href="#sharing-the-arbo-and-other-vsam-files" title="Permalink to this headline">¶</a></h3>
+<p>When running multiple versions of Virtel, a Multisys or Virplex for example, there is the ability to share the Virtel VSAM files, like the TRSF and ARBO file.  Shared VSAM files must be accessed only in READ mode only by user instances. An administrator instance of Virtel can access the files in READWRITE mode. To support the access modes the following TCT parameter should be coded:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span> <span class="o">|</span> <span class="n">WRITER</span>
+</pre></div>
+</div>
+<p>The following VSAM files may be shared by User Virtel instances in a READONLY mode: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRARBO</span>
+<span class="o">****</span><span class="n">TRSF</span>
+<span class="n">VIRHTML</span>
+</pre></div>
+</div>
+<p>The following files are unique to Virtel and each instance must have their own set: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRSWAP</span>
+<span class="n">VIRSTAT</span>     <span class="p">(</span><span class="n">Unless</span> <span class="n">Logger</span> <span class="ow">is</span> <span class="n">being</span> <span class="n">used</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the TCT, for both READONLY and WRITER, the UFILEn statements should have the options 0,10 and 05 and MACRF statements should be defined as MACRF=(SEQ,DIR): -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            UFILE1=(SAMPTRSF,ACBH1,0,10,05),
+            UFILE2=(HTMLTRSF,ACBH2,0,10,05),
+            UFILE3=(VIRHTML,ACBH3,0,10,05),
+            GATE=GENERAL,
+            NBCVC=32,
+            SILENCE=NO,
+            COMPANY=&#39;SYSPERTEC COMMUNICATION&#39;,
+            …….
+            TITRE1=&#39;S Y S P E R T E C  C O M M U N I C A T I O N&#39;,
+            TITRE2=&#39;V I R T E L 0 0&#39;
+ACBH1    ACB   AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR),
+            STRNO=3
+ACBH2    ACB   AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR),
+            STRNO=3
+ACBH3    ACB   AM=VSAM,DDNAME=VIRHTML,MACRF=(SEQ,DIR),
+            STRNO=3
+When Virtel is started the message VIR0024I will be issued for each VSAM file and will indicate the access mode: -
+
+VIR0024I OPENING FILE VIRARBO
+VIR0024I READ ONLY
+VIR0024I OPENING FILE VIRSWAP
+VIR0024I OPENING FILE VIRHTML
+VIR0024I READ ONLY
+VIR0024I OPENING FILE SAMPTRSF
+VIR0024I READ ONLY
+VIR0024I OPENING FILE HTMLTRSF
+VIR0024I READ ONLY
+VIR0024I ATTACHING SUBTASKS
+</pre></div>
+</div>
+<p>Note:- The VSAM Share Options should be SHR(2,3). Do not set the SHROPTIONS to (4,3) as this will have undesirable results!</p>
+<p>Example of 4 Virtel instances on the same LPAR. One is a writer (SPVIREH99), the others are READONLY User instances.</p>
+<p><img alt="image3" src="../../../_images/image369.png" /></p>
+<p><em>Fig 4 – MultiSys Instances on one LPAR</em></p>
+<p>Displaying the Lines command for any one of the three User Instances will provide the IP configuration for the environment: -</p>
+<p><img alt="image4" src="../../../_images/image480.png" /></p>
+<p><em>Fig 5 – Line display for a MultiSys environment</em></p>
+<p>The common port is port 31020 and this is supported by the V-HTTP line. The URL to access the User Applist will be: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.71</span><span class="p">:</span><span class="mi">31020</span>
+</pre></div>
+</div>
+<p>As each request comes in the port sharing feature of TCPIP will round robin the requests across the VIRTEL instances – SPVIREH0, SPVIREH1 and SPVIREH2.</p>
+</div>
+<div class="section" id="virtel-naming-conventions-with-multiple-tasks-on-the-same-lpar">
+<h3>Virtel naming conventions with multiple tasks on the same LPAR<a class="headerlink" href="#virtel-naming-conventions-with-multiple-tasks-on-the-same-lpar" title="Permalink to this headline">¶</a></h3>
+<p>The Administration instance, SPVIREH9, can be used to examine the line and terminal definitions that support this scenario. The display the terminals for V-HTTP looks like: -</p>
+<p><img alt="image5" src="../../../_images/image548.png" /></p>
+<p>Fig 6 – MultiSys Terminal display</p>
+<p>A Virtel pool is defined as <a href="#id1"><span class="problematic" id="id2">*</span></a>VPXPOOL supporting 10 internal relays beginning VPVTA000. The terminals that associated with this pool are defined using the sysclone plus(+) character as the second  and third digit and any alphanumeric character as the last three digits. Logging on to TSO a session is generated with the following terminal assignments: -</p>
+<p><img alt="image6" src="../../../_images/image640.png" /></p>
+<p><em>Fig 7 – MultiSys terminal allocation</em></p>
+<p>VTAM terminal RT1VTAAA and VTAM printer RT1IMAAA are used from the Virtel pool in setting up the session.</p>
+<p>In the Virtel log for SPVIREH2, the allocated instance to support this session, we see the following session setup messages from Virtel SPVIREH2: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">18.57</span><span class="o">.</span><span class="mi">43</span> <span class="n">JOB04765</span>  <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">SOCKET</span> <span class="mi">00030000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span><span class="p">:</span><span class="mi">63394</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">43</span> <span class="n">JOB04765</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">CONNECTING</span> <span class="n">VPLOC079</span> <span class="n">TO</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span><span class="p">:</span><span class="mi">63394</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">43</span> <span class="n">JOB04765</span>  <span class="n">VIRC121E</span> <span class="n">PAGE</span> <span class="n">NOT</span> <span class="n">FOUND</span> <span class="n">FOR</span> <span class="n">VPLOC079</span> <span class="n">CALLER</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span>  <span class="mi">427</span>
+<span class="mi">427</span>              <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;VPXWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;VPXWHOST&#39;</span><span class="p">(</span><span class="n">VPX</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">VPX</span><span class="o">-</span><span class="n">KEY</span> <span class="p">)</span>
+<span class="mi">427</span>                    <span class="n">PAGE</span> <span class="p">:</span> <span class="s1">&#39;FAVICON.ICO&#39;</span> <span class="n">URL</span> <span class="p">:</span> <span class="s1">&#39;/favicon.ico&#39;</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">43</span> <span class="n">JOB04765</span>  <span class="n">VIR0052I</span> <span class="n">VPLOC079</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span>   <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">52</span> <span class="n">JOB04765</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">CONNECTING</span> <span class="n">VPLOC079</span> <span class="n">TO</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span><span class="p">:</span><span class="mi">63394</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">52</span> <span class="n">JOB04765</span>  <span class="n">VIR0052I</span> <span class="n">VPLOC079</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span>   <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">54</span> <span class="n">JOB04765</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">CONNECTING</span> <span class="n">VPVTA009</span> <span class="n">TO</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span><span class="p">:</span><span class="mi">63394</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">54</span> <span class="n">JOB04765</span>  <span class="n">VIR0919I</span> <span class="n">VPVTA009</span> <span class="n">RELAY</span> <span class="n">RT1VTAAA</span><span class="p">(</span><span class="n">VPXTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">54</span> <span class="n">JOB04765</span>  <span class="n">VIR0919I</span> <span class="n">VPVTA009</span> <span class="n">RELAY</span> <span class="n">RT1IMAAA</span><span class="p">(</span><span class="n">VPXIM000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">18.57</span><span class="o">.</span><span class="mi">54</span> <span class="n">JOB04765</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">CONNECTING</span> <span class="n">VPVTA008</span> <span class="n">TO</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">92.20</span><span class="p">:</span><span class="mi">63394</span>
+</pre></div>
+</div>
+<p>T1 is the sysclone value substituted into the terminal name and AAA is the suffix derived from the &lt;&lt;&lt; string. The sysclone value is taken from the system &amp;SYSCLONE definitions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC0000000</span> <span class="n">SPT1</span>     <span class="mi">23182</span> <span class="mi">19</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">29.76</span> <span class="n">SPTHOLT</span>  <span class="mi">00000290</span>  <span class="n">D</span> <span class="n">SYMBOLS</span>
+<span class="n">MR0000000</span> <span class="n">SPT1</span>     <span class="mi">23182</span> <span class="mi">19</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">29.79</span> <span class="n">SPTHOLT</span>  <span class="mi">00000090</span>  <span class="n">IEA007I</span> <span class="n">STATIC</span> <span class="n">SYSTEM</span> <span class="n">SYMBOL</span> <span class="n">VALUES</span> <span class="mi">468</span>
+<span class="n">DR</span>                                        <span class="mi">468</span> <span class="mi">00000090</span>   <span class="o">&amp;</span><span class="n">SYSALVL</span><span class="o">.</span>          <span class="o">=</span> <span class="s2">&quot;2&quot;</span>
+<span class="n">DR</span>                                        <span class="mi">468</span> <span class="mi">00000090</span>   <span class="o">&amp;</span><span class="n">SYSCLONE</span><span class="o">.</span>         <span class="o">=</span> <span class="s2">&quot;T1&quot;</span>
+<span class="n">DR</span>                                        <span class="mi">468</span> <span class="mi">00000090</span>   <span class="o">&amp;</span><span class="n">SYSNAME</span><span class="o">.</span>          <span class="o">=</span> <span class="s2">&quot;SPT1&quot;</span>
+</pre></div>
+</div>
+<p>Using the plus(+) feature of Virtel enables the porting of “common” definitions to different LPARS whereby the sysclone would make the definitions unique to that LPAR. This avoids VTAM conflicts when assigning sessions. The VTAM definitions for this scenario look like: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* ------------------------------------------------------------------ *
+* VIRPLEX     : VIRTELnn ACB Definitions. Match to LINE Names        *
+* ------------------------------------------------------------------ *
+VIRTEL?? APPL  EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO)
+R&amp;SYSCLONE.VT??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               X
+            DLOGMOD=SNX32702,EAS=1
+R&amp;SYSCLONE.IM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,   X
+            EAS=1
+</pre></div>
+</div>
+<p>To use the sysplus(+) coding with the Virtel definitions the TCT must be defined with : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>            <span class="n">SYSPLEX</span> <span class="n">SUPPORTED</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="virplex-example-using-sysplex-distributor">
+<h2>VirPlex Example using Sysplex Distributor<a class="headerlink" href="#virplex-example-using-sysplex-distributor" title="Permalink to this headline">¶</a></h2>
+<p>Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one LPAR. In this scenario we run Virtel instances on separate LPARS and use SD to balance the incoming workload.</p>
+<p><img alt="image7" src="../../../_images/image760.png" /></p>
+<p><em>Fig 8 – Virplex using Sysplex distributor</em></p>
+<blockquote>
+<div><p>The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD algorithm. For example, this can be a Round Robin policy or WLM policy workload algorithm. Central point of access is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as 10.20.190.15. The relevant PROFILE definitions for TCPIP would look like: -</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
+    <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.20</span>
+    <span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">DESTIP</span> <span class="n">ALL</span>
+<span class="n">ENDVIPADYNAMIC</span>
+</pre></div>
+</div>
+<p>It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W-HTTP (port 41001) is used for Virtel Administration and a shared port is used to access to applications.</p>
+<p>Line W-HTTP should be defined using the base address of the LPAR (i.e. the home address of the default interface) by specifying only the port number. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Local</span> <span class="n">address</span> <span class="o">==&gt;</span> <span class="p">:</span><span class="mi">41001</span>
+</pre></div>
+</div>
+<p>Line V-HTTP, the common access point, should be defined in the ARNBO using the distributed VIPA address with port number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Local</span> <span class="n">address</span> <span class="o">==&gt;</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">31020</span>
+</pre></div>
+</div>
+<p>The Virtel Line display command displays this configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F SPVIREH0,LINES
+VIR0200I LINES
+VIR0201I VIRTEL 4.62 APPLID=VIRTEL00 LINES
+VIR0202I ALLOCATED IP ADDRESS = 10.20.170.83    &lt; Local IP address
+VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP
+VIR0202I -------- -------- ----- ---------
+VIR0202I W-HTTP           *GATE
+VIR0202I C-HTTP           *GATE
+VIR0202I D-HTTP   HTTP-CLI TCP1  :41003
+VIR0202I E-HTTP   HTTP-CLI TCP1  :41123
+VIR0202I L-HTTP   HTTP-CLI TCP1  ÝFD10:15C1:1921:1000::129¨:41005
+VIR0202I S-PLEX   PLEX-SYS*XRC   *NONE*
+VIR0202I V-HTTP   HTTP-VPX TCP1  10.20.190.15:31020  &lt; Dynamic VIPA
+VIR0202I X-HTTP   HTTP-ESH TCP1  ÝFD10:15C1:1921:1000::129¨:41003
+VIR0202I ---END OF LIST---
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtel-naming-conventions-with-multiple-tasks-on-different-lpars">
+<h2>Virtel naming conventions with multiple tasks on different LPARS<a class="headerlink" href="#virtel-naming-conventions-with-multiple-tasks-on-different-lpars" title="Permalink to this headline">¶</a></h2>
+<p>When running more than one VIRTEL STC care must be taken when defining the VTAM relay names that each VIRTEL task will use. In some cases, terminals have to be grouped in order to provide the necessary installation standards to to meet a particular naming convention. When running Virtel instances on different LPARS, for the high availability (HA) reasons, and probably on a different physical machine, the VTAM names employed must be unique. With Virtel you can define a single configuration within the ARBO and TCT which contains a unique pool of Virtel relays for each Virtel instance. Here are two possible ways to define the relay pools for multiple Virtel instances:</p>
+<p>The first way is to include the SYSCLONE value as part of the LU name. The relay definitions utilize the system symbolic SYSCLONE value in the IEASYMxx member of PARMLIB. The clone value is taken from the system symbolic &amp;SYSCLONE and is identified in the VIRTEL definitions through the + (plus) character:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LIST</span> <span class="n">of</span> <span class="n">TERMINALS</span> <span class="o">----------------------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">VIRTEL1A</span> <span class="mi">15</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">01</span>
+
+<span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+
+<span class="n">CLLOC000</span>  <span class="mi">0050</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTA000</span>  <span class="mi">0080</span>     <span class="o">*</span><span class="n">W2HPOOL</span>               <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DELOC000</span>  <span class="mi">0010</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DEVTA000</span>  <span class="mi">0016</span>     <span class="o">*</span><span class="n">W2HPOOL</span>               <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">W2HIM000</span>  <span class="mi">0080</span>     <span class="n">R</span><span class="o">+</span><span class="n">IM000</span>                <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HTP000</span>  <span class="mi">0080</span>     <span class="n">R</span><span class="o">+</span><span class="n">VT000</span>                <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2HPOOL</span> <span class="n">R</span><span class="o">+</span><span class="n">IM000</span>
+</pre></div>
+</div>
+<div class="section" id="tct-definition">
+<h3>TCT definition<a class="headerlink" href="#tct-definition" title="Permalink to this headline">¶</a></h3>
+<p>In the configuration above there are two Virtel STCs running on different LPARS whose &amp;SYSCLONE values are 1A and 2A. With the same TCT being used for both VIRTEL1A and VIRTEL2A the following is specified in the common TCT:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">+</span><span class="p">,</span>
+<span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>This will means that the two Virtels STCs will have a VTAM APPLID of VIRTEL1A and VIRTEL2A.  The Virtel relay LU names are R1AVT000-079 for LPAR 1A, and R2AVT000-079 for LPAR 2A.</p>
+<p>Note: It is recommended that only the ARBO file can be shared in this configuration.</p>
+<p>The VTAM definition to support this configuration would like:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
+* ------------------------------------------------------------------ *
+* Product     :  VIRTEL                                              *
+* Description :  APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)       *
+* ------------------------------------------------------------------ *
+VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),                *
+            ACBNAME=VIRTEL&amp;SYSCLONE
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=SNX32702,EAS=1
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=SCS,EAS=1
+R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
+</div>
+<p>Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool <a href="#id3"><span class="problematic" id="id4">*</span></a>W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool <a href="#id5"><span class="problematic" id="id6">*</span></a>W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
+
+<span class="n">CLLOC000</span>  <span class="mi">0500</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTA000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTB000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTC000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DELOC000</span>  <span class="mi">0010</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DEVTA000</span>  <span class="mi">0016</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">W2HIP000</span>  <span class="mi">1000</span>     <span class="n">P000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIQ000</span>  <span class="mi">1000</span>     <span class="n">Q000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIR000</span>  <span class="mi">1000</span>     <span class="n">R000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIS000</span>  <span class="mi">1000</span>     <span class="n">S000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIT000</span>  <span class="mi">1000</span>     <span class="n">T000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIU000</span>  <span class="mi">1000</span>     <span class="n">U000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HTJ000</span>  <span class="mi">1000</span>     <span class="n">J000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">P000</span>
+<span class="n">W2HTK000</span>  <span class="mi">1000</span>     <span class="n">K000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">Q000</span>
+<span class="n">W2HTL000</span>  <span class="mi">1000</span>     <span class="n">L000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">R000</span>
+<span class="n">W2HTM000</span>  <span class="mi">1000</span>     <span class="n">M000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">S000</span>
+<span class="n">W2HTN000</span>  <span class="mi">1000</span>     <span class="n">N000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">T000</span>
+<span class="n">W2HTO000</span>  <span class="mi">1000</span>     <span class="n">O000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">U000</span>
+</pre></div>
+</div>
+<p>The VTAM definitions would be similar to those from the previous example except the &amp;SYSCLONE would be replaced by the relay characters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL
+* ------------------------------------------------------------------ *
+* Product     :  VIRTEL                                              *
+* Description :  Main ACB for VIRTEL application                     *
+* ------------------------------------------------------------------ *
+VIRTEL&amp;SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,                +
+            ACBNAME=VIRTEL&amp;SYSCLONE
+* ------------------------------------------------------------------ *
+* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access        *
+* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access        *
+* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access        *
+* ------------------------------------------------------------------ *
+J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+* ------------------------------------------------------------------ *
+* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals       *
+* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals       *
+* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals       *
+* ------------------------------------------------------------------ *
+P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+</pre></div>
+</div>
+<div class="section" id="repeating-terminal-names-with-hexadecimal-names">
+<h4>Repeating terminal names with hexadecimal names.<a class="headerlink" href="#repeating-terminal-names-with-hexadecimal-names" title="Permalink to this headline">¶</a></h4>
+<p>Terminal definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.</p>
+<p>Pattern characters:</p>
+<p>&gt;  Alphabetic A-Z
+?  Alphanumeric A-Z, 0-9, $, #, &#64;
+%  Hexadecimal digits 0-9, A-F
+&lt;  Decimal digits 0-9</p>
+<p>Notes:
+•       Different combinations of pattern characters may be specified within a single field, for example RH&gt;VT?%%
+•       The terminal name and relay names do not have to follow the same pattern (see example below)
+•       The ‘?’ character cannot be used in the first character position of the terminal name field because this indicates a physical pool</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="p">:</span>
+<span class="n">Terminal</span> <span class="n">name</span> <span class="n">W2HVT000</span>
+<span class="n">Relay</span> <span class="n">name</span>    <span class="n">RHTERM</span><span class="o">%%</span>
+<span class="n">Relay2</span> <span class="n">name</span> <span class="n">RH</span><span class="o">&gt;</span><span class="n">X</span><span class="o">&lt;</span><span class="n">Z00</span>
+<span class="n">Repeat</span> <span class="n">count</span>  <span class="mi">256</span>
+</pre></div>
+</div>
+<p>Would generate terminals W2HVT000-W2HVT255 with relay names RHTERM00-RHTERMFF and relay2 names RHAX0Z00-RHIX5Z00</p>
+</div>
+</div>
+</div>
+<div class="section" id="xserver-using-virtel-with-apache-proxy-as-a-load-balancing-mechanism">
+<h2>XSERVER Using Virtel with Apache Proxy as a load balancing mechanism.<a class="headerlink" href="#xserver-using-virtel-with-apache-proxy-as-a-load-balancing-mechanism" title="Permalink to this headline">¶</a></h2>
+<p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
+<p><img alt="image8" src="../../../_images/image8.jpg" /></p>
+<p><em>Fig 9 – Using an Apache Proxy Server</em></p>
+<p>Again, to maintain session affinity the correct load balancing parameters must be used.  An example from the http.conf looks like this: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Virtel</span>
+<span class="c1">#</span>
+
+<span class="n">ProxyPass</span> <span class="o">/</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">/</span>
+<span class="n">ProxyPassReverse</span> <span class="o">/</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">/</span>
+
+<span class="o">&lt;</span><span class="n">Proxy</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">&gt;</span>
+<span class="n">BalancerMember</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">syt00101</span><span class="o">.</span><span class="n">gzaop</span><span class="o">.</span><span class="n">local</span><span class="p">:</span><span class="mi">41002</span> <span class="n">retry</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">BalancerMember</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">syt00101</span><span class="o">.</span><span class="n">gzaop</span><span class="o">.</span><span class="n">local</span><span class="p">:</span><span class="mi">51002</span> <span class="n">retry</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">ProxySet</span> <span class="n">lbmethod</span><span class="o">=</span><span class="n">byrequests</span>
+<span class="o">&lt;/</span><span class="n">Proxy</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For more information on setting up an Apache Proxy Server visit <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
+<p>To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># LoadModule foo_module modules/mod_foo.so</span>
+<span class="n">LoadModule</span> <span class="n">authz_host_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authz_host</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">auth_basic_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_auth_basic</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authn_file_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authn_file</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authz_user_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authz_user</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule authz_groupfile_module modules/mod_authz_groupfile.so</span>
+<span class="n">LoadModule</span> <span class="n">include_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_include</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">log_config_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_log_config</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">env_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_env</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule mime_magic_module modules/mod_mime_magic.so</span>
+<span class="c1">#LoadModule expires_module modules/mod_expires.so</span>
+<span class="n">LoadModule</span> <span class="n">headers_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_headers</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">unique_id_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_unique_id</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">setenvif_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_setenvif</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_connect_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_connect</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_http_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_http</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">mime_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_mime</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule dav_module modules/mod_dav.so</span>
+<span class="c1">#LoadModule dav_fs_module modules/mod_dav_fs.so</span>
+<span class="n">LoadModule</span> <span class="n">autoindex_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_autoindex</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule asis_module modules/mod_asis.so</span>
+<span class="c1">#LoadModule info_module modules/mod_info.so</span>
+<span class="n">LoadModule</span> <span class="n">cgi_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_cgi</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">dir_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_dir</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">actions_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_actions</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule speling_module modules/mod_speling.so</span>
+<span class="c1">#LoadModule userdir_module modules/mod_userdir.so</span>
+<span class="n">LoadModule</span> <span class="n">alias_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_alias</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule rewrite_module modules/mod_rewrite.so</span>
+<span class="c1">#LoadModule deflate_module modules/mod_deflate.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_balancer_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_balancer</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+<p>Some other recommendations are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Timeouts</span>
+<span class="n">SSLDisable</span>
+<span class="n">SSLV3Timeout</span> <span class="mi">18010</span>
+
+<span class="o">*</span> <span class="n">Format</span> <span class="n">log</span> <span class="k">with</span> <span class="n">router</span> <span class="n">information</span>
+<span class="n">LogFormat</span> <span class="s2">&quot;%h %l </span><span class="si">%u</span><span class="s2"> %t </span><span class="se">\&quot;</span><span class="si">%r</span><span class="se">\&quot;</span><span class="s2"> %&gt;s %b </span><span class="se">\&quot;</span><span class="s2">%</span><span class="si">{Referer}</span><span class="s2">i</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">%{User-Agent}i</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">%</span><span class="si">{BALANCER_WORKER_ROUTE}</span><span class="s2">e</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="n">combined</span>
+
+<span class="o">*</span> <span class="nb">set</span> <span class="n">Max</span><span class="o">-</span><span class="n">Age</span> <span class="n">to</span> <span class="mi">12</span><span class="n">h</span> <span class="p">(</span><span class="n">doesn</span><span class="s1">&#39;t work with IE)</span>
+<span class="ow">or</span>
+<span class="o">*</span> <span class="n">enable</span> <span class="n">mod_expires</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">:</span> <span class="p">(</span><span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">checked</span><span class="p">)</span>
+<span class="n">ExpiresActive</span> <span class="n">On</span>
+<span class="n">ExpiresDefault</span> <span class="s2">&quot;access plus 16 h&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://httpd.apache.org/docs/2.2/mod/mod_expires.html">https://httpd.apache.org/docs/2.2/mod/mod_expires.html</a> for more information.</p>
+</div>
+<div class="section" id="appendix-a-sample-definitions">
+<h2>Appendix A – Sample Definitions<a class="headerlink" href="#appendix-a-sample-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sample-tcpip-parms-for-sysplex-distributor">
+<h3>Sample TCPIP Parms for Sysplex Distributor<a class="headerlink" href="#sample-tcpip-parms-for-sysplex-distributor" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ZAMVS1</span>
+<span class="p">;</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span> <span class="n">VIPA</span> <span class="k">for</span> <span class="n">SPVIR1A</span> <span class="ow">and</span> <span class="n">SPVIR2A</span> <span class="n">distribution</span> <span class="n">tests</span>
+
+<span class="n">VIPADYNAMIC</span>
+    <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.20</span>
+    <span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">DESTIP</span> <span class="n">ALL</span>
+<span class="n">ENDVIPADYNAMIC</span>
+
+<span class="n">ZAMVS2</span>
+<span class="n">VIPADYNAMIC</span>
+    <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPT</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.20</span>
+    <span class="n">VIPABACKUP</span> <span class="mi">100</span> <span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span>
+<span class="n">ENDVIPADYNAMIC</span>
+
+<span class="n">Portshare</span> <span class="n">Obey</span> <span class="n">File</span>   <span class="p">(</span><span class="n">VirPlex</span> <span class="ow">or</span> <span class="n">MultiSys</span> <span class="n">Scenario</span><span class="p">)</span>
+
+<span class="p">;</span><span class="n">VARY</span> <span class="n">TCPIP</span><span class="p">,,</span><span class="n">O</span><span class="p">,</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">OBPROF00</span><span class="p">)</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH0</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH1</span>
+<span class="n">DELETE</span> <span class="n">PORT</span> <span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH2</span>
+
+<span class="n">PORT</span>
+<span class="p">;</span> <span class="n">VIRPLEX</span>  <span class="n">Range</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH0</span> <span class="n">SHAREPORT</span>    <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH1</span>              <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+<span class="mi">31020</span> <span class="n">TCP</span> <span class="n">SPVIREH2</span>              <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtel-started-task">
+<h3>Virtel Started task<a class="headerlink" href="#virtel-started-task" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//**********************************************************************</span>
+<span class="o">//*</span> <span class="n">Maintained</span> <span class="ow">in</span> <span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">CNTL</span>                                                                 <span class="o">*</span>
+<span class="o">//**********************************************************************</span>
+<span class="o">//</span><span class="n">VIRTPLEX</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=&amp;</span><span class="n">HLQ</span><span class="p">,</span>
+<span class="o">//</span>         <span class="n">QUALD</span><span class="o">=&amp;</span><span class="n">HLQ</span><span class="o">..</span><span class="n">V</span><span class="o">&amp;</span><span class="n">REL</span><span class="p">,</span>           <span class="o">&lt;</span> <span class="n">TEST</span> <span class="n">LIBRARY</span>
+<span class="o">//</span>         <span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span>                             <span class="n">READ</span> <span class="n">ONLY</span> <span class="n">TCT</span> <span class="p">(</span><span class="mi">99</span> <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="n">W</span><span class="p">)</span>
+<span class="o">//</span>         <span class="n">PROG</span><span class="o">=</span><span class="n">VIR0000</span><span class="p">,</span>                <span class="n">PROGRAM</span> <span class="n">TO</span> <span class="n">CALL</span>
+<span class="o">//</span>         <span class="n">IP</span><span class="o">=</span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.30</span>                  <span class="n">NOT</span> <span class="n">USED</span> <span class="n">BY</span> <span class="n">READER</span>
+<span class="o">//</span><span class="n">VIRTPLEX</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=&amp;</span><span class="n">PROG</span><span class="p">,</span>
+<span class="o">//</span>             <span class="n">TIME</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span><span class="p">,</span>
+<span class="o">//</span>             <span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;TCT,&amp;APPLID,,&amp;IP&#39;</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUALD</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">DFHRPL</span>   <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUALD</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SERVLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUALD</span><span class="o">..</span><span class="n">SERVLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">VSAM</span> <span class="n">FILES</span> <span class="n">SHARED</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">USERTRSF</span> <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">USER</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SAMPTRSF</span> <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">SAMP</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">HTMLTRSF</span> <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">HTML</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRHTML</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">HTML</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">VSAM</span> <span class="n">FILES</span> <span class="n">UNIQUE</span>
+<span class="o">//</span><span class="n">VIRSWAP</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">.&amp;</span><span class="n">SYSCLONE</span><span class="o">..</span><span class="n">SWAP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">NVSAM</span>
+<span class="o">//</span><span class="n">SYSOUT</span>   <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRLOG</span>   <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRTRACE</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+</pre></div>
+</div>
+<p>JCL to initiate USER instance of Virtel</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">VIRTPLEX</span> <span class="n">EXEC</span> <span class="n">VIRTELD</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">462</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.83</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL00</span>
+</pre></div>
+</div>
+<p>JCL to initiate Administration Instance of Virtel</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">SYSCLONE</span><span class="o">=</span><span class="mi">99</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELD</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRTEL</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">462</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.71</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL99</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tct-definitions">
+<h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virtct00-user-instance">
+<h4>VIRTCT00   USER Instance<a class="headerlink" href="#virtct00-user-instance" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        TITLE &#39;VIRTEL TCT USER&#39;
+        PRINT NOGEN
+        VIRTERM TYPE=INITIAL,APPLID=VIRTEL+,
+            SYSPLUS=YES,            SYSPLEX SUPPORTED
+            GRNAME=VIRTPLEX,        VTAM GENERIC RESOURCE
+            LANG=&#39;E&#39;,               LANGUAGE FOR USER MESSAGES
+            COUNTRY=US,             EBCDIC-ASCII TRANSLATION
+            DEFUTF8=IBM1140,        DEFAULT OUTPUT ENCODING UTF-8
+            CHARSET=,
+            GMT=SYSTZ,
+            TCP1=(TCPIP,,,12500),             &lt;------
+            TRACTIM=LOCAL,
+            VIRSV1=(VIRSV),
+            HTVSAM=VIRHTML,                   &lt;------
+            HTMINI=(1,1),
+            BUFSIZE=32000,
+            BFVSAM=32768,          --&gt; FROM V453
+            VSAMTYP=READONLY,      --&gt; VIRPLEX READONLY
+            UPARMS=(USERPARM),     --&gt; USER PARM ON
+            IGNLU=(W-HTTP,C-HTTP), --&gt; DISABLE ADMIN AND CLI
+            ACCUEIL=YES,
+            DEFENTR=(PC,MINITEL),
+            CORRECT=00,
+            LOG=CONSOLE,
+            STATS=NO,             OR (MULTI,CONTINUE/TERMINATE)
+            APPSTAT=YES,
+            DONTSWA=YES,
+            NBDYNAM=250,
+            MEMORY=ABOVE,
+            MULTI=YES,RESO=NO,ARBO=YES,MINITEL=YES,
+            VIRSECU=NO,SECUR=(RACROUTE,RACF),
+            RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,
+            UFILE1=(SAMPTRSF,ACBH1,0,10,05),
+            UFILE2=(HTMLTRSF,ACBH2,0,10,05),
+            UFILE3=(VIRHTML,ACBH3,0,10,05),
+            UFILE4=(USERTRSF,ACBH4,0,10,05),
+            GATE=GENERAL,
+            NBCVC=32,
+            SILENCE=NO,
+            ……
+
+ACBH1    ACB   AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR),
+            STRNO=3
+ACBH2    ACB   AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR),                *
+            STRNO=3
+ACBH3    ACB   AM=VSAM,DDNAME=VIRHTML,MACRF=(SEQ,DIR),                 *
+            STRNO=3
+ACBH4    ACB   AM=VSAM,DDNAME=USERTRSF,MACRF=(SEQ,DIR),                *
+            STRNO=3
+        END
+</pre></div>
+</div>
+</div>
+<div class="section" id="virtct99-admin-instance">
+<h4>VIRTCT99   Admin Instance<a class="headerlink" href="#virtct99-admin-instance" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        TITLE &#39;VIRTEL TCT FOR ADMIN&#39;
+        PRINT NOGEN
+        VIRTERM TYPE=INITIAL,APPLID=VIRTEL+,                          *
+            SYSPLUS=YES,                                            *
+            GRNAME=VIRTPLEX,                                        *
+            LANG=&#39;E&#39;,               LANGUAGE FOR USER MESSAGES      *
+            COUNTRY=US,             EBCDIC-ASCII TRANSLATION        *
+            DEFUTF8=IBM1140,        DEFAULT OUTPUT ENCODING UTF-8   *
+            CHARSET=,                                               *
+            GMT=SYSTZ,                                              *
+            TCP1=(TCPIP,,,240),     TCPIPNAME,,,MAXSOCKETS          *
+            TRACTIM=LOCAL,                                          *
+            VIRSV1=(VIRSV),                                         *
+            HTVSAM=VIRHTML,                                         *
+            HTMINI=(1,1),                                           *
+            BFVSAM=32768,                                           *
+            BUFSIZE=32000,                                          *
+            VSAMTYP=WRITER,        ==&gt; VIRPLEX WRITER INSTANCE      *
+            IGNLU=(C-HTTP,V-HTTP), ==&gt; DISABLE ANY USER LINES       *
+            ACCUEIL=YES,                                            *
+            DEFENTR=(PC,MINITEL),                                   *
+            CORRECT=00,                                             *
+            STATS=NO,                                               *
+            LOG=CONSOLE,                                            *
+            APPSTAT=YES,                                            *
+            DONTSWA=YES,                                            *
+            NBDYNAM=250,                                            *
+            MEMORY=ABOVE,                                           *
+            MULTI=YES,RESO=NO,ARBO=YES,MINITEL=YES,                 *
+            VIRSECU=YES,SECUR=(RACROUTE,RACF),                      *
+            RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,          *
+            UFILE1=(SAMPTRSF,ACBH1,0,10,05),                        *
+            UFILE2=(HTMLTRSF,ACBH2,0,10,05),                        *
+            UFILE3=(VIRHTML,ACBH3,0,10,05),                         *
+            UFILE4=(USERTRSF,ACBH4,0,10,05),                        *
+            GATE=GENERAL,                                           *
+            NBCVC=32,                                               *
+            SILENCE=NO,                                             *
+            …
+ACBH1    ACB   AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR),                *
+            STRNO=3
+ACBH2    ACB   AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR),                *
+            STRNO=3
+ACBH3    ACB   AM=VSAM,DDNAME=VIRHTML,MACRF=(SEQ,DIR),                 *
+            STRNO=3
+ACBH4    ACB   AM=VSAM,DDNAME=USERTRSF,MACRF=(SEQ,DIR),                *
+            STRNO=3
+        END
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arbo-definitions">
+<h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this headline">¶</a></h3>
+<p>Line using VIPA IP address</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="p">(</span><span class="n">EN</span><span class="p">)</span><span class="o">*</span> <span class="n">Line</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="o">=&gt;</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">CLIWHOST</span> <span class="o">=&gt;</span> <span class="n">directory</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">*</span>
+    <span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
+            <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span><span class="p">,</span>
+            <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">10.20</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41002</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (entry point CLIWHOST)&#39;</span><span class="p">,</span>
+            <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CL</span><span class="p">,</span>
+            <span class="n">ENTRY</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>
+            <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>
+            <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+            <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+            <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+            <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pools">
+<h3>Pools<a class="headerlink" href="#pools" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">EN</span><span class="p">)</span><span class="o">*</span> <span class="n">Relay</span> <span class="n">pool</span> <span class="k">for</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">HTTP</span> <span class="n">lines</span><span class="o">.</span> <span class="n">Note</span> <span class="n">use</span> <span class="n">of</span> <span class="o">+</span> <span class="n">which</span> <span class="n">becomes</span> <span class="o">&amp;</span><span class="n">SYSCLONE</span>
+<span class="o">*</span>
+    <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2HTP000</span><span class="p">,</span>
+            <span class="n">RELAY</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT000</span><span class="p">,</span>                                  <span class="o">&lt;</span> <span class="n">VTAM</span> <span class="n">LU</span> <span class="n">NAME</span> <span class="n">to</span> <span class="n">use</span>
+            <span class="n">POOL</span><span class="o">=*</span><span class="n">W2HPOOL</span><span class="p">,</span>                                          <span class="o">&lt;</span> <span class="n">Define</span> <span class="n">Pool</span> <span class="n">Name</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Relay pool for HTTP&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Pool de relais HTTP&#39;</span><span class="p">,</span>
+            <span class="n">RELAY2</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">IM000</span><span class="p">,</span>                                 <span class="o">&lt;</span> <span class="n">Identify</span> <span class="n">secondary</span> <span class="n">LU</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+            <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0080</span>
+    <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2HIM000</span><span class="p">,</span>
+            <span class="n">RELAY</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">IM000</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SCS printers (LUTYPE1) for HTTP&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Imprimantes SCS (LUTYPE1) pour HTTP&#39;</span><span class="p">,</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="n">S</span><span class="p">,</span>
+            <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+            <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0080</span>
+    <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2HIP000</span><span class="p">,</span>
+            <span class="n">RELAY</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">IP000</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;3270 printers (LUTYPE3) for HTTP&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Imprimantes 3270 (LUTYPE3) pour HTTP&#39;</span><span class="p">,</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="n">P</span><span class="p">,</span>
+            <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+            <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0080</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="terminals">
+<h3>Terminals<a class="headerlink" href="#terminals" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLLOC000</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (no relay)&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminaux HTTP sans relais&#39;</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0050</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLVTA000</span><span class="p">,</span>                                           <span class="o">&lt;</span><span class="n">Terminal</span> <span class="n">Prefix</span>
+        <span class="n">RELAY</span><span class="o">=*</span><span class="n">W2HPOOL</span><span class="p">,</span>                               <span class="o">&lt;</span><span class="n">Identify</span> <span class="n">Pool</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (with relay)&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminaux HTTP avec relais&#39;</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0080</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entry-point-and-transactions">
+<h3>Entry Point and Transactions<a class="headerlink" href="#entry-point-and-transactions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span>    <span class="n">ID</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP entry point (CLIENT application)&#39;</span><span class="p">,</span>
+        <span class="n">TRANSACT</span><span class="o">=</span><span class="n">CLI</span><span class="p">,</span>                                       <span class="o">&lt;</span> <span class="n">Transaction</span> <span class="n">Prefix</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
+        <span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>
+        <span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>
+        <span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span>
+        <span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>                                                 <span class="o">&lt;</span> <span class="n">Use</span> <span class="n">CLI</span> <span class="k">as</span> <span class="n">prefix</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s2">&quot;Default directory = entry point name&quot;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">TIOASTA</span><span class="o">=</span><span class="s1">&#39;/w2h/appmenu.htm+applist&#39;</span>
+
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span>                         <span class="o">&lt;</span><span class="n">Start</span> <span class="k">with</span> <span class="n">CLI</span><span class="o">.</span> <span class="n">Associate</span> <span class="k">with</span> <span class="n">Entry</span> <span class="n">Point</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Cics&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to CICS&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">DBDCCICS</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>                     <span class="o">&lt;</span><span class="n">Identify</span> <span class="n">Terminal</span> <span class="n">Prefix</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;IMS&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to IMS&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">IMS3270</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vtam-definitions">
+<h3>VTAM Definitions<a class="headerlink" href="#vtam-definitions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
+* ------------------------------------------------------------------ *
+* Product     :  VIRTEL                                              *
+* Description :  APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)       *
+* ------------------------------------------------------------------ *
+VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),                *
+            ACBNAME=VIRTEL&amp;SYSCLONE
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=SNX32702,EAS=1
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=SCS,EAS=1
+R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
+            DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
+</div>
+<p>Screen shot of terminal definitions</p>
+<p><img alt="image9" src="../../../_images/image939.png" /></p>
+<p><em>Fig 10 - Terminal definitions</em></p>
+</div>
+<div class="section" id="startup-syslog">
+<h3>Startup SYSLOG<a class="headerlink" href="#startup-syslog" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>S SPVIR2A
+$HASP100 SPVIR2A  ON STCINRDR
+IEF695I START SPVIR2A  WITH JOBNAME SPVIR2A  IS ASSIGNED TO USER
+SPVIRSTC, GROUP SPGPTECH
+$HASP373 SPVIR2A  STARTED
+IEF403I SPVIR2A - STARTED - TIME=09.17.10
+VIR6004I ATTACH VIRSV SUCCESSFUL TCB=008F8368 PROG=VSVTINIT
+VSV0207I VIRSV V3R3 STARTED
+VIR6006I INITIALIZE VIRSV SUCCESSFUL
+VIR6012I ATTACH VIRTEL SUCCESSFUL TCB=008CF610 PROG=VIR6001
+VIR0096I VIRTEL IS USING VIRTCT &#39;VIRTCT2A&#39;
+VIR0000I STARTING LICENCE P500 - PERMANENT (2999 - 12 - 31)
+VIR0018I VIRTEL 4.57 HAS THE FOLLOWING PTF(S) APPLIED
+VIR0018I 5530,5540,5549,5557,5559,5559A,5567,5598
+VIR0018I 5598A,5598B,5602,5602A,5609,5609A,5613,5637
+VIR0089I VIRTEL RUNNING FROM AN AUTHORIZED LIBRARY
+VIR0860I VIRTEL IS USING RACROUTE SECURITY
+VIR0861I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
+VIR0093I VTAM GENERIC RESOURCE NAME IS VIRTPLEX                             &lt; VTAM Generic
+VIR0024I OPENING FILE VIRARBO
+VIR0024I READ ONLY
+VIR0024I OPENING FILE VIRSWAP
+VIR0024I OPENING FILE VIRHTML
+VIR0024I READ ONLY
+VIR0024I OPENING FILE SAMPTRSF
+VIR0024I READ ONLY
+VIR0024I OPENING FILE HTMLTRSF
+VIR0024I READ ONLY
+VIR0024I ATTACHING SUBTASKS
+VIR0235I VIRTEL LOG ROUTINE VIR0002A LOADED
+VIR0024I READING VIRARBO
+VIR0000I THIS COPY OF VIRTEL IS FOR THE EXCLUSIVE USE OF:
+VIR0000I SYSPERTEC COMMUNICATION
+VIR0000I 196 BUREAUX DE LA COLLINE
+VIR0000I 92213 SAINT CLOUD CEDEX
+VIR0000I HTTP Date: Wed, 13 Mar 2019 08:17:14 GMT
+VIR0000I SMTP Date: Wed, 13 Mar 2019 09:17:14 +0100
+VIR0099I VIRTEL2A STARTED AT 13/03/19  9:17:14 , VERSION 4.57               &lt; VTAM
+VIR0900I LICENCE P500 - PERMANENT (2999 - 12 - 31)
+VIRHT01I HTTP INITIALISATION FOR HTTP-CLI (A-HTTP  ), VERSION 4.57
+VIRHT01I HTTP INITIALISATION FOR HTTP-CLI (B-HTTP  ), VERSION 4.57
+VIRHT01I HTTP INITIALISATION FOR HTTP-CLI (C-HTTP  ), VERSION 4.57
+VIRHT01I HTTP INITIALISATION FOR PCL2PDF  (P-PCLPDF), VERSION 4.57
+VIRHT01I HTTP INITIALISATION FOR HTTP-W2H (W-HTTP  ), VERSION 4.57
+VIR0505I LINKING TERMINAL ALLOC000 TO A-HTTP
+VIR0505I LINKING TERMINAL ALLOC001 TO A-HTTP
+VIR0505I LINKING TERMINAL ALLOC002 TO A-HTTP
+</pre></div>
+</div>
+</div>
+<div class="section" id="vtam-displays">
+<h3>VTAM Displays<a class="headerlink" href="#vtam-displays" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTEL2A</span><span class="p">,</span><span class="n">E</span>
+<span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
+<span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">APPL</span> <span class="mi">755</span>
+<span class="n">IST486I</span> <span class="n">STATUS</span><span class="o">=</span> <span class="n">ACTIV</span><span class="p">,</span> <span class="n">DESIRED</span> <span class="n">STATE</span><span class="o">=</span> <span class="n">ACTIV</span>
+<span class="n">IST1447I</span> <span class="n">REGISTRATION</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">CDSERVR</span>
+<span class="n">IST1363I</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">VIRTPLEX</span> <span class="n">REPRESENTS</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL2A</span>
+<span class="n">IST977I</span> <span class="n">MDLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">ASLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST861I</span> <span class="n">MODETAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USSTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">LOGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST934I</span> <span class="n">DLOGMOD</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USS</span> <span class="n">LANGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST1632I</span> <span class="n">VPACING</span> <span class="o">=</span>  <span class="mi">7</span>
+<span class="n">IST1938I</span> <span class="n">APPC</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST597I</span> <span class="n">CAPABILITY</span><span class="o">-</span><span class="n">PLU</span> <span class="n">ENABLED</span>  <span class="p">,</span><span class="n">SLU</span> <span class="n">ENABLED</span>  <span class="p">,</span><span class="n">SESSION</span> <span class="n">LIMIT</span> <span class="n">NONE</span>
+<span class="n">IST231I</span> <span class="n">APPL</span> <span class="n">MAJOR</span> <span class="n">NODE</span> <span class="o">=</span> <span class="n">APPLVIPX</span>
+<span class="n">IST654I</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">BUFFER</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST1500I</span> <span class="n">STATE</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST271I</span> <span class="n">JOBNAME</span> <span class="o">=</span> <span class="n">SPVIR2A</span><span class="p">,</span> <span class="n">STEPNAME</span> <span class="o">=</span> <span class="n">SPVIR2A</span><span class="p">,</span> <span class="n">DSPNAME</span> <span class="o">=</span> <span class="n">ISTD6217</span>
+<span class="n">IST228I</span> <span class="n">ENCRYPTION</span> <span class="o">=</span> <span class="n">OPTIONAL</span> <span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">DES</span>
+<span class="n">IST1563I</span> <span class="n">CKEYNAME</span> <span class="o">=</span> <span class="n">VIRTEL2A</span> <span class="n">CKEY</span> <span class="o">=</span> <span class="n">PRIMARY</span> <span class="n">CERTIFY</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST1552I</span> <span class="n">MAC</span> <span class="o">=</span> <span class="n">NONE</span> <span class="n">MACTYPE</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">IST1050I</span> <span class="n">MAXIMUM</span> <span class="n">COMPRESSION</span> <span class="n">LEVEL</span> <span class="o">-</span> <span class="n">INPUT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">OUTPUT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IST1633I</span> <span class="n">ASRCVLM</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">IST1634I</span> <span class="n">DATA</span> <span class="n">SPACE</span> <span class="n">USAGE</span><span class="p">:</span> <span class="n">CURRENT</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">MAXIMUM</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IST171I</span> <span class="n">ACTIVE</span> <span class="n">SESSIONS</span> <span class="o">=</span> <span class="mi">0000000000</span><span class="p">,</span> <span class="n">SESSION</span> <span class="n">REQUESTS</span> <span class="o">=</span> <span class="mi">0000000000</span>
+<span class="n">IST172I</span> <span class="n">NO</span> <span class="n">SESSIONS</span> <span class="n">EXIST</span>
+<span class="n">IST314I</span> <span class="n">END</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vtam-generic-resource-virtplex">
+<h3>VTAM Generic Resource  - VIRTPLEX<a class="headerlink" href="#vtam-generic-resource-virtplex" title="Permalink to this headline">¶</a></h3>
+<p>Logon to VIRTPLEX (Administration Interface). From any 3270 session – “L VIRTPLEX” brings up Virtel Interface. Here we logon to VIRTPLEX through a Virtel session:-</p>
+<ol class="arabic simple">
+<li><p>Virtel</p></li>
+</ol>
+<p><img alt="image10" src="../../../_images/image1029.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>Logon onto VIRTPLEX</p></li>
+</ol>
+<p><img alt="image11" src="../../../_images/image1140.png" /></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../TN202304/TN202304.html" class="btn btn-neutral float-left" title="Customizable Application Menu - cAppMenu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
