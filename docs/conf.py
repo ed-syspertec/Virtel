@@ -111,14 +111,10 @@ htmlhelp_basename = 'Virteldoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-          'preamble': '''
-% Enable unicode and use Courier New to ensure the card suit
-% characters that are part of the 'random' module examples
-% appear properly in the PDF output.
-\usepackage{fontspec}
-\setmonofont{Courier New}
-''',
- # disable font inclusion
+'preamble': '''
+usepackage{fontspec}
+setmonofont{Courier New}''',
+# disable font inclusion
  'fontpkg': '',
  'fontenc': '',
  # Fix Unicode handling by disabling the defaults for a few items

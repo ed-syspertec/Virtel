@@ -11645,7 +11645,7 @@ Batch Entry Point, and the Transactions which will be executed by the VIRTEL Bat
         //VIRARBO DD DSN=yourqual.VIRBATCH.ARBO,DISP=SHR
             LINE ID=B-BT1,NAME=BATCH-L1,
                 DESC='VIRTEL Batch line',
-                TYPE=BATCH1,ENTRY=EPBATCH,TERMINAL=BT,
+                TYPE=BATCH1,ENTRY=EPBATCH,TERMINAL=BT,RETRY=2,
                 INOUT=1,PROTOCOL=VIRHTTP,RULESET=B-BT1
             TERMINAL ID=BTLOC000,
                 DESC='VIRTEL Batch terminals (no relay)',

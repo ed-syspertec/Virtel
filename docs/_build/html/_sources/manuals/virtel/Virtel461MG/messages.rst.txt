@@ -2207,7 +2207,7 @@ VIR0060W MAPFAIL WAS DETECTED ON TERMINAL luname
 Module
     VIR0010
 Meaning
-    Conflict between a VIRTEL program and a sub application screen.
+    Conflict between a VIRTEL program and a sub application screen. This message can occur if a badly coded USSTAB is presented to a Virtel sub-application. See the USSTAB MSG10 section in the customization guide for details on how to correctly code a Virtel USSTAB. 
 Action
     Contact technical support.
 

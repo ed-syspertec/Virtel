@@ -1,93 +1,50 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customizing Virtel V4.59 from scratch &mdash; Virtel 9 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="What’s new in Virtel 4.60 GA Release" href="../TN202003/TN202003.html" />
     <link rel="prev" title="Converting a VBA macro" href="../TN202001/TN202001.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
           
-
-          
-            
-            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
-          
+          <a href="../../../index.html" class="icon icon-home">
+            Virtel
+              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 4.61
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -117,78 +74,39 @@
 </li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-        
-      <li>Customizing Virtel V4.59 from scratch</li>
-    
-    
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../newsletters.html">Technical Newsletters</a></li>
+      <li class="breadcrumb-item active">Customizing Virtel V4.59 from scratch</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../../_sources/manuals/newsletters/TN202002/TN202002.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="customizing-virtel-v4-59-from-scratch">
-<span id="tn202002"></span><h1>Customizing Virtel V4.59 from scratch<a class="headerlink" href="#customizing-virtel-v4-59-from-scratch" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="customizing-virtel-v4-59-from-scratch">
+<span id="tn202002"></span><h1>Customizing Virtel V4.59 from scratch<a class="headerlink" href="#customizing-virtel-v4-59-from-scratch" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>In this newsletter we discuss the various customization options and features that can be applied to Virtel following a clean installation.</p>
-</div>
-<div class="section" id="customization">
-<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="customization">
+<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this heading">¶</a></h2>
 <p>In this section we see how to customize Virtel to use customized parameters and introduce the “option” mode. We show how to set up some “global” parameter settings which will override the Virtel internal defaults. Customization comes in the form of setting user options, introducing user CSS style sheets and executing user Javascript scripts.</p>
 <p>With regard to customization, Virtel supports three modes of customization: -</p>
 <blockquote>
@@ -198,35 +116,35 @@
 <li><p>Compatibility mode:  To provide “backward” compatibility for older versions of Virtel (V4.56 and less).</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="default-mode">
-<h3>Default Mode<a class="headerlink" href="#default-mode" title="Permalink to this headline">¶</a></h3>
+<section id="default-mode">
+<h3>Default Mode<a class="headerlink" href="#default-mode" title="Permalink to this heading">¶</a></h3>
 <p>The default mode is running Virtel without implementing “compatibility” or “option” mode. Changes are directly made to the default entities within their delivered directories - (parameter objects, CSS styles and JavaScript scripts). The default search orders is not modified in this mode of operation.</p>
-</div>
-<div class="section" id="option-mode">
-<h3>Option Mode<a class="headerlink" href="#option-mode" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="option-mode">
+<h3>Option Mode<a class="headerlink" href="#option-mode" title="Permalink to this heading">¶</a></h3>
 <p>Option mode provides a comprehensive customization solution which provides the ability to provide customization at the transaction level. For example, a TSO transaction may present a different screen presentation to a CICS transaction. In comparison, Default and Compatibility mode only provide customization at the Entry Point level at applies to all the transactions supported by that Entry point.</p>
-</div>
-<div class="section" id="compatibility-mode">
-<h3>Compatibility Mode<a class="headerlink" href="#compatibility-mode" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="compatibility-mode">
+<h3>Compatibility Mode<a class="headerlink" href="#compatibility-mode" title="Permalink to this heading">¶</a></h3>
 <p>Compatibility mode changes the search order Virtel uses when locating customized parameters, CSS, JavaScript and Help elements. Compatibility mode is used to support older versions of Virtel and also provides backward level support when migrating to new versions of Virtel. It is recommended that “compatibility” users migrate to the “Option” mode to take advantage of new Virtel features.</p>
 <p>From Virtel V.56 onwards, compatibility mode is enforced through the following statement in the TCT:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTSET1</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">),</span>                  <span class="o">*</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="what-can-be-customized">
-<h3>What can be customized<a class="headerlink" href="#what-can-be-customized" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="what-can-be-customized">
+<h3>What can be customized<a class="headerlink" href="#what-can-be-customized" title="Permalink to this heading">¶</a></h3>
 <p>There are several HTML entities that can be customized to provide features and functions that are user or site specific. For example, company logos in some of the presentation templates, customized ICONS on the Virtel tool bar that can launched bespoke JavaScript procedure and user Fonts and display styles. These and many more options can be set through customized JavaScript, Virtel Parameters, Cascading Style Sheets (CSS) and Help templates.</p>
-</div>
-<div class="section" id="default-ports">
-<h3>Default Ports<a class="headerlink" href="#default-ports" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="default-ports">
+<h3>Default Ports<a class="headerlink" href="#default-ports" title="Permalink to this heading">¶</a></h3>
 <p>As delivered, Virtel defines two access ports, 41001 and 41002. It is important to note that 41001, by default, should only be used for the Administration of Virtel. It should not be used to support customer transactions or customized entities. Port 41002, and any other port, can be used to support customer transactions. Port 41002 is delivered as a “customized” access point to support customers legacy 3270 applications. For example, CICS, TSO and IMS based applications. Each port is associated with an Entry Point - 41001 uses the Entry Point WEB2HOST and port 41002 uses CLIWHOST.</p>
-</div>
-<div class="section" id="w2h-parameters">
-<h3>W2H Parameters<a class="headerlink" href="#w2h-parameters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="w2h-parameters">
+<h3>W2H Parameters<a class="headerlink" href="#w2h-parameters" title="Permalink to this heading">¶</a></h3>
 <p>Customisation of Virtel begins with understanding that the defaults are programmatically set by Virtel. These are listed in “Appendix A” of this newsletter. Most of the Virtel parameter defaults can be overridden by setting properties within a JavaScript object called w2hParm. This object is defined in a javascript member called w2hparm.js. By default it is null. Users can override the default options by coding a user w2hparm.js. A sample w2hparm.js file can be found in the delivered CLI-DIR. The following URLs can be used to show the contents of the default w2hparm.js member.</p>
 <p>For the W2H Administration port (41001) use the following URL  :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
 <p>Any example of the default w2hparm.js would look like :-</p>
@@ -254,7 +172,7 @@
 </pre></div>
 </div>
 <p>Here you can see that an empty object is defined with no overriding defaults.  For the customer port, or the CLI User line (41002), use the following URL :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
 <p>Here is what we get.</p>
@@ -284,11 +202,11 @@
 </pre></div>
 </div>
 <p>You can see that some of the defaults have been overridden with “customer” options and settings. At this point line 41001 and 41002 both have different w2hparm settings. For line 41001 we have no overrides, and for 41002, we have set some specific customer options. In the following sections we look at how this can be altered so that common Virtel parameters can be set globally; set at a line or port level, or even at a transaction level using transaction “option” mode.</p>
-</div>
-<div class="section" id="defining-the-w2hparm-js-parameter-location">
-<h3>Defining the w2hparm.js parameter location<a class="headerlink" href="#defining-the-w2hparm-js-parameter-location" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="defining-the-w2hparm-js-parameter-location">
+<h3>Defining the w2hparm.js parameter location<a class="headerlink" href="#defining-the-w2hparm-js-parameter-location" title="Permalink to this heading">¶</a></h3>
 <p>For any Virtel Entry Point/Port, the location of w2hparm.js file is determined by the transaction <strong>XXX-03P</strong> where <strong>XXX</strong> defines the entry point transaction prefix. As delivered, there are two main entry points, WEB2HOST which has a transaction prefix of W2H, and CLIWHOST with a transaction prefix of CLI. Within these Entry Points we will find the W2H-03P and CLI-03P transactions.</p>
-<p><a class="reference internal" href="../../../_images/image158.png"><img alt="image1" src="../../../_images/image158.png" style="width: 955.0px; height: 517.0px;" /></a>
+<p><a class="reference internal" href="../../../_images/image164.png"><img alt="image1" src="../../../_images/image164.png" style="width: 955.0px; height: 517.0px;" /></a>
 <em>Figure 1 -  Example of CLI-03P transaction</em></p>
 <p>CLI-03P defines the location of w2hparm.js within the CLI-DIR, as defined in the Application setting. By default, for the W2H-03P transaction, the w2hparm.js file will be found in the W2H-DIR directory. Keeping separate w2hparm entities may not be what is required. Some clients want to use only one w3hparm set up. To use only one copy of the parameter file w2hparm.js, for both CLI and W2H directories, we can modify the Application setting in W2H-03P transaction and set the location as being CLI-DIR, and not the default W2H-DIR. Now there will be one parameter file for both W2H and CLI transactions and that parameter file will be located in the CLI directory.</p>
 <p>To modify the W2H-03P transaction use either the online Administration Portal, found on port 41001, or run the following batch job. If you are running the batch job Virtel must be down :-</p>
@@ -316,14 +234,14 @@
 <p>To run this job, stop Virtel first. Also, after making any changes, refresh the browser cache to pull in any new updates. [CTRL-R or CTRL+SHIFT+DEL]</p>
 <p>After updating the W2H-03P transaction, all W2H transactions and CLI transactions will use the w2hparm settings of the w2hparm.js file located in CLI-DIR. This can now be considered the default position with regard to customization. Any future Virtel upgrades or migrations will not affect these customised settings.</p>
 <p>At this point both Ports 41001 and 41002 will be using a common set of Virtel parameters. The default programmatically set options and the overrides defined in the w2hparm.js file, maintained in the CLI-DIR directory. For some customers this is all that is required to meet the requirement to have a global set of Virtel Parameters; no further customization is necessary. If a new line and Entry point are added, then the XXX-03P transaction within the new Entry point just needs to refer to CLI-DIR to pick up the global parameters. In the following sections we look how to further expand setting parameters at both the Entry point (“Global”) level and transaction level using the “option” mode.</p>
-</div>
-<div class="section" id="basic-customization">
-<h3>Basic customization<a class="headerlink" href="#basic-customization" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="basic-customization">
+<h3>Basic customization<a class="headerlink" href="#basic-customization" title="Permalink to this heading">¶</a></h3>
 <p>The simplest way to customize Virtel is just to modify the default w2hparm.js members in the CLI and W2H directories with user options and upload the modified w2hparm.js file to the relevant directory. This approach, however, has its drawbacks. Firstly, you have to maintain separate w2hparm.js entities for each port/entry name; secondly the w2hparm.js in the W2H directory will get overwritten during a migration/update and finally, the w2h parameters cannot be tailored to individual transaction requirements; they are global and apply to all transactions belonging to a particular line/entry point.</p>
 <p>Since Virtel V4.56, the “option” mode was introduced to overcome these issues. We have already discussed how we can define a common set of parameters and have each line/entry point point locate it through the XXX-03P transaction. Now we will look at the customization of parameters through the use of the ‘option’ mode which provides further customization granularity.</p>
-</div>
-<div class="section" id="defining-the-option-mode">
-<h3>Defining the “Option” mode<a class="headerlink" href="#defining-the-option-mode" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="defining-the-option-mode">
+<h3>Defining the “Option” mode<a class="headerlink" href="#defining-the-option-mode" title="Permalink to this heading">¶</a></h3>
 <p>By using “option” mode we can target Virtel entities at an Entry Point level and Transaction level. The “option” mode provides greater flexibility and granularity on the custmization entities and  allows us to configuring parameters for specific needs down to a transaction level.</p>
 <p>The option mode allows us to set options which target :-</p>
 <blockquote>
@@ -333,14 +251,14 @@
 <li><p>A special option member for the APPLIST transaction.</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="global-option-settings">
-<h4>Global ‘Option’ Settings<a class="headerlink" href="#global-option-settings" title="Permalink to this headline">¶</a></h4>
+<section id="global-option-settings">
+<h4>Global ‘Option’ Settings<a class="headerlink" href="#global-option-settings" title="Permalink to this heading">¶</a></h4>
 <p>Each ‘option’ is identified by a unique identifier and every option has a supporting Javascript object which contains properties or pointers to bespoke customization entities. For example CSS style sheets, Javascript scripts, etc. If you are defining the ‘global’ option settings, the identifier is labelled ‘global’ and within that option we defined an object called “global-settings” which in itself is a property of the w2hparm object. If you are defining a transaction option setting, the settings are defined within an object called oCustom.</p>
 <p>Virtel stores option definitions in the “Option” directory which is defined by the XXX-03CO transaction.</p>
 <p>The following is the list of properties that can be defined within a option object. They are always prefixed with the “pathTo” identifier.</p>
-</div>
-<div class="section" id="global-option-settings-example">
-<h4>Global ‘Option’ Settings Example<a class="headerlink" href="#global-option-settings-example" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="global-option-settings-example">
+<h4>Global ‘Option’ Settings Example<a class="headerlink" href="#global-option-settings-example" title="Permalink to this heading">¶</a></h4>
 <p>The following is and example of setting the global-settings properties for Parameters, JavaScript, CSS and Help templates in the w2hparm.js file. The global-settings object is a property of w2hparm object. You can see that each pathTo property defines a file. Within these files we will find the customized elements.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">My</span> <span class="n">Global</span> <span class="n">options</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
 <span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
@@ -363,10 +281,10 @@
 </pre></div>
 </div>
 <p>As you can see, it has a “global-settings” object containing one “pathTo” property which directs us to a file located in the /option/ directory. The “option” directory is already predefined as part of the Virtel deliverable. See transaction CLI-03CO within the CLIWHOST entry point: -</p>
-<p><img alt="image2" src="../../../_images/image235.png" />
+<p><img alt="image2" src="../../../_images/image238.png" />
 Figure 2 - Option Directory Transaction</p>
 <p>The “option” directory holds related settings within the CLI-DIR which is physically associated with the HTMLTRSF VSAM file. We know this because if we list the directories, we can see that HTMLTRSF is the physical DDNAME associated with the Virtel directory CLI-DIR :-</p>
-<p><img alt="image3" src="../../../_images/image331.png" />
+<p><img alt="image3" src="../../../_images/image334.png" />
 Figure 3 - DDNames associated with Virtel Directories</p>
 <p>We now need to create a global parameters file called w2hparm.global.js. This parameter file will be the equivalent to the our original w2hparm.js file, and will contain the same Virtel parameter overrides.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
@@ -378,7 +296,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <p>The newly created w2hparm.global.js and the modified w2hparm.js files are both uploaded to the CLI-DIR, the directory associated with the “option” transaction CLI-03CO. Stop and restart Virtel and refresh the cache (CTRL-R). Now check that the new w2hparm.js parameter file is being used on both the W2H and CLI entry point. As before, we use the following URL to display the W2H related w2hparm.js file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 
 <span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
 <span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
@@ -393,7 +311,7 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <p>Now our new “Global” path is in play, pointing to our wh2hparm.global.js parameter file, we can also check that the correct global parameter file is loaded when accessing the CLI port, 41002, using the following URL.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
 <p>The output from this display should show the the same options, as defined in the w2hparm.global.js.</p>
@@ -439,12 +357,12 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <p>The print.ico should also be uploaded to the CLI-DIR directory.</p>
 </div>
 <p>This has the effect of changing the tool bar for all transactions which locate w2hparm.js through the XXX-03P transaction. This would include W2h and CLI transactions as both target the w2hparm.js in the CLI-DIR. This is not what is required. We only want transactions under CLI to have these “modified” options. Transactions under WEB2HOST will require their option fields to be set to “compatibility” to ensure that the default tool bar is shown. Alternatively, we could target the requirement to apply only to certain transactions in the CLI entry point by  setting up “transaction options”.</p>
-<p><img alt="image33" src="../../../_images/image332.png" />
+<p><img alt="image33" src="../../../_images/image335.png" />
 <em>Figure 5: - Setting compatibility mode in a transaction</em></p>
-</div>
-</div>
-<div class="section" id="transaction-option-settings">
-<h3>Transaction ‘Option’ settings<a class="headerlink" href="#transaction-option-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="transaction-option-settings">
+<h3>Transaction ‘Option’ settings<a class="headerlink" href="#transaction-option-settings" title="Permalink to this heading">¶</a></h3>
 <p>Transaction “option” settings use a unique “option” identifier to associate changes with a particular transaction. This identifier is defined in the transaction. For example, if only certain transactions should have the modified tool bar, as described above, then set a unique option identifiers for those transactions. The “option” identifier will be used to associate customized elements against specific transaction(s). In the following example we use the identifier “myOptions”. A transaction level “core option file”, using the format “option.*identifier*.js”, will be used to locate customized elements. Using the option identifier “myOptions” the file will be called option.myOptions.js. It should be created and uploaded to CLI-DIR. The customized settings are held in a Javascript variable named oCustom. The following actions are taken :-</p>
 <ol class="arabic simple">
 <li><p>Define a option.myOptions.js file to target the transaction settings. In this example we are only introducing some user javascript code to add the Print ICON to the tool bar.</p></li>
@@ -479,13 +397,13 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="compatibility-option">
-<h3>Compatibility “Option”<a class="headerlink" href="#compatibility-option" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="compatibility-option">
+<h3>Compatibility “Option”<a class="headerlink" href="#compatibility-option" title="Permalink to this heading">¶</a></h3>
 <p>Transactions can set the “option” identifier to compatibility to force the “compatibility” mode of operation. Customized element search would be through the “old” location search. for example, the file “custom.css” would be located through the transaction XXX-03CJ.</p>
-</div>
-<div class="section" id="appmenu-option-mode">
-<h3>Appmenu “Option” mode<a class="headerlink" href="#appmenu-option-mode" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="appmenu-option-mode">
+<h3>Appmenu “Option” mode<a class="headerlink" href="#appmenu-option-mode" title="Permalink to this heading">¶</a></h3>
 <p>A special case with Virtel is the customization of the application menu. Any bespoke changes to the appmenu presentation can be defined in an option.appmenu.js file. In the following example we demonstrate how to change appmenu presentation by modifying the associated appmenu CSS. First, create the option.appmenu.js file with the following CSS entry :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">appmenu</span>
 <span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.appmenu.css&quot;</span><span class="p">}</span>
@@ -499,17 +417,17 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <p>Now, when displaying the appmenu, we have the following display. The application name has been removed and only the transaction description along with the external name is shown.</p>
 <p><img alt="image5" src="../../../_images/image519.png" />
 <em>Figure 6: Modified Appmenu</em></p>
-</div>
-<div class="section" id="using-the-transaction-html-interface-to-define-transaction-option-settings">
-<h3>Using the “Transaction” HTML interface to define transaction “option” settings.<a class="headerlink" href="#using-the-transaction-html-interface-to-define-transaction-option-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="using-the-transaction-html-interface-to-define-transaction-option-settings">
+<h3>Using the “Transaction” HTML interface to define transaction “option” settings.<a class="headerlink" href="#using-the-transaction-html-interface-to-define-transaction-option-settings" title="Permalink to this heading">¶</a></h3>
 <p>Using the HTML transaction display a user can click on the “Spanner” ICON to help in setting up the option files. This include building the “core option file” and the relevant Javascript and CSS files. The transaction option identfier is specified on the transaction page :-</p>
 <p><img alt="image34" src="../../../_images/image341.png" />
 <em>Figure 7: - Specifying the option identifier</em></p>
 <p>On clicking the “spanner” icon a tabbed “Option” panel will be displayed. A pre-allocated core option environment, based upon the “option” field value, will be built. Two tabbed options are available, “BASIC” and “ADVANCED”:-</p>
 <p><img alt="image35" src="../../../_images/image351.png" />
 <em>Figure 8: - Defining the core option file</em></p>
-<div class="section" id="basic-mode">
-<h4>Basic Mode<a class="headerlink" href="#basic-mode" title="Permalink to this headline">¶</a></h4>
+<section id="basic-mode">
+<h4>Basic Mode<a class="headerlink" href="#basic-mode" title="Permalink to this heading">¶</a></h4>
 <p>Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLIDIR directory. Within this file, Javascript and CSS settings keys, if selected, will point to the customisation files as defined by the “option” field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file option.myOptions.js which will be loaded up to the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css.</p>
 <p><img alt="image36" src="../../../_images/image361.png" />
 <em>Figure 9: - Validating the core option file</em></p>
@@ -520,16 +438,16 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 </pre></div>
 </div>
 <p>This can be modified to add other custom elements such as PrintCSS, Parm or Help. The option/custCSS/myOptions.css and option/custJS/myOptions.js would have to be created and uploaded to the CLI directory.</p>
-</div>
-<div class="section" id="advanced-mode">
-<h4>Advanced Mode<a class="headerlink" href="#advanced-mode" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="advanced-mode">
+<h4>Advanced Mode<a class="headerlink" href="#advanced-mode" title="Permalink to this heading">¶</a></h4>
 <p>By selecting the “Advanced” mode tab, the core option file can be downloaded in preparation for further modification.</p>
 <p><img alt="image37" src="../../../_images/image371.png" />
 <em>Figure 10: - Advanced mode of operation</em></p>
-</div>
-</div>
-<div class="section" id="user-parameter-settings">
-<h3>User parameter settings<a class="headerlink" href="#user-parameter-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="user-parameter-settings">
+<h3>User parameter settings<a class="headerlink" href="#user-parameter-settings" title="Permalink to this heading">¶</a></h3>
 <p>By default, the majority of settings listed in “Appendix A” can be set by each user through the Virtel Access Settings control panel. The settings ICON, a geared wheel located on the Virtel Toolbar, is normally displayed on 3270 based application displays. Selecting this ICON will open the Access settings display.</p>
 <p><img alt="image6" src="../../../_images/image618.png" />
 <em>Figure 11: Virtel Web Access Settings Panel</em></p>
@@ -542,16 +460,16 @@ Figure 3 - DDNames associated with Virtel Directories</p>
 <li><p>Setup the USERPARM feature</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="export-import-settings">
-<h3>Export/Import settings<a class="headerlink" href="#export-import-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="export-import-settings">
+<h3>Export/Import settings<a class="headerlink" href="#export-import-settings" title="Permalink to this heading">¶</a></h3>
 <p>Settings can be exported to a “flat file” and then subsequently “imported”.</p>
-<div class="section" id="exporting-to-a-local-file">
-<h4>Exporting to a local file<a class="headerlink" href="#exporting-to-a-local-file" title="Permalink to this headline">¶</a></h4>
+<section id="exporting-to-a-local-file">
+<h4>Exporting to a local file<a class="headerlink" href="#exporting-to-a-local-file" title="Permalink to this heading">¶</a></h4>
 <p>Use the EXPORT option in the settings dialogue to export settings to a flat file. When exporting settings, a file called VWA-settings.json will be written to the browser”s default download file directory. For security, this directory is the only directory that the browser has write access to.</p>
-</div>
-<div class="section" id="import-from-a-local-file">
-<h4>Import from a local file<a class="headerlink" href="#import-from-a-local-file" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="import-from-a-local-file">
+<h4>Import from a local file<a class="headerlink" href="#import-from-a-local-file" title="Permalink to this heading">¶</a></h4>
 <p>To import the settings file, click the IMPORT button. A filesystem dialog will open allowing you to select the directory where settings JSON file to be imported resides.
 The contents of the JSON settings file will look very much like an object definition. Here is the contents of VWA-settings.json after changing the “Cursor” attribute to “”Bar”.</p>
 <p><img alt="image7" src="../../../_images/image715.png" /></p>
@@ -560,16 +478,16 @@ The contents of the JSON settings file will look very much like an object defini
 <p class="admonition-title">Note</p>
 <p>Only the settings that the user has modified are saved in local storage or an exported settings file.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="userparm-feature">
-<h2>USERPARM feature<a class="headerlink" href="#userparm-feature" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="userparm-feature">
+<h2>USERPARM feature<a class="headerlink" href="#userparm-feature" title="Permalink to this heading">¶</a></h2>
 <p>Another option to persist user settings is through the use of the Virtel”s USERPARM feature. This has the advantage in that settings are not held in the browser’s local storage, instead, the user’s settings are held on the mainframe within a Virtel directory, backed by a physical VSAM file. When a user connects, the settings will be downloaded to the browser. Equally, if a user updates their settings, any changes will be uploaded to the mainframe for persistence. So, regardless of the physical connection being used, the user will always get <strong>their</strong> settings.</p>
 <p>A timestamp compare is used to synchronize between the browser and the mainframe. This will determine whether settings should be downloaded to the browser session, or uploaded to the mainframe.</p>
 <p>The only caveat to using the USERPARM feature is that the user must be known to the security subsystem, so any invoked Virtel transactions must be secure transactions - i.e. have at least basic security set, security=1 defined, within the transaction. Virtel uses the user”s USERID as a key to locate the settings within the Virtel directory on the mainframe.</p>
-<div class="section" id="setting-up-to-run-userparm">
-<h3>Setting up to run USERPARM<a class="headerlink" href="#setting-up-to-run-userparm" title="Permalink to this headline">¶</a></h3>
+<section id="setting-up-to-run-userparm">
+<h3>Setting up to run USERPARM<a class="headerlink" href="#setting-up-to-run-userparm" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Run the following JCL: -</p></li>
 </ol>
@@ -710,9 +628,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </ol>
 <p><img alt="image8" src="../../../_images/image814.png" />
 <em>Figure 13: - Display of local storage</em></p>
-</div>
-<div class="section" id="example-of-changing-the-global-settings">
-<h3>Example of changing the global settings<a class="headerlink" href="#example-of-changing-the-global-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-of-changing-the-global-settings">
+<h3>Example of changing the global settings<a class="headerlink" href="#example-of-changing-the-global-settings" title="Permalink to this heading">¶</a></h3>
 <p>Open a session browser and display the current settings. In the browser debugger (Developer Tools - PF12 in the URL bar) we can see that we have a dummy w2hparm object ” w2hparm  {}.</p>
 <p><img alt="image9" src="../../../_images/image912.png" />
 <em>Figure 14: - w2hparm default settings</em></p>
@@ -732,7 +650,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <p>These are uploaded to CLI-DIR. The following messages would be seen in the Virtel console log after the upload has completed :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">CONNECTING</span> <span class="n">DELOC049</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.057</span><span class="p">:</span><span class="mi">58301</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">CONNECTING</span> <span class="n">DELOC049</span> <span class="n">TO</span> <span class="mf">192.168.092.057</span><span class="p">:</span><span class="mi">58301</span>
 <span class="n">VIRU122I</span> <span class="n">DELOC049</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;WEB2HOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;CLI-D</span>
 <span class="mi">916</span>
 <span class="n">IR</span> <span class="s1">&#39; USER &#39;</span><span class="n">SPTHOLT</span>             <span class="s1">&#39;</span>
@@ -744,8 +662,8 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><a class="reference internal" href="../../../_images/image1116.png"><img alt="image11" src="../../../_images/image1116.png" style="width: 339.5px; height: 504.5px;" /></a></p>
 <p><em>Figure 16: - Updated global settings</em></p>
 <p>Our user wishes to override these global settings with the original PA1/PA2 settings. The user changes the settings to reflect this; the changes will be uploaded to the mainframe and the following messages will be seen in the Virtel console log.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00030000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.065</span><span class="p">:</span><span class="mi">50426</span>
-<span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.065</span><span class="p">:</span><span class="mi">50426</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00030000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168.092.065</span><span class="p">:</span><span class="mi">50426</span>
+<span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC009</span> <span class="n">TO</span> <span class="mf">192.168.092.065</span><span class="p">:</span><span class="mi">50426</span>
 <span class="n">VIR0052I</span> <span class="n">CLLOC009</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span>   <span class="mi">0</span> <span class="n">MINUTES</span>
 <span class="n">VIRU122I</span> <span class="n">CLVTA078</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
 <span class="mi">285</span>
@@ -759,21 +677,21 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p>To restore to the administrator”s global settings, we just press the “Defaults” button. This will download the global settings from the mainframe. A redisplay of the settings will show the restore global settings. The change also drives an upload to the mainframe so that the changes are recorded in the USERPARM directory.</p>
 <p><a class="reference internal" href="../../../_images/image1311.png"><img alt="image13" src="../../../_images/image1311.png" style="width: 278.0px; height: 414.5px;" /></a></p>
 <p><em>Figure 18: - Restored global settings</em></p>
-</div>
-<div class="section" id="removing-a-user-s-default-settings">
-<h3>Removing a USER”s default settings<a class="headerlink" href="#removing-a-user-s-default-settings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="removing-a-user-s-default-settings">
+<h3>Removing a USER”s default settings<a class="headerlink" href="#removing-a-user-s-default-settings" title="Permalink to this heading">¶</a></h3>
 <p>A user”s settings can be removed from the USERPARM directory by deleting the key associated with the user from the USERPARM directory. For example, the key associated with userid CTKHOLT is 8A4B86A3A108399F5866624546DA28C6. If we look at USERPARM directory in the Admin portal (41001) we can see it listed.</p>
 <p><img alt="image14" src="../../../_images/image1410.png" />
 <em>Figure 19: - USERPARM directory listing</em></p>
 <p>We can remove the user’s key entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the global default parameters as defined by the Administrator.</p>
 <p><strong>Message VIRU122I</strong></p>
 <p>Running the USERPARM option can add additional message logging. The VIRU122I message can be silenced through the use of the F Virtel, SILENCE command.</p>
-</div>
-<div class="section" id="userparm-problems">
-<h3>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="userparm-problems">
+<h3>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this heading">¶</a></h3>
 <p><strong>Problem</strong></p>
 <p>When I try to save my settings, I get the following dialogue box.</p>
-<p><img alt="image15" src="../../../_images/image159.png" /></p>
+<p><img alt="image15" src="../../../_images/image1510.png" /></p>
 <p>In the Virtel log I also see the follow messages:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
 <span class="mi">330</span>
@@ -788,9 +706,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </div>
 <p><em>Probable Cause</em></p>
 <p>Maintenance level too low. Apply the latest maintenance. You must be at UPDT5708 or higher.</p>
-</div>
-<div class="section" id="problems">
-<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="problems">
+<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this heading">¶</a></h3>
 <p><strong>Problem</strong></p>
 <p>I save my user parameter changes but when I use a different PC or browser I am reverted back to my old or default settings.</p>
 <p><em>Probable Cause</em></p>
@@ -813,7 +731,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><em>Probable cause</em></p>
 <p>XXX-03P Transaction error. Make sure that all the xxx-03P transactions point to the same directory i.e. CLI-DIR, which should contain your default w2hparm.js transaction location.</p>
 <p>To list you w2hparm.js file use the following URL :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">4100</span><span class="n">x</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">4100</span><span class="n">x</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 
 <span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
 <span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
@@ -831,7 +749,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <p>This will list your “global” locations. You can use the following URL to list the global w2hparm.global.js file which should contain your global parameter overrides.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
 
 <span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
 <span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">DDI</span> <span class="n">macro</span> <span class="n">support</span><span class="o">.</span>
@@ -844,13 +762,13 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <span class="o">//</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="centralized-macros-and-ddi">
-<h2>Centralized macros and DDI<a class="headerlink" href="#centralized-macros-and-ddi" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="centralized-macros-and-ddi">
+<h2>Centralized macros and DDI<a class="headerlink" href="#centralized-macros-and-ddi" title="Permalink to this heading">¶</a></h2>
 <p>The following section provides details on how to implement centralized macros through Virtel”s DDI feature.</p>
-<div class="section" id="getting-ready-for-centralized-macros">
-<h3>Getting ready for Centralized Macros.<a class="headerlink" href="#getting-ready-for-centralized-macros" title="Permalink to this headline">¶</a></h3>
+<section id="getting-ready-for-centralized-macros">
+<h3>Getting ready for Centralized Macros.<a class="headerlink" href="#getting-ready-for-centralized-macros" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Stop Virtel</p></li>
 <li><p>Create and install additional RACF profiles to support DDI. The following is a sample RACF job to update RACF with the necessary profiles. It should be modified accordingly :-</p></li>
@@ -919,7 +837,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <ol class="arabic simple" start="4">
 <li><p>After updating the ARBO with the new transactions, restart Virtel. Check that the new directories are accessible. Go to the Administration panel and bring up the Drag and Drop Interface. Three new directories should be visible ” GLB-DIR, GRP-DIR and USR-DIR.</p></li>
 </ol>
-<p><img alt="image16" src="../../../_images/image164.png" /></p>
+<p><img alt="image16" src="../../../_images/image165.png" /></p>
 <p><em>Figure 20: - New directories to support centralised macros</em></p>
 <ol class="arabic simple" start="5">
 <li><p>Update w2hparm.js</p></li>
@@ -930,7 +848,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <p>These changes turn on the centralized macro support plus the additional keymapping option. After uploading, refresh the cache (CTR-SHIFT-DEL). To check that you have the correct settings redisplay the w2hparm.js member using the following URL :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
 
 <span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
 <span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span><span class="o">.</span>
@@ -943,7 +861,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </pre></div>
 </div>
 <p>This shows that our updated w2hparm.global.js has been installed and can be located within the CLI-DIR. If you are using one w2hparm setting check that the same member is located through W2H by using the following URL :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
 <p>If the output is same it means that both line 41001 (W2H) and 41002 (CLI) are locating the same w2hparm.global.js definitions correctly.</p>
@@ -972,9 +890,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </ol>
 <p><img alt="image17" src="../../../_images/image174.png" />
 <em>Figure 21: - Blue ICON to indicate DDI active</em></p>
-</div>
-<div class="section" id="creating-a-user-macro">
-<h3>Creating a User macro<a class="headerlink" href="#creating-a-user-macro" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-a-user-macro">
+<h3>Creating a User macro<a class="headerlink" href="#creating-a-user-macro" title="Permalink to this heading">¶</a></h3>
 <p>Create a test macro using the macro record button. When you go to save the macro, you will be given the option to associate the macro with a key sequence. Enter a macro name and press the save key.</p>
 <p><img alt="image18" src="../../../_images/image183.png" /></p>
 <p><em>Figure 22: - Test macro</em></p>
@@ -985,9 +903,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image38" src="../../../_images/image381.png" /></p>
 <p><em>Figure 24: - Upload message with User macro</em></p>
 <p>With DDI/macro support you do not have the ability to export or import macros. This function can only be performed in a non-centralized mode. For security reasons group and global macros can only be administered by the Virtel administrator(s). Users can only maintaining their own user macros, they cannot create Group or Global macros. Getting macros into the DDI repository directories is performed through the DDI import feature. In the next section we will create a dummy macro, and import it into the global directory of the DDI repository.</p>
-</div>
-<div class="section" id="creating-a-global-macro">
-<h3>Creating a Global macro<a class="headerlink" href="#creating-a-global-macro" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-a-global-macro">
+<h3>Creating a Global macro<a class="headerlink" href="#creating-a-global-macro" title="Permalink to this heading">¶</a></h3>
 <p>To create a global macro, we will setup a Virtel line which is not running DDI so we have access to the import/export option. We can easily do this by setting the Administration line 41001 back to the original w2hparm.js defaults, thereby disabling the DDI/macro functionality, and providing the import/export feature.</p>
 <p>Open up the Admin portal on 41001 and change the W2H-03P transaction to point back to W2H-DIR, refresh the cache. The Macro ICON should now be back to Green and if we look at the Macro panel we will see that we have the Import/Export feature back. We can use this environment to create and export macros. These macros can then be imported into the DDI/macro repository.</p>
 <p><img alt="image20" src="../../../_images/image203.png" />
@@ -1011,12 +929,12 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image22" src="../../../_images/image2210.png" />
 <em>Figure 27: Global Directory with macros.json file</em></p>
 <p>If we open up a TSO or CICS session with an active DDI (blue ICON), for example under 41002, we should see that our Global Macro Area has now been populated with the SDSF macro.</p>
-<p><img alt="image23" src="../../../_images/image236.png" />
+<p><img alt="image23" src="../../../_images/image239.png" />
 <em>Figure 28: Global Macro display</em></p>
 <p>We also have some other “user macros” that this user is maintaining - “logon” and “logoff”.</p>
-</div>
-<div class="section" id="creating-a-group-macro">
-<h3>Creating a Group macro<a class="headerlink" href="#creating-a-group-macro" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-a-group-macro">
+<h3>Creating a Group macro<a class="headerlink" href="#creating-a-group-macro" title="Permalink to this heading">¶</a></h3>
 <p>A Group macro is associated with a particular RACF group and will only be displayed in the Group Macro list if the user is a member or connected to that Group. Creating a Group macro follows along with the same process as creating a Global macro. We create a macros.json file, using the Export/Import functions of a non-DDI macro interface (Port 41001), which will contain our group macros. We then export the group macros as a macros.json file and then import it into the Group directory of the DDI repository using the drag and drop area.</p>
 <p>The difference with Group macros is that we have to specify the Group that the macros.json file will belong to when opening up the Group area in the DDI interface. When selecting the Group Tab of the DDI area we specify the Group :-</p>
 <p><img alt="image24" src="../../../_images/image242.png" />
@@ -1027,9 +945,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p>Once we refresh the DDI zone area, the macros located within the macros.json file will be listed. When can now display the available macros in our TSO 3270 session. If we refresh the macro display by hitting the refresh button, we should see all the macros listed in the group section :-</p>
 <p><a class="reference internal" href="../../../_images/image262.png"><img alt="image26" src="../../../_images/image262.png" style="width: 338.0px; height: 379.5px;" /></a></p>
 <p><em>Figure 31: Group Macro display</em></p>
-</div>
-<div class="section" id="administration-functions">
-<h3>Administration Functions<a class="headerlink" href="#administration-functions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="administration-functions">
+<h3>Administration Functions<a class="headerlink" href="#administration-functions" title="Permalink to this heading">¶</a></h3>
 <p>Regardless of which of the three directories you are working on, USER, GROUP and GLOBAL, the macros are awlays contained in a file called macros.json. There will be one such file for the GLOBAL directory, one for each GROUP and one for each USER. The macros.json file contains all the macros for that particular DDI entity - USER, GROUP or GLOBAL directory.</p>
 <p>As a Virtel Administration you have various functions available to you that you can use to manage the contents of these macros.json files. If you right click on the macros.json file within the DDI list you will see a Pop-Up box providing various administration tools. These include :-</p>
 <p><img alt="image27" src="../../../_images/image271.png" />
@@ -1042,9 +960,9 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 </ul>
 <p><img alt="image28" src="../../../_images/image281.png" />
 <em>Figure 33: Editing a macro within DDI</em></p>
-</div>
-<div class="section" id="id1">
-<h3>Problems<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Problems<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p><strong>Problem</strong></p>
 <p>I get the message - Virtel is not configured for dynamic directories message.</p>
 <p><a class="reference internal" href="../../../_images/image291.png"><img alt="image29" src="../../../_images/image291.png" style="width: 680.0px; height: 455.5px;" /></a></p>
@@ -1068,16 +986,16 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <span class="n">CTRL</span> <span class="n">R</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="https-and-setting-up-a-secure-link">
-<h2>HTTPS and setting up a secure link<a class="headerlink" href="#https-and-setting-up-a-secure-link" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="defining-a-new-line-and-transaction">
-<h3>Defining a new line and transaction<a class="headerlink" href="#defining-a-new-line-and-transaction" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="https-and-setting-up-a-secure-link">
+<h2>HTTPS and setting up a secure link<a class="headerlink" href="#https-and-setting-up-a-secure-link" title="Permalink to this heading">¶</a></h2>
+<section id="defining-a-new-line-and-transaction">
+<h3>Defining a new line and transaction<a class="headerlink" href="#defining-a-new-line-and-transaction" title="Permalink to this heading">¶</a></h3>
 <p>In this section we look at setting up a secure HTTPS link to Virtel. We will be using a STC procedure called SPVIREHV which has been assigned a RACF userid and group. We will need the STC userid when defining the RACF definitions for the KEYRING etc. We will define a new line, along with its related Virtel components such as Entry Points, transactions and terminals. This new line will be bound to port 41003 and will use the services of AT-TLS to secure the connection between the browser and the mainframe. The link will access only one CICS application.</p>
-</div>
-<div class="section" id="creating-the-new-virtel-line">
-<h3>Creating the new Virtel line<a class="headerlink" href="#creating-the-new-virtel-line" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="creating-the-new-virtel-line">
+<h3>Creating the new Virtel line<a class="headerlink" href="#creating-the-new-virtel-line" title="Permalink to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Run the sample template job as listed in Appendix B.</p></li>
 </ol>
@@ -1107,7 +1025,7 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.59</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span>   <span class="n">LINES</span>
-<span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.048</span>
+<span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168.170.048</span>
 <span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
 <span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
 <span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span>  <span class="p">:</span><span class="mi">41002</span>
@@ -1123,25 +1041,25 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p><img alt="image31" src="../../../_images/image3110.png" />
 <em>Figure 34: CICS application under 41003</em></p>
 <p>At this point we have defined a CICS application which is supported by our new line definition. It is still accessed through a unsecured HTTP URL. In the next section we see how to install AT-TLS and secure our new line and any traffic that passes through.</p>
-</div>
-<div class="section" id="configuring-at-tls-to-secure-a-line">
-<h3>Configuring AT-TLS to secure a line<a class="headerlink" href="#configuring-at-tls-to-secure-a-line" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="configuring-at-tls-to-secure-a-line">
+<h3>Configuring AT-TLS to secure a line<a class="headerlink" href="#configuring-at-tls-to-secure-a-line" title="Permalink to this heading">¶</a></h3>
 <p>To provide secure HTTP (https) sessions between the mainframe and client browsers, VIRTEL uses the services of the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.  AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.</p>
-<div class="section" id="tcp-ip-profile">
-<h4>TCP/IP Profile<a class="headerlink" href="#tcp-ip-profile" title="Permalink to this headline">¶</a></h4>
+<section id="tcp-ip-profile">
+<h4>TCP/IP Profile<a class="headerlink" href="#tcp-ip-profile" title="Permalink to this heading">¶</a></h4>
 <p>You need to add the TTLS statement to your TCP/IP profile : -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span>
    <span class="n">RESTRICTLOWPORTS</span>
    <span class="n">TTLS</span> <span class="p">;</span> <span class="n">Activate</span> <span class="n">AT</span><span class="o">-</span><span class="n">TLS</span> <span class="p">(</span><span class="n">Application</span> <span class="n">Transparent</span> <span class="n">Transport</span> <span class="n">Layer</span> <span class="n">Security</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="the-policy-agent">
-<h4>The Policy Agent<a class="headerlink" href="#the-policy-agent" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="the-policy-agent">
+<h4>The Policy Agent<a class="headerlink" href="#the-policy-agent" title="Permalink to this heading">¶</a></h4>
 <p>The Policy Agent (PAGENT) is a started task the provides the configuration details required bt AT-TLS to support secure sessions. If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the catalogued procedure EZAPAGSP from TCPIP.SEZAINST into your PROCLIB, renaming it as PAGENT.</p>
-</div>
-<div class="section" id="setting-up-to-run-at-tls-and-pagent">
-<h4>Setting up to run AT-TLS and PAGENT<a class="headerlink" href="#setting-up-to-run-at-tls-and-pagent" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="setting-up-to-run-at-tls-and-pagent">
+<h4>Setting up to run AT-TLS and PAGENT<a class="headerlink" href="#setting-up-to-run-at-tls-and-pagent" title="Permalink to this heading">¶</a></h4>
 <p>If you do not already run the Policy Agent, you will need to create a configuration file /etc/pagent.conf using z/OS Unix System Services. See the SSLSETUP job in VIRTEL SAMPLIB library.</p>
 <p>This job performs the following steps :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STEP</span> <span class="n">EZBAUTH</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">AT</span><span class="o">-</span><span class="n">TLS</span>
@@ -1176,10 +1094,10 @@ REPRO INFILE(INIT) OUTFILE(TRSF)
 <p class="admonition-title">Note</p>
 <p>The “Not Secure” warning. This will not appear if you are not using an approved CA certificate.</p>
 </div>
-</div>
-</div>
-<div class="section" id="using-server-and-client-certificates">
-<h3>Using Server and Client certificates<a class="headerlink" href="#using-server-and-client-certificates" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="using-server-and-client-certificates">
+<h3>Using Server and Client certificates<a class="headerlink" href="#using-server-and-client-certificates" title="Permalink to this heading">¶</a></h3>
 <p>In this section we look at setting up Virtel to work with client and server certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients.</p>
 <p>First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket
 applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT_TLS inserts itself in the connection between the application and browser. This means that the application will send
@@ -1189,8 +1107,8 @@ and receive clear text over the socket interface, but data over the network is e
 • SSLv2
 • SSLv3
 In this configuration we will be using SSLv3.</p>
-<div class="section" id="handshake-protocol">
-<h4>Handshake protocol<a class="headerlink" href="#handshake-protocol" title="Permalink to this headline">¶</a></h4>
+<section id="handshake-protocol">
+<h4>Handshake protocol<a class="headerlink" href="#handshake-protocol" title="Permalink to this heading">¶</a></h4>
 <p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -1203,9 +1121,9 @@ In this configuration we will be using SSLv3.</p>
 </ol>
 </div></blockquote>
 <p>The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in the IBM Manual z/OS Communications Server: IP Configuration Guide, Appendix B. TLS/SSL Security.</p>
-</div>
-<div class="section" id="certificates">
-<h4>Certificates<a class="headerlink" href="#certificates" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="certificates">
+<h4>Certificates<a class="headerlink" href="#certificates" title="Permalink to this heading">¶</a></h4>
 <p>What’s in a X.509 certificate? Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or
 Certification Authority (CA).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">READY</span>
@@ -1235,9 +1153,9 @@ Certification Authority (CA).</p>
 <p>Similar details can be found in the browser settings. For example here is what Chrome displays in the HTTPS/SSL certificate database.</p>
 <p><img alt="image39" src="../../../_images/image391.png" /></p>
 <p><em>Figure 36: Certificate display within a browser</em></p>
-</div>
-<div class="section" id="types-of-certificates">
-<h4>Types of Certificates<a class="headerlink" href="#types-of-certificates" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="types-of-certificates">
+<h4>Types of Certificates<a class="headerlink" href="#types-of-certificates" title="Permalink to this heading">¶</a></h4>
 <p>There are several types of certificates, most of which are required when defining secure sessions.</p>
 <blockquote>
 <div><ul class="simple">
@@ -1248,9 +1166,9 @@ Certification Authority (CA).</p>
 </ul>
 </div></blockquote>
 <p>In our test configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.</p>
-</div>
-<div class="section" id="configuring-the-certificates">
-<h4>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="configuring-the-certificates">
+<h4>Configuring the certificates<a class="headerlink" href="#configuring-the-certificates" title="Permalink to this heading">¶</a></h4>
 <p>The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access.</p>
 <p>The following is the certificate generation statement for the RACF signing certificate.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">DCERTCA</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span>
@@ -1332,9 +1250,9 @@ that we generate.</p>
 <p class="admonition-title">Note</p>
 <p>We identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.</p>
 </div>
-</div>
-<div class="section" id="key-rings">
-<h4>Key Rings<a class="headerlink" href="#key-rings" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="key-rings">
+<h4>Key Rings<a class="headerlink" href="#key-rings" title="Permalink to this heading">¶</a></h4>
 <p>Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*-----------------------------------------------------------------*/</span>
 <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> <span class="o">*/</span>
@@ -1353,9 +1271,9 @@ that we generate.</p>
 </pre></div>
 </div>
 <p>Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.</p>
-</div>
-<div class="section" id="user-certificate">
-<h4>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="user-certificate">
+<h4>User Certificate<a class="headerlink" href="#user-certificate" title="Permalink to this heading">¶</a></h4>
 <p>The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*----------------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">Associate</span> <span class="n">certificate</span> <span class="k">with</span> <span class="n">user</span> <span class="nb">id</span> <span class="o">*</span>
@@ -1400,9 +1318,9 @@ that we generate.</p>
 <span class="n">SSL</span> <span class="n">client</span> <span class="n">certificate</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="n">CERTAUTH</span> <span class="n">NO</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="importing-a-client-user-certificate-into-the-browser">
-<h4>Importing a client/user certificate into the browser.<a class="headerlink" href="#importing-a-client-user-certificate-into-the-browser" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="importing-a-client-user-certificate-into-the-browser">
+<h4>Importing a client/user certificate into the browser.<a class="headerlink" href="#importing-a-client-user-certificate-into-the-browser" title="Permalink to this heading">¶</a></h4>
 <p>To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the certificate import wizard is run on the browser to import the certificate.</p>
 <p><img alt="image40" src="../../../_images/image40.png" /></p>
 <p><em>Figure 37: Importing a user/client certificate into the browser</em></p>
@@ -1410,9 +1328,9 @@ that we generate.</p>
 <p><img alt="image41" src="../../../_images/image4110.png" /></p>
 <p><em>Figure 38: An imported user/client certificate</em></p>
 <p>At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.</p>
-</div>
-<div class="section" id="passticket-support">
-<h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="passticket-support">
+<h4>PassTicket support<a class="headerlink" href="#passticket-support" title="Permalink to this heading">¶</a></h4>
 <p>The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
@@ -1438,9 +1356,9 @@ accordingly:</p>
 </pre></div>
 </div>
 <p>In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.</p>
-</div>
-<div class="section" id="pagent-configuration">
-<h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="pagent-configuration">
+<h4>PAGENT Configuration<a class="headerlink" href="#pagent-configuration" title="Permalink to this heading">¶</a></h4>
 <p>To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TTLSEnvironmentAction</span> <span class="n">VIRTELenvir_inSec</span>
 <span class="p">{</span>
@@ -1488,16 +1406,16 @@ The rules section also identifies the environmental section. In this case we hav
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">PAGENT</span><span class="p">,</span><span class="n">REFRESH</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="virtel-configuration">
-<h4>Virtel Configuration<a class="headerlink" href="#virtel-configuration" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="virtel-configuration">
+<h4>Virtel Configuration<a class="headerlink" href="#virtel-configuration" title="Permalink to this heading">¶</a></h4>
 <p>The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.</p>
 <p><img alt="image42" src="../../../_images/image427.png" /></p>
 <p><em>Figure 39: Virtel Transaction using PassTickets</em></p>
 <p>Note that PassTicket is set to 2. This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has obtained. With this configuration we can logon to our CICS application without the user presenting any user id or password. This is very much like the Express Logon Facility implemented in our Telnet clients.</p>
-</div>
-<div class="section" id="logon-example">
-<h4>Logon Example<a class="headerlink" href="#logon-example" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="logon-example">
+<h4>Logon Example<a class="headerlink" href="#logon-example" title="Permalink to this heading">¶</a></h4>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image43" src="../../../_images/image431.png" /></p>
 <p><em>Figure 40: User certificate request from browser</em></p>
@@ -1511,10 +1429,10 @@ The next panel is a warning panel which identifies that the certificate we are u
 <p>We select the “Proceed” link and then we are logged on to our CICS application without having to specify any user id or password.</p>
 <p><img alt="image46" src="../../../_images/image461.png" /></p>
 <p><em>Figure 43: Logged into CICS using PassTickets</em></p>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Problems<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id2">
+<h3>Problems<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p><strong>Problem</strong></p>
 <p>I get message VIRHT57E LINE IS NOT SET UP FOR HTTPS in the Virtel log.</p>
 <p><em>Cause</em></p>
@@ -1533,19 +1451,19 @@ The next panel is a warning panel which identifies that the certificate we are u
 <p>2. Check that you have defined the correct STC name and port in the PAGENT definitions. Also check the SYSLOG for any PAGENT error messages which may well include an error code. Common session startup/handshake errors are reported through messqge EZD1287I. In the example below we can see that the handshake has failed with a return code of 5003. Return codes under 5000 are generated by
 System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. In the following the 5013 suggests that the browser has sent clear text; in other words, http was used instead of https in the URL.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">367</span>
-<span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span>
+<span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span>
 <span class="n">InBound</span> <span class="n">STATUS</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">ACTIONS</span><span class="p">:</span> <span class="n">VIRTELgroup</span>
 <span class="n">VIRTELenvir_inSec</span> <span class="o">**</span><span class="n">N</span><span class="o">/</span><span class="n">A</span><span class="o">**</span>
 <span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">368</span>
 <span class="n">EZD1286I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">GRPID</span><span class="p">:</span> <span class="mi">00000002</span> <span class="n">ENVID</span><span class="p">:</span> <span class="mi">00000000</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span>
-<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span>
+<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span>
 <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span>
 <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span>
 <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span> <span class="n">Decryption</span> <span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span> <span class="n">Decryption</span> <span class="mi">369</span>    <span class="o">&lt;=======</span>
-<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span>
+<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span>
 <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">RULE</span><span class="p">:</span>
 <span class="n">VIRTELrule_in_eh</span> <span class="n">USERID</span><span class="p">:</span>
 <span class="n">SPVIRSTC</span> <span class="n">GRPID</span><span class="p">:</span> <span class="mi">00000002</span>
@@ -1569,18 +1487,13 @@ System SSL and are defined in the System SSL Programming manual. Return codes ov
 <li><p>5003   Browser sent clear text. HTTP instead of HTTPS used in URL.</p></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="appendix-a">
-<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="default-w2hparm-parameter-values">
-<h3>Default w2hparm parameter values<a class="headerlink" href="#default-w2hparm-parameter-values" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-center">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 25%" />
-<col style="width: 56%" />
-</colgroup>
+</section>
+</section>
+<section id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this heading">¶</a></h2>
+<section id="default-w2hparm-parameter-values">
+<h3>Default w2hparm parameter values<a class="headerlink" href="#default-w2hparm-parameter-values" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Keyword</p></th>
 <th class="head"><p>Caption</p></th>
@@ -1751,7 +1664,7 @@ System SSL and are defined in the System SSL Programming manual. Return codes ov
 </tr>
 <tr class="row-odd"><td><p>“kpminus”</p></td>
 <td><p>Keypad -</p></td>
-<td><p>“-“, “Backtab”</p></td>
+<td><p>“-”, “Backtab”</p></td>
 </tr>
 <tr class="row-even"><td><p>“kpplus”</p></td>
 <td><p>Keypad +</p></td>
@@ -1857,12 +1770,12 @@ by Typing</p></td>
 <p class="admonition-title">Note</p>
 <p>Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.</p>
 </div>
-</div>
-</div>
-<div class="section" id="appendix-b">
-<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="template-job-for-adding-a-new-line-to-virtel">
-<h3>Template job for adding a new line to Virtel.<a class="headerlink" href="#template-job-for-adding-a-new-line-to-virtel" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="appendix-b">
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this heading">¶</a></h2>
+<section id="template-job-for-adding-a-new-line-to-virtel">
+<h3>Template job for adding a new line to Virtel.<a class="headerlink" href="#template-job-for-adding-a-new-line-to-virtel" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
 <span class="o">//*</span>
@@ -1987,9 +1900,9 @@ by Typing</p></td>
                <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="template-job-for-deleting-a-virtel-line">
-<h3>Template job for deleting a Virtel line.<a class="headerlink" href="#template-job-for-deleting-a-virtel-line" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="template-job-for-deleting-a-virtel-line">
+<h3>Template job for deleting a Virtel line.<a class="headerlink" href="#template-job-for-deleting-a-virtel-line" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
@@ -2015,57 +1928,39 @@ by Typing</p></td>
 <span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">SUBDIR</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN202003/TN202003.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.60 GA Release" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN202001/TN202001.html" class="btn btn-neutral float-left" title="Converting a VBA macro" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../TN202001/TN202001.html" class="btn btn-neutral float-left" title="Converting a VBA macro" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../TN202003/TN202003.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.60 GA Release" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved
-
-    </p>
+    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

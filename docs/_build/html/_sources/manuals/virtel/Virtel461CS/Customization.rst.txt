@@ -3480,6 +3480,10 @@ Problems
 
 Should your user USSATAB fail to load , or breaks one of the caveats listed above the the default USSTAB USSVIRT will be loaded. This default module can be overridden by specifying USSTAB=name in the TCT. You could provide a USSMSG10 help page directing users to a contact number, for example. If the default page is shown, check the VIRTEL log for error messages. Normally when the user USSTAB module fails an error message is written to the VIRTEL log.
 
+Msg VIR0060W MAPFAIL WAS DETECTED ON TERMINAL TTTTTTTT
+
+The USSTAB input area conflicts with the Virtel MAP that supports the USSTAB application processing. Check that none of the constraints listed above above have been broken. In particular the defined input area is no larger than 50 characters, that there is only one input area, and that data within protected fields does not exceed 240 characters.        
+
 .. index::   
    single: Virtel Tier Menu; cAppMenu Customization
 

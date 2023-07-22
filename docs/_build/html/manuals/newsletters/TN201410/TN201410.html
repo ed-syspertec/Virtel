@@ -1,93 +1,50 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taking a VTAM trace &mdash; Virtel 9 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Building a customized USSTAB using Virtel’s Web Access facility" href="../TN201411/TN201411.html" />
     <link rel="prev" title="Mainframe printing with Virtel 4.56" href="../TN201409/TN201409.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
           
-
-          
-            
-            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
-          
+          <a href="../../../index.html" class="icon icon-home">
+            Virtel
+              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 4.61
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -120,72 +77,33 @@
 </li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-        
-      <li>Taking a VTAM trace</li>
-    
-    
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../newsletters.html">Technical Newsletters</a></li>
+      <li class="breadcrumb-item active">Taking a VTAM trace</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../../_sources/manuals/newsletters/TN201410/TN201410.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="taking-a-vtam-trace">
-<span id="tn201410"></span><h1>Taking a VTAM trace<a class="headerlink" href="#taking-a-vtam-trace" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="taking-a-vtam-trace">
+<span id="tn201410"></span><h1>Taking a VTAM trace<a class="headerlink" href="#taking-a-vtam-trace" title="Permalink to this heading">¶</a></h1>
 <p>This newsletters provides details on how to take a z/OS VTAM buffer trace and print the details. In this scenario we are taking a trace between VIRTEL and TSO via the IBM network session monitor Netview Access (NVAS). In my example the VIRTEL prefix for the relay is REH. Yours will be different. Note, for z/VSE users, see the section “Tracing z/VSE” which discusses the differences in obtaining the trace.</p>
 <p><img alt="image1" src="../../../_images/image12.jpeg" /></p>
 <p><strong>Types of traces.</strong></p>
@@ -196,8 +114,8 @@ GTF trace data set. Trace records can be identified as:-</p>
 <li><p>Type FE1 VTAM INTERNAL TRACE</p></li>
 <li><p>Type FEF VTAM BUFFER TRACE</p></li>
 </ul>
-<div class="section" id="security">
-<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this heading">¶</a></h2>
 <p>To see the user data in the buffer contents of a trace record, set
 CONFTXT=YES in the TSOKEY00 member of SYS1.PARMLIB before starting
 TSO/VTAM.</p>
@@ -305,7 +223,7 @@ in the SYS1.TRACE GTF file.</p>
         <span class="n">VTAM</span> <span class="n">TH</span><span class="o">=</span><span class="mi">40000000</span> <span class="mi">00000000</span> <span class="mi">0000000</span><span class="n">B</span> <span class="mi">0000000</span><span class="n">B</span> <span class="mi">1</span><span class="n">C0000AD</span> <span class="mi">0001061</span><span class="n">C</span> <span class="mi">0152</span>     <span class="n">RH</span><span class="o">=</span><span class="mi">0</span><span class="n">B8000</span>
                                         <span class="mi">81060100</span> <span class="mf">4E000000</span> <span class="mi">0000002</span><span class="n">F</span> <span class="mi">010303</span><span class="n">B1</span> <span class="mi">90308000</span> <span class="o">*</span><span class="n">a</span><span class="o">...+...............*</span>
                                         <span class="mi">0787</span><span class="n">F887</span> <span class="mi">00028000</span> <span class="mi">00000018</span> <span class="mi">5000007</span><span class="n">E</span> <span class="mi">000900</span><span class="n">C4</span> <span class="o">*.</span><span class="n">g8g</span><span class="o">........&amp;..=...</span><span class="n">D</span><span class="o">*</span>
-                                        <span class="n">E4D4D4E8</span> <span class="n">E2D3E404</span> <span class="n">D5E5C1E2</span> <span class="mi">0005001</span><span class="n">E</span> <span class="n">B81C90F3</span> <span class="o">*</span><span class="n">UMMYSLU</span><span class="o">.</span><span class="n">NVAS</span><span class="o">.......</span><span class="mi">3</span><span class="o">*</span>
+                                        <span class="n">E4D4D4E8</span> <span class="n">E2D3E404</span> <span class="n">D5E5C1E2</span> <span class="mi">0005001</span><span class="n">E</span> <span class="n">B81C90F3</span> <span class="o">*</span><span class="n">UMMYSLU</span><span class="o">.</span><span class="n">NVAS</span><span class="o">......</span><span class="mf">.3</span><span class="o">*</span>
                                         <span class="mi">08</span><span class="n">D9C5C8</span> <span class="n">E5E3F0F0</span> <span class="n">F0000000</span> <span class="mf">000E01</span><span class="n">C0</span> <span class="mi">6</span><span class="n">D000000</span> <span class="o">*.</span><span class="n">REHVT000</span><span class="o">.......</span><span class="n">_</span><span class="o">...*</span>
                                         <span class="mi">80000018</span> <span class="mi">5000007</span><span class="n">E</span> <span class="mi">40</span><span class="n">FF0000</span> <span class="mi">00000000</span> <span class="mi">00000000</span> <span class="o">*....&amp;..=</span> <span class="o">...........*</span>
                                         <span class="mi">00000000</span> <span class="mi">00</span><span class="n">C4E4D4</span> <span class="n">D4E8D7D3</span> <span class="n">E4000000</span> <span class="mi">00000000</span> <span class="o">*.....</span><span class="n">DUMMYPLU</span><span class="o">.......*</span>
@@ -313,8 +231,8 @@ in the SYS1.TRACE GTF file.</p>
                                         <span class="mi">00000000</span> <span class="mi">00000000</span> <span class="mi">00000000</span> <span class="mi">000</span><span class="n">D26E2</span> <span class="n">D5E7F3F2</span> <span class="o">*...............</span><span class="n">SNX32</span><span class="o">*</span>
                                         <span class="n">F7F0F240</span> <span class="mi">40404040</span> <span class="mi">40404015</span> <span class="mi">00010900</span> <span class="mi">01010102</span> <span class="o">*</span><span class="mi">702</span> <span class="o">................*</span>
                                         <span class="mi">01030104</span> <span class="mi">01050106</span> <span class="mi">01070100</span> <span class="mi">00151400</span> <span class="mi">00000</span><span class="n">B00</span> <span class="o">*....................*</span>
-                                        <span class="n">AD000000</span> <span class="mb">0B0</span><span class="mf">966E2</span> <span class="n">D7D5C5E3</span> <span class="mi">4040400</span><span class="n">E</span> <span class="mi">0</span><span class="n">FF3E2D7</span> <span class="o">*.......</span><span class="n">SPNET</span> <span class="o">....</span><span class="mi">3</span><span class="n">SP</span><span class="o">*</span>
-                                        <span class="n">D5C5E34B</span> <span class="n">C5D4E2E8</span> <span class="n">C1E2F0F1</span> <span class="mf">0E0</span><span class="n">FF3E2</span> <span class="n">D7D5C5E3</span> <span class="o">*</span><span class="n">NET</span><span class="o">.</span><span class="n">EMSYAS01</span><span class="o">..</span><span class="mi">3</span><span class="n">SPNET</span><span class="o">*</span>
+                                        <span class="n">AD000000</span> <span class="mb">0B0</span><span class="mf">966E2</span> <span class="n">D7D5C5E3</span> <span class="mi">4040400</span><span class="n">E</span> <span class="mi">0</span><span class="n">FF3E2D7</span> <span class="o">*.......</span><span class="n">SPNET</span> <span class="o">...</span><span class="mf">.3</span><span class="n">SP</span><span class="o">*</span>
+                                        <span class="n">D5C5E34B</span> <span class="n">C5D4E2E8</span> <span class="n">C1E2F0F1</span> <span class="mf">0E0</span><span class="n">FF3E2</span> <span class="n">D7D5C5E3</span> <span class="o">*</span><span class="n">NET</span><span class="o">.</span><span class="n">EMSYAS01</span><span class="o">.</span><span class="mf">.3</span><span class="n">SPNET</span><span class="o">*</span>
                                         <span class="mi">4</span><span class="n">BD9C5C8</span> <span class="n">E5E3F0F0</span> <span class="n">F0160E04</span> <span class="n">D5E5C1E2</span> <span class="mi">08</span><span class="n">D9C5C8</span> <span class="o">*.</span><span class="n">REHVT000</span><span class="o">...</span><span class="n">NVAS</span><span class="o">.</span><span class="n">REH</span><span class="o">*</span>
                                         <span class="n">E5E3F0F0</span> <span class="n">F02C0A01</span> <span class="mi">08404040</span> <span class="mi">40404040</span> <span class="mi">402</span><span class="n">D0908</span> <span class="o">*</span><span class="n">VT000</span><span class="o">....</span> <span class="o">..........*</span>
                                         <span class="n">E2D5E7F3</span> <span class="n">F2F7F0F2</span> <span class="mi">6017</span><span class="n">CA7B</span> <span class="mi">8</span><span class="n">B529B42</span> <span class="mi">118</span><span class="n">B0EE2</span> <span class="o">*</span><span class="n">SNX32702</span><span class="o">-..</span><span class="c1">#.......S*</span>
@@ -335,7 +253,7 @@ in the SYS1.TRACE GTF file.</p>
                                         <span class="mi">31010303</span> <span class="n">B1903082</span> <span class="mi">008787</span><span class="n">F8</span> <span class="mi">80000280</span> <span class="mi">00000000</span> <span class="o">*.......</span><span class="n">b</span><span class="o">.</span><span class="n">gg8</span><span class="o">........*</span>
                                         <span class="mi">18500000</span> <span class="mf">7E000004</span> <span class="n">D5E5C1E2</span> <span class="mi">0005001</span><span class="n">E</span> <span class="n">B81C9008</span> <span class="o">*.&amp;..=...</span><span class="n">NVAS</span><span class="o">........*</span>
                                         <span class="n">D9C5C8E5</span> <span class="n">E3F0F0F0</span> <span class="mi">6017</span><span class="n">CA7B</span> <span class="mi">8</span><span class="n">B529B42</span> <span class="mi">118</span><span class="n">B0EE2</span> <span class="o">*</span><span class="n">REHVT000</span><span class="o">-..</span><span class="c1">#.......S*</span>
-                                        <span class="n">D7D5C5E3</span> <span class="mi">4</span><span class="n">BE9C1D4</span> <span class="n">F1E2E2C3</span> <span class="n">D70E0FF3</span> <span class="n">E2D7D5C5</span> <span class="o">*</span><span class="n">PNET</span><span class="o">.</span><span class="n">ZAM1SSCP</span><span class="o">..</span><span class="mi">3</span><span class="n">SPNE</span><span class="o">*</span>
+                                        <span class="n">D7D5C5E3</span> <span class="mi">4</span><span class="n">BE9C1D4</span> <span class="n">F1E2E2C3</span> <span class="n">D70E0FF3</span> <span class="n">E2D7D5C5</span> <span class="o">*</span><span class="n">PNET</span><span class="o">.</span><span class="n">ZAM1SSCP</span><span class="o">.</span><span class="mf">.3</span><span class="n">SPNE</span><span class="o">*</span>
                                         <span class="n">E34BC5D4</span> <span class="n">E2E8C1E2</span> <span class="n">F0F12C0A</span> <span class="mi">01084040</span> <span class="mi">40404040</span> <span class="o">*</span><span class="n">T</span><span class="o">.</span><span class="n">EMSYAS01</span><span class="o">.........</span> <span class="o">*</span>
                                         <span class="mi">40402</span><span class="n">D09</span> <span class="mf">08E2</span><span class="n">D5E7</span> <span class="n">F3F2F7F0</span> <span class="n">F2</span>                <span class="o">*</span> <span class="o">..........</span><span class="n">SNX32702</span> <span class="o">*</span>
 
@@ -470,56 +388,38 @@ To obtain the sysout in the Power Listing Queue,type a.9
 FTP from VSE, and CD POWER.LST.ALL, then get VTAM sysout.
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN201411/TN201411.html" class="btn btn-neutral float-right" title="Building a customized USSTAB using Virtel’s Web Access facility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN201409/TN201409.html" class="btn btn-neutral float-left" title="Mainframe printing with Virtel 4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../TN201409/TN201409.html" class="btn btn-neutral float-left" title="Mainframe printing with Virtel 4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../TN201411/TN201411.html" class="btn btn-neutral float-right" title="Building a customized USSTAB using Virtel’s Web Access facility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved
-
-    </p>
+    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
