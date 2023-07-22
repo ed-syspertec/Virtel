@@ -1,50 +1,95 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Field Level Encryption &mdash; Virtel 9 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Controlling LU Names" href="../TN201604/TN201604.html" />
     <link rel="prev" title="Installing Virtel V4.53 from scratch" href="../TN201602/TN201602.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-          <a href="../../../index.html" class="icon icon-home">
-            Virtel
-              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
           </a>
+
+          
+            
+            
               <div class="version">
                 4.61
               </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -72,33 +117,73 @@
 </li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../newsletters.html">Technical Newsletters</a></li>
-      <li class="breadcrumb-item active">Field Level Encryption</li>
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Field Level Encryption</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../../_sources/manuals/newsletters/TN201603/TN201603.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="field-level-encryption">
-<span id="tn201603"></span><h1>Field Level Encryption<a class="headerlink" href="#field-level-encryption" title="Permalink to this heading">¶</a></h1>
+            
+  <div class="section" id="field-level-encryption">
+<span id="tn201603"></span><h1>Field Level Encryption<a class="headerlink" href="#field-level-encryption" title="Permalink to this headline">¶</a></h1>
 <p><strong>How it works.</strong></p>
 <p>Non displayable fields, like password fields, can be encrypted by the
 browser before being transmitted and decrypted by the application.
@@ -108,7 +193,7 @@ This is the sequence of events:-</p>
 <p>#. The browser user clicks on a VIRTEL URL to request connection to a
 host application</p>
 <ol class="arabic simple">
-<li><p>VIRTEL generates a random temporary public/private key pair</p></li>
+<li>VIRTEL generates a random temporary public/private key pair</li>
 </ol>
 <p>#. VIRTEL sends to the browser an HTML signon form together with the
 public key</p>
@@ -117,9 +202,9 @@ is a non-display field)</p>
 <p>#. The browser encrypts the userid and password before sending the form
 to VIRTEL</p>
 <ol class="arabic simple">
-<li><p>VIRTEL uses the private key to decrypt the userid and password</p></li>
-<li><p>VIRTEL signs on to the application with the clear userid and password</p></li>
-<li><p>The session continues as a regular unencrypted HTTP session</p></li>
+<li>VIRTEL uses the private key to decrypt the userid and password</li>
+<li>VIRTEL signs on to the application with the clear userid and password</li>
+<li>The session continues as a regular unencrypted HTTP session</li>
 </ol>
 <p>In this way the userid and password are encrypted when they travel
 across the network, and they only appear in the clear on the internal
@@ -137,23 +222,23 @@ string. See below:-</p>
 following example where the password is clearly visible:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">AD1ctgAAAAQevFSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
-<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168.92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
-<span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
+<span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
 <span class="o">*</span><span class="n">rtel</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">Id</span><span class="p">:</span> <span class="mi">2</span> <span class="n">ENTER</span> <span class="mi">11</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">0</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">1.</span><span class="o">.</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">Wind</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ows</span> <span class="n">NT</span> <span class="mf">6.1</span><span class="p">;</span> <span class="n">WOW64</span><span class="p">)</span> <span class="n">AppleWebKit</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">37.36</span> <span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">*</span>
-<span class="o">*/</span><span class="mf">48.0.2564.116</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Co</span><span class="o">*</span>
+<span class="o">*/</span><span class="mf">48.0</span><span class="o">.</span><span class="mf">2564.116</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Co</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ntent</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">fo</span><span class="o">*</span>
 <span class="o">*</span><span class="n">rm</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">..</span><span class="n">Accept</span><span class="p">:</span> <span class="o">*/*..</span><span class="n">DNT</span><span class="p">:</span><span class="o">*</span>
-<span class="o">*</span><span class="mf">.1</span><span class="o">..</span><span class="n">Referer</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.92.1</span><span class="o">*</span>
+<span class="o">*.</span><span class="mf">1.</span><span class="o">.</span><span class="n">Referer</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span><span class="o">*</span>
 <span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">..</span><span class="n">Accept</span><span class="o">-*</span>
 <span class="o">*</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">gzip</span><span class="p">,</span> <span class="n">deflate</span><span class="o">..</span><span class="n">Accept</span><span class="o">-*</span>
 <span class="o">*</span><span class="n">Language</span><span class="p">:</span> <span class="n">en</span><span class="o">-</span><span class="n">GB</span><span class="p">,</span><span class="n">en</span><span class="o">-</span><span class="n">US</span><span class="p">;</span><span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">en</span><span class="p">;</span><span class="n">q</span><span class="o">*</span>
-<span class="o">*=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Cookie</span><span class="p">:</span> <span class="n">ROUTEID</span><span class="o">=</span><span class="mf">.1</span><span class="p">;</span> <span class="n">SYSLAN</span><span class="o">*</span>
+<span class="o">*=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Cookie</span><span class="p">:</span> <span class="n">ROUTEID</span><span class="o">=.</span><span class="mi">1</span><span class="p">;</span> <span class="n">SYSLAN</span><span class="o">*</span>
 <span class="o">*</span><span class="n">G</span><span class="o">=</span><span class="n">en</span><span class="p">;</span> <span class="n">SYSSTYL</span><span class="o">=</span><span class="n">BLUE</span><span class="p">;</span> <span class="n">SYSPAGE</span><span class="o">=</span><span class="n">auto</span><span class="o">*</span>
-<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">*</span>
-<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168.92.1</span><span class="o">*</span>
+<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">*</span>
+<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">60.</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Server</span><span class="p">:</span> <span class="n">zagreb</span><span class="o">.</span><span class="n">s</span><span class="o">*</span>
 <span class="o">*</span><span class="n">yspertec</span><span class="o">.</span><span class="n">com</span><span class="o">..</span><span class="n">Connection</span><span class="p">:</span> <span class="n">Keep</span><span class="o">-</span><span class="n">A</span><span class="o">*</span>
 <span class="o">*</span><span class="n">live</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mf">67.</span><span class="o">...</span><span class="n">pf</span><span class="o">=</span><span class="n">E</span><span class="o">*</span>
@@ -168,18 +253,18 @@ clear text. The non displayable field (V0000243) is shown as a hex
 string as in the following line trace:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">ADzf4wAAAAQevFSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
-<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168.92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Con</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Con</span><span class="o">*</span>
 <span class="o">*</span><span class="n">nection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="n">Len</span><span class="o">*</span>
 <span class="o">*</span><span class="n">gth</span><span class="p">:</span> <span class="mf">75.</span><span class="o">.</span><span class="n">Origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.*</span>
 <span class="o">*</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">Virtel</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">I</span><span class="o">*</span>
 <span class="o">*</span><span class="n">d</span><span class="p">:</span> <span class="mi">2</span> <span class="n">ENTER</span> <span class="mi">11</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">44.</span><span class="o">.</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span><span class="o">*</span>
 <span class="o">*</span><span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">Windows</span> <span class="n">NT</span> <span class="mf">6.1</span><span class="p">;</span> <span class="n">WO</span><span class="o">*</span>
 <span class="o">*</span><span class="n">W64</span><span class="p">)</span> <span class="n">AppleWebKit</span><span class="o">/</span><span class="mf">537.36</span> <span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="o">*</span>
-<span class="o">*</span><span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">/</span><span class="mf">48.0.2564.116</span><span class="o">*</span>
+<span class="o">*</span><span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">/</span><span class="mf">48.0</span><span class="o">.</span><span class="mf">2564.116</span><span class="o">*</span>
 <span class="o">*</span><span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">ap</span><span class="o">*</span>
 <span class="o">*</span><span class="n">plication</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">.*</span>
 <span class="o">*.</span><span class="n">Accept</span><span class="p">:</span> <span class="o">*/*..</span><span class="n">DNT</span><span class="p">:</span> <span class="mf">1.</span><span class="o">.</span><span class="n">Referer</span><span class="p">:</span> <span class="n">h</span><span class="o">*</span>
-<span class="o">*</span><span class="n">ttp</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.92.161</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">W</span><span class="o">*</span>
+<span class="o">*</span><span class="n">ttp</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">W</span><span class="o">*</span>
 <span class="o">*</span><span class="n">EB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">..</span><span class="n">Accept</span><span class="o">-</span><span class="n">Encoding</span><span class="o">*</span>
 <span class="o">*</span><span class="p">:</span> <span class="n">gzip</span><span class="p">,</span> <span class="n">deflate</span><span class="o">..</span><span class="n">Accept</span><span class="o">-</span><span class="n">Language</span><span class="o">*</span>
 <span class="o">*</span><span class="p">:</span> <span class="n">en</span><span class="o">-</span><span class="n">GB</span><span class="p">,</span><span class="n">en</span><span class="o">-</span><span class="n">US</span><span class="p">;</span><span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">en</span><span class="p">;</span><span class="n">q</span><span class="o">=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Co</span><span class="o">*</span>
@@ -205,7 +290,7 @@ through the API.</p>
 <span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">ICSFSTAT</span> <span class="p">:</span> <span class="n">FMID</span><span class="o">=</span><span class="n">HCR7780</span> <span class="n">STATUS1</span><span class="o">=</span><span class="mi">3</span> <span class="n">STATUS2</span><span class="o">=</span><span class="mi">1</span> <span class="n">CPACF</span><span class="o">=</span><span class="mi">7</span> <span class="n">AES</span><span class="o">=</span><span class="mi">3</span> <span class="n">DSA</span><span class="o">=</span><span class="mi">0</span> <span class="n">RSA1</span><span class="o">=</span><span class="mi">3</span> <span class="n">RSA2</span><span class="o">=</span><span class="mi">3</span> <span class="n">RSA3</span><span class="o">=</span><span class="mi">2</span> <span class="n">ACC</span><span class="o">=</span><span class="mi">1</span>
 <span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">ICSFST2</span> <span class="p">:</span> <span class="n">VERSION</span><span class="o">=</span><span class="mi">1</span> <span class="n">FMID</span><span class="o">=</span><span class="n">HCR7780</span> <span class="n">STATUS1</span><span class="o">=</span><span class="mi">1</span> <span class="n">STATUS2</span><span class="o">=</span><span class="mi">0</span> <span class="n">STATUS3</span><span class="o">=</span><span class="mi">1</span> <span class="n">STATUS4</span><span class="o">=</span><span class="mi">1</span>
 <span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">STATAES</span> <span class="p">:</span> <span class="n">NMK</span><span class="o">-</span><span class="n">STATUS</span><span class="o">=</span><span class="mi">1</span> <span class="n">CMK</span><span class="o">-</span><span class="n">STATUS</span><span class="o">=</span><span class="mi">1</span> <span class="n">OMK</span><span class="o">-</span><span class="n">STATUS</span><span class="o">=</span><span class="mi">1</span> <span class="n">CCA</span><span class="o">-</span><span class="n">APP</span><span class="o">-</span><span class="n">VERS</span><span class="o">=</span><span class="mi">256</span> <span class="n">CCA</span><span class="o">-</span><span class="n">APP</span><span class="o">-</span><span class="n">BUILD</span><span class="o">=</span> <span class="n">USER</span><span class="o">-</span><span class="n">ROLE</span><span class="o">=</span>
-<span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">STATCARD</span> <span class="p">:</span> <span class="n">ADAPTERS</span><span class="o">=</span><span class="mi">2</span> <span class="n">DES</span><span class="o">=</span><span class="mi">0</span> <span class="n">RSA</span><span class="o">=</span><span class="mi">0</span> <span class="n">POST</span><span class="o">=</span><span class="mi">138</span> <span class="mi">143</span> <span class="n">CP</span><span class="o">-</span><span class="n">OS</span><span class="o">=</span><span class="n">Linux</span> <span class="n">VERS</span><span class="o">=</span><span class="mf">2.4.18.0</span> <span class="n">PART</span><span class="o">=</span><span class="mi">41</span><span class="n">U0441</span> <span class="n">EC</span><span class="o">=</span><span class="mi">0</span><span class="n">J99635</span> <span class="n">BOOT</span><span class="o">=</span><span class="mi">89</span> <span class="mi">89</span>
+<span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">STATCARD</span> <span class="p">:</span> <span class="n">ADAPTERS</span><span class="o">=</span><span class="mi">2</span> <span class="n">DES</span><span class="o">=</span><span class="mi">0</span> <span class="n">RSA</span><span class="o">=</span><span class="mi">0</span> <span class="n">POST</span><span class="o">=</span><span class="mi">138</span> <span class="mi">143</span> <span class="n">CP</span><span class="o">-</span><span class="n">OS</span><span class="o">=</span><span class="n">Linux</span> <span class="n">VERS</span><span class="o">=</span><span class="mf">2.4</span><span class="o">.</span><span class="mf">18.0</span> <span class="n">PART</span><span class="o">=</span><span class="mi">41</span><span class="n">U0441</span> <span class="n">EC</span><span class="o">=</span><span class="mi">0</span><span class="n">J99635</span> <span class="n">BOOT</span><span class="o">=</span><span class="mi">89</span> <span class="mi">89</span>
 <span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">STATDIAG</span> <span class="p">:</span> <span class="n">BATTERY</span><span class="o">=</span><span class="mi">1</span> <span class="n">INTRUSION</span><span class="o">=</span><span class="mi">1</span> <span class="n">ERROR</span><span class="o">-</span><span class="n">LOG</span><span class="o">=</span><span class="mi">1</span> <span class="n">MESH</span><span class="o">=</span><span class="mi">1</span> <span class="n">LOW</span><span class="o">-</span><span class="n">VOLT</span><span class="o">=</span><span class="mi">1</span> <span class="n">HIGH</span><span class="o">-</span><span class="n">VOLT</span><span class="o">=</span><span class="mi">1</span> <span class="n">TEMPERATURE</span><span class="o">=</span><span class="mi">1</span> <span class="n">RADIATION</span><span class="o">=</span><span class="mi">1</span>
 <span class="o">+</span><span class="n">VIRCT10I</span> <span class="n">STATEXPT</span> <span class="p">:</span> <span class="n">CCA</span><span class="o">=</span><span class="mi">1</span> <span class="n">CMDF</span><span class="o">=</span><span class="mi">0</span> <span class="mi">56</span><span class="o">-</span><span class="n">bit</span><span class="o">-</span><span class="n">DES</span><span class="o">=</span><span class="mi">1</span> <span class="n">Triple</span><span class="o">-</span><span class="n">DES</span><span class="o">=</span><span class="mi">1</span> <span class="n">SET</span><span class="o">=</span><span class="mi">1</span> <span class="n">MAX</span><span class="o">-</span><span class="n">SYMMETRIC</span><span class="o">-</span><span class="n">MODULUS</span><span class="o">=</span><span class="mi">4096</span>
 </pre></div>
@@ -213,23 +298,23 @@ through the API.</p>
 <p>In the line trace we can see that the field has been encrypted:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">AELoKQAAAAQevHSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
-<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168.92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
-<span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
+<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
+<span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
 <span class="o">*</span><span class="n">rtel</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">Id</span><span class="p">:</span> <span class="mi">2</span> <span class="n">ENTER</span> <span class="mi">12</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">3</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">5.</span><span class="o">.</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">Wind</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ows</span> <span class="n">NT</span> <span class="mf">6.1</span><span class="p">;</span> <span class="n">WOW64</span><span class="p">)</span> <span class="n">AppleWebKit</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">37.36</span> <span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">*</span>
-<span class="o">*/</span><span class="mf">48.0.2564.116</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Co</span><span class="o">*</span>
+<span class="o">*/</span><span class="mf">48.0</span><span class="o">.</span><span class="mf">2564.116</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Co</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ntent</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">fo</span><span class="o">*</span>
 <span class="o">*</span><span class="n">rm</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">..</span><span class="n">Accept</span><span class="p">:</span> <span class="o">*/*..</span><span class="n">DNT</span><span class="p">:</span><span class="o">*</span>
-<span class="o">*</span><span class="mf">1.</span><span class="o">.</span><span class="n">Referer</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.92.1</span> <span class="o">*</span>
+<span class="o">*</span><span class="mf">1.</span><span class="o">.</span><span class="n">Referer</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span> <span class="o">*</span>
 <span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">..</span><span class="n">Accept</span><span class="o">-*</span>
 <span class="o">*</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">gzip</span><span class="p">,</span> <span class="n">deflate</span><span class="o">..</span><span class="n">Accept</span><span class="o">-*</span>
 <span class="o">*</span><span class="n">Language</span><span class="p">:</span> <span class="n">en</span><span class="o">-</span><span class="n">GB</span><span class="p">,</span><span class="n">en</span><span class="o">-</span><span class="n">US</span><span class="p">;</span><span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">en</span><span class="p">;</span><span class="n">q</span><span class="o">*</span>
-<span class="o">*=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Cookie</span><span class="p">:</span> <span class="n">ROUTEID</span><span class="o">=</span><span class="mf">.1</span><span class="p">;</span> <span class="n">SYSLAN</span><span class="o">*</span>
+<span class="o">*=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Cookie</span><span class="p">:</span> <span class="n">ROUTEID</span><span class="o">=.</span><span class="mi">1</span><span class="p">;</span> <span class="n">SYSLAN</span><span class="o">*</span>
 <span class="o">*</span><span class="n">G</span><span class="o">=</span><span class="n">en</span><span class="p">;</span> <span class="n">SYSSTYL</span><span class="o">=</span><span class="n">BLUE</span><span class="p">;</span> <span class="n">SYSPAGE</span><span class="o">=</span><span class="n">auto</span><span class="o">*</span>
-<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">*</span>
-<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168.92.1</span><span class="o">*</span>
+<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">*</span>
+<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span><span class="o">*</span>
 <span class="o">*</span><span class="mf">60.</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Server</span><span class="p">:</span> <span class="n">zagreb</span><span class="o">.</span><span class="n">s</span><span class="o">*</span>
 <span class="o">*</span><span class="n">yspertec</span><span class="o">.</span><span class="n">com</span><span class="o">..</span><span class="n">Connection</span><span class="p">:</span> <span class="n">Keep</span><span class="o">-</span><span class="n">A</span><span class="o">*</span>
 <span class="o">*</span><span class="n">live</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mf">75.</span><span class="o">...</span><span class="n">pf</span><span class="o">=</span><span class="n">E</span><span class="o">*</span>
@@ -266,37 +351,62 @@ case, are identified as candidates for encryption.</p>
 </pre></div>
 </div>
 <p>The module vircrypt.js will perform the encryption on the fields within the subpage using the supplied public key.</p>
-</section>
+</div>
 
 
            </div>
+           
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../TN201602/TN201602.html" class="btn btn-neutral float-left" title="Installing Virtel V4.53 from scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../TN201604/TN201604.html" class="btn btn-neutral float-right" title="Controlling LU Names" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201604/TN201604.html" class="btn btn-neutral float-right" title="Controlling LU Names" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201602/TN201602.html" class="btn btn-neutral float-left" title="Installing Virtel V4.53 from scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
-  </div>
+    <p>
+        
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

@@ -13,9 +13,6 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
-
-
-
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -30,7 +27,24 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\usepackage{sphinxmessages}
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
+\makeatletter
+\def\fnum@figure{\figurename\thefigure{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\tablename}{Table }}
+\makeatletter
+\def\fnum@table{\tablename\thetable{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
+
+\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
+\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
+\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
+\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
+\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
+
+\addto\extrasenglish{\def\pageautorefname{page}}
+
 \setcounter{tocdepth}{2}
 
 
@@ -42,7 +56,7 @@
 
 
 \title{Virtel Messages}
-\date{Jun 12, 2023}
+\date{Jul 22, 2023}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -2529,7 +2543,7 @@ VIR0000
 Error code xx has occurred when generating the VSAM buffer pools.
 
 \item[{Action}] \leavevmode
-Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X‘08’ indicates that the memory allocated to VIRTEL is insufficient.
+Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X’08’ indicates that the memory allocated to VIRTEL is insufficient.
 
 \end{description}
 
@@ -2543,7 +2557,7 @@ VIR0000
 VSAM error xx occurred when opening file filename.
 
 \item[{Action}] \leavevmode
-Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X‘5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
+Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X’5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
 
 \end{description}
 
@@ -3394,7 +3408,7 @@ None.
 VIR0010
 
 \item[{Meaning}] \leavevmode
-Conflict between a VIRTEL program and a sub application screen.
+Conflict between a VIRTEL program and a sub application screen. This message can occur if a badly coded USSTAB is presented to a Virtel sub-application. See the USSTAB MSG10 section in the customization guide for details on how to correctly code a Virtel USSTAB.
 
 \item[{Action}] \leavevmode
 Contact technical support.
@@ -6123,7 +6137,7 @@ Correct the module name in the VIR0021W transaction or determine why the module 
 VIR0021W
 
 \item[{Meaning}] \leavevmode
-The user USSTAB has data lengths greater than 240 characters without an intervening SF 3270 code (x‘1D60’).
+The user USSTAB has data lengths greater than 240 characters without an intervening SF 3270 code (x’1D60’).
 
 \item[{Action}] \leavevmode
 Static data in the USSTAB must be separated by an SF 3270 code every 240 characters or less. For example DATA,SF,DATA,SF,DATA,SF. The DATA portion of this 3270 string cannot be greater than 240 characters. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
@@ -6140,7 +6154,7 @@ VIR0021W
 In input field greater than 50 characters has been detected in the users USSTAB.
 
 \item[{Action}] \leavevmode
-A user USSTAB should only have one input field identified by the Insert Cursor 3270 code X‘13’. This input field should not be greater than 50 characters. Correct the USSTAB source and reassemble the module. Ensure that the input field is terminated with a SF code. For example x‘1d40’,x‘13’,CL49’ ‘,X‘1d60’ means SFUNINH\_FIELD,INSRT CURSOR,INPUT AREA,SFINH\_FIELD. The IC also takes up one character of the input area so X‘13’,CL49’ ‘ equates to 50 characters. The default USSVIRT table will be loaded.
+A user USSTAB should only have one input field identified by the Insert Cursor 3270 code X’13’. This input field should not be greater than 50 characters. Correct the USSTAB source and reassemble the module. Ensure that the input field is terminated with a SF code. For example x’1d40’,x’13’,CL49’ ‘,X’1d60’ means SFUNINH\_FIELD,INSRT CURSOR,INPUT AREA,SFINH\_FIELD. The IC also takes up one character of the input area so X’13’,CL49’ ‘ equates to 50 characters. The default USSVIRT table will be loaded.
 
 \end{description}
 
@@ -6165,10 +6179,10 @@ The default USSVIRT table will be loaded or the USSTAB= table as defined in the 
 VIR0021W
 
 \item[{Meaning}] \leavevmode
-Multiple input fields have been found in the users USSTAB. Input fields are identified by the Insert Cursor 3270 code X‘13’.
+Multiple input fields have been found in the users USSTAB. Input fields are identified by the Insert Cursor 3270 code X’13’.
 
 \item[{Action}] \leavevmode
-A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X‘13’. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X’13’. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
 
 \end{description}
 
