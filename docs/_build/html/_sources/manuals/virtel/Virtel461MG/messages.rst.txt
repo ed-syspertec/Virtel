@@ -4048,14 +4048,23 @@ Meaning
 Action
     A user USSTAB can only have one input field identified by the Insert Cursor 3270 code X'13'. Remove all but one input field and reassemble the module. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
 
-VIR2106E COMMAND TABLE OVERFLOW
-"""""""""""""""""""""""""""""""
+VIR2107E MSG=10,TEXT= IS NOT SUPPORTED
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021W
 Meaning
-    An internal error has occurred in processing the users USSTAB.
+    TEXT= is not support for USSTAB MSG10 entries. BUF= must be used.
 Action
-    The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT. 
+    The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
+
+VIR2108E UNABLE TO LOAD A USSTAB. DEFAULT USSTAB WILL BE LOADED.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0021W
+Meaning
+    USSTAB build or load processing has failed.
+Action
+    The default USSVIRT table will be loaded.
 
 VIR2121E epname HAS NO TRANSACTIONS
 """""""""""""""""""""""""""""""""""

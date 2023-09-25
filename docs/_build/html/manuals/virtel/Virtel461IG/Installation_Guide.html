@@ -5472,13 +5472,17 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 </pre></div>
 </div>
 <p><em>ACF2DEF : ACF2 commands to grant general user permissions</em></p>
-<p>These commands permit users in group user-group-name to access specific VIRTEL transactions.</p>
-<p>Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001. Resource CLI-** is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.</p>
-<p>8.2.3.4. Allow everyone to use the 3270 LOGOFF transactions</p>
-<dl class="simple">
-<dt>::</dt><dd><p>$KEY(PC-0020) TYPE(VIR) UID(<strong>****</strong> <strong>****</strong>) SERVICE(READ)</p>
-</dd>
-</dl>
+<p>These commands permit users in group user-group-name to access specific VIRTEL transactions.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Resource</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">permits</span> <span class="n">specific</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span> <span class="n">CICS</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">transaction</span> <span class="n">on</span> <span class="n">port</span> <span class="mf">41001.</span>
+<span class="n">Resource</span> <span class="n">CLI</span><span class="o">-**</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">generic</span> <span class="n">resource</span> <span class="n">which</span> <span class="n">permits</span> <span class="n">access</span> <span class="n">to</span> <span class="n">customer</span><span class="o">-</span><span class="n">defined</span> <span class="n">transactions</span> <span class="p">(</span><span class="n">internal</span> <span class="n">name</span> <span class="n">CLI</span><span class="o">-</span><span class="n">nn</span><span class="p">)</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">41002</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="allow-everyone-to-use-the-3270-logoff-transactions">
+<h5>Allow everyone to use the 3270 LOGOFF transactions<a class="headerlink" href="#allow-everyone-to-use-the-3270-logoff-transactions" title="Permalink to this heading">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$KEY(PC-0020) TYPE(VIR) UID(******** ********) SERVICE(READ)
+</pre></div>
+</div>
 <p><em>ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction</em></p>
 <p>This command permits all users to use the 3270 Logoff transaction, whose internal name is PC-0020.</p>
 </section>

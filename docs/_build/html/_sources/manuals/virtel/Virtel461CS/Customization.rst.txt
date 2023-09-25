@@ -3779,6 +3779,7 @@ PFK's can be assigned to transactions within the CappMenu display as shortcuts.
 The pf2tran array needs to be added to the cAppmenOptions array. The following is an example.
 
 ::
+    
     // Titles with PFKs
     cAppMenuOptions = {
         "texts": {

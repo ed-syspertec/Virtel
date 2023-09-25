@@ -2861,30 +2861,23 @@ var oCustom={
 <p>PFK’s can be assigned to transactions within the CappMenu display as shortcuts.</p>
 <p><img alt="image87" src="../../../_images/image874.png" /></p>
 <p>The pf2tran array needs to be added to the cAppmenOptions array. The following is an example.</p>
-<dl>
-<dt>::</dt><dd><p>// Titles with PFKs
-cAppMenuOptions = {</p>
-<blockquote>
-<div><p>“texts”: {
-“main-title”: “Virtel Demo Application Tier Menu Session Manager”,
-“sub-title”: “SYSPERTEC Virtel V4.61 Application Menu”</p>
-</div></blockquote>
-<p>},
-// mapping of the pf keys connected to VIRTEL transactions
-“pf2tran”: [</p>
-<blockquote>
-<div><p>{ “pf”  : “PF 2”     ,  “tran” : “CICSP1”         },
-{ “pf”  : “PF 10”    ,  “tran” : “CICST1”         },
-{ “pf”  : “PF 12”    ,  “tran” : “TSOP1”          },
-{ “pf”  : “PF 9”     ,  “tran” : “TSOT1”          },
-{ “pf”  : “PF 4”     ,  “tran” : “TSOT2”          }</p>
-<blockquote>
-<div><p>]</p>
-</div></blockquote>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Titles</span> <span class="k">with</span> <span class="n">PFKs</span>
+<span class="n">cAppMenuOptions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;texts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;main-title&quot;</span><span class="p">:</span> <span class="s2">&quot;Virtel Demo Application Tier Menu Session Manager&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub-title&quot;</span><span class="p">:</span> <span class="s2">&quot;SYSPERTEC Virtel V4.61 Application Menu&quot;</span>
+<span class="p">},</span>
+<span class="o">//</span> <span class="n">mapping</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pf</span> <span class="n">keys</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">VIRTEL</span> <span class="n">transactions</span>
+<span class="s2">&quot;pf2tran&quot;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">{</span> <span class="s2">&quot;pf&quot;</span>  <span class="p">:</span> <span class="s2">&quot;PF 2&quot;</span>     <span class="p">,</span>  <span class="s2">&quot;tran&quot;</span> <span class="p">:</span> <span class="s2">&quot;CICSP1&quot;</span>         <span class="p">},</span>
+   <span class="p">{</span> <span class="s2">&quot;pf&quot;</span>  <span class="p">:</span> <span class="s2">&quot;PF 10&quot;</span>    <span class="p">,</span>  <span class="s2">&quot;tran&quot;</span> <span class="p">:</span> <span class="s2">&quot;CICST1&quot;</span>         <span class="p">},</span>
+   <span class="p">{</span> <span class="s2">&quot;pf&quot;</span>  <span class="p">:</span> <span class="s2">&quot;PF 12&quot;</span>    <span class="p">,</span>  <span class="s2">&quot;tran&quot;</span> <span class="p">:</span> <span class="s2">&quot;TSOP1&quot;</span>          <span class="p">},</span>
+   <span class="p">{</span> <span class="s2">&quot;pf&quot;</span>  <span class="p">:</span> <span class="s2">&quot;PF 9&quot;</span>     <span class="p">,</span>  <span class="s2">&quot;tran&quot;</span> <span class="p">:</span> <span class="s2">&quot;TSOT1&quot;</span>          <span class="p">},</span>
+   <span class="p">{</span> <span class="s2">&quot;pf&quot;</span>  <span class="p">:</span> <span class="s2">&quot;PF 4&quot;</span>     <span class="p">,</span>  <span class="s2">&quot;tran&quot;</span> <span class="p">:</span> <span class="s2">&quot;TSOT2&quot;</span>          <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="passthru-security">
 <h3>PassThru Security<a class="headerlink" href="#passthru-security" title="Permalink to this heading">¶</a></h3>
