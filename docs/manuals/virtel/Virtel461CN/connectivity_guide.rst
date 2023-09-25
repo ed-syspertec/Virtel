@@ -993,7 +993,8 @@ Retries
 
 Delay
     Interval in seconds between attempts to reacquire terminals. The
-    default delay is 2 seconds.
+    default delay is 2 seconds. A retries value of 0 will prevent the 
+    line from starting at Virtel startup.
 
 .. raw:: latex
 

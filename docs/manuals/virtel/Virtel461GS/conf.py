@@ -111,7 +111,7 @@ htmlhelp_basename = 'Virteldoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-'preamble': '''\usepackage{fontspec} \setmonofont{Courier New}''',
+'preamble':r'''\usepackage{fontspec} \setmonofont{Courier New}''',
  # disable font inclusion
  'fontpkg': '',
  'fontenc': '',

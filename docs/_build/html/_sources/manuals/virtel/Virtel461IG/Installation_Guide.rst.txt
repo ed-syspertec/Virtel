@@ -6344,13 +6344,16 @@ Add permissions for VIRTEL general users
 
 *ACF2DEF : ACF2 commands to grant general user permissions*
 
-These commands permit users in group user-group-name to access specific VIRTEL transactions.
+These commands permit users in group user-group-name to access specific VIRTEL transactions.::
 
-Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001. Resource CLI-** is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.
+	Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001.
+	Resource CLI-** is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.
 
-8.2.3.4. Allow everyone to use the 3270 LOGOFF transactions
+Allow everyone to use the 3270 LOGOFF transactions
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ::
+
 	$KEY(PC-0020) TYPE(VIR) UID(******** ********) SERVICE(READ)
 
 *ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction*

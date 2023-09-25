@@ -111,7 +111,7 @@ htmlhelp_basename = 'Virteldoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-          'preamble': '''
+          'preamble':r'''
 % Enable unicode and use Courier New to ensure the card suit
 % characters that are part of the 'random' module examples
 % appear properly in the PDF output.

@@ -111,7 +111,7 @@ htmlhelp_basename = 'Virteldoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-          'preamble': '''
+          'preamble':r'''
 % Enable unicode and use Courier New to ensure the card suit
 % characters that are part of the 'random' module examples
 % appear properly in the PDF output.
@@ -146,7 +146,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Installation_Guide.tex', 'Virtel Installation Guide',
+    (master_doc, 'Installation_guide.tex', 'Virtel Installation Guide',
      'Syspertec Communications', 'manual'),
 ]
 
