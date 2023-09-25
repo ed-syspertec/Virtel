@@ -989,7 +989,7 @@ Retries
     Number of attempts to reacquire auto-activated terminals during
     VIRTEL startup. The delay between attempts is specified by the
     “Delay” parameter. A value of zero will prevent the line from 
-    starting at Virtel start up. 
+    starting at Virtel startup. 
 
 Delay
     Interval in seconds between attempts to reacquire terminals. The
