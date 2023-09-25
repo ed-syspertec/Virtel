@@ -1,0 +1,169 @@
+.. _#_tn201608:
+
+Installing Virtel V4.56 from scratch
+====================================
+
+**Cleaning up from a previous installation.**
+
+If you want to delete all the files from a previous installation use the
+following job:- ::
+
+  //S00 EXEC PGM=ADRDSSU,REGION=0M
+  //SYSPRINT DD SYSOUT=*
+  //TEMP DD DUMMY
+   DUMP DATASET -
+     (INCLUDE( -
+     SPTHOLT.VIRT456.** -
+     )) -
+     DELETE -
+     PURGE -
+     TOL(ENQF) -
+     OUTDDNAME(TEMP)
+
+**Getting the software**
+
+#. Download relevant files from the FTP server: https://ftp-group.syspertec.com
+
+- /VIRTEL 4.56/Produits/virtel456mvs.zip
+- /VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt
+- /VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip
+
+#. Unzip “virtel456mvs.zip” into a folder on your workstation.
+#. Print off the “install.txt” document.
+#. Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on your workstation.
+#. Print off the readme document.
+
+**Installing the software**
+
+#.  Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.
+#.  Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.
+#.  Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.
+#.  Upload text file allptfs-mvs456.txt to *yourqual.VIRT456.CNTL(PTF456MV).*
+#.  Modify and run job *yourqual.VIRT456.CNTL(ZAPJCL)*. This will apply maintenance to the VIRTEL load library.
+#.  Authorize the VIRTEL load library. Use the z/OS SETPROG APF command 
+
+::  
+  
+  SETPROG APF,ADD,DSN=\ *yourqual.VIRT456.LOADLIB*,[VOL=volser \| SMS ]
+
+#.  Edit the VIRTEL TCT member *yourqual.VIRT456.CNTL(VIRTCT01*) and assemble using *yourqual.VIRT456.CNTL(ASMTCT).* See note 6 of “install.txt” for further information.
+#.  Edit *yourqual.VIRT456.CNTL(ARBOLOAD)* and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.
+#.  Copy *yourqual.VIRT456.CNTL(member)* to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.
+#. Edit member *yourqual.VIRT456.CNTL(VIRTEL4)* and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.
+#. Start Virtel.
+
+You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-
+
+::
+
+  //SPTHOLTV JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+  //VIRTEL PROC QUAL=SPTHOLT.VIRT456,
+  // TCT=01 = Change to 01
+  //*-------------------------------------------------------------------*
+  //* PROCEDURE FOR VIRTEL STARTER EDITION                              *
+  //*-------------------------------------------------------------------*
+  //VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&TCT
+  //STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
+  //DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
+  //SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
+  //VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
+  //VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
+  //VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
+  //SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
+  //HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+  //SYSOUT DD SYSOUT=*
+  //VIRLOG DD SYSOUT=*
+  //VIRTRACE DD SYSOUT=*
+  //SYSPRINT DD SYSOUT=*
+  //SYSUDUMP DD SYSOUT=*
+  // PEND
+  //S01 EXEC VIRTEL
+
+Once Virtel is started check that VIRTEL is running correctly and has
+opened sessions ports 41001 and 41002. Issue the following command:-
+
+::
+
+  F VIRTEL,LINES
+
+The output should be similar to:-
+
+::
+
+  F VIRTEL,LINES
+  +VIR0200I LINES
+  +VIR0201I VIRTEL 4.56 APPLID=APPLHOLT LINES
+  +VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
+  +VIR0202I -------- -------- ----- ---------
+  +VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002
+  +VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
+  +VIR0202I ---END OF LIST---
+
+**Applying maintenance to Virtel.**
+
+*VSAM TRSF changes*
+
+Using a Chrome Browser navigate to the Administration Virtel Portal
+which can be accessed through port 41001. The Drag and Drop upload
+feature is supported by Chrome and Firefox only.
+
+::
+
+  http://192.168.170.30:41001/
+
+The following screen image should appear:-
+
+|image0|
+
+Select Drag and Drop Upload and login with your credentials. The Drag
+and Drop Interface will be displayed.
+
+|image1|
+
+Keeping this browser window open, go to your desktop directory where you
+unzipped the virtel456updtxxxx.zip file. It should have a directory
+structure similar to the following display:-
+
+|image2|
+
+Select the w2h directory and then select all the files within that
+directory (CTRL-A). Drag this selection across to the browser window and
+drop the selected files over the W2H-DIR ICON in the browser window.
+This should start an upload of all the files from the w2h directory on
+your desktop into the W2H-DIR directory of the SAMP TRSF VSAM file.
+Check that the upload completes with a return code of 00.
+
+After all the elements have been uploaded into the SAMPTRSF directories,
+close the drag and drop window and return to the administration portal.
+Reload the browser window and issue CTRL-R to refresh the browser cache.
+The fix number 4.56 (xxxx) should appear under the Virtel Applid in the
+top portion of the Virtel screen.
+
+Virtel 4.56 maintenance is now complete.
+
+**Basic health test of Virtel**
+
+From the Virtel Portal Page select “Other Applications”. An application
+menu should appear with some default applications.
+
+|image3|
+
+Select any application that is flagged green. If no applications are
+flagged green (available) then configure you ARBO and add applications
+relevant to your site. See the *Virtel Connectivity Guide* for more
+information.
+
+This completes the Virtel 4.56 installation.
+
+.. |image0| image:: images/media/image1.png
+   :width: 6.26806in
+   :height: 3.90694in
+.. |image1| image:: images/media/image2.png
+   :width: 6.26806in
+   :height: 3.89722in
+.. |image2| image:: images/media/image3.png
+   :width: 6.26806in
+   :height: 1.67431in
+.. |image3| image:: images/media/image4.png
+   :width: 6.26806in
+   :height: 1.80556in

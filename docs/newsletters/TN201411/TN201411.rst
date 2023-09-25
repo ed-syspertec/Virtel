@@ -1,0 +1,362 @@
+.. _tn201411:
+
+Building a customized USSTAB using Virtel’s Web Access facility
+===============================================================
+
+This technical newsletter describes how to build a VTAM USSTAB
+equivalent using Web Access facility. The process will cover:-
+
+-  Modifying the tool bar.
+
+-  Setting the correct fonts and keys.
+
+-  Building a template to act as the USSTAB screen.
+
+All of these modifications are customised Java Script and HTML modules
+which will be kept in the default directory for the relevant Entry
+Point. In this sample the entry point EDSHOST is used. Here is what it
+looks like:-
+
+|screen1|
+
+Fig. 1 – Entry Point detail
+
+The entry point is associated with the line definition E-HTTP which
+looks like the following:-
+
+|screen2|
+
+Fig. 2 – Line detail
+
+The line and Entry Point combination will use the default transaction
+which can be found in the Entry Points transaction list. PF4 from the
+Entry Point display. In our case we default to the Entry Point name and
+therefore have set up a transaction called EDSHOST.
+
+The default transaction EDSHOST associated with the EDSHOST entry point
+will identify our default directory, EDS-DIR, where modifications will
+be uploaded to. The detail for the default transaction looks like:-
+
+|screen3|
+
+Fig. 3 – Default transaction EDSHOST
+
+**USSTAB template USSWSYSP**
+
+Template pages are the means by which VIRTEL presents host application
+data. In the customized USSTAB template called USSWSYSP, the template
+will simulate 3270 controls and actions through Java Script and HTML
+programming. Features like AJAX will also be employed in the background
+to maintain HTTP session state, however, those features will not be
+discussed in this newsletter.
+
+So to start with, this is the end result of our template customization
+and what the user will see when accessing the mainframe via the USSWSYSP
+template.
+
+|screen4|
+
+Fig. 4 – The template USSWSYSP display
+
+The URL for this template is
+*line_ip_address:line_port/entrypoint/:*\ USSWSYSP.HTML which in our
+case is 192.168.170.30:41003/EDSHOST/USSWSYSP.HTML. It looks very
+similar to what a VTAM USSTAB might produce. Notice that there is a tool
+bar on top with some functions and a cursor/row counter in the bottom
+right corner. To use the template, the user simply types in the name of
+an application in line 2, where the cursor is positioned. For example,
+typing in TSO and pressing enter will establish a TSO session from this
+template. If ENTER is pressed with no value on line 2 or any other key
+other than ENTER is used than an error message will be displayed.
+
+|screen5|
+
+Fig. 5 – Error message displayed as a result of pressing PFK9.
+
+So to access an application the VTAM application name is entered. Here
+we enter TSO on line 2 and press ENTER.
+
+|screen6|
+
+Fig. 6 – Establishing a TSO session
+
+After pressing enter a TSO logon panel will be presented. Note that the
+cursor/row display in the bottom right will update as data is typed into
+the line 2 row - just as you would expect from a 3270 emulation program.
+
+|screen7|
+
+Fig. 7 – TSO Logon panel
+
+When the disconnect ICON in the tool bar is pressed (Red Square) the
+screen will return to the USSWSYSP. This is because the ***lastpage***
+parameter in the Entry Point definition has been set to /USSWSYSP.HTML.
+
+**USSWSYSP Logic**
+
+The template consists of some JavaScript and HTML. Most of the
+JavasSript relates to session state and presentation and should not be
+modified. Essential the template, using JavaScript, builds a 24*80 HTML
+presentation screen. On line 1 a title is displayed, see the variable
+*title* in the last <script> segment. Line 2 is an input line and line
+24 is an error message line.
+
+When a user presses ENTER the JavaScript *SubmitForm* function is
+triggered which analyses the input represented by the *zcmd* variable.
+If *zcmd* is blank an error message is set in variable *errmsg*. Also,
+if the command entered is not ENTER, as reflected in the *pfKey*
+variable, an error message is also set. The case logic in the
+*SubmitForm* function determines which application to logon onto. This
+may be modified to reflect the commands found in a VTAM USSTAB. In the
+sample *USSHSYSP.HTML* the command entered is not tested. It is assumed
+that it is a valid application name and in the default section of the
+CASE statement is concatenated to the WEB2AJAX url and triggered via the
+action statement at the end of the function. This will result in a logon
+process to the application entered by the user. The only change to
+behavior is if the user entered TSOA. In that case the application name
+is changed to TSO.
+
+It is here, in the CASE logic, that a user would modify USSHSYSP.HTML
+and specify all the true application test through a series of CASE
+elements and set the appropriate action. The default action should be an
+error message or default application.
+
+The other customized elements that have been changed are the
+*customs.js* and *w2hparm.js* modules. You can see in the included
+<script> list in USSWSYSP.HTML that the defaults for *custom.js* and
+*w2hparm.js* are not included from the w2h directory. Instead the html
+code pulls these two modules from the users default directory associated
+with the entry point.
+
+The modifications made to *custom.js* are shown in the following piece
+of code:-
+
+::
+
+   /*
+   * (c)Copyright SysperTec Communication 2012 All Rights Reserved
+   * VIRTEL Web Access customer-specific javascript functions
+   */
+   function after_standardInit() {
+   /* Remove macro buttons from the toolbar */
+   removetoolbarbutton("startrecording");
+   removetoolbarbutton("playback");
+   }
+
+This customs-specific java script module removes the “startrecording”
+and “playback” tools from the tool bar.
+
+Also, the *w2hparm.js* module has been modified to change the fonts and
+keys from the defaults. The following is an example of *w2hparm.js* as
+used with USSHSYSP.HTML:-
+
+::
+
+   // Default Virtel Web Access settings for USSHSYSP.HTML
+   // see w2hparmdefns in js01.js for parameters and allowable values
+   var w2hparm = {
+   "fontsize":"window",
+   "font":"Lucida Console",
+   "ctrl":"Newline",
+   "enter":"ENTER",
+   "shiftesc":"ATTN",
+   "pause":"CLEAR",
+   "esc":"Reset",
+   "home":"Home",
+   "end":"ErEof",
+   "shiftins":"Dup",
+   "shifthome":"FieldMark",
+   "shiftend":"End",
+   "shiftpgdn":"PA3",
+   "pgup":"PA1",
+   "pgdn":"PA2",
+   "ctrlend":"End",
+   "printstyle":"white",
+   "style":"3270"};
+
+*USSWSYSP.HTML, customs.js* and *w2hparm.js* should all be uploaded to
+the default directory for the Entry Point you are using. Also, within
+that Entry Point, in this EDSHOST, there must be a transaction entry for
+the W2H-DIR directory. This is so the shipped JavaScript code can be
+accessible. Here is the list of transactions for the Entry Point
+EDSHOLT:-
+
+|screen8|
+
+Fig. 8 – Transactions associated with Entry Point.
+
+The transaction details for the W2H-DIR, external name *w2h* look like
+this :-
+
+|screen9|
+
+Fig. 9 – Transaction entry to access the ../w2h/ directory.
+
+Do not upload any modules to the shipped directory *../w2h/.* If you do,
+you will overwrite the Virtel defaults which would affect behavior
+globally. If you want to use the shipped defaults of custom.js and
+w2hparm.js then modify the HTML <script> tags in *USSWSYSP.HTML* to
+include *custom.js* and *w2hparm.js* from the distributed ../\ *w2h/*
+directory and not from your default EntryPoint directory.
+
+**Appendix A**
+
+Code for template USSWSYSP.HTML
+
+::
+
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+      <html>
+         <head> <!--VIRTEL start="{{{" end="}}}" -->
+            <!--
+            $Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
+            Example of Home Page for VIRTEL Web Access _ USS Replacement
+            -->
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta http-equiv="Content-Type" content="text/html;
+            charset=ISO-8859-15">
+            <script type="text/javascript" src="../w2hparm.js"></script>
+            <script type="text/javascript" src="../w2h/default.js"></script>
+            <script type="text/javascript" src="../w2h/stk.js"></script>
+            <script type="text/javascript" src="../w2h/js01.js"></script>
+            <script type="text/javascript" src="../w2h/vir3270.js"></script>
+            <script type="text/javascript" src="../w2h/virajax.js"></script>
+            <script type="text/javascript" src="../custom.js"></script>
+            <title>{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access</title>
+         </head>
+      <body onload='js01onload(); pageSetup(80,"{{{NAME-OF (VIRTEL)}}}"); VIR3270.init("printReady", 24, 80, "zcmd"); autoCapture();'>
+         <script type="text/javascript">
+         function submitForm(pfkey) {
+            var zcmd, action, errmsg, elem;
+            zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();
+            if (pfkey == "CLEAR") {
+               action = "/";
+            } else if (pfkey != "ENTER") {
+               errmsg = "Invalid Key. Please enter application and press ENTER";
+            } else {
+               switch (zcmd) {
+                  case "":
+                     errmsg = "Please specify application and press ENTER";
+                     break;
+                  case "TSOA":
+                     action = "../w2h/WEB2AJAX.htm+TSO";
+                     break;
+                  default:
+                     // errmsg = "LE CHOIX QUE VOUS AVEZ FAIT N'EST PAS PREVU";
+                     action = "../w2h/WEB2AJAX.htm+".concat(zcmd);
+               }
+            }
+            if (errmsg) {
+               elem = VIR3270.findField(1840);
+               if (elem) 
+                  elem.innerHTML = errmsg.fixlen(79).htmlcode();
+               VIR3270.cursorOff();
+               VIR3270.cursorHome();
+               VIR3270.cursorOn();
+               VIR3270.resetInhibit();
+            }
+            if (action) 
+               document.location.href = action;
+         }
+         function pageSetup(cols, virtname) {
+            var ident1, ident2;
+            loadCss("../w2h/login.css");
+            loadCss("../w2h/keypad.css");
+            loadCss("../w2h/custom.css");
+            if (typeof setStatusBarRelayStatus === "function") {
+               fillstatusbar(cols);
+               setStatusBarRelayStatus(virtname);
+               if (typeof createOnResizeFn === "function") {
+                  window.onresize = createOnResizeFn("window", 80, 24);
+                  window.onresize(forceResizeEvent);
+               }
+            } else {
+               fillstatusbar(cols, virtname);
+               updateFontsize("window", 80, 24);
+            }
+            document.getElementById("printReady").style.visibility = "visible";
+         }
+         setFontsize("window", 80, 24);
+         genkeypad();
+         gentoolbar();
+         if (typeof after_standardInit === "function") {
+         after_standardInit();
+         }
+         </script>
+ 
+         <div id="viewport" style="-webkit-transform-origin:0 0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0 0;">
+            
+            <div id="virsubpage">
+            
+               <form name="virtelForm" action="" method="get">
+                  <script type="text/javascript">
+                     var title = "Welcome to SysperTec"
+                     var blankLine = ' '.concat('<br>');
+                     var screen = '<pre><div id="printReady" class="mainFont"
+                     style="visibility:hidden;"><span class="NGREEN">';
+                     screen = screen.concat(title).concat(blankLine.substring(title.length));
+                     screen = screen.concat('</span>');
+                     screen = screen.concat('<input name="zcmd" type="text" size="80"
+                     maxsize="80" class="NGREEN">');
+                     screen = screen.concat('<span class="NWHITE"><br>');
+                     for (var i = 0; i < 21; i++) {
+                        screen = screen.concat(blankLine);
+                     }
+                     screen = screen.concat('</span><span
+                     class="NRED">').concat(blankLine).concat('</span><span
+                     class="NWHITE">&nbsp;')
+                     screen = screen.concat('</span></div><div id="statusbar"
+                     class="mainFont"></div></pre>');
+                     document.write(screen);
+                  </script> 
+       
+                  {{{DEFINE-HTML-PFKEY "pf"}}}<input name="pf" type="HIDDEN" value="ENTER">
+                  <input name="cursorField" id="cursorfield" type="HIDDEN" value="">
+               </form>
+            
+            </div>
+
+         </div>
+         <script type="text/javascript">
+         genBhoTrigger();
+         </script>
+      </body>
+   </html>
+
+.. note::
+
+   The blankLine variable has 80 blanks between the quotes.
+
+**Related material**
+
+:doc:`Processing the VTAM USS MSG10 buffer <../TN201519/TN201519>`
+
+
+.. |screen1| image:: images/media/image1.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen2| image:: images/media/image2.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen3| image:: images/media/image3.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen4| image:: images/media/image4.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen5| image:: images/media/image5.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen6| image:: images/media/image6.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen7| image:: images/media/image7.jpeg
+   :width: 6.29167in
+   :height: 5.52083in
+.. |screen8| image:: images/media/image8.jpeg
+   :width: 6.30208in
+   :height: 4.15625in
+.. |screen9| image:: images/media/image9.jpeg
+   :width: 6.30208in
+   :height: 4.15625in

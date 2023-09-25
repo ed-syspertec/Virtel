@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Maintaining centralized macros with batch &mdash; Virtel 9 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
+          
+
+          
+            
+            <img src="../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.61
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../newsletters.html">Technical Newsletters</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Maintaining centralized macros with batch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/newsletters/TN201903/TN201903.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="maintaining-centralized-macros-with-batch">
+<span id="tn201903"></span><h1>Maintaining centralized macros with batch<a class="headerlink" href="#maintaining-centralized-macros-with-batch" title="Permalink to this headline">¶</a></h1>
+<p>The following newsletter documents how to maintain centralized macros using a batch process. The process uses the “CURL” program, a browser client, to interface with Virtel and to upload the macros from a PC. The benefits of using a batch process is macros can be managed on a PC and uploaded to the relevant Virtel directories as a batch process rather than the default “Drag and Drop”.</p>
+<p>The following steps are implemented to support this process. A CURL request is made to Virtel to obtain they key for either the GROUP id, USER id or the GLOBAL DDI directory. The key is then used in a subsequent HTTP POST to upload a macros.json file to that directory indexed by the key. This is effectively what occurs when you perform the same process using the standard Drag and Drop technique.</p>
+<p>The process is driven through batch scripts which are generated and downloaded from the mainframe following a extract from the RACF database. The extract provides the GROUP and USERID relationship required by the upload process.</p>
+<div class="section" id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="virtel-setup">
+<h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this headline">¶</a></h3>
+<p>You must be a Virtel administration to perform this procedure and you must have configured Virtel to use centralized DDI. For example, on the default client line, 41002, the macro list icon should be a “Blue” triangle. If it is “Green”, then your DDI setup is not correctly configured. See the ‘Virtel Users Guide’ for further details on setting up the “centralized” macro environment. Alternatively, information can be found in technical newsletter TN201704.</p>
+<p>There should also be a local macro facility available so as to be able to modify existing macros or generate new ones. It is suggested that the Admin. Portal, port 41001 by default, be used for this purpose.</p>
+</div>
+<div class="section" id="macro-sub-directory-organization">
+<h3>Macro Sub-Directory Organization<a class="headerlink" href="#macro-sub-directory-organization" title="Permalink to this headline">¶</a></h3>
+<p>You should also have the relevant macros.json file for each of the group/user related directories that you wish to build. The GROUP and USERID names must be valid RACF constructs. The ‘ddiMacro.bat’ script will upload a macros.json file from the associated PC directories as identified in the output from the LISTUSRS JCL. See “Running LISTUSRS for further details. The associated directories can be any arbitrary name but must exist within the c:\virtel\macros\ddiBatch directory as sub-directories and each sub-directory must contain a relevant macros.json file.</p>
+<p>Either organize sub-directories by user or type. For example, a type structure would look something like this:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="k">global</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">adminGroup</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">adminUser</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">userGroup1</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">userGroup2</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">users1</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">users2</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>The advantage of a “type” structure is that multiple users can upload common files. A user sub-directory structure would look like :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="k">global</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">RACFGRP</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">ADM0010</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">ADM0020</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">SYSPGRP</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">SPTHOLT</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">SPTBOWL</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">USRGRP</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">USRPETE</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="o">./</span><span class="n">USRMARY</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>In this structure type, each user has there own “user” macro.json.</p>
+</div>
+<div class="section" id="macro-json-files">
+<h3>Macro.json files<a class="headerlink" href="#macro-json-files" title="Permalink to this headline">¶</a></h3>
+<p>A macro.json file is a JSON object that represents the macros available to a user, group or global macro entity within Virtel. Here is an example:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSF&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;move(435)&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=M&quot;</span><span class="p">},</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;5&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]}],</span><span class="s2">&quot;desc&quot;</span><span class="p">:</span><span class="s2">&quot;global macros&quot;</span><span class="p">,</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Creating these macros is best done through Virtel. Use a local macro environment to create your macros. For example, from within a TSO or a CICS application within the Administration portal. After creating the macros, export them to a file as a JSON structure. Copy the file to the relevant batch sub-directory. In all cases the file must be called macros.json. Alternatively, get you users to create the own “macros.json”, and ship them to you.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot export macros from a centralized DDI macro environment.</p>
+</div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>All the modules and scripts to implement this package are available as a zip file on the Syspertec FTP web server.</p>
+<div class="section" id="unzip-package">
+<h3>Unzip package<a class="headerlink" href="#unzip-package" title="Permalink to this headline">¶</a></h3>
+<p>Download the zip package “ddimacros.zip” from the Virtel ftp website and unzip into a directory on your PC. In the following examples the zip file has been unzip into a directory called ‘c:\virtel\macros’. After unzipping the file you should find a batch sub-directory which will have the the following directory structure and files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="k">global</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+\<span class="n">sysgroup</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+\<span class="n">sysprog</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+\<span class="n">user</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+\<span class="n">usergroup</span>
+    <span class="n">macros</span><span class="o">.</span><span class="n">json</span>
+<span class="n">curl</span><span class="o">.</span><span class="n">exe</span>
+<span class="n">ddiMacro</span><span class="o">.</span><span class="n">bat</span>
+<span class="n">listuser</span><span class="o">.</span><span class="n">rexx</span>
+<span class="n">listusr1</span><span class="o">.</span><span class="n">jcl</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-files">
+<h3>Upload files<a class="headerlink" href="#upload-files" title="Permalink to this headline">¶</a></h3>
+<p>Upload files LISTUSER.rexx and LISTUSRS.jcl to your VIRTnnn.CNTL as members LISTUSER and LISTUSRS.</p>
+</div>
+<div class="section" id="running-listusrs">
+<h3>Running LISTUSRS<a class="headerlink" href="#running-listusrs" title="Permalink to this headline">¶</a></h3>
+<p>Modify the LISTUSRS member to your site standards and run this JCL to list RACF groups and associated users. See the comments in the JCL for information on how to set the correct arguments. Running with ‘Y’ as option 2 will create a ‘bat’ file in the dataset pointed to by SYSUT1. In the sample LISTUSRS JCL this dataset is called userid.temp. In the JCL example, options are set to create a “bat” job that will upload “macros.json” files for the users of the RACF GROUP SPGPTEH. The supporting PC directories will be “sysgroup” and “sysprog”. These directories will have to be created as sub directories in the C:\virtel\macros\ddiBatch directory. Each directory must contain a relevant macros.json file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP0</span>    <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">DDA</span>      <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span><span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
+<span class="o">//</span>         <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">//</span><span class="n">STEP1</span>    <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
+<span class="o">//</span><span class="n">SYSEXEC</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">RACF</span><span class="o">.</span><span class="n">REXX</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUT1</span>   <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">),</span><span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSTSIN</span>  <span class="n">DD</span>  <span class="o">*</span>
+<span class="o">%</span><span class="n">LISTUSER</span> <span class="n">SPGPTECH</span> <span class="n">Y</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span>
+</pre></div>
+</div>
+<p>Download the temp file that is created by the LISTUSRS job to the c:\vitel\macros\ddiBatch directory. Call it UPLOAD.BAT. When executed, this file will call the “ddiMacro.bat” file installed from the package. The ddiMacro script will invoke the CURL program, also included with the packaged, to upload a macros.json file to the associated RACF GROUP and USER directory structure within the Virtel DDI centralized TRSF file. This is normally the HTMLTRSF VSAM file.</p>
+<p>The UPLOAD.BAT file created by the REXX script will look something like this:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="n">rem</span> <span class="n">Upload</span> <span class="n">DDI</span> <span class="n">macros</span> <span class="n">to</span> <span class="n">Virtel</span> <span class="n">via</span> <span class="n">CURL</span>
+<span class="n">rem</span> <span class="n">GROUP</span><span class="o">=%</span><span class="mi">1</span> <span class="n">USERID</span><span class="o">=%</span><span class="mi">2</span> <span class="n">Global</span><span class="o">=%</span><span class="mi">3</span> <span class="n">ip</span> <span class="n">address</span><span class="o">=%</span><span class="mi">4</span>
+<span class="n">rem</span> <span class="n">Group</span> <span class="n">Directory</span><span class="o">=%</span><span class="mi">5</span> <span class="n">User</span> <span class="n">Directory</span><span class="o">=%</span><span class="mi">6</span>
+<span class="nb">set</span> <span class="o">/</span><span class="n">p</span> <span class="n">u</span><span class="o">=</span><span class="n">Enter</span> <span class="n">your</span> <span class="n">userid</span> <span class="p">:</span>
+<span class="nb">set</span> <span class="o">/</span><span class="n">p</span> <span class="n">p</span><span class="o">=</span><span class="n">Enter</span> <span class="n">your</span> <span class="n">password</span> <span class="p">:</span>
+<span class="nb">set</span> <span class="n">flag</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">call</span> <span class="n">ddiMacro</span><span class="o">.</span><span class="n">bat</span> <span class="n">SPGPTECH</span> <span class="n">CAULIER</span> <span class="n">N</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span> <span class="o">%</span><span class="n">u</span><span class="o">%</span> <span class="o">%</span><span class="n">p</span><span class="o">%</span> <span class="o">%</span><span class="n">flag</span><span class="o">%</span>
+<span class="n">call</span> <span class="n">ddiMacro</span><span class="o">.</span><span class="n">bat</span> <span class="n">SPGPTECH</span> <span class="n">CICDUSER</span> <span class="n">N</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span> <span class="o">%</span><span class="n">u</span><span class="o">%</span> <span class="o">%</span><span class="n">p</span><span class="o">%</span> <span class="o">%</span><span class="n">flag</span><span class="o">%</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
+</pre></div>
+</div>
+<p>The arguments passed to the “ddiMacro” script are :-</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>RACF GROUP</li>
+<li>RACF USERID</li>
+<li>Global Option</li>
+<li>URL address of Virtel</li>
+<li>Local PC sub-directory for group containing macros.json file.</li>
+<li>Local PC sub-directory for user containing macros.json file.</li>
+</ol>
+</div></blockquote>
+<p>By default, the upload.bat job does not upload a macros.json file from the global sub-directory. To alter this behavior modify the first “call” statement and change option ‘3’ to “Y”. This will force and upload to the Virtel globals macro directory from the local global sub-directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="n">rem</span> <span class="n">Upload</span> <span class="n">DDI</span> <span class="n">macros</span> <span class="n">to</span> <span class="n">Virtel</span> <span class="n">via</span> <span class="n">CURL</span>
+<span class="n">rem</span> <span class="n">GROUP</span><span class="o">=%</span><span class="mi">1</span> <span class="n">USERID</span><span class="o">=%</span><span class="mi">2</span> <span class="n">Global</span><span class="o">=%</span><span class="mi">3</span> <span class="n">ip</span> <span class="n">address</span><span class="o">=%</span><span class="mi">4</span>
+<span class="n">rem</span> <span class="n">Group</span> <span class="n">Directory</span><span class="o">=%</span><span class="mi">5</span> <span class="n">User</span> <span class="n">Directory</span><span class="o">=%</span><span class="mi">6</span>
+<span class="nb">set</span> <span class="o">/</span><span class="n">p</span> <span class="n">u</span><span class="o">=</span><span class="n">Enter</span> <span class="n">your</span> <span class="n">userid</span> <span class="p">:</span>
+<span class="nb">set</span> <span class="o">/</span><span class="n">p</span> <span class="n">p</span><span class="o">=</span><span class="n">Enter</span> <span class="n">your</span> <span class="n">password</span> <span class="p">:</span>
+<span class="nb">set</span> <span class="n">flag</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">call</span> <span class="n">ddiMacro</span><span class="o">.</span><span class="n">bat</span> <span class="n">SPGPTECH</span> <span class="n">CAULIER</span> <span class="n">Y</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span> <span class="o">%</span><span class="n">u</span><span class="o">%</span> <span class="o">%</span><span class="n">p</span><span class="o">%</span> <span class="o">%</span><span class="n">flag</span><span class="o">%</span>
+<span class="n">call</span> <span class="n">ddiMacro</span><span class="o">.</span><span class="n">bat</span> <span class="n">SPGPTECH</span> <span class="n">CICDUSER</span> <span class="n">N</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span> <span class="o">%</span><span class="n">u</span><span class="o">%</span> <span class="o">%</span><span class="n">p</span><span class="o">%</span> <span class="o">%</span><span class="n">flag</span><span class="o">%</span>
+<span class="o">.</span>
+<span class="o">.</span>
+<span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uploading-the-macros">
+<h3>Uploading the macros<a class="headerlink" href="#uploading-the-macros" title="Permalink to this headline">¶</a></h3>
+<p>Start virtel. Your Virtel should be running with DDi customized to support centralized macros, i.e. macros maintained on the mainframe and synchronized with users local storage environments as and when they connect to the Vitel server. See technical letter TN201704 for further information on Virtel Macros and DDI or the section “Macros in Virtel Storage in the chapter on “Macros” in the Virtel Users Guide.</p>
+<p>Before running the “created” upload.bat job make sure that the macro directory structures are correctly defined and that each directory contains a supporting “macros.json” file.</p>
+<p>Run the upload.bat job. This will upload the macros.json files to the customized DDI macro structure supported by Virtel. You will be prompted for your userid and password. If you need to cancel the “upload.bat” script press CTRL-C. After the job has completed check the the Virtel DDI entries have been correctly populated.</p>
+<p>The upload job writes the CURL output to output.txt. This can be used for diagnostics if uploads are failing.</p>
+</div>
+<div class="section" id="writing-macros">
+<h3>Writing Macros<a class="headerlink" href="#writing-macros" title="Permalink to this headline">¶</a></h3>
+<p>Unless you have knowledge of JSON constructs and can understand the internal macro.json structure it is not advisable to attempt ot create your own macros. The recommended procedure is to let Virtel create the macros through a local Macros setup - “Green” macro list ICON in the Virtel tool bar. Within this framework you can import and export macros and make any modifications to the macros using the “edit” facility. See technical newsletter TN201704 for more information on writtle Virtel Macros.</p>
+</div>
+</div>
+<div class="section" id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<p><strong>REXX Procedure LISTUSER</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">REXX</span> <span class="o">*/</span>
+<span class="n">parse</span> <span class="n">arg</span> <span class="n">opt1</span> <span class="n">opt2</span> <span class="n">url</span> <span class="n">ugdir</span> <span class="n">udir</span> <span class="o">.</span>
+<span class="n">global_opt</span> <span class="o">=</span> <span class="s1">&#39;N&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">opt1</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">opt1</span> <span class="o">=</span> <span class="s1">&#39;ALL&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">opt2</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">opt2</span> <span class="o">=</span> <span class="s1">&#39;N&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">url</span>  <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">url</span>  <span class="o">=</span> <span class="s1">&#39;192.168.0.1&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ugdir</span>  <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">ugdir</span> <span class="o">=</span> <span class="s1">&#39;usergroup&#39;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">udir</span>  <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="n">then</span>
+<span class="n">udir</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">OUTTRAP</span><span class="p">(</span><span class="s1">&#39;users.&#39;</span><span class="p">)</span>
+<span class="n">address</span> <span class="n">tso</span> <span class="s1">&#39;sr class(USER)&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">OUTTRAP</span><span class="p">(</span><span class="s1">&#39;OFF&#39;</span><span class="p">)</span>
+<span class="n">groups</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">say</span> <span class="n">users</span><span class="o">.</span><span class="mi">0</span> <span class="s1">&#39;users are present on the system&#39;</span>
+<span class="n">call</span> <span class="n">build_bat</span>
+<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="n">users</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">call</span> <span class="n">get_infos</span> <span class="n">users</span><span class="o">.</span><span class="n">i</span>
+<span class="n">end</span>
+<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="n">groups</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">i</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">opt1</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;ALL&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">opt1</span> <span class="o">==</span> <span class="n">name</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+        <span class="n">Say</span> <span class="s2">&quot;Group = &quot;</span> <span class="n">groups</span><span class="o">.</span><span class="n">i</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="mi">0</span>
+        <span class="n">do</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="mi">0</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">opt2</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+        <span class="n">queue</span> <span class="s2">&quot;call ddiMacro.bat &quot;</span><span class="n">groups</span><span class="o">.</span><span class="n">i</span><span class="s2">&quot; &quot;</span><span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span><span class="s2">&quot; &quot;</span><span class="n">global_opt</span><span class="s2">&quot; &quot;</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">ugdir</span> <span class="n">udir</span><span class="s2">&quot; </span><span class="si">%u% %</span><span class="s2">p</span><span class="si">% %</span><span class="s2">flag%&quot;</span>
+        <span class="n">end</span>
+        <span class="k">else</span>
+        <span class="n">say</span> <span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">end</span>
+    <span class="n">end</span>
+<span class="n">end</span>
+
+<span class="k">else</span> <span class="n">do</span>
+    <span class="n">Say</span> <span class="s2">&quot;Group = &quot;</span> <span class="n">groups</span><span class="o">.</span><span class="n">i</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="mi">0</span>
+    <span class="n">do</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="mi">0</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">opt2</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+        <span class="n">queue</span> <span class="s2">&quot;call ddiMacro.bat &quot;</span><span class="n">groups</span><span class="o">.</span><span class="n">i</span><span class="s2">&quot; &quot;</span><span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span><span class="s2">&quot; &quot;</span><span class="n">global_opt</span><span class="s2">&quot; &quot;</span><span class="n">url</span><span class="p">,</span>
+        <span class="n">ugdir</span> <span class="n">udir</span><span class="s2">&quot; </span><span class="si">%u% %</span><span class="s2">p</span><span class="si">% %</span><span class="s2">flag%&quot;</span>
+        <span class="n">end</span>
+        <span class="k">else</span>
+        <span class="n">say</span> <span class="n">groups</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">end</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">opt2</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+<span class="n">queue</span> <span class="s2">&quot;cls&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;echo Upload Ended.&quot;</span>
+<span class="n">queue</span> <span class="s1">&#39;set /p str=&quot;Do you wish to delete the CURL output. y|n?&quot;&#39;</span>
+<span class="n">queue</span> <span class="s1">&#39;if /I &quot;</span><span class="si">%s</span><span class="s1">tr%&quot; EQU &quot;y&quot; del output.txt&#39;</span>
+<span class="n">queue</span> <span class="s2">&quot;color&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;pause&quot;</span>
+<span class="s1">&#39;EXECIO&#39;</span> <span class="n">queued</span><span class="p">()</span> <span class="s1">&#39;DISKW SYSUT1&#39;</span>
+<span class="n">end</span>
+<span class="n">exit</span>
+
+<span class="n">get_infos</span><span class="p">:</span> <span class="n">procedure</span> <span class="n">expose</span> <span class="n">groups</span><span class="o">.</span> <span class="n">userid</span><span class="o">.</span>
+<span class="n">USER</span>  <span class="o">=</span> <span class="n">arg</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">OUTTRAP</span><span class="p">(</span><span class="s1">&#39;group.&#39;</span><span class="p">)</span>
+<span class="n">address</span> <span class="n">tso</span> <span class="s1">&#39;lu (&#39;</span><span class="n">USER</span><span class="s1">&#39;)&#39;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">OUTTRAP</span><span class="p">(</span><span class="s1">&#39;OFF&#39;</span><span class="p">)</span>
+<span class="n">parse</span> <span class="n">var</span> <span class="n">group</span><span class="o">.</span><span class="mi">1</span> <span class="s1">&#39;USER=&#39;</span><span class="n">userid</span> <span class="o">.</span> <span class="s1">&#39;OWNER=&#39;</span><span class="n">group</span> <span class="o">.</span>
+<span class="k">if</span> <span class="n">group</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;&#39;</span> <span class="n">then</span> <span class="n">do</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">group</span> <span class="o">&lt;&gt;</span> <span class="n">group</span><span class="p">)</span> <span class="n">then</span> <span class="n">do</span>
+        <span class="n">groups</span><span class="o">.</span><span class="n">group</span> <span class="o">=</span> <span class="n">group</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="mi">0</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">groups</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="n">groups</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">group</span>
+        <span class="n">groups</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span><span class="mi">0</span>
+        <span class="n">groups</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="n">end</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">group</span><span class="o">.</span><span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="mi">0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">groups</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="mi">0</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="n">groups</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">userid</span>
+<span class="n">end</span>
+<span class="k">return</span>
+
+<span class="n">build_bat</span><span class="p">:</span> <span class="n">procedure</span>
+<span class="n">queue</span> <span class="s2">&quot;@echo off&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;rem Upload DDI macros to Virtel via CURL&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;rem GROUP=%1 USERID=%2 Global=%3 ip address=%4&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;rem Group Directory=%5 User Directory=%6&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;title Virtel Macro Upload V1.0&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;if exist &#39;output.txt&#39; del output.txt&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;curl -V&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;echo This program will invoke CURL. See https://curl.haxx.se/&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;pause&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;cls&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;color 4&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;set /p u=Enter your userid :&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;set /p p=Enter your password :&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;set flag=0&quot;</span>
+<span class="n">queue</span> <span class="s2">&quot;cls&quot;</span>
+<span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="appendix-b">
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+<p><strong>JCL to run REXX Procedure LISTUSRS</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">yourhlqB</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*</span>  <span class="n">RACF</span> <span class="p">:</span> <span class="n">List</span> <span class="n">Groups</span> <span class="ow">and</span> <span class="n">users</span>                           <span class="o">*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span> <span class="n">Change</span> <span class="nb">all</span> <span class="n">occurences</span> <span class="n">of</span> <span class="n">yourhlq</span> <span class="n">to</span> <span class="n">your</span> <span class="n">HLQ</span><span class="o">.</span>         <span class="o">-*</span>
+<span class="o">//*-</span> <span class="n">Change</span> <span class="nb">all</span> <span class="n">occurences</span> <span class="n">nnn</span> <span class="n">to</span> <span class="n">your</span> <span class="n">Virtel</span> <span class="n">release</span>      <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span> <span class="n">List</span> <span class="nb">all</span> <span class="n">groups</span> <span class="ow">and</span> <span class="n">users</span>                             <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*</span>  <span class="o">%</span><span class="n">LISTUSER</span>                                              <span class="o">*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span> <span class="n">List</span> <span class="n">a</span> <span class="n">group</span> <span class="ow">and</span> <span class="n">its</span> <span class="n">users</span>                            <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*</span>  <span class="o">%</span><span class="n">LISTUSER</span> <span class="n">CTKGROUP</span>                                     <span class="o">*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span> <span class="n">Create</span> <span class="n">ddiMacro</span> <span class="n">bat</span> <span class="n">file</span><span class="o">.</span> <span class="n">Write</span> <span class="n">to</span> <span class="n">SYSUT1</span><span class="o">.</span> <span class="n">Use</span>        <span class="o">-*</span>
+<span class="o">//*-</span> <span class="n">defaults</span> <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">group</span> <span class="n">directory</span> <span class="ow">and</span> <span class="n">user</span> <span class="n">directory</span>  <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*</span>  <span class="o">%</span><span class="n">LISTUSER</span> <span class="n">CTKGROUP</span> <span class="n">Y</span>                                   <span class="o">*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span> <span class="n">Create</span> <span class="n">ddiMacro</span> <span class="n">bat</span> <span class="n">file</span><span class="o">.</span> <span class="n">Write</span> <span class="n">to</span> <span class="n">SYSUT1</span><span class="o">.</span> <span class="n">Use</span> <span class="n">defined</span> <span class="o">*</span>
+<span class="o">//*-</span> <span class="n">url</span><span class="p">,</span> <span class="n">group</span> <span class="n">directory</span> <span class="ow">and</span> <span class="n">user</span> <span class="n">directory</span><span class="o">.</span>              <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*</span>  <span class="o">%</span><span class="n">LISTUSER</span> <span class="n">SPGPTECH</span> <span class="n">Y</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span>   <span class="o">*</span>
+<span class="o">//*-</span>                                                       <span class="o">-*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//</span><span class="n">STEP0</span>    <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">DDA</span>      <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">yourhlq</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span><span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
+<span class="o">//</span>         <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">//</span><span class="n">STEP1</span>    <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
+<span class="o">//</span><span class="n">SYSEXEC</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=</span><span class="n">yourhlq</span><span class="o">.</span><span class="n">VIRTnnn</span><span class="o">.</span><span class="n">CNTL</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span> <span class="o">&lt;===</span> <span class="n">CHANGE</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUT1</span>   <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=</span><span class="n">yourhlq</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">),</span><span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="o">//</span><span class="n">EXAMPLES</span> <span class="n">DD</span>  <span class="o">*</span>
+<span class="o">%</span><span class="n">LISTUSER</span>
+<span class="o">%</span><span class="n">LISTUSER</span> <span class="n">CTKGROUP</span>
+<span class="o">%</span><span class="n">LISTUSER</span> <span class="n">CTKGROUP</span> <span class="n">Y</span>
+<span class="o">%</span><span class="n">LISTUSER</span> <span class="n">CTKGROUP</span> <span class="n">Y</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">usergroup</span> <span class="n">user</span>
+<span class="o">//</span><span class="n">SYSTSIN</span>  <span class="n">DD</span>  <span class="o">*</span>
+<span class="o">%</span><span class="n">LISTUSER</span> <span class="n">SPGPTECH</span> <span class="n">Y</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span> <span class="n">sysgroup</span> <span class="n">sysprog</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="appendix-c">
+<h2>Appendix C<a class="headerlink" href="#appendix-c" title="Permalink to this headline">¶</a></h2>
+<p><strong>ddiMacros.bat script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="n">color</span> <span class="n">F</span>
+<span class="n">rem</span> <span class="n">echo</span> <span class="n">Group</span><span class="o">=%</span><span class="mi">1</span> <span class="n">User</span><span class="o">=%</span><span class="mi">2</span> <span class="n">Global</span><span class="o">=%</span><span class="mi">3</span> <span class="n">URL</span><span class="o">=%</span><span class="mi">4</span> <span class="n">AssociateGroup</span><span class="o">=%</span><span class="mi">5</span> <span class="n">AssociateUser</span><span class="o">=%</span><span class="mi">6</span> <span class="n">Admin</span><span class="o">=%</span><span class="mi">7</span> <span class="n">PW</span><span class="o">=%</span><span class="mi">8</span>
+<span class="nb">set</span> <span class="n">group</span><span class="o">=%</span><span class="mi">1</span>
+<span class="nb">set</span> <span class="n">user</span><span class="o">=%</span><span class="mi">2</span>
+<span class="nb">set</span> <span class="n">ag</span><span class="o">=%</span><span class="mi">5</span>
+<span class="nb">set</span> <span class="n">au</span><span class="o">=%</span><span class="mi">6</span>
+<span class="nb">set</span> <span class="n">userid</span><span class="o">=%</span><span class="mi">7</span>
+<span class="nb">set</span> <span class="n">password</span><span class="o">=%</span><span class="mi">8</span>
+<span class="nb">set</span> <span class="n">url_getGroup</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">%</span><span class="mi">4</span><span class="s2">&quot;:41001/SECURE/capabilityCode.json+USRCAP?GROUP=&quot;</span>
+<span class="nb">set</span> <span class="n">url_getUser</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">%</span><span class="mi">4</span><span class="s2">&quot;:41001/SECURE/capabilityCode.json+USRCAP?USER=&quot;</span>
+<span class="nb">set</span> <span class="n">url_glb</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">%</span><span class="mi">4</span><span class="s2">&quot;:41001/SECURE/upload.txt+uplglb&quot;</span>
+<span class="nb">set</span> <span class="n">url_grp</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">%</span><span class="mi">4</span><span class="s2">&quot;:41001/SECURE/upload.txt+uplgrp+x-Virtel-group-Directory:&quot;</span>
+<span class="nb">set</span> <span class="n">url_usr</span><span class="o">=</span><span class="s2">&quot;http://&quot;</span><span class="o">%</span><span class="mi">4</span><span class="s2">&quot;:41001/SECURE/upload.txt+uplusr+x-Virtel-user-Directory:&quot;</span>
+<span class="nb">set</span> <span class="n">_global</span><span class="o">=%</span><span class="mi">3</span>
+<span class="nb">set</span> <span class="n">flag</span><span class="o">=%</span><span class="mi">9</span>
+
+<span class="k">if</span>  <span class="p">[</span><span class="o">%</span><span class="n">_global</span><span class="o">%</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">Y</span><span class="p">]</span>  <span class="p">(</span>
+    <span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file=@global/macros.json;type=application/json&quot;</span> <span class="o">-</span><span class="n">u</span> <span class="o">%</span><span class="n">userid</span><span class="o">%</span><span class="p">:</span><span class="o">%</span><span class="n">password</span><span class="o">%</span> <span class="o">%</span><span class="n">url_glb</span><span class="o">%</span><span class="mi">1</span> <span class="o">&gt;&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">u</span> <span class="o">%</span><span class="n">userid</span><span class="o">%</span><span class="p">:</span><span class="o">%</span><span class="n">password</span><span class="o">%</span>  <span class="o">%</span><span class="n">url_getGroup</span><span class="o">%%</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="n">curl</span><span class="o">.</span><span class="n">txt</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="k">for</span> <span class="o">/</span><span class="n">f</span> <span class="s2">&quot;delims==&quot;</span> <span class="o">%%</span><span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">curl</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span> <span class="n">do</span> <span class="nb">set</span> <span class="n">var</span><span class="o">=%%</span><span class="n">a</span><span class="o">&amp;</span><span class="n">call</span> <span class="p">:</span><span class="n">getGroup</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">u</span> <span class="o">%</span><span class="n">userid</span><span class="o">%</span><span class="p">:</span><span class="o">%</span><span class="n">password</span><span class="o">%</span>  <span class="o">%</span><span class="n">url_getUser</span><span class="o">%%</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">curl</span><span class="o">.</span><span class="n">txt</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="k">for</span> <span class="o">/</span><span class="n">f</span> <span class="s2">&quot;delims==&quot;</span> <span class="o">%%</span><span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">curl</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span> <span class="n">do</span> <span class="nb">set</span> <span class="n">var</span><span class="o">=%%</span><span class="n">a</span><span class="o">&amp;</span><span class="n">call</span> <span class="p">:</span><span class="n">getUser</span>
+<span class="n">color</span> <span class="mi">4</span>
+<span class="n">exit</span> <span class="o">/</span><span class="n">b</span>
+
+<span class="p">:</span><span class="n">getGroup</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;x%var:x-Virtel-group-Directory:=%&quot;</span> <span class="o">==</span> <span class="s2">&quot;x%var%&quot;</span> <span class="p">(</span>
+    <span class="n">call</span> <span class="p">:</span><span class="n">uploadGroup</span> <span class="s2">&quot;x%var%&quot;</span>
+    <span class="p">)</span>
+<span class="n">goto</span> <span class="p">:</span><span class="n">eof</span>
+
+<span class="p">:</span><span class="n">uploadGroup</span>
+<span class="k">if</span> <span class="o">%</span><span class="n">flag</span><span class="o">%==</span><span class="mi">0</span> <span class="p">(</span>
+<span class="n">echo</span> <span class="n">Uploading</span> <span class="s1">&#39;macros.json&#39;</span> <span class="k">for</span> <span class="n">group</span> <span class="o">%</span><span class="n">group</span><span class="o">%</span> <span class="kn">from</span> <span class="nn">directory</span> <span class="o">%</span><span class="n">ag</span><span class="o">%.</span>
+<span class="k">for</span> <span class="o">/</span><span class="n">F</span> <span class="s2">&quot;tokens=1-2 delims=:,&quot;</span> <span class="o">%%</span><span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;%~1&quot;</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+    <span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file=@&quot;</span><span class="o">%</span><span class="n">ag</span><span class="o">%</span><span class="s2">&quot;/macros.json;type=application/json&quot;</span> <span class="o">-</span><span class="n">u</span> <span class="o">%</span><span class="n">userid</span><span class="o">%</span><span class="p">:</span><span class="o">%</span><span class="n">password</span><span class="o">%</span> <span class="o">%</span><span class="n">url_grp</span><span class="o">%%%</span><span class="n">j1</span> <span class="o">&gt;&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="nb">set</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">exit</span> <span class="o">/</span><span class="n">b</span>
+
+<span class="p">:</span><span class="n">getUser</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;x%var:x-Virtel-user-Directory:=%&quot;</span> <span class="o">==</span> <span class="s2">&quot;x%var%&quot;</span> <span class="n">call</span> <span class="p">:</span><span class="n">uploadUser</span> <span class="s2">&quot;x%var%&quot;</span>
+<span class="n">goto</span> <span class="p">:</span><span class="n">eof</span>
+
+<span class="p">:</span><span class="n">uploadUser</span>
+<span class="n">echo</span> <span class="n">Uploading</span> <span class="s1">&#39;macros.json&#39;</span> <span class="k">for</span> <span class="n">user</span> <span class="o">%</span><span class="n">user</span><span class="o">%</span> <span class="kn">from</span> <span class="nn">directory</span> <span class="o">%</span><span class="n">au</span><span class="o">%.</span>
+<span class="k">for</span> <span class="o">/</span><span class="n">F</span> <span class="s2">&quot;tokens=1-2 delims=:,&quot;</span> <span class="o">%%</span><span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;%~1&quot;</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+    <span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file=@&quot;</span><span class="o">%</span><span class="n">au</span><span class="o">%</span><span class="s2">&quot;/macros.json;type=application/json&quot;</span> <span class="o">-</span><span class="n">u</span> <span class="o">%</span><span class="n">userid</span><span class="o">%</span><span class="p">:</span><span class="o">%</span><span class="n">password</span><span class="o">%</span> <span class="o">%</span><span class="n">url_usr</span><span class="o">%%%</span><span class="n">j1</span> <span class="o">&gt;&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
+<span class="p">)</span>
+<span class="n">exit</span> <span class="o">/</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2017, Syspertec. All rights reserved
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
