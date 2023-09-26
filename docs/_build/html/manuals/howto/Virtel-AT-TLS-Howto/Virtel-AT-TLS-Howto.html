@@ -1,87 +1,169 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Create the Policy Agent configuration file &mdash; Virtel 9 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-          <a href="../../../index.html" class="icon icon-home">
-            Virtel
-              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
           </a>
+
+          
+            
+            
               <div class="version">
                 4.61
               </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Create the Policy Agent configuration file</li>
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Create the Policy Agent configuration file</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../../_sources/manuals/howto/Virtel-AT-TLS-Howto/Virtel-AT-TLS-Howto.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
+            
   <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image1.png"><img alt="image0" src="../../../_images/image1.png" style="width: 4.16534in; height: 0.80000in;" /></a></p>
 <p><a class="reference internal" href="../../../_images/image2.jpeg"><img alt="image1" src="../../../_images/image2.jpeg" style="width: 1.48500in; height: 1.08667in;" /></a><em>VIRTEL</em></p>
 </div></blockquote>
 <ol class="arabic">
-<li><p><strong>How to activate VIRTEL https using AT-TLS on z/OS V1R7</strong></p>
+<li><p class="first"><strong>How to activate VIRTEL https using AT-TLS on z/OS V1R7</strong></p>
 <ol class="arabic">
-<li><p class="rubric" id="software-pre-requisites">Software pre-requisites</p>
+<li><p class="first rubric" id="software-pre-requisites">Software pre-requisites</p>
 </li>
 </ol>
 <blockquote>
@@ -100,9 +182,9 @@ The supported protocols are TLS, SSLv3, and SSLv2.</p>
 </li>
 </ol>
 <ol class="arabic">
-<li><p class="rubric" id="installation-steps">Installation steps</p>
+<li><p class="first rubric" id="installation-steps">Installation steps</p>
 <ol class="arabic">
-<li><p class="rubric" id="install-policy-agent-procedure">Install Policy Agent procedure</p>
+<li><p class="first rubric" id="install-policy-agent-procedure">Install Policy Agent procedure</p>
 </li>
 </ol>
 <blockquote>
@@ -113,8 +195,8 @@ PAGENT.</p>
 </div></blockquote>
 </li>
 </ol>
-<section id="create-the-policy-agent-configuration-file">
-<h1>Create the Policy Agent configuration file<a class="headerlink" href="#create-the-policy-agent-configuration-file" title="Permalink to this heading"></a></h1>
+<div class="section" id="create-the-policy-agent-configuration-file">
+<h1>Create the Policy Agent configuration file<a class="headerlink" href="#create-the-policy-agent-configuration-file" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>If you do not already run the Policy Agent, you will need to create
 a configuration file /etc/pagent.conf using z/OS Unix System
@@ -124,15 +206,17 @@ existing configuration file and add the TTLS definitions to it.</p>
 configuration. The following changes should be made:</p>
 </div></blockquote>
 <ul>
-<li><p>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP
-line 70)</p></li>
-<li><p>Replace <em>41000-41002</em> by <em>41002</em> in the LocalPortRange parameter
-(SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</p></li>
-<li><p>Replace <em>ServerWithClientAuth</em> by <em>Server</em> in the HandshakeRole
+<li><p class="first">Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP
+line 70)</p>
+</li>
+<li><p class="first">Replace <em>41000-41002</em> by <em>41002</em> in the LocalPortRange parameter
+(SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</p>
+</li>
+<li><p class="first">Replace <em>ServerWithClientAuth</em> by <em>Server</em> in the HandshakeRole
 parameter (SSLSETUP line 82) as we will not be using Client
 Certificates.</p>
 <ol class="arabic">
-<li><p class="rubric" id="allow-the-policy-agent-to-run-during-tcpip-initialization">Allow the Policy Agent to run during TCP/IP
+<li><p class="first rubric" id="allow-the-policy-agent-to-run-during-tcpip-initialization">Allow the Policy Agent to run during TCP/IP
 initialization</p>
 </li>
 </ol>
@@ -143,9 +227,9 @@ SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</p>
 </div></blockquote>
 </li>
 </ul>
-</section>
-<section id="create-the-server-certificate">
-<h1>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="create-the-server-certificate">
+<h1>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>A server certificate for VIRTEL must be created, signed by a
 certificate authority, and stored in the RACF database. In the
@@ -156,25 +240,23 @@ the certificate, then import it into RACF.</p>
 <p>At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to
 the VIRTEL host (for example, virtssl.syspertec.com)</p>
 </div></blockquote>
-</section>
-<section id="add-the-certificate-to-the-keyring">
-<h1>Add the certificate to the keyring<a class="headerlink" href="#add-the-certificate-to-the-keyring" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="add-the-certificate-to-the-keyring">
+<h1>Add the certificate to the keyring<a class="headerlink" href="#add-the-certificate-to-the-keyring" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>The server certificate must be added to the VIRTRING keyring. See
-step CCERTIF in the SSLSETUP sample job.</p>
-</div></blockquote>
-</section>
-<section id="allow-virtel-to-access-its-own-certificate">
-<h1>Allow VIRTEL to access its own certificate<a class="headerlink" href="#allow-virtel-to-access-its-own-certificate" title="Permalink to this heading"></a></h1>
+<div>The server certificate must be added to the VIRTRING keyring. See
+step CCERTIF in the SSLSETUP sample job.</div></blockquote>
+</div>
+<div class="section" id="allow-virtel-to-access-its-own-certificate">
+<h1>Allow VIRTEL to access its own certificate<a class="headerlink" href="#allow-virtel-to-access-its-own-certificate" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>To allow VIRTEL to access its own keyring and server certificate,
+<div>To allow VIRTEL to access its own keyring and server certificate,
 the VIRTEL started task must have READ access to the resource
 IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH
-in the SSLSETUP sample job.</p>
-</div></blockquote>
-</section>
-<section id="activate-at-tls">
-<h1>Activate AT-TLS<a class="headerlink" href="#activate-at-tls" title="Permalink to this heading"></a></h1>
+in the SSLSETUP sample job.</div></blockquote>
+</div>
+<div class="section" id="activate-at-tls">
+<h1>Activate AT-TLS<a class="headerlink" href="#activate-at-tls" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
 <p>TCPCONFIG TTLS</p>
@@ -184,9 +266,9 @@ statement. The AUTOLOG statement will cause the PAGENT procedure to
 be started automatically during TCP/IP initialization.</p>
 </div></blockquote>
 <ol class="arabic">
-<li><p class="rubric" id="operations">Operations</p>
+<li><p class="first rubric" id="operations">Operations</p>
 <ol class="arabic">
-<li><p class="rubric" id="starting-the-policy-agent">Starting the Policy Agent</p>
+<li><p class="first rubric" id="starting-the-policy-agent">Starting the Policy Agent</p>
 </li>
 </ol>
 <blockquote>
@@ -205,9 +287,9 @@ ensure that PAGENT starts before all other applications.</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="altering-the-policy-agent-configuration">
-<h1>Altering the Policy Agent configuration<a class="headerlink" href="#altering-the-policy-agent-configuration" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="altering-the-policy-agent-configuration">
+<h1>Altering the Policy Agent configuration<a class="headerlink" href="#altering-the-policy-agent-configuration" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>To make changes to the Policy Agent configuration file, either edit
 and resubmit the PCONFIG step of the SSLSETUP sample job, or use the
@@ -216,18 +298,18 @@ ISPF.</p>
 <p>After you make changes to the Policy Agent configuration, use the
 MVS command F PAGENT,REFRESH to force PAGENT to reread the file.</p>
 </div></blockquote>
-</section>
-<section id="logon-to-virtel-using-secure-session">
-<h1>Logon to VIRTEL using secure session<a class="headerlink" href="#logon-to-virtel-using-secure-session" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="logon-to-virtel-using-secure-session">
+<h1>Logon to VIRTEL using secure session<a class="headerlink" href="#logon-to-virtel-using-secure-session" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>To access VIRTEL line C-HTTP you must now use URL
 <em>https://n.n.n.n:41002</em> instead of <em>http://n.n.n.n:41002</em> (where</p>
 <p>n.n.n.n is the IP address of the z/OS host running VIRTEL).</p>
 </div></blockquote>
 <ol class="arabic">
-<li><p class="rubric" id="problem-determination">Problem determination</p>
+<li><p class="first rubric" id="problem-determination">Problem determination</p>
 <ol class="arabic">
-<li><p class="rubric" id="policy-agent-log-file">Policy Agent log file</p>
+<li><p class="first rubric" id="policy-agent-log-file">Policy Agent log file</p>
 </li>
 </ol>
 <blockquote>
@@ -237,9 +319,9 @@ command to browse this file from ISPF.</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="common-error-messages">
-<h1>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="common-error-messages">
+<h1>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Error messages relating to session setup are written to the MVS
 SYSLOG. The most common error message is:</p>
@@ -251,8 +333,9 @@ and are defined in the IP Diagnosis Guide. Some commonly encountered
 return codes are:</p>
 </div></blockquote>
 <ol class="arabic" start="7">
-<li><p>No certificate</p></li>
-<li><p>Certificate not trusted</p>
+<li><p class="first">No certificate</p>
+</li>
+<li><p class="first">Certificate not trusted</p>
 <blockquote>
 <div><p>109 No certification authority certificates</p>
 <p>202 Keyring does not exist</p>
@@ -266,9 +349,9 @@ return codes are:</p>
 </div></blockquote>
 </li>
 </ol>
-</section>
-<section id="cipher-suite">
-<h1>Cipher suite<a class="headerlink" href="#cipher-suite" title="Permalink to this heading"></a></h1>
+</div>
+<div class="section" id="cipher-suite">
+<h1>Cipher suite<a class="headerlink" href="#cipher-suite" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>The client and server cipher specifications must contain at least
 one value in common. The TTLSEnvironmentAdvancedParms parameter of
@@ -288,46 +371,65 @@ filter box. By default, ssl2 is disabled, and ssl3 and tls are
 enabled. By default, all weak encryption cipher suites are disabled,
 and 128-bit or higher cipher suites are enabled.</p>
 </div></blockquote>
-<section id="bibliography">
-<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading"></a></h2>
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong>*SA22-7683-07 z/OS V1R7 Security Server: RACF Security
-Administrator’s Guide*</strong> Chapter 21. RACF and Digital Certificates</p></li>
+<li><strong>*SA22-7683-07 z/OS V1R7 Security Server: RACF Security
+Administrator’s Guide*</strong> Chapter 21. RACF and Digital Certificates</li>
 <li></li>
 <li></li>
 <li></li>
 <li></li>
 <li></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
+           
           </div>
           <footer>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
-  </div>
+    <p>
+        
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

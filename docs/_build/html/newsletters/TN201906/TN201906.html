@@ -1,87 +1,169 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Integrating DB2 and Virtel &mdash; Virtel 9 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/js/theme.js"></script>
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-          <a href="../../index.html" class="icon icon-home">
-            Virtel
-              <img src="../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+
+          
+            
+            <img src="../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
           </a>
+
+          
+            
+            
               <div class="version">
                 4.61
               </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../newsletters.html">Technical Newsletters</a></li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Virtel</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Integrating DB2 and Virtel</li>
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Integrating DB2 and Virtel</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../_sources/newsletters/TN201906/TN201906.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="integrating-db2-and-virtel">
-<span id="tn201906"></span><h1>Integrating DB2 and Virtel<a class="headerlink" href="#integrating-db2-and-virtel" title="Permalink to this heading"></a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+            
+  <div class="section" id="integrating-db2-and-virtel">
+<span id="tn201906"></span><h1>Integrating DB2 and Virtel<a class="headerlink" href="#integrating-db2-and-virtel" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this newsletter we discuss how to use Virtel to extract DB2 table data then use that data as input to an external publishing framework. Virtel uses an initial scenario which drives a VSV service program to access the sample DB2 table DSN8810.EMP. In the following demonstration IBM’s DB2 V9 was used.</p>
-</section>
-<section id="setting-up">
-<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this heading"></a></h2>
+</div>
+<div class="section" id="setting-up">
+<h2>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
 <p>The DB2 demo package, db2demo.zip, is available as a zip file in the public directory on the Virtel website <a class="reference external" href="https://ftp-group.syspertec.com/">https://ftp-group.syspertec.com/</a> This zip file contains all the relevant files required to implement the Virtel DB2 Demo package. Follow these steps to install the package : -
 1. In your Virtel STC concatenate your DB2 SDSNLOAD library to the Virtel SERVLIB
 2. Create a larger SAMPLIB. The delivered SMAPLIB has no secondary extents and when you try to upload the code from the package to the existing SAMPLIB it will E37. Create a copy a new SAMPLIB and allocate some addition secondary extents - SPACE=(TRK,(100,10,50))
@@ -92,14 +174,14 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Using FTP or IND$FILE to upload the members in the SAMPLIB directory to your Virtel SAMPLIB library.</p></li>
-<li><p>Likewise, using FTP or IND$FILE, upload the members in the CNTL directory to your Virtel CNTL library.</p></li>
-<li><p>Using the Virtel Administration Portal, ‘Drag and Drop’ the members in the W2H directory to the Virtel W2H directory.</p></li>
-<li><p>Modify the W2H entry point WEB2HOST and remove SCE-DIR as the default search directory for scenarios. Search for scenarios from the loadlib instead.</p></li>
-<li><p>Run the DB2ARBO and DB2COMP jobs.</p></li>
+<li>Using FTP or IND$FILE to upload the members in the SAMPLIB directory to your Virtel SAMPLIB library.</li>
+<li>Likewise, using FTP or IND$FILE, upload the members in the CNTL directory to your Virtel CNTL library.</li>
+<li>Using the Virtel Administration Portal, ‘Drag and Drop’ the members in the W2H directory to the Virtel W2H directory.</li>
+<li>Modify the W2H entry point WEB2HOST and remove SCE-DIR as the default search directory for scenarios. Search for scenarios from the loadlib instead.</li>
+<li>Run the DB2ARBO and DB2COMP jobs.</li>
 </ol>
-<section id="cntl-members">
-<h3>CNTL Members<a class="headerlink" href="#cntl-members" title="Permalink to this heading"></a></h3>
+<div class="section" id="cntl-members">
+<h3>CNTL Members<a class="headerlink" href="#cntl-members" title="Permalink to this headline">¶</a></h3>
 <p><strong>DB2ARBO</strong></p>
 <p>This job complies the DB2 scenario and updates the W2H directory with a new transaction called DB2. You will need to modify the JCL to meet your site standards.</p>
 <p><strong>DB2COMP</strong></p>
@@ -121,46 +203,46 @@
 <span class="n">sqlreq</span><span class="o">.</span><span class="n">htm</span>                 <span class="n">Error</span> <span class="n">page</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="running-the-db2-demo-package">
-<h2>Running the DB2 Demo Package<a class="headerlink" href="#running-the-db2-demo-package" title="Permalink to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="running-the-db2-demo-package">
+<h2>Running the DB2 Demo Package<a class="headerlink" href="#running-the-db2-demo-package" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Stop and restart Virtel to pick up the JCL changes, in particular the addition of the DB2 SDSNLOAD library.</p></li>
-<li><p>Refresh the Virtel Cache</p></li>
-<li><p>Enter the URL virtel.com:41001/demohttp.htm. The following screen should appear: -</p></li>
+<li>Stop and restart Virtel to pick up the JCL changes, in particular the addition of the DB2 SDSNLOAD library.</li>
+<li>Refresh the Virtel Cache</li>
+<li>Enter the URL virtel.com:41001/demohttp.htm. The following screen should appear: -</li>
 </ol>
-<p><img alt="image1" src="../../_images/image1269.png" /></p>
+<p><img alt="image1" src="../../_images/image1256.png" /></p>
 <p>This web page template provides two demonstration links, demonstration 1 and demomonstartion 2.</p>
-<section id="demonstrations">
-<h3>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this heading"></a></h3>
+<div class="section" id="demonstrations">
+<h3>Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h3>
 <p>There are two demonstrations both of which use a third party publishing framework to present the data extracted from the DB2 database. In both demonstrations, the website simile-widgets.org is used to provide either an EXHIBIT and TIMELINE framework presentation. The related EXHIBIT or TIMELINE frameworks take as input a JSON array.</p>
-<section id="demonstration-1">
-<h4>Demonstration 1<a class="headerlink" href="#demonstration-1" title="Permalink to this heading"></a></h4>
+<div class="section" id="demonstration-1">
+<h4>Demonstration 1<a class="headerlink" href="#demonstration-1" title="Permalink to this headline">¶</a></h4>
 <p>Selecting DEMO1 should present an EXHIBIT presentation screen which should look like: -</p>
-<p><img alt="image2" src="../../_images/image2151.png" /></p>
-</section>
-<section id="demonstration-2">
-<h4>Demonstration 2<a class="headerlink" href="#demonstration-2" title="Permalink to this heading"></a></h4>
+<p><img alt="image2" src="../../_images/image2147.png" /></p>
+</div>
+<div class="section" id="demonstration-2">
+<h4>Demonstration 2<a class="headerlink" href="#demonstration-2" title="Permalink to this headline">¶</a></h4>
 <p>Selecting DEMO2 produces a TIMELINE presentation screen which looks like: -</p>
-<p><img alt="image3" src="../../_images/image3141.png" /></p>
+<p><img alt="image3" src="../../_images/image3136.png" /></p>
 <p>For both screens, the input is a JSON array structure of employees built by the Virtel scenario SCENSQLS after extracting the table data from DB2. The source DB2 table is DSN8810.EMP.</p>
-</section>
-</section>
-</section>
-<section id="db2-access-via-a-virtel-transaction">
-<h2>DB2 access via a Virtel transaction<a class="headerlink" href="#db2-access-via-a-virtel-transaction" title="Permalink to this heading"></a></h2>
-<section id="db2-basic-access">
-<h3>DB2 Basic access<a class="headerlink" href="#db2-basic-access" title="Permalink to this heading"></a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="db2-access-via-a-virtel-transaction">
+<h2>DB2 access via a Virtel transaction<a class="headerlink" href="#db2-access-via-a-virtel-transaction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="db2-basic-access">
+<h3>DB2 Basic access<a class="headerlink" href="#db2-basic-access" title="Permalink to this headline">¶</a></h3>
 <p>IF access to external web sites is not permitted than you can still test the DB2 access through a basic DB2 access. You can invoke the Virtel DB2 transaction to extract an employee’s image from the database with the following URL: -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>192.168.170.48:41001/web2ajax+DB2?PHOTO=000150
 </pre></div>
 </div>
 <p>The scenario, via the VSV service program SERVSQL, will extract the photo image from the DB2 table and present it in a basic HTML template. PHOTO+nnnnnn is a parameter passed to the scenario which contains the employee number of the person whose photo is returned. The output from the above transaction URL looks like this : -</p>
-<p><img alt="image4" src="../../_images/image4132.png" /></p>
-</section>
-<section id="putting-it-all-together">
-<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this heading"></a></h3>
+<p><img alt="image4" src="../../_images/image4130.png" /></p>
+</div>
+<div class="section" id="putting-it-all-together">
+<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h3>
 <p>The key to accessing the DB2 data and preparing the required JSON structure is through the Virtel Initial scenario SCENSQLS. See Appendix A for a full listing of this scenario. This scenario is activated whenever the Virtel DB2 transaction is invoked. This scenario extracts parameters from the calling URL and prepares a parameter structure to pass into the VSV service program SERVSQL. This parameter structure includes the SQL SELECT statement to run against the DB2 table. The call to SERVSQL is made through the VSV API by calling the Virtel VIRSV$ interface from within the scenario. The SERVSQL program  calls DB2, issues the SQL statement and extracts the data from DB2. The results are returned back to the scenario and are mapped into an internal array mapped by the following mapping structure :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*---------------------------------------------------------------------*
 * Describe expected output                                            *
@@ -211,10 +293,10 @@ MYTABLE  MAP$ END
 </pre></div>
 </div>
 <p>The parsing on the internal Virtel mapping array builds a JSON array with each element representing an employee. The JSON array structure is then used as input by the EXHIBIT or TIMELINE template from <a class="reference external" href="http://simile-widgets.org">http://simile-widgets.org</a>.</p>
-</section>
-</section>
-<section id="appendix-a">
-<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this heading"></a></h2>
+</div>
+</div>
+<div class="section" id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <p><strong>SCENSQLS Scenario</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENSQLS INITIAL SCENARIO
 SCENSQLS SCREENS EXEC=NO,APPL=SCENSQLS
@@ -344,35 +426,54 @@ SQLQERR  EQU   *
    END    ,
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
+           
           </div>
           <footer>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
-  </div>
+    <p>
+        
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
