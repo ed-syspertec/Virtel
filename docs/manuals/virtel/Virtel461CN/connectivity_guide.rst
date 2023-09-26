@@ -988,7 +988,7 @@ Tran
 Retries
     Number of attempts to reacquire auto-activated terminals during
     VIRTEL startup. The delay between attempts is specified by the
-    “Delay” parameter. A value of zero will prevent the line from 
+    “Delay” parameter. A value of 0 will prevent the line from 
     starting at Virtel startup. 
 
 Delay
