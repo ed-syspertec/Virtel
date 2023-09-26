@@ -1,95 +1,52 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Converting a VBA macro &mdash; Virtel 9 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Customizing Virtel V4.59 from scratch" href="../TN202002/TN202002.html" />
     <link rel="prev" title="Integrating DB2 and Virtel" href="../TN201906/TN201906.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-
-          
-            
-            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
-          
+          <a href="../../../index.html" class="icon icon-home">
+            Virtel
+              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 4.61
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -120,95 +77,55 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-        
-      <li>Converting a VBA macro</li>
-    
-    
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../newsletters.html">Technical Newsletters</a></li>
+      <li class="breadcrumb-item active">Converting a VBA macro</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../../_sources/manuals/newsletters/TN202001/TN202001.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="converting-a-vba-macro">
-<span id="tn202001"></span><h1>Converting a VBA macro<a class="headerlink" href="#converting-a-vba-macro" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="converting-a-vba-macro">
+<span id="tn202001"></span><h1>Converting a VBA macro<a class="headerlink" href="#converting-a-vba-macro" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>In this newsletter we discuss how to migrate an EXCELVBA macro(s) to use VIRTEL’s scenario language and perform the same business logic. Currently, the VBA macro uses Attachmate Extra objects to establish a 3270 session and scrape the 3270 buffers. Application navigation, data validation and session management are also performed within the VBA code.  The VBA macro is driven by a EXECL spread sheet with input data fields, buttons and selection list. The idea of this migration is to maintain as much of the ‘business logic’ of the original macro as possible and only replace the 3270 communication processes with equivalent Virtel APIs.</p>
-</div>
-<div class="section" id="overview-of-the-business-process">
-<h2>Overview of the business process<a class="headerlink" href="#overview-of-the-business-process" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overview-of-the-business-process">
+<h2>Overview of the business process<a class="headerlink" href="#overview-of-the-business-process" title="Permalink to this heading"></a></h2>
 <p>The business process provides extraction of data for the following: -
 - Customer Profile
 - Loan Accounts
 - Deposit Accounts</p>
 <p>In this POC, only Customer Profile information is considered. Three environments HOGV,HOGS and HOGL are CICS regions that can be accessed to provide the CICS interface. These interfaces are defined as Virtel transactions, each one accessing a CICS system. Again, this POC accesses the same CICS system. See transactions CLI-13A, CLI-13B and CLI13-C.</p>
-</div>
-<div class="section" id="virtel-configuration">
-<h2>Virtel Configuration<a class="headerlink" href="#virtel-configuration" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="virtel-configuration">
+<h2>Virtel Configuration<a class="headerlink" href="#virtel-configuration" title="Permalink to this heading"></a></h2>
 <p>Three transactions are defined to represent the three CICS environments.</p>
-<p><img alt="image1" src="../../../_images/image159.png" /></p>
+<p><img alt="image1" src="../../../_images/image165.png" /></p>
 <p>The detail of each transaction is shown below :-</p>
-<p><img alt="image2" src="../../../_images/image234.png" /></p>
+<p><img alt="image2" src="../../../_images/image237.png" /></p>
 <p>The current VBA code maintains all of the MVC (model, view, controller) architecture. With the Virtel solution, the model and controller elements are moved to the supporting scenario, SCENPENF, which runs within the Virtel address space. The scenario is shown in Appendix A. The Virtel input scenario, SCENPENF, is associated with each transaction. This scenario now becomes the Model and Controller of the new MVC architecture, with the VBA code now only providing the View component. Navigational and data extraction are now handled by the scenario, whereas before, it was done in the VBA module.</p>
-</div>
-<div class="section" id="logic-overview">
-<h2>Logic overview<a class="headerlink" href="#logic-overview" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="logic-overview">
+<h2>Logic overview<a class="headerlink" href="#logic-overview" title="Permalink to this heading"></a></h2>
 <p>A series of customer numbers is entered manually on the left-hand side. These match up with customer numbers in the CICS application transaction MENU. This application is used to simulate a CICS transaction extracting customer data.  These customer data inquiries are sent to the mainframe via a HTTP requests within VBA using the MSXML2.XMLHTTP object.   A Virtel VBA Class is used to contain all the necessary HTTP code required to support the operation. A Virtel object is created, based upon the Virtel Class, and is used for communicating between the Virtel STC running on the mainframe and the supporting VBA Module.</p>
 <p>The first time the VBA module is called, security credentials are obtained through two VBA InputBox calls :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">userid</span> <span class="o">=</span> <span class="n">InputBox</span><span class="p">(</span><span class="s2">&quot;Enter your mainframe Userid&quot;</span><span class="p">)</span>
@@ -222,23 +139,23 @@
 </div>
 <p>Each time an inquiry is made a HTTP request is sent to Virtel. The request contains all the information needed by the Virtel scenario SCENPENF with the scenario extracting data from the URL. The extracted data is used to perform the following business logic in the Virtel scenario :-</p>
 <ul class="simple">
-<li>Logon to CICS</li>
-<li>Navigate through to the detail Customer Inquiry panel.</li>
-<li>Extract Name, Address1 and City from the screen buffer</li>
-<li>Create a response in the form of a CSV string :- name; address1; city</li>
-<li>Send the response back to the outstanding HTTP request.</li>
+<li><p>Logon to CICS</p></li>
+<li><p>Navigate through to the detail Customer Inquiry panel.</p></li>
+<li><p>Extract Name, Address1 and City from the screen buffer</p></li>
+<li><p>Create a response in the form of a CSV string :- name; address1; city</p></li>
+<li><p>Send the response back to the outstanding HTTP request.</p></li>
 </ul>
 <p>An example of the URL generated by the VBA Virtel object is below :-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://192.168.170.48:41002/w2h/WEB2AJAX.htm+HOGL?userName=sptholt&amp;password=pw&amp;trans=MENU&amp;custNo=105226
 </pre></div>
 </div>
 <p>The response data returned is in the form of a CSV string containing name, address1 and city. This information is then used to populate a second worksheet, CUPR. The next two diagrams show the input Excel object worksheet 1</p>
-<p><img alt="image3" src="../../../_images/image331.png" /></p>
+<p><img alt="image3" src="../../../_images/image334.png" /></p>
 <p>The output Excel worksheet CUPR, is used to display the customer information extracted from the CSV response string. Note that only three fields are populated, those being Name, Address1, and City :-</p>
 <p><img alt="image4" src="../../../_images/image425.png" /></p>
-</div>
-<div class="section" id="menu-legacy-application">
-<h2>Menu Legacy Application<a class="headerlink" href="#menu-legacy-application" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="menu-legacy-application">
+<h2>Menu Legacy Application<a class="headerlink" href="#menu-legacy-application" title="Permalink to this heading"></a></h2>
 <p>The legacy application that is used to provide the data is a simple CICS invoice system. A sample of the relevant input screens are shown below. First the Master menu.</p>
 <p><img alt="image5" src="../../../_images/image518.png" /></p>
 <p>Next, the customer inquiry screen : -</p>
@@ -246,56 +163,57 @@
 <p>And finally, the customer detail screen.</p>
 <p><img alt="image7" src="../../../_images/image715.png" /></p>
 <p>It is from this screen that we navigate to within the Virtel scenario and then extract the Name, Address1 and City and return that data to the VBA code which is then used to populate the CUPR work sheet.</p>
-</div>
-<div class="section" id="overview-of-the-scenpenf-scenario">
-<h2>Overview of the SCENPENF scenario<a class="headerlink" href="#overview-of-the-scenpenf-scenario" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overview-of-the-scenpenf-scenario">
+<h2>Overview of the SCENPENF scenario<a class="headerlink" href="#overview-of-the-scenpenf-scenario" title="Permalink to this heading"></a></h2>
 <p>The SCENPENF scenario performs the following functions after establishing a session with the CICS environment.</p>
 <p><strong>Entry : [Extract data from URL]</strong></p>
 <ol class="arabic simple">
-<li>Extract the following fields from the URL and place them into variables: -<ul>
-<li>userName   =&gt;      userName</li>
-<li>password   =&gt;      password</li>
-<li>trans      =&gt;      trans           CICS transaction</li>
-<li>custNo     =&gt;      custNo          Customer Number</li>
+<li><p>Extract the following fields from the URL and place them into variables: -</p>
+<ul class="simple">
+<li><p>userName   =&gt;      userName</p></li>
+<li><p>password   =&gt;      password</p></li>
+<li><p>trans      =&gt;      trans           CICS transaction</p></li>
+<li><p>custNo     =&gt;      custNo          Customer Number</p></li>
 </ul>
 </li>
-<li>GoTo LOGON</li>
+<li><p>GoTo LOGON</p></li>
 </ol>
 <p><strong>Label:        LOGON  [Sign on processing]</strong></p>
 <ol class="arabic simple">
-<li>Copy the userName and password into the CICS sign on screen</li>
-<li>Send Enter to the CICS application, check application for message DFHCE3549; signOn complete message.</li>
-<li>Goto START</li>
+<li><p>Copy the userName and password into the CICS sign on screen</p></li>
+<li><p>Send Enter to the CICS application, check application for message DFHCE3549; signOn complete message.</p></li>
+<li><p>Goto START</p></li>
 </ol>
 <p><strong>Label : START [Screen Navigation]</strong></p>
 <ol class="arabic simple">
-<li>Copy the CICS transaction variable trans to CICS screen.</li>
-<li>Send Enter to the CICS application and wait for buffer with characters ‘MENMAP1’</li>
-<li>Call DOREGION sub-routine. Test return screen for any errors.</li>
-<li>Copy value=’1’ to location in 3270 buffer at line 5, column 27, for a length of 1.</li>
-<li>Send Enter to the CICS application and wait for buffer with characters ‘INQMAP3’</li>
-<li>Copy the custNo variable into the CICS screen at location row 5, column 27, for a length of 7.</li>
-<li>Call GETDATA sub-routine.</li>
-<li>Goto SENDMSG</li>
+<li><p>Copy the CICS transaction variable trans to CICS screen.</p></li>
+<li><p>Send Enter to the CICS application and wait for buffer with characters ‘MENMAP1’</p></li>
+<li><p>Call DOREGION sub-routine. Test return screen for any errors.</p></li>
+<li><p>Copy value=’1’ to location in 3270 buffer at line 5, column 27, for a length of 1.</p></li>
+<li><p>Send Enter to the CICS application and wait for buffer with characters ‘INQMAP3’</p></li>
+<li><p>Copy the custNo variable into the CICS screen at location row 5, column 27, for a length of 7.</p></li>
+<li><p>Call GETDATA sub-routine.</p></li>
+<li><p>Goto SENDMSG</p></li>
 </ol>
 <p><strong>Label : SENDMSG {Build OK response message]</strong></p>
 <ol class="arabic simple">
-<li>Create list variable concatenation string OK: with variable Message</li>
-<li>GoTo RETURN_RSP</li>
+<li><p>Create list variable concatenation string OK: with variable Message</p></li>
+<li><p>GoTo RETURN_RSP</p></li>
 </ol>
 <p><strong>Label : RETURN_RSP [Send Response to browser]</strong></p>
 <ol class="arabic simple">
-<li>Terminate 3270 session with CICS</li>
-<li>Convert response buffer from EBCDIC to ASCII</li>
-<li>Send response back to browser.</li>
-<li>Disconnect Virtel Session</li>
-<li>End scenario</li>
+<li><p>Terminate 3270 session with CICS</p></li>
+<li><p>Convert response buffer from EBCDIC to ASCII</p></li>
+<li><p>Send response back to browser.</p></li>
+<li><p>Disconnect Virtel Session</p></li>
+<li><p>End scenario</p></li>
 </ol>
 <p><strong>Label : GETDATA [Build response buffer from 3270 buffer]</strong></p>
 <ol class="arabic simple">
-<li>Copy data from screen and place into variables name1, name2, addr1, addr2</li>
-<li>Build CSV Message buffer, concatenating variables name2,name1,addr1,addr2 and trim and blanks. String will look like: ‘Lennon,John;Penny Lane;Liverpool’.</li>
-<li>Return to call</li>
+<li><p>Copy data from screen and place into variables name1, name2, addr1, addr2</p></li>
+<li><p>Build CSV Message buffer, concatenating variables name2,name1,addr1,addr2 and trim and blanks. String will look like: ‘Lennon,John;Penny Lane;Liverpool’.</p></li>
+<li><p>Return to call</p></li>
 </ol>
 <p><strong>Label : DOREGION [Example of validation and navigation of a 3270 screen  buffer]</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGN0</span> <span class="n">EQU</span> <span class="o">*</span>
@@ -333,11 +251,11 @@
 <p>If the CICS system is not available, you will get the following error reported :-</p>
 <p><img alt="image10" src="../../../_images/image1011.png" /></p>
 <p>This error will also occur if you are signed onto CICS with your credentials through another Virtel session.</p>
-</div>
-<div class="section" id="appendix-a">
-<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="scenario-scenpenf">
-<h3>Scenario SCENPENF<a class="headerlink" href="#scenario-scenpenf" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this heading"></a></h2>
+<section id="scenario-scenpenf">
+<h3>Scenario SCENPENF<a class="headerlink" href="#scenario-scenpenf" title="Permalink to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENPENF SCREENS APPL=SCENPENF
 *######################################################################
 *##                         INPUT SCENARIO                           ##
@@ -565,12 +483,12 @@ ENDTRACE LABEL$
          END
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="appendix-b">
-<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="sample-of-a-generic-virtel-vba-class">
-<h3>Sample of a generic Virtel VBA Class<a class="headerlink" href="#sample-of-a-generic-virtel-vba-class" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="appendix-b">
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this heading"></a></h2>
+<section id="sample-of-a-generic-virtel-vba-class">
+<h3>Sample of a generic Virtel VBA Class<a class="headerlink" href="#sample-of-a-generic-virtel-vba-class" title="Permalink to this heading"></a></h3>
 <p>The following is a sample Virtel class that was used in the POC. Note that not all variables, functions, sub-routines are applicable. Some may not be used in the POC or are for debugging purposes only.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Option Explicit
 
@@ -1008,64 +926,39 @@ Sub clearCells(ByVal targetRange As String, Optional ByVal cols As Long = 1)
 End Sub
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN202002/TN202002.html" class="btn btn-neutral float-right" title="Customizing Virtel V4.59 from scratch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN201906/TN201906.html" class="btn btn-neutral float-left" title="Integrating DB2 and Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../TN201906/TN201906.html" class="btn btn-neutral float-left" title="Integrating DB2 and Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../TN202002/TN202002.html" class="btn btn-neutral float-right" title="Customizing Virtel V4.59 from scratch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2017, Syspertec. All rights reserved
-
-    </p>
+    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

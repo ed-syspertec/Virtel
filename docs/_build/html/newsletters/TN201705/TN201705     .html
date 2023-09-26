@@ -1,163 +1,81 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Printing PCL files with NodeJS &mdash; Virtel 9 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-
-          
-            
-            <img src="../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
-          
+          <a href="../../index.html" class="icon icon-home">
+            Virtel
+              <img src="../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
               <div class="version">
                 4.61
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../newsletters.html">Technical Newsletters</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Virtel</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Printing PCL files with NodeJS</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Printing PCL files with NodeJS</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="../../_sources/newsletters/TN201705/TN201705     .rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="printing-pcl-files-with-nodejs">
-<span id="tn201705"></span><h1>Printing PCL files with NodeJS<a class="headerlink" href="#printing-pcl-files-with-nodejs" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="printing-pcl-files-with-nodejs">
+<span id="tn201705"></span><h1>Printing PCL files with NodeJS<a class="headerlink" href="#printing-pcl-files-with-nodejs" title="Permalink to this heading"></a></h1>
 <p><strong>Introduction</strong></p>
 <p>Because of the security restrictions within the browser environment
 Virtel is unable to print directly to a printer – the standard windows
@@ -175,7 +93,7 @@ be printed using the standard print feature of the browser.</p>
 LU type 1 printers. These are normally associated with CICS
 applications. When the Virtel terminal processes the print request a
 printer ICON appears on the right hand side of the tool bar.</p>
-<p><a class="reference internal" href="../../_images/image1249.png"><img alt="image0" src="../../_images/image1249.png" style="width: 6.30000in; height: 3.47500in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image1259.png"><img alt="image0" src="../../_images/image1259.png" style="width: 6.30000in; height: 3.47500in;" /></a></p>
 <p>Figure 1 Virtel Print request</p>
 <p>Pressing the Printer ICON initiates the print processing which, if
 successful, results in a PCL file being downloaded to the users default
@@ -197,7 +115,7 @@ be installed on your PC and the Windows LPR program must be accessible.
 By default, Windows doesn’t install this program. You will need to
 ensure that the correct Windows features have been selected and
 installed. See below.</p>
-<p><a class="reference internal" href="../../_images/image2143.png"><img alt="image1" src="../../_images/image2143.png" style="width: 6.30000in; height: 3.46042in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image2144.png"><img alt="image1" src="../../_images/image2144.png" style="width: 6.30000in; height: 3.46042in;" /></a></p>
 <p>Figure 2 Required Windows features</p>
 <p>Validation of these requisites can be done by issuing the following two
 commands.</p>
@@ -206,7 +124,7 @@ lpr The print route program is installed and accessible
 </pre></div>
 </div>
 <p>The following screen capture shows the response from these commands:-</p>
-<p><a class="reference internal" href="../../_images/image3132.png"><img alt="image2" src="../../_images/image3132.png" style="width: 6.30000in; height: 3.86389in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image3134.png"><img alt="image2" src="../../_images/image3134.png" style="width: 6.30000in; height: 3.86389in;" /></a></p>
 <p>Figure 3 Validating pre-requisites</p>
 <p>Once the pre-requisite software has been installed and validated we can
 install the nodeJS script. First create a directory to contain the
@@ -243,7 +161,7 @@ file to my designated “server.printer”, in my case
 CSD.KONICA_Couleur_C284e. The PCL file will be printed without any
 manual intervention.</p>
 <p>The Virtel Spooler will issue a message each time it prints a file:-</p>
-<p><a class="reference internal" href="../../_images/image4127.png"><img alt="image3" src="../../_images/image4127.png" style="width: 6.30000in; height: 3.21944in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image4129.png"><img alt="image3" src="../../_images/image4129.png" style="width: 6.30000in; height: 3.21944in;" /></a></p>
 <p>Figure 4 Virtel Spooler log</p>
 <p>To terminate the Virtel Spooler, issue CTRL-C in the command window.</p>
 <p><strong>What can go wrong!</strong></p>
@@ -271,8 +189,8 @@ the lpd.exe program from c:\windows\system32 to
 c:\virtel\VirtelSpooler. All worked fine after that.</p>
 <p><em>I already have nodeJS installed but get errors when running nodeJS main.js.</em></p>
 <p>Install a later release of NodeJS.</p>
-<div class="section" id="appendix-a">
-<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<section id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this heading"></a></h2>
 <p><strong>main.js</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Virtel PCL Print Spooler.
  * Monitors spool directory and automatically sends PCL file to network printer.
@@ -339,54 +257,35 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
 <span class="k">del</span> <span class="o">%</span><span class="n">arg3</span><span class="o">%</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2017, Syspertec. All rights reserved
-
-    </p>
+    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
