@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id8">2023</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
         </div>
@@ -110,7 +111,7 @@
              
   <section id="mainframe-printing-with-virtel-4-56">
 <span id="tn201409"></span><h1>Mainframe printing with Virtel 4.56<a class="headerlink" href="#mainframe-printing-with-virtel-4-56" title="Permalink to this heading"></a></h1>
-<p>This newsletters highlights some of the ways you can configure Virtel to utilize its printing capabilities. First and foremost let’s understand what Virtel can support with regard to printing. Just for clarification Virtel currently doesn’t support seamless or unattended printing. In other words a user cannot initiate a print transaction from CICS and expect the output to automatically pop out on the user’s default workstation printer. This is because Virtel is restricted to whatever the browser printer functionality provides. See the section <a class="reference internal" href="../../../newsletters/TN201409/TN201409.html#tn201409-bookmark01"><span class="std std-ref">“Seemless or unattended printing”</span></a> at the end of this document for more details. However, having said that, there are several ways mainframe printing can be achieved with Virtel. This newsletter highlights the Virtel features that support mainframe
+<p>This newsletters highlights some of the ways you can configure Virtel to utilize its printing capabilities. First and foremost let’s understand what Virtel can support with regard to printing. Just for clarification Virtel currently doesn’t support seamless or unattended printing. In other words a user cannot initiate a print transaction from CICS and expect the output to automatically pop out on the user’s default workstation printer. This is because Virtel is restricted to whatever the browser printer functionality provides. See the section <a class="reference internal" href="#tn201409-bookmark01"><span class="std std-ref">“Seemless or unattended printing”</span></a> at the end of this document for more details. However, having said that, there are several ways mainframe printing can be achieved with Virtel. This newsletter highlights the Virtel features that support mainframe
 printing and provides some guidance on how to implement them.</p>
 <p>In the scenarios that follow user involvement is required. The supported Virtel LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270 datastream).</p>
 <p>Depending on the Virtel printer configuration one of several things can happen at the browser end:-</p>
@@ -371,7 +372,7 @@ control statements provide the layout, image and control information.
 Three separate files are involved – the DOCOPT, INPUT and LAYOUT files.
 These files are created by the user and the uploaded to the SAMPTRSF W2H
 directory. Samples are provided below. These work with the SCENFLND
-scenarion. See <a class="reference internal" href="../../../newsletters/TN201409/TN201409.html#appendix-b"><span class="std std-ref">Appendix B</span></a>:-</p>
+scenarion. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B</span></a>:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>scenvjrs-docopt_l.txt
 
 &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;--&gt;
@@ -433,7 +434,7 @@ how to setup and run MAKEPDF.</p>
 from a utility listing. The output was sent to JES2 and then extracted
 by the VJRS program and sent to Virtel an SCS data stream.</p>
 <p><img alt="image14" src="../../../_images/image15.png" /> <em>Fig. 15 - Multi-Page PDF listing using MAKEPDF</em></p>
-<p>Virtel delivers the VIRSVPDF program as an example of a MAKEPDF external service. This program is designed only to produce 1 page per   service call. For producing PDF’s with multiple pages please contact the Syspertec support centre for further advice. The scenario  associated with this landscape printing is called SCENFLND. See <a class="reference internal" href="../../../newsletters/TN201409/TN201409.html#appendix-b"><span class="std std-ref">Appendix B.</span></a></p>
+<p>Virtel delivers the VIRSVPDF program as an example of a MAKEPDF external service. This program is designed only to produce 1 page per   service call. For producing PDF’s with multiple pages please contact the Syspertec support centre for further advice. The scenario  associated with this landscape printing is called SCENFLND. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B.</span></a></p>
 </section>
 <section id="seamless-or-unattended-printing">
 <span id="tn201409-bookmark01"></span><h2>Seamless or unattended printing<a class="headerlink" href="#seamless-or-unattended-printing" title="Permalink to this heading"></a></h2>

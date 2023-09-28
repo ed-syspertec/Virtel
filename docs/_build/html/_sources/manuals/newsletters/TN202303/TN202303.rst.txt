@@ -457,6 +457,64 @@ Other Enhancements
 
 - Update SSLSETUP with new CipherSuites
 
+New features
+------------
+
+Implement Auto startup feature and command members
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When starting up VIRTEL, it will attempt to open the STARTUP member of PDS VIRCNT. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -
+
+::
+
+    * ADD SILENCE MESSAGES *      
+    SILENCE=VIR0018I              
+    SILENCE=VIR0012I              
+    * SWITCH SILENCE *            
+    SILENCE                       
+    * SET TRACE *                 
+    TRACE,L=C-HTTP,ON             
+    * LIST SILENCE MESSAGES *     
+    SILENCE=LIST                  
+    * DISPLAY TCT     *           
+    TCT                           
+    * DISPLAY STAT STATUS'        
+    STAT,D                        
+    * DISPLAY LOG STATUS          
+    LOG,D                         
+    * DISPLAY SNAPMSG TABLE       
+    SNAPMSG,LIST       
+
+A new modiy command has been added to enable execution of a message member at any time: -
+
+::
+
+    F VIRTEL,EXEC=membername.
+    
+For example F VIRTEL,EXEC=TRCLINES. This will excuete the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command has a new action:
+
+::
+
+    C=mebername.
+    
+This will trigger a message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -
+
+::
+
+    F VIRTEL,SNAPMSG=VIRT905I,,C=LINES
+
+This command will cause the execution of the commands in the LINES member of the VIRCNTL PDS whenever the VIRT905I message is trapped.  
+
+Migration Requirements: -
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Optional DDNAME to be added to the z/OS VIRTEL procedure : -
+
+::
+
+    NEW DDNAME card :   VIRCNTL
+    Attributes      :   PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10))
+
 
 Updates and maintenance
 -----------------------

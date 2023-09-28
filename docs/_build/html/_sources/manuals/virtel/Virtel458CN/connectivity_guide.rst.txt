@@ -679,8 +679,6 @@ Remote ident
     are described for each line type in the detailed examples which
     follow.
 
-.. _#_bookmark13:
-
 Local ident
     This field contains the name or address used by VIRTEL. Usage
     depends on the line type and protocol. The contents of this field
@@ -988,7 +986,7 @@ Remote ident
 
 Local ident
     This is the VIRTEL IP address and port number which browser users must specify in order to connect to VIRTEL. If the port number is omitted then the default is port 80. See the description of the
-    “Local ident” field under the heading :ref:`“Line Parameters”,<#_bookmark13>` for more details about how to code this field.
+    “Local ident” field under the heading *line parameters* for more details about how to code this field.
 
 Prefix
     Terminal name prefix (see below).
@@ -1207,7 +1205,7 @@ Remote ident
     This field is required and represents the IP address and port number of the SMTP server to which VIRTEL sends outgoing mail.
 
 Local ident
-    The IP address and port number on which VIRTEL listens for incoming mail. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”,<#_bookmark13>`.
+    The IP address and port number on which VIRTEL listens for incoming mail. For details of how to code this field, refer to “Local ident” under the heading *Line Parameters*.
 
 Description
     The sender name generated in outgoing e-mails. Not used for incoming e-mails.
@@ -1719,7 +1717,7 @@ Remote ident
     Not used for a NATIVE TCP/IP line.
 
 Local ident
-    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
+    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading *Line Parameters*.
 
 Prefix
     Terminal name prefix (see below).
@@ -2151,7 +2149,7 @@ Remote ident
         x25 route .* xot 10.0.1.1 xot-source loopback0
 
 Local ident
-    The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”,<#_bookmark13>`.
+    The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading *Line Parameters*.
 
     The port number must be 1998. This port number is fixed by the XOT protocol, and the router does not provide any configuration statement which allows the port number to be altered.
 
@@ -2269,7 +2267,7 @@ Remote ident
     (optional) IP address and port number of the default partner (for outbound calls when the external server does not specify a partner IP address).
 
 Local ident
-    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
+    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading *Line Parameters*.
 
 Prefix
     Terminal name prefix (see below).
@@ -2341,7 +2339,7 @@ Parameters
 ^^^^^^^^^^
 
 Local ident
-    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
+    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading *Line Parameters*.
 
 Prefix
     Terminal name prefix (see below).
@@ -3696,7 +3694,7 @@ Incoming calls on X25 lines - GATE, FastC, XOT
 The entry point to be used for an X25 connection (GATE, FastConnect, XOT) can be specified:
 - By the rules of the line. If one of the rules associated with the line matches the characteristics of the call, the entry point chosen by the rule takes precedence over that specified in the call packet.
 - In the X25 call packet. The entry point is specified in the CUD (Call User Data) field of the call packet. The entry point name is in ASCII character format starting at the 5th byte of the CUD field, following the 4-byte protocol identifier. 
-- A default entry point can be specified in the line definition (see “Line Parameters”, page 11).
+- A default entry point can be specified in the line definition (see “Line Parameters”).
 - If no entry point is specified, the default entry point is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
 Incoming calls on HTTP or SMTP lines

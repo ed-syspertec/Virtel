@@ -9,15 +9,9 @@ Virtel configuration. Some of these features are only available with Virtel V4.5
 
 **Virtel Administrators**
 
-The DDI and administration features should only be available to a Virtel
-Administrator. A Virtel Administrator is defined through security
-profiles. For example, with RACF, a user who had READ access to the
-FACILITY profile VIRTEL.\* would be considered a super user or top level
-administrator as they have total access to all VIRTEL transactions.
-Likewise an administrator who only requires responsibility for managing
-DDI would be restricted to a subset of Virtel transactions through RACF
-profiles. See the chapter on :ref:`“Security” <#_V456IG_security>` in the *VIRTEL Installation guide*
-for more details. By default a user has no access to any of the
+The DDI and administration features should only be available to a Virtel Administrator. A Virtel Administrator is defined through security profiles. For example, with RACF, a user who had READ access to the
+FACILITY profile VIRTEL.\* would be considered a super user or top level administrator as they have total access to all VIRTEL transactions. Likewise an administrator who only requires responsibility for managing
+DDI would be restricted to a subset of Virtel transactions through RACF profiles. See the chapter on *Security* in the **VIRTEL Installation guide** for more details. By default a user has no access to any of the
 administration transactions.
 
 Dynamic directories use the symbolics %user% and %group% to determine

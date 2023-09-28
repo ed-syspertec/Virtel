@@ -74,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id8">2023</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
         </div>
@@ -186,7 +187,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 <li><p>passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.</p></li>
 <li><p>profile_name must equal the VTAM application name defined in the VIRTEL transaction.</p></li>
 </ul>
-<p>These names are normally the same, but they do not have to be. See the <a class="reference internal" href="../../../newsletters/TN201407/TN201407.html#tn201407-bookmark01"><span class="std std-ref">“RACF profiles related to Pass Tickets”</span></a> section for further information.</p>
+<p>These names are normally the same, but they do not have to be. See the <a class="reference internal" href="#tn201407-bookmark01"><span class="std std-ref">“RACF profiles related to Pass Tickets”</span></a> section for further information.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.</p>
@@ -219,7 +220,7 @@ needn’t be!</p>
 <p><strong>Virtel Requirements</strong></p>
 <p>The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-</p>
 <p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.</em></p>
-<p>The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on <a class="reference internal" href="../../../newsletters/TN201407/TN201407.html#tn201407-bookmark02"><span class="std std-ref">Identification Scenario</span></a>.</p>
+<p>The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on <a class="reference internal" href="#tn201407-bookmark02"><span class="std std-ref">Identification Scenario</span></a>.</p>
 <p>The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&amp;U) and PassTicket generated password (&amp;P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.</p>
 <p id="tn201407-bookmark02"><em>Identification Scenario</em></p>
 <p>To obtain the “SM_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-</p>

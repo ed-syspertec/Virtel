@@ -63,6 +63,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#installation-changes">Installation changes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#migration-considerations">Migration considerations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fixes-changes-and-new-features">Fixes, changes and new features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-features">New features</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#updates-and-maintenance">Updates and maintenance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
 </ul>
@@ -73,6 +74,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
         </div>
@@ -532,6 +534,53 @@
 <ul class="simple">
 <li><p>Update SSLSETUP with new CipherSuites</p></li>
 </ul>
+</section>
+</section>
+<section id="new-features">
+<h2>New features<a class="headerlink" href="#new-features" title="Permalink to this heading"></a></h2>
+<section id="implement-auto-startup-feature-and-command-members">
+<h3>Implement Auto startup feature and command members<a class="headerlink" href="#implement-auto-startup-feature-and-command-members" title="Permalink to this heading"></a></h3>
+<p>When starting up VIRTEL, it will attempt to open the STARTUP member of PDS VIRCNT. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">ADD</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0018I</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0012I</span>
+<span class="o">*</span> <span class="n">SWITCH</span> <span class="n">SILENCE</span> <span class="o">*</span>
+<span class="n">SILENCE</span>
+<span class="o">*</span> <span class="n">SET</span> <span class="n">TRACE</span> <span class="o">*</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">ON</span>
+<span class="o">*</span> <span class="n">LIST</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">LIST</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">TCT</span>     <span class="o">*</span>
+<span class="n">TCT</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">STAT</span> <span class="n">STATUS</span><span class="s1">&#39;</span>
+<span class="n">STAT</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">LOG</span> <span class="n">STATUS</span>
+<span class="n">LOG</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">SNAPMSG</span> <span class="n">TABLE</span>
+<span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
+</pre></div>
+</div>
+<p>A new modiy command has been added to enable execution of a message member at any time: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">EXEC</span><span class="o">=</span><span class="n">membername</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>For example F VIRTEL,EXEC=TRCLINES. This will excuete the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command has a new action:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">=</span><span class="n">mebername</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This will trigger a message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">VIRT905I</span><span class="p">,,</span><span class="n">C</span><span class="o">=</span><span class="n">LINES</span>
+</pre></div>
+</div>
+<p>This command will cause the execution of the commands in the LINES member of the VIRCNTL PDS whenever the VIRT905I message is trapped.</p>
+</section>
+<section id="migration-requirements">
+<h3>Migration Requirements: -<a class="headerlink" href="#migration-requirements" title="Permalink to this heading"></a></h3>
+<p>Optional DDNAME to be added to the z/OS VIRTEL procedure : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NEW</span> <span class="n">DDNAME</span> <span class="n">card</span> <span class="p">:</span>   <span class="n">VIRCNTL</span>
+<span class="n">Attributes</span>      <span class="p">:</span>   <span class="n">PDS</span><span class="p">,</span> <span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span> <span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">3120</span><span class="p">,</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="updates-and-maintenance">

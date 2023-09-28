@@ -12,11 +12,9 @@ Messages V4.61
 
 **VIRTEL Messages Guide**
 
-.. warning:: This is a draft version of the document.
+Version : 4.61 
 
-Version : 4.61 Draft
-
-Release Date : TBA. Publication Date : 10/10/2021
+Release Date : 01/07/2023. Publication Date : 01/07/2023
 
 Syspertec Communication
 

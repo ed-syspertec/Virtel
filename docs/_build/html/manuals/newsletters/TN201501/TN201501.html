@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id8">2023</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
         </div>
@@ -105,15 +106,9 @@
 DDI and the new Administration GUI panel that can be used to perform
 Virtel configuration. Some of these features are only available with Virtel V4.54 and subsequent releases.</p>
 <p><strong>Virtel Administrators</strong></p>
-<p>The DDI and administration features should only be available to a Virtel
-Administrator. A Virtel Administrator is defined through security
-profiles. For example, with RACF, a user who had READ access to the
-FACILITY profile VIRTEL.* would be considered a super user or top level
-administrator as they have total access to all VIRTEL transactions.
-Likewise an administrator who only requires responsibility for managing
-DDI would be restricted to a subset of Virtel transactions through RACF
-profiles. See the chapter on <span class="xref std std-ref">“Security”</span> in the <em>VIRTEL Installation guide</em>
-for more details. By default a user has no access to any of the
+<p>The DDI and administration features should only be available to a Virtel Administrator. A Virtel Administrator is defined through security profiles. For example, with RACF, a user who had READ access to the
+FACILITY profile VIRTEL.* would be considered a super user or top level administrator as they have total access to all VIRTEL transactions. Likewise an administrator who only requires responsibility for managing
+DDI would be restricted to a subset of Virtel transactions through RACF profiles. See the chapter on <em>Security</em> in the <strong>VIRTEL Installation guide</strong> for more details. By default a user has no access to any of the
 administration transactions.</p>
 <p>Dynamic directories use the symbolics %user% and %group% to determine
 the directory name. Static directories, as defined in the ARBO load

@@ -1,38 +1,25 @@
-    \ |image0|
+.. _virtel-AT-TLS:
 
-    |image1|\ *VIRTEL*
+Virtel AT-TLS
+=============
 
-1. **How to activate VIRTEL https using AT-TLS on z/OS V1R7**
+Software pre-requisites
+-----------------------
 
-   1. .. rubric:: Software pre-requisites
-         :name: software-pre-requisites
+ To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS)  feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.
 
-    To provide secure HTTP (https) sessions to client browsers, VIRTEL
-    uses the Application Transparent Transport Layer Security (AT-TLS)
-    feature of z/OS Communication Server. AT-TLS is included with z/OS
-    V1R7 and later releases.
+AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
 
-    AT-TLS allows socket applications to access encrypted sessions by
-    invoking system SSL within the transport layer of the TCP/IP stack.
-    The Policy Agent decides which connections are to use AT-TLS, and
-    provides system SSL configuration for those connections. The
-    application continues to send and receive clear text over the
-    socket, but data sent over the network is protected by system SSL.
-    The supported protocols are TLS, SSLv3, and SSLv2.
+Installation steps
+------------------
 
-1. .. rubric:: Installation steps
-      :name: installation-steps
+Install Policy Agent procedure
+""""""""""""""""""""""""""""""
 
-   1. .. rubric:: Install Policy Agent procedure
-         :name: install-policy-agent-procedure
-
-    If you do not already have the Communications Server Policy Agent
-    (PAGENT) active in your z/OS system, copy the cataloged procedure
-    EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as
-    PAGENT.
+If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.
 
 Create the Policy Agent configuration file
-------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""
 
     If you do not already run the Policy Agent, you will need to create
     a configuration file /etc/pagent.conf using z/OS Unix System
@@ -52,9 +39,8 @@ Create the Policy Agent configuration file
    parameter (SSLSETUP line 82) as we will not be using Client
    Certificates.
 
-   1. .. rubric:: Allow the Policy Agent to run during TCP/IP
-         initialization
-         :name: allow-the-policy-agent-to-run-during-tcpip-initialization
+Allow the Policy Agent to run during TCP/IP initialization
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
     The Policy Agent must be given READ access to the resource
     EZB.INITSTACK.\* in RACF class SERVAUTH. See step EZBAUTH in the
@@ -92,19 +78,19 @@ Activate AT-TLS
 
     To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
+::
     TCPCONFIG TTLS
-
     AUTOLOG 5 PAGENT ENDAUTOLOG
 
     Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile
     statement. The AUTOLOG statement will cause the PAGENT procedure to
     be started automatically during TCP/IP initialization.
 
-1. .. rubric:: Operations
-      :name: operations
+Operations
+----------
 
-   1. .. rubric:: Starting the Policy Agent
-         :name: starting-the-policy-agent
+Starting the Policy Agent
+"""""""""""""""""""""""""
 
     The AUTOLOG statement in the TCP/IP profile will start the PAGENT
     procedure automatically at TCP/IP initialization. Alternatively you
@@ -139,11 +125,11 @@ Logon to VIRTEL using secure session
 
     n.n.n.n is the IP address of the z/OS host running VIRTEL).
 
-1. .. rubric:: Problem determination
-      :name: problem-determination
+Problem determination
+---------------------
 
-   1. .. rubric:: Policy Agent log file
-         :name: policy-agent-log-file
+Policy Agent log file
+"""""""""""""""""""""
 
     Policy Agent startup messages are written to the /tmp/pagent.log
     file of z/OS Unix System Services. You can use the TSO ISHELL
@@ -209,44 +195,32 @@ Cipher suite
     and 128-bit or higher cipher suites are enabled.
 
 Bibliography
-============
+------------
 
--  ***SA22-7683-07 z/OS V1R7 Security Server: RACF Security
-   Administrator's Guide*** Chapter 21. RACF and Digital Certificates
+**SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator's Guide** 
+Chapter 21. RACF and Digital Certificates
 
--  .. rubric:: *SC24-5901-04 z/OS V1R6 Cryptographic Services:* System
-      SSL Programming
-      :name: sc24-5901-04-zos-v1r6-cryptographic-services-system-ssl-programming
+**SC24-5901-04 z/OS V1R6 Cryptographic Services:**
+System  SSL Programming
+- Chapter 12. Messages and Codes
 
-    Chapter 12. Messages and Codes
+**SC31-8775-07 z/OS V1R7 Communications Server:**
+IP Configuration Guide
+- Chapter 14. Policy-based networking
+- Chapter 18. Application Transparent Transport Layer Security
+- (AT-TLS) data protection
 
--  .. rubric:: *SC31-8775-07 z/OS V1R7 Communications Server:* IP
-      Configuration Guide
-      :name: sc31-8775-07-zos-v1r7-communications-server-ip-configuration-guide
+**SC31-8776-08 z/OS V1R7 Communications Server:**
+IP Configuration Reference
+- Chapter 21. Policy Agent and policy applications
+    
+**GC31-8782-06 z/OS V1R7 Communications Server:**
+IP Diagnosis Guide
+-  Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
 
-    Chapter 14. Policy-based networking
-
-    Chapter 18. Application Transparent Transport Layer Security
-    (AT-TLS) data protection
-
--  .. rubric:: *SC31-8776-08 z/OS V1R7 Communications Server:* IP
-      Configuration Reference
-      :name: sc31-8776-08-zos-v1r7-communications-server-ip-configuration-reference
-
-    Chapter 21. Policy Agent and policy applications
-
--  .. rubric:: *GC31-8782-06 z/OS V1R7 Communications Server:* IP
-      Diagnosis Guide
-      :name: gc31-8782-06-zos-v1r7-communications-server-ip-diagnosis-guide
-
-    Chapter 28. Diagnosing Application Transparent Transport Layer
-    Security (AT-TLS)
-
--  .. rubric:: *SC31-8784-05 z/OS V1R7 Communications Server:* IP
-      Messages: Volume 2 (EZB, EZD)
-      :name: sc31-8784-05-zos-v1r7-communications-server-ip-messages-volume-2-ezb-ezd
-
-    Chapter 10. EZD1xxxx messages
+**SC31-8784-05 z/OS V1R7 Communications Server:**
+- IP Messages: Volume 2 (EZB, EZD)
+-  Chapter 10. EZD1xxxx messages
 
 .. |image0| image:: images/media/image1.png
    :width: 4.16534in

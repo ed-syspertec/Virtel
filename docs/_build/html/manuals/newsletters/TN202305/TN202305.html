@@ -19,6 +19,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="How To Manuals" href="../../../howto.html" />
     <link rel="prev" title="Customizable Application Menu - cAppMenu" href="../TN202304/TN202304.html" /> 
 </head>
 
@@ -74,6 +75,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
         </div>
@@ -267,7 +269,7 @@ VIR0024I ATTACHING SUBTASKS
 <p>The Administration instance, SPVIREH9, can be used to examine the line and terminal definitions that support this scenario. The display the terminals for V-HTTP looks like: -</p>
 <p><img alt="image5" src="../../../_images/image522.png" /></p>
 <p>Fig 6 – MultiSys Terminal display</p>
-<p>A Virtel pool is defined as <a href="#id1"><span class="problematic" id="id2">*</span></a>VPXPOOL supporting 10 internal relays beginning VPVTA000. The terminals that associated with this pool are defined using the sysclone plus(+) character as the second  and third digit and any alphanumeric character as the last three digits. Logging on to TSO a session is generated with the following terminal assignments: -</p>
+<p>A Virtel pool is defined as *VPXPOOL supporting 10 internal relays beginning VPVTA000. The terminals that associated with this pool are defined using the sysclone plus ‘+’ character as the second  and third digit and any alphanumeric character as the last three digits. Logging on to TSO a session is generated with the following terminal assignments: -</p>
 <p><img alt="image6" src="../../../_images/image622.png" /></p>
 <p><em>Fig 7 – MultiSys terminal allocation</em></p>
 <p>VTAM terminal RT1VTAAA and VTAM printer RT1IMAAA are used from the Virtel pool in setting up the session.</p>
@@ -402,7 +404,7 @@ R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,                *
             DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
-<p>Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool <a href="#id3"><span class="problematic" id="id4">*</span></a>W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool <a href="#id5"><span class="problematic" id="id6">*</span></a>W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:</p>
+<p>Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool *W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool *W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span> <span class="n">Relay</span>
 
 <span class="n">CLLOC000</span>  <span class="mi">0500</span>                            <span class="mi">3</span>      <span class="mi">3</span>
@@ -1000,6 +1002,7 @@ VIR0505I LINKING TERMINAL ALLOC002 TO A-HTTP
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../TN202304/TN202304.html" class="btn btn-neutral float-left" title="Customizable Application Menu - cAppMenu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../howto.html" class="btn btn-neutral float-right" title="How To Manuals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -217,7 +217,7 @@ The Administration instance, SPVIREH9, can be used to examine the line and termi
 
 Fig 6 – MultiSys Terminal display 
 
-A Virtel pool is defined as *VPXPOOL supporting 10 internal relays beginning VPVTA000. The terminals that associated with this pool are defined using the sysclone plus(+) character as the second  and third digit and any alphanumeric character as the last three digits. Logging on to TSO a session is generated with the following terminal assignments: -
+A Virtel pool is defined as \*VPXPOOL supporting 10 internal relays beginning VPVTA000. The terminals that associated with this pool are defined using the sysclone plus '+' character as the second  and third digit and any alphanumeric character as the last three digits. Logging on to TSO a session is generated with the following terminal assignments: -
 
 |image6|
 
@@ -389,7 +389,7 @@ The VTAM definition to support this configuration would like:-
                 DLOGMOD=DSILGMOD,EAS=1                                    
 
 
-Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool *W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool *W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:
+Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool \*W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool \*W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:
 
 ::
 
