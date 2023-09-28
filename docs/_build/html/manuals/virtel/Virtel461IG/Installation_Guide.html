@@ -110,12 +110,8 @@
 <span id="virtel461ig"></span><h1>Installation Guide V4.61<a class="headerlink" href="#installation-guide-v4-61" title="Permalink to this heading"></a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web26.png"><img alt="image1" src="../../../_images/logo_virtel_web26.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Installation Guide</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a draft version of the document.</p>
-</div>
-<p>Version : 4.61 Draft</p>
-<p>Release Date : TBA. Publication Date : 10/10/2021</p>
+<p>Version : 4.61</p>
+<p>Release Date : 01/07/2023. Publication Date : 01/07/2023</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -840,7 +836,32 @@ RENAMEUNC( -
 <li><p>If the VIRTEL datasets are to be managed by SMS, remove the NULLSTORCLAS BYPASSACS(**) statement and replace it by STORCLAS(classname) where classname is the name of the SMS storage class on which the VIRTEL datasets are to be allocated. Do not delete the OUTDYNAM parameter, ADRDSSU requires it even though its value is ignored for SMS.</p></li>
 <li><p>In the RENAMEUNC parameter, replace yourqual by the high-level qualifiers to be used for your VIRTEL datasets.</p></li>
 <li><p>The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.</p></li>
+<li><p>Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member Virtel commands are to be executed st start up. Other members can be created which cna be executed trhro</p></li>
 </ul>
+<p>Example of STARTUP member: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">ADD</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0018I</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0012I</span>
+<span class="o">*</span> <span class="n">SWITCH</span> <span class="n">SILENCE</span> <span class="o">*</span>
+<span class="n">SILENCE</span>
+<span class="o">*</span> <span class="n">SET</span> <span class="n">TRACE</span> <span class="o">*</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">ON</span>
+<span class="o">*</span> <span class="n">LIST</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">LIST</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">TCT</span>     <span class="o">*</span>
+<span class="n">TCT</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">STAT</span> <span class="n">STATUS</span><span class="s1">&#39;</span>
+<span class="n">STAT</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">LOG</span> <span class="n">STATUS</span>
+<span class="n">LOG</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">SNAPMSG</span> <span class="n">TABLE</span>
+<span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
+</pre></div>
+</div>
+<p>Other members can be created which can contain Virtel commands. These can be executed through the z/OS modify command: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span>  <span class="n">VIRTEL</span><span class="p">,</span><span class="n">EXEC</span><span class="o">=</span><span class="n">membername</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -970,6 +991,7 @@ RENAMEUNC( -
 <span class="o">//</span><span class="n">VIRHTML</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 <span class="o">//</span><span class="n">SAMPTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SAMP</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 <span class="o">//</span><span class="n">HTMLTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRCNTL</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">CNTL</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 <span class="o">//</span><span class="n">SYSOUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">VIRLOG</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">VIRTRACE</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
@@ -993,6 +1015,7 @@ RENAMEUNC( -
 <li><p>Files SYSOUT, VIRLOG, VIRTRACE, SYSPRINT, SYSUDUMP are always required</p></li>
 <li><p>The libraries SCSQANLE, SCSQAUTH must be concatenated to the STEPLIB unless these libraries are in the system link list or LPA list (only for clients wishing to use VIRTEL with MQSeries)</p></li>
 <li><p>The CSF.SCSFMOD0 library must be concatenated to the STEPLIB or must be present in the system link list (only if the CRYPTn=(…,ICSF,…) parameter is coded in the VIRTCT)</p></li>
+<li><p>File VIRCNTL is optional. It contains command member lists.</p></li>
 </ul>
 </section>
 </section>
@@ -5702,13 +5725,37 @@ TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 <span id="index-188"></span><h5>Authorize the VIRTEL LOADLIB<a class="headerlink" href="#authorize-the-virtel-loadlib" title="Permalink to this heading"></a></h5>
 <p>The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.</p>
 </section>
+<section id="autocommands-at-initialisation">
+<span id="index-189"></span><h5>AutoCommands at initialisation<a class="headerlink" href="#autocommands-at-initialisation" title="Permalink to this heading"></a></h5>
+<p>When starting up VIRTEL an attempt will be made to open the STARTUP member of the PDS VIRCNTL. This member will Virtel commands which can be executed file at initialization.</p>
+<p>Example of STARTUP member: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">ADD</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0018I</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0012I</span>
+<span class="o">*</span> <span class="n">SWITCH</span> <span class="n">SILENCE</span> <span class="o">*</span>
+<span class="n">SILENCE</span>
+<span class="o">*</span> <span class="n">SET</span> <span class="n">TRACE</span> <span class="o">*</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">ON</span>
+<span class="o">*</span> <span class="n">LIST</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">LIST</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">TCT</span>     <span class="o">*</span>
+<span class="n">TCT</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">STAT</span> <span class="n">STATUS</span><span class="s1">&#39;</span>
+<span class="n">STAT</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">LOG</span> <span class="n">STATUS</span>
+<span class="n">LOG</span><span class="p">,</span><span class="n">D</span>
+<span class="o">*</span> <span class="n">DISPLAY</span> <span class="n">SNAPMSG</span> <span class="n">TABLE</span>
+<span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 </section>
 <section id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading"></a></h2>
 <section id="appendix-a-virtel-modules">
-<span id="index-189"></span><h3>Appendix A. Virtel Modules<a class="headerlink" href="#appendix-a-virtel-modules" title="Permalink to this heading"></a></h3>
+<span id="index-190"></span><h3>Appendix A. Virtel Modules<a class="headerlink" href="#appendix-a-virtel-modules" title="Permalink to this heading"></a></h3>
 <section id="virtel-modules">
 <h4>Virtel Modules<a class="headerlink" href="#virtel-modules" title="Permalink to this heading"></a></h4>
 <p>The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:</p>

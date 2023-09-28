@@ -12,11 +12,9 @@ Installation Guide V4.61
 
 **VIRTEL Installation Guide**
 
-.. warning:: This is a draft version of the document.
+Version : 4.61 
 
-Version : 4.61 Draft
-
-Release Date : TBA. Publication Date : 10/10/2021
+Release Date : 01/07/2023. Publication Date : 01/07/2023
 
 Syspertec Communication
 
@@ -993,6 +991,36 @@ The following changes should be made to this job before submitting it:
 
 - The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.
 
+- Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member Virtel commands are to be executed st start up. Other members can be created which cna be executed trhro
+
+Example of STARTUP member: -
+
+::	
+
+	* ADD SILENCE MESSAGES *      
+	SILENCE=VIR0018I              
+	SILENCE=VIR0012I              
+	* SWITCH SILENCE *            
+	SILENCE                       
+	* SET TRACE *                 
+	TRACE,L=C-HTTP,ON             
+	* LIST SILENCE MESSAGES *     
+	SILENCE=LIST                  
+	* DISPLAY TCT     *           
+	TCT                           
+	* DISPLAY STAT STATUS'        
+	STAT,D                        
+	* DISPLAY LOG STATUS          
+	LOG,D                         
+	* DISPLAY SNAPMSG TABLE       
+	SNAPMSG,LIST       
+
+Other members can be created which can contain Virtel commands. These can be executed through the z/OS modify command: -
+
+::
+
+	F  VIRTEL,EXEC=membername
+
 .. raw:: latex
 
     \newpage 
@@ -1168,7 +1196,8 @@ VIRTEL can run as a JOB or as an STC. An example JCL procedure is contained in m
 	//*VIRCAPT DD DSN=&QUAL..CAPT,DISP=SHR
 	//VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
 	//SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
-	//HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR	
+	//HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+	//VIRCNTL DD DSN=&QUAL..CNTL,DISP=SHR		
 	//SYSOUT DD SYSOUT=*
 	//VIRLOG DD SYSOUT=*
 	//VIRTRACE DD SYSOUT=*
@@ -1203,6 +1232,8 @@ Required and optional files for Virtel
 -  The libraries SCSQANLE, SCSQAUTH must be concatenated to the STEPLIB unless these libraries are in the system link list or LPA list (only for clients wishing to use VIRTEL with MQSeries)
 
 -  The CSF.SCSFMOD0 library must be concatenated to the STEPLIB or must be present in the system link list (only if the CRYPTn=(...,ICSF,...) parameter is coded in the VIRTCT)
+
+-  File VIRCNTL is optional. It contains command member lists.	 
 
 .. raw:: latex
 
@@ -6644,6 +6675,37 @@ Authorize the VIRTEL LOADLIB
 """"""""""""""""""""""""""""
 
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
+
+.. index::
+	pair: Virtel; STARTUP command member
+
+AutoCommands at initialisation
+""""""""""""""""""""""""""""""
+
+When starting up VIRTEL an attempt will be made to open the STARTUP member of the PDS VIRCNTL. This member will Virtel commands which can be executed file at initialization.
+
+Example of STARTUP member: -
+
+::	
+
+	* ADD SILENCE MESSAGES *      
+	SILENCE=VIR0018I              
+	SILENCE=VIR0012I              
+	* SWITCH SILENCE *            
+	SILENCE                       
+	* SET TRACE *                 
+	TRACE,L=C-HTTP,ON             
+	* LIST SILENCE MESSAGES *     
+	SILENCE=LIST                  
+	* DISPLAY TCT     *           
+	TCT                           
+	* DISPLAY STAT STATUS'        
+	STAT,D                        
+	* DISPLAY LOG STATUS          
+	LOG,D                         
+	* DISPLAY SNAPMSG TABLE       
+	SNAPMSG,LIST       
+
 
 Appendix
 ========
