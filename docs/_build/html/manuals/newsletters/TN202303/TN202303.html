@@ -540,7 +540,7 @@
 <h2>New features<a class="headerlink" href="#new-features" title="Permalink to this heading"></a></h2>
 <section id="implement-auto-startup-feature-and-command-members">
 <h3>Implement Auto startup feature and command members<a class="headerlink" href="#implement-auto-startup-feature-and-command-members" title="Permalink to this heading"></a></h3>
-<p>When starting up VIRTEL, it will attempt to open the STARTUP member of PDS VIRCNT. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -</p>
+<p>When starting up VIRTEL, it will attempt to open the STARTUP member of the new PDS File VIRCNTL. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">ADD</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
 <span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0018I</span>
 <span class="n">SILENCE</span><span class="o">=</span><span class="n">VIR0012I</span>
@@ -560,15 +560,19 @@
 <span class="n">SNAPMSG</span><span class="p">,</span><span class="n">LIST</span>
 </pre></div>
 </div>
-<p>A new modiy command has been added to enable execution of a message member at any time: -</p>
+<p>A new modify command has been added to enable execution of a command message member at any time: -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">EXEC</span><span class="o">=</span><span class="n">membername</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>For example F VIRTEL,EXEC=TRCLINES. This will excuete the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command has a new action:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">=</span><span class="n">mebername</span><span class="o">.</span>
+<p>For example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">EXEC</span><span class="o">=</span><span class="n">TRCLINES</span>
 </pre></div>
 </div>
-<p>This will trigger a message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -</p>
+<p>This will execute the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command also has a new action: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">=</span><span class="n">membername</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This will trigger a command message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">VIRT905I</span><span class="p">,,</span><span class="n">C</span><span class="o">=</span><span class="n">LINES</span>
 </pre></div>
 </div>

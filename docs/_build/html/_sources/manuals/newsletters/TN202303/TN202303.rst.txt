@@ -463,7 +463,7 @@ New features
 Implement Auto startup feature and command members
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When starting up VIRTEL, it will attempt to open the STARTUP member of PDS VIRCNT. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -
+When starting up VIRTEL, it will attempt to open the STARTUP member of the new PDS File VIRCNTL. This is a new optional DDNAME which contains message control members. The STARTUP member will contain list of Virtel commands that can be issued at Virtel initialisation. For example SILENCE commands. Example of a STARTUP member; -
 
 ::
 
@@ -485,19 +485,25 @@ When starting up VIRTEL, it will attempt to open the STARTUP member of PDS VIRCN
     * DISPLAY SNAPMSG TABLE       
     SNAPMSG,LIST       
 
-A new modiy command has been added to enable execution of a message member at any time: -
+A new modify command has been added to enable execution of a command message member at any time: -
 
 ::
 
     F VIRTEL,EXEC=membername.
     
-For example F VIRTEL,EXEC=TRCLINES. This will excuete the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command has a new action:
+For example
+
+::
+    
+    F VIRTEL,EXEC=TRCLINES
+    
+This will execute the commands in the TRCLINES member of the VIRCNTL PDS. The SNAPMSG command also has a new action: -
 
 ::
 
-    C=mebername.
+    C=membername.
     
-This will trigger a message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -
+This will trigger a command message member being executed whenever a message is trapped by SNAPMSG. An example of using a command member with the SNAPMSG command is: -
 
 ::
 
