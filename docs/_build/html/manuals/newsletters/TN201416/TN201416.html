@@ -1,52 +1,95 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Virtel Security. Using server and client certificates &mdash; Virtel 9 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/js/theme.js"></script>
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="RACF Grouping Class and Virtel" href="../TN201417/TN201417.html" />
     <link rel="prev" title="Virtel JES Writer program" href="../TN201415/TN201415.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
-          <a href="../../../index.html" class="icon icon-home">
-            Virtel
-              <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
           </a>
+
+          
+            
+            
               <div class="version">
                 4.61
               </div>
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -77,33 +120,73 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
 
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../../../newsletters.html">Technical Newsletters</a></li>
-      <li class="breadcrumb-item active">Virtel Security. Using server and client certificates</li>
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Virtel Security. Using server and client certificates</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
+        
+            
             <a href="../../../_sources/manuals/newsletters/TN201416/TN201416.rst.txt" rel="nofollow"> View page source</a>
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="virtel-security-using-server-and-client-certificates">
-<span id="tn201416"></span><h1>Virtel Security. Using server and client certificates<a class="headerlink" href="#virtel-security-using-server-and-client-certificates" title="Permalink to this heading"></a></h1>
+            
+  <div class="section" id="virtel-security-using-server-and-client-certificates">
+<span id="tn201416"></span><h1>Virtel Security. Using server and client certificates<a class="headerlink" href="#virtel-security-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we look at setting up Virtel to work with client and
 user certificates and to effectively remove the need for a user to
 provide a user id and password. This is equivalent to the Express Logon
@@ -131,17 +214,17 @@ by system SSL. System SSL has three supported protocol levels:</p>
 <p>In this configuration we will be using SSLv3.</p>
 <p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <ol class="arabic simple">
-<li><p>The Client contacts the Server with “Hello” message:
-<em>Incorporates a list of supported cipher suites and a random byte string.</em></p></li>
-<li><p>The Server sends “Hello” message back:
-<em>Incorporates selected cipher suite from client list, Session ID, random byte string, servers digital certificate and optional client certificate request.</em></p></li>
-<li><p>Server authentication is performed by the Client.</p></li>
-<li><p>Client responds to server:
-<em>Incorporates a random byte string that is used to compute a secret key for subsequent messages. The random byte string is encrypted with the server’s public key. Optionally sends client’s digital certificate or “no digital certificate’ alert. This may be rejected by server if a client certificate is required.</em></p></li>
-<li><p>Client authentication is performed by the Server.</p></li>
-<li><p>Client sends “Finished” message encrypted with secret key.</p></li>
-<li><p>Server sends “Finished” message encrypted with secret key.</p></li>
-<li><p>An encryption algorithm and secret key is chosen to encrypt / decrypt data further data transmission.</p></li>
+<li>The Client contacts the Server with “Hello” message:
+<em>Incorporates a list of supported cipher suites and a random byte string.</em></li>
+<li>The Server sends “Hello” message back:
+<em>Incorporates selected cipher suite from client list, Session ID, random byte string, servers digital certificate and optional client certificate request.</em></li>
+<li>Server authentication is performed by the Client.</li>
+<li>Client responds to server:
+<em>Incorporates a random byte string that is used to compute a secret key for subsequent messages. The random byte string is encrypted with the server’s public key. Optionally sends client’s digital certificate or “no digital certificate’ alert. This may be rejected by server if a client certificate is required.</em></li>
+<li>Client authentication is performed by the Server.</li>
+<li>Client sends “Finished” message encrypted with secret key.</li>
+<li>Server sends “Finished” message encrypted with secret key.</li>
+<li>An encryption algorithm and secret key is chosen to encrypt / decrypt data further data transmission.</li>
 </ol>
 <p>The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP
 Configuration Guide.</p>
@@ -182,7 +265,7 @@ Certification Authority (CA).</p>
 </div>
 <p>Similar details can be found in the browser settings. For example here
 is what Chrome displays in the HTTPS/SSL certificate database.</p>
-<p><img alt="image0" src="../../../_images/image115.png" /></p>
+<p><img alt="image0" src="../../../_images/image113.png" /></p>
 <p><strong>Types of certificates.</strong></p>
 <p>Client certificate</p>
 <p>Server certificate</p>
@@ -419,7 +502,7 @@ must be downloaded in binary and then the certificate import wizard is
 run to import the certificate.</p>
 <p><img alt="image1" src="../../../_images/image26.png" /></p>
 <p>After importing the following panel is displayed:-</p>
-<p><img alt="image2" src="../../../_images/image37.png" /></p>
+<p><img alt="image2" src="../../../_images/image36.png" /></p>
 <p>At this stage we have completed our certificate generation. Through the
 use of the certificates we will be able to initiate a secure session
 (https) with an application and obtain a user id.</p>
@@ -531,12 +614,12 @@ Express Logon Facility implemented in our Telnet clients.</p>
 <p>In the following screen shots we demonstrate logging into a CICS
 application via a secure session (https) without specifying any user
 id/password. Our initial URL is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168.170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">CICS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">CICS</span>
 </pre></div>
 </div>
 <p>You will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image4" src="../../../_images/image54.png" /></p>
-<p>We are presented with a «  Select a certificate » window from the
+<p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
 browser requesting the certificate we wish to user for authenication
 purposes. We select the certificate we downloaded.</p>
 <p>The next panel is a warning panel which identifes that the certificate
@@ -556,7 +639,7 @@ password.</p>
 Here are some general guidelines that should help in debugging
 configuration errors.</p>
 <ol class="arabic simple">
-<li><p>Is AT-TLS active.</p></li>
+<li>Is AT-TLS active.</li>
 </ol>
 <p>Issue the following z/OS command – D TCPIP,,N,TTLS</p>
 <p>The response should be :-</p>
@@ -568,7 +651,7 @@ configuration errors.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>PAGENT return codes</p></li>
+<li>PAGENT return codes</li>
 </ol>
 <p>Common session startup/handshake errors are reported through messqge
 EZD1287I. In the example below we can see that the handshake has failed
@@ -578,67 +661,71 @@ codes over 5000 are generated by AT-TLS and are defined in the IP
 Diagnosis Guide. In the following the 5013 suggests that the browser has
 sent clear text; in other words, http was used instead of https in the
 URL.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">367</span> <span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">InBound</span> <span class="n">STATUS</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">ACTIONS</span><span class="p">:</span> <span class="n">VIRTELgroup</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">367</span> <span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">InBound</span> <span class="n">STATUS</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">ACTIONS</span><span class="p">:</span> <span class="n">VIRTELgroup</span>
 <span class="n">VIRTELenvir_inSec</span> <span class="o">**</span><span class="n">N</span><span class="o">/</span><span class="n">A</span><span class="o">**</span>
 <span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">368</span>
 <span class="n">EZD1286I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">GRPID</span><span class="p">:</span> <span class="mi">00000002</span> <span class="n">ENVID</span><span class="p">:</span> <span class="mi">00000000</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span>
-<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span> <span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span> <span class="n">JOBNAME</span><span class="p">:</span>
+<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span> <span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span>
 <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span>
 <span class="n">Decryption</span>
 <span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span> <span class="n">Decryption</span> <span class="mi">369</span>
-<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168.170.30</span><span class="o">.</span><span class="mf">.41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168.92.62</span><span class="o">.</span><span class="mf">.57545</span>
+<span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span>
 <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span>
 <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">GRPID</span><span class="p">:</span> <span class="mi">00000002</span> <span class="n">ENVID</span><span class="p">:</span> <span class="mi">00000000</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span>
 </pre></div>
 </div>
 <p>Common PAGENT return codes:-</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Code</p></th>
-<th class="head"><p>Description</p></th>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>7</p></td>
-<td><p>No certificate</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>7</td>
+<td>No certificate</td>
 </tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>Certificate not trusted</p></td>
+<tr class="row-odd"><td>8</td>
+<td>Certificate not trusted</td>
 </tr>
-<tr class="row-even"><td><p>109</p></td>
-<td><p>No CA certificates on ring</p></td>
+<tr class="row-even"><td>109</td>
+<td>No CA certificates on ring</td>
 </tr>
-<tr class="row-odd"><td><p>202</p></td>
-<td><p>Keyring does not exists</p></td>
+<tr class="row-odd"><td>202</td>
+<td>Keyring does not exists</td>
 </tr>
-<tr class="row-even"><td><p>401</p></td>
-<td><p>Certificate expired</p></td>
+<tr class="row-even"><td>401</td>
+<td>Certificate expired</td>
 </tr>
-<tr class="row-odd"><td><p>402/12</p></td>
-<td><p>Client and server cannot agree cipher suite</p></td>
+<tr class="row-odd"><td>402/12</td>
+<td>Client and server cannot agree cipher suite</td>
 </tr>
-<tr class="row-even"><td><p>403</p></td>
-<td><p>Client Certificate not available or invalid.</p></td>
+<tr class="row-even"><td>403</td>
+<td>Client Certificate not available or invalid.</td>
 </tr>
-<tr class="row-odd"><td><p>416</p></td>
-<td><p>Virtel does not have permission to list keyring</p></td>
+<tr class="row-odd"><td>416</td>
+<td>Virtel does not have permission to list keyring</td>
 </tr>
-<tr class="row-even"><td><p>431</p></td>
-<td><p>Certificate is revoked</p></td>
+<tr class="row-even"><td>431</td>
+<td>Certificate is revoked</td>
 </tr>
-<tr class="row-odd"><td><p>434</p></td>
-<td><p>Certificate key not compatible with cipher suite</p></td>
+<tr class="row-odd"><td>434</td>
+<td>Certificate key not compatible with cipher suite</td>
 </tr>
-<tr class="row-even"><td><p>435</p></td>
-<td><p>Certificate authority unknown</p></td>
+<tr class="row-even"><td>435</td>
+<td>Certificate authority unknown</td>
 </tr>
-<tr class="row-odd"><td><p>5003</p></td>
-<td><p>Browser sent clear text.</p></td>
+<tr class="row-odd"><td>5003</td>
+<td>Browser sent clear text.</td>
 </tr>
-<tr class="row-even"><td><p>5006</p></td>
-<td><p>SSL failed to initialize. Check RACF SSLSETUP job.</p></td>
+<tr class="row-even"><td>5006</td>
+<td>SSL failed to initialize. Check RACF SSLSETUP job.</td>
 </tr>
 </tbody>
 </table>
@@ -673,33 +760,33 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 </div></blockquote>
 <p><strong>z/OS IBM References</strong></p>
 <ul>
-<li><p>SA22-7683 Security Server: RACF Security Administrator’s Guide</p>
+<li><p class="first">SA22-7683 Security Server: RACF Security Administrator’s Guide</p>
 <blockquote>
 <div><p>Chapter 21. RACF and Digital Certificates</p>
 </div></blockquote>
 </li>
-<li><p>SC24-5901 Cryptographic Services: System SSL Programming</p>
+<li><p class="first">SC24-5901 Cryptographic Services: System SSL Programming</p>
 <blockquote>
 <div><p>Chapter 12. Messages and Codes</p>
 </div></blockquote>
 </li>
-<li><p>SC31-8775 Communications Server: IP Configuration Guide</p>
+<li><p class="first">SC31-8775 Communications Server: IP Configuration Guide</p>
 <blockquote>
 <div><p>Chapter 14. Policy-based networking</p>
 <p>Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</p>
 </div></blockquote>
 </li>
-<li><p>SC31-8776 Communications Server: IP Configuration Reference</p>
+<li><p class="first">SC31-8776 Communications Server: IP Configuration Reference</p>
 <blockquote>
 <div><p>Chapter 21. Policy Agent and policy applications</p>
 </div></blockquote>
 </li>
-<li><p>GC31-8782 Communications Server: IP Diagnosis Guide</p>
+<li><p class="first">GC31-8782 Communications Server: IP Diagnosis Guide</p>
 <blockquote>
 <div><p>Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</p>
 </div></blockquote>
 </li>
-<li><p>SC31-8784 Communications Server: IP Messages: Volume 2</p>
+<li><p class="first">SC31-8784 Communications Server: IP Messages: Volume 2</p>
 <blockquote>
 <div><p>Chapter 10. EZD1xxxx messages</p>
 </div></blockquote>
@@ -707,46 +794,73 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 </ul>
 <p><strong>Virtel References</strong></p>
 <ul>
-<li><p>VIRTEL Installation Guide</p></li>
-<li><p>VIRTEL Connectivity Reference</p>
+<li><p class="first">VIRTEL Installation Guide</p>
+</li>
+<li><p class="first">VIRTEL Connectivity Reference</p>
 <blockquote>
 <div><p>Transactions – PassTicket Parameter Page 93</p>
 <p>Transactions – Security Parameter Page 94</p>
 </div></blockquote>
 </li>
-<li><p>VIRTEL Web Access Guide</p></li>
+<li><p class="first">VIRTEL Web Access Guide</p>
+</li>
 </ul>
-</section>
+</div>
 
 
            </div>
+           
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../TN201415/TN201415.html" class="btn btn-neutral float-left" title="Virtel JES Writer program" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../TN201417/TN201417.html" class="btn btn-neutral float-right" title="RACF Grouping Class and Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201417/TN201417.html" class="btn btn-neutral float-right" title="RACF Grouping Class and Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201415/TN201415.html" class="btn btn-neutral float-left" title="Virtel JES Writer program" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2017, Syspertec. All rights reserved.</p>
-  </div>
+    <p>
+        
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

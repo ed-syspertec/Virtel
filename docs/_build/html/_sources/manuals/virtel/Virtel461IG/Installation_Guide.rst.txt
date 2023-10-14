@@ -4186,6 +4186,9 @@ The following options are retained for compatibility with previous versions:
 
 If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
+.. note:: 
+	When SECUR=VIRTEL is specified Virtel will still validate access to the profile using the TCT security parameters RACAPPL and RNODE. PRFSECU is not used in building the security resource name.  
+
 .. raw:: latex
 
     \newpage   
@@ -4668,7 +4671,7 @@ VIRSECU parameter
 
 	VIRSECU=YES/NO Default=NO
 
-**YES** - The VIRTEL internal security sub-application is available. To use VIRTEL security, specify VIRSECU=YES with SECUR=VIRTEL. The combination SECUR=NO, VIRSECU=YES allows online definition of Virtel security without security being active.
+**YES** - The VIRTEL internal security sub-application is available. To use VIRTEL security, specify VIRSECU=YES with SECUR=VIRTEL. The combination VIRSECU=YES with SECUR=NO allows online definition of Virtel security without reference to any security subsystem. For example RACF.
 
 **NO** - VIRTEL internal security is not available.
 
