@@ -3878,11 +3878,11 @@ Emulation
             Same as $NONE$ but without ASCII translation.
 
 Directory for Scenarios
-    Virtel directory for scenarios compiled by Virtel's VSR application. These files are suffixed with a type of .390. If this field is blank then scenarios will be loaded from the Virtel load library.   
+    Virtel directory for user scenarios compiled by Virtel's VSR application. These files are suffixed with a type of .390. If this field is blank then scenarios will be loaded from the Virtel load library.   
 Signon program
-    Indicates the name of the program used to control user sign-on with the active security tool. If this field is not completed, no sign-on control is performed. Allowable values for this field are listed in section 1.4.4 117.
+    Indicates the name of the program used to control user sign-on with the active security tool. If this field is not completed, no sign-on control is performed. Allowable values for this field are listed in the Signon Programs. See below.
 Menu program
-    Indicates the name of the program which presents the list of transactions which the user is allowed to access. Permissible values are listed in section 1.4.5.
+    Indicates the name of the program which presents the list of transactions which the user is allowed to access. Permissible values are listed in the Menu Programs section. See below.
 Identification scenario
     For emulation type MINITEL: Indicates the name of the program responsible for physical identification of Minitels connecting to VIRTEL. For all other emulation types: Indicates the name of the presentation module containing the identification scenario for this entry point.
     
