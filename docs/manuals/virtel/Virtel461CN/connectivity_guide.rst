@@ -219,6 +219,7 @@ It can also defined with the Arbo Configuration statements:-
          SIGNON=VIR0020H,                                        -
          MENU=VIR0021A,                                          -
          IDENT=SCENLOGM,                                         -
+         SCENDIR=SCE-DIR,                                        -
          EXTCOLOR=E                                               
 
 The salient point in the Entry Point element is the TRANSACT prefix. This associates transactions with a particular Entry point. In the sample above transactions that begin with CLI will be associated with entry point CLIWHOST which is the default entry point for line C-HTTP(41002). An example of using an Entry point is that you might want to associate productions users with line 41004 and other users with line 41005. In this example you would define two new lines, set default entry points PRODHOST and USERHOST. In those entry point definitions the prefix for production transactions would PRD and for user transactions USR.
@@ -3876,6 +3877,8 @@ Emulation
         $NONE$-E
             Same as $NONE$ but without ASCII translation.
 
+Directory for Scenarios
+    Virtel directory for scenarios compiled by Virtel's VSR application. These files are suffixed with a type of .390. If this field is blank then scenarios will be loaded from the Virtel load library.   
 Signon program
     Indicates the name of the program used to control user sign-on with the active security tool. If this field is not completed, no sign-on control is performed. Allowable values for this field are listed in section 1.4.4 117.
 Menu program
