@@ -3726,7 +3726,7 @@ CONSOLE
   WTOs are written to the SYSTEM console.
 
 SYSOUT or (SYSOUT,class)
-  WTOs are written to the sysout dataset, eventually in a specific class.
+  WTOs are written to the sysout dataset with the option of specifiying a class. The default class is A. Do not specify * as class. This is not supported.   
 
 LOGGER
   WTOs are written to Sysplex logger.
