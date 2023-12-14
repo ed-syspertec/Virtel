@@ -1146,7 +1146,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <p>The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.</p>
 <section id="upload-interface-in-the-virtel-menu">
 <h5>Upload interface in the VIRTEL menu<a class="headerlink" href="#upload-interface-in-the-virtel-menu" title="Permalink to this heading"></a></h5>
-<p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
+<p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://10.20.170.71:41001">http://10.20.170.71:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
 <p><img alt="image13" src="../../../_images/image1323.png" /></p>
 <p><em>Drag and drop upload interface</em></p>
 <p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
@@ -1231,13 +1231,13 @@ The following example shows a Windows command to upload all files of type .htm f
 the command window.</p>
 <p><strong>Installation</strong></p>
 <p>upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">upl2virt</span><span class="o">.</span><span class="n">cmd</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">upl2virt</span><span class="o">.</span><span class="n">cmd</span>
 </pre></div>
 </div>
-<p>where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).</p>
+<p>where 10.20.170.71 is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).</p>
 <p><strong>Using upl2virt at the command prompt</strong></p>
 <p id="index-67">To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">upl2virt</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">userid</span><span class="p">:</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">directory</span> <span class="o">-</span><span class="n">a</span> <span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">upl2virt</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">userid</span><span class="p">:</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">directory</span> <span class="o">-</span><span class="n">a</span> <span class="mf">10.20.170.71</span>
          <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">port</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">ctlfile</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1247,7 +1247,7 @@ the command window.</p>
 </dd>
 <dt>directory</dt><dd><p>is the name of the target VIRTEL directory (for example, CLI-DIR)</p>
 </dd>
-<dt>n.n.n.n</dt><dd><p>is the IP address of VIRTEL</p>
+<dt>10.20.170.71</dt><dd><p>is the IP address of VIRTEL</p>
 </dd>
 <dt>port</dt><dd><p>is the VIRTEL administration port number (default 41001).</p>
 </dd>

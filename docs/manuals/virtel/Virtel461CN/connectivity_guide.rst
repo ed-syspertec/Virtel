@@ -5244,7 +5244,7 @@ http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname            UserData
 
 or 
 
-http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500          ForceLUNAME example 
+http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500          ForceLUNAME example 
 
 .. index::
    pair: Controlling LUNAMEs; UserData and ForceLUNAME examples; Batch work station name
@@ -5336,7 +5336,7 @@ In the preceding examples both required that a physical terminal and relays be p
 
 ::
 
-   http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
+   http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
 
 -  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals” field instead of a terminal name prefix.
 

@@ -1427,7 +1427,7 @@ For example, you can access the VIRTEL transaction whose external name is “CIC
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Cics
+    http://10.20.170.71:41001/w2h/WEB2AJAX.htm+Cics
 
 At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.
 
@@ -1442,7 +1442,7 @@ An application URL may be coded in the “TIOA at logon” field of the default 
 
 ::
 
-    http://n.n.n.n:41001
+    http://10.20.170.71:41001
 
 The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:
 
@@ -1490,7 +1490,7 @@ The URL to access this transaction could be of the format:
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso5
+    http://10.20.170.71:41001/w2h/WEB3270.htm+Tso5
 
 .. index:: 
    single: Virtel Transactions; Specifying logmode in the URL
@@ -1506,7 +1506,7 @@ The URL which allows the browser to connect to a host application via VIRTEL may
 ::
 
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso+model5
+    http://10.20.170.71:41001/w2h/WEB3270.htm+Tso+model5
 
 This form of a VIRTEL URL is described in the section “Dynamic URL with user data”, page 1. This form of URL is processed by VIRTEL with reference to the “rule set” associated with the HTTP line. VIRTEL looks for a rule whose “User Data” field matches the value of the parameter (model5). The “Parameter” field of the selected rule assigns a relay LU name from the pool defined with logmode SNX32705. The VTAM definition of the relay pool is shown in the example below. In this example, LU names in the range RHTVT5nn are defined to have the 
 model5 logmode SNX32705 :-
@@ -1596,7 +1596,7 @@ When the entry point definition specifies SCENLOGM in the “Identification scen
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
+    http://10.20.170.71:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
 
 The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
 
@@ -1641,7 +1641,7 @@ VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&rows=54&cols=132
+    http://10.20.170.71:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&rows=54&cols=132
 
 VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of non-standard screen sizes.
 
@@ -4482,7 +4482,7 @@ Some users want to see square brackets displayed in their VWA presentation, for 
 
 ::
 
-    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047 
+    http://10.20.170.71:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047 
 
 .. index::   
    single: FAQ Questions; OMVS panel

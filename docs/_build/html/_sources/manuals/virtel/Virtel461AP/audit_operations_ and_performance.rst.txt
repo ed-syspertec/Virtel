@@ -1498,7 +1498,7 @@ The VIRTEL administrator can upload pages to a VIRTEL directory using the drag a
 Upload interface in the VIRTEL menu
 """""""""""""""""""""""""""""""""""
 
-After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://10.20.170.71:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
 
 |image13| 
 
@@ -1615,9 +1615,9 @@ upl2virt may be downloaded from VIRTEL to the workstation by entering the follow
 
 ::
 
-    http://n.n.n.n:41001/upl2virt.cmd 
+    http://10.20.170.71:41001/upl2virt.cmd 
 
-where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
+where 10.20.170.71 is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
 
 **Using upl2virt at the command prompt**
 
@@ -1628,7 +1628,7 @@ To execute upl2virt as a command, open a Windows command prompt, navigate to the
 
 ::
 
-    upl2virt [-u userid:password] -d directory -a n.n.n.n
+    upl2virt [-u userid:password] -d directory -a 10.20.170.71
              [-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
 
 In the above command:
@@ -1637,7 +1637,7 @@ userid:password
     is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
 directory
     is the name of the target VIRTEL directory (for example, CLI-DIR)
-n.n.n.n
+10.20.170.71
     is the IP address of VIRTEL
 port
     is the VIRTEL administration port number (default 41001).

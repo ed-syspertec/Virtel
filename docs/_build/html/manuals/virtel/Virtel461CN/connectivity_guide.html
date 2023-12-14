@@ -4151,7 +4151,7 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 <p>or</p>
 <p><a class="reference external" href="http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname">http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname</a>            UserData example</p>
 <p>or</p>
-<p><a class="reference external" href="http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500">http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500</a>          ForceLUNAME example</p>
+<p><a class="reference external" href="http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500">http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500</a>          ForceLUNAME example</p>
 <section id="userdata-example-using-a-work-station-name">
 <span id="index-150"></span><h4>UserData example using a work station name<a class="headerlink" href="#userdata-example-using-a-work-station-name" title="Permalink to this heading"></a></h4>
 <p>In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. Using a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
@@ -4211,7 +4211,7 @@ NETMASK=255.255.255.255
 <ul class="simple">
 <li><p>the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">IMS</span><span class="o">+</span><span class="n">ForceLUNAME</span><span class="o">=</span><span class="n">RLHVT500</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">IMS</span><span class="o">+</span><span class="n">ForceLUNAME</span><span class="o">=</span><span class="n">RLHVT500</span>
 </pre></div>
 </div>
 <ul class="simple">

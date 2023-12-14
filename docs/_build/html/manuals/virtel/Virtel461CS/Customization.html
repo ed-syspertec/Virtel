@@ -1125,7 +1125,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <section id="full-path-url">
 <h4>Full path URL<a class="headerlink" href="#full-path-url" title="Permalink to this heading"></a></h4>
 <p>For example, you can access the VIRTEL transaction whose external name is “CICS” by pointing the browser at a URL of the following format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Cics</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Cics</span>
 </pre></div>
 </div>
 <p>At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.</p>
@@ -1133,7 +1133,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <section id="default-url-for-the-entry-point">
 <span id="index-59"></span><h4>Default URL for the entry point<a class="headerlink" href="#default-url-for-the-entry-point" title="Permalink to this heading"></a></h4>
 <p>An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default transaction is the transaction whose external name is the same as the entry point name). This allows the user to go directly to the host application simply by entering a URL of the format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41001</span>
 </pre></div>
 </div>
 <p>The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:</p>
@@ -1163,14 +1163,14 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <p><img alt="image31" src="../../../_images/image3121.png" /></p>
 <p><em>Example of TSO transaction TSO specifying logmode SNX32705</em></p>
 <p>The URL to access this transaction could be of the format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
 </pre></div>
 </div>
 </section>
 <section id="assigning-a-logmode-by-url-parameter">
 <span id="index-62"></span><h4>Assigning a LOGMODE by URL parameter<a class="headerlink" href="#assigning-a-logmode-by-url-parameter" title="Permalink to this heading"></a></h4>
 <p>The URL which allows the browser to connect to a host application via VIRTEL may contain a parameter, such as “model5” as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">10.20.170.71</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
 </pre></div>
 </div>
 <p>This form of a VIRTEL URL is described in the section “Dynamic URL with user data”, page 1. This form of URL is processed by VIRTEL with reference to the “rule set” associated with the HTTP line. VIRTEL looks for a rule whose “User Data” field matches the value of the parameter (model5). The “Parameter” field of the selected rule assigns a relay LU name from the pool defined with logmode SNX32705. The VTAM definition of the relay pool is shown in the example below. In this example, LU names in the range RHTVT5nn are defined to have the
@@ -1240,7 +1240,7 @@ P1=Update               P3=Return                           Enter=Add
 <section id="user-specified-logmode">
 <span id="index-63"></span><h4>User-specified LOGMODE<a class="headerlink" href="#user-specified-logmode" title="Permalink to this heading"></a></h4>
 <p>When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may override the default logmode by appending an additional parameter LOGMODE=modename to the URL, as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://10.20.170.71:41001/w2h/WEB3270.htm+Tso?logmode=SNX32705
 </pre></div>
 </div>
 <p>The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.</p>
@@ -1266,7 +1266,7 @@ SET$ ENCODING,UTF-8,&#39;*CODEPAGE&#39;
 <section id="dynamic-logmode-with-user-specified-screen-size">
 <span id="index-65"></span><h4>Dynamic logmode with user-specified screen size<a class="headerlink" href="#dynamic-logmode-with-user-specified-screen-size" title="Permalink to this heading"></a></h4>
 <p>VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&amp;rows=54&amp;cols=132
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://10.20.170.71:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3&amp;rows=54&amp;cols=132
 </pre></div>
 </div>
 <p>VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of non-standard screen sizes.</p>
@@ -3465,7 +3465,7 @@ w2hparm.showftp = true;
 <section id="how-to-specify-a-codepage-in-a-url">
 <h3>How to specify a codepage in a URL<a class="headerlink" href="#how-to-specify-a-codepage-in-a-url" title="Permalink to this heading"></a></h3>
 <p>Some users want to see square brackets displayed in their VWA presentation, for example “C” programmers. The default UTF8 / MVS codepage translation doesn’t transalate square brackets correctly. Users must define the correct codepage in the URL. In this instance for square brackets it is codepage IBM1047.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://10.20.170.71:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
 </pre></div>
 </div>
 </section>
