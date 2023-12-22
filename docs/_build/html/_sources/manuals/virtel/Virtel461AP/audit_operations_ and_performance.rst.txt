@@ -2977,41 +2977,61 @@ Example of output :-
 
 |image82|
 
-For Virtel V4.60 onwards, the record structure is as follows: -
+For Virtel V4.60 onwards, the record structures for STATS=5 (Type H) and STATS=6 (TYPE B) are as follows: -
 ::
 
-    *------------------------------------------------------------* 42310349
-    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)    42310349
-    *------------------------------------------------------------* 42310349
-    *                                                              42310349
-    HSTATS   DSECT                                                 42310349
-    H$LUNAME DS    CL8                     NOM DU TERMINAL         42310349
-    H$DATE   DS    PL4                     DATE STATISTIQUES       42310349
-    H$TIME   DS    PL4                     HEURE STATISTIQUES      42310349
-    H$CUMPAR DS    CL1                     H HTTP entrant          58530289
-             DS    CL3                     filler                  58530289
-    H$IPADDR DS    CL40  (was 15}          CALLER IP ADDRESS       58530289
-    * H$IPPORT DS    CL5                   CALLER IP PORT          58530289
-    H$ENTRY  DS    CL8                     ENTRY POINT             42310349
-    H$TRANS  DS    CL8                     TRANSACTION             42310349
-    H$RULE   DS    CL8                     RULE (default to LINE)  42310349
-    * H$CUMPAR DS    CL1                   H HTTP entrant          58530289
-    *          DS    CL3                   filler                  58530289
-    H$STATUS DS    CL4                     HTTP STATUS             42310349
-    H$RELAY  DS    CL8                     NOM DU RELAY            42310349
-    H$SPENT  DS    CL8                     Durée d'appel en 1/100s 42310349
-    *H$NBIN1  DS    XL4                    INPUT COUNT             42310349
-    *H$NBOUT2 DS    XL4                    OUTPUT COUNT            42310349
-    H$BYTRD  DS    CL8                     BYTES RECEIVED          42310349
-    H$BYTST  DS    CL8                     BYTES SENT              42310349
-    H$START1 DS    CL8              SESSION START DATE GREGORIENNE 42310349
-    H$START3 DS    CL8                     SESSION START TIME      42310349
-    H$END3   DS    CL8                     SESSION END TIME        42310349
-    * H$SRCADR DS    CL15                  SOURCE IP ADDRESS       58530289
-    * H$HSTADR DS    CL15                  HOST IP ADDRESS         58530289
-    H$PXYADR DS    CL40                    PROXY IP ADDRESS        58530289
-            ORG   HSTATS+255                                      58360198
-    LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 42310349
+    *------------------------------------------------------------*
+    *        TYPE H - Counters are printed characters            *
+    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT2)  *     
+    *------------------------------------------------------------* 
+    *                                                              
+    HSTATS   DSECT                                                 
+    H$LUNAME DS    CL8                     NOM DU TERMINAL         
+    H$DATE   DS    PL4                     DATE STATISTIQUES       
+    H$TIME   DS    PL4                     HEURE STATISTIQUES      
+    H$CUMPAR DS    CL1                     H HTTP entrant          
+             DS    CL3                     filler                  
+    H$IPADDR DS    CL40  (was 15}          CALLER IP ADDRESS          
+    H$ENTRY  DS    CL8                     ENTRY POINT             
+    H$TRANS  DS    CL8                     TRANSACTION             
+    H$RULE   DS    CL8                     RULE (default to LINE)  
+    H$STATUS DS    CL4                     HTTP STATUS             
+    H$RELAY  DS    CL8                     NOM DU RELAY            
+    H$SPENT  DS    CL8                     Durée d'appel en 1/100s 
+    H$BYTRD  DS    CL8                     BYTES RECEIVED          
+    H$BYTST  DS    CL8                     BYTES SENT              
+    H$START1 DS    CL8              SESSION START DATE GREGORIENNE 
+    H$START3 DS    CL8                     SESSION START TIME      
+    H$END3   DS    CL8                     SESSION END TIME        
+    H$PXYADR DS    CL40                    PROXY IP ADDRESS        
+            ORG   HSTATS+255                                      
+    LHSTATS  EQU   *-HSTATS                LONGUEUR ENREGISTREMENT 
+
+    *------------------------------------------------------------* 
+    *        TYPE B - Counters are binary values                 *
+    *        DESCRIPTION DU FICHIER DES STATISTIQUES (MCVFALT3)  *   
+    *------------------------------------------------------------* 
+    *                                                              
+    BSTATS   DSECT                                                 
+    B$LUNAME DS    CL8                     NOM DU TERMINAL         
+    B$DATE   DS    PL4                     DATE STATISTIQUES       
+    B$TIME   DS    PL4                     HEURE STATISTIQUES      
+    B$CUMPAR DS    CL1                     B Binaire HTTP entrant  
+             DS    CL3                     filler                  
+    B$IPADDR DS    CL40  (was 15)          CALLER IP ADDRESS             
+    B$ENTRY  DS    CL8                     ENTRY POINT             
+    B$TRANS  DS    CL8                     TRANSACTION             
+    B$RULE   DS    CL8                     RULE (default to LINE)  
+    B$STATUS DS    CL4                     HTTP STATUS             
+    B$RELAY  DS    CL8                     NOM DU RELAY            
+    B$SPENT  DS    XL4                     Durée d'appel en 1/100s 
+    B$BYTRD  DS    XL4                     BYTES RECEIVED          
+    B$BYTST  DS    XL4                     BYTES SENT              
+    B$USERID DS    CL20                    USERID                  
+    B$PARM   DS    CL16                    PARAMETER                   
+    B$PXYADR DS    CL40                    PROXY IP ADDRESS        
+            ORG   BSTATS+255                                      
+    LBSTATS  EQU   *-BSTATS                LONGUEUR ENREGISTREMENT 
 
 Example of output : -
 

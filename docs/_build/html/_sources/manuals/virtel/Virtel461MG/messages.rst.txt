@@ -7022,6 +7022,15 @@ Meaning
 Action
     None.
 
+VIRU123E luname FILE BROADCAST FAILED FOR FILE ddname reason
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0U12
+Meaning
+    A VIRPLEX broadcast failed because of a VIRPLEX configuration error. Possibly a LINE definition error.
+Action
+    Check the VIRPLEX line definitions. VIRTEL will take a SNAP dump to document the problem. Contact Technical Support for further assistance. 
+
 Messages VIRUCSxx
 ^^^^^^^^^^^^^^^^^
 
