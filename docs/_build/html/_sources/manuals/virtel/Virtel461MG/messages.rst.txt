@@ -3584,7 +3584,37 @@ Module
 Meaning
     The user has defined the MIXEDCASE subparameter in the SECUR TCT keyword. This indicates to VIRTEL that it should support lower-case characters in passwords. Consequently VIRTEL will pass passwords to the security manager exactly as entered by the user, without translating them to upper case.
 Action
-    None.    
+    None.   
+
+Messages VIR08xxx
+^^^^^^^^^^^^^^^^^
+
+VIR0870I USER FUNCTION TABLE INITIALISED      
+""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The user function API has been initialised and the internal Virtel table space(TS) created from the ARBO definitions.
+Action
+    None.
+
+VIR0871W ENTRY FOR %userid% NOT FOUND      
+"""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The userid %userid% was not located in the Virtel Table Space (TS). 
+Action
+    Check that the USERID %userid% has been defined in the ARBO statements.
+
+VIR0872E Critical error encountered for %name%.      
+"""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The TS entry %name% has an internal reference error within the table space. 
+Action
+    Rebuild the ARBO. If problem persists contact Virtel Support.
 
 Messages VIR09xxx
 ^^^^^^^^^^^^^^^^^

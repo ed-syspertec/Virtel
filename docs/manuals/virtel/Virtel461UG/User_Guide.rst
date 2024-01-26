@@ -14,9 +14,9 @@ User Guide V4.61
 
 .. warning:: This is a draft version of the document.
 
-Version : 4.61 Draft
+Version : 4.61 
 
-Release Date : TBA. Publication Date : 23/12/2021
+Release Date : 01 November 2021. Publication Date : 23/12/2021
 
 Syspertec Communication
 
@@ -50,9 +50,8 @@ NOTICE
 .. _V461UG_Introduction:
 
 What's new in Virtel 4.61
-*************************
 
-For a full list of changes delivered in Virtel V4.61, see the Virtel Technical Newsletter TN202101: What's new in Virtel 4.61.
+.. note:: For a full list of changes delivered in Virtel V4.61, see the Virtel Technical Newsletter TN202101: What's new in Virtel 4.61.
 
 *****************
 The Virtel Engine

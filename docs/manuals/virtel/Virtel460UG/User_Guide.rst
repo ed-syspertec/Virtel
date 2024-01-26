@@ -48,22 +48,32 @@ NOTICE
 .. _V460UG_Introduction:
 
 What's new in Virtel 4.60
-*************************
 
-* Support for IPV6
-* New FTP Client interface
-* Enhanced Page Capture
-* New wizard support for VSR
-* Keyboard assignment enhancements
-* New dynamic symbolics for USSMSG10
-* Password and Passphrase support in native VTAM mode
-* DNS support on Line definition
-* Improvement to UNLOAD commmand. SYSPUNCH dynamically allocated
-* Scenario language updates
-* Silence command supports dynamic message updates
-* Various bug fixes
+- Support for IPV6
 
-For a full list of changes delivered in Virtel V4.60, see the Virtel Technical Newsletter TN202003: What's new in Virtel 4.60.
+- New FTP Client interface
+
+- Enhanced Page Capture
+
+- New wizard support for VSR
+
+- Keyboard assignment enhancements
+
+- New dynamic symbolics for USSMSG10
+
+- Password and Passphrase support in native VTAM mode
+
+- DNS support on Line definition
+
+- Improvement to UNLOAD commmand. SYSPUNCH dynamically allocated
+
+- Scenario language updates
+
+- Silence command supports dynamic message updates
+
+- Various bug fixes
+
+.. note:: For a full list of changes delivered in Virtel V4.60, see the Virtel Technical Newsletter TN202003: What's new in Virtel 4.60.
 
 *****************
 The Virtel Engine

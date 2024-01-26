@@ -4331,6 +4331,42 @@ When the SMFWTM macro returns control, register 15 contains one of the following
 </dl>
 </section>
 </section>
+<section id="id6">
+<h4>Messages VIR08xxx<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<section id="vir0870i-user-function-table-initialised">
+<h5>VIR0870I USER FUNCTION TABLE INITIALISED<a class="headerlink" href="#vir0870i-user-function-table-initialised" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0008U</p>
+</dd>
+<dt>Meaning</dt><dd><p>The user function API has been initialised and the internal Virtel table space(TS) created from the ARBO definitions.</p>
+</dd>
+<dt>Action</dt><dd><p>None.</p>
+</dd>
+</dl>
+</section>
+<section id="vir0871w-entry-for-userid-not-found">
+<h5>VIR0871W ENTRY FOR %userid% NOT FOUND<a class="headerlink" href="#vir0871w-entry-for-userid-not-found" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0008U</p>
+</dd>
+<dt>Meaning</dt><dd><p>The userid %userid% was not located in the Virtel Table Space (TS).</p>
+</dd>
+<dt>Action</dt><dd><p>Check that the USERID %userid% has been defined in the ARBO statements.</p>
+</dd>
+</dl>
+</section>
+<section id="vir0872e-critical-error-encountered-for-name">
+<h5>VIR0872E Critical error encountered for %name%.<a class="headerlink" href="#vir0872e-critical-error-encountered-for-name" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0008U</p>
+</dd>
+<dt>Meaning</dt><dd><p>The TS entry %name% has an internal reference error within the table space.</p>
+</dd>
+<dt>Action</dt><dd><p>Rebuild the ARBO. If problem persists contact Virtel Support.</p>
+</dd>
+</dl>
+</section>
+</section>
 <section id="messages-vir09xxx">
 <h4>Messages VIR09xxx<a class="headerlink" href="#messages-vir09xxx" title="Permalink to this heading"></a></h4>
 <section id="vir0900i-licence-virtel-licence-information">
