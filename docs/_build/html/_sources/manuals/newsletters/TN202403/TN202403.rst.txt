@@ -1,0 +1,84 @@
+.. _tn202403:
+
+What’s new in Virtel 4.62 GA Release
+====================================
+
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.62 @ update level 6023. 
+
+Installation changes
+--------------------
+
+Migration considerations
+------------------------
+
+V4.61 
+^^^^^
+
+**End of support for COMPATIBILITY mode**
+
+The "COMPATIBILITY" mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of V4.53 w2hparm to V4.54. w2hparm is no longer supported in V4.61. It is recommended to switch to "Option" mode before migrating to V4.61.
+
+**Version support**
+
+Versions of Virtel older than V4.59 are no longer supported. It is recommeded to migrate to V4.59 or higher.
+
+**ARBO changes**
+
+- There have been no changes to the ARBO which would require migration from V4.60 or V4.59. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+
+- LINE enhancement. LOCADDR2 and PARTNER2 keywords are deprecated in V4.61 VIRCONF. LOCADDR and PARTNER fields have been expanded to accommodate IPV6 addresses and DNS values upto 52 characters. ARBO files from V4.59 and V4.60 will still be usable with V4.61 with migration. It is recommended that you migrate you ARBO to V4.61 by unloading in V4.59 or V4.60 to create a SYSIN deck for input to V4.61 VIRCONF LOAD. Any LOCADDR2 or PARTNER2 fields will have to be removed and the extended field data moved to the corresponding LOCADDR and PARTNER fields prior to loading with V4.61 VIRCONF. 
+
+Fixes, changes and new features
+-------------------------------
+
+Presentation
+^^^^^^^^^^^^
+
+.. raw:: latex
+
+    \newpage 
+
+Base Components
+^^^^^^^^^^^^^^^
+
+.. raw:: latex
+
+    \newpage 
+
+Scenario Language
+^^^^^^^^^^^^^^^^^
+
+.. raw:: latex
+
+    \newpage 
+
+Other Enhancements
+^^^^^^^^^^^^^^^^^^
+
+.. raw:: latex
+
+    \newpage 
+
+New features
+------------
+
+
+Updates and maintenance
+-----------------------
+
+A full list of maintenance updates can be found in Appendix A.
+
+.. raw:: latex
+
+    \newpage 
+
+Appendix A
+----------
+
+.. |image0| image:: images/media/image1.png
+   :width: 3.52851in
+   :height: 5.30278in
+.. |image1| image:: images/media/image2.png
+   :width: 6.26806in
+   :height: 3.78125in
+.. |image3| image:: images/media/image3.png 

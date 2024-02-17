@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connectivity Reference V4.61 &mdash; Virtel 9 documentation</title>
+  <title>Connectivity Reference V4.61 &mdash; Virtel 1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -36,7 +36,7 @@
               <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                4.61
+                4.62
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -49,7 +49,6 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-61">V4.61</a><ul class="current">
@@ -82,6 +81,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel461UG/User_Guide.html">User Guide V4.61</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-62">V4.62</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -1072,7 +1072,7 @@ FAD4 structured field. The e-mail address used will normally need to be defined 
 <div><p>By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorized. Either explicit or repeated Terminal Definitions may be used.</p>
 <p>The example below shows a group of 16 SMTP terminals with associated relays:</p>
 </div></blockquote>
-<p><img alt="image17" src="../../../_images/image1720.png" />
+<p><img alt="image17" src="../../../_images/image1721.png" />
 <em>SMTP Terminal Definitions</em></p>
 </section>
 <section id="index-19">
@@ -1285,7 +1285,7 @@ justified and padded with blanks</p></td>
 <section id="mq-line">
 <span id="index-28"></span><h3>MQ line<a class="headerlink" href="#mq-line" title="Permalink to this heading"></a></h3>
 <p>An MQ line establishes a connection between VIRTEL and an MQSeries message queue. Each MQ line can receive messages from, or send messages to, one MQSeries message queue. Activation of this type of line requires the presence of the MQ1 or MQ2 parameter in the VIRTCT. The queue can be shared with another application (another VIRTEL for instance) or used in exclusive mode depending on its own definition.</p>
-<p><img alt="image24" src="../../../_images/image2417.png" /></p>
+<p><img alt="image24" src="../../../_images/image2418.png" /></p>
 <section id="index-29">
 <span id="id8"></span><h4>Parameters<a class="headerlink" href="#index-29" title="Permalink to this heading"></a></h4>
 <dl>
@@ -1636,7 +1636,7 @@ line” field in the relay definition must contain the value X25VIRPA (or E25TCP
 <section id="index-47">
 <span id="id19"></span><h4>Terminal Definitions<a class="headerlink" href="#index-47" title="Permalink to this heading"></a></h4>
 <p>Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:</p>
-<p><img alt="image34" src="../../../_images/image3412.png" />
+<p><img alt="image34" src="../../../_images/image3413.png" />
 <em>Inbound terminals for a VIRPASS TCP line for VIRNT</em></p>
 <blockquote>
 <div><p>Terminals in the pool dedicated to outgoing calls do not have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 2:</p>

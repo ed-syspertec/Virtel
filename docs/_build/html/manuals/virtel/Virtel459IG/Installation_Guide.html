@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation Guide V4.59 &mdash; Virtel 9 documentation</title>
+  <title>Installation Guide V4.59 &mdash; Virtel 1 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -36,7 +36,7 @@
               <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                4.61
+                4.62
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -49,7 +49,6 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-58">V4.58</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Virtel459AP/audit_operations_%20and_performance.html">Audit, Administration, Operations and Performance V4.59</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel459CN/connectivity_guide.html">Connectivity Reference V4.59</a></li>
@@ -74,6 +73,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-61">V4.61</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-62">V4.62</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -658,7 +658,7 @@ sub-parameter</p></li>
 <p>You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a> where n.n.n.n is the IP address of your z/OS system.</p>
 <ol class="arabic simple" start="15">
 <li><p>Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.</p></li>
-<li><p>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the <a class="reference internal" href="../Virtel461IG/Installation_Guide.html#vvrrig-security"><span class="std std-ref">“Security Chapter”</span></a>.</p></li>
+<li><p>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the <a class="reference internal" href="../Virtel462IG/Installation_Guide.html#vvrrig-security"><span class="std std-ref">“Security Chapter”</span></a>.</p></li>
 </ol>
 </section>
 <section id="restoring-from-the-xmit-file">
@@ -1748,7 +1748,7 @@ $$$$IWS.WORKREC.INW$TEMP
 </section>
 <section id="assembling-the-virtct">
 <h4>Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this heading"></a></h4>
-<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="../Virtel461IG/Installation_Guide.html#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
+<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="../Virtel462IG/Installation_Guide.html#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>
@@ -2300,9 +2300,9 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 </div>
 <p>This parameter defines the batch processing characteristics for all lines which specify type BATCH1.</p>
 <p><strong>indd</strong> - The batch input DD name (for example, SYSIN).</p>
-<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel461IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
+<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel462IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 <p><strong>outdd</strong> - The batch output DD name (for example, SYSPRINT).</p>
-<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel461IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
+<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel462IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 </section>
 <section id="batch2-parameter">
 <span id="index-39"></span><h4>BATCH2 parameter<a class="headerlink" href="#batch2-parameter" title="Permalink to this heading"></a></h4>

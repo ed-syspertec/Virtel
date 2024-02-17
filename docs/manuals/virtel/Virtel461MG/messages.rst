@@ -2188,6 +2188,15 @@ Meaning
 Action
     Verify the OSCORE parameter in the VIRTCT.
 
+VIR0057I PARMS:
+"""""""""""""""
+Module
+    VIR0000
+Meaning
+    VIRTEL startup parameters.
+Action
+    None    
+
 VIR0059I termid RELAY relayname ACTIVATED
 """""""""""""""""""""""""""""""""""""""""
 Module
