@@ -11,7 +11,7 @@ Installation changes
 Migration considerations
 ------------------------
 
-V4.61 
+V4.62 
 ^^^^^
 
 **End of support for COMPATIBILITY mode**
@@ -62,6 +62,12 @@ Other Enhancements
 New features
 ------------
 
+- Various Security enhancements (encrypted session tokens, new security options for http headers and error codes)
+- Enhanced LU nailing. Expanded LU assignment options and administration 
+- TN3270 dialout to access remote Z servers (z/VM, external partners)
+- New proxy-friendly settings to improve routing
+- VSE CSI TCP/IP Telnet3270 support
+
 
 Updates and maintenance
 -----------------------
@@ -74,6 +80,50 @@ A full list of maintenance updates can be found in Appendix A.
 
 Appendix A
 ----------
+
+**Maintenance list**
+
+- 6038 Change version
+- 6039 Change of name on USSTAB
+- 6040 mainframe assembly of VIRHTTP fails due to TAB character
+- 6041 S0C4-38 after SNAP
+- 6042 Add buttons in the toolbar for TBT WebAccess features
+- 6043 $RESTDSU modifications
+- 6044 CLIENTM.JCL delete reference to section PLUG
+- 6045 Correction to the order in which customized filed are initialized
+- 6046 Update STATS DCB to 255
+- 6047 Change Virtel Version and remove X'05' from source
+- 6048 Update VIRBATAR Samplib member
+- 6049 CRYPTS= Encrypt Virtel and Ajax session codes
+- 6050 Prevent ABEND S0C4 in VIR0021W when MSG = TEXT
+- 6051 VIRT923E ERROR REQ: PTON - RETCODE: FFFFFFFF ERRNO: 00000031 (00000049)
+- 6052 Correct MDT Flag reset in VIR0023
+- 6053 IF$ SCREEN-IS-UNMODIFIED,THEN=FAIL may block due to SNA FLAGS
+- 6054 Update SMFREXXL Samplib member
+- 6055 Color change. Change the CSS names for the NOCOLOR
+- 6056 Cookies are lost after exiting the Virtel session
+- 6057 SIGNON BOX,CHANGE ERR=9 ET ERR=11 PAR UID/PWD ERROR
+- 6058 Update W2H for V4.59 and V4.60
+- 6059 Modification JCL CLIENTD.MODELE
+- 6060 No unload of ARBO keyword in ENTRY STMT
+- 6061 Possible memory corruption when RULE is absent
+- 6062 UPLOAD VSR CHUNK stalls for some big files
+- 6063 Ruleset not initialized correctly
+- 6064 Correct options button behaviour
+- 6065 POSSIBLE INVALID HEADER IN 304 RESPONSE
+- 6066 Possible ASRA in VIR0010
+- 6067 PF keys only work when pressed twice
+- 6068 TN3270 refresh
+- 6069 ATTN key fails to return to application
+- 6070 CASE$ testing BLANK on screen
+- 6071 LPKALIVE memory leak
+- 6072 User Relay and misc. features for V4.62
+- 6073 VirtelSession thru http header
+- 6074 Duplicate VIRIC52I message
+- 6075 NFORCEIP= VIRTCT parameter
+- 6076 Update TCT samples. Correct UFILE and MACRF parms
+- 6077 404 returned instead of EQUIV REFRESH
+- 6078 VSE CSI TCP/IP Telnet3270 support
 
 .. |image0| image:: images/media/image1.png
    :width: 3.52851in

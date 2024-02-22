@@ -23,12 +23,4 @@ V4.61
    :maxdepth: 4   
    :glob:
    
-   manuals/virtel/Virtel461*/*        
-            
-V4.62
------
-.. toctree::
-   :maxdepth: 4   
-   :glob:
-   
-   manuals/virtel/Virtel462*/* 
+   manuals/virtel/Virtel461*/*               
