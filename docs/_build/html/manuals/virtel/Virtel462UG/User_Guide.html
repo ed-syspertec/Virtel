@@ -4988,13 +4988,13 @@ processing flow according to the value.</p>
 <p>Example of testing a variable with CASE$.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* loop on a variable:
 
-LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;TOTO&#39;
+LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=TOTO
 
         CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,&#39;XXXX&#39;,ET1)
 
-        COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;I1&#39;,LENGTH=2,                   *
+        COPY$ SYSTEM-TO-VARIABLE,VAR=I1,LENGTH=2,                   *
             FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
-        COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;V1&#39;,                            *
+        COPY$ SYSTEM-TO-VARIABLE,VAR=V1,                            *
             FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
         ERROR$ 0,&#39;TOTO: &#39;,&#39;*I1&#39;,&#39;==&#39;,&#39;*V1&#39;
         ENDFOR$ LOOP1
@@ -5006,7 +5006,7 @@ LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;TOTO&#39;
 <span id="index-235"></span><h5>CONVERT$ instruction<a class="headerlink" href="#convert-instruction" title="Permalink to this heading"></a></h5>
 <p>This instruction allows a scenario to translate a VIRTEL variable to or from EBCDIC, or to convert a variable to upper or
 lower case.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CONVERT$ direction,VAR=&#39;varname&#39;,TABLE=&#39;tabname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CONVERT$ direction,VAR=varname,TABLE=&#39;tabname&#39;
 </pre></div>
 </div>
 <dl class="simple">
@@ -5092,7 +5092,7 @@ NOSCENAR  EQU   *
 </dl>
 <p id="index-239"><strong>COPY$ INPUT-FILE-TO-VARIABLE</strong></p>
 <p>Copies the contents of a file into a VIRTEL variable. This instruction can be used in an input scenario which processes an HTTP request or SMTP input message having one or more attached files.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ INPUT-FILE-TO-VARIABLE,VAR=&#39;varname&#39;,FILE=&#39;filename&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ INPUT-FILE-TO-VARIABLE,VAR=varname&#39;,FILE=&#39;filename&#39;
 </pre></div>
 </div>
 <dl class="simple">
@@ -5146,7 +5146,7 @@ NOSCENAR  EQU   *
 </dl>
 <p id="index-242"><strong>COPY$ LIST-TO-VARIABLE</strong></p>
 <p>Copies a a list of values (either constants or variables) to a variable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ LIST-TO-VARIABLE,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ LIST-TO-VARIABLE,VAR=varname,
     LIST=(STRING,&#39;string&#39;,VARIABLE,&#39;fromvar&#39;,&#39;string&#39;,&#39;*fromvar&#39;),
     LTRIM=(&#39;string1&#39;,&#39;string2&#39;,...),
     RTRIM=(&#39;string1&#39;,&#39;string2&#39;,...),
@@ -5189,17 +5189,17 @@ NOSCENAR  EQU   *
 <p class="admonition-title">Note</p>
 <p>LTRIM and RTRIM only apply to variables. In the following example</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ LIST-TO-VARIABLE,VAR=&#39;VAR1&#39;, *
-RTRIM=(&#39;_&#39;,&#39; &#39;),LTRIM=(&#39;_&#39;,&#39; &#39;), *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ LIST-TO-VARIABLE,VAR=VAR1,              *
+RTRIM=(&#39;_&#39;,&#39; &#39;),LTRIM=(&#39;_&#39;,&#39; &#39;),              *
 LIST=(&#39;string1&#39;,&#39;*var1&#39;,VARIABLE,&#39;var2&#39;)
 </pre></div>
 </div>
 <p>The variable VAR1 is created/modified, with ‘string1’ copied as is, var1 and var2 left and right trimmed.</p>
 <p id="index-243"><strong>COPY$ OUTPUT-FILE-TO-VARIABLE</strong></p>
 <p>Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags within the page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;filename&#39;,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;filename&#39;,VAR=varname,                  *
     TYPE=type
-COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=&#39;varname&#39;,
+COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=varname,              *
     TYPE=type
 </pre></div>
 </div>
@@ -5256,8 +5256,8 @@ COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=&#39;varname&#39;,
 </div>
 <p id="index-245"><strong>COPY$ SYSTEM-TO-VARIABLE</strong></p>
 <p>Copies a system information field into a table variable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),
-VAR=&#39;varname&#39;,LENGTH=len,OFFSET=offset,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),      *
+VAR=varname,LENGTH=len,OFFSET=offset,             *
 TYPE=type
 </pre></div>
 </div>
@@ -5436,57 +5436,57 @@ TYPE=type
 </dl>
 <p>Example of COPY$ SYSTEM-TO-VARIABLE:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,HOST),             X
-    VAR=&#39;HOST&#39;
+    VAR=HOST
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,USER-AGENT),       X
-    VAR=&#39;BROWSER&#39;
+    VAR=BROWSER
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,VIRTEL),               X
-    VAR=&#39;APPLID&#39;
+    VAR=APPLID
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,LINE-INTERNAL),        X
-    VAR=&#39;LINEINT&#39;
+    VAR=LINEINT
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PSEUDO-TERMINAL),      X
-    VAR=&#39;TERMID&#39;
+    VAR=TERMID
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,RELAY),                X
-    VAR=&#39;LUNAME&#39;
+    VAR=LUNAME
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ENTRY-POINT),          X
-    VAR=&#39;EPNAME&#39;
+    VAR=EPNAME
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-INTERNAL), X
-    VAR=&#39;TRANINT&#39;
+    VAR=TRANINT
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-EXTERNAL), X
-    VAR=&#39;TRANEXT&#39;
+    VAR=TRANEXT
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ROUTING-PARAMETER),    X
-    VAR=&#39;ROUTPARM&#39;
+    VAR=ROUTPARM
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,URL),                  X
-    VAR=&#39;URL&#39;
+    VAR=URL
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,QUERY),                X
-    VAR=&#39;QSTRING&#39;
+    VAR=QSTRING
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PAGE),                 X
-    VAR=&#39;pagename&#39;
+    VAR=pagename
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,DIRECTORY),            X
-    VAR=&#39;DIRNAME&#39;
+    VAR=DIRNAME
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS),           X
-    VAR=&#39;SNASTAT&#39;
+    VAR=SNASTAT
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS),      X
-    VAR=&#39;CLIENT&#39;
+    VAR=CLIENT
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET),        X
-    VAR=&#39;CHARSET&#39;
+    VAR=CHARSET
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME),           X
-    VAR=&#39;DATETIME&#39;
+    VAR=DATETIME
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,VIRTEL-VERSION),      X
-    VAR=&#39;VERSION&#39;
+    VAR=VERSION
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSNAME-SYMBOL),      X
-    VAR=&#39;SYSNAME&#39;
+    VAR=SYSNAME
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSPLEX-SYMBOL),      X
-    VAR=&#39;SYSPLEX&#39;
+    VAR=SYSPLEX
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-COLUMNS),     X
-    VAR=&#39;COLS&#39;
+    VAR=COLS
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-LINES),       X
-    VAR=&#39;ROWS&#39;
+    VAR=ROWS
 COPY$ SYSTEM-TO-VARIABLE,                                      X
     FIELD=(USER-SECURITY-PROFILE,WADEPT),                      X
-    VAR=&#39;DEPT’
+    VAR=DEPT
  COPY$ SYSTEM-TO-VARIABLE,                                     X
     FIELD=(NAME-OF,TERMINAL),                                  X
-    VAR=&#39;TERMINAL’
+    VAR=TERMINAL
 </pre></div>
 </div>
 <p>The following table shows a possible result of this example scenario when used in conjunction with the URL:-</p>
@@ -5643,7 +5643,7 @@ ACTION$ TO-APPLICATION,KEY=7D
 </dl>
 <p id="index-249"><strong>COPY$ VARIABLE-TO-SYSTEM</strong></p>
 <p>Copies the value of a variable to a VIRTEL system field. In the case of a table variable, only the first value is copied.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-SYSTEM,VAR=&#39;varname&#39;,FIELD=(class,item)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-SYSTEM,VAR=varname,FIELD=(class,item)
 </pre></div>
 </div>
 <dl>
@@ -5700,7 +5700,7 @@ To validate the PassTicket for TSO</p>
 </dl>
 <p id="index-250"><strong>COPY$ VARIABLE-TO-VARIABLE</strong></p>
 <p>Copies a source variable to a target variable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-VARIABLE,VAR=(&#39;source&#39;,&#39;target&#39;),
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-VARIABLE,VAR=(source,target),
       OFFSET=offset,LENGTH=lend,PAD=&#39;padChar &#39;,TYPE=type
 </pre></div>
 </div>
@@ -5719,8 +5719,8 @@ To validate the PassTicket for TSO</p>
 </dd>
 </dl>
 <p>The following example will display ‘Target value is : Doe____’</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VALUE-TO-VARIABLE,VAR=&#39;source&#39;,VALUE=&#39;John Doe&#39;
-COPY$ VARIABLE-TO-VARIABLE,VAR=(&#39;source&#39;,&#39;target&#39;),OFFSET=5,                    X
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VALUE-TO-VARIABLE,VAR=source,VALUE=&#39;John Doe&#39;
+COPY$ VARIABLE-TO-VARIABLE,VAR=(source,target),OFFSET=5,                    X
         LENGTH=7,PAD=&#39;_&#39;
 ERROR$ 0,&#39;Target value is : &#39;,&#39;*target&#39;
 </pre></div>
@@ -5788,14 +5788,14 @@ DEBUG$ SNAP[,TERMINAL],
         DEBUG$ TRACE,SCENARIO,                                        *
             WHEN=(TRANSACTION-NAME-STARTS-WITH,&#39;DB&#39;)
 
-        COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;VAR1&#39;,                          *
+        COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
             FIELD=(VALUE-OF,SYSCLONE-SYMBOL)
         ERROR$ 0,&#39;SYSCLONE: &#39;,&#39;*VAR1&#39;
-        COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;VAR1&#39;,                          *
+        COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
             FIELD=(VALUE-OF,SYSPLEX-SYMBOL)
         ERROR$ 0,&#39;SYSPLEX: &#39;,&#39;*VAR1&#39;
 *
-        COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;VAR1&#39;,                          *
+        COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
             FIELD=(NAME-OF,CHARACTER-SET)
         ERROR$ 0,&#39;CHARACTER-SET: &#39;,&#39;*VAR1&#39;
         DEBUG$ NOTRACE,SCENARIO
@@ -5909,12 +5909,12 @@ DEBUG$ SNAP[,TERMINAL],
 </dl>
 <p><strong>ENDFOR$ Examples</strong></p>
 <p>In the example below, the value of VAR1 which is copied is the current value in the FOREACH$ loop.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;VAR1&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=VAR1
 
-        COPY$ VARIABLE-TO-SCREEN,VAR=&#39;VAR1&#39;,FOREACH=LOOP1,            *
+        COPY$ VARIABLE-TO-SCREEN,VAR=VAR1,FOREACH=LOOP1,             *
             SCREEN=(=,=,=)
 
-        COPY$ VARIABLE-TO-VARIABLE,VAR=(&#39;VAR1&#39;,&#39;VAR2&#39;),FOREACH=LOOP1, *
+        COPY$ VARIABLE-TO-VARIABLE,VAR=(VAR1,VAR2),FOREACH=LOOP1,    *
             OFFSET=8,LENGTH=5,PAD=&#39; &#39;
 
 
@@ -6065,7 +6065,7 @@ FROM=&#39;varname1&#39;,TO=&#39;varname2&#39;,
 <p id="v462ug-foreach-variable"><strong>FOREACH$ VALUE-IN-VARIABLE instruction</strong></p>
 <p>The FOREACH$ VALUE-IN-VARIABLE instruction marks the start of a loop on a table variable. Nested pairs of FOREACH$
 VALUE-IN-VARIABLE and ENDFOR$ instructions are permitted.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;varname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname FOREACH$ VALUE-IN-VARIABLE,VAR=varname
 </pre></div>
 </div>
 <dl class="simple">
@@ -6326,7 +6326,7 @@ parameters described below, the 12-byte value thus produced can subsequently be 
 <p class="admonition-title">Note</p>
 <p>XML tag names are case sensitive. WITH=’Title’ is not the same as WITH=’TITLE’ A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see <a class="reference internal" href="#v462ug-virtel-scenarios"><span class="std std-ref">“Examples of VIRTEL Scenarios”</span></a>):</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE,VAR=varname,
     WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
 </pre></div>
 </div>
@@ -6336,7 +6336,7 @@ parameters described below, the 12-byte value thus produced can subsequently be 
 </dl>
 <p>Another form of the MAP$ AREA instruction defines a field in the commarea and fills the field with either a constant value, or the value of a VIRTEL variable:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,FROM-CONSTANT,&#39;value&#39;,LENGTH=nnn,TYPE=type
-MAP$ AREA,FROM-VARIABLE,VAR=&#39;varname&#39;,LENGTH=nnn,
+MAP$ AREA,FROM-VARIABLE,VAR=varname,LENGTH=nnn,
     TYPE=type,FORMAT=(&#39;pattern&#39;,char)
 </pre></div>
 </div>
@@ -6350,7 +6350,8 @@ MAP$ AREA,FROM-VARIABLE,VAR=&#39;varname&#39;,LENGTH=nnn,
 </dl>
 <p>A further variation of the MAP$ AREA instruction places the value of a field into a VIRTEL variable, without copying it
 into the commarea. The variable will be created or replaced during the processing of a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE-ONLY,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE-ONLY,VAR=varname
+,
 WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
 </pre></div>
 </div>
@@ -6361,7 +6362,7 @@ WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
 <p>The WITH parameter specifies the name of the XML tag or Query parameter, as previously described. If the LENGTH and TYPE parameters are specified, then the value of the field is edited, as previously described, to conform to the length and type specified. If the LENGTH and TYPE parameters are omitted, then the length and value of the variable
 are copied exactly from the input data.</p>
 <p>Another variation of the MAP$ AREA instruction, TO-TABLE-VARIABLE-ONLY, is similar to TO-VARIABLE-ONLY except that if the variable already exists, the new value will be appended to any existing values instead of erasing the previous value.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-TABLE-VARIABLE-ONLY,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA,TO-TABLE-VARIABLE-ONLY,VAR=varname,
    WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
 </pre></div>
 </div>
@@ -6402,7 +6403,7 @@ instead of from the data enclosed by the XML start and end tags.</p>
 <p>XML tag and attribute names are case sensitive.</p>
 </div>
 <p>A variation of the MAP$ AREA-ATTRIBUTE instruction allows the value of the attribute to be copied into a VIRTEL variable, in addition to being placed in the commarea:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA-ATTRIBUTE,TO-VARIABLE,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA-ATTRIBUTE,TO-VARIABLE,VAR=varname,
     WITH=&#39;xmlname&#39;,VALUEOF=&#39;attrname&#39;,LENGTH=nnn,TYPE=type
 </pre></div>
 </div>
@@ -6411,7 +6412,7 @@ instead of from the data enclosed by the XML start and end tags.</p>
 </dd>
 </dl>
 <p>Another variation of the MAP$ AREA-ATTRIBUTE instruction places the value of an attribute into a VIRTEL variable, without copying it into the commarea:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA-ATTRIBUTE,TO-VARIABLE-ONLY,VAR=&#39;varname&#39;,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ AREA-ATTRIBUTE,TO-VARIABLE-ONLY,VAR=varname,
     WITH=&#39;xmlname&#39;,VALUEOF=&#39;attrname&#39;,LENGTH=nnn,TYPE=type
 </pre></div>
 </div>
@@ -6618,7 +6619,7 @@ MYMAP TOVAR$ FROM-VARIABLE,VAR=&#39;MYCOMMAREA&#39; generate variables
 <p>When the input format is QUERY, MAP$ FROM-INPUT expects the input data to contain one or more strings in the form fieldname=data. When the HTTP request uses the GET method, the strings are appended to the URL. The first string is preceded by a “?” character which separates it from the URL, and the remaining strings are separated by “&amp;” characters. When the HTTP request uses the POST method, the strings are contained in the request body, either one per line, or separated by “&amp;” characters if multiple strings are coded on the same line. For both the GET and POST methods, Query strings are expressed in URL-encoded format, where “+” sign represents a space, and “%xx” represents the hexadecimal encoding of an ASCII character. See <a class="reference internal" href="#v462ug-parsing-query-input"><span class="std std-ref">“Parsing Query Input”</span></a> for examples.</p>
 <span class="target" id="v462ug-map-from-variable"></span><p id="index-278"><strong>MAP$ FROM-VARIABLE</strong></p>
 <p>The MAP$ FROM-VARIABLE instruction requests VIRTEL to generate a commarea from XML or Query format input data (“input-to-commarea” conversion). The input data is contained in a VIRTEL variable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname MAP$ FROM-VARIABLE,format,VAR=&#39;varname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname MAP$ FROM-VARIABLE,format,VAR=varname
 </pre></div>
 </div>
 <dl>
@@ -6634,7 +6635,7 @@ QUERY: specifies that the input data is in Query format</p>
 </dl>
 <p id="index-279"><strong>MAP$ TO-VARIABLE</strong></p>
 <p>The MAP$ TO-VARIABLE instruction requests VIRTEL to copy a commarea into a VIRTEL variable. The commarea must have been already generated by a previous MAP$ FROM-FIELD, FROM-INPUT, or FROM-VARIABLE instruction.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname MAP$ TO-VARIABLE,VAR=&#39;varname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname MAP$ TO-VARIABLE,VAR=varname
 </pre></div>
 </div>
 <dl class="simple">
@@ -6643,7 +6644,7 @@ QUERY: specifies that the input data is in Query format</p>
 <dt>varname</dt><dd><p>The name of the VIRTEL variable into which the commarea is to be copied.</p>
 </dd>
 </dl>
-<p>MAP$ COPY,VAR=’varname’ is equivalent to MAP$ TO-VARIABLE,VAR=’varname’</p>
+<p>MAP$ COPY,VAR=varname is equivalent to MAP$ TO-VARIABLE,VAR=varname</p>
 <span class="target" id="v462ug-option"></span></section>
 <section id="option-instruction">
 <span id="index-280"></span><h5>OPTION$ instruction<a class="headerlink" href="#option-instruction" title="Permalink to this heading"></a></h5>
@@ -6659,7 +6660,7 @@ QUERY: specifies that the input data is in Query format</p>
 (FILE-OUT,&#39;varnameo&#39;),         *
 (FILE-IN,&#39;varnamei&#39;),          *
 (RET-CODE,&#39;varnamer&#39;),         *
-TOVAR=&#39;varnamep&#39;
+TOVAR=varnamep
 </pre></div>
 </div>
 <dl class="simple">
@@ -6773,7 +6774,7 @@ message.</p>
 (FILE-OUT,&#39;varname1&#39;),            *
 (FILE-IN,&#39;varname2&#39;),             *
 (RET-CODE,&#39;retcode&#39;),             *
-TOVAR=&#39;varnamep&#39;
+TOVAR=varnamep
 </pre></div>
 </div>
 <dl class="simple">
@@ -6875,7 +6876,7 @@ OPTION$ FOR-QUICKLNK,
     (HEADER,&#39;header&#39;),                                  *
     (FILE-OUT,&#39;varname&#39;,&#39;filename&#39;,&#39;filetype&#39;,&#39;disp&#39;),  *
     (ALTERNATE-TEXT,&#39;altvar&#39;,&#39;altfn&#39;,&#39;altft&#39;,&#39;altdp&#39;),  *
-    TOVAR=&#39;varnamep&#39;
+    TOVAR=varnamep
 </pre></div>
 </div>
 <dl class="simple">
@@ -7036,9 +7037,9 @@ END
 <section id="pop-instruction">
 <h5>POP$ instruction<a class="headerlink" href="#pop-instruction" title="Permalink to this heading"></a></h5>
 <p>This instruction allows a scenario to delete values from VIRTEL table variables.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POP$ ALL-VALUES-OF,VAR=&#39;varname&#39;
-POP$ FIRST-VALUE-OF,VAR=&#39;varname&#39;
-POP$ VAR=&#39;varname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POP$ ALL-VALUES-OF,VAR=varname
+POP$ FIRST-VALUE-OF,VAR=varname
+POP$ VAR=varname
 </pre></div>
 </div>
 <dl class="simple">
@@ -7049,7 +7050,7 @@ POP$ VAR=&#39;varname&#39;
 <dt>varname</dt><dd><p>the name of the VIRTEL variable.</p>
 </dd>
 </dl>
-<p>POP$ VAR=’varname’ is equivalent to POP$ FIRST-VALUE-OF,VAR=’varname’</p>
+<p>POP$ VAR=varname is equivalent to POP$ FIRST-VALUE-OF,VAR=varname</p>
 <dl class="simple">
 <dt>. index::</dt><dd><p>pair: RETURN$; Scenario Instructions</p>
 </dd>
@@ -7071,7 +7072,7 @@ POP$ VAR=&#39;varname&#39;
 <p>This instruction allows a scenario to construct the response to an input request.</p>
 <p id="index-289"><strong>SEND$ AS-ANSWER</strong></p>
 <p>Sends the contents of a VIRTEL variable as the response to an HTTP request.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ AS-ANSWER,VAR=&#39;varname&#39;,TYPE=&#39;filetype&#39;,EXPIRES=exphdr
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ AS-ANSWER,VAR=varname,TYPE=&#39;filetype&#39;,EXPIRES=exphdr
 </pre></div>
 </div>
 <dl class="simple">
@@ -7096,7 +7097,7 @@ LINE” &lt;#_V462UG_capability_types9 with the LINE parameter set to the line o
 <p>Sends the contents of a VIRTEL variable as an attached file in response to an HTTP request. Unlike the SEND$ ASANSWER
 instruction, the response includes a Content-Disposition: Attachment header, which means that the browser
 displays a “Save As” dialog box instead of attempting to display the file in the browser window.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ AS-FILE,VAR=&#39;varname&#39;,TYPE=&#39;filetype&#39;,NAME=&#39;filename&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ AS-FILE,VAR=varname,TYPE=&#39;filetype&#39;,NAME=&#39;filename&#39;
 </pre></div>
 </div>
 <dl class="simple">
@@ -7138,7 +7139,7 @@ displays a “Save As” dialog box instead of attempting to display the file in
 </dl>
 <p id="index-293"><strong>SEND$ VARIABLE-TO</strong></p>
 <p>Sends the contents of the specified variable as an outbound message on a VIRTEL line. The name of the destination line is specified indirectly through a VIRTEL transaction. A SEND$ VARIABLE-TO instruction is equivalent to an <a class="reference internal" href="#v462ug-option"><span class="std std-ref">“OPTION$ instructions”</span></a>  instruction followed by a SEND$ TO instruction in the case where OPTION$ specifies only a variable name.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ VARIABLE-TO,tranname,VAR=&#39;varname&#39;,ERROR=label
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ VARIABLE-TO,tranname,VAR=varname,ERROR=label
 </pre></div>
 </div>
 <dl class="simple">
@@ -7158,7 +7159,7 @@ displays a “Save As” dialog box instead of attempting to display the file in
 LINE is identical to SEND$ VARIABLE-TO except that the name of the line is specified directly in the scenario instead
 of via a transaction. A SEND$ VARIABLE-TO-LINE instruction is equivalent to an <a class="reference internal" href="#v462ug-option"><span class="std std-ref">“OPTION$”</span></a> instruction
 followed by a SEND$ TO-LINE instruction in the case where OPTION$ specifies only a variable name.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ VARIABLE-TO-LINE,VAR=&#39;varname&#39;,LINE=&#39;linename&#39;,ERROR=label
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND$ VARIABLE-TO-LINE,VAR=varname,LINE=&#39;linename&#39;,ERROR=label
 </pre></div>
 </div>
 <dl class="simple">
@@ -7380,7 +7381,7 @@ included in a URL without using URL-encoding.</p>
 <p>The TOVAR$ FROM-VARIABLE instruction requests VIRTEL to generate a set of VIRTEL variables from an input
 commarea. The input commarea is contained in a VIRTEL variable. The TOVAR$ FROM-VARIABLE instruction is normally
 contained in an OUTPUT scenario.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname TOVAR$ FROM-VARIABLE,VAR=&#39;varname&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>groupname TOVAR$ FROM-VARIABLE,VAR=varname
 </pre></div>
 </div>
 <dl class="simple">

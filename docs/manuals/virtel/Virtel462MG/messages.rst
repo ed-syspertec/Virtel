@@ -3607,8 +3607,8 @@ Meaning
 Action
     None.
 
-VIR0871W ENTRY FOR %userid% NOT FOUND      
-"""""""""""""""""""""""""""""""""""""
+VIR0871W luname ENTRY FOR %userid% NOT FOUND      
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0008U
 Meaning
@@ -3616,14 +3616,68 @@ Meaning
 Action
     Check that the USERID %userid% has been defined in the ARBO statements.
 
-VIR0872E Critical error encountered for %name%.      
-"""""""""""""""""""""""""""""""""""""""""""""""
+VIR0872E luname Critical error encountered for %name%.      
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0008U
 Meaning
     The TS entry %name% has an internal reference error within the table space. 
 Action
     Rebuild the ARBO. If problem persists contact Virtel Support.
+
+VIR0873W Applicatioin %appl% not protected or has no profiles      
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""S
+Module
+    VIR0008U
+Meaning
+    The application %name% is not protected of has no related application profiles in the table space. 
+Action
+    Define the application and its associated applications profiles.
+
+VIR0874I %luname% nailing resource %resource% for userid %userid%
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The resource %resource% has been located in the table space and allocated to the userid. For a userid resource, a protected application has been selected. For a terminal, a pre-defined relay terminal and printer will be used in the session setup. 
+Action
+    None
+
+VIR0875W Unable to nail resource for userid %userid%
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    Virtel was unable to nail a resource for userid %userid% 
+Action
+    Rebuild the ARBO. If problem persists contact Virtel Support
+
+VIR0876E %luname% Entry table full
+""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The internal entry table is full. 
+Action
+    Reduce the number of ARBO statements. Rebuild the ARBO. If problem persists contact Virtel Support
+
+VIR0877W %luname% Reference Error
+""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    The internal entry table has corrupted reference pointers
+Action
+    Reduce the number of ARBO statements. Rebuild the ARBO. If problem persists contact Virtel Support
+
+VIR0878I RESOURCE %luname% RELEASED|BYPASSED
+""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0008U
+Meaning
+    Action taken on a resource
+Action
+    None
 
 Messages VIR09xxx
 ^^^^^^^^^^^^^^^^^
@@ -7177,6 +7231,15 @@ Meaning
     An error has occurred on cross-memory line linename. with session identifier sessionid. reqtype is the VIRXM request type, retcode is the decimal return code, xxxxxxxx is the hexadecimal error code, and dddddddd is the decimal value of the low-order byte of the error code.
 Action
     Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
+
+VIRX925W linename WAITING DUE TO mmmmmmmm RETCODE retcode Event cccccccc PROTOCOL servtyp PARTNER jobname
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
+Module
+    VIR0X09
+Meaning
+    Cross-memory line linename is pending connection to module mmmmmmmm. Retcode is the decimal return code, cccccccc is the Event code.
+Action
+    Refer to the VIRXM User Guide manual to determine the meaning of the return code and Event Code.
 
 Messages VIRXOxxx
 ^^^^^^^^^^^^^^^^^

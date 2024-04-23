@@ -6701,13 +6701,13 @@ Example of testing a variable with CASE$.
 
     * loop on a variable:
 
-    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR='TOTO'  
+    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=TOTO  
 
             CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,'XXXX',ET1)   
 
-            COPY$ SYSTEM-TO-VARIABLE,VAR='I1',LENGTH=2,                   *
+            COPY$ SYSTEM-TO-VARIABLE,VAR=I1,LENGTH=2,                   *
                 FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
-            COPY$ SYSTEM-TO-VARIABLE,VAR='V1',                            *
+            COPY$ SYSTEM-TO-VARIABLE,VAR=V1,                            *
                 FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
             ERROR$ 0,'TOTO: ','*I1','==','*V1'
             ENDFOR$ LOOP1                  
@@ -6725,7 +6725,7 @@ lower case.
 
 ::
 
-    CONVERT$ direction,VAR='varname',TABLE='tabname'
+    CONVERT$ direction,VAR=varname,TABLE='tabname'
 
 direction
     specifies the translation requested. Possible values are:
@@ -6835,7 +6835,7 @@ Copies the contents of a file into a VIRTEL variable. This instruction can be us
 
 ::
 
-    COPY$ INPUT-FILE-TO-VARIABLE,VAR='varname',FILE='filename'
+    COPY$ INPUT-FILE-TO-VARIABLE,VAR=varname',FILE='filename'
 
 varname
     the name of a VIRTEL table variable. If the variable does not exist, it will be created. If the variable already exists, the new value will be appended to any existing values. If this parameter is omitted, the variable name $INFILE$ is used.
@@ -6901,7 +6901,7 @@ Copies a a list of values (either constants or variables) to a variable.
 
 ::
 
-    COPY$ LIST-TO-VARIABLE,VAR='varname',
+    COPY$ LIST-TO-VARIABLE,VAR=varname,
         LIST=(STRING,'string',VARIABLE,'fromvar','string','*fromvar'),
         LTRIM=('string1','string2',...),
         RTRIM=('string1','string2',...),
@@ -6936,8 +6936,8 @@ type
 
 ::
 
-            COPY$ LIST-TO-VARIABLE,VAR='VAR1', *
-            RTRIM=('_',' '),LTRIM=('_',' '), *
+            COPY$ LIST-TO-VARIABLE,VAR=VAR1,              *
+            RTRIM=('_',' '),LTRIM=('_',' '),              *
             LIST=('string1','*var1',VARIABLE,'var2')
 
 The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var2 left and right trimmed.
@@ -6951,9 +6951,9 @@ Generates an output page from a page template, and copies the result into a VIRT
 
 ::
 
-    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='filename',VAR='varname',
+    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='filename',VAR=varname,                  *
         TYPE=type
-    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='*filenameVar',VAR='varname',
+    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='*filenameVar',VAR=varname,              *
         TYPE=type
 
 filename
@@ -7016,8 +7016,8 @@ Copies a system information field into a table variable.
 
 ::
 
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),
-    VAR='varname',LENGTH=len,OFFSET=offset,
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),      *
+    VAR=varname,LENGTH=len,OFFSET=offset,             *
     TYPE=type
 
 varname
@@ -7181,57 +7181,57 @@ Example of COPY$ SYSTEM-TO-VARIABLE:
 
 
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,HOST),             X
-        VAR='HOST'
+        VAR=HOST
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,USER-AGENT),       X
-        VAR='BROWSER'
+        VAR=BROWSER
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,VIRTEL),               X
-        VAR='APPLID'
+        VAR=APPLID
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,LINE-INTERNAL),        X
-        VAR='LINEINT'
+        VAR=LINEINT
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PSEUDO-TERMINAL),      X
-        VAR='TERMID'
+        VAR=TERMID
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,RELAY),                X
-        VAR='LUNAME'
+        VAR=LUNAME
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ENTRY-POINT),          X
-        VAR='EPNAME'
+        VAR=EPNAME
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-INTERNAL), X
-        VAR='TRANINT'
+        VAR=TRANINT
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-EXTERNAL), X
-        VAR='TRANEXT'
+        VAR=TRANEXT
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ROUTING-PARAMETER),    X
-        VAR='ROUTPARM'
+        VAR=ROUTPARM
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,URL),                  X
-        VAR='URL'
+        VAR=URL
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,QUERY),                X
-        VAR='QSTRING'
+        VAR=QSTRING
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PAGE),                 X
-        VAR='pagename'
+        VAR=pagename
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,DIRECTORY),            X
-        VAR='DIRNAME'
+        VAR=DIRNAME
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS),           X
-        VAR='SNASTAT'
+        VAR=SNASTAT
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS),      X
-        VAR='CLIENT'
+        VAR=CLIENT
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET),        X
-        VAR='CHARSET'
+        VAR=CHARSET
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME),           X
-        VAR='DATETIME'
+        VAR=DATETIME
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,VIRTEL-VERSION),      X
-        VAR='VERSION'
+        VAR=VERSION
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSNAME-SYMBOL),      X
-        VAR='SYSNAME'
+        VAR=SYSNAME
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSPLEX-SYMBOL),      X
-        VAR='SYSPLEX'
+        VAR=SYSPLEX
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-COLUMNS),     X
-        VAR='COLS'
+        VAR=COLS
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-LINES),       X
-        VAR='ROWS'
+        VAR=ROWS
     COPY$ SYSTEM-TO-VARIABLE,                                      X
         FIELD=(USER-SECURITY-PROFILE,WADEPT),                      X
-        VAR='DEPT’
+        VAR=DEPT
      COPY$ SYSTEM-TO-VARIABLE,                                     X
         FIELD=(NAME-OF,TERMINAL),                                  X
-        VAR='TERMINAL’    
+        VAR=TERMINAL    
 
 The following table shows a possible result of this example scenario when used in conjunction with the URL:-
 
@@ -7377,7 +7377,7 @@ Copies the value of a variable to a VIRTEL system field. In the case of a table 
 
 ::
 
-    COPY$ VARIABLE-TO-SYSTEM,VAR='varname',FIELD=(class,item)
+    COPY$ VARIABLE-TO-SYSTEM,VAR=varname,FIELD=(class,item)
 
 varname
     the name of a VIRTEL variable.
@@ -7430,7 +7430,7 @@ Copies a source variable to a target variable.
 
 ::
 
-    COPY$ VARIABLE-TO-VARIABLE,VAR=('source','target'),
+    COPY$ VARIABLE-TO-VARIABLE,VAR=(source,target),
           OFFSET=offset,LENGTH=lend,PAD='padChar ',TYPE=type
 
 source
@@ -7450,8 +7450,8 @@ The following example will display 'Target value is : Doe____'
 
 ::
 
-    COPY$ VALUE-TO-VARIABLE,VAR='source',VALUE='John Doe'
-    COPY$ VARIABLE-TO-VARIABLE,VAR=('source','target'),OFFSET=5,                    X
+    COPY$ VALUE-TO-VARIABLE,VAR=source,VALUE='John Doe'
+    COPY$ VARIABLE-TO-VARIABLE,VAR=(source,target),OFFSET=5,                    X
             LENGTH=7,PAD='_'
     ERROR$ 0,'Target value is : ','*target'
 
@@ -7533,14 +7533,14 @@ WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')
             DEBUG$ TRACE,SCENARIO,                                        *
                 WHEN=(TRANSACTION-NAME-STARTS-WITH,'DB') 
                                           
-            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+            COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
                 FIELD=(VALUE-OF,SYSCLONE-SYMBOL)      
             ERROR$ 0,'SYSCLONE: ','*VAR1'
-            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+            COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
                 FIELD=(VALUE-OF,SYSPLEX-SYMBOL)  
             ERROR$ 0,'SYSPLEX: ','*VAR1'
     *
-            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+            COPY$ SYSTEM-TO-VARIABLE,VAR=VAR1,                            *
                 FIELD=(NAME-OF,CHARACTER-SET)  
             ERROR$ 0,'CHARACTER-SET: ','*VAR1'
             DEBUG$ NOTRACE,SCENARIO
@@ -7687,12 +7687,12 @@ In the example below, the value of VAR1 which is copied is the current value in 
 
 ::
 
-    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR='VAR1'
+    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR=VAR1
         
-            COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',FOREACH=LOOP1,            *            
+            COPY$ VARIABLE-TO-SCREEN,VAR=VAR1,FOREACH=LOOP1,             *            
                 SCREEN=(=,=,=)
         
-            COPY$ VARIABLE-TO-VARIABLE,VAR=('VAR1','VAR2'),FOREACH=LOOP1, * 
+            COPY$ VARIABLE-TO-VARIABLE,VAR=(VAR1,VAR2),FOREACH=LOOP1,    * 
                 OFFSET=8,LENGTH=5,PAD=' '                  
 
         
@@ -7895,7 +7895,7 @@ VALUE-IN-VARIABLE and ENDFOR$ instructions are permitted.
 
 ::
 
-    groupname FOREACH$ VALUE-IN-VARIABLE,VAR='varname'
+    groupname FOREACH$ VALUE-IN-VARIABLE,VAR=varname
 
 groupname
     The label is required. The FOREACH$ VALUE-IN-VARIABLE instruction must be matched by a subsequent ENDFOR$ targeting the same label.
@@ -8218,7 +8218,7 @@ pattern,char
 
 ::
 
-    MAP$ AREA,TO-VARIABLE,VAR='varname',
+    MAP$ AREA,TO-VARIABLE,VAR=varname,
         WITH='name',LENGTH=nnn,TYPE=type
 
 varname
@@ -8229,7 +8229,7 @@ Another form of the MAP$ AREA instruction defines a field in the commarea and fi
 ::
 
     MAP$ AREA,FROM-CONSTANT,'value',LENGTH=nnn,TYPE=type
-    MAP$ AREA,FROM-VARIABLE,VAR='varname',LENGTH=nnn,
+    MAP$ AREA,FROM-VARIABLE,VAR=varname,LENGTH=nnn,
         TYPE=type,FORMAT=('pattern',char)
 
 value
@@ -8244,7 +8244,8 @@ into the commarea. The variable will be created or replaced during the processin
 
 ::
 
-    MAP$ AREA,TO-VARIABLE-ONLY,VAR='varname',
+    MAP$ AREA,TO-VARIABLE-ONLY,VAR=varname
+    ,
     WITH='name',LENGTH=nnn,TYPE=type
 
 varname
@@ -8257,7 +8258,7 @@ Another variation of the MAP$ AREA instruction, TO-TABLE-VARIABLE-ONLY, is simil
 
 ::
 
-     MAP$ AREA,TO-TABLE-VARIABLE-ONLY,VAR='varname',
+     MAP$ AREA,TO-TABLE-VARIABLE-ONLY,VAR=varname,
         WITH='name',LENGTH=nnn,TYPE=type
 
 varname
@@ -8303,7 +8304,7 @@ A variation of the MAP$ AREA-ATTRIBUTE instruction allows the value of the attri
 
 ::
 
-    MAP$ AREA-ATTRIBUTE,TO-VARIABLE,VAR='varname',
+    MAP$ AREA-ATTRIBUTE,TO-VARIABLE,VAR=varname,
         WITH='xmlname',VALUEOF='attrname',LENGTH=nnn,TYPE=type
 
 varname
@@ -8313,7 +8314,7 @@ Another variation of the MAP$ AREA-ATTRIBUTE instruction places the value of an 
 
 ::
 
-    MAP$ AREA-ATTRIBUTE,TO-VARIABLE-ONLY,VAR='varname',
+    MAP$ AREA-ATTRIBUTE,TO-VARIABLE-ONLY,VAR=varname,
         WITH='xmlname',VALUEOF='attrname',LENGTH=nnn,TYPE=type
 
 varname
@@ -8600,7 +8601,7 @@ The MAP$ FROM-VARIABLE instruction requests VIRTEL to generate a commarea from X
 
 ::
 
-    groupname MAP$ FROM-VARIABLE,format,VAR='varname'
+    groupname MAP$ FROM-VARIABLE,format,VAR=varname
 
 groupname
     The label is required. It specifies the name of the output area to be generated. It must match the label on a preceding MAP$ BEGIN instruction.
@@ -8624,14 +8625,14 @@ The MAP$ TO-VARIABLE instruction requests VIRTEL to copy a commarea into a VIRTE
 
 ::
 
-    groupname MAP$ TO-VARIABLE,VAR='varname'
+    groupname MAP$ TO-VARIABLE,VAR=varname
 
 groupname
     The label is required. It specifies the name of the output area to be copied. It must match the label on a preceding MAP$ BEGIN instruction.
 varname
     The name of the VIRTEL variable into which the commarea is to be copied.
 
-MAP$ COPY,VAR='varname' is equivalent to MAP$ TO-VARIABLE,VAR='varname'
+MAP$ COPY,VAR=varname is equivalent to MAP$ TO-VARIABLE,VAR=varname
 
 .. _#_V462UG_OPTION$:
 
@@ -8662,7 +8663,7 @@ The OPTION$ FOR-HTTP instruction, when used in conjunction with a SEND$ TO-LINE 
     (FILE-OUT,'varnameo'),         *
     (FILE-IN,'varnamei'),          *
     (RET-CODE,'varnamer'),         *
-    TOVAR='varnamep'
+    TOVAR=varnamep
 
 method
     (required) the HTTP method: GET or POST (see note below).
@@ -8801,7 +8802,7 @@ Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line
     (FILE-OUT,'varname1'),            *                    
     (FILE-IN,'varname2'),             *
     (RET-CODE,'retcode'),             *                       
-    TOVAR='varnamep'           
+    TOVAR=varnamep           
 
 qmgrid
     The MQ queue manager ID
@@ -8916,7 +8917,7 @@ Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line
         (HEADER,'header'),                                  *
         (FILE-OUT,'varname','filename','filetype','disp'),  *
         (ALTERNATE-TEXT,'altvar','altfn','altft','altdp'),  *
-        TOVAR='varnamep'
+        TOVAR=varnamep
 
 toaddr
     the email address of the recipient (see note below).
@@ -9097,9 +9098,9 @@ This instruction allows a scenario to delete values from VIRTEL table variables.
 
 ::
 
-    POP$ ALL-VALUES-OF,VAR='varname'
-    POP$ FIRST-VALUE-OF,VAR='varname'
-    POP$ VAR='varname'
+    POP$ ALL-VALUES-OF,VAR=varname
+    POP$ FIRST-VALUE-OF,VAR=varname
+    POP$ VAR=varname
 
 ALL-VALUES-OF
     indicates that all values of the table variable are to be deleted.
@@ -9108,7 +9109,7 @@ FIRST-VALUE-OF
 varname
     the name of the VIRTEL variable.
 
-POP$ VAR='varname' is equivalent to POP$ FIRST-VALUE-OF,VAR='varname'
+POP$ VAR=varname is equivalent to POP$ FIRST-VALUE-OF,VAR=varname
 
 . index::
    pair: RETURN$; Scenario Instructions
@@ -9140,7 +9141,7 @@ Sends the contents of a VIRTEL variable as the response to an HTTP request.
 
 ::
 
-    SEND$ AS-ANSWER,VAR='varname',TYPE='filetype',EXPIRES=exphdr
+    SEND$ AS-ANSWER,VAR=varname,TYPE='filetype',EXPIRES=exphdr
 
 varname
     the name of the VIRTEL variable which contains the response data.
@@ -9171,7 +9172,7 @@ displays a “Save As” dialog box instead of attempting to display the file in
 
 ::
 
-    SEND$ AS-FILE,VAR='varname',TYPE='filetype',NAME='filename'
+    SEND$ AS-FILE,VAR=varname,TYPE='filetype',NAME='filename'
 
 varname
     the name of the VIRTEL variable which contains the file.
@@ -9232,7 +9233,7 @@ Sends the contents of the specified variable as an outbound message on a VIRTEL 
 
 ::
 
-    SEND$ VARIABLE-TO,tranname,VAR='varname',ERROR=label
+    SEND$ VARIABLE-TO,tranname,VAR=varname,ERROR=label
 
 tranname
     the external name of a VIRTEL transaction defined under the entry point applicable to this scenario. In the transaction definition, the “Application type” field must be 5 and the “Application” field must be the internal or external name of a VIRTEL line.
@@ -9259,7 +9260,7 @@ followed by a SEND$ TO-LINE instruction in the case where OPTION$ specifies only
 ::
 
 
-    SEND$ VARIABLE-TO-LINE,VAR='varname',LINE='linename',ERROR=label
+    SEND$ VARIABLE-TO-LINE,VAR=varname,LINE='linename',ERROR=label
 
 varname
     the name of the VIRTEL variable which contains data to be written to the line.
@@ -9593,7 +9594,7 @@ contained in an OUTPUT scenario.
 
 ::
 
-    groupname TOVAR$ FROM-VARIABLE,VAR='varname'
+    groupname TOVAR$ FROM-VARIABLE,VAR=varname
 
 groupname
     The label is required. It specifies the name of the input commarea. It must match the label on a preceding MAP$ BEGIN instruction.
