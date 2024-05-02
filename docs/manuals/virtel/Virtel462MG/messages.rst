@@ -3626,7 +3626,7 @@ Action
     Rebuild the ARBO. If problem persists contact Virtel Support.
 
 VIR0873W Applicatioin %appl% not protected or has no profiles      
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""S
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0008U
 Meaning
@@ -7233,7 +7233,7 @@ Action
     Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
 VIRX925W linename WAITING DUE TO mmmmmmmm RETCODE retcode Event cccccccc PROTOCOL servtyp PARTNER jobname
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
 Module
     VIR0X09
 Meaning
