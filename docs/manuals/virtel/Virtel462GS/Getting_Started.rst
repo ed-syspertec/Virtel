@@ -14,11 +14,11 @@ Version : 4.62
 
 Release Date : TBA. Publication Date : 17/02/2024
 
-Syspertec Communication
+Virtel SAS
 
-196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42
+302, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42
 
-`www.syspertec.com <https://www.syspertec.com/>`_
+`www.virtelweb.com <https://www.virtelweb.com/>`_
 
 NOTICE
 
@@ -26,16 +26,16 @@ NOTICE
     the contents of this document, except by prior authorization of SysperTec 
     Communication, is prohibited.
 
-    Every possible effort has been made by SysperTec Communication to ensure that this document 
-    is complete and relevant. In no case can SysperTec Communication be held responsible for 
+    Every possible effort has been made by SysperTec Group to ensure that this document 
+    is complete and relevant. In no case can SysperTec Group be held responsible for 
     any damages, direct or indirect, caused by errors or omissions in this document.
 
-    As SysperTec Communication uses a continuous development methodology; the information 
+    As SysperTec Group uses a continuous development methodology; the information 
     contained in this document may be subject to change without notice. Nothing in this 
     document should be construed in any manner as conferring a right to use, in whole or in 
     part, the products or trademarks quoted herein.
 
-    "SysperTec Communication" and "VIRTEL" are registered trademarks. Names of other products 
+    "SysperTec Group" and "VIRTEL" are registered trademarks. Names of other products 
     and companies mentioned in this document may be trademarks or registered trademarks of 
     their respective owners.  
 
@@ -101,12 +101,12 @@ Virtel requires the following hardware and software:
 | Web Access         | Any supported IBM zSystem      | Any supported version of one of  |
 |                    |                                |                                  |
 | Web Modernization  | Any supported version of z/OS  | the following browsers under any |
-|                    |                                |                                  |
+|                    | or VSEn                        |                                  |
 |                    |                                | operating system (JavaScript     |
 |                    |                                |                                  |
 |                    |                                | enabled)                         |
 |                    |                                |                                  |
-|                    |                                | - Internet Explorer or Edge      |
+|                    |                                | - Edge                           |
 |                    |                                |                                  |
 |                    |                                | - Firefox                        |
 |                    |                                |                                  |
@@ -120,6 +120,7 @@ Virtel requires the following hardware and software:
 | Redesigner         |                                |                                  |
 +--------------------+--------------------------------+----------------------------------+
 | Virtel Studio      |                                | Microsoft Windows                |
+|                    |                                | Java 11                          |
 +--------------------+--------------------------------+----------------------------------+
 
 On the server side, the following elements are also required:
@@ -167,7 +168,7 @@ On the server side, the following elements are also required:
 What's new in this release?
 ===========================
 
-.. note:: For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.62.
+.. note:: For further details see the Virtel Technical Newsletter TN202403: Whats new in Virtel 4.62.
 
 Before you install the product
 ------------------------------
@@ -177,12 +178,12 @@ Prepare to download the product
 
 The Virtel products and PTFs can be downloaded from the SysperTec FTP server, at https://ftp-group.syspertec.com
 
-Credentials to access this server can be requested from SysperTec support at support@syspertec.com
+Credentials to access this server can be requested from SysperTec support at https://ftp-group.syspertec.com/request/
 
 Obtain your product license key
 ===============================
 
-To start the Virtel STC, you will need a valid product license key, that will be supplied by SysperTec support. This key needs to be pasted into the VIRTCTxx configuration file before it is assembled. See the Virtel Installation Guide for more details on this process.
+To start the Virtel STC, you will need a valid product license key, that will be supplied by SysperTec support (please contact support@syspertec.com). This key needs to be pasted into the VIRTCTxx configuration file before it is assembled. See the Virtel Installation Guide for more details on this process.
 
 Access your documentation
 =========================
@@ -197,6 +198,10 @@ To provide secure HTTP (https) sessions between the mainframe and client browser
 - On z/OS, the IBM Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server: AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. Setup for AT-TLS is performed outside of Virtel. This process is described in the Installation Guide.
 
 - On z/VSE, the system TLS feature of the selected TCP/IP stack (BSI/CSI).
+
+Virtel can also be interfaced with RACF to protect access to specific applications or features. This is detailed in the Installation Guide.
+
+A new component called Virtel SSO is now available to interface Virtel with OIDC and SAML identity servers for Single-Sign-On. Please contact SysperTec Support for more details.
 
 Quick Installation
 ------------------
@@ -305,8 +310,8 @@ Here are the instructions to quick install and start Virtel on z/OS:
     
 15. Apply any "update" maintenance (virtel462updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel462updtnnnn.zip if available. Skip this step if no zip file is available.
 
-z/VSE
-=====
+VSEn
+====
 
 1. Virtel is provided as an AWS tape file. Load the installation jobs into the POWER READER QUEUE using a S RDR,cuu command.
 
@@ -364,7 +369,7 @@ Trademarks
 ==========
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
-Communication Group, registered in France and other countries.
+Group, registered in France and other countries.
 
 IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of
 International Business Machines Corp., registered in United States and other countries.
