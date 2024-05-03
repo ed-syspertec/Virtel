@@ -3,14 +3,16 @@
 What’s new in Virtel 4.62 GA Release
 ====================================
 
-The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.62 @ update level 6023. 
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.62 @ update level 6099. 
 
 Installation changes
 --------------------
 - 6043 $RESTDSU modifications.
 - 6048 Update VIRBATAR Samplib member.
-- 6059 Modification JCL CLIENTD.MODELE.
+- 6059 Modification Installtion JCL
 - 6076 Update TCT samples. Correct UFILE and MACRF parms.
+- 6086 Add z/VSE TCT's FR and EN.
+- 6089 Add TN3270 section. 
 
 Migration considerations
 ------------------------
@@ -23,6 +25,7 @@ V4.62
 The "COMPATIBILITY" mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of V4.53 w2hparm to V4.54. w2hparm is no longer supported from V4.61 onwards. It is recommended to switch to "Option" mode before migrating later releases.
 
 **6046 DCB value of STATS file changed to 255**
+
 This has been increased to 255. Reallocate any STATS file with a LRECL=255,RECFM=VB,BLKSIZE=4096
 
 **Version support**
@@ -41,19 +44,42 @@ Presentation
 ^^^^^^^^^^^^
 
 **Updates to the W2H Javascript include** 
+
 - 6042 Add buttons in the toolbar for TBT WebAccess features.
 - 6045 Correction to the order in which customized fields are initialized in the W2HAPI.
 - 6055 Color change. Change the CSS names for the NOCOLOR.
-- 6058 Updated CappMenu menu feature, improved Color and FTP support. 
+- 6058 Updated CappMenu menu feature, improved Color and FTP support.
+- 6066 General maintenance.
+- 6084 Synchronization of code between V461 and V462
+- 6096 Virtel VWA 462 update for operation in EDGE in IE11 compatibility mode. 
 
 **6052 Correct MDT Flag reset in VIR0023**
+
 In the ADMIN 3270 Terminal description display, not all fields were being correctly set with blanks beng inserted when certain key sequences were applied. This affected the STATS, Description and Terminal name fields.
 
 **6057 SIGNON BOX messages updated to improve security**
+
 The messages reporting credential failure have been updated.
 
 **6064 Correct Option button behavior**
+
 Option button had to be pressed twice. Corrected. 
+
+**6079 VIR0T11 now the default TCP/IP program under z/VSE**
+
+VIR0T11 now the default TCP/IP program under z/VSE.
+
+**6082 TN3270 add "relay name" to status bar**
+
+The name of the Virtel pseudo terminal being used for the connection will be displayed on the status bar as a relay.
+
+**6083 VSE WTO message truncated**
+
+Correct truncation of messages in z/VSE
+
+**6091 Silence MultiLine messages**
+
+Multi-Line messages can now be silenced
 
 .. raw:: latex
 
@@ -62,53 +88,105 @@ Option button had to be pressed twice. Corrected.
 Base Components
 ^^^^^^^^^^^^^^^
 
-- 6041 Abend S0C4-38 after SNAP.
-- 6045 Correction to the order in which customized fields are initialized
-- 6046 Update STATS DCB to record length of 255
-- 6050 Prevent ABEND S0C4 in VIR0021W when USSMSG MSG=10 is coded as MSG=TEXT.
+**6041 Abend S0C4-38 after SNAP**
+
+Correct ABEND S0C4 in SNAP processing
+
+**6045 Correction to the order in which customized fields are initialized**
+
+Update initialization order of custom files.
+
+**6046 Update STATS DCB to record length of 255**
+
+Increase Statistics buffer size
+
+**6050 Prevent ABEND S0C4 in VIR0021W when USSMSG MSG=10 is coded as MSG=TEXT**
+
+Correct ABEND S0C4 when processing MSG=TEXT in USSMSG 
 
 **6056 Cookies are lost after exiting the Virtel session**
-Changes to improve behavior and provide a seamless return to the Virtel screen when using the LOCK= feature and Security TYPE=1.
 
+Changes to improve behavior and provide a seamless return to the Virtel screen when using the LOCK= feature and Security TYPE=1.
 
 **6051 VIRT923E ERROR REQ: PTON - RETCODE: FFFFFFFF ERRNO: 00000031 (00000049)**
 
 The x-Forwarded-For header can contain several addresses. Virtel was passing the full header value to PTON instead of only the first address, which should be the client address. The other addresses are from proxies. The X-Forwarded-For header is tested only if Virtel was called from a known proxy, as defined in HTFORWD= TCT parameter or in a rule. Only the first one in the X-Forwarded-For header is validated as a known proxy.  
 
 **6060 ARBO keywords in ENTRY Statement being unloaded in error**
+
 The VIRCONF program has been updated to correctly process the ENTRY statement during an UNLOAD request.
 
 **6061 Possible memory corruption when RULE is absent**
+
 Message VIR0923E NO RELAY AVAILABLE issued. Corruption in the terminal block due to data overlay.
 
 **6063 Ruleset not initialized correctly**
+
 On startup the LINE ruleset is not initialized correctly. Message VIR0035E is issued for each rule. Corrected.
 
 **6065 Possible invalid header in 304 response**
+
 Various errors reported, such as 'NO MORE PSEUDO FOUND WITH PREFIX CLLOC'. Expiry header logic amended set correct response value. 
 
 **6066 Possible ASRA in VIR0010**
+
 TIOACHK check routine updated to avoid incorrect overwrite detection.
 
 **6067 PF keys only work when pressed twice**
+
 Correct bug in ADMIN 3270 panels. In some situations the PF keys had to be pressed twice. 
 
 **6069 ATTN key fails**
+
 Update ATTN processing to correctly return to application. 
 
 **6071 LPKALIVE memory leak**
+
 Error message 'VIR0097E ERROR ALLOCATING MEMORY' reported when using LPKALIVE= feature. Corrected.
 
 **6074 Duplicate VIRIC52I message**
+
 ICAL processing was erroneously issuing the VIRIC52I message twice.
 
+**6077 Improved 404 support in place of "HTTP-EQUIV='refresh'"**
+
+404 response may be received instead of a normal return to the menu when close was the result of a command to the application; for instance LOGOFF under CMS accessed thru TN3270
+or cesf logo in CICS.
+
 **6078 VSE CSI TCP/IP Telnet3270 support**
+
 Telnet3270 does not work when using VSE CSI TCP/IP. All IP addresses are zeroed. Corrected.
+
+**6080 VIRTEL IMS - Message VIRIC54E**
+
+Message added
+
+**6081 Abend during RACINIT processing**
+
+Virtel ASRA abend - ICH409I 0C4-010 ABEND DURING RACINIT PROCESSING
+
+**6093 USERPARM with Security=5**
+
+Correct bug in USERPARM support.
+
+**6094 S0C4 when issuing Command**
+
+Correct ABENDS0C4 in multi-line command support.
+
+**6095 New options for Line command**
+
+Add I (INUSE) and E (Extended) options to the Display Line command.
+
+**6097 Correct VSE support for IEASYMBP**
+
+Fix z/VSE bug in supporting IEASYMBP symbolic function.
+
 
 VSR
 ^^^
 
 **6062 Upload for VSR stalls**
+
 When performing a VSR upload a stall could occurred processing large amounts of data. Data boundary processing updated.
 
 
@@ -120,9 +198,11 @@ Scenario Language
 ^^^^^^^^^^^^^^^^^
 
 **6053 IF$ SCREEN-IS-UNMODIFIED,THEN=FAIL incorrectly returned TRUE**
+
 When processing a multi-message screen buffer, a erroneous value of TRUE was being set in certain conditions.
 
 **6070 CASE$ and $IF testing**
+
 CASE$ and IF$ tests will consider blanks as an attribute. 
 
 .. raw:: latex
@@ -132,10 +212,27 @@ CASE$ and IF$ tests will consider blanks as an attribute.
 Other Enhancements
 ^^^^^^^^^^^^^^^^^^
 **6054 Update SMFREXXL Samplib member**
+
 - Pass in SMF record type as argument. Defaults to record type 223.
 - Correct concatenation operator (||).
 - Support both 'B' and 'H' Stat types as defined in Terminal Definition. STATS=56
 - Remove spurious blank line at end of EXEC. 
+
+**6087 Make VIRHTML default value for HTVSAM**
+
+Change default value for HTVSAM TCT option.
+
+**6090 Add TN3270 external server in ARBOLOAD**
+
+ARBOLOAD now supports TN3270 definitions.
+
+**6098 SAMPLIB SEC=1 for W2H-00P, CLI-00P & VPX-00P**
+
+Correct ABROLOAD definitions.
+
+**6099 Make cAppMenu.htm default for CLI-00 transaction**
+
+Update CLI-00 definition. Previously it was appmenu.htm 
 
 .. raw:: latex
 
@@ -145,6 +242,7 @@ New features
 ------------
 
 **6049 CRYPTS= Encrypt Virtel and Ajax session codes**
+
 A new VIRTCT parameter 
 .. 
 
@@ -155,13 +253,29 @@ A new VIRTCT parameter
 When CRYPTS= is set to NONE, or defaulted, session codes are not encrypted. When CRYPT=AES-... is coded, Virtel session codes will be encrypted. The length of the session code is now 24 bytes instead of the previous 16 bytes.
 
 **6068 TN3270 update**
+
 Add TN3270 dialout to access remote Z/VM telnet servers (z/VM, external partners).
 
 **6072 User Relay LU nailing**
-A new LU nailing feature that allocates a Relay terminal/printer based on a USERID. Uses the Virtel internal tablespace API to extract the userid / terminal asspcaition. The Virtel internace tablespace is built from the VIRCONF statements :- DEPT, USER, PROFILE and RELAY statements. A new ARBOLOAD JCL option has been added to provide a sample configuration - RELAY=YES. This feature requires the TCT USERFUNC=YES to be set.    
+
+A new LU nailing feature that allocates a Relay terminal/printer based on a USERID. Uses the Virtel internal tablespace API to extract the userid / terminal assocaition. The Virtel internace tablespace is built from the VIRCONF statements :- DEPT, USER, PROFILE and RELAY statements. A new ARBOLOAD JCL option has been added to provide a sample configuration - RELAY=YES. This feature requires the TCT USERFUNC=YES to be set.    
 
 **6075 NFORCEIP= VIRTCT parameter**
+
 A new TCT parameter, NFORCEIP=NO will, by default, and will ignore any changes of client IP address. This can occur when using zScaler security server. Specifying NFORCEIP=YES will enforcing that the client IP address should not change. In this instance, the connection will be disconnected.
+
+**6085 Update LU Nailing modules**
+
+Correct Relay LU Nailing default behavior.
+
+**6088 TN3270 definition in SAMPLIB**
+
+Sample definitions for TN3270 support
+
+**6092 New User Function - Dynamic Relay Table**
+
+Virtel supports a dynamic relay LU table built from ARBO statements. This new function enhances the LU nailing feature. Screens in the Admin 3270 Security option have been updated to support this feature. The change complements changes introduced by change 6072.
+
 
 
 Updates and maintenance
@@ -199,7 +313,7 @@ Appendix A
 - 6056 Cookies are lost after exiting the Virtel session
 - 6057 SIGNON BOX,CHANGE ERR=9 ET ERR=11 PAR UID/PWD ERROR
 - 6058 Update W2H for V4.59 and V4.60
-- 6059 Modification JCL CLIENTD.MODELE
+- 6059 Modification to install build JCL job CLIENTD.MODELE
 - 6060 No unload of ARBO keyword in ENTRY STMT
 - 6061 Possible memory corruption when RULE is absent
 - 6062 UPLOAD VSR CHUNK stalls for some big files
@@ -239,7 +353,7 @@ Appendix A
 - 6096 Virtel VWA 462 update for operation in EDGE in IE11 compatibility mode
 - 6097 Correct VSE support for IEASYMBP.
 - 6098 SAMPLIB SEC=1 for W2H-00P, CLI-00P & VPX-00P
-- 6099 Make cappmenu.htm default instead of appmenu.htm
+- 6099 Make cAppMenu.htm default instead of appmenu.htm
 
 .. |image0| image:: images/media/image1.png
    :width: 3.52851in
