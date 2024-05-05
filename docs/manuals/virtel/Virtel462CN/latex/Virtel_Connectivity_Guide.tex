@@ -10198,8 +10198,245 @@ To upload the ARBO statements to your ARBO use the following JCL:\sphinxhyphen{}
 \end{sphinxVerbatim}
 
 
-\section{Appendix}
-\label{\detokenize{connectivity_guide:appendix}}
+\section{Appendix A}
+\label{\detokenize{connectivity_guide:appendix-a}}
+
+\subsection{Sample ARBO definitions for LU Nailing}
+\label{\detokenize{connectivity_guide:sample-arbo-definitions-for-lu-nailing}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SPVIREHU} \PYG{n}{JOB} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{THIS} \PYG{n}{JOB} \PYG{n}{LOADS} \PYG{n}{AN} \PYG{n}{ARBO} \PYG{n}{FILE}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{SP000}\PYG{o}{.}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{PRODV460}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{o}{.}\PYG{n}{VIRT462}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{ARBO}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{o}{.}\PYG{n}{VIRT462}\PYG{o}{.}\PYG{n}{ARBO}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{DELETE}  \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,REPL,LANG=EN}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{REGION}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{n}{M}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN}      \PYG{n}{DD} \PYG{o}{*}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{TRANSACT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{12}     \PYG{n}{DELETE} \PYG{n}{TRANSACTION}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{TRANSACT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{13}     \PYG{n}{DELETE} \PYG{n}{TRANSACTION}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT021}   \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT022}   \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT023}    \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT024}   \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT026}   \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT027}   \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT029}    \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT031}    \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT036}    \PYG{n}{Delete} \PYG{n}{terminal} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}    \PYG{n}{Delete} \PYG{n}{user} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}    \PYG{n}{Delete} \PYG{n}{user} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RESOURCE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}   \PYG{n}{Delete} \PYG{n}{user} \PYG{n}{resource}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}    \PYG{n}{User} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}     \PYG{n}{User} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}     \PYG{n}{User} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT}     \PYG{n}{User} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{DBDCCICS}    \PYG{n}{Application} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{PROFILE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPCICST}     \PYG{n}{Application} \PYG{n}{Profile}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{USER}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}       \PYG{n}{Delete} \PYG{n}{User}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{USER}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}        \PYG{n}{Delete} \PYG{n}{User}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{USER}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}        \PYG{n}{Delete} \PYG{n}{User}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{USER}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT}        \PYG{n}{Delete} \PYG{n}{User}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{DEPT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{TSO}            \PYG{n}{Delete} \PYG{n}{Department}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{DEPT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{CICS}           \PYG{n}{Delete} \PYG{n}{Department}
+\PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{DEPT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{VIRTELT}        \PYG{n}{Delete} \PYG{n}{Department}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRLOAD}  \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,REPL,LANG=EN}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO}  \PYG{n}{DD}  \PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB}  \PYG{n}{DD}  \PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN}    \PYG{n}{DD}  \PYG{o}{*}
+    \PYG{n}{DEPT}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{OWNER}\PYG{o}{=}\PYG{n}{SPTHOLT}
+    \PYG{n}{DEPT}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICS DEPARTMENT}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{SPCICST}\PYG{p}{,}\PYG{n}{DBDCCICS}\PYG{p}{,}\PYG{n}{SPCICSP}\PYG{p}{)}\PYG{p}{,}
+            \PYG{n}{OWNER}\PYG{o}{=}\PYG{n}{CTKHOLT}
+    \PYG{n}{DEPT}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TSO DEPARTMENT}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{TSO}\PYG{p}{)}\PYG{p}{,}
+            \PYG{n}{OWNER}\PYG{o}{=}\PYG{n}{SPTHOLT1}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{APPLICATION} \PYG{n}{PROFILES} \PYG{n}{POINTING} \PYG{n}{TO} \PYG{n}{USER} \PYG{n}{RESOURCES}                    \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CICSAPP1}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICSAPP1 PROFILE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10002666}\PYG{p}{,}                                     \PYG{o}{\PYGZhy{}}
+            \PYG{l+m+mi}{10002714}\PYG{p}{)}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{DBDCCICS}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{DBDCCICS PROFILE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{CTKHLT1}\PYG{p}{,}\PYG{n}{CTKHOLT}\PYG{p}{,}\PYG{l+m+mi}{10002714}\PYG{p}{,}\PYG{l+m+mi}{10002666}\PYG{p}{)}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SPCICST PROFILE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{CTKHLT1}\PYG{p}{,}\PYG{n}{SPTHOLT1}\PYG{p}{,}\PYG{n}{CTKHOLT}\PYG{p}{)}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPCICSP}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SPCICSP PROFILE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{CTKHOLT}\PYG{p}{)}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TSO PROFILE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{TSO}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{USER} \PYG{n}{RESOURCES} \PYG{n}{RELATED} \PYG{n}{TO} \PYG{n}{APPLICATION} \PYG{n}{PROFILES}                     \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{User CTKHOLT}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{User CTKHLT1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{User SPTHOLT1}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002666}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{User 10002666}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002714}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{User 10002714}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{USER} \PYG{n}{IDS} \PYG{n}{POINTING} \PYG{n}{to} \PYG{n}{USERID} \PYG{n}{PROFILES}                               \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Ed Holt}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{PASSWORD}\PYG{o}{=}\PYG{n}{PASSWORD}\PYG{p}{,}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{n}{SPTHOLT}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Neils Bohr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}
+            \PYG{n}{PASSWORD}\PYG{o}{=}\PYG{n}{PASSWORD}\PYG{p}{,}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{n}{CTKHOLT}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Pablo Escobar}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,}
+            \PYG{n}{PASSWORD}\PYG{o}{=}\PYG{n}{PASSWORD}\PYG{p}{,}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{n}{CTKHLT1}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Taylor Swifty}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,}
+            \PYG{n}{PASSWORD}\PYG{o}{=}\PYG{n}{PASSWORD}\PYG{p}{,}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{n}{SPTHOLT1}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002666}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Walter Mitty}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                    \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10002666}\PYG{p}{)}
+    \PYG{n}{USER}     \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002714}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{James Bond}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                    \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ADMIN}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ASSIST}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{PROFILE}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10002714}\PYG{p}{)}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{USER} \PYG{n}{PROFILES} \PYG{n}{RELATED} \PYG{n}{TO} \PYG{n}{USERID} \PYG{n}{AND} \PYG{n}{POINTING} \PYG{n}{TO} \PYG{n}{TERMINAL} \PYG{n}{RESOURCES} \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*} \PYG{n}{User} \PYG{n}{Profiles}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SPTHOLT Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{REHVT021}\PYG{p}{)}
+\PYG{o}{*}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHOLT}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CTKHOLT Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT023}\PYG{p}{,}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT029}\PYG{p}{,}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT031}\PYG{p}{)}
+\PYG{o}{*}
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CTKHLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CTKHLT1 Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{REHVT024}\PYG{p}{)}
+
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{SPTHOLT1}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SPTHOLT1 Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{REHVT022}\PYG{p}{)}
+
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002666}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{10002666 Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{REHVT026}\PYG{p}{,}\PYG{n}{REHVT027}\PYG{p}{)}
+
+    \PYG{n}{PROFILE}  \PYG{n}{ID}\PYG{o}{=}\PYG{l+m+mi}{10002714}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{10002714 Resources}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{RESOURCE}\PYG{o}{=}\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT036}\PYG{p}{)}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{TERMINAL} \PYG{n}{RESOURCES} \PYG{n}{RELATED} \PYG{n}{TO} \PYG{n}{USER} \PYG{n}{PROFILES}                        \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT021}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REHVT021}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT022}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REHVT022}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT023}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REH+023}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT024}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REHVT024}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT026}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REHVT026}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REHVT027}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REHVT027}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT029}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal R+VT029}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT031}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal REH+031}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+    \PYG{n}{RESOURCE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT036}\PYG{p}{,}
+        \PYG{p}{(}\PYG{n}{EN}\PYG{p}{)} \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Terminal R+VT036}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{NEW} \PYG{n}{TRANSACTION}                                                    \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{12}\PYG{p}{,}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Test CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}
+            \PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CLVTA}\PYG{p}{,}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{*}\PYG{n}{NEW} \PYG{n}{TRANSACTION}                                                    \PYG{o}{*}
+\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{13}\PYG{p}{,}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{SPCICSP}\PYG{p}{,}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Production CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{SPCICSP}\PYG{p}{,}
+            \PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CLVTA}\PYG{p}{,}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
+\PYG{o}{/}\PYG{o}{*}
+\end{sphinxVerbatim}
+
 
 \section{Trademarks}
 \label{\detokenize{connectivity_guide:trademarks}}

@@ -7730,8 +7730,246 @@ To upload the ARBO statements to your ARBO use the following JCL:-
         RULE Definitions
     /*
 
-Appendix
---------
+Appendix A
+----------
+
+Sample ARBO definitions for LU Nailing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+    
+    //SPVIREHU JOB 1,VIRCONF,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+    //*
+    //* THIS JOB LOADS AN ARBO FILE
+    //*
+    //*SET LOAD=SP000.VIRTEL.PRODV460.LOADLIB
+    // SET LOAD=SPTHOLT.VIRT462.LOADLIB
+    // SET ARBO=SPTHOLT.VIRT462.ARBO
+    //*
+    //DELETE  EXEC PGM=VIRCONF,PARM='LOAD,REPL,LANG=EN',REGION=2M
+    //STEPLIB  DD  DSN=&LOAD,DISP=SHR
+    //SYSPRINT DD  SYSOUT=*
+    //SYSUDUMP DD  SYSOUT=*
+    //VIRARBO  DD  DSN=&ARBO,DISP=SHR
+    //SYSIN      DD *
+    DELETE TYPE=TRANSACT,ID=CLI-12     DELETE TRANSACTION
+    DELETE TYPE=TRANSACT,ID=CLI-13     DELETE TRANSACTION
+    DELETE TYPE=RESOURCE,ID=REHVT021   Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=REHVT022   Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=R+VT023    Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=REHVT024   Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=REHVT026   Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=REHVT027   Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=R+VT029    Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=R+VT031    Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=R+VT036    Delete terminal resource
+    DELETE TYPE=RESOURCE,ID=CTKHOLT    Delete user resource
+    DELETE TYPE=RESOURCE,ID=CTKHLT1    Delete user resource
+    DELETE TYPE=RESOURCE,ID=SPTHOLT1   Delete user resource
+    DELETE TYPE=PROFILE,ID=SPTHOLT1    User Profile
+    DELETE TYPE=PROFILE,ID=CTKHLT1     User Profile
+    DELETE TYPE=PROFILE,ID=CTKHOLT     User Profile
+    DELETE TYPE=PROFILE,ID=SPTHOLT     User Profile
+    DELETE TYPE=PROFILE,ID=DBDCCICS    Application Profile
+    DELETE TYPE=PROFILE,ID=SPCICST     Application Profile
+    DELETE TYPE=USER,ID=SPTHOLT1       Delete User
+    DELETE TYPE=USER,ID=CTKHLT1        Delete User
+    DELETE TYPE=USER,ID=CTKHOLT        Delete User
+    DELETE TYPE=USER,ID=SPTHOLT        Delete User
+    DELETE TYPE=DEPT,ID=TSO            Delete Department
+    DELETE TYPE=DEPT,ID=CICS           Delete Department
+    DELETE TYPE=DEPT,ID=VIRTELT        Delete Department
+    //*
+    //VIRLOAD  EXEC PGM=VIRCONF,PARM='LOAD,REPL,LANG=EN'
+    //VIRARBO  DD  DISP=SHR,DSN=&ARBO
+    //STEPLIB  DD  DISP=SHR,DSN=&LOAD
+    //SYSUDUMP DD  SYSOUT=*
+    //SYSPRINT DD  SYSOUT=*
+    //SYSIN    DD  *
+        DEPT     ID=VIRTELT,
+                DESC=VIRTELT,
+                OWNER=SPTHOLT
+        DEPT     ID=CICS,
+                DESC='CICS DEPARTMENT',
+                PROFILE=(SPCICST,DBDCCICS,SPCICSP),
+                OWNER=CTKHOLT
+        DEPT     ID=TSO,
+                DESC='TSO DEPARTMENT',
+                PROFILE=(TSO),
+                OWNER=SPTHOLT1
+    *-------------------------------------------------------------------*
+    *APPLICATION PROFILES POINTING TO USER RESOURCES                    *
+    *-------------------------------------------------------------------*
+        PROFILE  ID=CICSAPP1,                                            -
+                DESC='CICSAPP1 PROFILE',                                -
+                DEPT=CICS,                                              -
+                RESOURCE=(10002666,                                     -
+                10002714)
+        PROFILE  ID=DBDCCICS,
+            (EN) DESC='DBDCCICS PROFILE',
+                DEPT=CICS,
+                RESOURCE=(CTKHLT1,CTKHOLT,10002714,10002666)
+        PROFILE  ID=SPCICST,
+            (EN) DESC='SPCICST PROFILE',
+                DEPT=CICS,
+                RESOURCE=(CTKHLT1,SPTHOLT1,CTKHOLT)
+        PROFILE  ID=SPCICSP,
+            (EN) DESC='SPCICSP PROFILE',
+                DEPT=CICS,
+                RESOURCE=(CTKHOLT)
+        PROFILE  ID=TSO,
+            (EN) DESC='TSO PROFILE',
+                DEPT=TSO
+    *-------------------------------------------------------------------*
+    *USER RESOURCES RELATED TO APPLICATION PROFILES                     *
+    *-------------------------------------------------------------------*
+        RESOURCE ID=CTKHOLT,
+            (EN) DESC='User CTKHOLT',
+                DEPT=VIRTELT
+        RESOURCE ID=CTKHLT1,
+            (EN) DESC='User CTKHLT1',
+                DEPT=VIRTELT
+        RESOURCE ID=SPTHOLT1,
+            (EN) DESC='User SPTHOLT1',
+                DEPT=VIRTELT
+        RESOURCE ID=10002666,
+            (EN) DESC='User 10002666',
+                DEPT=VIRTELT
+        RESOURCE ID=10002714,
+            (EN) DESC='User 10002714',
+                DEPT=VIRTELT
+    *-------------------------------------------------------------------*
+    *USER IDS POINTING to USERID PROFILES                               *
+    *-------------------------------------------------------------------*
+        USER     ID=SPTHOLT,
+            (EN) NAME='Ed Holt',
+                DEPT=VIRTELT,
+                PASSWORD=PASSWORD,
+                ADMIN=1,
+                ASSIST=0,
+                PROFILE=SPTHOLT
+        USER     ID=CTKHOLT,
+            (EN) NAME='Neils Bohr',
+                DEPT=CICS,
+                PASSWORD=PASSWORD,
+                ADMIN=0,
+                ASSIST=0,
+                PROFILE=CTKHOLT
+        USER     ID=CTKHLT1,
+            (EN) NAME='Pablo Escobar',
+                DEPT=TSO,
+                PASSWORD=PASSWORD,
+                ADMIN=0,
+                ASSIST=0,
+                PROFILE=CTKHLT1
+        USER     ID=SPTHOLT1,
+            (EN) NAME='Taylor Swifty',
+                DEPT=TSO,
+                PASSWORD=PASSWORD,
+                ADMIN=0,
+                ASSIST=0,
+                PROFILE=SPTHOLT1
+        USER     ID=10002666,                                            -
+            (EN) NAME='Walter Mitty',                                    -
+                DEPT=CICS,                                              -
+                ADMIN=0,                                                -
+                ASSIST=0,                                               -
+                PROFILE=(10002666)
+        USER     ID=10002714,                                            -
+            (EN) NAME='James Bond',                                    -
+                DEPT=CICS,                                              -
+                ADMIN=0,                                                -
+                ASSIST=0,                                               -
+                PROFILE=(10002714)
+    *-------------------------------------------------------------------*
+    *USER PROFILES RELATED TO USERID AND POINTING TO TERMINAL RESOURCES *
+    *-------------------------------------------------------------------*
+    * User Profiles
+        PROFILE  ID=SPTHOLT,
+            (EN) DESC='SPTHOLT Resources',
+                DEPT=VIRTELT,
+                RESOURCE=(REHVT021)
+    *
+        PROFILE  ID=CTKHOLT,
+            (EN) DESC='CTKHOLT Resources',
+                DEPT=VIRTELT,
+                RESOURCE=(R+VT023,R+VT029,R+VT031)
+    *
+        PROFILE  ID=CTKHLT1,
+            (EN) DESC='CTKHLT1 Resources',
+                DEPT=VIRTELT,
+                RESOURCE=(REHVT024)
+
+        PROFILE  ID=SPTHOLT1,
+            (EN) DESC='SPTHOLT1 Resources',
+                DEPT=VIRTELT,
+                RESOURCE=(REHVT022)
+
+        PROFILE  ID=10002666,                                            -
+                DESC='10002666 Resources',                              -
+                DEPT=VIRTELT,                                           -
+                RESOURCE=(REHVT026,REHVT027)
+
+        PROFILE  ID=10002714,                                            -
+                DESC='10002714 Resources',                           -
+                DEPT=VIRTELT,                                           -
+                RESOURCE=(R+VT036)
+    *-------------------------------------------------------------------*
+    *TERMINAL RESOURCES RELATED TO USER PROFILES                        *
+    *-------------------------------------------------------------------*
+        RESOURCE ID=REHVT021,
+            (EN) DESC='Terminal REHVT021',
+                DEPT=VIRTELT
+        RESOURCE ID=REHVT022,
+            (EN) DESC='Terminal REHVT022',
+                DEPT=VIRTELT
+        RESOURCE ID=R+VT023,
+            (EN) DESC='Terminal REH+023',
+                DEPT=VIRTELT
+        RESOURCE ID=REHVT024,
+            (EN) DESC='Terminal REHVT024',
+                DEPT=VIRTELT
+        RESOURCE ID=REHVT026,
+            (EN) DESC='Terminal REHVT026',
+                DEPT=VIRTELT
+        RESOURCE ID=REHVT027,
+            (EN) DESC='Terminal REHVT027',
+                DEPT=VIRTELT
+        RESOURCE ID=R+VT029,
+            (EN) DESC='Terminal R+VT029',
+                DEPT=VIRTELT
+        RESOURCE ID=R+VT031,
+            (EN) DESC='Terminal REH+031',
+                DEPT=VIRTELT
+        RESOURCE ID=R+VT036,
+            (EN) DESC='Terminal R+VT036',
+                DEPT=VIRTELT
+    *-------------------------------------------------------------------*
+    *NEW TRANSACTION                                                    *
+    *-------------------------------------------------------------------*
+    TRANSACT ID=CLI-12,
+                NAME=SPCICST,
+                DESC='Test CICS',
+                APPL=SPCICST,
+                PASSTCKT=0,
+                TYPE=1,
+                TERMINAL=CLVTA,
+                STARTUP=1,
+                SECURITY=1
+    *-------------------------------------------------------------------*
+    *NEW TRANSACTION                                                    *
+    *-------------------------------------------------------------------*
+    TRANSACT ID=CLI-13,
+                NAME=SPCICSP,
+                DESC='Production CICS',
+                APPL=SPCICSP,
+                PASSTCKT=0,
+                TYPE=1,
+                TERMINAL=CLVTA,
+                STARTUP=1,
+                SECURITY=1
+    /*
+
 
 Trademarks
 ----------
