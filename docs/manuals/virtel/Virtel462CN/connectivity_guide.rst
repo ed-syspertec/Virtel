@@ -5220,9 +5220,11 @@ While most mainframe applications will accept a connection from any LU name, cer
 
 -  By IP address
 
--  By cookie
+-  By Cookie
 
 -  By URL
+
+-  By Userid  
 
 Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V462CN_VirtelRules>` for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation. 
 
@@ -5361,7 +5363,7 @@ The definition of the terminal pool \*MYPOOL contains mask characters in the “
 |image14|
 *Terminal pool definition using non-predefined LU names*
 
-..note:
+.. note::
 
     The name of the pool is only used to match the pool to its associated line.
 
@@ -5432,7 +5434,6 @@ Now you can define your first user.  From the VIRTEL Configuration Menu, press F
 - Replace RHTVT003 by the LU name to be assigned to this user
 
 .. note::
-
     The LU name must be defined in a VIRTEL pool.
 
 Leave the “Rule Set” and “Directory” fields blank. Now press Enter. You should get the message “CREATION OK”. For further information on "Correspondent Mangement" refer to the Virtel Users Guide. 
@@ -5466,8 +5467,6 @@ Using the cookie
 ^^^^^^^^^^^^^^^^
 
 Having installed the cookie on the workstation, now whenever this user calls up a VIRTEL web page, VIRTEL will recognize that the cookie matches the one previously sent to john.user, and so it will assign the LU name RHTVT003 when connecting to a host application.
-
-
 
 .. raw:: latex
 
@@ -5523,7 +5522,338 @@ Note the use of pattern characters when defining the range. In this example we h
     \newpage 
 
 .. index::
-   pair: Controlling LUNAMEs; Comparison table
+   pair: Controlling LUNAMEs; By Userid    
+
+LU Nailing by Userid
+--------------------
+
+Two options are available to nail a terminal to a supplied userid. Ther are: -
+
+- Using the RACF installation data contained with the users RACF profile.
+- Using ARBO definitions to construct an internal table space of userid, application and terminal associations.  
+
+LU Nailing using RACF
+^^^^^^^^^^^^^^^^^^^^^
+
+LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: -
+
+http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT
+
+The URL will be inspected by the identification scenario and will allocate a specific LU based upon the information found in the RACF installation DATA field. The following RACF actions need to be taken to allow access and extract of the installation data :-
+
+::
+
+    1.	Permit access to IRR.RADMIN for the Virtel STC group/user id. 
+
+  	PE IRR.RADMIN.**            CLASS(FACILITY) ID(SPGPTECH) ACCESS(READ)
+ 	PE IRR.RADMIN.LISTUSER      CLASS(FACILITY) ID(SPGPTECH) ACCESS(READ)
+ 	SETR REFRESH RACLIST(FACILITY)     
+                                  
+    2.	Update a user(s) profile. Add the LU name to be used. In this example we are using a 5 character data string in the format Tabcd where abcd will form the last four characters of the LU terminal we which to use.
+ 
+    ALU SPTHOLT DATA('TXBP9') 
+ 	    LU SPTHOLT                
+
+The identification scenario (SCENRACF) will, through a service routine(SERVRACF) and supporting utility(VIR00087), access the user’s RACF profile and return a 5 character string. Using the returned string the scenario will then build the LU name, in the sample case this is CSXDXBP9. A session is then allocated with target transaction using the nailed LU CSXDXBP9. The sample modules in SAMPLIB are provided as a guide and can be modified to specific requirements. 
+
+To install the samples, customize and run the samplib job LUNAILRC. This will assemble modules SCENRACF, SERVRACF and VIR00087 and will link them into the Virtel LOADLIB. Next, the Virtel configuration needs to be modified. A seperate line is defined which will call the identification scenario, An Entry point and terminal definitions are also defined to complete the configuration changes. These configuration changes will be used when to support LU nailing with RACF.
+
+A line definition is created with a corressponding Entry point and terminal pool definitions.
+
+|image135|
+*Line definition for RACF Lu nailing*
+
+The line definition will use terminals prefixed by the character string CX. Next, an Entry point associated with the line is created. In this case the entry point is called CSX2HOST. It will host transactions prefix CSA and will use an identification scenario called CSXRACFS based on the SAMPLIB member SCENRACF.
+
+|image136|
+*Entry point defining identification scenario for RACF Lu nailing*
+
+Some terminal definitions are created to support the dynamic LU names that will be built from the RACF installation data. These must be prefixed with teh characters CX as per the line definition.
+
+|image137|
+*Terminal pool and terminal definitions for RACF Lu nailing*
+ 
+When a incoming connection is detected on the line the identification scenario(CSXRACFS) will extract the userid from the URL keyword parameter USERNAME. In the sample case this is USERNAME=SPTHOLT.The scenario calls the VIRSV service program(SERVRACF) which internally calls the RACF extract program (VIR0087) to extract the installation data from the SPTHOLT RACF profile through the services of the standard RACF API IRRSEQ00 program. The service program returns the character string and makes it available to the scenario which then builds the nailed LU name. The scenario finishes by completing the session setup and establishes a VTAM session with the target 3270 application using the nailed LU name.
+
+Output messages from the scenario
+
+::
+
+    21.17.31 JOB06669  VIRT906I HTTP-CSX SOCKET 00060000 CALL FROM 192.168.092.035:54259            
+    21.17.31 JOB06669  VIRT906I HTTP-CSX SOCKET 00040000 CALL FROM 192.168.092.035:54260            
+    21.17.31 JOB06669  VIRHT51I HTTP-CSX CONNECTING CXVTA075 TO 192.168.092.035:54259               
+    21.17.31 JOB06669  CSXRACFS Calling VIR0087 WITH IP=192.168.092.035,USERNAME=SPTHOLT           
+    21.17.31 JOB06669  CSXRACFS Userdata = TXBP9                                                    
+    21.17.32 JOB06669  CSXRACFS Allocating LUNAME = CSXDXBP9                                        
+    21.17.32 JOB06669  VIR0919I CXVTA075 RELAY CSXDXBP9(CXHDXBP0) ACTIVATED
+    
+LU Nailing using ARBO defininitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
+
+New TCT option
+^^^^^^^^^^^^^^
+
+A new option has been added to the TCT which enables user function support, of which the Relay feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: -
+
+::
+
+    USERFUNC=YES,		Enable User functions
+
+ARBO Table space construts
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The internal ARBO table space is a tree structure built using the following constructs.
+
+**Departments**
+Departments (synonymous with a Group) are setup to group together the other user relay definitions – Profile, User, Resource. A department is administered by one userid, note the ADMIN=1 in the USER definition. USER, PROFILE and RESOURCE statement are used to define the relationships between applications and relay terminal resources.
+
+**Application profiles**
+An application profile defines an application that is protected and lists the user resources that can access the application. An application profile is owned by a department.
+
+**User Resources**
+These resource definitions represent the users that are referred to by the application profiles. Theses entities are not the same as a USER entry.
+
+**User Entries**
+These define the users associated with departments, whether they are administrators, and if terminal resources are allocated to them for the purposes of terminal nailing. A user entry points to a user profile and is associated with a department. A user, defined as an administrator can update the ARBO definitions online using the Security sub-application within Virtel.
+
+**User profiles**
+User profiles define the related terminal resources allocated to them and used in terminal nailing. A user profile can define a list of terminal resources.
+
+**Terminal Resources**
+Theses resources define the VTAM relay LU names to be used in the nailing of terminals. These entities are referenced by the user profile. The + symbol can be used in the name. This will be replaced by the CLONE or &SYSCLONE symbolic. For this to be active the SYSPLUS=YES parameter must be specified in the TCT.
+
+.. raw:: latex
+
+    \newpage 
+
+**Appendix A** contains sample ARBO statements to define a User Function Relay tablespace. The sample is broken down into the following components and entities: -
+
+In the sample definitions we have: - 
+
+**DEPT** Statement – Used to group entities.
+
+::
+
+    VIRTELT	Owner of terminal resources 
+    CICS    Groups CICS Application profiles SPCICST and DBDCCICS 
+    TSO		Groups TSO Application profile
+
+Application **PROFILE** Statement – Used to define Protected Applications.
+
+::
+
+    DBDCCICS	Groups User resources (CTKHOLT1,CTKHOLT,100002714,10002666)
+    SPCICST	    Groups User resources (CTKHLT1,SPTHOLT1,CTKHOLT)
+    SPCICSP	    Groups User resources (CTKHOLT)
+    TSO		    Groups User resources 
+
+User **Resource** Statement – User entities related to Applications.
+
+::
+
+    CTKHOLT, CTKHLT1, SPTHOLT1,10002666, 10002714
+
+User **Profile** Statement – Identify Users, user type and associated user profiles.
+
+::
+
+    SPTHOLT	    Profile SPTHOLT	Administrator	DEPT=VIRTELT	
+    CTKHOLT	    Profile CTKHOLT				    DEPT=CICS
+    CTKHLT1	    Profile CTKHLT1				    DEPT=TSO
+    SPTHOLT1	Profile SPTHOLT1				DEPT=TSO
+    10002666	Profile 10002666				DEPT=CICS
+    10002714	Profile	10002714				DEPT=CICS
+
+User **Resource** Statement – Used to associate Terminal resources.
+::
+
+    SPTHOLT	    Resources=REHVT021 	
+    CTKHOLT	    Resources=(R+VT023,R+VT029,R+VT031)
+    CTKHLT1	    Resources=REHVT024
+    SPTHOLT1	Resources=REHVT022
+    10002666	Resources=(REHVT026,REHVT027) 
+    I0002714	Resources=(R+VT036)
+
+Terminal **Resource** Statements – Terminal entities related to LU relays.
+::
+
+    REHVT021, REHVT022, REH+023, REHVT024, REHVT026, REHVT027, R+VT029,REH+031, R+VT036
+
+.. note::
+    The + symbol in the resource name will be replaced by the CLONE or &SYSCLONE symbolic. SYSPLUS=YES must be specified in the TCT
+
+The statements provide two levels of security. The first is application protection and defining which user can access a particular application. This is referred to as application nailing. Secondly, terminal security. Defining which specific terminal resources, if any, must be allocated to a userid. This is referred to as terminal nailing. The levels are applied using an AND | OR logic. So, a userid can access any application, but may be restricted to a particular LU relay name. Or a protected application will only allow certain userids access, but those userids can then use any LU relay name from the dynamic pool definition if they are also not restricted to a nailed terminal resource. 
+
+The following tables shows an the allocated LU relay terminals for Userid CTKHOLT and SPTHOLT based upon the sample definitions in Appendix A. Terminals in Italics indicate that an application and/or terminal has been nailed to a specific LU relay name. By default, Virtel allocates VTAM relay names from a predefined terminal pools or list. 
+
++------------+---------------+-------------+--------------+---------------+
+| **Userid** | **DBDCCICS**  | ** TSO **   | **SPCICST**  |  **SPCICSP**  |
++============+===============+=============+==============+===============+
+|   SPTHOLT  |	 REHVT001    | *REHVT021*  |  REHVT002    |   REHVT003    |
++------------+---------------+-------------+--------------+---------------+
+|   CTKHOLT  |  *REHVT023*   | *REHVT029*  | *REHVT031*   |   REHVT000    |
++------------+---------------+-------------+--------------+---------------+
+
+
+Example of the Virtel nailing messages for user CTKHOLT
+
+::
+
+    12.56.53 JOB03981  VIR0874I CLVTA079 NAILING RESOURCE CTKHOLT  FOR USERID CTKHOLT .APPLICATION=DBDCCICS          
+    12.56.53 JOB03981  VIR0874I CLVTA079 NAILING RESOURCE REHVT023 FOR USERID CTKHOLT .APPLICATION=DBDCCICS          
+    12.56.53 JOB03981  VIR0919I CLVTA079 RELAY REHVT023(W2HTP023) ACTIVATED                                          
+    12.56.53 JOB03981  VIR0919I CLVTA079 RELAY REHIM023(W2HIM023) ACTIVATED                                          
+    12.56.56 JOB03981  VIR0874I CLVTA078 NAILING RESOURCE REHVT029 FOR USERID CTKHOLT .APPLICATION=TSO               
+    12.56.56 JOB03981  VIR0919I CLVTA078 RELAY REHVT029(W2HTP029) ACTIVATED                                          
+    12.56.56 JOB03981  VIR0919I CLVTA078 RELAY REHIM029(W2HIM029) ACTIVATED                                          
+    12.57.00 JOB03981  VIR0874I CLVTA077 NAILING RESOURCE CTKHOLT  FOR USERID CTKHOLT .APPLICATION=SPCICST           
+    12.57.00 JOB03981  VIR0874I CLVTA077 NAILING RESOURCE REHVT031 FOR USERID CTKHOLT .APPLICATION=SPCICST           
+    12.57.00 JOB03981  VIR0919I CLVTA077 RELAY REHVT031(W2HTP031) ACTIVATED                                          
+    12.57.00 JOB03981  VIR0919I CLVTA077 RELAY REHIM031(W2HIM031) ACTIVATED                                          
+    12.57.03 JOB03981  VIR0874I CLVTA076 NAILING RESOURCE CTKHOLT  FOR USERID CTKHOLT .APPLICATION=SPCICSP           
+    12.57.03 JOB03981  VIR0919I CLVTA076 RELAY REHVT000(W2HTP000) ACTIVATED                                          
+    12.57.03 JOB03981  VIR0919I CLVTA076 RELAY REHIM000(W2HIM000) ACTIVATED                                          
+
+.. raw:: latex
+
+    \newpage 
+
+Admin 3270 Security Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Admin 3270 Security (F4) application, accessible from the Virtel 3270 Admin Menu, displays the ARBO table space. The tablespace can be modified online with changes being written back to the ARBO file. Modifications are not persisted through to the active ARBO TS (Table Space) in Virtel. Any changes made online will still require a stop and restart of Virtel to rebuild the ARBO table space.
+
+Using the Application
+^^^^^^^^^^^^^^^^^^^^^
+
+Select the Admin (3270) option from the 3270 ADMIN main menu display normally found on port 40001. This will bring up the Configuration Menu. 
+
+|image138|
+*Admin Configuration Menu*
+
+From the configuration menu, select PF4 to access the Security Management Sub-Application. The Security Management Menu panel will be presented.
+
+
+|image139|
+*Security Management Menu*
+
+From here we can select the sub-menus for Resources, Profiles, Users, Administration. 
+ 
+Sub-Menu Resources Management (F1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From this menu you can select one of the following three actions
+
+**Add a Resource**
+
+|image140|
+*Add a Resource*
+
+**Display, Update or Delete a Resource**
+
+|image141|
+*Display, Update or Delete a Resource*
+
+**Resource Usage**
+
+|image142|
+*Resource Usage*
+
+Sub-Menu Profile Management (F2)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From this menu you can select one of the following three actions
+
+**Add a Profile**
+
+|image143|
+*Add a Profile*
+
+.. note::
+    Resources can be entered manually of selected from the Resource List pages(s).
+
+**Display, Update or Delete a Profile**
+
+|image144|
+*Display, Update or Delete a Profile*
+
+.. note::
+    Resources can be entered manually of selected from the Resource List pages(s).
+
+**List Profiles**
+
+|image145|
+*List Profiles*
+
+**Profile Usage**
+
+|image146|
+*Profile Usage*
+
+**Profile Detail**
+
+|image147|
+*Profile Detail*
+  
+**Copy Profiles**
+
+|image148|
+*Copy Profile*
+ 
+Sub Menu User Management (F3)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+**Add a User**
+
+|image149|
+*Add a User*
+ 
+**Display, Update or Delete a User**
+
+|image150|
+*Display, Update or Delete a User*
+
+**List Users**
+
+|image151|
+*List Users*
+
+Sub Menu Administration Management (F4)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Admin Management Menu**
+
+|image152|
+*Admin Management Menu*
+
+**Add a department**
+
+|image153|
+*Add a Department*
+
+**Display, Update or Delete a department**
+
+|image154|
+*Display, Update or Delete a department**
+
+**Add, Delete or Display Administrators**
+
+|image155|
+*Add, Delete or Display Administrators*
+
+**Password Management**
+
+.. note::
+    Only applicable if you are using Virtel Security.
+
+|image156|
+*Password Management*
+
+.. index::
+    pair: Nailing LU names; Comparison table
+
 
 Comparison Table
 ----------------
@@ -5535,11 +5865,13 @@ Comparison Table
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
 | By $URL$ - LUNAME in URL      | Yes. 1 generic Rule.      | Yes. Individual or group   | No        | Yes                  |
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
-| ForceLUNAME                   | No                        | No                         | No        | Yes                  |
+| ForceLUNAME                   | No                        | No                         | No        | Yes                  | 
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
 | By IP (Correspondent)         | Yes                       | Yes                        | Yes       | Yes                  |
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
-| By IP                         | Yes                       | Yes                        | No        | Yes                  |
+| By IP                         | Yes                       | Yes                        | No        | Yes                  | 
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By RACF                       | No                        | Yes. Individual or group   | No        | Yes                  |
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
 
 .. index::
@@ -7339,6 +7671,7 @@ Using Virtel Rules we can compare the calling IP address and if it doesn’t mat
 	STARTUP=2,
 	SECURITY=0
 
+::
 So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule – in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
 For line 41003, using Entry Point EPNSEC, this will contain a list of W2H transactions which use standard RACF protection.
 
@@ -7367,7 +7700,9 @@ In the following example, the default template EPREJECT.HTM, which is associated
 
 This template must exist in the CLI-DIR directory as this is where the Entry Point EPREJECT expects to find them. When the template is served it will display the companies “public” web site.
 
-To upload the ARBO statements to your ARBO use the following JCL:- ::
+To upload the ARBO statements to your ARBO use the following JCL:- 
+
+::
 
 	//*
 	// SET LOAD=HLQ.VIRTNNN.LOADLIB
@@ -7393,10 +7728,10 @@ To upload the ARBO statements to your ARBO use the following JCL:- ::
 	//VIRARBO DD DSN=&ARBO,DISP=SHR
 	//SYSIN DD *
         RULE Definitions
-    /* 
+    /*
 
 Appendix
-========
+--------
 
 Trademarks
 ----------
@@ -7563,4 +7898,26 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image131| image:: images/media/image131.png
 .. |image132| image:: images/media/image132.png    
 .. |image133| image:: images/media/image133.png
-.. |image134| image:: images/media/image134.png     
+.. |image134| image:: images/media/image134.png
+.. |image135| image:: images/media/image135.png
+.. |image136| image:: images/media/image136.png
+.. |image137| image:: images/media/image137.png
+.. |image138| image:: images/media/image138.png
+.. |image139| image:: images/media/image139.png  
+.. |image140| image:: images/media/image140.png
+.. |image141| image:: images/media/image141.png   
+.. |image142| image:: images/media/image142.png            
+.. |image143| image:: images/media/image143.png
+.. |image144| image:: images/media/image144.png
+.. |image145| image:: images/media/image145.png
+.. |image146| image:: images/media/image146.png
+.. |image147| image:: images/media/image147.png
+.. |image148| image:: images/media/image148.png
+.. |image149| image:: images/media/image149.png
+.. |image150| image:: images/media/image150.png
+.. |image151| image:: images/media/image151.png
+.. |image152| image:: images/media/image152.png    
+.. |image153| image:: images/media/image153.png
+.. |image154| image:: images/media/image154.png
+.. |image155| image:: images/media/image155.png
+.. |image156| image:: images/media/image156.png

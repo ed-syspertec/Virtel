@@ -53,7 +53,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Feb 17, 2024}
+\date{May 05, 2024}
 \release{4.62}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -7054,11 +7054,15 @@ By IP address
 
 \item {} 
 \sphinxAtStartPar
-By cookie
+By Cookie
 
 \item {} 
 \sphinxAtStartPar
 By URL
+
+\item {} 
+\sphinxAtStartPar
+By Userid
 
 \end{itemize}
 
@@ -7241,13 +7245,10 @@ The definition of the terminal pool *MYPOOL contains mask characters in the “R
 \sphinxincludegraphics{{image14}.png}
 \sphinxstyleemphasis{Terminal pool definition using non\sphinxhyphen{}predefined LU names}
 
-\sphinxAtStartPar
-..note:
-\begin{quote}
-
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 The name of the pool is only used to match the pool to its associated line.
-\end{quote}
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo\sphinxhyphen{} terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
@@ -7452,10 +7453,477 @@ Note the use of pattern characters when defining the range. In this example we h
 
 \newpage
 
-\index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Comparison table@\spxentry{Comparison table}}\index{Comparison table@\spxentry{Comparison table}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
+\index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!By Userid@\spxentry{By Userid}}\index{By Userid@\spxentry{By Userid}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
+
+\section{LU Nailing by Userid}
+\label{\detokenize{connectivity_guide:lu-nailing-by-userid}}\label{\detokenize{connectivity_guide:index-155}}
+\sphinxAtStartPar
+Two options are available to nail a terminal to a supplied userid. Ther are: \sphinxhyphen{}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Using the RACF installation data contained with the users RACF profile.
+
+\item {} 
+\sphinxAtStartPar
+Using ARBO definitions to construct an internal table space of userid, application and terminal associations.
+
+\end{itemize}
+
+
+\subsection{LU Nailing using RACF}
+\label{\detokenize{connectivity_guide:lu-nailing-using-racf}}
+\sphinxAtStartPar
+LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: \sphinxhyphen{}
+
+\sphinxAtStartPar
+\sphinxurl{http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT}
+
+\sphinxAtStartPar
+The URL will be inspected by the identification scenario and will allocate a specific LU based upon the information found in the RACF installation DATA field. The following RACF actions need to be taken to allow access and extract of the installation data :\sphinxhyphen{}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{l+m+mf}{1.}  \PYG{n}{Permit} \PYG{n}{access} \PYG{n}{to} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RADMIN} \PYG{k}{for} \PYG{n}{the} \PYG{n}{Virtel} \PYG{n}{STC} \PYG{n}{group}\PYG{o}{/}\PYG{n}{user} \PYG{n+nb}{id}\PYG{o}{.}
+
+    \PYG{n}{PE} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RADMIN}\PYG{o}{.}\PYG{o}{*}\PYG{o}{*}            \PYG{n}{CLASS}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPGPTECH}\PYG{p}{)} \PYG{n}{ACCESS}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)}
+    \PYG{n}{PE} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RADMIN}\PYG{o}{.}\PYG{n}{LISTUSER}      \PYG{n}{CLASS}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPGPTECH}\PYG{p}{)} \PYG{n}{ACCESS}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)}
+    \PYG{n}{SETR} \PYG{n}{REFRESH} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)}
+
+\PYG{l+m+mf}{2.}  \PYG{n}{Update} \PYG{n}{a} \PYG{n}{user}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{profile}\PYG{o}{.} \PYG{n}{Add} \PYG{n}{the} \PYG{n}{LU} \PYG{n}{name} \PYG{n}{to} \PYG{n}{be} \PYG{n}{used}\PYG{o}{.} \PYG{n}{In} \PYG{n}{this} \PYG{n}{example} \PYG{n}{we} \PYG{n}{are} \PYG{n}{using} \PYG{n}{a} \PYG{l+m+mi}{5} \PYG{n}{character} \PYG{n}{data} \PYG{n}{string} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n+nb}{format} \PYG{n}{Tabcd} \PYG{n}{where} \PYG{n}{abcd} \PYG{n}{will} \PYG{n}{form} \PYG{n}{the} \PYG{n}{last} \PYG{n}{four} \PYG{n}{characters} \PYG{n}{of} \PYG{n}{the} \PYG{n}{LU} \PYG{n}{terminal} \PYG{n}{we} \PYG{n}{which} \PYG{n}{to} \PYG{n}{use}\PYG{o}{.}
+
+\PYG{n}{ALU} \PYG{n}{SPTHOLT} \PYG{n}{DATA}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TXBP9}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{LU} \PYG{n}{SPTHOLT}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The identification scenario (SCENRACF) will, through a service routine(SERVRACF) and supporting utility(VIR00087), access the user’s RACF profile and return a 5 character string. Using the returned string the scenario will then build the LU name, in the sample case this is CSXDXBP9. A session is then allocated with target transaction using the nailed LU CSXDXBP9. The sample modules in SAMPLIB are provided as a guide and can be modified to specific requirements.
+
+\sphinxAtStartPar
+To install the samples, customize and run the samplib job LUNAILRC. This will assemble modules SCENRACF, SERVRACF and VIR00087 and will link them into the Virtel LOADLIB. Next, the Virtel configuration needs to be modified. A seperate line is defined which will call the identification scenario, An Entry point and terminal definitions are also defined to complete the configuration changes. These configuration changes will be used when to support LU nailing with RACF.
+
+\sphinxAtStartPar
+A line definition is created with a corressponding Entry point and terminal pool definitions.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image135}.png}
+\sphinxstyleemphasis{Line definition for RACF Lu nailing}
+
+\sphinxAtStartPar
+The line definition will use terminals prefixed by the character string CX. Next, an Entry point associated with the line is created. In this case the entry point is called CSX2HOST. It will host transactions prefix CSA and will use an identification scenario called CSXRACFS based on the SAMPLIB member SCENRACF.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image136}.png}
+\sphinxstyleemphasis{Entry point defining identification scenario for RACF Lu nailing}
+
+\sphinxAtStartPar
+Some terminal definitions are created to support the dynamic LU names that will be built from the RACF installation data. These must be prefixed with teh characters CX as per the line definition.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image137}.png}
+\sphinxstyleemphasis{Terminal pool and terminal definitions for RACF Lu nailing}
+
+\sphinxAtStartPar
+When a incoming connection is detected on the line the identification scenario(CSXRACFS) will extract the userid from the URL keyword parameter USERNAME. In the sample case this is USERNAME=SPTHOLT.The scenario calls the VIRSV service program(SERVRACF) which internally calls the RACF extract program (VIR0087) to extract the installation data from the SPTHOLT RACF profile through the services of the standard RACF API IRRSEQ00 program. The service program returns the character string and makes it available to the scenario which then builds the nailed LU name. The scenario finishes by completing the session setup and establishes a VTAM session with the target 3270 application using the nailed LU name.
+
+\sphinxAtStartPar
+Output messages from the scenario
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.31} \PYG{n}{JOB06669}  \PYG{n}{VIRT906I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{CSX} \PYG{n}{SOCKET} \PYG{l+m+mi}{00060000} \PYG{n}{CALL} \PYG{n}{FROM} \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.092}\PYG{l+m+mf}{.035}\PYG{p}{:}\PYG{l+m+mi}{54259}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.31} \PYG{n}{JOB06669}  \PYG{n}{VIRT906I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{CSX} \PYG{n}{SOCKET} \PYG{l+m+mi}{00040000} \PYG{n}{CALL} \PYG{n}{FROM} \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.092}\PYG{l+m+mf}{.035}\PYG{p}{:}\PYG{l+m+mi}{54260}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.31} \PYG{n}{JOB06669}  \PYG{n}{VIRHT51I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{CSX} \PYG{n}{CONNECTING} \PYG{n}{CXVTA075} \PYG{n}{TO} \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.092}\PYG{l+m+mf}{.035}\PYG{p}{:}\PYG{l+m+mi}{54259}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.31} \PYG{n}{JOB06669}  \PYG{n}{CSXRACFS} \PYG{n}{Calling} \PYG{n}{VIR0087} \PYG{n}{WITH} \PYG{n}{IP}\PYG{o}{=}\PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.092}\PYG{l+m+mf}{.035}\PYG{p}{,}\PYG{n}{USERNAME}\PYG{o}{=}\PYG{n}{SPTHOLT}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.31} \PYG{n}{JOB06669}  \PYG{n}{CSXRACFS} \PYG{n}{Userdata} \PYG{o}{=} \PYG{n}{TXBP9}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.32} \PYG{n}{JOB06669}  \PYG{n}{CSXRACFS} \PYG{n}{Allocating} \PYG{n}{LUNAME} \PYG{o}{=} \PYG{n}{CSXDXBP9}
+\PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.32} \PYG{n}{JOB06669}  \PYG{n}{VIR0919I} \PYG{n}{CXVTA075} \PYG{n}{RELAY} \PYG{n}{CSXDXBP9}\PYG{p}{(}\PYG{n}{CXHDXBP0}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\end{sphinxVerbatim}
+
+
+\subsection{LU Nailing using ARBO defininitions}
+\label{\detokenize{connectivity_guide:lu-nailing-using-arbo-defininitions}}
+\sphinxAtStartPar
+LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
+
+
+\subsection{New TCT option}
+\label{\detokenize{connectivity_guide:new-tct-option}}
+\sphinxAtStartPar
+A new option has been added to the TCT which enables user function support, of which the Relay feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: \sphinxhyphen{}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{USERFUNC}\PYG{o}{=}\PYG{n}{YES}\PYG{p}{,}               \PYG{n}{Enable} \PYG{n}{User} \PYG{n}{functions}
+\end{sphinxVerbatim}
+
+
+\subsection{ARBO Table space construts}
+\label{\detokenize{connectivity_guide:arbo-table-space-construts}}
+\sphinxAtStartPar
+The internal ARBO table space is a tree structure built using the following constructs.
+
+\sphinxAtStartPar
+\sphinxstylestrong{Departments}
+Departments (synonymous with a Group) are setup to group together the other user relay definitions \textendash{} Profile, User, Resource. A department is administered by one userid, note the ADMIN=1 in the USER definition. USER, PROFILE and RESOURCE statement are used to define the relationships between applications and relay terminal resources.
+
+\sphinxAtStartPar
+\sphinxstylestrong{Application profiles}
+An application profile defines an application that is protected and lists the user resources that can access the application. An application profile is owned by a department.
+
+\sphinxAtStartPar
+\sphinxstylestrong{User Resources}
+These resource definitions represent the users that are referred to by the application profiles. Theses entities are not the same as a USER entry.
+
+\sphinxAtStartPar
+\sphinxstylestrong{User Entries}
+These define the users associated with departments, whether they are administrators, and if terminal resources are allocated to them for the purposes of terminal nailing. A user entry points to a user profile and is associated with a department. A user, defined as an administrator can update the ARBO definitions online using the Security sub\sphinxhyphen{}application within Virtel.
+
+\sphinxAtStartPar
+\sphinxstylestrong{User profiles}
+User profiles define the related terminal resources allocated to them and used in terminal nailing. A user profile can define a list of terminal resources.
+
+\sphinxAtStartPar
+\sphinxstylestrong{Terminal Resources}
+Theses resources define the VTAM relay LU names to be used in the nailing of terminals. These entities are referenced by the user profile. The + symbol can be used in the name. This will be replaced by the CLONE or \&SYSCLONE symbolic. For this to be active the SYSPLUS=YES parameter must be specified in the TCT.
+
+\newpage
+
+\sphinxAtStartPar
+\sphinxstylestrong{Appendix A} contains sample ARBO statements to define a User Function Relay tablespace. The sample is broken down into the following components and entities: \sphinxhyphen{}
+
+\sphinxAtStartPar
+In the sample definitions we have: \sphinxhyphen{}
+
+\sphinxAtStartPar
+\sphinxstylestrong{DEPT} Statement \textendash{} Used to group entities.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIRTELT}     \PYG{n}{Owner} \PYG{n}{of} \PYG{n}{terminal} \PYG{n}{resources}
+\PYG{n}{CICS}    \PYG{n}{Groups} \PYG{n}{CICS} \PYG{n}{Application} \PYG{n}{profiles} \PYG{n}{SPCICST} \PYG{o+ow}{and} \PYG{n}{DBDCCICS}
+\PYG{n}{TSO}         \PYG{n}{Groups} \PYG{n}{TSO} \PYG{n}{Application} \PYG{n}{profile}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Application \sphinxstylestrong{PROFILE} Statement \textendash{} Used to define Protected Applications.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DBDCCICS}    \PYG{n}{Groups} \PYG{n}{User} \PYG{n}{resources} \PYG{p}{(}\PYG{n}{CTKHOLT1}\PYG{p}{,}\PYG{n}{CTKHOLT}\PYG{p}{,}\PYG{l+m+mi}{100002714}\PYG{p}{,}\PYG{l+m+mi}{10002666}\PYG{p}{)}
+\PYG{n}{SPCICST}         \PYG{n}{Groups} \PYG{n}{User} \PYG{n}{resources} \PYG{p}{(}\PYG{n}{CTKHLT1}\PYG{p}{,}\PYG{n}{SPTHOLT1}\PYG{p}{,}\PYG{n}{CTKHOLT}\PYG{p}{)}
+\PYG{n}{SPCICSP}         \PYG{n}{Groups} \PYG{n}{User} \PYG{n}{resources} \PYG{p}{(}\PYG{n}{CTKHOLT}\PYG{p}{)}
+\PYG{n}{TSO}             \PYG{n}{Groups} \PYG{n}{User} \PYG{n}{resources}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+User \sphinxstylestrong{Resource} Statement \textendash{} User entities related to Applications.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CTKHOLT}\PYG{p}{,} \PYG{n}{CTKHLT1}\PYG{p}{,} \PYG{n}{SPTHOLT1}\PYG{p}{,}\PYG{l+m+mi}{10002666}\PYG{p}{,} \PYG{l+m+mi}{10002714}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+User \sphinxstylestrong{Profile} Statement \textendash{} Identify Users, user type and associated user profiles.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SPTHOLT}         \PYG{n}{Profile} \PYG{n}{SPTHOLT}     \PYG{n}{Administrator}   \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{VIRTELT}
+\PYG{n}{CTKHOLT}         \PYG{n}{Profile} \PYG{n}{CTKHOLT}                                 \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}
+\PYG{n}{CTKHLT1}         \PYG{n}{Profile} \PYG{n}{CTKHLT1}                                 \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{TSO}
+\PYG{n}{SPTHOLT1}    \PYG{n}{Profile} \PYG{n}{SPTHOLT1}                                \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{TSO}
+\PYG{l+m+mi}{10002666}    \PYG{n}{Profile} \PYG{l+m+mi}{10002666}                                \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}
+\PYG{l+m+mi}{10002714}    \PYG{n}{Profile} \PYG{l+m+mi}{10002714}                                \PYG{n}{DEPT}\PYG{o}{=}\PYG{n}{CICS}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+User \sphinxstylestrong{Resource} Statement \textendash{} Used to associate Terminal resources.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SPTHOLT}         \PYG{n}{Resources}\PYG{o}{=}\PYG{n}{REHVT021}
+\PYG{n}{CTKHOLT}         \PYG{n}{Resources}\PYG{o}{=}\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT023}\PYG{p}{,}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT029}\PYG{p}{,}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT031}\PYG{p}{)}
+\PYG{n}{CTKHLT1}         \PYG{n}{Resources}\PYG{o}{=}\PYG{n}{REHVT024}
+\PYG{n}{SPTHOLT1}    \PYG{n}{Resources}\PYG{o}{=}\PYG{n}{REHVT022}
+\PYG{l+m+mi}{10002666}    \PYG{n}{Resources}\PYG{o}{=}\PYG{p}{(}\PYG{n}{REHVT026}\PYG{p}{,}\PYG{n}{REHVT027}\PYG{p}{)}
+\PYG{n}{I0002714}    \PYG{n}{Resources}\PYG{o}{=}\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{VT036}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Terminal \sphinxstylestrong{Resource} Statements \textendash{} Terminal entities related to LU relays.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{REHVT021}\PYG{p}{,} \PYG{n}{REHVT022}\PYG{p}{,} \PYG{n}{REH}\PYG{o}{+}\PYG{l+m+mi}{023}\PYG{p}{,} \PYG{n}{REHVT024}\PYG{p}{,} \PYG{n}{REHVT026}\PYG{p}{,} \PYG{n}{REHVT027}\PYG{p}{,} \PYG{n}{R}\PYG{o}{+}\PYG{n}{VT029}\PYG{p}{,}\PYG{n}{REH}\PYG{o}{+}\PYG{l+m+mi}{031}\PYG{p}{,} \PYG{n}{R}\PYG{o}{+}\PYG{n}{VT036}
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The + symbol in the resource name will be replaced by the CLONE or \&SYSCLONE symbolic. SYSPLUS=YES must be specified in the TCT
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+The statements provide two levels of security. The first is application protection and defining which user can access a particular application. This is referred to as application nailing. Secondly, terminal security. Defining which specific terminal resources, if any, must be allocated to a userid. This is referred to as terminal nailing. The levels are applied using an AND | OR logic. So, a userid can access any application, but may be restricted to a particular LU relay name. Or a protected application will only allow certain userids access, but those userids can then use any LU relay name from the dynamic pool definition if they are also not restricted to a nailed terminal resource.
+
+\sphinxAtStartPar
+The following tables shows an the allocated LU relay terminals for Userid CTKHOLT and SPTHOLT based upon the sample definitions in Appendix A. Terminals in Italics indicate that an application and/or terminal has been nailed to a specific LU relay name. By default, Virtel allocates VTAM relay names from a predefined terminal pools or list.
+
+
+\begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+\centering
+\begin{tabulary}{\linewidth}[t]{TTTTT}
+\sphinxtoprule
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{Userid}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{DBDCCICS}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+** TSO **
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{SPCICST}
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+\sphinxstylestrong{SPCICSP}
+\\
+\sphinxmidrule
+\sphinxtableatstartofbodyhook
+\sphinxAtStartPar
+SPTHOLT
+&
+\sphinxAtStartPar
+REHVT001
+&
+\sphinxAtStartPar
+\sphinxstyleemphasis{REHVT021}
+&
+\sphinxAtStartPar
+REHVT002
+&
+\sphinxAtStartPar
+REHVT003
+\\
+\sphinxhline
+\sphinxAtStartPar
+CTKHOLT
+&
+\sphinxAtStartPar
+\sphinxstyleemphasis{REHVT023}
+&
+\sphinxAtStartPar
+\sphinxstyleemphasis{REHVT029}
+&
+\sphinxAtStartPar
+\sphinxstyleemphasis{REHVT031}
+&
+\sphinxAtStartPar
+REHVT000
+\\
+\sphinxbottomrule
+\end{tabulary}
+\sphinxtableafterendhook\par
+\sphinxattableend\end{savenotes}
+
+\sphinxAtStartPar
+Example of the Virtel nailing messages for user CTKHOLT
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.53} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA079} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{CTKHOLT}  \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{DBDCCICS}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.53} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA079} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{REHVT023} \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{DBDCCICS}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.53} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA079} \PYG{n}{RELAY} \PYG{n}{REHVT023}\PYG{p}{(}\PYG{n}{W2HTP023}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.53} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA079} \PYG{n}{RELAY} \PYG{n}{REHIM023}\PYG{p}{(}\PYG{n}{W2HIM023}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.56} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA078} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{REHVT029} \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{TSO}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.56} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA078} \PYG{n}{RELAY} \PYG{n}{REHVT029}\PYG{p}{(}\PYG{n}{W2HTP029}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.56}\PYG{l+m+mf}{.56} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA078} \PYG{n}{RELAY} \PYG{n}{REHIM029}\PYG{p}{(}\PYG{n}{W2HIM029}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.00} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA077} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{CTKHOLT}  \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{SPCICST}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.00} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA077} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{REHVT031} \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{SPCICST}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.00} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA077} \PYG{n}{RELAY} \PYG{n}{REHVT031}\PYG{p}{(}\PYG{n}{W2HTP031}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.00} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA077} \PYG{n}{RELAY} \PYG{n}{REHIM031}\PYG{p}{(}\PYG{n}{W2HIM031}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.03} \PYG{n}{JOB03981}  \PYG{n}{VIR0874I} \PYG{n}{CLVTA076} \PYG{n}{NAILING} \PYG{n}{RESOURCE} \PYG{n}{CTKHOLT}  \PYG{n}{FOR} \PYG{n}{USERID} \PYG{n}{CTKHOLT} \PYG{o}{.}\PYG{n}{APPLICATION}\PYG{o}{=}\PYG{n}{SPCICSP}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.03} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA076} \PYG{n}{RELAY} \PYG{n}{REHVT000}\PYG{p}{(}\PYG{n}{W2HTP000}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\PYG{l+m+mf}{12.57}\PYG{l+m+mf}{.03} \PYG{n}{JOB03981}  \PYG{n}{VIR0919I} \PYG{n}{CLVTA076} \PYG{n}{RELAY} \PYG{n}{REHIM000}\PYG{p}{(}\PYG{n}{W2HIM000}\PYG{p}{)} \PYG{n}{ACTIVATED}
+\end{sphinxVerbatim}
+
+\newpage
+
+
+\subsection{Admin 3270 Security Application}
+\label{\detokenize{connectivity_guide:admin-3270-security-application}}
+\sphinxAtStartPar
+The Admin 3270 Security (F4) application, accessible from the Virtel 3270 Admin Menu, displays the ARBO table space. The tablespace can be modified online with changes being written back to the ARBO file. Modifications are not persisted through to the active ARBO TS (Table Space) in Virtel. Any changes made online will still require a stop and restart of Virtel to rebuild the ARBO table space.
+
+
+\subsection{Using the Application}
+\label{\detokenize{connectivity_guide:using-the-application}}
+\sphinxAtStartPar
+Select the Admin (3270) option from the 3270 ADMIN main menu display normally found on port 40001. This will bring up the Configuration Menu.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image138}.png}
+\sphinxstyleemphasis{Admin Configuration Menu}
+
+\sphinxAtStartPar
+From the configuration menu, select PF4 to access the Security Management Sub\sphinxhyphen{}Application. The Security Management Menu panel will be presented.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image139}.png}
+\sphinxstyleemphasis{Security Management Menu}
+
+\sphinxAtStartPar
+From here we can select the sub\sphinxhyphen{}menus for Resources, Profiles, Users, Administration.
+
+
+\subsection{Sub\sphinxhyphen{}Menu Resources Management (F1)}
+\label{\detokenize{connectivity_guide:sub-menu-resources-management-f1}}
+\sphinxAtStartPar
+From this menu you can select one of the following three actions
+
+\sphinxAtStartPar
+\sphinxstylestrong{Add a Resource}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image140}.png}
+\sphinxstyleemphasis{Add a Resource}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Display, Update or Delete a Resource}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image141}.png}
+\sphinxstyleemphasis{Display, Update or Delete a Resource}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Resource Usage}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image142}.png}
+\sphinxstyleemphasis{Resource Usage}
+
+
+\subsection{Sub\sphinxhyphen{}Menu Profile Management (F2)}
+\label{\detokenize{connectivity_guide:sub-menu-profile-management-f2}}
+\sphinxAtStartPar
+From this menu you can select one of the following three actions
+
+\sphinxAtStartPar
+\sphinxstylestrong{Add a Profile}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image143}.png}
+\sphinxstyleemphasis{Add a Profile}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Resources can be entered manually of selected from the Resource List pages(s).
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Display, Update or Delete a Profile}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image144}.png}
+\sphinxstyleemphasis{Display, Update or Delete a Profile}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Resources can be entered manually of selected from the Resource List pages(s).
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+\sphinxstylestrong{List Profiles}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image145}.png}
+\sphinxstyleemphasis{List Profiles}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Profile Usage}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image146}.png}
+\sphinxstyleemphasis{Profile Usage}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Profile Detail}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image147}.png}
+\sphinxstyleemphasis{Profile Detail}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Copy Profiles}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image148}.png}
+\sphinxstyleemphasis{Copy Profile}
+
+
+\subsection{Sub Menu User Management (F3)}
+\label{\detokenize{connectivity_guide:sub-menu-user-management-f3}}
+\sphinxAtStartPar
+\sphinxstylestrong{Add a User}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image149}.png}
+\sphinxstyleemphasis{Add a User}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Display, Update or Delete a User}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image150}.png}
+\sphinxstyleemphasis{Display, Update or Delete a User}
+
+\sphinxAtStartPar
+\sphinxstylestrong{List Users}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image151}.png}
+\sphinxstyleemphasis{List Users}
+
+
+\subsection{Sub Menu Administration Management (F4)}
+\label{\detokenize{connectivity_guide:sub-menu-administration-management-f4}}
+\sphinxAtStartPar
+\sphinxstylestrong{Admin Management Menu}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image152}.png}
+\sphinxstyleemphasis{Admin Management Menu}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Add a department}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image153}.png}
+\sphinxstyleemphasis{Add a Department}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Display, Update or Delete a department}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image154}.png}
+\sphinxstyleemphasis{Display, Update or Delete a department*}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Add, Delete or Display Administrators}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image155}.png}
+\sphinxstyleemphasis{Add, Delete or Display Administrators}
+
+\sphinxAtStartPar
+\sphinxstylestrong{Password Management}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Only applicable if you are using Virtel Security.
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image156}.png}
+\sphinxstyleemphasis{Password Management}
+
+\index{Nailing LU names@\spxentry{Nailing LU names}!Comparison table@\spxentry{Comparison table}}\index{Comparison table@\spxentry{Comparison table}!Nailing LU names@\spxentry{Nailing LU names}}\ignorespaces 
 
 \section{Comparison Table}
-\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-155}}
+\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-156}}
 
 \begin{savenotes}\sphinxattablestart
 \sphinxthistablewithglobalstyle
@@ -7559,6 +8027,22 @@ No
 \sphinxAtStartPar
 Yes
 \\
+\sphinxhline
+\sphinxAtStartPar
+By RACF
+&
+\sphinxAtStartPar
+No
+&
+\sphinxAtStartPar
+Yes. Individual or group
+&
+\sphinxAtStartPar
+No
+&
+\sphinxAtStartPar
+Yes
+\\
 \sphinxbottomrule
 \end{tabulary}
 \sphinxtableafterendhook\par
@@ -7567,7 +8051,7 @@ Yes
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \chapter{AT\sphinxhyphen{}TLS Secure Session}
-\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-156}}
+\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-157}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id73}}
@@ -7585,7 +8069,7 @@ Higher CPU usgage will result in the TCP/IP address space if this feature is use
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Installation@\spxentry{Installation}}\index{Installation@\spxentry{Installation}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Installation}
-\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-157}}
+\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-158}}
 
 \subsection{Install Policy Agent procedure}
 \label{\detokenize{connectivity_guide:install-policy-agent-procedure}}
@@ -7664,7 +8148,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Operations@\spxentry{Operations}}\index{Operations@\spxentry{Operations}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Operations}
-\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-158}}
+\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-159}}
 
 \subsection{Starting the Policy Agent}
 \label{\detokenize{connectivity_guide:starting-the-policy-agent}}
@@ -7705,7 +8189,7 @@ To access VIRTEL line C\sphinxhyphen{}HTTP you must now use URL
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Problem determination@\spxentry{Problem determination}}\index{Problem determination@\spxentry{Problem determination}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Problem determination}
-\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-159}}
+\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-160}}
 
 \subsection{Policy Agent log file}
 \label{\detokenize{connectivity_guide:policy-agent-log-file}}
@@ -7839,7 +8323,7 @@ where nnnn is the identification of the connexion will display the AT\sphinxhyph
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!The Cipher suites@\spxentry{The Cipher suites}}\index{The Cipher suites@\spxentry{The Cipher suites}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{The Cipher suites}
-\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-160}}
+\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-161}}
 \sphinxAtStartPar
 The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
 
@@ -7852,7 +8336,7 @@ In Firefox the cipher specifications are accessed by typing \sphinxstyleemphasis
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Client certificates@\spxentry{Client certificates}}\index{Client certificates@\spxentry{Client certificates}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Client certificates}
-\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-161}}
+\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-162}}
 \sphinxAtStartPar
 Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:\sphinxhyphen{}
 \begin{itemize}
@@ -7889,7 +8373,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Resources@\spxentry{Resources}}\index{Resources@\spxentry{Resources}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Resources}
-\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-162}}
+\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-163}}
 
 \subsection{IBM Manuals}
 \label{\detokenize{connectivity_guide:ibm-manuals}}
@@ -7926,7 +8410,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \chapter{Virtel and Long Poll protocol}
-\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-163}}
+\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-164}}
 
 \section{Understanding HTTP Connections}
 \label{\detokenize{connectivity_guide:understanding-http-connections}}
@@ -8020,7 +8504,7 @@ In the above trace the CA\sphinxhyphen{}SiteMinder specific header “SM\_User�
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}}\index{Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Adding headers to the HTTP request}
-\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-164}}
+\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-165}}
 \sphinxAtStartPar
 Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
 
@@ -8047,7 +8531,7 @@ The following definitions define what needs to be done to enable a user to log o
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!RACF Passtickets@\spxentry{RACF Passtickets}}\index{RACF Passtickets@\spxentry{RACF Passtickets}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{RACF Passtickets}
-\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-165}}
+\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-166}}
 \sphinxAtStartPar
 Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
 
@@ -8155,7 +8639,7 @@ The key thing here is that the PassTicket name must tie up with the generic IRRP
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Virtel Requirements@\spxentry{Virtel Requirements}}\index{Virtel Requirements@\spxentry{Virtel Requirements}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Virtel Requirements}
-\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-166}}
+\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-167}}
 
 \subsection{Transaction requirements}
 \label{\detokenize{connectivity_guide:transaction-requirements}}
@@ -8266,7 +8750,7 @@ This rule does no more than to establish the entry point EPREJECT. EPREJECT will
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Common Errors@\spxentry{Common Errors}}\index{Common Errors@\spxentry{Common Errors}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Common Errors}
-\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-167}}
+\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-168}}
 \sphinxAtStartPar
 \sphinxstylestrong{Message VIR1502E}
 
@@ -8352,14 +8836,14 @@ There is no profile in the PTKTDATA class for this application or the PTKTDATA c
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Related material@\spxentry{Related material}}\index{Related material@\spxentry{Related material}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Related material}
-\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-168}}
+\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-169}}
 \sphinxAtStartPar
 Technical newsletter \sphinxhyphen{} \sphinxtitleref{TN201416 Virtel Security. Using server and client certificates}
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \chapter{Running multiple instances of Virtel}
-\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-169}}
+\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-170}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id75}}
@@ -8378,14 +8862,14 @@ Here are the relevant definitions required to support the VTAM generic resource 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Virtel TCT Settings@\spxentry{Virtel TCT Settings}}\index{Virtel TCT Settings@\spxentry{Virtel TCT Settings}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{VIRTEL TCT Settings}
-\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-170}}
+\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-171}}
 \sphinxAtStartPar
 GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!SYSPLEX definitions@\spxentry{SYSPLEX definitions}}\index{SYSPLEX definitions@\spxentry{SYSPLEX definitions}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{SYSPLEX definitions}
-\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-171}}
+\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-172}}
 \sphinxAtStartPar
 The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
 
@@ -8457,7 +8941,7 @@ Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is ass
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Workload balancing@\spxentry{Workload balancing}}\index{Workload balancing@\spxentry{Workload balancing}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Workload balancing in a SYSPLEX environment}
-\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-172}}
+\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-173}}
 \sphinxAtStartPar
 In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
 
@@ -8660,7 +9144,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}}\index{Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using a Distributed VIPA to load balance}
-\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-173}}
+\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-174}}
 \sphinxAtStartPar
 Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:\sphinxhyphen{}
@@ -8677,7 +9161,7 @@ Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virte
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}}\index{Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Session Affinity}
-\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-174}}
+\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-175}}
 \sphinxAtStartPar
 It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W\sphinxhyphen{}HTTP (port 41001) is used for Virtel Administration and line C\sphinxhyphen{}HTTP (port 41002) for user access
 to applications.
@@ -8725,7 +9209,7 @@ In this way the administrator can access a specific Virtel using port 41001 of t
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}}\index{Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using an Apache Proxy to load balance}
-\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-175}}
+\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-176}}
 \sphinxAtStartPar
 Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
 
@@ -8812,7 +9296,7 @@ See \sphinxurl{https://httpd.apache.org/docs/2.2/mod/mod\_expires.html} for more
 \index{VIRPLEX@\spxentry{VIRPLEX}}\ignorespaces 
 
 \chapter{VIRPLEX}
-\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-177}}
+\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-178}}
 \sphinxAtStartPar
 Virplex
 
@@ -8854,7 +9338,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 \index{TCT definitions@\spxentry{TCT definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!TCT definitions@\spxentry{TCT definitions}}\ignorespaces 
 
 \section{TCT definitions}
-\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-178}}
+\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-179}}
 \sphinxAtStartPar
 Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.
 
@@ -8899,7 +9383,7 @@ The TCT for a ‘WRITER’ task must have the following definitions in the TCT.
 \index{Arbo definitions@\spxentry{Arbo definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!Arbo definitions@\spxentry{Arbo definitions}}\ignorespaces 
 
 \section{ARBO definitions}
-\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-179}}
+\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-180}}
 \sphinxAtStartPar
 To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W\sphinxhyphen{}HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V\sphinxhyphen{}HTTP provides the common port for the Virtel instances within the Virplex.
 
@@ -9573,7 +10057,7 @@ Open a problem with your local Syspertec Support Engineer and send them the outp
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \chapter{Protecting business assets with Virtel Rules}
-\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-187}}
+\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-188}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id76}}
@@ -9588,7 +10072,7 @@ In this chapter we discuss how to protect access to business assets using Virtel
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Virtel Setup@\spxentry{Virtel Setup}}\index{Virtel Setup@\spxentry{Virtel Setup}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \section{Virtel Setup}
-\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-188}}
+\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-189}}
 \sphinxAtStartPar
 From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non\sphinxhyphen{}secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address \textendash{} 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.
@@ -9596,7 +10080,7 @@ and port addresses. For example, users in the accounts department should be able
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Example Rules@\spxentry{Example Rules}}\index{Example Rules@\spxentry{Example Rules}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Virtel Rules}
-\label{\detokenize{connectivity_guide:index-189}}\label{\detokenize{connectivity_guide:id77}}
+\label{\detokenize{connectivity_guide:index-190}}\label{\detokenize{connectivity_guide:id77}}
 \sphinxAtStartPar
 Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re\sphinxhyphen{}directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:\sphinxhyphen{}
 
@@ -9649,6 +10133,7 @@ Using Virtel Rules we can compare the calling IP address and if it doesn’t mat
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
+::
 So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule \textendash{} in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
 For line 41003, using Entry Point EPNSEC, this will contain a list of W2H transactions which use standard RACF protection.
 
@@ -9662,7 +10147,7 @@ To protect the business assets the calling IP address can only be that of the pr
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Default Rule Template@\spxentry{Default Rule Template}}\index{Default Rule Template@\spxentry{Default Rule Template}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Default Rule Template}
-\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-190}}
+\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-191}}
 \sphinxAtStartPar
 In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:\sphinxhyphen{}
 
@@ -9713,7 +10198,7 @@ To upload the ARBO statements to your ARBO use the following JCL:\sphinxhyphen{}
 \end{sphinxVerbatim}
 
 
-\chapter{Appendix}
+\section{Appendix}
 \label{\detokenize{connectivity_guide:appendix}}
 
 \section{Trademarks}

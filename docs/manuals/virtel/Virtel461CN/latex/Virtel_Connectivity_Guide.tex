@@ -53,7 +53,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Nov 25, 2023}
+\date{May 05, 2024}
 \release{4.61}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5120,15 +5120,15 @@ Same as \$NONE\$ but without ASCII translation.
 
 \sphinxlineitem{Directory for Scenarios}
 \sphinxAtStartPar
-Virtel directory for scenarios compiled by Virtel’s VSR application. These files are suffixed with a type of .390. If this field is blank then scenarios will be loaded from the Virtel load library.
+Virtel directory for user scenarios compiled by Virtel’s VSR application. These files are suffixed with a type of .390. If this field is blank then scenarios will be loaded from the Virtel load library.
 
 \sphinxlineitem{Signon program}
 \sphinxAtStartPar
-Indicates the name of the program used to control user sign\sphinxhyphen{}on with the active security tool. If this field is not completed, no sign\sphinxhyphen{}on control is performed. Allowable values for this field are listed in section 1.4.4 117.
+Indicates the name of the program used to control user sign\sphinxhyphen{}on with the active security tool. If this field is not completed, no sign\sphinxhyphen{}on control is performed. Allowable values for this field are listed in the Signon Programs. See below.
 
 \sphinxlineitem{Menu program}
 \sphinxAtStartPar
-Indicates the name of the program which presents the list of transactions which the user is allowed to access. Permissible values are listed in section 1.4.5.
+Indicates the name of the program which presents the list of transactions which the user is allowed to access. Permissible values are listed in the Menu Programs section. See below.
 
 \sphinxlineitem{Identification scenario}
 \sphinxAtStartPar
@@ -7090,7 +7090,7 @@ or
 or
 
 \sphinxAtStartPar
-\sphinxurl{http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500}          ForceLUNAME example
+\sphinxurl{http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500}          ForceLUNAME example
 
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!UserData and ForceLUNAME examples; Batch work station name@\spxentry{UserData and ForceLUNAME examples; Batch work station name}}\index{UserData and ForceLUNAME examples; Batch work station name@\spxentry{UserData and ForceLUNAME examples; Batch work station name}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
@@ -7200,7 +7200,7 @@ the VTAM LU name should be specified in the connection URL. For example, if the 
 \end{itemize}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{web2ajax}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{IMS}\PYG{o}{+}\PYG{n}{ForceLUNAME}\PYG{o}{=}\PYG{n}{RLHVT500}
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{10.20}\PYG{l+m+mf}{.170}\PYG{l+m+mf}{.71}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{web2ajax}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{IMS}\PYG{o}{+}\PYG{n}{ForceLUNAME}\PYG{o}{=}\PYG{n}{RLHVT500}
 \end{sphinxVerbatim}
 \begin{itemize}
 \item {} 
