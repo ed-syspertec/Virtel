@@ -18,7 +18,9 @@
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Messages V4.62" href="../Virtel462MG/messages.html" />
+    <link rel="prev" title="Getting Started with Virtel" href="../Virtel462GS/Getting_Started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,8 +47,35 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-61">V4.61</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-62">V4.62</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462AP/audit_operations_%20and_performance.html">Audit, Administration, Operations and Performance V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462CN/connectivity_guide.html">Connectivity Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462CS/Customization.html">Customization Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462GS/Getting_Started.html">Getting Started with Virtel</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installation Guide V4.62</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#summary-of-amendments">Summary of Amendments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-virtel-under-z-os">Installing VIRTEL under z/OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-under-z-vse">Installing under z/VSE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vtam-definitions">VTAM Definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-virtel-tct">The Virtel TCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virconf-utility">VIRCONF UTILITY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix">Appendix</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462MG/messages.html">Messages V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462MI/Migration_Guide.html">Migration Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462UG/User_Guide.html">User Guide V4.62</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
@@ -65,6 +94,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../virtel.html">Virtel Manuals</a></li>
       <li class="breadcrumb-item active">Installation Guide V4.62</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manuals/virtel/Virtel462IG/Installation_Guide.rst.txt" rel="nofollow"> View page source</a>
@@ -131,412 +161,6 @@ their respective owners.</p>
 <p class="admonition-title">Note</p>
 <p>For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.</p>
 </div>
-</section>
-<section id="virtel-version-4-58-1st-oct-2018">
-<h3>Virtel version 4.58 (1st Oct 2018)<a class="headerlink" href="#virtel-version-4-58-1st-oct-2018" title="Permalink to this heading"></a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.58.</p>
-</div>
-</section>
-<section id="virtel-version-4-57-1st-jul-2017">
-<h3>Virtel version 4.57 (1st Jul 2017)<a class="headerlink" href="#virtel-version-4-57-1st-jul-2017" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Bidirectional presentation support.</p></li>
-<li><p>Enhanced font stretch mode. Optimization of screen size.</p></li>
-<li><p>Additional RACHECK support for ForceLUNAME</p></li>
-<li><p>Licence warning feature</p></li>
-<li><p>Enhancements to USSMSG10 support module</p></li>
-<li><p>Enhancements to Virtel Web Macro interface (VWM)</p></li>
-<li><p>Keyboard mapping enhancements</p></li>
-<li><p>Enhancements to Virtel Dynamic Directories Interface (DDI)</p></li>
-<li><p>Hotkey support for DDI macros</p></li>
-<li><p>New refresh options.</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
-<ul class="simple">
-<li><p>Enhancements to COPY$ NAME-OF. Support for TERMINAL, GROUP and RELAY items.</p></li>
-<li><p>Enhancements to DEFAULT-FILED-WITH-CURSOR statement.</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Customizable HELP solution.</p></li>
-<li><p>DNS access to resolve IP address or DNS name.</p></li>
-<li><p>TCT option to support mixed case passwords</p></li>
-<li><p>Additional language support</p></li>
-<li><p>Batch export/import of RAW TRSF files.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.</p>
-</div>
-</section>
-<section id="virtel-version-4-56-21-jun-2016">
-<h3>Virtel version 4.56 (21 Jun 2016)<a class="headerlink" href="#virtel-version-4-56-21-jun-2016" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>VIRPLEX VSAMTYP=WRITER support in TCT.</p></li>
-<li><p>Enhancements to HTML Administration interface</p></li>
-<li><p>Enhancements to Virtel Web Macro interface (VWM)</p></li>
-<li><p>Keyboard mapping</p></li>
-<li><p>Enhancements to Virtel Dynamic Directories Interface (DDI)</p></li>
-<li><p>Synchronisation with VWM</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>LSR and WTO corrections.</p></li>
-<li><p>TCT MAXSOC defaults to 1000.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For further details see the Virtel Technical Newsletter TN201607: Whats new in Virtel 4.56.</p>
-</div>
-</section>
-<section id="virtel-version-4-55-31-mar-2015">
-<h3>Virtel version 4.55 (31 Mar 2015)<a class="headerlink" href="#virtel-version-4-55-31-mar-2015" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>New toolbar button to toggle the 3278T mode for APL and TEXT conversion.</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
-<ul class="simple">
-<li><p>‘QUICKLNK’ supports multiple containers.</p></li>
-<li><p>VIRPLEX ‘SHRHTTP’ line type.</p></li>
-<li><p>VIRPLEX communication.</p></li>
-<li><p>Enhancements to RULE processing - $REJECT$ parameter.</p></li>
-<li><p>Transaction SCRIPT command enhancements</p></li>
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>COPY$ supports column to variable with TYPE=REP</p></li>
-<li><p>Screen positioning support for SET$, CASE$ and COPY$</p></li>
-<li><p>MAP$ JSON support for COMMAREA</p></li>
-<li><p>Allow embedded OCCURS=UNLIMITED keyword</p></li>
-<li><p>MAP$ FROM-INPUT TO-VARIABLES converts XML or JSON directlt to variables.</p></li>
-<li><p>Allow re-execution of a MAP$ FROM-INPUT.</p></li>
-<li><p>CASE$ and COPY$ support RTRIM and LTRIM</p></li>
-<li><p>OUTPUT-FILE-TO-VARIABLE supports a variable as input.</p></li>
-<li><p>COPY$ VARIABLE-TO-VARIABLE copies source to target variable.</p></li>
-<li><p>COPY$ CURRENT-LINE copies SCREEN-POSITION ifield values to a variable.</p></li>
-<li><p>APPLICATON-OPTION support.</p></li>
-<li><p>SCENARIO FAIL | SUCCESS parameter.</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>New UNLOAD command to unload ARBO file.</p></li>
-<li><p>VIRSV maintenance.</p></li>
-<li><p>MEMDISPLAY - Memory display diagnostic command.</p></li>
-<li><p>Virtel displays customer USSTAB MSG10</p></li>
-<li><p>LOGGER stream and structure name set in TCT</p></li>
-<li><p>SNAPMSG command</p></li>
-<li><p>LOGGER extraction utility</p></li>
-<li><p>Override ARBO IP and &amp;SYSCLONE values in JCL PARM</p></li>
-<li><p>Trace offload facility</p></li>
-<li><p>DOC directory added for online help templates.</p></li>
-<li><p>New Virtel logo.</p></li>
-<li><p>Critical dataset VIRSWAP error will terminate VIRTEL.</p></li>
-<li><p>TCT Compatibility mode. Downward compatibility support.</p></li>
-</ul>
-<p><em>MQSeries:</em></p>
-<ul class="simple">
-<li><p>TCT additional MQ3 and MQ4 keywords.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For further details see the Virtel Technical Newsletter TN201522: Whats new in Virtel 4.55.</p>
-</div>
-</section>
-<section id="virtel-version-4-54-05-mar-2015">
-<h3>Virtel version 4.54 (05 Mar 2015)<a class="headerlink" href="#virtel-version-4-54-05-mar-2015" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Universal Protocol:</em></p>
-<ul class="simple">
-<li><p>TPIPE now supports multiple ICONNECT lines</p></li>
-</ul>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Support Query List variant of 3270 Read Partition command - Extended Color.</p></li>
-<li><p>Display Virtel update level in tool bar.</p></li>
-<li><p>New ICON in Copy/Past menu to show Firefox/Chrome extension status.</p></li>
-<li><p>Enahancements to Virtel Web Macro support (VWM)</p></li>
-<li><p>Enhancements to toolbar styling.</p></li>
-<li><p>Support graphics in input fields in 3278T mode</p></li>
-<li><p>Language support enhancements - German &amp; French.</p></li>
-<li><p>Enhancements to Virtel Dynamic Directories (DDI)</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
-<ul class="simple">
-<li><p>OPTION$ statement now supports ‘QUICKLNK’ line type.</p></li>
-<li><p>Support of VTA protocol through ‘QUICKLNK’ line type.</p></li>
-<li><p>Support of VTA CONTAINERS</p></li>
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>ACTION$ now allows ‘Program Tab’ key to invoke scenario</p></li>
-<li><p>COPY$ SYSTEM-TO-VARIABLE now supports TYPE=REPLACE</p></li>
-<li><p>MAP$ instruction now supports positive/negative sign</p></li>
-<li><p>MAP$ instruction supports decimal point for FORMAT TYPE=S9</p></li>
-<li><p>New template instruction IF-SOUND-ALARM-IS-REQUESTED</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Support for ‘Above the bar’ 2GB storage for Virtel variables.</p></li>
-<li><p>Allow Log datasets to be spooled/spun off to JES2.</p></li>
-<li><p>TCT command now displays the LOG option.</p></li>
-<li><p>Virtel installation now includes VTG.</p></li>
-<li><p>IND$FILE upload and download limit can be set in new TCT options.</p></li>
-<li><p>VIRSV maintenance.</p></li>
-</ul>
-<p><em>MQSeries:</em></p>
-<p>‘TRAN’ parameter can be specified on MQ Line definition - Character translation.</p>
-</section>
-<section id="virtel-version-4-53-24-sep-2014">
-<h3>Virtel version 4.53 (24 Sep 2014)<a class="headerlink" href="#virtel-version-4-53-24-sep-2014" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Allow FR-850 charset for IND$FILE transfer</p></li>
-<li><p>Limit IND$FILE file upload to HTPARM(2) parameter value</p></li>
-<li><p>Macro management enhancements for multi files synchronisation</p></li>
-<li><p>Outsourcing of all messages for multi-language support</p></li>
-<li><p>Support of cut and paste in I-Frame mode for Firefox, and Chrome</p></li>
-<li><p>Additional HTML tags:</p></li>
-<li><p>VALUE-OF URL and QUERY</p></li>
-</ul>
-<p><em>VIRTEL Web Integration:</em></p>
-<ul class="simple">
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>ACTION$ REFRESH-TERMINAL</p></li>
-<li><p>HANDLE$ ABEND</p></li>
-<li><p>HANDLE$ LOOP</p></li>
-<li><p>PERFORM$ subroutine</p></li>
-<li><p>LABEL$</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Increased CISIZE for the data portion of the TRSF’s files</p></li>
-<li><p>Modification of SHR options for ARBO file</p></li>
-<li><p>SMF support for statistics records</p></li>
-<li><p>Support of multi lines for WTO</p></li>
-<li><p>TRACTIM=CPU CPU time in snap</p></li>
-<li><p>Allows to specify a country code in the VIRTCT VIRSV1= second
-sub-parameter</p></li>
-<li><p>Allows BLDVRP hiperspace option in VIRTCT</p></li>
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-<li><p>Additional system commands:</p>
-<ul>
-<li><p>SNAPMSG command to trap VIRHT6xE message</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="virtel-version-4-52-4-dec-2013">
-<h3>Virtel version 4.52 (4 Dec 2013)<a class="headerlink" href="#virtel-version-4-52-4-dec-2013" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Universal Protocol:</em></p>
-<ul class="simple">
-<li><p>OTMAPRM parameter to specify security parameters for RESUME TPIPE</p></li>
-<li><p>Modifiable exit name for RESUME TPIPE</p></li>
-<li><p>Selection of transaction name for RESUME TPIPE</p></li>
-</ul>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Macro management enhancements</p></li>
-<li><p>Size limit for IND$FILE upload</p></li>
-<li><p>Support for BLINK attribute in IE8+, Firefox, and Chrome</p></li>
-<li><p>Additional HTML tags:</p></li>
-<li><p>VALUE-OF URL and QUERY</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
-<ul class="simple">
-<li><p>Timeout specifiable for SEND$ TO-LINE</p></li>
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>COPY$ SYSTEM-TO-VARIABLE URL and QUERY</p></li>
-<li><p>SEND$ MAXTIME</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>VIRCONF documentation in English</p></li>
-<li><p>Modernised configuration interface</p></li>
-<li><p>Support for pre-zSeries processors</p></li>
-<li><p>Unique identification for VIRTEL startup message</p></li>
-<li><p>Customizable VIRTEL application name for RACF (RACAPPL)</p></li>
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
-</section>
-<section id="virtel-version-4-51-18-jul-2013">
-<h3>Virtel version 4.51 (18 Jul 2013)<a class="headerlink" href="#virtel-version-4-51-18-jul-2013" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Universal Protocol:</em></p>
-<ul class="simple">
-<li><p>Protocol ICONNECT (RESUME TPIPE) for communication with IMS</p></li>
-</ul>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Additional HTML tags:</p></li>
-<li><p>NAME-OF VIRTEL-VERSION</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
-<ul class="simple">
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>COPY$ SYSTEM-TO-VARIABLE VIRTEL-VERSION</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Open and close printers on demand</p></li>
-<li><p>Repeating terminal definitions in hexadecimal and alphanumeric</p></li>
-<li><p>Display printer names by F VIRTEL,L=line,D command</p></li>
-<li><p>New command F VIRTEL,RELAYS</p></li>
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
-</section>
-<section id="virtel-version-4-50-30-jun-2013">
-<h3>Virtel version 4.50 (30 Jun 2013)<a class="headerlink" href="#virtel-version-4-50-30-jun-2013" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Passticket support</p></li>
-<li><p>New Web Access Settings:</p></li>
-<li><p>Shift+Enter, Ctrl+Enter</p></li>
-<li><p>Line spacing, Character spacing</p></li>
-<li><p>Ctrl-A to mark whole 3270 screen for copy</p></li>
-<li><p>Support for 3270 Graphic Escape characters</p></li>
-<li><p>Downloadable fonts</p></li>
-<li><p>Print SCS-to-PDF</p></li>
-<li><p>Query support for SCS printers</p></li>
-<li><p>Printer autoconnect</p></li>
-<li><p>Miscellaneous ergonomic enhancements</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
-<ul class="simple">
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>CONVERT$ EBCDIC-TO-UPPERCASE, EBCDIC-TO-LOWERCASE</p></li>
-<li><p>COPY$ PASSTICKET</p></li>
-</ul>
-<p><em>MQSeries:</em></p>
-<ul class="simple">
-<li><p>Unique correlator for MQ requests</p></li>
-<li><p>Message type REPLY for MQ responses</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
-</section>
-<section id="virtel-version-4-49-30-apr-2013">
-<h3>Virtel version 4.49 (30 Apr 2013)<a class="headerlink" href="#virtel-version-4-49-30-apr-2013" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Codepages 0037 and 1047 included as standard</p></li>
-<li><p>New Web Access Settings:</p></li>
-<li><p>Adapt font size ratio</p></li>
-<li><p>Additional keyboard remappings for Alt+Ins, Alt+Home, and Alt+F1</p></li>
-<li><p>ChgCur key to change cursor shape</p></li>
-<li><p>Settings page in French and German</p></li>
-<li><p>Administrator can hide specific settings</p></li>
-<li><p>Additional HTML tags:</p></li>
-<li><p>CREATE-VARIABLE-IF TRACING-SCENARIO</p></li>
-<li><p>SET-HEADER</p></li>
-<li><p>Allow Virtel session code to be stored in cookie</p></li>
-<li><p>Custom hotspot recognition</p></li>
-<li><p>Custom logo for Web Access and Application menus</p></li>
-<li><p>Drag and drop upload summary report</p></li>
-<li><p>Miscellaneous ergonomic enhancements</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
-<ul class="simple">
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>COPY$ SYSTEM-TO-VARIABLE USER-SECURITY-PROFILE</p></li>
-<li><p>DEBUG$</p></li>
-<li><p>SET$ SIGNON</p></li>
-<li><p>VIRSV$ TRANSACTION OPTION=CLOSE</p></li>
-</ul>
-<p><em>SYSPLEX support:</em></p>
-<ul class="simple">
-<li><p>Allow read-only sharing of VSAM files</p></li>
-</ul>
-<p><em>Miscellaneous:</em></p>
-<ul class="simple">
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
-</section>
-<section id="virtel-version-4-48-27-nov-2012">
-<h3>Virtel version 4.48 (27 Nov 2012)<a class="headerlink" href="#virtel-version-4-48-27-nov-2012" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Universal Protocol:</em></p>
-<ul class="simple">
-<li><p>Menu program VIR0021J</p></li>
-</ul>
-<p><em>VIRTEL Web Access:</em></p>
-<ul class="simple">
-<li><p>Connection of non-predefined VTAM LU names</p></li>
-<li><p>Support for expired passwords</p></li>
-<li><p>Site-specific Javascript (custom.js)</p></li>
-<li><p>REALM parameter to reduce multiple signon</p></li>
-<li><p>Codepage 1047 for C programming</p></li>
-<li><p>Codepage override by URL</p></li>
-<li><p>New Web Access Settings:</p></li>
-<li><p>End key</p></li>
-<li><p>Remap caret to logical not</p></li>
-<li><p>Additional HTML tags:</p></li>
-<li><p>CREATE-VARIABLE-FROM (allows a rectangle to be copied from the 3270 screen)</p></li>
-<li><p>Miscellaneous ergonomic enhancements</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation</em></p>
-<ul class="simple">
-<li><p>Support for scenarios stored in VSAM</p></li>
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>ACTION$ PROCESS-RESPONSE</p></li>
-<li><p>COPY$ VARIABLE-TO-SYSTEM PASSWORD</p></li>
-<li><p>IF$ SCREEN-IS-BLANK</p></li>
-<li><p>IF$ SCREEN-IS-UNFORMATTED</p></li>
-</ul>
-<p><em>VIRTEL Web Integration</em></p>
-<ul class="simple">
-<li><p>New programs CALL VIRSETAI, VIRSETVI for IMS SYSPLEX support:</p></li>
-<li><p>SYSCLONE parameter in LU names</p></li>
-<li><p>Dynamic VIRTCT overrides Miscellaneous:</p></li>
-<li><p>Restart VIRSV service by console command</p></li>
-<li><p>Patch application via the VIRTCT</p></li>
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
-</section>
-<section id="virtel-version-4-47-21-may-2012">
-<h3>Virtel version 4.47 (21 May 2012)<a class="headerlink" href="#virtel-version-4-47-21-may-2012" title="Permalink to this heading"></a></h3>
-<p><em>VIRTEL Universal Protocol</em></p>
-<ul class="simple">
-<li><p>Native TCP/IP protocol</p></li>
-</ul>
-<p><em>VIRTEL Web Access</em></p>
-<ul class="simple">
-<li><p>Support for 3270 FieldMark and Dup characters</p></li>
-<li><p>Keystroke buffering</p></li>
-<li><p>New Web Access Settings:</p></li>
-<li><p>Move cursor on activate</p></li>
-<li><p>Omit nulls from input</p></li>
-<li><p>Select word by double-click</p></li>
-<li><p>Highlight input fields</p></li>
-<li><p>Keep keypad and macro pad open</p></li>
-<li><p>Field mark and Dup</p></li>
-<li><p>Additional HTML tags:</p></li>
-<li><p>DELETE-ALL-VARIABLES (allows the variable pool to be reset from within page template)</p></li>
-<li><p>SET-INITIAL-TIMEOUT (allows an initial timeout to be specified within a page)</p></li>
-<li><p>SET-LOCAL-OPTIONS JSON-ESCAPES (allows generation of JSON page templates)</p></li>
-<li><p>SET-LOCAL-OPTIONS TRACE-LINE, TRACE-RELAY (allows traces to be activated from a page template)</p></li>
-<li><p>Upload by drag and drop (Chrome only)</p></li>
-<li><p>Save and restore file transfer parameters</p></li>
-<li><p>Long polling reduces load on IP network</p></li>
-<li><p>Customizable user help page for Web Access</p></li>
-<li><p>Site customization of colors and logo (custom.css)</p></li>
-<li><p>Miscellaneous ergonomic enhancements</p></li>
-</ul>
-<p><em>VIRTEL Web Modernisation</em></p>
-<ul class="simple">
-<li><p>Screen redesigner upgrade</p></li>
-<li><p>Additional commands for scenarios:</p></li>
-<li><p>CASE$ VARIABLE</p></li>
-<li><p>COPY$ LIST-TO-VARIABLE</p></li>
-<li><p>COPY$ VARIABLE-TO-SYSTEM NAME-OF DIRECTORY</p></li>
-<li><p>FILTER$ VARIABLE-TO-VARIABLE</p></li>
-<li><p>MAP$ EXECUTE and RETURN$</p></li>
-</ul>
-<p><em>Miscellaneous</em></p>
-<ul class="simple">
-<li><p>Logon screen for VTAM applications</p></li>
-<li><p>Latin-2 translate tables for Eastern European countries</p></li>
-<li><p>Miscellaneous editorial corrections and enhancements</p></li>
-</ul>
 </section>
 </section>
 <section id="introduction">
@@ -4267,7 +3891,7 @@ described under the heading “Applications Management” on page 123</p>
 <section id="dept">
 <span id="index-164"></span><h4>DEPT<a class="headerlink" href="#dept" title="Permalink to this heading"></a></h4>
 <p>This operation adds or replaces a DEPT entity in the VIRARBO file. The parameters correspond to the various items
-described under the heading “Create a department” or “Profile lent to a department”.</p>
+described under the heading “Create a department” or “Profile associated to a department”.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -4288,9 +3912,10 @@ described under the heading “Create a department” or “Profile lent to a de
 <td><p>Responsible</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>PROFILE</p></td>
-<td><p>Lent profiles list</p></td>
-<td><p>Separated by commas, the whole between parenthesis</p></td>
+<tr class="row-odd"><td><p>PROFILE=</p></td>
+<td><p>Profiles list</p></td>
+<td><p>If more than one, separated by commas and within
+parenthesis e.g. PROFILE=(X,Y,Z)</p></td>
 </tr>
 </tbody>
 </table>
@@ -4581,7 +4206,7 @@ time out</p></td>
 </section>
 <section id="profile">
 <span id="index-170"></span><h4>PROFILE<a class="headerlink" href="#profile" title="Permalink to this heading"></a></h4>
-<p>This operation adds or replaces one entity with PROFILE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a profile”.</p>
+<p>This operation adds or replaces a PROFILE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a profile”.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -4591,7 +4216,7 @@ time out</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ID=</p></td>
-<td><p>Profile</p></td>
+<td><p>Profile Name</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>DESC=</p></td>
@@ -4602,9 +4227,10 @@ time out</p></td>
 <td><p>Department</p></td>
 <td><p>Quotes allowed</p></td>
 </tr>
-<tr class="row-odd"><td><p>TYPE=</p></td>
-<td><p>List of given resources</p></td>
-<td><p>Separated by commas, and surrounded by parenthesesUnused field</p></td>
+<tr class="row-odd"><td><p>RESOURCE=</p></td>
+<td><p>List of resources</p></td>
+<td><p>If more than one, sparated by a commas and within
+parenthesis e.g. RESOURCE=(X,Y,Z)</p></td>
 </tr>
 </tbody>
 </table>
@@ -4621,8 +4247,8 @@ time out</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>ID=</p></td>
-<td><p>Resource</p></td>
-<td></td>
+<td><p>Resource Name</p></td>
+<td><p>Supports +</p></td>
 </tr>
 <tr class="row-odd"><td><p>DESC=</p></td>
 <td><p>Description</p></td>
@@ -4632,12 +4258,12 @@ time out</p></td>
 <td><p>Department</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>TYPE=</p></td>
-<td><p>Resource Type</p></td>
-<td><p>Unused field</p></td>
-</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the ID parameter contains a + and SYSPLUS=YES is specified in the TCT the + will be replaced by either the z/OS &amp;SYSCLONE system symbolic or the CLONE parameter as specified in the Virtel JCL parm. For example ID=R+VT001 becomes ID=REHVT001. Not applicable to z/VSE.</p>
+</div>
 </section>
 <section id="rule">
 <span id="index-172"></span><h4>RULE<a class="headerlink" href="#rule" title="Permalink to this heading"></a></h4>
@@ -5907,7 +5533,10 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Virtel462GS/Getting_Started.html" class="btn btn-neutral float-left" title="Getting Started with Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Virtel462MG/messages.html" class="btn btn-neutral float-right" title="Messages V4.62" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

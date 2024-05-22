@@ -7470,9 +7470,10 @@ Using ARBO definitions to construct an internal table space of userid, applicati
 
 \end{itemize}
 
+\index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using RACF to nail LUs; Nailing Relay Names@\spxentry{Using RACF to nail LUs; Nailing Relay Names}}\index{Using RACF to nail LUs; Nailing Relay Names@\spxentry{Using RACF to nail LUs; Nailing Relay Names}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{LU Nailing using RACF}
-\label{\detokenize{connectivity_guide:lu-nailing-using-racf}}
+\label{\detokenize{connectivity_guide:lu-nailing-using-racf}}\label{\detokenize{connectivity_guide:index-156}}
 \sphinxAtStartPar
 LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: \sphinxhyphen{}
 
@@ -7538,24 +7539,25 @@ Output messages from the scenario
 \PYG{l+m+mf}{21.17}\PYG{l+m+mf}{.32} \PYG{n}{JOB06669}  \PYG{n}{VIR0919I} \PYG{n}{CXVTA075} \PYG{n}{RELAY} \PYG{n}{CSXDXBP9}\PYG{p}{(}\PYG{n}{CXHDXBP0}\PYG{p}{)} \PYG{n}{ACTIVATED}
 \end{sphinxVerbatim}
 
+\index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using ARBO statements to nail LUs; Nailing Relay Names@\spxentry{Using ARBO statements to nail LUs; Nailing Relay Names}}\index{Using ARBO statements to nail LUs; Nailing Relay Names@\spxentry{Using ARBO statements to nail LUs; Nailing Relay Names}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{LU Nailing using ARBO defininitions}
-\label{\detokenize{connectivity_guide:lu-nailing-using-arbo-defininitions}}
+\label{\detokenize{connectivity_guide:lu-nailing-using-arbo-defininitions}}\label{\detokenize{connectivity_guide:index-157}}
 \sphinxAtStartPar
 LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
 
 
-\subsection{New TCT option}
+\subsubsection{New TCT option}
 \label{\detokenize{connectivity_guide:new-tct-option}}
 \sphinxAtStartPar
-A new option has been added to the TCT which enables user function support, of which the Relay feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: \sphinxhyphen{}
+A new option has been added to the TCT which enables user function support, of which the Relay Support feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: \sphinxhyphen{}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{USERFUNC}\PYG{o}{=}\PYG{n}{YES}\PYG{p}{,}               \PYG{n}{Enable} \PYG{n}{User} \PYG{n}{functions}
 \end{sphinxVerbatim}
 
 
-\subsection{ARBO Table space construts}
+\subsubsection{ARBO Table Space Construts}
 \label{\detokenize{connectivity_guide:arbo-table-space-construts}}
 \sphinxAtStartPar
 The internal ARBO table space is a tree structure built using the following constructs.
@@ -7587,7 +7589,7 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 \newpage
 
 \sphinxAtStartPar
-\sphinxstylestrong{Appendix A} contains sample ARBO statements to define a User Function Relay tablespace. The sample is broken down into the following components and entities: \sphinxhyphen{}
+\sphinxstylestrong{Appendix A} contains sample ARBO statements to define a Relay Support tablespace. The sample is broken down into the following components and entities: \sphinxhyphen{}
 
 \sphinxAtStartPar
 In the sample definitions we have: \sphinxhyphen{}
@@ -7749,7 +7751,7 @@ Example of the Virtel nailing messages for user CTKHOLT
 The Admin 3270 Security (F4) application, accessible from the Virtel 3270 Admin Menu, displays the ARBO table space. The tablespace can be modified online with changes being written back to the ARBO file. Modifications are not persisted through to the active ARBO TS (Table Space) in Virtel. Any changes made online will still require a stop and restart of Virtel to rebuild the ARBO table space.
 
 
-\subsection{Using the Application}
+\subsubsection{Using the Application}
 \label{\detokenize{connectivity_guide:using-the-application}}
 \sphinxAtStartPar
 Select the Admin (3270) option from the 3270 ADMIN main menu display normally found on port 40001. This will bring up the Configuration Menu.
@@ -7769,7 +7771,7 @@ From the configuration menu, select PF4 to access the Security Management Sub\sp
 From here we can select the sub\sphinxhyphen{}menus for Resources, Profiles, Users, Administration.
 
 
-\subsection{Sub\sphinxhyphen{}Menu Resources Management (F1)}
+\subsubsection{Sub\sphinxhyphen{}Menu Resources Management (F1)}
 \label{\detokenize{connectivity_guide:sub-menu-resources-management-f1}}
 \sphinxAtStartPar
 From this menu you can select one of the following three actions
@@ -7796,7 +7798,7 @@ From this menu you can select one of the following three actions
 \sphinxstyleemphasis{Resource Usage}
 
 
-\subsection{Sub\sphinxhyphen{}Menu Profile Management (F2)}
+\subsubsection{Sub\sphinxhyphen{}Menu Profile Management (F2)}
 \label{\detokenize{connectivity_guide:sub-menu-profile-management-f2}}
 \sphinxAtStartPar
 From this menu you can select one of the following three actions
@@ -7854,7 +7856,7 @@ Resources can be entered manually of selected from the Resource List pages(s).
 \sphinxstyleemphasis{Copy Profile}
 
 
-\subsection{Sub Menu User Management (F3)}
+\subsubsection{Sub Menu User Management (F3)}
 \label{\detokenize{connectivity_guide:sub-menu-user-management-f3}}
 \sphinxAtStartPar
 \sphinxstylestrong{Add a User}
@@ -7878,7 +7880,7 @@ Resources can be entered manually of selected from the Resource List pages(s).
 \sphinxstyleemphasis{List Users}
 
 
-\subsection{Sub Menu Administration Management (F4)}
+\subsubsection{Sub Menu Administration Management (F4)}
 \label{\detokenize{connectivity_guide:sub-menu-administration-management-f4}}
 \sphinxAtStartPar
 \sphinxstylestrong{Admin Management Menu}
@@ -7922,8 +7924,8 @@ Only applicable if you are using Virtel Security.
 
 \index{Nailing LU names@\spxentry{Nailing LU names}!Comparison table@\spxentry{Comparison table}}\index{Comparison table@\spxentry{Comparison table}!Nailing LU names@\spxentry{Nailing LU names}}\ignorespaces 
 
-\section{Comparison Table}
-\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-156}}
+\subsection{Comparison Table}
+\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-158}}
 
 \begin{savenotes}\sphinxattablestart
 \sphinxthistablewithglobalstyle
@@ -8051,7 +8053,7 @@ Yes
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \chapter{AT\sphinxhyphen{}TLS Secure Session}
-\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-157}}
+\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-159}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id73}}
@@ -8069,7 +8071,7 @@ Higher CPU usgage will result in the TCP/IP address space if this feature is use
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Installation@\spxentry{Installation}}\index{Installation@\spxentry{Installation}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Installation}
-\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-158}}
+\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-160}}
 
 \subsection{Install Policy Agent procedure}
 \label{\detokenize{connectivity_guide:install-policy-agent-procedure}}
@@ -8148,7 +8150,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Operations@\spxentry{Operations}}\index{Operations@\spxentry{Operations}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Operations}
-\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-159}}
+\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-161}}
 
 \subsection{Starting the Policy Agent}
 \label{\detokenize{connectivity_guide:starting-the-policy-agent}}
@@ -8189,7 +8191,7 @@ To access VIRTEL line C\sphinxhyphen{}HTTP you must now use URL
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Problem determination@\spxentry{Problem determination}}\index{Problem determination@\spxentry{Problem determination}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Problem determination}
-\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-160}}
+\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-162}}
 
 \subsection{Policy Agent log file}
 \label{\detokenize{connectivity_guide:policy-agent-log-file}}
@@ -8323,7 +8325,7 @@ where nnnn is the identification of the connexion will display the AT\sphinxhyph
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!The Cipher suites@\spxentry{The Cipher suites}}\index{The Cipher suites@\spxentry{The Cipher suites}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{The Cipher suites}
-\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-161}}
+\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-163}}
 \sphinxAtStartPar
 The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
 
@@ -8336,7 +8338,7 @@ In Firefox the cipher specifications are accessed by typing \sphinxstyleemphasis
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Client certificates@\spxentry{Client certificates}}\index{Client certificates@\spxentry{Client certificates}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Client certificates}
-\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-162}}
+\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-164}}
 \sphinxAtStartPar
 Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:\sphinxhyphen{}
 \begin{itemize}
@@ -8373,7 +8375,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Resources@\spxentry{Resources}}\index{Resources@\spxentry{Resources}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Resources}
-\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-163}}
+\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-165}}
 
 \subsection{IBM Manuals}
 \label{\detokenize{connectivity_guide:ibm-manuals}}
@@ -8410,7 +8412,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \chapter{Virtel and Long Poll protocol}
-\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-164}}
+\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-166}}
 
 \section{Understanding HTTP Connections}
 \label{\detokenize{connectivity_guide:understanding-http-connections}}
@@ -8504,7 +8506,7 @@ In the above trace the CA\sphinxhyphen{}SiteMinder specific header “SM\_User�
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}}\index{Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Adding headers to the HTTP request}
-\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-165}}
+\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-167}}
 \sphinxAtStartPar
 Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
 
@@ -8531,7 +8533,7 @@ The following definitions define what needs to be done to enable a user to log o
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!RACF Passtickets@\spxentry{RACF Passtickets}}\index{RACF Passtickets@\spxentry{RACF Passtickets}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{RACF Passtickets}
-\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-166}}
+\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-168}}
 \sphinxAtStartPar
 Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
 
@@ -8639,7 +8641,7 @@ The key thing here is that the PassTicket name must tie up with the generic IRRP
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Virtel Requirements@\spxentry{Virtel Requirements}}\index{Virtel Requirements@\spxentry{Virtel Requirements}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Virtel Requirements}
-\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-167}}
+\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-169}}
 
 \subsection{Transaction requirements}
 \label{\detokenize{connectivity_guide:transaction-requirements}}
@@ -8750,7 +8752,7 @@ This rule does no more than to establish the entry point EPREJECT. EPREJECT will
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Common Errors@\spxentry{Common Errors}}\index{Common Errors@\spxentry{Common Errors}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Common Errors}
-\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-168}}
+\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-170}}
 \sphinxAtStartPar
 \sphinxstylestrong{Message VIR1502E}
 
@@ -8836,14 +8838,14 @@ There is no profile in the PTKTDATA class for this application or the PTKTDATA c
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Related material@\spxentry{Related material}}\index{Related material@\spxentry{Related material}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Related material}
-\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-169}}
+\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-171}}
 \sphinxAtStartPar
 Technical newsletter \sphinxhyphen{} \sphinxtitleref{TN201416 Virtel Security. Using server and client certificates}
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \chapter{Running multiple instances of Virtel}
-\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-170}}
+\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-172}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id75}}
@@ -8862,14 +8864,14 @@ Here are the relevant definitions required to support the VTAM generic resource 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Virtel TCT Settings@\spxentry{Virtel TCT Settings}}\index{Virtel TCT Settings@\spxentry{Virtel TCT Settings}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{VIRTEL TCT Settings}
-\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-171}}
+\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-173}}
 \sphinxAtStartPar
 GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!SYSPLEX definitions@\spxentry{SYSPLEX definitions}}\index{SYSPLEX definitions@\spxentry{SYSPLEX definitions}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{SYSPLEX definitions}
-\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-172}}
+\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-174}}
 \sphinxAtStartPar
 The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
 
@@ -8941,7 +8943,7 @@ Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is ass
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Workload balancing@\spxentry{Workload balancing}}\index{Workload balancing@\spxentry{Workload balancing}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Workload balancing in a SYSPLEX environment}
-\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-173}}
+\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-175}}
 \sphinxAtStartPar
 In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
 
@@ -9144,7 +9146,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}}\index{Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using a Distributed VIPA to load balance}
-\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-174}}
+\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-176}}
 \sphinxAtStartPar
 Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:\sphinxhyphen{}
@@ -9161,7 +9163,7 @@ Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virte
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}}\index{Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Session Affinity}
-\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-175}}
+\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-177}}
 \sphinxAtStartPar
 It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W\sphinxhyphen{}HTTP (port 41001) is used for Virtel Administration and line C\sphinxhyphen{}HTTP (port 41002) for user access
 to applications.
@@ -9209,7 +9211,7 @@ In this way the administrator can access a specific Virtel using port 41001 of t
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}}\index{Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using an Apache Proxy to load balance}
-\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-176}}
+\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-178}}
 \sphinxAtStartPar
 Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
 
@@ -9296,7 +9298,7 @@ See \sphinxurl{https://httpd.apache.org/docs/2.2/mod/mod\_expires.html} for more
 \index{VIRPLEX@\spxentry{VIRPLEX}}\ignorespaces 
 
 \chapter{VIRPLEX}
-\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-178}}
+\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-180}}
 \sphinxAtStartPar
 Virplex
 
@@ -9338,7 +9340,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 \index{TCT definitions@\spxentry{TCT definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!TCT definitions@\spxentry{TCT definitions}}\ignorespaces 
 
 \section{TCT definitions}
-\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-179}}
+\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-181}}
 \sphinxAtStartPar
 Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.
 
@@ -9383,7 +9385,7 @@ The TCT for a ‘WRITER’ task must have the following definitions in the TCT.
 \index{Arbo definitions@\spxentry{Arbo definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!Arbo definitions@\spxentry{Arbo definitions}}\ignorespaces 
 
 \section{ARBO definitions}
-\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-180}}
+\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-182}}
 \sphinxAtStartPar
 To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W\sphinxhyphen{}HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V\sphinxhyphen{}HTTP provides the common port for the Virtel instances within the Virplex.
 
@@ -10057,7 +10059,7 @@ Open a problem with your local Syspertec Support Engineer and send them the outp
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \chapter{Protecting business assets with Virtel Rules}
-\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-188}}
+\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-190}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id76}}
@@ -10072,7 +10074,7 @@ In this chapter we discuss how to protect access to business assets using Virtel
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Virtel Setup@\spxentry{Virtel Setup}}\index{Virtel Setup@\spxentry{Virtel Setup}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \section{Virtel Setup}
-\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-189}}
+\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-191}}
 \sphinxAtStartPar
 From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non\sphinxhyphen{}secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address \textendash{} 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.
@@ -10080,7 +10082,7 @@ and port addresses. For example, users in the accounts department should be able
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Example Rules@\spxentry{Example Rules}}\index{Example Rules@\spxentry{Example Rules}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Virtel Rules}
-\label{\detokenize{connectivity_guide:index-190}}\label{\detokenize{connectivity_guide:id77}}
+\label{\detokenize{connectivity_guide:index-192}}\label{\detokenize{connectivity_guide:id77}}
 \sphinxAtStartPar
 Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re\sphinxhyphen{}directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:\sphinxhyphen{}
 
@@ -10147,7 +10149,7 @@ To protect the business assets the calling IP address can only be that of the pr
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Default Rule Template@\spxentry{Default Rule Template}}\index{Default Rule Template@\spxentry{Default Rule Template}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Default Rule Template}
-\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-191}}
+\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-193}}
 \sphinxAtStartPar
 In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:\sphinxhyphen{}
 

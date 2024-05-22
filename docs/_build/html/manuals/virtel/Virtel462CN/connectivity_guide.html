@@ -18,7 +18,9 @@
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Customization Guide V4.62" href="../Virtel462CS/Customization.html" />
+    <link rel="prev" title="Audit, Administration, Operations and Performance V4.62" href="../Virtel462AP/audit_operations_%20and_performance.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,8 +47,42 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-60">V4.60</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-61">V4.61</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-62">V4.62</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462AP/audit_operations_%20and_performance.html">Audit, Administration, Operations and Performance V4.62</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Connectivity Guide V4.62</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-virtel">Configuring Virtel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lines">Lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-rules">Virtel Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#terminals">Terminals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entry-points">Entry Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-112">Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connection-disconnection-scripts">Connection / Disconnection Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-servers">External Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connection-modes">Connection Modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controlling-lunames-lu-nailing">Controlling LUNAMEs - LU Nailing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-tls-secure-session">AT-TLS Secure Session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-and-long-poll-protocol">Virtel and Long Poll protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sso-passtickets-and-proxy-servers">SSO, PassTickets and Proxy Servers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-multiple-instances-of-virtel">Running multiple instances of Virtel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virplex">VIRPLEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#protecting-business-assets-with-virtel-rules">Protecting business assets with Virtel Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462CS/Customization.html">Customization Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462GS/Getting_Started.html">Getting Started with Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462IG/Installation_Guide.html">Installation Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462MG/messages.html">Messages V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462MI/Migration_Guide.html">Migration Guide V4.62</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel462UG/User_Guide.html">User Guide V4.62</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">How To Manuals</a></li>
 </ul>
@@ -65,6 +101,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../virtel.html">Virtel Manuals</a></li>
       <li class="breadcrumb-item active">Connectivity Guide V4.62</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/manuals/virtel/Virtel462CN/connectivity_guide.rst.txt" rel="nofollow"> View page source</a>
@@ -4099,8 +4136,9 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 <p>While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following :-</p>
 <ul class="simple">
 <li><p>By IP address</p></li>
-<li><p>By cookie</p></li>
+<li><p>By Cookie</p></li>
 <li><p>By URL</p></li>
+<li><p>By Userid</p></li>
 </ul>
 <p>Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See <a class="reference internal" href="#v462cn-virtelrules"><span class="std std-ref">“Virtel Rules”,</span></a> for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation.</p>
 </section>
@@ -4191,10 +4229,10 @@ NETMASK=255.255.255.255
 <p>The definition of the terminal pool *MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:</p>
 <p><img alt="image14" src="../../../_images/image1424.png" />
 <em>Terminal pool definition using non-predefined LU names</em></p>
-<p>..note:</p>
-<blockquote>
-<div><p>The name of the pool is only used to match the pool to its associated line.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name of the pool is only used to match the pool to its associated line.</p>
+</div>
 <p>Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.</p>
 <p>The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.</p>
 <div class="admonition note">
@@ -4297,8 +4335,261 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 <p><img alt="image124" src="../../../_images/image1243.png" />
 <em>3270 session allocated from IP range</em></p>
 </section>
+<section id="lu-nailing-by-userid">
+<span id="index-155"></span><h3>LU Nailing by Userid<a class="headerlink" href="#lu-nailing-by-userid" title="Permalink to this heading"></a></h3>
+<p>Two options are available to nail a terminal to a supplied userid. Ther are: -</p>
+<ul class="simple">
+<li><p>Using the RACF installation data contained with the users RACF profile.</p></li>
+<li><p>Using ARBO definitions to construct an internal table space of userid, application and terminal associations.</p></li>
+</ul>
+<section id="lu-nailing-using-racf">
+<span id="index-156"></span><h4>LU Nailing using RACF<a class="headerlink" href="#lu-nailing-using-racf" title="Permalink to this heading"></a></h4>
+<p>LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: -</p>
+<p><a class="reference external" href="http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT">http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT</a></p>
+<p>The URL will be inspected by the identification scenario and will allocate a specific LU based upon the information found in the RACF installation DATA field. The following RACF actions need to be taken to allow access and extract of the installation data :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span>  <span class="n">Permit</span> <span class="n">access</span> <span class="n">to</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RADMIN</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Virtel</span> <span class="n">STC</span> <span class="n">group</span><span class="o">/</span><span class="n">user</span> <span class="nb">id</span><span class="o">.</span>
+
+    <span class="n">PE</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RADMIN</span><span class="o">.**</span>            <span class="n">CLASS</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span> <span class="n">ACCESS</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
+    <span class="n">PE</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RADMIN</span><span class="o">.</span><span class="n">LISTUSER</span>      <span class="n">CLASS</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span> <span class="n">ACCESS</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
+    <span class="n">SETR</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
+
+<span class="mf">2.</span>  <span class="n">Update</span> <span class="n">a</span> <span class="n">user</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">profile</span><span class="o">.</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">LU</span> <span class="n">name</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span><span class="o">.</span> <span class="n">In</span> <span class="n">this</span> <span class="n">example</span> <span class="n">we</span> <span class="n">are</span> <span class="n">using</span> <span class="n">a</span> <span class="mi">5</span> <span class="n">character</span> <span class="n">data</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">format</span> <span class="n">Tabcd</span> <span class="n">where</span> <span class="n">abcd</span> <span class="n">will</span> <span class="n">form</span> <span class="n">the</span> <span class="n">last</span> <span class="n">four</span> <span class="n">characters</span> <span class="n">of</span> <span class="n">the</span> <span class="n">LU</span> <span class="n">terminal</span> <span class="n">we</span> <span class="n">which</span> <span class="n">to</span> <span class="n">use</span><span class="o">.</span>
+
+<span class="n">ALU</span> <span class="n">SPTHOLT</span> <span class="n">DATA</span><span class="p">(</span><span class="s1">&#39;TXBP9&#39;</span><span class="p">)</span>
+        <span class="n">LU</span> <span class="n">SPTHOLT</span>
+</pre></div>
+</div>
+<p>The identification scenario (SCENRACF) will, through a service routine(SERVRACF) and supporting utility(VIR00087), access the user’s RACF profile and return a 5 character string. Using the returned string the scenario will then build the LU name, in the sample case this is CSXDXBP9. A session is then allocated with target transaction using the nailed LU CSXDXBP9. The sample modules in SAMPLIB are provided as a guide and can be modified to specific requirements.</p>
+<p>To install the samples, customize and run the samplib job LUNAILRC. This will assemble modules SCENRACF, SERVRACF and VIR00087 and will link them into the Virtel LOADLIB. Next, the Virtel configuration needs to be modified. A seperate line is defined which will call the identification scenario, An Entry point and terminal definitions are also defined to complete the configuration changes. These configuration changes will be used when to support LU nailing with RACF.</p>
+<p>A line definition is created with a corressponding Entry point and terminal pool definitions.</p>
+<p><img alt="image135" src="../../../_images/image1351.png" />
+<em>Line definition for RACF Lu nailing</em></p>
+<p>The line definition will use terminals prefixed by the character string CX. Next, an Entry point associated with the line is created. In this case the entry point is called CSX2HOST. It will host transactions prefix CSA and will use an identification scenario called CSXRACFS based on the SAMPLIB member SCENRACF.</p>
+<p><img alt="image136" src="../../../_images/image1361.png" />
+<em>Entry point defining identification scenario for RACF Lu nailing</em></p>
+<p>Some terminal definitions are created to support the dynamic LU names that will be built from the RACF installation data. These must be prefixed with teh characters CX as per the line definition.</p>
+<p><img alt="image137" src="../../../_images/image1371.png" />
+<em>Terminal pool and terminal definitions for RACF Lu nailing</em></p>
+<p>When a incoming connection is detected on the line the identification scenario(CSXRACFS) will extract the userid from the URL keyword parameter USERNAME. In the sample case this is USERNAME=SPTHOLT.The scenario calls the VIRSV service program(SERVRACF) which internally calls the RACF extract program (VIR0087) to extract the installation data from the SPTHOLT RACF profile through the services of the standard RACF API IRRSEQ00 program. The service program returns the character string and makes it available to the scenario which then builds the nailed LU name. The scenario finishes by completing the session setup and establishes a VTAM session with the target 3270 application using the nailed LU name.</p>
+<p>Output messages from the scenario</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">21.17.31</span> <span class="n">JOB06669</span>  <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CSX</span> <span class="n">SOCKET</span> <span class="mi">00060000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168.092.035</span><span class="p">:</span><span class="mi">54259</span>
+<span class="mf">21.17.31</span> <span class="n">JOB06669</span>  <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CSX</span> <span class="n">SOCKET</span> <span class="mi">00040000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168.092.035</span><span class="p">:</span><span class="mi">54260</span>
+<span class="mf">21.17.31</span> <span class="n">JOB06669</span>  <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CSX</span> <span class="n">CONNECTING</span> <span class="n">CXVTA075</span> <span class="n">TO</span> <span class="mf">192.168.092.035</span><span class="p">:</span><span class="mi">54259</span>
+<span class="mf">21.17.31</span> <span class="n">JOB06669</span>  <span class="n">CSXRACFS</span> <span class="n">Calling</span> <span class="n">VIR0087</span> <span class="n">WITH</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168.092.035</span><span class="p">,</span><span class="n">USERNAME</span><span class="o">=</span><span class="n">SPTHOLT</span>
+<span class="mf">21.17.31</span> <span class="n">JOB06669</span>  <span class="n">CSXRACFS</span> <span class="n">Userdata</span> <span class="o">=</span> <span class="n">TXBP9</span>
+<span class="mf">21.17.32</span> <span class="n">JOB06669</span>  <span class="n">CSXRACFS</span> <span class="n">Allocating</span> <span class="n">LUNAME</span> <span class="o">=</span> <span class="n">CSXDXBP9</span>
+<span class="mf">21.17.32</span> <span class="n">JOB06669</span>  <span class="n">VIR0919I</span> <span class="n">CXVTA075</span> <span class="n">RELAY</span> <span class="n">CSXDXBP9</span><span class="p">(</span><span class="n">CXHDXBP0</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+</pre></div>
+</div>
+</section>
+<section id="lu-nailing-using-arbo-defininitions">
+<span id="index-157"></span><h4>LU Nailing using ARBO defininitions<a class="headerlink" href="#lu-nailing-using-arbo-defininitions" title="Permalink to this heading"></a></h4>
+<p>LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.</p>
+<section id="new-tct-option">
+<h5>New TCT option<a class="headerlink" href="#new-tct-option" title="Permalink to this heading"></a></h5>
+<p>A new option has been added to the TCT which enables user function support, of which the Relay Support feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USERFUNC</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>               <span class="n">Enable</span> <span class="n">User</span> <span class="n">functions</span>
+</pre></div>
+</div>
+</section>
+<section id="arbo-table-space-construts">
+<h5>ARBO Table Space Construts<a class="headerlink" href="#arbo-table-space-construts" title="Permalink to this heading"></a></h5>
+<p>The internal ARBO table space is a tree structure built using the following constructs.</p>
+<p><strong>Departments</strong>
+Departments (synonymous with a Group) are setup to group together the other user relay definitions – Profile, User, Resource. A department is administered by one userid, note the ADMIN=1 in the USER definition. USER, PROFILE and RESOURCE statement are used to define the relationships between applications and relay terminal resources.</p>
+<p><strong>Application profiles</strong>
+An application profile defines an application that is protected and lists the user resources that can access the application. An application profile is owned by a department.</p>
+<p><strong>User Resources</strong>
+These resource definitions represent the users that are referred to by the application profiles. Theses entities are not the same as a USER entry.</p>
+<p><strong>User Entries</strong>
+These define the users associated with departments, whether they are administrators, and if terminal resources are allocated to them for the purposes of terminal nailing. A user entry points to a user profile and is associated with a department. A user, defined as an administrator can update the ARBO definitions online using the Security sub-application within Virtel.</p>
+<p><strong>User profiles</strong>
+User profiles define the related terminal resources allocated to them and used in terminal nailing. A user profile can define a list of terminal resources.</p>
+<p><strong>Terminal Resources</strong>
+Theses resources define the VTAM relay LU names to be used in the nailing of terminals. These entities are referenced by the user profile. The + symbol can be used in the name. This will be replaced by the CLONE or &amp;SYSCLONE symbolic. For this to be active the SYSPLUS=YES parameter must be specified in the TCT.</p>
+<p><strong>Appendix A</strong> contains sample ARBO statements to define a Relay Support tablespace. The sample is broken down into the following components and entities: -</p>
+<p>In the sample definitions we have: -</p>
+<p><strong>DEPT</strong> Statement – Used to group entities.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRTELT</span>     <span class="n">Owner</span> <span class="n">of</span> <span class="n">terminal</span> <span class="n">resources</span>
+<span class="n">CICS</span>    <span class="n">Groups</span> <span class="n">CICS</span> <span class="n">Application</span> <span class="n">profiles</span> <span class="n">SPCICST</span> <span class="ow">and</span> <span class="n">DBDCCICS</span>
+<span class="n">TSO</span>         <span class="n">Groups</span> <span class="n">TSO</span> <span class="n">Application</span> <span class="n">profile</span>
+</pre></div>
+</div>
+<p>Application <strong>PROFILE</strong> Statement – Used to define Protected Applications.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DBDCCICS</span>    <span class="n">Groups</span> <span class="n">User</span> <span class="n">resources</span> <span class="p">(</span><span class="n">CTKHOLT1</span><span class="p">,</span><span class="n">CTKHOLT</span><span class="p">,</span><span class="mi">100002714</span><span class="p">,</span><span class="mi">10002666</span><span class="p">)</span>
+<span class="n">SPCICST</span>         <span class="n">Groups</span> <span class="n">User</span> <span class="n">resources</span> <span class="p">(</span><span class="n">CTKHLT1</span><span class="p">,</span><span class="n">SPTHOLT1</span><span class="p">,</span><span class="n">CTKHOLT</span><span class="p">)</span>
+<span class="n">SPCICSP</span>         <span class="n">Groups</span> <span class="n">User</span> <span class="n">resources</span> <span class="p">(</span><span class="n">CTKHOLT</span><span class="p">)</span>
+<span class="n">TSO</span>             <span class="n">Groups</span> <span class="n">User</span> <span class="n">resources</span>
+</pre></div>
+</div>
+<p>User <strong>Resource</strong> Statement – User entities related to Applications.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTKHOLT</span><span class="p">,</span> <span class="n">CTKHLT1</span><span class="p">,</span> <span class="n">SPTHOLT1</span><span class="p">,</span><span class="mi">10002666</span><span class="p">,</span> <span class="mi">10002714</span>
+</pre></div>
+</div>
+<p>User <strong>Profile</strong> Statement – Identify Users, user type and associated user profiles.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPTHOLT</span>         <span class="n">Profile</span> <span class="n">SPTHOLT</span>     <span class="n">Administrator</span>   <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+<span class="n">CTKHOLT</span>         <span class="n">Profile</span> <span class="n">CTKHOLT</span>                                 <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span>
+<span class="n">CTKHLT1</span>         <span class="n">Profile</span> <span class="n">CTKHLT1</span>                                 <span class="n">DEPT</span><span class="o">=</span><span class="n">TSO</span>
+<span class="n">SPTHOLT1</span>    <span class="n">Profile</span> <span class="n">SPTHOLT1</span>                                <span class="n">DEPT</span><span class="o">=</span><span class="n">TSO</span>
+<span class="mi">10002666</span>    <span class="n">Profile</span> <span class="mi">10002666</span>                                <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span>
+<span class="mi">10002714</span>    <span class="n">Profile</span> <span class="mi">10002714</span>                                <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span>
+</pre></div>
+</div>
+<p>User <strong>Resource</strong> Statement – Used to associate Terminal resources.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPTHOLT</span>         <span class="n">Resources</span><span class="o">=</span><span class="n">REHVT021</span>
+<span class="n">CTKHOLT</span>         <span class="n">Resources</span><span class="o">=</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">VT023</span><span class="p">,</span><span class="n">R</span><span class="o">+</span><span class="n">VT029</span><span class="p">,</span><span class="n">R</span><span class="o">+</span><span class="n">VT031</span><span class="p">)</span>
+<span class="n">CTKHLT1</span>         <span class="n">Resources</span><span class="o">=</span><span class="n">REHVT024</span>
+<span class="n">SPTHOLT1</span>    <span class="n">Resources</span><span class="o">=</span><span class="n">REHVT022</span>
+<span class="mi">10002666</span>    <span class="n">Resources</span><span class="o">=</span><span class="p">(</span><span class="n">REHVT026</span><span class="p">,</span><span class="n">REHVT027</span><span class="p">)</span>
+<span class="n">I0002714</span>    <span class="n">Resources</span><span class="o">=</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">VT036</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Terminal <strong>Resource</strong> Statements – Terminal entities related to LU relays.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REHVT021</span><span class="p">,</span> <span class="n">REHVT022</span><span class="p">,</span> <span class="n">REH</span><span class="o">+</span><span class="mi">023</span><span class="p">,</span> <span class="n">REHVT024</span><span class="p">,</span> <span class="n">REHVT026</span><span class="p">,</span> <span class="n">REHVT027</span><span class="p">,</span> <span class="n">R</span><span class="o">+</span><span class="n">VT029</span><span class="p">,</span><span class="n">REH</span><span class="o">+</span><span class="mi">031</span><span class="p">,</span> <span class="n">R</span><span class="o">+</span><span class="n">VT036</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The + symbol in the resource name will be replaced by the CLONE or &amp;SYSCLONE symbolic. SYSPLUS=YES must be specified in the TCT</p>
+</div>
+<p>The statements provide two levels of security. The first is application protection and defining which user can access a particular application. This is referred to as application nailing. Secondly, terminal security. Defining which specific terminal resources, if any, must be allocated to a userid. This is referred to as terminal nailing. The levels are applied using an AND | OR logic. So, a userid can access any application, but may be restricted to a particular LU relay name. Or a protected application will only allow certain userids access, but those userids can then use any LU relay name from the dynamic pool definition if they are also not restricted to a nailed terminal resource.</p>
+<p>The following tables shows an the allocated LU relay terminals for Userid CTKHOLT and SPTHOLT based upon the sample definitions in Appendix A. Terminals in Italics indicate that an application and/or terminal has been nailed to a specific LU relay name. By default, Virtel allocates VTAM relay names from a predefined terminal pools or list.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Userid</strong></p></th>
+<th class="head"><p><strong>DBDCCICS</strong></p></th>
+<th class="head"><p>** TSO **</p></th>
+<th class="head"><p><strong>SPCICST</strong></p></th>
+<th class="head"><p><strong>SPCICSP</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SPTHOLT</p></td>
+<td><p>REHVT001</p></td>
+<td><p><em>REHVT021</em></p></td>
+<td><p>REHVT002</p></td>
+<td><p>REHVT003</p></td>
+</tr>
+<tr class="row-odd"><td><p>CTKHOLT</p></td>
+<td><p><em>REHVT023</em></p></td>
+<td><p><em>REHVT029</em></p></td>
+<td><p><em>REHVT031</em></p></td>
+<td><p>REHVT000</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example of the Virtel nailing messages for user CTKHOLT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">12.56.53</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA079</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">CTKHOLT</span>  <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">DBDCCICS</span>
+<span class="mf">12.56.53</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA079</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">REHVT023</span> <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">DBDCCICS</span>
+<span class="mf">12.56.53</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHVT023</span><span class="p">(</span><span class="n">W2HTP023</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.56.53</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHIM023</span><span class="p">(</span><span class="n">W2HIM023</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.56.56</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA078</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">REHVT029</span> <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">TSO</span>
+<span class="mf">12.56.56</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA078</span> <span class="n">RELAY</span> <span class="n">REHVT029</span><span class="p">(</span><span class="n">W2HTP029</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.56.56</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA078</span> <span class="n">RELAY</span> <span class="n">REHIM029</span><span class="p">(</span><span class="n">W2HIM029</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.57.00</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA077</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">CTKHOLT</span>  <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">SPCICST</span>
+<span class="mf">12.57.00</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA077</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">REHVT031</span> <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">SPCICST</span>
+<span class="mf">12.57.00</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA077</span> <span class="n">RELAY</span> <span class="n">REHVT031</span><span class="p">(</span><span class="n">W2HTP031</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.57.00</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA077</span> <span class="n">RELAY</span> <span class="n">REHIM031</span><span class="p">(</span><span class="n">W2HIM031</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.57.03</span> <span class="n">JOB03981</span>  <span class="n">VIR0874I</span> <span class="n">CLVTA076</span> <span class="n">NAILING</span> <span class="n">RESOURCE</span> <span class="n">CTKHOLT</span>  <span class="n">FOR</span> <span class="n">USERID</span> <span class="n">CTKHOLT</span> <span class="o">.</span><span class="n">APPLICATION</span><span class="o">=</span><span class="n">SPCICSP</span>
+<span class="mf">12.57.03</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA076</span> <span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">12.57.03</span> <span class="n">JOB03981</span>  <span class="n">VIR0919I</span> <span class="n">CLVTA076</span> <span class="n">RELAY</span> <span class="n">REHIM000</span><span class="p">(</span><span class="n">W2HIM000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="admin-3270-security-application">
+<h4>Admin 3270 Security Application<a class="headerlink" href="#admin-3270-security-application" title="Permalink to this heading"></a></h4>
+<p>The Admin 3270 Security (F4) application, accessible from the Virtel 3270 Admin Menu, displays the ARBO table space. The tablespace can be modified online with changes being written back to the ARBO file. Modifications are not persisted through to the active ARBO TS (Table Space) in Virtel. Any changes made online will still require a stop and restart of Virtel to rebuild the ARBO table space.</p>
+<section id="using-the-application">
+<h5>Using the Application<a class="headerlink" href="#using-the-application" title="Permalink to this heading"></a></h5>
+<p>Select the Admin (3270) option from the 3270 ADMIN main menu display normally found on port 40001. This will bring up the Configuration Menu.</p>
+<p><img alt="image138" src="../../../_images/image1381.png" />
+<em>Admin Configuration Menu</em></p>
+<p>From the configuration menu, select PF4 to access the Security Management Sub-Application. The Security Management Menu panel will be presented.</p>
+<p><img alt="image139" src="../../../_images/image1391.png" />
+<em>Security Management Menu</em></p>
+<p>From here we can select the sub-menus for Resources, Profiles, Users, Administration.</p>
+</section>
+<section id="sub-menu-resources-management-f1">
+<h5>Sub-Menu Resources Management (F1)<a class="headerlink" href="#sub-menu-resources-management-f1" title="Permalink to this heading"></a></h5>
+<p>From this menu you can select one of the following three actions</p>
+<p><strong>Add a Resource</strong></p>
+<p><img alt="image140" src="../../../_images/image1401.png" />
+<em>Add a Resource</em></p>
+<p><strong>Display, Update or Delete a Resource</strong></p>
+<p><img alt="image141" src="../../../_images/image14110.png" />
+<em>Display, Update or Delete a Resource</em></p>
+<p><strong>Resource Usage</strong></p>
+<p><img alt="image142" src="../../../_images/image1425.png" />
+<em>Resource Usage</em></p>
+</section>
+<section id="sub-menu-profile-management-f2">
+<h5>Sub-Menu Profile Management (F2)<a class="headerlink" href="#sub-menu-profile-management-f2" title="Permalink to this heading"></a></h5>
+<p>From this menu you can select one of the following three actions</p>
+<p><strong>Add a Profile</strong></p>
+<p><img alt="image143" src="../../../_images/image1431.png" />
+<em>Add a Profile</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Resources can be entered manually of selected from the Resource List pages(s).</p>
+</div>
+<p><strong>Display, Update or Delete a Profile</strong></p>
+<p><img alt="image144" src="../../../_images/image1441.png" />
+<em>Display, Update or Delete a Profile</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Resources can be entered manually of selected from the Resource List pages(s).</p>
+</div>
+<p><strong>List Profiles</strong></p>
+<p><img alt="image145" src="../../../_images/image1451.png" />
+<em>List Profiles</em></p>
+<p><strong>Profile Usage</strong></p>
+<p><img alt="image146" src="../../../_images/image1461.png" />
+<em>Profile Usage</em></p>
+<p><strong>Profile Detail</strong></p>
+<p><img alt="image147" src="../../../_images/image1471.png" />
+<em>Profile Detail</em></p>
+<p><strong>Copy Profiles</strong></p>
+<p><img alt="image148" src="../../../_images/image1481.png" />
+<em>Copy Profile</em></p>
+</section>
+<section id="sub-menu-user-management-f3">
+<h5>Sub Menu User Management (F3)<a class="headerlink" href="#sub-menu-user-management-f3" title="Permalink to this heading"></a></h5>
+<p><strong>Add a User</strong></p>
+<p><img alt="image149" src="../../../_images/image1491.png" />
+<em>Add a User</em></p>
+<p><strong>Display, Update or Delete a User</strong></p>
+<p><img alt="image150" src="../../../_images/image1501.png" />
+<em>Display, Update or Delete a User</em></p>
+<p><strong>List Users</strong></p>
+<p><img alt="image151" src="../../../_images/image15110.png" />
+<em>List Users</em></p>
+</section>
+<section id="sub-menu-administration-management-f4">
+<h5>Sub Menu Administration Management (F4)<a class="headerlink" href="#sub-menu-administration-management-f4" title="Permalink to this heading"></a></h5>
+<p><strong>Admin Management Menu</strong></p>
+<p><img alt="image152" src="../../../_images/image1525.png" />
+<em>Admin Management Menu</em></p>
+<p><strong>Add a department</strong></p>
+<p><img alt="image153" src="../../../_images/image1531.png" />
+<em>Add a Department</em></p>
+<p><strong>Display, Update or Delete a department</strong></p>
+<p><img alt="image154" src="../../../_images/image1541.png" />
+<em>Display, Update or Delete a department*</em></p>
+<p><strong>Add, Delete or Display Administrators</strong></p>
+<p><img alt="image155" src="../../../_images/image1551.png" />
+<em>Add, Delete or Display Administrators</em></p>
+<p><strong>Password Management</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only applicable if you are using Virtel Security.</p>
+</div>
+<p><img alt="image156" src="../../../_images/image1561.png" />
+<em>Password Management</em></p>
+</section>
+</section>
 <section id="comparison-table">
-<span id="index-155"></span><h3>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this heading"></a></h3>
+<span id="index-158"></span><h4>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
@@ -4339,12 +4630,19 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 </tr>
+<tr class="row-odd"><td><p>By RACF</p></td>
+<td><p>No</p></td>
+<td><p>Yes. Individual or group</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
 </tbody>
 </table>
 </section>
 </section>
+</section>
 <section id="at-tls-secure-session">
-<span id="index-156"></span><h2>AT-TLS Secure Session<a class="headerlink" href="#at-tls-secure-session" title="Permalink to this heading"></a></h2>
+<span id="index-159"></span><h2>AT-TLS Secure Session<a class="headerlink" href="#at-tls-secure-session" title="Permalink to this heading"></a></h2>
 <section id="id73">
 <h3>Introduction<a class="headerlink" href="#id73" title="Permalink to this heading"></a></h3>
 <p>This section provides details on on to implement AT-TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.</p>
@@ -4355,7 +4653,7 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 </div>
 </section>
 <section id="installation">
-<span id="index-157"></span><h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<span id="index-160"></span><h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
 <section id="install-policy-agent-procedure">
 <h4>Install Policy Agent procedure<a class="headerlink" href="#install-policy-agent-procedure" title="Permalink to this heading"></a></h4>
 <p>If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.</p>
@@ -4401,7 +4699,7 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 </section>
 </section>
 <section id="operations">
-<span id="index-158"></span><h3>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h3>
+<span id="index-161"></span><h3>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h3>
 <section id="starting-the-policy-agent">
 <h4>Starting the Policy Agent<a class="headerlink" href="#starting-the-policy-agent" title="Permalink to this heading"></a></h4>
 <p>The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command <strong>S PAGENT</strong>.</p>
@@ -4426,7 +4724,7 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="problem-determination">
-<span id="index-159"></span><h3>Problem determination<a class="headerlink" href="#problem-determination" title="Permalink to this heading"></a></h3>
+<span id="index-162"></span><h3>Problem determination<a class="headerlink" href="#problem-determination" title="Permalink to this heading"></a></h3>
 <section id="policy-agent-log-file">
 <h4>Policy Agent log file<a class="headerlink" href="#policy-agent-log-file" title="Permalink to this heading"></a></h4>
 <p>Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.</p>
@@ -4490,13 +4788,13 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="the-cipher-suites">
-<span id="index-160"></span><h3>The Cipher suites<a class="headerlink" href="#the-cipher-suites" title="Permalink to this heading"></a></h3>
+<span id="index-163"></span><h3>The Cipher suites<a class="headerlink" href="#the-cipher-suites" title="Permalink to this heading"></a></h3>
 <p>The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.</p>
 <p>In Microsoft Internet Explorer, follow the menu <em>Tools – Internet Options – Advanced</em>. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.</p>
 <p>In Firefox the cipher specifications are accessed by typing <em>about:config</em> in the address bar and typing <em>security</em> in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.</p>
 </section>
 <section id="client-certificates">
-<span id="index-161"></span><h3>Client certificates<a class="headerlink" href="#client-certificates" title="Permalink to this heading"></a></h3>
+<span id="index-164"></span><h3>Client certificates<a class="headerlink" href="#client-certificates" title="Permalink to this heading"></a></h3>
 <p>Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-</p>
 <ul class="simple">
 <li><p>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>….</p></li>
@@ -4509,7 +4807,7 @@ ensure that PAGENT starts before all other applications.</p>
 <p>See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.</p>
 </section>
 <section id="resources">
-<span id="index-162"></span><h3>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h3>
+<span id="index-165"></span><h3>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h3>
 <section id="ibm-manuals">
 <h4>IBM Manuals<a class="headerlink" href="#ibm-manuals" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="n">SA22</span><span class="o">-</span><span class="mi">7683</span><span class="o">-</span><span class="mi">07</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">V1R7</span> <span class="n">Security</span> <span class="n">Server</span><span class="p">:</span> <span class="n">RACF</span> <span class="n">Security</span> <span class="n">Administrator</span><span class="s1">&#39;s Guide Chapter 21. RACF and Digital Certificates</span>
@@ -4539,7 +4837,7 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="virtel-and-long-poll-protocol">
-<span id="index-163"></span><h2>Virtel and Long Poll protocol<a class="headerlink" href="#virtel-and-long-poll-protocol" title="Permalink to this heading"></a></h2>
+<span id="index-166"></span><h2>Virtel and Long Poll protocol<a class="headerlink" href="#virtel-and-long-poll-protocol" title="Permalink to this heading"></a></h2>
 <section id="understanding-http-connections">
 <h3>Understanding HTTP Connections<a class="headerlink" href="#understanding-http-connections" title="Permalink to this heading"></a></h3>
 <p>3270 TE users (clients) connect from their web browsers to Virtel (server) through HTTP connections. HTTP connections are client-driven simplex (not duplex) connections:
@@ -4608,7 +4906,7 @@ Server: Virtel/4.53
 <p>In the above trace the CA-SiteMinder specific header “SM_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon – this will be generated via a passsTicket request on behalf of the userid identified in the “SM_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.</p>
 </section>
 <section id="adding-headers-to-the-http-request">
-<span id="index-164"></span><h3>Adding headers to the HTTP request<a class="headerlink" href="#adding-headers-to-the-http-request" title="Permalink to this heading"></a></h3>
+<span id="index-167"></span><h3>Adding headers to the HTTP request<a class="headerlink" href="#adding-headers-to-the-http-request" title="Permalink to this heading"></a></h3>
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
 <p><img alt="image101" src="../../../_images/image10112.png" /> <em>Using the Firefox “Modify Headers” addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
@@ -4618,7 +4916,7 @@ Server: Virtel/4.53
 <p><img alt="image103" src="../../../_images/image1036.png" /> <em>Accessing CICS using a callers credentials. No LOGON required.</em></p>
 </section>
 <section id="racf-passtickets">
-<span id="index-165"></span><h3>RACF Passtickets<a class="headerlink" href="#racf-passtickets" title="Permalink to this heading"></a></h3>
+<span id="index-168"></span><h3>RACF Passtickets<a class="headerlink" href="#racf-passtickets" title="Permalink to this heading"></a></h3>
 <p>Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.</p>
 <section id="define-pass-ticket-racf-profiles">
 <h4>Define Pass Ticket RACF profiles<a class="headerlink" href="#define-pass-ticket-racf-profiles" title="Permalink to this heading"></a></h4>
@@ -4683,7 +4981,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </section>
 </section>
 <section id="virtel-requirements">
-<span id="index-166"></span><h3>Virtel Requirements<a class="headerlink" href="#virtel-requirements" title="Permalink to this heading"></a></h3>
+<span id="index-169"></span><h3>Virtel Requirements<a class="headerlink" href="#virtel-requirements" title="Permalink to this heading"></a></h3>
 <section id="transaction-requirements">
 <h4>Transaction requirements<a class="headerlink" href="#transaction-requirements" title="Permalink to this heading"></a></h4>
 <p>The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-</p>
@@ -4750,7 +5048,7 @@ NOUSER1 DS 0H
 </section>
 </section>
 <section id="common-errors">
-<span id="index-167"></span><h3>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this heading"></a></h3>
+<span id="index-170"></span><h3>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this heading"></a></h3>
 <p><strong>Message VIR1502E</strong></p>
 <p>VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termed to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.</p>
 <p><strong>Action</strong></p>
@@ -4785,12 +5083,12 @@ application. See preceding ICH408I message in the log.</p></td>
 </table>
 </section>
 <section id="related-material">
-<span id="index-168"></span><h3>Related material<a class="headerlink" href="#related-material" title="Permalink to this heading"></a></h3>
+<span id="index-171"></span><h3>Related material<a class="headerlink" href="#related-material" title="Permalink to this heading"></a></h3>
 <p>Technical newsletter - <cite>TN201416 Virtel Security. Using server and client certificates</cite></p>
 </section>
 </section>
 <section id="running-multiple-instances-of-virtel">
-<span id="index-169"></span><h2>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this heading"></a></h2>
+<span id="index-172"></span><h2>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this heading"></a></h2>
 <section id="id75">
 <h3>Introduction<a class="headerlink" href="#id75" title="Permalink to this heading"></a></h3>
 <p>For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:-</p>
@@ -4798,11 +5096,11 @@ application. See preceding ICH408I message in the log.</p></td>
 <p>Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools.</p>
 <p>Here are the relevant definitions required to support the VTAM generic resource within Virtel.</p>
 <section id="virtel-tct-settings">
-<span id="index-170"></span><h4>VIRTEL TCT Settings<a class="headerlink" href="#virtel-tct-settings" title="Permalink to this heading"></a></h4>
+<span id="index-173"></span><h4>VIRTEL TCT Settings<a class="headerlink" href="#virtel-tct-settings" title="Permalink to this heading"></a></h4>
 <p>GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME</p>
 </section>
 <section id="sysplex-definitions">
-<span id="index-171"></span><h4>SYSPLEX definitions<a class="headerlink" href="#sysplex-definitions" title="Permalink to this heading"></a></h4>
+<span id="index-174"></span><h4>SYSPLEX definitions<a class="headerlink" href="#sysplex-definitions" title="Permalink to this heading"></a></h4>
 <p>The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.</p>
 <p>Use the following command to display coupling allocation details for ISTGENERIC.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
@@ -4856,7 +5154,7 @@ application. See preceding ICH408I message in the log.</p></td>
 <p>Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.</p>
 </section>
 <section id="workload-balancing-in-a-sysplex-environment">
-<span id="index-172"></span><h4>Workload balancing in a SYSPLEX environment<a class="headerlink" href="#workload-balancing-in-a-sysplex-environment" title="Permalink to this heading"></a></h4>
+<span id="index-175"></span><h4>Workload balancing in a SYSPLEX environment<a class="headerlink" href="#workload-balancing-in-a-sysplex-environment" title="Permalink to this heading"></a></h4>
 <p>In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.</p>
 <p><img alt="image95" src="../../../_images/image957.png" /></p>
 <p>From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM
@@ -5006,7 +5304,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 </section>
 </section>
 <section id="using-a-distributed-vipa-to-load-balance">
-<span id="index-173"></span><h3>Using a Distributed VIPA to load balance<a class="headerlink" href="#using-a-distributed-vipa-to-load-balance" title="Permalink to this heading"></a></h3>
+<span id="index-176"></span><h3>Using a Distributed VIPA to load balance<a class="headerlink" href="#using-a-distributed-vipa-to-load-balance" title="Permalink to this heading"></a></h3>
 <p>Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
@@ -5018,7 +5316,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 </pre></div>
 </div>
 <section id="session-affinity">
-<span id="index-174"></span><h4>Session Affinity<a class="headerlink" href="#session-affinity" title="Permalink to this heading"></a></h4>
+<span id="index-177"></span><h4>Session Affinity<a class="headerlink" href="#session-affinity" title="Permalink to this heading"></a></h4>
 <p>It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W-HTTP (port 41001) is used for Virtel Administration and line C-HTTP (port 41002) for user access
 to applications.</p>
 <p>Line W-HTTP should be defined using the base address of the LPAR (i.e.the home address of the default interface) by specifying only the port number. For example:</p>
@@ -5043,10 +5341,10 @@ to applications.</p>
 </section>
 </section>
 <section id="using-an-apache-proxy-to-load-balance">
-<span id="index-175"></span><h3>Using an Apache Proxy to load balance<a class="headerlink" href="#using-an-apache-proxy-to-load-balance" title="Permalink to this heading"></a></h3>
+<span id="index-178"></span><h3>Using an Apache Proxy to load balance<a class="headerlink" href="#using-an-apache-proxy-to-load-balance" title="Permalink to this heading"></a></h3>
 <p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
 <p><img alt="image96" src="../../../_images/image967.png" /></p>
-<p id="index-176">Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
+<p id="index-179">Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Virtel</span>
 <span class="c1">#</span>
@@ -5112,7 +5410,7 @@ to applications.</p>
 </section>
 </section>
 <section id="virplex">
-<span id="v462cn-virplex"></span><span id="index-177"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this heading"></a></h2>
+<span id="v462cn-virplex"></span><span id="index-180"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this heading"></a></h2>
 <p>Virplex</p>
 <p>The new Virplex communication feature of Virtel provides the ability for multiple virtel instances to communicate with each other. This global knowledge of participating Virtel instances is referred to as a Virplex and enables Virtel instances to share the same ARBO and TRSF files. In a Virplex there is a number of Virtel “READ ONLY” instances and one “WRITER” instance. These instances all share the same ARBO and TRSF files, including any user defined TRSF files, with the read only instances only have a “READ” capability on the shared VSAM files and the “WRITER” instance having a standard tandard read/write capability to all files.  The ability to share files amongst participating Virtels provides support for the following functions:</p>
 <p>Dynamic Message Routing
@@ -5131,7 +5429,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 <p><img alt="image112" src="../../../_images/image11212.png" /></p>
 </section>
 <section id="tct-definitions">
-<span id="index-178"></span><h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this heading"></a></h3>
+<span id="index-181"></span><h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this heading"></a></h3>
 <p>Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.</p>
 <section id="tct-for-reader-tasks">
 <h4>TCT for ‘READER’ tasks.<a class="headerlink" href="#tct-for-reader-tasks" title="Permalink to this heading"></a></h4>
@@ -5167,7 +5465,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 </section>
 </section>
 <section id="arbo-definitions">
-<span id="index-179"></span><h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this heading"></a></h3>
+<span id="index-182"></span><h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this heading"></a></h3>
 <p>To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W-HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V-HTTP provides the common port for the Virtel instances within the Virplex.</p>
 <p>QLNK Line definitions for ‘READER’ instances.~</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">QLNK</span> <span class="n">Lines</span> <span class="k">for</span> <span class="n">Virplex</span> <span class="n">Reader</span> <span class="n">tasks</span><span class="o">.</span>
@@ -5404,7 +5702,7 @@ TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;’114BE9’&amp;U&amp;’114CF9’&amp
         <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
 </pre></div>
 </div>
-<p id="index-180"><strong>Virplex JCL examples</strong></p>
+<p id="index-183"><strong>Virplex JCL examples</strong></p>
 <p>JCL Procedure for Virplex.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//**********************************************************************</span>
 <span class="o">//*</span> <span class="n">DEFAULT</span> <span class="n">PROCEDURE</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">VIRPLEX</span> <span class="n">TASK</span>                               <span class="o">*</span>
@@ -5455,7 +5753,7 @@ TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;’114BE9’&amp;U&amp;’114CF9’&amp
 <span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168.170.39</span>
 </pre></div>
 </div>
-<p id="index-181"><strong>VTAM Definitions</strong></p>
+<p id="index-184"><strong>VTAM Definitions</strong></p>
 <p>VTAM definitions required for Virtel ‘Reader’ task 0. In this example, a separate VTAMLST member would be require for each Virtel instance within the Virplex to support clone values of 00(RO) , 01(RO) and 99(RW). These VTAM definitions could be merged into one member.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VIRTEH00 VBUILD TYPE=APPL
 * ------------------------------------------------------------------ *
@@ -5474,7 +5772,7 @@ R00IM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
 R00IP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
-<p id="index-182"><strong>TCPIP Changes</strong>
+<p id="index-185"><strong>TCPIP Changes</strong>
 The TCPIP profile definition requirements for a VIRPLEX are a shared Port address and a common VIPA for the Sysplex Distributor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shared</span> <span class="n">Port</span> <span class="n">Example</span>
 <span class="p">;</span> <span class="n">SPVIRExx</span> <span class="n">User</span> <span class="n">Range</span> <span class="k">for</span> <span class="n">Virplex</span>
@@ -5491,7 +5789,7 @@ The TCPIP profile definition requirements for a VIRPLEX are a shared Port addres
 <span class="n">ENDVIPADYNAMIC</span>
 </pre></div>
 </div>
-<p id="index-183"><strong>Installation overview to get Virplex up and running.</strong></p>
+<p id="index-186"><strong>Installation overview to get Virplex up and running.</strong></p>
 <p>The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (VIRTEL0 and VIRTEL1), and one writer instance, VIRTEL9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - VIRTEL0(SPVIRE00), VIRTEL1(SPVIRE01) and VIRTEL9(SPVIRE99).</p>
 <p>Install Virtel and get base product up and running before attempting any Virplex changes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAMPLIB</span> <span class="n">Members</span><span class="p">:</span>     <span class="n">VIRPLEX</span><span class="p">,</span> <span class="n">VIRTCT00</span><span class="p">,</span> <span class="n">VIRTCT99</span><span class="p">,</span> <span class="n">VIRTELZ</span><span class="p">,</span> <span class="n">VIRTEL00</span><span class="p">,</span> <span class="n">VIRTEL01</span><span class="p">,</span> <span class="n">VIRTEL99</span>
@@ -5610,7 +5908,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 </pre></div>
 </div>
 <p>If the displays match those above then the VIRPLEX has initialized successfully.</p>
-<p id="index-184"><strong>Validating the Virplex</strong></p>
+<p id="index-187"><strong>Validating the Virplex</strong></p>
 <p>Logon to Virtel using the common URL 192.168.170.15:41902. You should be presented with the Applist screen showing the two 3270 applications defined in the common ARBO.</p>
 <p><img alt="image113" src="../../../_images/image11310.png" /></p>
 <p>The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance VIRTEL1 (SPVIRE01)</p>
@@ -5618,7 +5916,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 <p>On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance VIRTEL0 (SPVIRE00).</p>
 <p><img alt="image115" src="../../../_images/image1157.png" /></p>
 <p>At this point validation of the Virplex is confirmed.</p>
-<p id="index-185"><strong>Testing QLNK communication.</strong></p>
+<p id="index-188"><strong>Testing QLNK communication.</strong></p>
 <p>To test that the Virtels are communicating, maintenance will be uploaded via the ‘WRITER’ task. The ‘WRITER’ task will distributed this to the two ‘READER’ tasks. Connect to the TSO application to determine the current maintenance level.</p>
 <p><img alt="image116" src="../../../_images/image1167.png" /></p>
 <p>Is shows as UPDT level V4.62 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-</p>
@@ -5629,7 +5927,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 <p><img alt="image119" src="../../../_images/image1197.png" /></p>
 <p>This confirms that the ‘WRITER’ and ‘READER’ tasks are communicating and the automatic distribution of maintenance out to ‘READER’ task environments is working. The following traces on the ‘WRITER’ task show that the ‘WRITER is communicating with ‘READER’ tasks:-</p>
 <p><img alt="image120" src="../../../_images/image1207.png" /></p>
-<p id="index-186"><strong>Diagnosing Virplex issues</strong></p>
+<p id="index-189"><strong>Diagnosing Virplex issues</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.  Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
 
 F VIRTEL9,TRACE,L=SPVIRE00
@@ -5655,18 +5953,18 @@ Open a problem with your local Syspertec Support Engineer and send them the outp
 </section>
 </section>
 <section id="protecting-business-assets-with-virtel-rules">
-<span id="index-187"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this heading"></a></h2>
+<span id="index-190"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this heading"></a></h2>
 <section id="id76">
 <h3>Introduction<a class="headerlink" href="#id76" title="Permalink to this heading"></a></h3>
 <p>In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset – secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.</p>
 <p><img alt="image97" src="../../../_images/image977.png" /></p>
 </section>
 <section id="virtel-setup">
-<span id="index-188"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this heading"></a></h3>
+<span id="index-191"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this heading"></a></h3>
 <p>From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non-secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address – 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.</p>
-<section id="index-189">
-<span id="id77"></span><h4>Virtel Rules<a class="headerlink" href="#index-189" title="Permalink to this heading"></a></h4>
+<section id="index-192">
+<span id="id77"></span><h4>Virtel Rules<a class="headerlink" href="#index-192" title="Permalink to this heading"></a></h4>
 <p>Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re-directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
@@ -5715,14 +6013,15 @@ and port addresses. For example, users in the accounts department should be able
 <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
-<p>So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule – in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
+<p>::
+So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule – in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
 For line 41003, using Entry Point EPNSEC, this will contain a list of W2H transactions which use standard RACF protection.</p>
 <p>Now, if the calling IP addressed is not matched, the RULE fails and the next rule in the ruleset is tested, in this case rule R0000x99. This is a catch all rule. Any user falling into this rule will be directed to entry point EPREJECT. The Entry Point EPREJECT only has one transaction, its default transaction, and this will invoke the template page
 EPREJECT.HTM.</p>
 <p>To protect the business assets the calling IP address can only be that of the proxy server - 192.168.092.160. Any other calling IP address will be rejected by the Virtel ruleset. By default, the ruleset associated with a line is normally the internal name of the line – C-HTTP for example. How the rejected session is handled depends on how Virtel has been setup.</p>
 </section>
 <section id="default-rule-template">
-<span id="index-190"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this heading"></a></h4>
+<span id="index-193"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this heading"></a></h4>
 <p>In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
@@ -5766,9 +6065,245 @@ window.location.replace(&quot;http://www.mycompany.com&quot;);
 </div>
 </section>
 </section>
+<section id="appendix-a">
+<h3>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this heading"></a></h3>
+<section id="sample-arbo-definitions-for-lu-nailing">
+<h4>Sample ARBO definitions for LU Nailing<a class="headerlink" href="#sample-arbo-definitions-for-lu-nailing" title="Permalink to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPVIREHU</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//*</span>
+<span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">LOADS</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
+<span class="o">//*</span>
+<span class="o">//*</span><span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">PRODV460</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT462</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT462</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">DELETE</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,REPL,LANG=EN&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span>      <span class="n">DD</span> <span class="o">*</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">12</span>     <span class="n">DELETE</span> <span class="n">TRANSACTION</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">13</span>     <span class="n">DELETE</span> <span class="n">TRANSACTION</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT021</span>   <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT022</span>   <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT023</span>    <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT024</span>   <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT026</span>   <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT027</span>   <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT029</span>    <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT031</span>    <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT036</span>    <span class="n">Delete</span> <span class="n">terminal</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span>    <span class="n">Delete</span> <span class="n">user</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span>    <span class="n">Delete</span> <span class="n">user</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RESOURCE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span>   <span class="n">Delete</span> <span class="n">user</span> <span class="n">resource</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span>    <span class="n">User</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span>     <span class="n">User</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span>     <span class="n">User</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT</span>     <span class="n">User</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">DBDCCICS</span>    <span class="n">Application</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">PROFILE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPCICST</span>     <span class="n">Application</span> <span class="n">Profile</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">USER</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span>       <span class="n">Delete</span> <span class="n">User</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">USER</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span>        <span class="n">Delete</span> <span class="n">User</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">USER</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span>        <span class="n">Delete</span> <span class="n">User</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">USER</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT</span>        <span class="n">Delete</span> <span class="n">User</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">DEPT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">TSO</span>            <span class="n">Delete</span> <span class="n">Department</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">DEPT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">CICS</span>           <span class="n">Delete</span> <span class="n">Department</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">DEPT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTELT</span>        <span class="n">Delete</span> <span class="n">Department</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">VIRLOAD</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,REPL,LANG=EN&#39;</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span>    <span class="n">DD</span>  <span class="o">*</span>
+    <span class="n">DEPT</span>     <span class="n">ID</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">OWNER</span><span class="o">=</span><span class="n">SPTHOLT</span>
+    <span class="n">DEPT</span>     <span class="n">ID</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CICS DEPARTMENT&#39;</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="p">(</span><span class="n">SPCICST</span><span class="p">,</span><span class="n">DBDCCICS</span><span class="p">,</span><span class="n">SPCICSP</span><span class="p">),</span>
+            <span class="n">OWNER</span><span class="o">=</span><span class="n">CTKHOLT</span>
+    <span class="n">DEPT</span>     <span class="n">ID</span><span class="o">=</span><span class="n">TSO</span><span class="p">,</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;TSO DEPARTMENT&#39;</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="p">(</span><span class="n">TSO</span><span class="p">),</span>
+            <span class="n">OWNER</span><span class="o">=</span><span class="n">SPTHOLT1</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">APPLICATION</span> <span class="n">PROFILES</span> <span class="n">POINTING</span> <span class="n">TO</span> <span class="n">USER</span> <span class="n">RESOURCES</span>                    <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">CICSAPP1</span><span class="p">,</span>                                            <span class="o">-</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CICSAPP1 PROFILE&#39;</span><span class="p">,</span>                                <span class="o">-</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>                                              <span class="o">-</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="mi">10002666</span><span class="p">,</span>                                     <span class="o">-</span>
+            <span class="mi">10002714</span><span class="p">)</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">DBDCCICS</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;DBDCCICS PROFILE&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">CTKHLT1</span><span class="p">,</span><span class="n">CTKHOLT</span><span class="p">,</span><span class="mi">10002714</span><span class="p">,</span><span class="mi">10002666</span><span class="p">)</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">SPCICST</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SPCICST PROFILE&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">CTKHLT1</span><span class="p">,</span><span class="n">SPTHOLT1</span><span class="p">,</span><span class="n">CTKHOLT</span><span class="p">)</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">SPCICSP</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SPCICSP PROFILE&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">CTKHOLT</span><span class="p">)</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">TSO</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;TSO PROFILE&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">TSO</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">USER</span> <span class="n">RESOURCES</span> <span class="n">RELATED</span> <span class="n">TO</span> <span class="n">APPLICATION</span> <span class="n">PROFILES</span>                     <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User CTKHOLT&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User CTKHLT1&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User SPTHOLT1&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="mi">10002666</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User 10002666&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="mi">10002714</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User 10002714&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">USER</span> <span class="n">IDS</span> <span class="n">POINTING</span> <span class="n">to</span> <span class="n">USERID</span> <span class="n">PROFILES</span>                               <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Ed Holt&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">PASSWORD</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="n">SPTHOLT</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Neils Bohr&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>
+            <span class="n">PASSWORD</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="n">CTKHOLT</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Pablo Escobar&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">TSO</span><span class="p">,</span>
+            <span class="n">PASSWORD</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="n">CTKHLT1</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Taylor Swifty&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">TSO</span><span class="p">,</span>
+            <span class="n">PASSWORD</span><span class="o">=</span><span class="n">PASSWORD</span><span class="p">,</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="n">SPTHOLT1</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="mi">10002666</span><span class="p">,</span>                                            <span class="o">-</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Walter Mitty&#39;</span><span class="p">,</span>                                    <span class="o">-</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>                                              <span class="o">-</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                                <span class="o">-</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="p">(</span><span class="mi">10002666</span><span class="p">)</span>
+    <span class="n">USER</span>     <span class="n">ID</span><span class="o">=</span><span class="mi">10002714</span><span class="p">,</span>                                            <span class="o">-</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;James Bond&#39;</span><span class="p">,</span>                                    <span class="o">-</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">CICS</span><span class="p">,</span>                                              <span class="o">-</span>
+            <span class="n">ADMIN</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                                <span class="o">-</span>
+            <span class="n">ASSIST</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+            <span class="n">PROFILE</span><span class="o">=</span><span class="p">(</span><span class="mi">10002714</span><span class="p">)</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">USER</span> <span class="n">PROFILES</span> <span class="n">RELATED</span> <span class="n">TO</span> <span class="n">USERID</span> <span class="n">AND</span> <span class="n">POINTING</span> <span class="n">TO</span> <span class="n">TERMINAL</span> <span class="n">RESOURCES</span> <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span> <span class="n">User</span> <span class="n">Profiles</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SPTHOLT Resources&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">REHVT021</span><span class="p">)</span>
+<span class="o">*</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">CTKHOLT</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CTKHOLT Resources&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">VT023</span><span class="p">,</span><span class="n">R</span><span class="o">+</span><span class="n">VT029</span><span class="p">,</span><span class="n">R</span><span class="o">+</span><span class="n">VT031</span><span class="p">)</span>
+<span class="o">*</span>
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">CTKHLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CTKHLT1 Resources&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">REHVT024</span><span class="p">)</span>
+
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="n">SPTHOLT1</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SPTHOLT1 Resources&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">REHVT022</span><span class="p">)</span>
+
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="mi">10002666</span><span class="p">,</span>                                            <span class="o">-</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;10002666 Resources&#39;</span><span class="p">,</span>                              <span class="o">-</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>                                           <span class="o">-</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">REHVT026</span><span class="p">,</span><span class="n">REHVT027</span><span class="p">)</span>
+
+    <span class="n">PROFILE</span>  <span class="n">ID</span><span class="o">=</span><span class="mi">10002714</span><span class="p">,</span>                                            <span class="o">-</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;10002714 Resources&#39;</span><span class="p">,</span>                           <span class="o">-</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span><span class="p">,</span>                                           <span class="o">-</span>
+            <span class="n">RESOURCE</span><span class="o">=</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">VT036</span><span class="p">)</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">TERMINAL</span> <span class="n">RESOURCES</span> <span class="n">RELATED</span> <span class="n">TO</span> <span class="n">USER</span> <span class="n">PROFILES</span>                        <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">REHVT021</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REHVT021&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">REHVT022</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REHVT022&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT023</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REH+023&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">REHVT024</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REHVT024&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">REHVT026</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REHVT026&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">REHVT027</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REHVT027&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT029</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal R+VT029&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT031</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal REH+031&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+    <span class="n">RESOURCE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT036</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Terminal R+VT036&#39;</span><span class="p">,</span>
+            <span class="n">DEPT</span><span class="o">=</span><span class="n">VIRTELT</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">NEW</span> <span class="n">TRANSACTION</span>                                                    <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span>
+            <span class="n">NAME</span><span class="o">=</span><span class="n">SPCICST</span><span class="p">,</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Test CICS&#39;</span><span class="p">,</span>
+            <span class="n">APPL</span><span class="o">=</span><span class="n">SPCICST</span><span class="p">,</span>
+            <span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+            <span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="o">*</span><span class="n">NEW</span> <span class="n">TRANSACTION</span>                                                    <span class="o">*</span>
+<span class="o">*-------------------------------------------------------------------*</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span>
+            <span class="n">NAME</span><span class="o">=</span><span class="n">SPCICSP</span><span class="p">,</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Production CICS&#39;</span><span class="p">,</span>
+            <span class="n">APPL</span><span class="o">=</span><span class="n">SPCICSP</span><span class="p">,</span>
+            <span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+            <span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
 </section>
-<section id="appendix">
-<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading"></a></h2>
+</section>
 <section id="trademarks">
 <h3>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this heading"></a></h3>
 <p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
@@ -5790,7 +6325,10 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Virtel462AP/audit_operations_%20and_performance.html" class="btn btn-neutral float-left" title="Audit, Administration, Operations and Performance V4.62" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Virtel462CS/Customization.html" class="btn btn-neutral float-right" title="Customization Guide V4.62" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

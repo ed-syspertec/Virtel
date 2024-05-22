@@ -5532,6 +5532,9 @@ Two options are available to nail a terminal to a supplied userid. Ther are: -
 - Using the RACF installation data contained with the users RACF profile.
 - Using ARBO definitions to construct an internal table space of userid, application and terminal associations.  
 
+.. index::
+   pair: Controlling LUNAMEs; Using RACF to nail LUs; Nailing Relay Names    
+
 LU Nailing using RACF
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -5586,23 +5589,27 @@ Output messages from the scenario
     21.17.31 JOB06669  CSXRACFS Userdata = TXBP9                                                    
     21.17.32 JOB06669  CSXRACFS Allocating LUNAME = CSXDXBP9                                        
     21.17.32 JOB06669  VIR0919I CXVTA075 RELAY CSXDXBP9(CXHDXBP0) ACTIVATED
-    
+
+.. index::
+   pair: Controlling LUNAMEs; Using ARBO statements to nail LUs; Nailing Relay Names    
+
+
 LU Nailing using ARBO defininitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
 
 New TCT option
-^^^^^^^^^^^^^^
+""""""""""""""
 
-A new option has been added to the TCT which enables user function support, of which the Relay feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: -
+A new option has been added to the TCT which enables user function support, of which the Relay Support feature is a member of. To enable user function support the following TCT entry must be added to the TCT definitions: -
 
 ::
 
     USERFUNC=YES,		Enable User functions
 
-ARBO Table space construts
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+ARBO Table Space Construts
+""""""""""""""""""""""""""
 
 The internal ARBO table space is a tree structure built using the following constructs.
 
@@ -5628,7 +5635,7 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 
     \newpage 
 
-**Appendix A** contains sample ARBO statements to define a User Function Relay tablespace. The sample is broken down into the following components and entities: -
+**Appendix A** contains sample ARBO statements to define a Relay Support tablespace. The sample is broken down into the following components and entities: -
 
 In the sample definitions we have: - 
 
@@ -5726,7 +5733,7 @@ Admin 3270 Security Application
 The Admin 3270 Security (F4) application, accessible from the Virtel 3270 Admin Menu, displays the ARBO table space. The tablespace can be modified online with changes being written back to the ARBO file. Modifications are not persisted through to the active ARBO TS (Table Space) in Virtel. Any changes made online will still require a stop and restart of Virtel to rebuild the ARBO table space.
 
 Using the Application
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 
 Select the Admin (3270) option from the 3270 ADMIN main menu display normally found on port 40001. This will bring up the Configuration Menu. 
 
@@ -5742,7 +5749,7 @@ From the configuration menu, select PF4 to access the Security Management Sub-Ap
 From here we can select the sub-menus for Resources, Profiles, Users, Administration. 
  
 Sub-Menu Resources Management (F1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 
 From this menu you can select one of the following three actions
 
@@ -5762,7 +5769,7 @@ From this menu you can select one of the following three actions
 *Resource Usage*
 
 Sub-Menu Profile Management (F2)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 From this menu you can select one of the following three actions
 
@@ -5803,7 +5810,7 @@ From this menu you can select one of the following three actions
 *Copy Profile*
  
 Sub Menu User Management (F3)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
  
 **Add a User**
 
@@ -5821,7 +5828,7 @@ Sub Menu User Management (F3)
 *List Users*
 
 Sub Menu Administration Management (F4)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 
 **Admin Management Menu**
 
@@ -5856,7 +5863,7 @@ Sub Menu Administration Management (F4)
 
 
 Comparison Table
-----------------
+^^^^^^^^^^^^^^^^
 
 +-------------------------------+---------------------------+----------------------------+-----------+----------------------+
 | Type                          | RULE Required             | TERMINAL Definition Reqd.  | COOKIES   | Terminal POOL Reqd.  |
@@ -5878,7 +5885,7 @@ Comparison Table
    single: AT-TLS Secure Session
 
 AT-TLS Secure Session
-======================
+=====================
 
 Introduction
 ------------
