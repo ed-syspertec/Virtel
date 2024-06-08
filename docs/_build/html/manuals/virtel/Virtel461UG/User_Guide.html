@@ -2083,6 +2083,8 @@ NOPARAMS EQU *
 </dd>
 <dt>DIRECTORY</dt><dd><p>The current VIRTEL directory name</p>
 </dd>
+<dt>APPLICATION-OPTION</dt><dd><p>The value of the current transaction definition Option field.</p>
+</dd>
 <dt>CHARACTER-SET</dt><dd><p>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see <a class="reference internal" href="#v461ug-ebcdic-translation"><span class="std std-ref">“EBCDIC translation management”</span></a>)</p>
 </dd>
 <dt>DATE-TIME</dt><dd><p>The current date and time (14 characters in the format YYYYMMDDHHMMSS)</p>
@@ -5334,6 +5336,8 @@ TYPE=type
 <dl>
 <dt><strong>NAME-OF or VALUE-OF Item list</strong></dt><dd><dl>
 <dt>The following VIRTEL data items may be specified:</dt><dd><dl class="simple">
+<dt>APPLICATION-OPTION</dt><dd><p>The value of the current transaction definition Option field.</p>
+</dd>
 <dt>CHARACTER-SET</dt><dd><p>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see <a class="reference internal" href="#v461ug-ebcdic-translation"><span class="std std-ref">“EBCDIC translation management”</span></a>)</p>
 </dd>
 <dt>CURRENT-FOREACH-INDEX</dt><dd><p>Value of the current index in a FOREACH loop.</p>
@@ -5495,6 +5499,8 @@ COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS),           X
     VAR=&#39;SNASTAT&#39;
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS),      X
     VAR=&#39;CLIENT&#39;
+COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,APPLICATION-OPTION),   X
+    VAR=&#39;OPTION&#39;
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET),        X
     VAR=&#39;CHARSET&#39;
 COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME),           X

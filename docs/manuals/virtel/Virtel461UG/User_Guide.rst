@@ -2631,6 +2631,8 @@ xxxxxx
         The name of the original HTML page template specified in the URL
     DIRECTORY
         The current VIRTEL directory name
+    APPLICATION-OPTION
+            The value of the current transaction definition Option field.        
     CHARACTER-SET
         The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see :ref:`“EBCDIC translation management” <#_V461UG_EBCDIC_translation>`)
     DATE-TIME
@@ -7063,6 +7065,8 @@ In addition, the following non-standard HTTP headers, described in the IBM Tivol
 
 **NAME-OF or VALUE-OF Item list**
     The following VIRTEL data items may be specified:
+        APPLICATION-OPTION
+            The value of the current transaction definition Option field.
         CHARACTER-SET
             The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see :ref:`“EBCDIC translation management” <#_V461UG_EBCDIC_translation>`)
         CURRENT-FOREACH-INDEX
@@ -7212,6 +7216,8 @@ Example of COPY$ SYSTEM-TO-VARIABLE:
         VAR='SNASTAT'
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS),      X
         VAR='CLIENT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,APPLICATION-OPTION),   X
+        VAR='OPTION'    
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET),        X
         VAR='CHARSET'
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME),           X
