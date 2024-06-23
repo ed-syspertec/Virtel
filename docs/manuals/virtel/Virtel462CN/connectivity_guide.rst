@@ -15,9 +15,9 @@ Connectivity Guide V4.62
 
 .. warning:: This is a draft version of the document.
 
-Version : 4.62 Draft
+Version : 4.62 
 
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Syspertec Communication
 

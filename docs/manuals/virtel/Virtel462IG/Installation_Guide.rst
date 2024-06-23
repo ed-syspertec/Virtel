@@ -14,7 +14,7 @@ Installation Guide V4.62
 
 Version : 4.62 
 
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Syspertec Communication
 
@@ -569,9 +569,25 @@ The procedure for upgrading from a previous version of VIRTEL (version 4.00 or l
 
 7.  Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.
 
+.. note::
+
+		Copy and rename the following files from the previous Virtel version to the VIRTnnn naming standard.  You can delete the new ARBO and HTMLTRSF  
+        files that came with VIRTnnn install before the copy and rename.
+       - VIRARBO Configuration file
+       - HTMLTRSF (CLI-dir) which includes, all customization files 
+
+.. note::
+
+		If you are currently using Centralized USERPARM or Centralized Macros,  Copy and rename the following files from the previous Virtel version to the 
+        VIRTnnn naming standard.  You can delete or backup the new files that came with VIRTnnn.             
+       - HTML      Correspondent file used with USERPARM
+       - USERTRSF  Userparm directory 
+       - HTMLTRSF  Global/Group/User Macros  
+
+
 8.  If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter *TN201611 - Customising Virtel in V4.56* for further details. 
 
-9. Stop and restart VIRTEL.
+9.  Stop and restart VIRTEL.
 
 .. index::
    pair: Installing under z/OS  ; Applying Maintenance Updates	
