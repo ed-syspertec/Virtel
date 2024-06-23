@@ -53,7 +53,7 @@
 
 
 \title{Virtel User Guide}
-\date{Feb 17, 2024}
+\date{Jun 23, 2024}
 \release{4.62}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -80,16 +80,11 @@
 \sphinxAtStartPar
 \sphinxstylestrong{VIRTEL User Guide}
 
-\begin{sphinxadmonition}{warning}{Warning:}
-\sphinxAtStartPar
-This is a draft version of the document.
-\end{sphinxadmonition}
-
 \sphinxAtStartPar
 Version : 4.62
 
 \sphinxAtStartPar
-Release Date : 01 November 2021. Publication Date : 23/12/2021
+Release Date : 23/06/2024. Publication Date : 17/03/2024
 
 \sphinxAtStartPar
 Syspertec Communication
@@ -4277,7 +4272,7 @@ VIRTEL normally sets the MIME\sphinxhyphen{}type to the value indicated by the b
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME\sphinxhyphen{}type to be “text/html”. This is because some versions of Internet Explorer upload HTML files using MIME\sphinxhyphen{}type “text/plain”
+If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME\sphinxhyphen{}type to be “text/html”. This is because some versions of the browser upload HTML files using MIME\sphinxhyphen{}type “text/plain”
 
 \item {} 
 \sphinxAtStartPar
@@ -8512,13 +8507,13 @@ Example of testing a variable with CASE\$.
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 * loop on a variable:
 
-LOOP1    FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=\PYGZsq{}TOTO\PYGZsq{}
+LOOP1    FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=TOTO
 
         CASE\PYGZdl{} CURRENT\PYGZhy{}FOREACH\PYGZhy{}VARIABLE\PYGZhy{}OF,LOOP1,(EQ,\PYGZsq{}XXXX\PYGZsq{},ET1)
 
-        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}I1\PYGZsq{},LENGTH=2,                   *
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=I1,LENGTH=2,                   *
             FIELD=(VALUE\PYGZhy{}OF,CURRENT\PYGZhy{}FOREACH\PYGZhy{}INDEX),TYPE=REPLACE
-        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}V1\PYGZsq{},                            *
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=V1,                            *
             FIELD=(VALUE\PYGZhy{}OF,CURRENT\PYGZhy{}FOREACH\PYGZhy{}VARIABLE),TYPE=REPLACE
         ERROR\PYGZdl{} 0,\PYGZsq{}TOTO: \PYGZsq{},\PYGZsq{}*I1\PYGZsq{},\PYGZsq{}==\PYGZsq{},\PYGZsq{}*V1\PYGZsq{}
         ENDFOR\PYGZdl{} LOOP1
@@ -8536,7 +8531,7 @@ This instruction allows a scenario to translate a VIRTEL variable to or from EBC
 lower case.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-CONVERT\PYGZdl{} direction,VAR=\PYGZsq{}varname\PYGZsq{},TABLE=\PYGZsq{}tabname\PYGZsq{}
+CONVERT\PYGZdl{} direction,VAR=varname,TABLE=\PYGZsq{}tabname\PYGZsq{}
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{direction}
@@ -8678,7 +8673,7 @@ indicates that the new value will replace the existing value of the variable. If
 Copies the contents of a file into a VIRTEL variable. This instruction can be used in an input scenario which processes an HTTP request or SMTP input message having one or more attached files.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} INPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{},FILE=\PYGZsq{}filename\PYGZsq{}
+COPY\PYGZdl{} INPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=varname\PYGZsq{},FILE=\PYGZsq{}filename\PYGZsq{}
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{varname}
@@ -8778,7 +8773,7 @@ indicates that the new value will replace the existing value of the variable. If
 Copies a a list of values (either constants or variables) to a variable.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} LIST\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{},
+COPY\PYGZdl{} LIST\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=varname,
     LIST=(STRING,\PYGZsq{}string\PYGZsq{},VARIABLE,\PYGZsq{}fromvar\PYGZsq{},\PYGZsq{}string\PYGZsq{},\PYGZsq{}*fromvar\PYGZsq{}),
     LTRIM=(\PYGZsq{}string1\PYGZsq{},\PYGZsq{}string2\PYGZsq{},...),
     RTRIM=(\PYGZsq{}string1\PYGZsq{},\PYGZsq{}string2\PYGZsq{},...),
@@ -8841,8 +8836,8 @@ LTRIM and RTRIM only apply to variables. In the following example
 \end{sphinxadmonition}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} LIST\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}VAR1\PYGZsq{}, *
-RTRIM=(\PYGZsq{}\PYGZus{}\PYGZsq{},\PYGZsq{} \PYGZsq{}),LTRIM=(\PYGZsq{}\PYGZus{}\PYGZsq{},\PYGZsq{} \PYGZsq{}), *
+COPY\PYGZdl{} LIST\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=VAR1,              *
+RTRIM=(\PYGZsq{}\PYGZus{}\PYGZsq{},\PYGZsq{} \PYGZsq{}),LTRIM=(\PYGZsq{}\PYGZus{}\PYGZsq{},\PYGZsq{} \PYGZsq{}),              *
 LIST=(\PYGZsq{}string1\PYGZsq{},\PYGZsq{}*var1\PYGZsq{},VARIABLE,\PYGZsq{}var2\PYGZsq{})
 \end{sphinxVerbatim}
 
@@ -8857,9 +8852,9 @@ The variable VAR1 is created/modified, with ‘string1’ copied as is, var1 and
 Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags within the page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} OUTPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,FILE=\PYGZsq{}filename\PYGZsq{},VAR=\PYGZsq{}varname\PYGZsq{},
+COPY\PYGZdl{} OUTPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,FILE=\PYGZsq{}filename\PYGZsq{},VAR=varname,                  *
     TYPE=type
-COPY\PYGZdl{} OUTPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,FILE=\PYGZsq{}*filenameVar\PYGZsq{},VAR=\PYGZsq{}varname\PYGZsq{},
+COPY\PYGZdl{} OUTPUT\PYGZhy{}FILE\PYGZhy{}TO\PYGZhy{}VARIABLE,FILE=\PYGZsq{}*filenameVar\PYGZsq{},VAR=varname,              *
     TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -8961,8 +8956,8 @@ Note 2: the fourth sub\sphinxhyphen{}parameter (ht) of the SCREEN parameter is o
 Copies a system information field into a table variable.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(class,item),
-VAR=\PYGZsq{}varname\PYGZsq{},LENGTH=len,OFFSET=offset,
+COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(class,item),      *
+VAR=varname,LENGTH=len,OFFSET=offset,             *
 TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -9297,57 +9292,57 @@ Example of COPY\$ SYSTEM\sphinxhyphen{}TO\sphinxhyphen{}VARIABLE:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(HTTP\PYGZhy{}HEADER,HOST),             X
-    VAR=\PYGZsq{}HOST\PYGZsq{}
+    VAR=HOST
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(HTTP\PYGZhy{}HEADER,USER\PYGZhy{}AGENT),       X
-    VAR=\PYGZsq{}BROWSER\PYGZsq{}
+    VAR=BROWSER
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,VIRTEL),               X
-    VAR=\PYGZsq{}APPLID\PYGZsq{}
+    VAR=APPLID
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,LINE\PYGZhy{}INTERNAL),        X
-    VAR=\PYGZsq{}LINEINT\PYGZsq{}
+    VAR=LINEINT
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,PSEUDO\PYGZhy{}TERMINAL),      X
-    VAR=\PYGZsq{}TERMID\PYGZsq{}
+    VAR=TERMID
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,RELAY),                X
-    VAR=\PYGZsq{}LUNAME\PYGZsq{}
+    VAR=LUNAME
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,ENTRY\PYGZhy{}POINT),          X
-    VAR=\PYGZsq{}EPNAME\PYGZsq{}
+    VAR=EPNAME
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,TRANSACTION\PYGZhy{}INTERNAL), X
-    VAR=\PYGZsq{}TRANINT\PYGZsq{}
+    VAR=TRANINT
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,TRANSACTION\PYGZhy{}EXTERNAL), X
-    VAR=\PYGZsq{}TRANEXT\PYGZsq{}
+    VAR=TRANEXT
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,ROUTING\PYGZhy{}PARAMETER),    X
-    VAR=\PYGZsq{}ROUTPARM\PYGZsq{}
+    VAR=ROUTPARM
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,URL),                  X
-    VAR=\PYGZsq{}URL\PYGZsq{}
+    VAR=URL
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,QUERY),                X
-    VAR=\PYGZsq{}QSTRING\PYGZsq{}
+    VAR=QSTRING
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,PAGE),                 X
-    VAR=\PYGZsq{}pagename\PYGZsq{}
+    VAR=pagename
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,DIRECTORY),            X
-    VAR=\PYGZsq{}DIRNAME\PYGZsq{}
+    VAR=DIRNAME
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,SNA\PYGZhy{}STATUS),           X
-    VAR=\PYGZsq{}SNASTAT\PYGZsq{}
+    VAR=SNASTAT
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,USER\PYGZhy{}IP\PYGZhy{}ADDRESS),      X
-    VAR=\PYGZsq{}CLIENT\PYGZsq{}
+    VAR=CLIENT
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NAME\PYGZhy{}OF,CHARACTER\PYGZhy{}SET),        X
-    VAR=\PYGZsq{}CHARSET\PYGZsq{}
+    VAR=CHARSET
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(VALUE\PYGZhy{}OF,DATE\PYGZhy{}TIME),           X
-    VAR=\PYGZsq{}DATETIME\PYGZsq{}
+    VAR=DATETIME
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(VALUE\PYGZhy{}OF,VIRTEL\PYGZhy{}VERSION),      X
-    VAR=\PYGZsq{}VERSION\PYGZsq{}
+    VAR=VERSION
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(VALUE\PYGZhy{}OF,SYSNAME\PYGZhy{}SYMBOL),      X
-    VAR=\PYGZsq{}SYSNAME\PYGZsq{}
+    VAR=SYSNAME
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(VALUE\PYGZhy{}OF,SYSPLEX\PYGZhy{}SYMBOL),      X
-    VAR=\PYGZsq{}SYSPLEX\PYGZsq{}
+    VAR=SYSPLEX
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NUMBER\PYGZhy{}OF,SCREEN\PYGZhy{}COLUMNS),     X
-    VAR=\PYGZsq{}COLS\PYGZsq{}
+    VAR=COLS
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,FIELD=(NUMBER\PYGZhy{}OF,SCREEN\PYGZhy{}LINES),       X
-    VAR=\PYGZsq{}ROWS\PYGZsq{}
+    VAR=ROWS
 COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,                                      X
     FIELD=(USER\PYGZhy{}SECURITY\PYGZhy{}PROFILE,WADEPT),                      X
-    VAR=\PYGZsq{}DEPT’
+    VAR=DEPT
  COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,                                     X
     FIELD=(NAME\PYGZhy{}OF,TERMINAL),                                  X
-    VAR=\PYGZsq{}TERMINAL’
+    VAR=TERMINAL
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -9674,7 +9669,7 @@ indicates that the destination field is cleared to nulls before copying the data
 Copies the value of a variable to a VIRTEL system field. In the case of a table variable, only the first value is copied.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}SYSTEM,VAR=\PYGZsq{}varname\PYGZsq{},FIELD=(class,item)
+COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}SYSTEM,VAR=varname,FIELD=(class,item)
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{varname}
@@ -9773,7 +9768,7 @@ To validate the PassTicket for TSO
 Copies a source variable to a target variable.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(\PYGZsq{}source\PYGZsq{},\PYGZsq{}target\PYGZsq{}),
+COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(source,target),
       OFFSET=offset,LENGTH=lend,PAD=\PYGZsq{}padChar \PYGZsq{},TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -9807,8 +9802,8 @@ the name of a VIRTEL table variable. If the variable does not exist, it will be 
 The following example will display ‘Target value is : Doe\_\_\_\_’
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-COPY\PYGZdl{} VALUE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}source\PYGZsq{},VALUE=\PYGZsq{}John Doe\PYGZsq{}
-COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(\PYGZsq{}source\PYGZsq{},\PYGZsq{}target\PYGZsq{}),OFFSET=5,                    X
+COPY\PYGZdl{} VALUE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=source,VALUE=\PYGZsq{}John Doe\PYGZsq{}
+COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(source,target),OFFSET=5,                    X
         LENGTH=7,PAD=\PYGZsq{}\PYGZus{}\PYGZsq{}
 ERROR\PYGZdl{} 0,\PYGZsq{}Target value is : \PYGZsq{},\PYGZsq{}*target\PYGZsq{}
 \end{sphinxVerbatim}
@@ -9905,14 +9900,14 @@ The DEBUG\$ instruction is executed only if the external name of the transaction
         DEBUG\PYGZdl{} TRACE,SCENARIO,                                        *
             WHEN=(TRANSACTION\PYGZhy{}NAME\PYGZhy{}STARTS\PYGZhy{}WITH,\PYGZsq{}DB\PYGZsq{})
 
-        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}VAR1\PYGZsq{},                          *
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=VAR1,                            *
             FIELD=(VALUE\PYGZhy{}OF,SYSCLONE\PYGZhy{}SYMBOL)
         ERROR\PYGZdl{} 0,\PYGZsq{}SYSCLONE: \PYGZsq{},\PYGZsq{}*VAR1\PYGZsq{}
-        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}VAR1\PYGZsq{},                          *
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=VAR1,                            *
             FIELD=(VALUE\PYGZhy{}OF,SYSPLEX\PYGZhy{}SYMBOL)
         ERROR\PYGZdl{} 0,\PYGZsq{}SYSPLEX: \PYGZsq{},\PYGZsq{}*VAR1\PYGZsq{}
 *
-        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}VAR1\PYGZsq{},                          *
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=VAR1,                            *
             FIELD=(NAME\PYGZhy{}OF,CHARACTER\PYGZhy{}SET)
         ERROR\PYGZdl{} 0,\PYGZsq{}CHARACTER\PYGZhy{}SET: \PYGZsq{},\PYGZsq{}*VAR1\PYGZsq{}
         DEBUG\PYGZdl{} NOTRACE,SCENARIO
@@ -10112,12 +10107,12 @@ The label is required. It must match the label on the corresponding FOREACH\$ VA
 In the example below, the value of VAR1 which is copied is the current value in the FOREACH\$ loop.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-LOOP1    FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=\PYGZsq{}VAR1\PYGZsq{}
+LOOP1    FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=VAR1
 
-        COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}SCREEN,VAR=\PYGZsq{}VAR1\PYGZsq{},FOREACH=LOOP1,            *
+        COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}SCREEN,VAR=VAR1,FOREACH=LOOP1,             *
             SCREEN=(=,=,=)
 
-        COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(\PYGZsq{}VAR1\PYGZsq{},\PYGZsq{}VAR2\PYGZsq{}),FOREACH=LOOP1, *
+        COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=(VAR1,VAR2),FOREACH=LOOP1,    *
             OFFSET=8,LENGTH=5,PAD=\PYGZsq{} \PYGZsq{}
 
 
@@ -10372,7 +10367,7 @@ The FOREACH\$ VALUE\sphinxhyphen{}IN\sphinxhyphen{}VARIABLE instruction marks th
 VALUE\sphinxhyphen{}IN\sphinxhyphen{}VARIABLE and ENDFOR\$ instructions are permitted.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-groupname FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{}
+groupname FOREACH\PYGZdl{} VALUE\PYGZhy{}IN\PYGZhy{}VARIABLE,VAR=varname
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{groupname}
@@ -10809,7 +10804,7 @@ XML tag names are case sensitive. WITH=’Title’ is not the same as WITH=’TI
 \end{sphinxadmonition}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-MAP\PYGZdl{} AREA,TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{},
+MAP\PYGZdl{} AREA,TO\PYGZhy{}VARIABLE,VAR=varname,
     WITH=\PYGZsq{}name\PYGZsq{},LENGTH=nnn,TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -10824,7 +10819,7 @@ Another form of the MAP\$ AREA instruction defines a field in the commarea and f
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 MAP\PYGZdl{} AREA,FROM\PYGZhy{}CONSTANT,\PYGZsq{}value\PYGZsq{},LENGTH=nnn,TYPE=type
-MAP\PYGZdl{} AREA,FROM\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{},LENGTH=nnn,
+MAP\PYGZdl{} AREA,FROM\PYGZhy{}VARIABLE,VAR=varname,LENGTH=nnn,
     TYPE=type,FORMAT=(\PYGZsq{}pattern\PYGZsq{},char)
 \end{sphinxVerbatim}
 \begin{description}
@@ -10847,7 +10842,8 @@ A further variation of the MAP\$ AREA instruction places the value of a field in
 into the commarea. The variable will be created or replaced during the processing of a subsequent MAP\$ FROM\sphinxhyphen{}FIELD, MAP\$ FROM\sphinxhyphen{}INPUT, or MAP\$ FROM\sphinxhyphen{}VARIABLE instruction.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-MAP\PYGZdl{} AREA,TO\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=\PYGZsq{}varname\PYGZsq{},
+MAP\PYGZdl{} AREA,TO\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=varname
+,
 WITH=\PYGZsq{}name\PYGZsq{},LENGTH=nnn,TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -10865,7 +10861,7 @@ are copied exactly from the input data.
 Another variation of the MAP\$ AREA instruction, TO\sphinxhyphen{}TABLE\sphinxhyphen{}VARIABLE\sphinxhyphen{}ONLY, is similar to TO\sphinxhyphen{}VARIABLE\sphinxhyphen{}ONLY except that if the variable already exists, the new value will be appended to any existing values instead of erasing the previous value.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-MAP\PYGZdl{} AREA,TO\PYGZhy{}TABLE\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=\PYGZsq{}varname\PYGZsq{},
+MAP\PYGZdl{} AREA,TO\PYGZhy{}TABLE\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=varname,
    WITH=\PYGZsq{}name\PYGZsq{},LENGTH=nnn,TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -10932,7 +10928,7 @@ XML tag and attribute names are case sensitive.
 A variation of the MAP\$ AREA\sphinxhyphen{}ATTRIBUTE instruction allows the value of the attribute to be copied into a VIRTEL variable, in addition to being placed in the commarea:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-MAP\PYGZdl{} AREA\PYGZhy{}ATTRIBUTE,TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{},
+MAP\PYGZdl{} AREA\PYGZhy{}ATTRIBUTE,TO\PYGZhy{}VARIABLE,VAR=varname,
     WITH=\PYGZsq{}xmlname\PYGZsq{},VALUEOF=\PYGZsq{}attrname\PYGZsq{},LENGTH=nnn,TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -10946,7 +10942,7 @@ The name of the VIRTEL variable to which the attribute value is to be copied. Th
 Another variation of the MAP\$ AREA\sphinxhyphen{}ATTRIBUTE instruction places the value of an attribute into a VIRTEL variable, without copying it into the commarea:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-MAP\PYGZdl{} AREA\PYGZhy{}ATTRIBUTE,TO\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=\PYGZsq{}varname\PYGZsq{},
+MAP\PYGZdl{} AREA\PYGZhy{}ATTRIBUTE,TO\PYGZhy{}VARIABLE\PYGZhy{}ONLY,VAR=varname,
     WITH=\PYGZsq{}xmlname\PYGZsq{},VALUEOF=\PYGZsq{}attrname\PYGZsq{},LENGTH=nnn,TYPE=type
 \end{sphinxVerbatim}
 \begin{description}
@@ -11267,7 +11263,7 @@ When the input format is QUERY, MAP\$ FROM\sphinxhyphen{}INPUT expects the input
 The MAP\$ FROM\sphinxhyphen{}VARIABLE instruction requests VIRTEL to generate a commarea from XML or Query format input data (“input\sphinxhyphen{}to\sphinxhyphen{}commarea” conversion). The input data is contained in a VIRTEL variable.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-groupname MAP\PYGZdl{} FROM\PYGZhy{}VARIABLE,format,VAR=\PYGZsq{}varname\PYGZsq{}
+groupname MAP\PYGZdl{} FROM\PYGZhy{}VARIABLE,format,VAR=varname
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{groupname}
@@ -11297,7 +11293,7 @@ The name of the VIRTEL variable which contains the input data.
 The MAP\$ TO\sphinxhyphen{}VARIABLE instruction requests VIRTEL to copy a commarea into a VIRTEL variable. The commarea must have been already generated by a previous MAP\$ FROM\sphinxhyphen{}FIELD, FROM\sphinxhyphen{}INPUT, or FROM\sphinxhyphen{}VARIABLE instruction.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-groupname MAP\PYGZdl{} TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{}
+groupname MAP\PYGZdl{} TO\PYGZhy{}VARIABLE,VAR=varname
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{groupname}
@@ -11311,7 +11307,7 @@ The name of the VIRTEL variable into which the commarea is to be copied.
 \end{description}
 
 \sphinxAtStartPar
-MAP\$ COPY,VAR=’varname’ is equivalent to MAP\$ TO\sphinxhyphen{}VARIABLE,VAR=’varname’
+MAP\$ COPY,VAR=varname is equivalent to MAP\$ TO\sphinxhyphen{}VARIABLE,VAR=varname
 
 \phantomsection\label{\detokenize{User_Guide:v462ug-option}}
 \index{OPTION\$@\spxentry{OPTION\$}!Scenario Instructions@\spxentry{Scenario Instructions}}\index{Scenario Instructions@\spxentry{Scenario Instructions}!OPTION\$@\spxentry{OPTION\$}}\ignorespaces 
@@ -11338,7 +11334,7 @@ OPTION\PYGZdl{} FOR\PYGZhy{}HTTP,              *
 (FILE\PYGZhy{}OUT,\PYGZsq{}varnameo\PYGZsq{}),         *
 (FILE\PYGZhy{}IN,\PYGZsq{}varnamei\PYGZsq{}),          *
 (RET\PYGZhy{}CODE,\PYGZsq{}varnamer\PYGZsq{}),         *
-TOVAR=\PYGZsq{}varnamep\PYGZsq{}
+TOVAR=varnamep
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{method}
@@ -11522,7 +11518,7 @@ OPTION\PYGZdl{} FOR\PYGZhy{}MQ,                   *
 (FILE\PYGZhy{}OUT,\PYGZsq{}varname1\PYGZsq{}),            *
 (FILE\PYGZhy{}IN,\PYGZsq{}varname2\PYGZsq{}),             *
 (RET\PYGZhy{}CODE,\PYGZsq{}retcode\PYGZsq{}),             *
-TOVAR=\PYGZsq{}varnamep\PYGZsq{}
+TOVAR=varnamep
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{qmgrid}
@@ -11677,7 +11673,7 @@ OPTION\PYGZdl{} FOR\PYGZhy{}SMTP,                                       *
     (HEADER,\PYGZsq{}header\PYGZsq{}),                                  *
     (FILE\PYGZhy{}OUT,\PYGZsq{}varname\PYGZsq{},\PYGZsq{}filename\PYGZsq{},\PYGZsq{}filetype\PYGZsq{},\PYGZsq{}disp\PYGZsq{}),  *
     (ALTERNATE\PYGZhy{}TEXT,\PYGZsq{}altvar\PYGZsq{},\PYGZsq{}altfn\PYGZsq{},\PYGZsq{}altft\PYGZsq{},\PYGZsq{}altdp\PYGZsq{}),  *
-    TOVAR=\PYGZsq{}varnamep\PYGZsq{}
+    TOVAR=varnamep
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{toaddr}
@@ -11903,9 +11899,9 @@ pair: POP\$; Scenario Instructions
 This instruction allows a scenario to delete values from VIRTEL table variables.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-POP\PYGZdl{} ALL\PYGZhy{}VALUES\PYGZhy{}OF,VAR=\PYGZsq{}varname\PYGZsq{}
-POP\PYGZdl{} FIRST\PYGZhy{}VALUE\PYGZhy{}OF,VAR=\PYGZsq{}varname\PYGZsq{}
-POP\PYGZdl{} VAR=\PYGZsq{}varname\PYGZsq{}
+POP\PYGZdl{} ALL\PYGZhy{}VALUES\PYGZhy{}OF,VAR=varname
+POP\PYGZdl{} FIRST\PYGZhy{}VALUE\PYGZhy{}OF,VAR=varname
+POP\PYGZdl{} VAR=varname
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{ALL\sphinxhyphen{}VALUES\sphinxhyphen{}OF}
@@ -11923,7 +11919,7 @@ the name of the VIRTEL variable.
 \end{description}
 
 \sphinxAtStartPar
-POP\$ VAR=’varname’ is equivalent to POP\$ FIRST\sphinxhyphen{}VALUE\sphinxhyphen{}OF,VAR=’varname’
+POP\$ VAR=varname is equivalent to POP\$ FIRST\sphinxhyphen{}VALUE\sphinxhyphen{}OF,VAR=varname
 \begin{description}
 \sphinxlineitem{. index::}
 \sphinxAtStartPar
@@ -11961,7 +11957,7 @@ This instruction allows a scenario to construct the response to an input request
 Sends the contents of a VIRTEL variable as the response to an HTTP request.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-SEND\PYGZdl{} AS\PYGZhy{}ANSWER,VAR=\PYGZsq{}varname\PYGZsq{},TYPE=\PYGZsq{}filetype\PYGZsq{},EXPIRES=exphdr
+SEND\PYGZdl{} AS\PYGZhy{}ANSWER,VAR=varname,TYPE=\PYGZsq{}filetype\PYGZsq{},EXPIRES=exphdr
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{varname}
@@ -12002,7 +11998,7 @@ instruction, the response includes a Content\sphinxhyphen{}Disposition: Attachme
 displays a “Save As” dialog box instead of attempting to display the file in the browser window.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-SEND\PYGZdl{} AS\PYGZhy{}FILE,VAR=\PYGZsq{}varname\PYGZsq{},TYPE=\PYGZsq{}filetype\PYGZsq{},NAME=\PYGZsq{}filename\PYGZsq{}
+SEND\PYGZdl{} AS\PYGZhy{}FILE,VAR=varname,TYPE=\PYGZsq{}filetype\PYGZsq{},NAME=\PYGZsq{}filename\PYGZsq{}
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{varname}
@@ -12084,7 +12080,7 @@ This only apply to SEND\$ requests which imply a response, like sending a SOAP r
 Sends the contents of the specified variable as an outbound message on a VIRTEL line. The name of the destination line is specified indirectly through a VIRTEL transaction. A SEND\$ VARIABLE\sphinxhyphen{}TO instruction is equivalent to an {\hyperref[\detokenize{User_Guide:v462ug-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“OPTION\$ instructions”}}}}  instruction followed by a SEND\$ TO instruction in the case where OPTION\$ specifies only a variable name.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-SEND\PYGZdl{} VARIABLE\PYGZhy{}TO,tranname,VAR=\PYGZsq{}varname\PYGZsq{},ERROR=label
+SEND\PYGZdl{} VARIABLE\PYGZhy{}TO,tranname,VAR=varname,ERROR=label
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{tranname}
@@ -12117,7 +12113,7 @@ of via a transaction. A SEND\$ VARIABLE\sphinxhyphen{}TO\sphinxhyphen{}LINE inst
 followed by a SEND\$ TO\sphinxhyphen{}LINE instruction in the case where OPTION\$ specifies only a variable name.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-SEND\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}LINE,VAR=\PYGZsq{}varname\PYGZsq{},LINE=\PYGZsq{}linename\PYGZsq{},ERROR=label
+SEND\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}LINE,VAR=varname,LINE=\PYGZsq{}linename\PYGZsq{},ERROR=label
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{varname}
@@ -12502,7 +12498,7 @@ commarea. The input commarea is contained in a VIRTEL variable. The TOVAR\$ FROM
 contained in an OUTPUT scenario.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-groupname TOVAR\PYGZdl{} FROM\PYGZhy{}VARIABLE,VAR=\PYGZsq{}varname\PYGZsq{}
+groupname TOVAR\PYGZdl{} FROM\PYGZhy{}VARIABLE,VAR=varname
 \end{sphinxVerbatim}
 \begin{description}
 \sphinxlineitem{groupname}

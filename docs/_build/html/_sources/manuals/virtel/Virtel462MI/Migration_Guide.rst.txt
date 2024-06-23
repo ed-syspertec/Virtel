@@ -10,11 +10,9 @@ Migration Guide V4.62
 
 **VIRTEL Migration Guide**
 
-.. warning:: This is a draft version of the document.
+Version : 4.62
 
-Version : 4.62 Draft
-
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Syspertec Communication
 
@@ -268,6 +266,12 @@ Upgrading from a version prior to 4.60
 --------------------------------------
 
 HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT option removed.
+
+
+Upgrading from a version prior to 4.61
+--------------------------------------
+
+None
 
 Upgrading from a version prior to 4.62
 --------------------------------------

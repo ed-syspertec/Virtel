@@ -112,7 +112,7 @@
 <p><a class="reference internal" href="../../../_images/logo_virtel_web28.png"><img alt="image1" src="../../../_images/logo_virtel_web28.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Installation Guide</strong></p>
 <p>Version : 4.62</p>
-<p>Release Date : TBA. Publication Date : 17/02/2024</p>
+<p>Release Date : 23/06/2024. Publication Date : 17/02/2024</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -181,7 +181,6 @@ their respective owners.</p>
 <p>VIRTEL Web Access requires a standard web browser on the user’s workstation. Supported browsers include:</p>
 <ul class="simple">
 <li><p>Microsoft Edge (For Windows 10)</p></li>
-<li><p>Microsoft Internet Explorer Version 8 or above</p></li>
 <li><p>Firefox Version 15 or above (for Windows 7 or Vista)</p></li>
 <li><p>Firefox Version 17 or above (for Windows XP)</p></li>
 <li><p>Chrome Version 23 or above</p></li>
@@ -555,17 +554,46 @@ RENAMEUNC( -
 <p class="admonition-title">Danger</p>
 <p>If you have modified default settings or added customized elements to the W2H-DIR directory these will be overridden when upgrading. The upgrade process installs a new SAMP.TRSF VSAM file which is the VSAM file associated with W2H-DIR. See note 9. You are advised not to use the Administration port 41001 for user transasctions as this port is reserved for Virtel administration and is tied to web elements distributed in W2H-DIR. User transaction should be associated with another port. The sample provide is port 41002 which is associated with the CLI-DIR directory. This directory is not affected by an upgrade.</p>
 </div>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Upload and unpack the virtelnnnmvs.xmit file as described in the previous section.</p></li>
 <li><p>Apply PTFs as described in the previous section.</p></li>
 <li><p>Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRTnnn.CNTL</p></li>
 <li><p>Reassemble your VIRTCTnn module using the ASMTCT job in VIRTnnn.CNTL</p></li>
 <li><p>If you have any scenario or user exit load modules, copy them to the VIRTnnn.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.</p></li>
 <li><p>Add the new VIRTnnn.LOADLIB library to the system APF list in the z/OS PARMLIB and use the SETPROG command to authorize the VIRTnnn.LOADLIB library.</p></li>
-<li><p>Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.</p></li>
+<li><p>Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRTnnn.LOADLIB, and that the SAMPTRSF DD statement references the new VIRTnnn.SAMP.TRSF dataset.</p>
+<blockquote>
+<div><p>Copy and rename the following files from the previous Virtel version to the VIRTnnn naming standard. You can delete the new ARBO and HTMLTRSF files that came with VIRTnnn install before the copy and rename : -</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>VIRARBO Configuration file</p></li>
+<li><p>HTMLTRSF (CLI-dir) which includes, all customization files</p></li>
+</ul>
+</div></blockquote>
+<p>If you are currently using Centralized USERPARM or Centralized Macros,  Copy and rename the     following files from the previous Virtel version to the VIRTnnn naming standard.  You can delete or backup the new files that came with VIRTnnn : -</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>HTML      Correspondent file used with USERPARM</p></li>
+<li><p>USERTRSF  Userparm directory</p></li>
+<li><p>HTMLTRSF  Global/Group/User Macros</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
 <li><p>If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide) and these changes reside in the W2H-DIR then the upgrade procedure will loose these changes. You are strongly advised not to keep any user modifications in the W2H-DIR but instead move them to the CLI-DIR or any other user directory and modify transactions accordingly. User customizations, such as defaults for w2hparm settings, should be uploaded to a user directory such as the CLI-DIR directory. See the technical newsletter <em>TN201611 - Customising Virtel in V4.56</em> for further details.</p></li>
 <li><p>Stop and restart VIRTEL.</p></li>
 </ol>
+<p>Copy and rename the following files from the previous Virtel version to the VIRTnnn naming standard. You can delete the new ARBO and HTMLTRSF files that came with VIRTnnn install before the copy and rename : -</p>
+<ul class="simple">
+<li><p>VIRARBO Configuration file</p></li>
+<li><p>HTMLTRSF (CLI-dir) which includes, all customization files</p></li>
+</ul>
+<p>If you are currently using Centralized USERPARM or Centralized Macros,  Copy and rename the     following files from the previous Virtel version to the VIRTnnn naming standard.  You can delete or backup the new files that came with VIRTnnn : -</p>
+<ul class="simple">
+<li><p>HTML      Correspondent file used with USERPARM</p></li>
+<li><p>USERTRSF  Userparm directory</p></li>
+<li><p>HTMLTRSF  Global/Group/User Macros</p></li>
+</ul>
 </section>
 <section id="executing-virtel-in-a-z-os-environment">
 <h3>Executing Virtel in a z/OS environment<a class="headerlink" href="#executing-virtel-in-a-z-os-environment" title="Permalink to this heading"></a></h3>
@@ -5119,6 +5147,21 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 <p><em>ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction</em></p>
 <p>This command permits all users to use the 3270 Logoff transaction, whose internal name is PC-0020.</p>
 </section>
+<section id="id11">
+<h5>Add permissions for VIRTEL administrators<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$KEY TYPE UID(** user-group-name) SERVICE
+</pre></div>
+</div>
+<p>The VIRTEL stc Owner will need READ Access to Resource EZB.STACKACCESS.sysname.tcpname</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$KEY (EZB) TYPE(xxxx) STACKACCESS.- UID(******* user-group-name)
+</pre></div>
+</div>
+<p>The ACF2 Administration can verify EZB access definitions with the following commands : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span> <span class="n">RES</span> <span class="o">&lt;</span><span class="n">enter</span><span class="o">&gt;</span>
+<span class="n">L</span> <span class="n">like</span><span class="p">(</span><span class="n">EZB</span><span class="o">.-</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 <section id="how-to-activate-top-secret-tss-security-perform">
@@ -5195,8 +5238,8 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 <p><em>TOPSDEF : TSS commands to associate ACID with VIRTEL started task</em></p>
 <p>This command associates the VIRTEL started task with the VIRTSTC ACID. VIRTEL is the name of the started task procedure in the system or user PROCLIB.</p>
 </section>
-<section id="id11">
-<h5>Create OMVS segment for VIRTEL<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h5>
+<section id="id12">
+<h5>Create OMVS segment for VIRTEL<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TSS</span> <span class="n">ADDTO</span><span class="p">(</span><span class="n">VIRTSTC</span><span class="p">)</span> <span class="n">UID</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span> <span class="n">DFLTGRP</span><span class="p">(</span><span class="n">OMVSGRP</span><span class="p">)</span> <span class="n">GROUP</span><span class="p">(</span><span class="n">OMVSGRP</span><span class="p">)</span> <span class="o">+</span>
         <span class="n">OMVSPGM</span><span class="p">(</span><span class="s1">&#39;/bin/sh&#39;</span><span class="p">)</span> <span class="n">HOME</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 </pre></div>

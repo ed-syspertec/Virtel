@@ -53,7 +53,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{May 05, 2024}
+\date{Jun 23, 2024}
 \release{4.62}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -80,16 +80,11 @@
 \sphinxAtStartPar
 \sphinxstylestrong{VIRTEL Connectivity Guide}
 
-\begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
-This is a draft version of the document.
-\end{sphinxadmonition}
+Version : 4.62
 
 \sphinxAtStartPar
-Version : 4.62 Draft
-
-\sphinxAtStartPar
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 \sphinxAtStartPar
 Syspertec Communication
@@ -4268,18 +4263,127 @@ Must contain the value LLC5.
 
 \index{Virtel Rules@\spxentry{Virtel Rules}}\ignorespaces 
 
+\section{TN3270 line}
+\label{\detokenize{connectivity_guide:tn3270-line}}\label{\detokenize{connectivity_guide:v462cn-virtelrules}}\label{\detokenize{connectivity_guide:index-90}}
+\sphinxAtStartPar
+Virtel provides support for TN3270.
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image157}.png}
+
+\index{TN3270@\spxentry{TN3270}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!TN3270@\spxentry{TN3270}}\ignorespaces 
+
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-91}}\label{\detokenize{connectivity_guide:id43}}\begin{description}
+\sphinxlineitem{Remote ident}
+\sphinxAtStartPar
+Partner TN3270 Server
+
+\sphinxlineitem{Local ident}
+\sphinxAtStartPar
+Always blank.
+
+\sphinxlineitem{Prefix}
+\sphinxAtStartPar
+Terminal name prefix (see below).
+
+\sphinxlineitem{Entry Point}
+\sphinxAtStartPar
+\$NONE\$. The entry point should be defined in the rules of the line.
+
+\sphinxlineitem{Line type}
+\sphinxAtStartPar
+Always TCP1.
+
+\sphinxlineitem{Possible calls}
+\sphinxAtStartPar
+Outbound. Virtel is a TN3270 client.
+
+\sphinxlineitem{Protocol}
+\sphinxAtStartPar
+TN3270
+
+\sphinxlineitem{Window}
+\sphinxAtStartPar
+0003
+
+\sphinxlineitem{Packet}
+\sphinxAtStartPar
+0128
+
+\sphinxlineitem{Pad}
+\sphinxAtStartPar
+Blank. Not used.
+
+\sphinxlineitem{Tran}
+\sphinxAtStartPar
+Blank. Not used.
+
+\end{description}
+
+\index{TN320 line@\spxentry{TN320 line}!Terminal Definitions@\spxentry{Terminal Definitions}}\index{Terminal Definitions@\spxentry{Terminal Definitions}!TN320 line@\spxentry{TN320 line}}\ignorespaces 
+
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-92}}\label{\detokenize{connectivity_guide:id44}}
+\sphinxAtStartPar
+TN3270 ine uses a single sub\sphinxhyphen{}group of type\sphinxhyphen{}3 terminals having a common prefix (TNTRM in this example). No VTAM relays are defined for this type of line as connection is throup TCPIP and not VTAM. The number of terminals defined determines the maximum number of TN3270 sessions between VIRTEL and the TN3270 Server.
+
+\sphinxAtStartPar
+Sample Virtel message log : \sphinxhyphen{}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIRTN51I} \PYG{n}{TNCLI000} \PYG{n}{CALLING} \PYG{n}{SERVER} \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.204}\PYG{l+m+mf}{.31}\PYG{p}{:}\PYG{l+m+mi}{23}
+\PYG{n}{VIRT907I} \PYG{n}{TN3270}   \PYG{n}{SOCKET} \PYG{l+m+mi}{00000000} \PYG{n}{CALLING}   \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.204}\PYG{l+m+mf}{.31}\PYG{p}{:}\PYG{l+m+mi}{23}
+\PYG{n}{VIR0554I} \PYG{n}{DELOC009} \PYG{n}{LINKED} \PYG{n}{TO} \PYG{n}{TNET01}   \PYG{n}{THRU} \PYG{n}{TNCLI000}
+\PYG{n}{VIRT906I} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{W2H} \PYG{n}{SOCKET} \PYG{l+m+mi}{00010000} \PYG{n}{CALL} \PYG{n}{FROM} \PYG{l+m+mf}{192.168}\PYG{l+m+mf}{.79}\PYG{l+m+mf}{.10}\PYG{p}{:}\PYG{l+m+mi}{21124}
+\PYG{n}{VIRTN19I} \PYG{n}{TNCLI000} \PYG{n}{RELAY} \PYG{n}{TCPT1052} \PYG{n}{CONNECTED}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxincludegraphics{{image158}.png}
+
+\index{TN320 line@\spxentry{TN320 line}!Supported Environments@\spxentry{Supported Environments}}\index{Supported Environments@\spxentry{Supported Environments}!TN320 line@\spxentry{TN320 line}}\ignorespaces 
+
+\subsection{Supported TN3270 Servers Environments}
+\label{\detokenize{connectivity_guide:supported-tn3270-servers-environments}}\label{\detokenize{connectivity_guide:index-93}}
+\sphinxAtStartPar
+The ARBOLOAD installation job with the {[}TN3270=YES{]} option set will install a default TN3270 sample Virtel definitions for a TN3270 Servers. The following TN3270 servers have been tested :
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+z/OS Telnet Server, inc. BTI
+
+\item {} 
+\sphinxAtStartPar
+z/VM Telnet Server, inc. BTI
+
+\item {} 
+\sphinxAtStartPar
+z/VSE BSI Stack, inc. BTI
+
+\item {} 
+\sphinxAtStartPar
+z/VSE CSI Stack, inc. BTI
+
+\item {} 
+\sphinxAtStartPar
+OSA Card Telnet Server
+
+\end{itemize}
+
+
 \chapter{Virtel Rules}
-\label{\detokenize{connectivity_guide:virtel-rules}}\label{\detokenize{connectivity_guide:v462cn-virtelrules}}\label{\detokenize{connectivity_guide:index-90}}
+\label{\detokenize{connectivity_guide:virtel-rules}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id43}}
+\label{\detokenize{connectivity_guide:id45}}
 \sphinxAtStartPar
 Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See {\hyperref[\detokenize{connectivity_guide:v462cn-forceluname}]{\sphinxcrossref{\DUrole{std,std-ref}{“Controlling LUNames”}}}}) for examples on how to define and use Virtel Rules to control LU names.
 
 \index{Virtel Rules@\spxentry{Virtel Rules}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!Virtel Rules@\spxentry{Virtel Rules}}\ignorespaces 
 
 \subsection{Summary Display}
-\label{\detokenize{connectivity_guide:index-91}}\label{\detokenize{connectivity_guide:id44}}
+\label{\detokenize{connectivity_guide:index-94}}\label{\detokenize{connectivity_guide:id46}}
 \sphinxAtStartPar
 Press {[}PF5{]} at the line detail definition screen to display the summary list of rules associated with the line:
 
@@ -4310,7 +4414,7 @@ Name of the entry point which will be assigned to incoming calls whose character
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id45}}\begin{description}
+\label{\detokenize{connectivity_guide:id47}}\begin{description}
 \sphinxlineitem{Search}
 \sphinxAtStartPar
 Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press {[}Enter{]}.
@@ -4347,7 +4451,7 @@ Modifications are not recognized until you press the {[}PF1{]} key. Certain modi
 \index{Virtel Rules@\spxentry{Virtel Rules}!Detail Display@\spxentry{Detail Display}}\index{Detail Display@\spxentry{Detail Display}!Virtel Rules@\spxentry{Virtel Rules}}\ignorespaces 
 
 \subsection{Detail Display}
-\label{\detokenize{connectivity_guide:index-92}}\label{\detokenize{connectivity_guide:id46}}
+\label{\detokenize{connectivity_guide:index-95}}\label{\detokenize{connectivity_guide:id48}}
 \sphinxAtStartPar
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press {[}PF12{]}. The detail definition screen will then be displayed.
 
@@ -4358,7 +4462,7 @@ To display or update the detailed definition of an entity, place the cursor on t
 \index{Virtel Rules@\spxentry{Virtel Rules}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!Virtel Rules@\spxentry{Virtel Rules}}\ignorespaces 
 
 \subsection{Parameters}
-\label{\detokenize{connectivity_guide:index-93}}\label{\detokenize{connectivity_guide:id47}}\begin{description}
+\label{\detokenize{connectivity_guide:index-96}}\label{\detokenize{connectivity_guide:id49}}\begin{description}
 \sphinxlineitem{Name}
 \sphinxAtStartPar
 The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.
@@ -4528,17 +4632,17 @@ Indicates the period of operation of this rule for each applicable day.
 \index{Terminals@\spxentry{Terminals}}\ignorespaces 
 
 \chapter{Terminals}
-\label{\detokenize{connectivity_guide:terminals}}\label{\detokenize{connectivity_guide:index-94}}
+\label{\detokenize{connectivity_guide:terminals}}\label{\detokenize{connectivity_guide:index-97}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id48}}
+\label{\detokenize{connectivity_guide:id50}}
 \sphinxAtStartPar
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
 \index{Terminals@\spxentry{Terminals}!Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}}\index{Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}!Terminals@\spxentry{Terminals}}\ignorespaces 
 
 \subsection{Terminal Management Sub\sphinxhyphen{}Application}
-\label{\detokenize{connectivity_guide:terminal-management-sub-application}}\label{\detokenize{connectivity_guide:index-95}}
+\label{\detokenize{connectivity_guide:terminal-management-sub-application}}\label{\detokenize{connectivity_guide:index-98}}
 \sphinxAtStartPar
 This sub\sphinxhyphen{}application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub\sphinxhyphen{}application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
@@ -4549,14 +4653,14 @@ is also accessible by pressing {[}PF4{]} from the line management sub\sphinxhyph
 \index{Terminal Sub\sphinxhyphen{}Application@\spxentry{Terminal Sub\sphinxhyphen{}Application}!Security@\spxentry{Security}}\index{Security@\spxentry{Security}!Terminal Sub\sphinxhyphen{}Application@\spxentry{Terminal Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Security}
-\label{\detokenize{connectivity_guide:index-96}}\label{\detokenize{connectivity_guide:id49}}
+\label{\detokenize{connectivity_guide:index-99}}\label{\detokenize{connectivity_guide:id51}}
 \sphinxAtStartPar
 When security is active, access to the terminal management menu from the Configuration Menu or the Sub\sphinxhyphen{}Application Menu is controlled by the resource \$\$TERM\$\$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 \index{Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Summary Display}
-\label{\detokenize{connectivity_guide:index-97}}\label{\detokenize{connectivity_guide:id50}}
+\label{\detokenize{connectivity_guide:index-100}}\label{\detokenize{connectivity_guide:id52}}
 \sphinxAtStartPar
 The first screen displayed by the terminal management sub\sphinxhyphen{}application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs. Place the cursor under an entry a press {[}PF12{]} to display the terminal details.
 
@@ -4567,7 +4671,7 @@ The first screen displayed by the terminal management sub\sphinxhyphen{}applicat
 \index{Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}!Navigation@\spxentry{Navigation}}\index{Navigation@\spxentry{Navigation}!Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:index-98}}\label{\detokenize{connectivity_guide:id51}}
+\label{\detokenize{connectivity_guide:index-101}}\label{\detokenize{connectivity_guide:id53}}
 \sphinxAtStartPar
 In browse, alter, or delete mode, it is possible to scroll the list of terminals under the control of VIRTEL.
 \begin{description}
@@ -4602,7 +4706,7 @@ system.
 \index{Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}!Detail Display@\spxentry{Detail Display}}\index{Detail Display@\spxentry{Detail Display}!Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Detail Display}
-\label{\detokenize{connectivity_guide:index-99}}\label{\detokenize{connectivity_guide:id52}}
+\label{\detokenize{connectivity_guide:index-102}}\label{\detokenize{connectivity_guide:id54}}
 \sphinxAtStartPar
 \sphinxincludegraphics{{image68}.png}
 \sphinxstyleemphasis{Terminal Definition detail screen}
@@ -4613,7 +4717,7 @@ From within the detail display parameters can be updated.
 \index{Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!Terminal Management Sub\sphinxhyphen{}Application@\spxentry{Terminal Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Parameters}
-\label{\detokenize{connectivity_guide:index-100}}\label{\detokenize{connectivity_guide:id53}}\begin{description}
+\label{\detokenize{connectivity_guide:index-103}}\label{\detokenize{connectivity_guide:id55}}\begin{description}
 \sphinxlineitem{Terminal}
 \sphinxAtStartPar
 Maximum of 8 characters containing:
@@ -4862,10 +4966,10 @@ A repeat count of blank, zero, or 1 indicates definition of a single terminal.
 \index{Entry Points@\spxentry{Entry Points}}\ignorespaces 
 
 \chapter{Entry Points}
-\label{\detokenize{connectivity_guide:entry-points}}\label{\detokenize{connectivity_guide:index-102}}
+\label{\detokenize{connectivity_guide:entry-points}}\label{\detokenize{connectivity_guide:index-105}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id54}}
+\label{\detokenize{connectivity_guide:id56}}
 \sphinxAtStartPar
 Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This section describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
 
@@ -4875,27 +4979,27 @@ An entry point is a named entity that groups certain information designed to aut
 \index{Entry Points@\spxentry{Entry Points}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Entry Points@\spxentry{Entry Points}}\ignorespaces 
 
 \subsection{Entry Point Management Sub\sphinxhyphen{}Application}
-\label{\detokenize{connectivity_guide:entry-point-management-sub-application}}\label{\detokenize{connectivity_guide:index-103}}
+\label{\detokenize{connectivity_guide:entry-point-management-sub-application}}\label{\detokenize{connectivity_guide:index-106}}
 \sphinxAtStartPar
 The Entry Point Management sub\sphinxhyphen{}application is accessed by pressing {[}PF3{]} in the Configuration Menu, or {[}PF13{]} in the Sub\sphinxhyphen{}Application Menu, or from the Multi\sphinxhyphen{}Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
 
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Security@\spxentry{Security}}\index{Security@\spxentry{Security}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Security}
-\label{\detokenize{connectivity_guide:index-104}}\label{\detokenize{connectivity_guide:id55}}
+\label{\detokenize{connectivity_guide:index-107}}\label{\detokenize{connectivity_guide:id57}}
 \sphinxAtStartPar
 When security is active, access to entry point management from the Configuration Menu or the Sub\sphinxhyphen{}Application Menu is controlled by the resource \$\$GLOG\$\$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 5 of the VIRTEL Users Guide.
 
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Selection an Entry Point@\spxentry{Selection an Entry Point}}\index{Selection an Entry Point@\spxentry{Selection an Entry Point}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Selecting an Entry Point}
-\label{\detokenize{connectivity_guide:selecting-an-entry-point}}\label{\detokenize{connectivity_guide:index-105}}
+\label{\detokenize{connectivity_guide:selecting-an-entry-point}}\label{\detokenize{connectivity_guide:index-108}}
 \sphinxAtStartPar
 The entry point used in the connection from a terminal may be specified in various ways:
 
 
 \subsubsection{3270 Terminals}
-\label{\detokenize{connectivity_guide:id56}}
+\label{\detokenize{connectivity_guide:id58}}
 \sphinxAtStartPar
 The entry point to be used for a connection from a 3270 terminal can be specified:
 \sphinxhyphen{} In the DATA parameter of a logon sequence. For example: LOGON APPLID(VIRTEL) DATA(PE\sphinxhyphen{}0001)
@@ -4945,7 +5049,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 \index{Entry Point Sub\sphinxhyphen{}Application@\spxentry{Entry Point Sub\sphinxhyphen{}Application}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!Entry Point Sub\sphinxhyphen{}Application@\spxentry{Entry Point Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Summary Display}
-\label{\detokenize{connectivity_guide:index-106}}\label{\detokenize{connectivity_guide:id57}}
+\label{\detokenize{connectivity_guide:index-109}}\label{\detokenize{connectivity_guide:id59}}
 \sphinxAtStartPar
 The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.
 
@@ -4984,14 +5088,14 @@ Prefix of the names of the transactions associated with this entry point (maximu
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Transaction list Display@\spxentry{Transaction list Display}}\index{Transaction list Display@\spxentry{Transaction list Display}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Transaction Display}
-\label{\detokenize{connectivity_guide:transaction-display}}\label{\detokenize{connectivity_guide:index-107}}
+\label{\detokenize{connectivity_guide:transaction-display}}\label{\detokenize{connectivity_guide:index-110}}
 \sphinxAtStartPar
 To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press {[}PF4{]}. The transaction management menu will then appear.
 
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Detail Display@\spxentry{Detail Display}}\index{Detail Display@\spxentry{Detail Display}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Detail Display}
-\label{\detokenize{connectivity_guide:index-108}}\label{\detokenize{connectivity_guide:id58}}
+\label{\detokenize{connectivity_guide:index-111}}\label{\detokenize{connectivity_guide:id60}}
 \sphinxAtStartPar
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press {[}PF12{]}.
 
@@ -5002,7 +5106,7 @@ To display the details of an entry point, position the cursor on the desired ent
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Parameters}
-\label{\detokenize{connectivity_guide:index-109}}\label{\detokenize{connectivity_guide:id59}}\begin{description}
+\label{\detokenize{connectivity_guide:index-112}}\label{\detokenize{connectivity_guide:id61}}\begin{description}
 \sphinxlineitem{Name}
 \sphinxAtStartPar
 Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.
@@ -5158,7 +5262,7 @@ An ‘E’ in this field indicates support for 3270 extended attributes and colo
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Signon Programs@\spxentry{Signon Programs}}\index{Signon Programs@\spxentry{Signon Programs}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Signon Programs}
-\label{\detokenize{connectivity_guide:signon-programs}}\label{\detokenize{connectivity_guide:index-110}}
+\label{\detokenize{connectivity_guide:signon-programs}}\label{\detokenize{connectivity_guide:index-113}}
 \sphinxAtStartPar
 The Signon Program field of the entry point indicates the name of the program used to control user sign\sphinxhyphen{}on. The following signon programs are supplied with VIRTEL:
 \begin{description}
@@ -5195,7 +5299,7 @@ Program similar to VIR0020L which allows access to public transactions (those de
 \index{Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}!Menu Programs@\spxentry{Menu Programs}}\index{Menu Programs@\spxentry{Menu Programs}!Entry Point Management Sub\sphinxhyphen{}Application@\spxentry{Entry Point Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Menu Programs}
-\label{\detokenize{connectivity_guide:menu-programs}}\label{\detokenize{connectivity_guide:index-111}}
+\label{\detokenize{connectivity_guide:menu-programs}}\label{\detokenize{connectivity_guide:index-114}}
 \sphinxAtStartPar
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 \begin{description}
@@ -5244,17 +5348,17 @@ Program for connecting to a single transaction. Identical to VIR0021B, except th
 \index{Transactions@\spxentry{Transactions}}\ignorespaces 
 
 \chapter{Transactions}
-\label{\detokenize{connectivity_guide:index-112}}\label{\detokenize{connectivity_guide:id60}}
+\label{\detokenize{connectivity_guide:index-115}}\label{\detokenize{connectivity_guide:id62}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id61}}
+\label{\detokenize{connectivity_guide:id63}}
 \sphinxAtStartPar
 A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be either a VTAM application, a VIRTEL sub\sphinxhyphen{}application, an external server, or an HTML directory. Each transaction is known to the user by its external name, and defines the rules of connection / disconnection of the referenced application. When a security tool is used, for example VIRTEL security, only the transactions defined as resources appearing in the profiles of a user are accessible by that user. Each entry point has a list of associated transactions. The entry point management sub\sphinxhyphen{}application allows the administrator to manage the entry point and its associated transactions.
 
 \index{Transactions@\spxentry{Transactions}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!Transactions@\spxentry{Transactions}}\ignorespaces 
 
 \subsection{Summary Display}
-\label{\detokenize{connectivity_guide:index-113}}\label{\detokenize{connectivity_guide:id62}}
+\label{\detokenize{connectivity_guide:index-116}}\label{\detokenize{connectivity_guide:id64}}
 \sphinxAtStartPar
 Press {[}PF4{]} at the entry point detail screen to display the list of associated transactions:
 
@@ -5292,7 +5396,7 @@ Indicates the name of the application accessed via the transaction. This applica
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id63}}
+\label{\detokenize{connectivity_guide:id65}}
 \sphinxAtStartPar
 The list can be positioned in the following ways:
 \begin{description}
@@ -5326,7 +5430,7 @@ Display the next page of the list.
 \index{Transactions@\spxentry{Transactions}!Detail Display@\spxentry{Detail Display}}\index{Detail Display@\spxentry{Detail Display}!Transactions@\spxentry{Transactions}}\ignorespaces 
 
 \subsection{Detail Display}
-\label{\detokenize{connectivity_guide:index-114}}\label{\detokenize{connectivity_guide:id64}}
+\label{\detokenize{connectivity_guide:index-117}}\label{\detokenize{connectivity_guide:id66}}
 \sphinxAtStartPar
 To access the detailed transaction definition, position the cursor on the desired transaction and press {[}PF12{]}. The transaction detail definition screen will then be displayed.
 
@@ -5341,7 +5445,7 @@ To access the detailed transaction definition, position the cursor on the desire
 \index{Transactions@\spxentry{Transactions}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!Transactions@\spxentry{Transactions}}\ignorespaces 
 
 \subsection{Parameters}
-\label{\detokenize{connectivity_guide:index-115}}\label{\detokenize{connectivity_guide:id65}}\begin{description}
+\label{\detokenize{connectivity_guide:index-118}}\label{\detokenize{connectivity_guide:id67}}\begin{description}
 \sphinxlineitem{Internal name}
 \sphinxAtStartPar
 The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi\sphinxhyphen{}Session Menu in alphanumeric order of the internal name.
@@ -5622,21 +5726,21 @@ After adding, deleting or updating a transaction, it is essential to update the 
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \chapter{Connection / Disconnection Scripts}
-\label{\detokenize{connectivity_guide:connection-disconnection-scripts}}\label{\detokenize{connectivity_guide:index-116}}
+\label{\detokenize{connectivity_guide:connection-disconnection-scripts}}\label{\detokenize{connectivity_guide:index-119}}
 \sphinxAtStartPar
 When connecting to an application, it may be useful, if desired, to automatically execute certain operations to direct the user to a defined point within the application. The most commonly used operations are application signon procedures. Similarly, when the user logs off from an application, it can be useful to run various commands to release application resources. These operations are called “connection and disconnection scripts”. Scripts are entered in the fields “TIOA at logon” and “TIOA at logoff” of a transaction, or in the “TIOA at start up” field of an external server, with the help of the language described below. A script can send data and 3270 attention keys to the application, send data to the terminal, and wait for specific data from the application.
 
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}!Script Programming Language@\spxentry{Script Programming Language}}\index{Script Programming Language@\spxentry{Script Programming Language}!Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \section{Script Programming Language}
-\label{\detokenize{connectivity_guide:script-programming-language}}\label{\detokenize{connectivity_guide:index-117}}
+\label{\detokenize{connectivity_guide:script-programming-language}}\label{\detokenize{connectivity_guide:index-120}}
 \sphinxAtStartPar
 A connection / disconnection script consists of a sequence of “clauses”. A clause consists of some data (which may contain embedded variables and orders) followed by a command. All commands, variables, and orders begin with the ‘\&’ character.
 
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}!Transmission and filter commands@\spxentry{Transmission and filter commands}}\index{Transmission and filter commands@\spxentry{Transmission and filter commands}!Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \subsection{Transmission and filter commands}
-\label{\detokenize{connectivity_guide:transmission-and-filter-commands}}\label{\detokenize{connectivity_guide:index-118}}
+\label{\detokenize{connectivity_guide:transmission-and-filter-commands}}\label{\detokenize{connectivity_guide:index-121}}
 \sphinxAtStartPar
 The command acts upon the data which precedes it. The commands are as follows:\sphinxhyphen{}
 
@@ -5712,7 +5816,7 @@ For compatibility with versions of VIRTEL prior to 4.31, the / (slash) in the ab
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}!System Variables@\spxentry{System Variables}}\index{System Variables@\spxentry{System Variables}!Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \subsection{System variables}
-\label{\detokenize{connectivity_guide:system-variables}}\label{\detokenize{connectivity_guide:index-119}}
+\label{\detokenize{connectivity_guide:system-variables}}\label{\detokenize{connectivity_guide:index-122}}
 \sphinxAtStartPar
 System variables are information known only to VIRTEL at the time of accessing an application. These variables are in the format \&n where “n” represents the desired variable.
 Available information Corresponding variable:\sphinxhyphen{}
@@ -5833,7 +5937,7 @@ The system variable \&=name= is used to obtain the value of either a URL paramet
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}!Orders@\spxentry{Orders}}\index{Orders@\spxentry{Orders}!Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \subsection{Orders}
-\label{\detokenize{connectivity_guide:orders}}\label{\detokenize{connectivity_guide:index-120}}
+\label{\detokenize{connectivity_guide:orders}}\label{\detokenize{connectivity_guide:index-123}}
 \sphinxAtStartPar
 Orders may be embedded in the clause data. Orders are used to set the 3270 (or Minitel) attention key to be sent by the following \&/A command, to embed hexadecimal or special values in the data, or to cause the script to wait for the first message from the application, or to process a scenario.
 
@@ -5973,7 +6077,7 @@ The \&\textgreater{} order does not transmit anything and must be completed with
 \index{Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}!Method of Operation@\spxentry{Method of Operation}}\index{Method of Operation@\spxentry{Method of Operation}!Connection / Disconnection Scripts@\spxentry{Connection / Disconnection Scripts}}\ignorespaces 
 
 \subsection{Method of operation}
-\label{\detokenize{connectivity_guide:method-of-operation}}\label{\detokenize{connectivity_guide:index-121}}
+\label{\detokenize{connectivity_guide:method-of-operation}}\label{\detokenize{connectivity_guide:index-124}}
 \sphinxAtStartPar
 If present, a script is first called when the initial connection is made to the application. VIRTEL examines the start of the script to see if it begins with the order \&W (wait for first message from application). If so, then no further action is taken at this time, and script processing continues after the first message is received from the application. Otherwise, the first clause of the script is actioned according to its command code, as follows:
 \begin{itemize}
@@ -6025,7 +6129,7 @@ Data sent to the terminal by means of the \&/T command must be constructed in th
 \index{Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \section{Script Examples}
-\label{\detokenize{connectivity_guide:script-examples}}\label{\detokenize{connectivity_guide:index-122}}
+\label{\detokenize{connectivity_guide:script-examples}}\label{\detokenize{connectivity_guide:index-125}}
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 In these examples, script commands are introduced by the preferred sequence \&/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
@@ -6034,7 +6138,7 @@ In these examples, script commands are introduced by the preferred sequence \&/ 
 \index{Scripts Examples@\spxentry{Scripts Examples}!Connect to CICS and autostart transaction@\spxentry{Connect to CICS and autostart transaction}}\index{Connect to CICS and autostart transaction@\spxentry{Connect to CICS and autostart transaction}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Connect to CICS (no sign\sphinxhyphen{}on) with automatic start of a transaction}
-\label{\detokenize{connectivity_guide:connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction}}\label{\detokenize{connectivity_guide:index-123}}
+\label{\detokenize{connectivity_guide:connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction}}\label{\detokenize{connectivity_guide:index-126}}
 \sphinxAtStartPar
 In the simplest case, the CICS transaction code is entered in the field “TIOA at logon”. The script below simply sends the ABC1 transaction code to CICS at connection time:
 
@@ -6059,7 +6163,7 @@ This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). 
 \index{Scripts Examples@\spxentry{Scripts Examples}!Connect to CICS and transmission of credentials@\spxentry{Connect to CICS and transmission of credentials}}\index{Connect to CICS and transmission of credentials@\spxentry{Connect to CICS and transmission of credentials}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Connect to CICS and start transaction CESN with transmission of credentials}
-\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials}}\label{\detokenize{connectivity_guide:index-124}}
+\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials}}\label{\detokenize{connectivity_guide:index-127}}
 \sphinxAtStartPar
 The variables \&U and \&P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:\sphinxhyphen{}
 
@@ -6083,7 +6187,7 @@ This script waits for the initial message from CICS, then enters the transaction
 \index{Scripts Examples@\spxentry{Scripts Examples}!Connect to CICS VSE with ICCF signon and start of CEMT transaction@\spxentry{Connect to CICS VSE with ICCF signon and start of CEMT transaction}}\index{Connect to CICS VSE with ICCF signon and start of CEMT transaction@\spxentry{Connect to CICS VSE with ICCF signon and start of CEMT transaction}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Connect to CICS VSE with ICCF sign\sphinxhyphen{}on and start transaction CEMT}
-\label{\detokenize{connectivity_guide:connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt}}\label{\detokenize{connectivity_guide:index-125}}
+\label{\detokenize{connectivity_guide:connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt}}\label{\detokenize{connectivity_guide:index-128}}
 \sphinxAtStartPar
 The following script illustrates the use of a PF key:
 
@@ -6107,7 +6211,7 @@ This script waits for the ICCF signon screen (recognized by the word ‘REMOTE�
 \index{Scripts Examples@\spxentry{Scripts Examples}!Connect to TSO and start of ISPF@\spxentry{Connect to TSO and start of ISPF}}\index{Connect to TSO and start of ISPF@\spxentry{Connect to TSO and start of ISPF}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Connect to TSO with USER and PASSWORD and await start of ISPF}
-\label{\detokenize{connectivity_guide:connect-to-tso-with-user-and-password-and-await-start-of-ispf}}\label{\detokenize{connectivity_guide:index-126}}
+\label{\detokenize{connectivity_guide:connect-to-tso-with-user-and-password-and-await-start-of-ispf}}\label{\detokenize{connectivity_guide:index-129}}
 \sphinxAtStartPar
 This is an example of an HTTP transaction which uses the “Logon Message” field to pass the userid to TSO, followed by a script to complete the TSO/ISPF logon process:
 
@@ -6131,7 +6235,7 @@ The script waits for the TSO/E LOGON panel for the specified userid, then enters
 \index{Scripts Examples@\spxentry{Scripts Examples}!Connect to CICS and navigation of user application@\spxentry{Connect to CICS and navigation of user application}}\index{Connect to CICS and navigation of user application@\spxentry{Connect to CICS and navigation of user application}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Connect to CICS and navigate a user applicaction}
-\label{\detokenize{connectivity_guide:connect-to-cics-and-navigate-a-user-applicaction}}\label{\detokenize{connectivity_guide:index-127}}
+\label{\detokenize{connectivity_guide:connect-to-cics-and-navigate-a-user-applicaction}}\label{\detokenize{connectivity_guide:index-130}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Internal} \PYG{n}{name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{14}                \PYG{n}{To} \PYG{n}{associate} \PYG{k}{with} \PYG{n}{an} \PYG{n}{entry} \PYG{n}{point} \PYG{n}{name}
 \PYG{n}{External} \PYG{n}{name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Cics4}                 \PYG{n}{Name} \PYG{n}{displayed} \PYG{n}{on} \PYG{n}{user} \PYG{n}{menu}
@@ -6153,7 +6257,7 @@ This script sends an initial 3270 message to the terminal to format the screen a
 \index{Scripts Examples@\spxentry{Scripts Examples}!Service Transactions@\spxentry{Service Transactions}}\index{Service Transactions@\spxentry{Service Transactions}!Scripts Examples@\spxentry{Scripts Examples}}\ignorespaces 
 
 \subsection{Service Transaction}
-\label{\detokenize{connectivity_guide:service-transaction}}\label{\detokenize{connectivity_guide:index-128}}
+\label{\detokenize{connectivity_guide:service-transaction}}\label{\detokenize{connectivity_guide:index-131}}
 \sphinxAtStartPar
 This example shows a script which connects to CICS and repeatedly issues an enquiry transaction whose parameters are supplied in the URL of an HTTP request:
 
@@ -6177,10 +6281,10 @@ The first part of this script signs on to CICS using the default CICS userid. Th
 \index{External Servers@\spxentry{External Servers}}\ignorespaces 
 
 \chapter{External Servers}
-\label{\detokenize{connectivity_guide:external-servers}}\label{\detokenize{connectivity_guide:index-129}}
+\label{\detokenize{connectivity_guide:external-servers}}\label{\detokenize{connectivity_guide:index-132}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id66}}
+\label{\detokenize{connectivity_guide:id68}}
 \sphinxAtStartPar
 The external server management sub\sphinxhyphen{}application allows the administrator to maintain the call parameters relating to the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access Videotex servers via an X25 network. Additionally, starting with VIRTEL version 4.14, the concept of an external server
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
@@ -6188,14 +6292,14 @@ is extended to handle the routing of incoming and outgoing calls to and from X25
 \index{External Servers@\spxentry{External Servers}!External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}}\index{External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}!External Servers@\spxentry{External Servers}}\ignorespaces 
 
 \subsection{External Server Management Sub\sphinxhyphen{}Application}
-\label{\detokenize{connectivity_guide:external-server-management-sub-application}}\label{\detokenize{connectivity_guide:index-130}}
+\label{\detokenize{connectivity_guide:external-server-management-sub-application}}\label{\detokenize{connectivity_guide:index-133}}
 \sphinxAtStartPar
 The external server management sub\sphinxhyphen{}application is accessed by pressing {[}PF7{]} in the Configuration Menu, or {[}PF11{]} in the Sub\sphinxhyphen{}Application Menu, or from the Multi\sphinxhyphen{}Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.
 
 \index{External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}!Security@\spxentry{Security}}\index{Security@\spxentry{Security}!External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Security}
-\label{\detokenize{connectivity_guide:index-131}}\label{\detokenize{connectivity_guide:id67}}
+\label{\detokenize{connectivity_guide:index-134}}\label{\detokenize{connectivity_guide:id69}}
 \sphinxAtStartPar
 When security is active, access to external server management from the Configuration Menu or the Sub\sphinxhyphen{}Application Menu is controlled by the resource \$\$SERV\$\$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
@@ -6204,7 +6308,7 @@ Security management is described in chapter 5 of the VIRTEL Users Guide.
 \index{External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}!Summary Display@\spxentry{Summary Display}}\index{Summary Display@\spxentry{Summary Display}!External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Summary Display}
-\label{\detokenize{connectivity_guide:index-132}}\label{\detokenize{connectivity_guide:id68}}
+\label{\detokenize{connectivity_guide:index-135}}\label{\detokenize{connectivity_guide:id70}}
 \sphinxAtStartPar
 The first screen displayed by the external server management sub\sphinxhyphen{}application shows a summary of existing definitions in alphanumeric order:
 
@@ -6214,7 +6318,7 @@ The first screen displayed by the external server management sub\sphinxhyphen{}a
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id69}}
+\label{\detokenize{connectivity_guide:id71}}
 \sphinxAtStartPar
 In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.
 \begin{description}
@@ -6248,7 +6352,7 @@ Display the next page.
 \index{External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}!Detail Display@\spxentry{Detail Display}}\index{Detail Display@\spxentry{Detail Display}!External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Detail Display}
-\label{\detokenize{connectivity_guide:index-133}}\label{\detokenize{connectivity_guide:id70}}
+\label{\detokenize{connectivity_guide:index-136}}\label{\detokenize{connectivity_guide:id72}}
 \sphinxAtStartPar
 To access the detailed definition of an external server, position the cursor on the desired service in the summary screen and press {[}PF12{]}. The external server detail definition screen will then be displayed. To return to the configuration menu, press {[}PF3{]} or {[}Clear{]}.
 
@@ -6259,7 +6363,7 @@ To access the detailed definition of an external server, position the cursor on 
 \index{External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}!Parameters@\spxentry{Parameters}}\index{Parameters@\spxentry{Parameters}!External Server Management Sub\sphinxhyphen{}Application@\spxentry{External Server Management Sub\sphinxhyphen{}Application}}\ignorespaces 
 
 \subsection{Parameters}
-\label{\detokenize{connectivity_guide:index-134}}\label{\detokenize{connectivity_guide:id71}}\begin{description}
+\label{\detokenize{connectivity_guide:index-137}}\label{\detokenize{connectivity_guide:id73}}\begin{description}
 \sphinxlineitem{Name}
 \sphinxAtStartPar
 Contains the name of the service as displayed to the user in the “Call External Server” screen. This name may also be referenced in the “Application” field of a type 3 transaction.
@@ -6456,14 +6560,14 @@ Contains a connection script to be run immediately after connection to the serve
 \index{Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \chapter{Connection Modes}
-\label{\detokenize{connectivity_guide:connection-modes}}\label{\detokenize{connectivity_guide:index-135}}
+\label{\detokenize{connectivity_guide:connection-modes}}\label{\detokenize{connectivity_guide:index-138}}
 \sphinxAtStartPar
 There are various methods of connecting terminals to VIRTEL. This chapter includes the \sphinxstylestrong{WELCOME} and \sphinxstylestrong{RELAY} modes of connection
 
 \index{Connection Modes@\spxentry{Connection Modes}!Welcome Mode@\spxentry{Welcome Mode}}\index{Welcome Mode@\spxentry{Welcome Mode}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \section{WELCOME mode}
-\label{\detokenize{connectivity_guide:welcome-mode}}\label{\detokenize{connectivity_guide:index-136}}
+\label{\detokenize{connectivity_guide:welcome-mode}}\label{\detokenize{connectivity_guide:index-139}}
 \sphinxAtStartPar
 Exclusively for 3270 terminals, WELCOME mode allows 3270 terminals to connect to VIRTEL without being predefinied.
 There are two conditions which must be fulfilled:
@@ -6485,14 +6589,14 @@ relinquishes control of the terminal. In this case, VIRTEL functions somewhat li
 \index{Connection Modes@\spxentry{Connection Modes}!Relay Mode@\spxentry{Relay Mode}}\index{Relay Mode@\spxentry{Relay Mode}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \section{RELAY mode}
-\label{\detokenize{connectivity_guide:relay-mode}}\label{\detokenize{connectivity_guide:index-137}}
+\label{\detokenize{connectivity_guide:relay-mode}}\label{\detokenize{connectivity_guide:index-140}}
 \sphinxAtStartPar
 3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi\sphinxhyphen{}Session functionality. Whether a sign\sphinxhyphen{}on screen or a Multi\sphinxhyphen{}Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
 
 \index{Connection Modes@\spxentry{Connection Modes}!Terminal connection types@\spxentry{Terminal connection types}}\index{Terminal connection types@\spxentry{Terminal connection types}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \section{Terminal Connection Types}
-\label{\detokenize{connectivity_guide:terminal-connection-types}}\label{\detokenize{connectivity_guide:index-138}}
+\label{\detokenize{connectivity_guide:terminal-connection-types}}\label{\detokenize{connectivity_guide:index-141}}
 \sphinxAtStartPar
 The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non\sphinxhyphen{}dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
 \begin{description}
@@ -6567,7 +6671,7 @@ In the examples shown below:
 \index{Connection Modes@\spxentry{Connection Modes}!Physical Terminal Pools@\spxentry{Physical Terminal Pools}}\index{Physical Terminal Pools@\spxentry{Physical Terminal Pools}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Physical Terminal Pools}
-\label{\detokenize{connectivity_guide:physical-terminal-pools}}\label{\detokenize{connectivity_guide:index-139}}
+\label{\detokenize{connectivity_guide:physical-terminal-pools}}\label{\detokenize{connectivity_guide:index-142}}
 \sphinxAtStartPar
 Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the terminal connects to VIRTEL. There are two types of physical pool, dynamic and non\sphinxhyphen{}dynamic, as described later.
 
@@ -6651,7 +6755,7 @@ Examples:
 \index{Connection Modes@\spxentry{Connection Modes}!Dynamic Terminal Pools@\spxentry{Dynamic Terminal Pools}}\index{Dynamic Terminal Pools@\spxentry{Dynamic Terminal Pools}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Dynamic Terminal Pools}
-\label{\detokenize{connectivity_guide:dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-140}}
+\label{\detokenize{connectivity_guide:dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-143}}
 \sphinxAtStartPar
 In a dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters and “=” signs. Each “=” sign will be dynamically replaced by the value of the corresponding character in the name of the connecting
 terminal.
@@ -6669,7 +6773,7 @@ A single definition may be sufficient to connect all 3270 terminals in the netwo
 \index{Connection Modes@\spxentry{Connection Modes}!Non\sphinxhyphen{}Dynamic Terminal Pools@\spxentry{Non\sphinxhyphen{}Dynamic Terminal Pools}}\index{Non\sphinxhyphen{}Dynamic Terminal Pools@\spxentry{Non\sphinxhyphen{}Dynamic Terminal Pools}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Non\sphinxhyphen{}Dynamic Terminal Pools}
-\label{\detokenize{connectivity_guide:non-dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-141}}
+\label{\detokenize{connectivity_guide:non-dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-144}}
 \sphinxAtStartPar
 In a non\sphinxhyphen{}dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters without “=” signs. A given terminal may be assigned a different relay on each connection according to availability. Each relay in the pool must be defined to VTAM by means of an APPL statement.
 
@@ -6679,7 +6783,7 @@ It is advisable to define as many entries as there are terminals to be connected
 \index{Connection Modes@\spxentry{Connection Modes}!Terminal Pool Definition Examples@\spxentry{Terminal Pool Definition Examples}}\index{Terminal Pool Definition Examples@\spxentry{Terminal Pool Definition Examples}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Terminal Pool Definition Examples}
-\label{\detokenize{connectivity_guide:terminal-pool-definition-examples}}\label{\detokenize{connectivity_guide:index-142}}
+\label{\detokenize{connectivity_guide:terminal-pool-definition-examples}}\label{\detokenize{connectivity_guide:index-145}}
 
 \subsubsection{Physical Pool}
 \label{\detokenize{connectivity_guide:physical-pool}}
@@ -6738,7 +6842,7 @@ Terminals using a logical pool are defined with a “Relay” field referencing 
 \index{Connection Modes@\spxentry{Connection Modes}!Terminal Pool Selection@\spxentry{Terminal Pool Selection}}\index{Terminal Pool Selection@\spxentry{Terminal Pool Selection}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Terminal Pool Selection}
-\label{\detokenize{connectivity_guide:terminal-pool-selection}}\label{\detokenize{connectivity_guide:index-143}}
+\label{\detokenize{connectivity_guide:terminal-pool-selection}}\label{\detokenize{connectivity_guide:index-146}}
 \sphinxAtStartPar
 When a terminal is defined to a logical pool, the selection of a pool is managed automatically by VIRTEL at connection time. At connection time a terminal entry from the logical pool is selected starting at the highest available entry. That entry will be associated with a physical group of predefine terminals each associated with a logical pool. The first available entry of that physical group will be used as the terminal definition. From that terminal definition we derive the VTAM LUNAMES for 3270 and printer definitions for a 3270 application relay.
 
@@ -6895,21 +6999,21 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 \index{Connection Modes@\spxentry{Connection Modes}!Virtel Terminal Connection Examples@\spxentry{Virtel Terminal Connection Examples}}\index{Virtel Terminal Connection Examples@\spxentry{Virtel Terminal Connection Examples}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \section{Terminal Connection Examples}
-\label{\detokenize{connectivity_guide:terminal-connection-examples}}\label{\detokenize{connectivity_guide:index-144}}
+\label{\detokenize{connectivity_guide:terminal-connection-examples}}\label{\detokenize{connectivity_guide:index-147}}
 \sphinxAtStartPar
 This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.
 
 \index{Connection Modes@\spxentry{Connection Modes}!WELCOME Mode Terminal Connection Example@\spxentry{WELCOME Mode Terminal Connection Example}}\index{WELCOME Mode Terminal Connection Example@\spxentry{WELCOME Mode Terminal Connection Example}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{3270 terminal in WELCOME mode}
-\label{\detokenize{connectivity_guide:terminal-in-welcome-mode}}\label{\detokenize{connectivity_guide:index-145}}
+\label{\detokenize{connectivity_guide:terminal-in-welcome-mode}}\label{\detokenize{connectivity_guide:index-148}}
 \sphinxAtStartPar
 This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
 
 \index{Connection Modes@\spxentry{Connection Modes}!RELAY Mode Terminal Connection Example@\spxentry{RELAY Mode Terminal Connection Example}}\index{RELAY Mode Terminal Connection Example@\spxentry{RELAY Mode Terminal Connection Example}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{3270 terminal in RELAY mode}
-\label{\detokenize{connectivity_guide:terminal-in-relay-mode}}\label{\detokenize{connectivity_guide:index-146}}
+\label{\detokenize{connectivity_guide:terminal-in-relay-mode}}\label{\detokenize{connectivity_guide:index-149}}
 \sphinxAtStartPar
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -6954,7 +7058,7 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 \index{Connection Modes@\spxentry{Connection Modes}!X25 Asynchronous Terminal Connection Example@\spxentry{X25 Asynchronous Terminal Connection Example}}\index{X25 Asynchronous Terminal Connection Example@\spxentry{X25 Asynchronous Terminal Connection Example}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Asynchronous terminal on an X25 or XOT line}
-\label{\detokenize{connectivity_guide:asynchronous-terminal-on-an-x25-or-xot-line}}\label{\detokenize{connectivity_guide:index-147}}
+\label{\detokenize{connectivity_guide:asynchronous-terminal-on-an-x25-or-xot-line}}\label{\detokenize{connectivity_guide:index-150}}
 \sphinxAtStartPar
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -7010,7 +7114,7 @@ The value entered in the “2nd Relay” field of an X25 terminal corresponds to
 \index{Connection Modes@\spxentry{Connection Modes}!Logical Terminals@\spxentry{Logical Terminals}}\index{Logical Terminals@\spxentry{Logical Terminals}!Connection Modes@\spxentry{Connection Modes}}\ignorespaces 
 
 \subsection{Logical terminals}
-\label{\detokenize{connectivity_guide:logical-terminals}}\label{\detokenize{connectivity_guide:index-148}}
+\label{\detokenize{connectivity_guide:logical-terminals}}\label{\detokenize{connectivity_guide:index-151}}
 \sphinxAtStartPar
 It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
@@ -7038,10 +7142,10 @@ The 3 groups of terminals contain the value *POOL001 under the heading “*Pool 
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \chapter{Controlling LUNAMEs \sphinxhyphen{} LU Nailing}
-\label{\detokenize{connectivity_guide:controlling-lunames-lu-nailing}}\label{\detokenize{connectivity_guide:v462cn-forceluname}}\label{\detokenize{connectivity_guide:index-149}}
+\label{\detokenize{connectivity_guide:controlling-lunames-lu-nailing}}\label{\detokenize{connectivity_guide:v462cn-forceluname}}\label{\detokenize{connectivity_guide:index-152}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id72}}
+\label{\detokenize{connectivity_guide:id74}}
 \sphinxAtStartPar
 In this section we look at how we can control LUNAME selection for inbound HTTP calls, sometimes referred to as LU nailing. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a \sphinxstyleemphasis{Logical Unit} or \sphinxstyleemphasis{LU}, and each LU has a unique eight character name (\sphinxstyleemphasis{LU name)}. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 
@@ -7099,7 +7203,7 @@ or
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!UserData and ForceLUNAME examples; Batch work station name@\spxentry{UserData and ForceLUNAME examples; Batch work station name}}\index{UserData and ForceLUNAME examples; Batch work station name@\spxentry{UserData and ForceLUNAME examples; Batch work station name}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{UserData example using a work station name}
-\label{\detokenize{connectivity_guide:userdata-example-using-a-work-station-name}}\label{\detokenize{connectivity_guide:index-150}}
+\label{\detokenize{connectivity_guide:userdata-example-using-a-work-station-name}}\label{\detokenize{connectivity_guide:index-153}}
 \sphinxAtStartPar
 In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. Using a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
 
@@ -7158,7 +7262,7 @@ The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRT
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!UserData example using a LU Name@\spxentry{UserData example using a LU Name}}\index{UserData example using a LU Name@\spxentry{UserData example using a LU Name}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{UserData example using a LU Name}
-\label{\detokenize{connectivity_guide:userdata-example-using-a-lu-name}}\label{\detokenize{connectivity_guide:index-151}}
+\label{\detokenize{connectivity_guide:userdata-example-using-a-lu-name}}\label{\detokenize{connectivity_guide:index-154}}
 \sphinxAtStartPar
 Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name.
 
@@ -7193,7 +7297,7 @@ The user data in the URL, in this case EHPMA00*, will be added to each transacti
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using an LU Name with no predefined terminal@\spxentry{Using an LU Name with no predefined terminal}}\index{Using an LU Name with no predefined terminal@\spxentry{Using an LU Name with no predefined terminal}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{ForceLUNAME Example}
-\label{\detokenize{connectivity_guide:forceluname-example}}\label{\detokenize{connectivity_guide:index-152}}
+\label{\detokenize{connectivity_guide:forceluname-example}}\label{\detokenize{connectivity_guide:index-155}}
 \sphinxAtStartPar
 In the preceding examples both required that a physical terminal and relays be predefined and associated with a logical pool of terminals. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:\sphinxhyphen{}
 \begin{itemize}
@@ -7266,7 +7370,7 @@ The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSes
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!LU Nailing by cookie@\spxentry{LU Nailing by cookie}}\index{LU Nailing by cookie@\spxentry{LU Nailing by cookie}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \section{LU Nailing by cookies}
-\label{\detokenize{connectivity_guide:lu-nailing-by-cookies}}\label{\detokenize{connectivity_guide:index-153}}
+\label{\detokenize{connectivity_guide:lu-nailing-by-cookies}}\label{\detokenize{connectivity_guide:index-156}}
 \sphinxAtStartPar
 Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the user as part of an Email from which the user selects a link to access Virtel or it can be part of the ‘self\sphinxhyphen{}registration’ process. The following section details the process of setting up LU nailing with cookies delivered by email.
 
@@ -7387,7 +7491,7 @@ the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that
 When the e\sphinxhyphen{}mail arrives at the user’s workstation, it will contain a hyperlink to a VIRTEL page.  The user clicks on this hyperlink to install the cookie in his browser.
 
 \sphinxAtStartPar
-One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the Internet Explorer screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools \sphinxhyphen{} Internet Options \sphinxhyphen{} Security \sphinxhyphen{} Local Intranet \sphinxhyphen{} Sites \textendash{} Advanced” and add VIRTEL’s IP address to the list.
+One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the browser screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools \sphinxhyphen{} Internet Options \sphinxhyphen{} Security \sphinxhyphen{} Local Intranet \sphinxhyphen{} Sites \textendash{} Advanced” and add VIRTEL’s IP address to the list.
 
 
 \subsection{Using the cookie}
@@ -7400,7 +7504,7 @@ Having installed the cookie on the workstation, now whenever this user calls up 
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using an IP address@\spxentry{Using an IP address}}\index{Using an IP address@\spxentry{Using an IP address}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \section{LU Nailing by IP address}
-\label{\detokenize{connectivity_guide:lu-nailing-by-ip-address}}\label{\detokenize{connectivity_guide:index-154}}
+\label{\detokenize{connectivity_guide:lu-nailing-by-ip-address}}\label{\detokenize{connectivity_guide:index-157}}
 \sphinxAtStartPar
 The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. In the example below we define a rule on line E\sphinxhyphen{}HTTP which will force a terminal connecting with IP address 192.168.092.080 to use LU name EHVTA100. The LU name must be pre\sphinxhyphen{}defined in a Virtel terminal pool.
 
@@ -7456,7 +7560,7 @@ Note the use of pattern characters when defining the range. In this example we h
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!By Userid@\spxentry{By Userid}}\index{By Userid@\spxentry{By Userid}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \section{LU Nailing by Userid}
-\label{\detokenize{connectivity_guide:lu-nailing-by-userid}}\label{\detokenize{connectivity_guide:index-155}}
+\label{\detokenize{connectivity_guide:lu-nailing-by-userid}}\label{\detokenize{connectivity_guide:index-158}}
 \sphinxAtStartPar
 Two options are available to nail a terminal to a supplied userid. Ther are: \sphinxhyphen{}
 \begin{itemize}
@@ -7473,7 +7577,7 @@ Using ARBO definitions to construct an internal table space of userid, applicati
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using RACF to nail LUs; Nailing Relay Names@\spxentry{Using RACF to nail LUs; Nailing Relay Names}}\index{Using RACF to nail LUs; Nailing Relay Names@\spxentry{Using RACF to nail LUs; Nailing Relay Names}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{LU Nailing using RACF}
-\label{\detokenize{connectivity_guide:lu-nailing-using-racf}}\label{\detokenize{connectivity_guide:index-156}}
+\label{\detokenize{connectivity_guide:lu-nailing-using-racf}}\label{\detokenize{connectivity_guide:index-159}}
 \sphinxAtStartPar
 LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: \sphinxhyphen{}
 
@@ -7542,7 +7646,7 @@ Output messages from the scenario
 \index{Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}!Using ARBO statements to nail LUs; Nailing Relay Names@\spxentry{Using ARBO statements to nail LUs; Nailing Relay Names}}\index{Using ARBO statements to nail LUs; Nailing Relay Names@\spxentry{Using ARBO statements to nail LUs; Nailing Relay Names}!Controlling LUNAMEs@\spxentry{Controlling LUNAMEs}}\ignorespaces 
 
 \subsection{LU Nailing using ARBO defininitions}
-\label{\detokenize{connectivity_guide:lu-nailing-using-arbo-defininitions}}\label{\detokenize{connectivity_guide:index-157}}
+\label{\detokenize{connectivity_guide:lu-nailing-using-arbo-defininitions}}\label{\detokenize{connectivity_guide:index-160}}
 \sphinxAtStartPar
 LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
 
@@ -7925,7 +8029,7 @@ Only applicable if you are using Virtel Security.
 \index{Nailing LU names@\spxentry{Nailing LU names}!Comparison table@\spxentry{Comparison table}}\index{Comparison table@\spxentry{Comparison table}!Nailing LU names@\spxentry{Nailing LU names}}\ignorespaces 
 
 \subsection{Comparison Table}
-\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-158}}
+\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-161}}
 
 \begin{savenotes}\sphinxattablestart
 \sphinxthistablewithglobalstyle
@@ -8053,10 +8157,10 @@ Yes
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \chapter{AT\sphinxhyphen{}TLS Secure Session}
-\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-159}}
+\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:index-162}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id73}}
+\label{\detokenize{connectivity_guide:id75}}
 \sphinxAtStartPar
 This section provides details on on to implement AT\sphinxhyphen{}TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT\sphinxhyphen{}TLS) feature of z/OS Communication Server. AT\sphinxhyphen{}TLS is included with z/OS V1R7 and later releases.
 
@@ -8071,7 +8175,7 @@ Higher CPU usgage will result in the TCP/IP address space if this feature is use
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Installation@\spxentry{Installation}}\index{Installation@\spxentry{Installation}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Installation}
-\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-160}}
+\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-163}}
 
 \subsection{Install Policy Agent procedure}
 \label{\detokenize{connectivity_guide:install-policy-agent-procedure}}
@@ -8150,7 +8254,7 @@ Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AU
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Operations@\spxentry{Operations}}\index{Operations@\spxentry{Operations}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Operations}
-\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-161}}
+\label{\detokenize{connectivity_guide:operations}}\label{\detokenize{connectivity_guide:index-164}}
 
 \subsection{Starting the Policy Agent}
 \label{\detokenize{connectivity_guide:starting-the-policy-agent}}
@@ -8191,7 +8295,7 @@ To access VIRTEL line C\sphinxhyphen{}HTTP you must now use URL
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Problem determination@\spxentry{Problem determination}}\index{Problem determination@\spxentry{Problem determination}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Problem determination}
-\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-162}}
+\label{\detokenize{connectivity_guide:problem-determination}}\label{\detokenize{connectivity_guide:index-165}}
 
 \subsection{Policy Agent log file}
 \label{\detokenize{connectivity_guide:policy-agent-log-file}}
@@ -8325,12 +8429,12 @@ where nnnn is the identification of the connexion will display the AT\sphinxhyph
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!The Cipher suites@\spxentry{The Cipher suites}}\index{The Cipher suites@\spxentry{The Cipher suites}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{The Cipher suites}
-\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-163}}
+\label{\detokenize{connectivity_guide:the-cipher-suites}}\label{\detokenize{connectivity_guide:index-166}}
 \sphinxAtStartPar
 The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
 
 \sphinxAtStartPar
-In Microsoft Internet Explorer, follow the menu \sphinxstyleemphasis{Tools \textendash{} Internet Options \textendash{} Advanced}. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
+Locate the browsers security settings. For example, \sphinxstyleemphasis{Tools \textendash{} Internet Options \textendash{} Advanced}. Under the security heading there will be options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
 
 \sphinxAtStartPar
 In Firefox the cipher specifications are accessed by typing \sphinxstyleemphasis{about:config} in the address bar and typing \sphinxstyleemphasis{security} in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128\sphinxhyphen{}bit or higher cipher suites are enabled.
@@ -8338,7 +8442,7 @@ In Firefox the cipher specifications are accessed by typing \sphinxstyleemphasis
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Client certificates@\spxentry{Client certificates}}\index{Client certificates@\spxentry{Client certificates}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Client certificates}
-\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-164}}
+\label{\detokenize{connectivity_guide:client-certificates}}\label{\detokenize{connectivity_guide:index-167}}
 \sphinxAtStartPar
 Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:\sphinxhyphen{}
 \begin{itemize}
@@ -8375,7 +8479,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}!Resources@\spxentry{Resources}}\index{Resources@\spxentry{Resources}!AT\sphinxhyphen{}TLS Secure Session@\spxentry{AT\sphinxhyphen{}TLS Secure Session}}\ignorespaces 
 
 \section{Resources}
-\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-165}}
+\label{\detokenize{connectivity_guide:resources}}\label{\detokenize{connectivity_guide:index-168}}
 
 \subsection{IBM Manuals}
 \label{\detokenize{connectivity_guide:ibm-manuals}}
@@ -8412,7 +8516,7 @@ See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT\sphi
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \chapter{Virtel and Long Poll protocol}
-\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-166}}
+\label{\detokenize{connectivity_guide:virtel-and-long-poll-protocol}}\label{\detokenize{connectivity_guide:index-169}}
 
 \section{Understanding HTTP Connections}
 \label{\detokenize{connectivity_guide:understanding-http-connections}}
@@ -8455,7 +8559,7 @@ Network components (Firewalls, PROXY, routers, etc.) can only handle a limited n
 \label{\detokenize{connectivity_guide:sso-passtickets-and-proxy-servers}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id74}}
+\label{\detokenize{connectivity_guide:id76}}
 \sphinxAtStartPar
 Many businesses now implement products which provide a centralized enterprise\sphinxhyphen{}class secure single sign\sphinxhyphen{}on (SSO) and authentication system. The products tend to run on a server(s) and provides access to a business’s assets like web enabled applications or portals. The basic process is to trap the incoming HTTP call request and establish some user credentials before llowing access to an asset. For example, the user credentials can be extracted from the callers request or determined by the callers IP address. The credentials will be validated against a LDAP or similar active directory server. The result of the validation will either allow or deny the caller access to the requested asset. Security and asset control is managed by the SSO server which as a central server can validate credentials to all business assets, be it on the mainframe or other platforms. Userid and password administration for all assets can be controlled through the functions of the SSO software employed. Virtel will integrate within this SSO infrastructure and process sign on request once they have passed validation. Virtel provides its own validation of the SSO server through the use of rules.
 
@@ -8506,7 +8610,7 @@ In the above trace the CA\sphinxhyphen{}SiteMinder specific header “SM\_User�
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}}\index{Adding headers to the HTTP request@\spxentry{Adding headers to the HTTP request}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Adding headers to the HTTP request}
-\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-167}}
+\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}\label{\detokenize{connectivity_guide:index-170}}
 \sphinxAtStartPar
 Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
 
@@ -8533,7 +8637,7 @@ The following definitions define what needs to be done to enable a user to log o
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!RACF Passtickets@\spxentry{RACF Passtickets}}\index{RACF Passtickets@\spxentry{RACF Passtickets}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{RACF Passtickets}
-\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-168}}
+\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-171}}
 \sphinxAtStartPar
 Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
 
@@ -8641,7 +8745,7 @@ The key thing here is that the PassTicket name must tie up with the generic IRRP
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Virtel Requirements@\spxentry{Virtel Requirements}}\index{Virtel Requirements@\spxentry{Virtel Requirements}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Virtel Requirements}
-\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-169}}
+\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-172}}
 
 \subsection{Transaction requirements}
 \label{\detokenize{connectivity_guide:transaction-requirements}}
@@ -8752,7 +8856,7 @@ This rule does no more than to establish the entry point EPREJECT. EPREJECT will
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Common Errors@\spxentry{Common Errors}}\index{Common Errors@\spxentry{Common Errors}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Common Errors}
-\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-170}}
+\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-173}}
 \sphinxAtStartPar
 \sphinxstylestrong{Message VIR1502E}
 
@@ -8838,17 +8942,17 @@ There is no profile in the PTKTDATA class for this application or the PTKTDATA c
 \index{SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}!Related material@\spxentry{Related material}}\index{Related material@\spxentry{Related material}!SSO, Passtickets and Proxy Servers@\spxentry{SSO, Passtickets and Proxy Servers}}\ignorespaces 
 
 \section{Related material}
-\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-171}}
+\label{\detokenize{connectivity_guide:related-material}}\label{\detokenize{connectivity_guide:index-174}}
 \sphinxAtStartPar
 Technical newsletter \sphinxhyphen{} \sphinxtitleref{TN201416 Virtel Security. Using server and client certificates}
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \chapter{Running multiple instances of Virtel}
-\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-172}}
+\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}\label{\detokenize{connectivity_guide:index-175}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id75}}
+\label{\detokenize{connectivity_guide:id77}}
 \sphinxAtStartPar
 For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:\sphinxhyphen{}
 
@@ -8864,14 +8968,14 @@ Here are the relevant definitions required to support the VTAM generic resource 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Virtel TCT Settings@\spxentry{Virtel TCT Settings}}\index{Virtel TCT Settings@\spxentry{Virtel TCT Settings}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{VIRTEL TCT Settings}
-\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-173}}
+\label{\detokenize{connectivity_guide:virtel-tct-settings}}\label{\detokenize{connectivity_guide:index-176}}
 \sphinxAtStartPar
 GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
 
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!SYSPLEX definitions@\spxentry{SYSPLEX definitions}}\index{SYSPLEX definitions@\spxentry{SYSPLEX definitions}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{SYSPLEX definitions}
-\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-174}}
+\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-177}}
 \sphinxAtStartPar
 The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
 
@@ -8943,7 +9047,7 @@ Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is ass
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Workload balancing@\spxentry{Workload balancing}}\index{Workload balancing@\spxentry{Workload balancing}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Workload balancing in a SYSPLEX environment}
-\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-175}}
+\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}\label{\detokenize{connectivity_guide:index-178}}
 \sphinxAtStartPar
 In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
 
@@ -9146,7 +9250,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}}\index{Load balancing with a Distributed VIPA@\spxentry{Load balancing with a Distributed VIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using a Distributed VIPA to load balance}
-\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-176}}
+\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}\label{\detokenize{connectivity_guide:index-179}}
 \sphinxAtStartPar
 Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:\sphinxhyphen{}
@@ -9163,7 +9267,7 @@ Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virte
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}}\index{Session Affinity with DVIPA@\spxentry{Session Affinity with DVIPA}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \subsection{Session Affinity}
-\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-177}}
+\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-180}}
 \sphinxAtStartPar
 It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W\sphinxhyphen{}HTTP (port 41001) is used for Virtel Administration and line C\sphinxhyphen{}HTTP (port 41002) for user access
 to applications.
@@ -9211,7 +9315,7 @@ In this way the administrator can access a specific Virtel using port 41001 of t
 \index{Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}!Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}}\index{Load balancing with Apache Proxy@\spxentry{Load balancing with Apache Proxy}!Running multiple instances of Virtel@\spxentry{Running multiple instances of Virtel}}\ignorespaces 
 
 \section{Using an Apache Proxy to load balance}
-\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-178}}
+\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-181}}
 \sphinxAtStartPar
 Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
 
@@ -9298,7 +9402,7 @@ See \sphinxurl{https://httpd.apache.org/docs/2.2/mod/mod\_expires.html} for more
 \index{VIRPLEX@\spxentry{VIRPLEX}}\ignorespaces 
 
 \chapter{VIRPLEX}
-\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-180}}
+\label{\detokenize{connectivity_guide:virplex}}\label{\detokenize{connectivity_guide:v462cn-virplex}}\label{\detokenize{connectivity_guide:index-183}}
 \sphinxAtStartPar
 Virplex
 
@@ -9340,7 +9444,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 \index{TCT definitions@\spxentry{TCT definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!TCT definitions@\spxentry{TCT definitions}}\ignorespaces 
 
 \section{TCT definitions}
-\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-181}}
+\label{\detokenize{connectivity_guide:tct-definitions}}\label{\detokenize{connectivity_guide:index-184}}
 \sphinxAtStartPar
 Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.
 
@@ -9385,7 +9489,7 @@ The TCT for a ‘WRITER’ task must have the following definitions in the TCT.
 \index{Arbo definitions@\spxentry{Arbo definitions}!Virplex@\spxentry{Virplex}}\index{Virplex@\spxentry{Virplex}!Arbo definitions@\spxentry{Arbo definitions}}\ignorespaces 
 
 \section{ARBO definitions}
-\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-182}}
+\label{\detokenize{connectivity_guide:arbo-definitions}}\label{\detokenize{connectivity_guide:index-185}}
 \sphinxAtStartPar
 To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W\sphinxhyphen{}HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V\sphinxhyphen{}HTTP provides the common port for the Virtel instances within the Virplex.
 
@@ -10059,10 +10163,10 @@ Open a problem with your local Syspertec Support Engineer and send them the outp
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \chapter{Protecting business assets with Virtel Rules}
-\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-190}}
+\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}\label{\detokenize{connectivity_guide:index-193}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id76}}
+\label{\detokenize{connectivity_guide:id78}}
 \sphinxAtStartPar
 In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset \textendash{} secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.
 
@@ -10074,7 +10178,7 @@ In this chapter we discuss how to protect access to business assets using Virtel
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Virtel Setup@\spxentry{Virtel Setup}}\index{Virtel Setup@\spxentry{Virtel Setup}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \section{Virtel Setup}
-\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-191}}
+\label{\detokenize{connectivity_guide:virtel-setup}}\label{\detokenize{connectivity_guide:index-194}}
 \sphinxAtStartPar
 From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non\sphinxhyphen{}secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address \textendash{} 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.
@@ -10082,7 +10186,7 @@ and port addresses. For example, users in the accounts department should be able
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Example Rules@\spxentry{Example Rules}}\index{Example Rules@\spxentry{Example Rules}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Virtel Rules}
-\label{\detokenize{connectivity_guide:index-192}}\label{\detokenize{connectivity_guide:id77}}
+\label{\detokenize{connectivity_guide:index-195}}\label{\detokenize{connectivity_guide:id79}}
 \sphinxAtStartPar
 Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re\sphinxhyphen{}directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:\sphinxhyphen{}
 
@@ -10149,7 +10253,7 @@ To protect the business assets the calling IP address can only be that of the pr
 \index{Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}!Default Rule Template@\spxentry{Default Rule Template}}\index{Default Rule Template@\spxentry{Default Rule Template}!Protecting business assets with Virtel Rules@\spxentry{Protecting business assets with Virtel Rules}}\ignorespaces 
 
 \subsection{Default Rule Template}
-\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-193}}
+\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-196}}
 \sphinxAtStartPar
 In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:\sphinxhyphen{}
 

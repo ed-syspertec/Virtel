@@ -60,7 +60,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#virtel-rules">Virtel Rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#terminals">Terminals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#entry-points">Entry Points</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#index-112">Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-115">Transactions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connection-disconnection-scripts">Connection / Disconnection Scripts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-servers">External Servers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connection-modes">Connection Modes</a></li>
@@ -118,12 +118,8 @@
 <span id="virtel462cn"></span><h1>Connectivity Guide V4.62<a class="headerlink" href="#connectivity-guide-v4-62" title="Permalink to this heading"></a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web25.png"><img alt="image00" src="../../../_images/logo_virtel_web25.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Connectivity Guide</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a draft version of the document.</p>
-</div>
-<p>Version : 4.62 Draft</p>
-<p>Release Date : TBA. Publication Date : 17/02/2024</p>
+<p>Version : 4.62</p>
+<p>Release Date : 23/06/2024. Publication Date : 17/02/2024</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -2509,14 +2505,70 @@ Note 2
 </dl>
 </section>
 </section>
+<section id="tn3270-line">
+<span id="v462cn-virtelrules"></span><span id="index-90"></span><h3>TN3270 line<a class="headerlink" href="#tn3270-line" title="Permalink to this heading"></a></h3>
+<p>Virtel provides support for TN3270.</p>
+<p><img alt="image157" src="../../../_images/image1571.png" /></p>
+<section id="index-91">
+<span id="id43"></span><h4>Parameters<a class="headerlink" href="#index-91" title="Permalink to this heading"></a></h4>
+<dl class="simple">
+<dt>Remote ident</dt><dd><p>Partner TN3270 Server</p>
+</dd>
+<dt>Local ident</dt><dd><p>Always blank.</p>
+</dd>
+<dt>Prefix</dt><dd><p>Terminal name prefix (see below).</p>
+</dd>
+<dt>Entry Point</dt><dd><p>$NONE$. The entry point should be defined in the rules of the line.</p>
+</dd>
+<dt>Line type</dt><dd><p>Always TCP1.</p>
+</dd>
+<dt>Possible calls</dt><dd><p>Outbound. Virtel is a TN3270 client.</p>
+</dd>
+<dt>Protocol</dt><dd><p>TN3270</p>
+</dd>
+<dt>Window</dt><dd><p>0003</p>
+</dd>
+<dt>Packet</dt><dd><p>0128</p>
+</dd>
+<dt>Pad</dt><dd><p>Blank. Not used.</p>
+</dd>
+<dt>Tran</dt><dd><p>Blank. Not used.</p>
+</dd>
+</dl>
+</section>
+<section id="index-92">
+<span id="id44"></span><h4>Terminal Definitions<a class="headerlink" href="#index-92" title="Permalink to this heading"></a></h4>
+<p>TN3270 ine uses a single sub-group of type-3 terminals having a common prefix (TNTRM in this example). No VTAM relays are defined for this type of line as connection is throup TCPIP and not VTAM. The number of terminals defined determines the maximum number of TN3270 sessions between VIRTEL and the TN3270 Server.</p>
+<p>Sample Virtel message log : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRTN51I</span> <span class="n">TNCLI000</span> <span class="n">CALLING</span> <span class="n">SERVER</span> <span class="mf">192.168.204.31</span><span class="p">:</span><span class="mi">23</span>
+<span class="n">VIRT907I</span> <span class="n">TN3270</span>   <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168.204.31</span><span class="p">:</span><span class="mi">23</span>
+<span class="n">VIR0554I</span> <span class="n">DELOC009</span> <span class="n">LINKED</span> <span class="n">TO</span> <span class="n">TNET01</span>   <span class="n">THRU</span> <span class="n">TNCLI000</span>
+<span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">SOCKET</span> <span class="mi">00010000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168.79.10</span><span class="p">:</span><span class="mi">21124</span>
+<span class="n">VIRTN19I</span> <span class="n">TNCLI000</span> <span class="n">RELAY</span> <span class="n">TCPT1052</span> <span class="n">CONNECTED</span>
+</pre></div>
+</div>
+<p><img alt="image158" src="../../../_images/image1581.png" /></p>
+</section>
+<section id="supported-tn3270-servers-environments">
+<span id="index-93"></span><h4>Supported TN3270 Servers Environments<a class="headerlink" href="#supported-tn3270-servers-environments" title="Permalink to this heading"></a></h4>
+<p>The ARBOLOAD installation job with the [TN3270=YES] option set will install a default TN3270 sample Virtel definitions for a TN3270 Servers. The following TN3270 servers have been tested :</p>
+<ul class="simple">
+<li><p>z/OS Telnet Server, inc. BTI</p></li>
+<li><p>z/VM Telnet Server, inc. BTI</p></li>
+<li><p>z/VSE BSI Stack, inc. BTI</p></li>
+<li><p>z/VSE CSI Stack, inc. BTI</p></li>
+<li><p>OSA Card Telnet Server</p></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="virtel-rules">
-<span id="v462cn-virtelrules"></span><span id="index-90"></span><h2>Virtel Rules<a class="headerlink" href="#virtel-rules" title="Permalink to this heading"></a></h2>
-<section id="id43">
-<h3>Introduction<a class="headerlink" href="#id43" title="Permalink to this heading"></a></h3>
+<h2>Virtel Rules<a class="headerlink" href="#virtel-rules" title="Permalink to this heading"></a></h2>
+<section id="id45">
+<h3>Introduction<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h3>
 <p>Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See <a class="reference internal" href="#v462cn-forceluname"><span class="std std-ref">“Controlling LUNames”</span></a>) for examples on how to define and use Virtel Rules to control LU names.</p>
-<section id="index-91">
-<span id="id44"></span><h4>Summary Display<a class="headerlink" href="#index-91" title="Permalink to this heading"></a></h4>
+<section id="index-94">
+<span id="id46"></span><h4>Summary Display<a class="headerlink" href="#index-94" title="Permalink to this heading"></a></h4>
 <p>Press [PF5] at the line detail definition screen to display the summary list of rules associated with the line:</p>
 <p><img alt="image58" src="../../../_images/image589.png" />
 <em>Rule Summary Display</em></p>
@@ -2531,8 +2583,8 @@ Note 2
 <dt>Entry Point</dt><dd><p>Name of the entry point which will be assigned to incoming calls whose characteristics match this rule.</p>
 </dd>
 </dl>
-<section id="id45">
-<h5>Navigation<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h5>
+<section id="id47">
+<h5>Navigation<a class="headerlink" href="#id47" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Search</dt><dd><p>Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press [Enter].</p>
 </dd>
@@ -2552,14 +2604,14 @@ Note 2
 <p><strong>Adding a rule</strong> - To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.</p>
 </section>
 </section>
-<section id="index-92">
-<span id="id46"></span><h4>Detail Display<a class="headerlink" href="#index-92" title="Permalink to this heading"></a></h4>
+<section id="index-95">
+<span id="id48"></span><h4>Detail Display<a class="headerlink" href="#index-95" title="Permalink to this heading"></a></h4>
 <p>To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press [PF12]. The detail definition screen will then be displayed.</p>
 <p><img alt="image59" src="../../../_images/image599.png" />
 <em>Rule detail definition screen</em></p>
 </section>
-<section id="index-93">
-<span id="id47"></span><h4>Parameters<a class="headerlink" href="#index-93" title="Permalink to this heading"></a></h4>
+<section id="index-96">
+<span id="id49"></span><h4>Parameters<a class="headerlink" href="#index-96" title="Permalink to this heading"></a></h4>
 <dl class="simple">
 <dt>Name</dt><dd><p>The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.</p>
 </dd>
@@ -2654,27 +2706,27 @@ from the userdata field of the URL (see “VIRTEL URL formats” in the VIRTEL W
 </section>
 </section>
 <section id="terminals">
-<span id="index-94"></span><h2>Terminals<a class="headerlink" href="#terminals" title="Permalink to this heading"></a></h2>
-<section id="id48">
-<h3>Introduction<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h3>
+<span id="index-97"></span><h2>Terminals<a class="headerlink" href="#terminals" title="Permalink to this heading"></a></h2>
+<section id="id50">
+<h3>Introduction<a class="headerlink" href="#id50" title="Permalink to this heading"></a></h3>
 <p>All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.</p>
 <section id="terminal-management-sub-application">
-<span id="index-95"></span><h4>Terminal Management Sub-Application<a class="headerlink" href="#terminal-management-sub-application" title="Permalink to this heading"></a></h4>
+<span id="index-98"></span><h4>Terminal Management Sub-Application<a class="headerlink" href="#terminal-management-sub-application" title="Permalink to this heading"></a></h4>
 <p>This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.</p>
 <p>The terminal management sub-application is accessed by pressing [PF2] in the Configuration Menu, or [PF5] in the Sub Application Menu, or from the Multi-session Menu via a transaction referencing module VIR0023. This sub-application allows for the management of the parameters associated with each terminal under control of VIRTEL. This subapplication
 is also accessible by pressing [PF4] from the line management sub-application.</p>
 </section>
-<section id="index-96">
-<span id="id49"></span><h4>Security<a class="headerlink" href="#index-96" title="Permalink to this heading"></a></h4>
+<section id="index-99">
+<span id="id51"></span><h4>Security<a class="headerlink" href="#index-99" title="Permalink to this heading"></a></h4>
 <p>When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$TERM$$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 5 of the VIRTEL Users Guide.</p>
 </section>
-<section id="index-97">
-<span id="id50"></span><h4>Summary Display<a class="headerlink" href="#index-97" title="Permalink to this heading"></a></h4>
+<section id="index-100">
+<span id="id52"></span><h4>Summary Display<a class="headerlink" href="#index-100" title="Permalink to this heading"></a></h4>
 <p>The first screen displayed by the terminal management sub-application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs. Place the cursor under an entry a press [PF12] to display the terminal details.</p>
 <p><img alt="image67" src="../../../_images/image679.png" />
 <em>Terminal Summary Display</em></p>
-<section id="index-98">
-<span id="id51"></span><h5>Navigation<a class="headerlink" href="#index-98" title="Permalink to this heading"></a></h5>
+<section id="index-101">
+<span id="id53"></span><h5>Navigation<a class="headerlink" href="#index-101" title="Permalink to this heading"></a></h5>
 <p>In browse, alter, or delete mode, it is possible to scroll the list of terminals under the control of VIRTEL.</p>
 <dl class="simple">
 <dt>Search</dt><dd><p>Type the name (or partial name) of the required entity on the first line under the heading “Terminal”, then press [Enter].</p>
@@ -2692,14 +2744,14 @@ system.</p>
 <p><strong>Deleting a terminal entry</strong> - Position the cursor under the name of the entry to be deleted, then press [PF2]. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.</p>
 </section>
 </section>
-<section id="index-99">
-<span id="id52"></span><h4>Detail Display<a class="headerlink" href="#index-99" title="Permalink to this heading"></a></h4>
+<section id="index-102">
+<span id="id54"></span><h4>Detail Display<a class="headerlink" href="#index-102" title="Permalink to this heading"></a></h4>
 <p><img alt="image68" src="../../../_images/image689.png" />
 <em>Terminal Definition detail screen</em></p>
 <p>From within the detail display parameters can be updated.</p>
 </section>
-<section id="index-100">
-<span id="id53"></span><h4>Parameters<a class="headerlink" href="#index-100" title="Permalink to this heading"></a></h4>
+<section id="index-103">
+<span id="id55"></span><h4>Parameters<a class="headerlink" href="#index-103" title="Permalink to this heading"></a></h4>
 <dl>
 <dt>Terminal</dt><dd><p>Maximum of 8 characters containing:</p>
 <blockquote>
@@ -2718,7 +2770,7 @@ system.</p>
 <p>Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.</p>
 </dd>
 </dl>
-<span class="target" id="v462cn-patterncharacters"></span><p id="index-101">Pattern characters:</p>
+<span class="target" id="v462cn-patterncharacters"></span><p id="index-104">Pattern characters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;  Alphabetic A-Z
 ?  Alphanumeric A-Z, 0-9, $, #, @
 %  Hexadecimal digits 0-9, A-F
@@ -2835,24 +2887,24 @@ A repeat count of blank, zero, or 1 indicates definition of a single terminal.</
 </section>
 </section>
 <section id="entry-points">
-<span id="index-102"></span><h2>Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this heading"></a></h2>
-<section id="id54">
-<h3>Introduction<a class="headerlink" href="#id54" title="Permalink to this heading"></a></h3>
+<span id="index-105"></span><h2>Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this heading"></a></h2>
+<section id="id56">
+<h3>Introduction<a class="headerlink" href="#id56" title="Permalink to this heading"></a></h3>
 <p>Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This section describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.</p>
 <p>An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.</p>
 <section id="entry-point-management-sub-application">
-<span id="index-103"></span><h4>Entry Point Management Sub-Application<a class="headerlink" href="#entry-point-management-sub-application" title="Permalink to this heading"></a></h4>
+<span id="index-106"></span><h4>Entry Point Management Sub-Application<a class="headerlink" href="#entry-point-management-sub-application" title="Permalink to this heading"></a></h4>
 <p>The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.</p>
 </section>
-<section id="index-104">
-<span id="id55"></span><h4>Security<a class="headerlink" href="#index-104" title="Permalink to this heading"></a></h4>
+<section id="index-107">
+<span id="id57"></span><h4>Security<a class="headerlink" href="#index-107" title="Permalink to this heading"></a></h4>
 <p>When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$GLOG$$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 5 of the VIRTEL Users Guide.</p>
 </section>
 <section id="selecting-an-entry-point">
-<span id="index-105"></span><h4>Selecting an Entry Point<a class="headerlink" href="#selecting-an-entry-point" title="Permalink to this heading"></a></h4>
+<span id="index-108"></span><h4>Selecting an Entry Point<a class="headerlink" href="#selecting-an-entry-point" title="Permalink to this heading"></a></h4>
 <p>The entry point used in the connection from a terminal may be specified in various ways:</p>
-<section id="id56">
-<h5>3270 Terminals<a class="headerlink" href="#id56" title="Permalink to this heading"></a></h5>
+<section id="id58">
+<h5>3270 Terminals<a class="headerlink" href="#id58" title="Permalink to this heading"></a></h5>
 <p>The entry point to be used for a connection from a 3270 terminal can be specified:
 - In the DATA parameter of a logon sequence. For example: LOGON APPLID(VIRTEL) DATA(PE-0001)
 - In the VIRTEL terminal definition (see “Parameters Of The Terminal”).
@@ -2891,8 +2943,8 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 - If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.</p>
 </section>
 </section>
-<section id="index-106">
-<span id="id57"></span><h4>Summary Display<a class="headerlink" href="#index-106" title="Permalink to this heading"></a></h4>
+<section id="index-109">
+<span id="id59"></span><h4>Summary Display<a class="headerlink" href="#index-109" title="Permalink to this heading"></a></h4>
 <p>The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.</p>
 <p><img alt="image60" src="../../../_images/image608.png" />
 <em>Entry Point Summary Display</em></p>
@@ -2914,17 +2966,17 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 </section>
 </section>
 <section id="transaction-display">
-<span id="index-107"></span><h4>Transaction Display<a class="headerlink" href="#transaction-display" title="Permalink to this heading"></a></h4>
+<span id="index-110"></span><h4>Transaction Display<a class="headerlink" href="#transaction-display" title="Permalink to this heading"></a></h4>
 <p>To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press [PF4]. The transaction management menu will then appear.</p>
 </section>
-<section id="index-108">
-<span id="id58"></span><h4>Detail Display<a class="headerlink" href="#index-108" title="Permalink to this heading"></a></h4>
+<section id="index-111">
+<span id="id60"></span><h4>Detail Display<a class="headerlink" href="#index-111" title="Permalink to this heading"></a></h4>
 <p>To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].</p>
 <p><img alt="image61" src="../../../_images/image6118.png" />
 <em>Entry point detail display</em></p>
 </section>
-<section id="index-109">
-<span id="id59"></span><h4>Parameters<a class="headerlink" href="#index-109" title="Permalink to this heading"></a></h4>
+<section id="index-112">
+<span id="id61"></span><h4>Parameters<a class="headerlink" href="#index-112" title="Permalink to this heading"></a></h4>
 <dl>
 <dt>Name</dt><dd><p>Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.</p>
 </dd>
@@ -3012,7 +3064,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 </dl>
 </section>
 <section id="signon-programs">
-<span id="index-110"></span><h4>Signon Programs<a class="headerlink" href="#signon-programs" title="Permalink to this heading"></a></h4>
+<span id="index-113"></span><h4>Signon Programs<a class="headerlink" href="#signon-programs" title="Permalink to this heading"></a></h4>
 <p>The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:</p>
 <dl class="simple">
 <dt>VIR0020A</dt><dd><p>Standard program for sign-on processing by entry of USER/PASSWORD sequence via sign-on screen.</p>
@@ -3032,7 +3084,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 </dl>
 </section>
 <section id="menu-programs">
-<span id="index-111"></span><h4>Menu Programs<a class="headerlink" href="#menu-programs" title="Permalink to this heading"></a></h4>
+<span id="index-114"></span><h4>Menu Programs<a class="headerlink" href="#menu-programs" title="Permalink to this heading"></a></h4>
 <p>The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:</p>
 <dl class="simple">
 <dt>VIR0021A</dt><dd><p>Standard menu program for VIRTEL Multi-Session and HTTP.</p>
@@ -3059,13 +3111,13 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 </section>
 </section>
 </section>
-<section id="index-112">
-<span id="id60"></span><h2>Transactions<a class="headerlink" href="#index-112" title="Permalink to this heading"></a></h2>
-<section id="id61">
-<h3>Introduction<a class="headerlink" href="#id61" title="Permalink to this heading"></a></h3>
+<section id="index-115">
+<span id="id62"></span><h2>Transactions<a class="headerlink" href="#index-115" title="Permalink to this heading"></a></h2>
+<section id="id63">
+<h3>Introduction<a class="headerlink" href="#id63" title="Permalink to this heading"></a></h3>
 <p>A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be either a VTAM application, a VIRTEL sub-application, an external server, or an HTML directory. Each transaction is known to the user by its external name, and defines the rules of connection / disconnection of the referenced application. When a security tool is used, for example VIRTEL security, only the transactions defined as resources appearing in the profiles of a user are accessible by that user. Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.</p>
-<section id="index-113">
-<span id="id62"></span><h4>Summary Display<a class="headerlink" href="#index-113" title="Permalink to this heading"></a></h4>
+<section id="index-116">
+<span id="id64"></span><h4>Summary Display<a class="headerlink" href="#index-116" title="Permalink to this heading"></a></h4>
 <p>Press [PF4] at the entry point detail screen to display the list of associated transactions:</p>
 <p><img alt="image62" src="../../../_images/image6214.png" />
 <em>Transaction Summary Display</em></p>
@@ -3086,8 +3138,8 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <dt>Application</dt><dd><p>Indicates the name of the application accessed via the transaction. This application can be a VTAM application, a VIRTEL sub-application, an external server, or a directory of HTML pages.</p>
 </dd>
 </dl>
-<section id="id63">
-<h5>Navigation<a class="headerlink" href="#id63" title="Permalink to this heading"></a></h5>
+<section id="id65">
+<h5>Navigation<a class="headerlink" href="#id65" title="Permalink to this heading"></a></h5>
 <p>The list can be positioned in the following ways:</p>
 <dl class="simple">
 <dt>Search</dt><dd><p>Type the name, or the partial name, of the desired entity in the first line of the first column and press [Enter].</p>
@@ -3104,16 +3156,16 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <p><strong>Adding a transaction definition</strong> - To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press [ENTER]. The message CREATE OK indicates that the operation completed successfully</p>
 </section>
 </section>
-<section id="index-114">
-<span id="id64"></span><h4>Detail Display<a class="headerlink" href="#index-114" title="Permalink to this heading"></a></h4>
+<section id="index-117">
+<span id="id66"></span><h4>Detail Display<a class="headerlink" href="#index-117" title="Permalink to this heading"></a></h4>
 <p>To access the detailed transaction definition, position the cursor on the desired transaction and press [PF12]. The transaction detail definition screen will then be displayed.</p>
 <p><img alt="image63" src="../../../_images/image6312.png" />
 <em>Transaction Detail Screen - non-HTML transaction</em></p>
 <p><img alt="image64" src="../../../_images/image6410.png" />
 <em>Transaction Definition Screen - HTML transaction</em></p>
 </section>
-<section id="index-115">
-<span id="id65"></span><h4>Parameters<a class="headerlink" href="#index-115" title="Permalink to this heading"></a></h4>
+<section id="index-118">
+<span id="id67"></span><h4>Parameters<a class="headerlink" href="#index-118" title="Permalink to this heading"></a></h4>
 <dl>
 <dt>Internal name</dt><dd><p>The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi-Session Menu in alphanumeric order of the internal name.</p>
 </dd>
@@ -3280,13 +3332,13 @@ Application type 3: For transactions associated with an entry point which specif
 </section>
 </section>
 <section id="connection-disconnection-scripts">
-<span id="index-116"></span><h2>Connection / Disconnection Scripts<a class="headerlink" href="#connection-disconnection-scripts" title="Permalink to this heading"></a></h2>
+<span id="index-119"></span><h2>Connection / Disconnection Scripts<a class="headerlink" href="#connection-disconnection-scripts" title="Permalink to this heading"></a></h2>
 <p>When connecting to an application, it may be useful, if desired, to automatically execute certain operations to direct the user to a defined point within the application. The most commonly used operations are application signon procedures. Similarly, when the user logs off from an application, it can be useful to run various commands to release application resources. These operations are called “connection and disconnection scripts”. Scripts are entered in the fields “TIOA at logon” and “TIOA at logoff” of a transaction, or in the “TIOA at start up” field of an external server, with the help of the language described below. A script can send data and 3270 attention keys to the application, send data to the terminal, and wait for specific data from the application.</p>
 <section id="script-programming-language">
-<span id="index-117"></span><h3>Script Programming Language<a class="headerlink" href="#script-programming-language" title="Permalink to this heading"></a></h3>
+<span id="index-120"></span><h3>Script Programming Language<a class="headerlink" href="#script-programming-language" title="Permalink to this heading"></a></h3>
 <p>A connection / disconnection script consists of a sequence of “clauses”. A clause consists of some data (which may contain embedded variables and orders) followed by a command. All commands, variables, and orders begin with the ‘&amp;’ character.</p>
 <section id="transmission-and-filter-commands">
-<span id="index-118"></span><h4>Transmission and filter commands<a class="headerlink" href="#transmission-and-filter-commands" title="Permalink to this heading"></a></h4>
+<span id="index-121"></span><h4>Transmission and filter commands<a class="headerlink" href="#transmission-and-filter-commands" title="Permalink to this heading"></a></h4>
 <p>The command acts upon the data which precedes it. The commands are as follows:-</p>
 <table class="docutils align-default">
 <thead>
@@ -3322,7 +3374,7 @@ Application type 3: For transactions associated with an entry point which specif
 <p>For compatibility with versions of VIRTEL prior to 4.31, the / (slash) in the above commands may also be coded as the EBCDIC character whose hexadecimal value is X’4F’. In the US, Canada, and UK codepages, X’4F’ is represented by a vertical bar. In some European countries, X’4F’ appears as an exclamation point.</p>
 </section>
 <section id="system-variables">
-<span id="index-119"></span><h4>System variables<a class="headerlink" href="#system-variables" title="Permalink to this heading"></a></h4>
+<span id="index-122"></span><h4>System variables<a class="headerlink" href="#system-variables" title="Permalink to this heading"></a></h4>
 <p>System variables are information known only to VIRTEL at the time of accessing an application. These variables are in the format &amp;n where “n” represents the desired variable.
 Available information Corresponding variable:-</p>
 <table class="docutils align-default">
@@ -3378,7 +3430,7 @@ Available information Corresponding variable:-</p>
 </dl>
 </section>
 <section id="orders">
-<span id="index-120"></span><h4>Orders<a class="headerlink" href="#orders" title="Permalink to this heading"></a></h4>
+<span id="index-123"></span><h4>Orders<a class="headerlink" href="#orders" title="Permalink to this heading"></a></h4>
 <p>Orders may be embedded in the clause data. Orders are used to set the 3270 (or Minitel) attention key to be sent by the following &amp;/A command, to embed hexadecimal or special values in the data, or to cause the script to wait for the first message from the application, or to process a scenario.</p>
 <table class="docutils align-default">
 <thead>
@@ -3447,7 +3499,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 </dl>
 </section>
 <section id="method-of-operation">
-<span id="index-121"></span><h4>Method of operation<a class="headerlink" href="#method-of-operation" title="Permalink to this heading"></a></h4>
+<span id="index-124"></span><h4>Method of operation<a class="headerlink" href="#method-of-operation" title="Permalink to this heading"></a></h4>
 <p>If present, a script is first called when the initial connection is made to the application. VIRTEL examines the start of the script to see if it begins with the order &amp;W (wait for first message from application). If so, then no further action is taken at this time, and script processing continues after the first message is received from the application. Otherwise, the first clause of the script is actioned according to its command code, as follows:</p>
 <ul class="simple">
 <li><p>&amp;/W, &amp;/F, &amp;/I : no further action is taken at this time, the clause will be reprocessed when the first message arrives from the application</p></li>
@@ -3467,13 +3519,13 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 </section>
 </section>
 <section id="script-examples">
-<span id="index-122"></span><h3>Script Examples<a class="headerlink" href="#script-examples" title="Permalink to this heading"></a></h3>
+<span id="index-125"></span><h3>Script Examples<a class="headerlink" href="#script-examples" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In these examples, script commands are introduced by the preferred sequence &amp;/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.</p>
 </div>
 <section id="connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction">
-<span id="index-123"></span><h4>Connect to CICS (no sign-on) with automatic start of a transaction<a class="headerlink" href="#connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction" title="Permalink to this heading"></a></h4>
+<span id="index-126"></span><h4>Connect to CICS (no sign-on) with automatic start of a transaction<a class="headerlink" href="#connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction" title="Permalink to this heading"></a></h4>
 <p>In the simplest case, the CICS transaction code is entered in the field “TIOA at logon”. The script below simply sends the ABC1 transaction code to CICS at connection time:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">10</span>               <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Cics</span>                 <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3490,7 +3542,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <p>This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). If CICS is configured to send an initial message to the terminal at logon, by means of the LOGONMSG(YES) parameter, then a bracket error would occur when the above script is executed. To avoid this, the transaction code must be prefixed by &amp;W to wait for the initial message to be delivered, as shown in the next example.</p>
 </section>
 <section id="connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials">
-<span id="index-124"></span><h4>Connect to CICS and start transaction CESN with transmission of credentials<a class="headerlink" href="#connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials" title="Permalink to this heading"></a></h4>
+<span id="index-127"></span><h4>Connect to CICS and start transaction CESN with transmission of credentials<a class="headerlink" href="#connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials" title="Permalink to this heading"></a></h4>
 <p>The variables &amp;U and &amp;P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">11</span>                <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Cics2</span>                 <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3506,7 +3558,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <p>This script waits for the initial message from CICS, then enters the transaction code CESN. It waits for the “Signon” prompt to be displayed, then enters the userid and password in two separate fields and sends the completed screen to the host. Security=1 is specified to ensure that the user is signed on to VIRTEL. The SBA orders 11xxxx identify the position of the userid and password fields in the CESN signon panel and may vary as a function of the site.</p>
 </section>
 <section id="connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt">
-<span id="index-125"></span><h4>Connect to CICS VSE with ICCF sign-on and start transaction CEMT<a class="headerlink" href="#connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt" title="Permalink to this heading"></a></h4>
+<span id="index-128"></span><h4>Connect to CICS VSE with ICCF sign-on and start transaction CEMT<a class="headerlink" href="#connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt" title="Permalink to this heading"></a></h4>
 <p>The following script illustrates the use of a PF key:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">12</span>                <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">ICCF</span>                  <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3522,7 +3574,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <p>This script waits for the ICCF signon screen (recognized by the word ‘REMOTE’), then enters the userid and password in two separate fields and sends the completed screen to the host. It waits for the ICCF main menu (recognized by the word “Escape”) and presses F6. It then enters the transaction code CEMT. The SBA orders 11xxxx identify the position of the userid and password fields in the ICCF signon panel and may vary as a function of the site.</p>
 </section>
 <section id="connect-to-tso-with-user-and-password-and-await-start-of-ispf">
-<span id="index-126"></span><h4>Connect to TSO with USER and PASSWORD and await start of ISPF<a class="headerlink" href="#connect-to-tso-with-user-and-password-and-await-start-of-ispf" title="Permalink to this heading"></a></h4>
+<span id="index-129"></span><h4>Connect to TSO with USER and PASSWORD and await start of ISPF<a class="headerlink" href="#connect-to-tso-with-user-and-password-and-await-start-of-ispf" title="Permalink to this heading"></a></h4>
 <p>This is an example of an HTTP transaction which uses the “Logon Message” field to pass the userid to TSO, followed by a script to complete the TSO/ISPF logon process:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">13</span>                <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Tso</span>                   <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3538,7 +3590,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <p>The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the *** prompt to appear, and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.</p>
 </section>
 <section id="connect-to-cics-and-navigate-a-user-applicaction">
-<span id="index-127"></span><h4>Connect to CICS and navigate a user applicaction<a class="headerlink" href="#connect-to-cics-and-navigate-a-user-applicaction" title="Permalink to this heading"></a></h4>
+<span id="index-130"></span><h4>Connect to CICS and navigate a user applicaction<a class="headerlink" href="#connect-to-cics-and-navigate-a-user-applicaction" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">14</span>                <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Cics4</span>                 <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
 <span class="n">Description</span>   <span class="o">===&gt;</span> <span class="n">Logon</span> <span class="n">to</span> <span class="n">CICS</span>
@@ -3554,7 +3606,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <p>This script sends an initial 3270 message to the terminal to format the screen and position the cursor. The data in this initial message consists of a 3270 Write-Erase command (F5), a Write Control Character (C2), a Set Buffer Address order (114040), a Start Field order (1D40) and an Insert Cursor order (13). Having sent this message, the script waits for the CICS application to send a message containing the string “WELCOME”, then it sends the “Enter” key to the CICS application. When the terminal user disconnects, the logoff script sends the “Clear” key to CICS followed by CESF LOGOFF.</p>
 </section>
 <section id="service-transaction">
-<span id="index-128"></span><h4>Service Transaction<a class="headerlink" href="#service-transaction" title="Permalink to this heading"></a></h4>
+<span id="index-131"></span><h4>Service Transaction<a class="headerlink" href="#service-transaction" title="Permalink to this heading"></a></h4>
 <p>This example shows a script which connects to CICS and repeatedly issues an enquiry transaction whose parameters are supplied in the URL of an HTTP request:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">15</span>                 <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Cics5</span>                  <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3572,28 +3624,28 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 </section>
 </section>
 <section id="external-servers">
-<span id="index-129"></span><h2>External Servers<a class="headerlink" href="#external-servers" title="Permalink to this heading"></a></h2>
-<section id="id66">
-<h3>Introduction<a class="headerlink" href="#id66" title="Permalink to this heading"></a></h3>
+<span id="index-132"></span><h2>External Servers<a class="headerlink" href="#external-servers" title="Permalink to this heading"></a></h2>
+<section id="id68">
+<h3>Introduction<a class="headerlink" href="#id68" title="Permalink to this heading"></a></h3>
 <p>The external server management sub-application allows the administrator to maintain the call parameters relating to the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access Videotex servers via an X25 network. Additionally, starting with VIRTEL version 4.14, the concept of an external server
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.</p>
 <section id="external-server-management-sub-application">
-<span id="index-130"></span><h4>External Server Management Sub-Application<a class="headerlink" href="#external-server-management-sub-application" title="Permalink to this heading"></a></h4>
+<span id="index-133"></span><h4>External Server Management Sub-Application<a class="headerlink" href="#external-server-management-sub-application" title="Permalink to this heading"></a></h4>
 <p>The external server management sub-application is accessed by pressing [PF7] in the Configuration Menu, or [PF11] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.</p>
 </section>
-<section id="index-131">
-<span id="id67"></span><h4>Security<a class="headerlink" href="#index-131" title="Permalink to this heading"></a></h4>
+<section id="index-134">
+<span id="id69"></span><h4>Security<a class="headerlink" href="#index-134" title="Permalink to this heading"></a></h4>
 <p>When security is active, access to external server management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 5 of the VIRTEL Users Guide.</p>
 </section>
-<section id="index-132">
-<span id="id68"></span><h4>Summary Display<a class="headerlink" href="#index-132" title="Permalink to this heading"></a></h4>
+<section id="index-135">
+<span id="id70"></span><h4>Summary Display<a class="headerlink" href="#index-135" title="Permalink to this heading"></a></h4>
 <p>The first screen displayed by the external server management sub-application shows a summary of existing definitions in alphanumeric order:</p>
 <p><img alt="image65" src="../../../_images/image6510.png" />
 <em>External Server Summary Display</em></p>
-<section id="id69">
-<h5>Navigation<a class="headerlink" href="#id69" title="Permalink to this heading"></a></h5>
+<section id="id71">
+<h5>Navigation<a class="headerlink" href="#id71" title="Permalink to this heading"></a></h5>
 <p>In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.</p>
 <dl class="simple">
 <dt>Search</dt><dd><p>Type the name (or partial name) of the required entity on the first line under the heading “Service”, then press [Enter].</p>
@@ -3610,14 +3662,14 @@ Security management is described in chapter 5 of the VIRTEL Users Guide.</p>
 <p><strong>Adding an external server definition</strong> - To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.</p>
 </section>
 </section>
-<section id="index-133">
-<span id="id70"></span><h4>Detail Display<a class="headerlink" href="#index-133" title="Permalink to this heading"></a></h4>
+<section id="index-136">
+<span id="id72"></span><h4>Detail Display<a class="headerlink" href="#index-136" title="Permalink to this heading"></a></h4>
 <p>To access the detailed definition of an external server, position the cursor on the desired service in the summary screen and press [PF12]. The external server detail definition screen will then be displayed. To return to the configuration menu, press [PF3] or [Clear].</p>
 <p><img alt="image66" src="../../../_images/image669.png" />
 <em>External Server Detail display</em></p>
 </section>
-<section id="index-134">
-<span id="id71"></span><h4>Parameters<a class="headerlink" href="#index-134" title="Permalink to this heading"></a></h4>
+<section id="index-137">
+<span id="id73"></span><h4>Parameters<a class="headerlink" href="#index-137" title="Permalink to this heading"></a></h4>
 <dl>
 <dt>Name</dt><dd><p>Contains the name of the service as displayed to the user in the “Call External Server” screen. This name may also be referenced in the “Application” field of a type 3 transaction.</p>
 </dd>
@@ -3729,10 +3781,10 @@ For outbound calls via a VIRPESIT line:
 </section>
 </section>
 <section id="connection-modes">
-<span id="index-135"></span><h2>Connection Modes<a class="headerlink" href="#connection-modes" title="Permalink to this heading"></a></h2>
+<span id="index-138"></span><h2>Connection Modes<a class="headerlink" href="#connection-modes" title="Permalink to this heading"></a></h2>
 <p>There are various methods of connecting terminals to VIRTEL. This chapter includes the <strong>WELCOME</strong> and <strong>RELAY</strong> modes of connection</p>
 <section id="welcome-mode">
-<span id="index-136"></span><h3>WELCOME mode<a class="headerlink" href="#welcome-mode" title="Permalink to this heading"></a></h3>
+<span id="index-139"></span><h3>WELCOME mode<a class="headerlink" href="#welcome-mode" title="Permalink to this heading"></a></h3>
 <p>Exclusively for 3270 terminals, WELCOME mode allows 3270 terminals to connect to VIRTEL without being predefinied.
 There are two conditions which must be fulfilled:
 - The ACCUEIL parameter in the VIRTCT must be set to YES,
@@ -3747,11 +3799,11 @@ selection screen. Thus, when an application is selected, VIRTEL connects the ter
 relinquishes control of the terminal. In this case, VIRTEL functions somewhat like a dynamic USSTAB.</p>
 </section>
 <section id="relay-mode">
-<span id="index-137"></span><h3>RELAY mode<a class="headerlink" href="#relay-mode" title="Permalink to this heading"></a></h3>
+<span id="index-140"></span><h3>RELAY mode<a class="headerlink" href="#relay-mode" title="Permalink to this heading"></a></h3>
 <p>3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.</p>
 </section>
 <section id="terminal-connection-types">
-<span id="index-138"></span><h3>Terminal Connection Types<a class="headerlink" href="#terminal-connection-types" title="Permalink to this heading"></a></h3>
+<span id="index-141"></span><h3>Terminal Connection Types<a class="headerlink" href="#terminal-connection-types" title="Permalink to this heading"></a></h3>
 <p>The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.</p>
 <dl class="simple">
 <dt>. index::</dt><dd><p>pair: Connection Modes; Explicit Fixed Terminal entries</p>
@@ -3805,7 +3857,7 @@ relinquishes control of the terminal. In this case, VIRTEL functions somewhat li
 </section>
 </section>
 <section id="physical-terminal-pools">
-<span id="index-139"></span><h4>Physical Terminal Pools<a class="headerlink" href="#physical-terminal-pools" title="Permalink to this heading"></a></h4>
+<span id="index-142"></span><h4>Physical Terminal Pools<a class="headerlink" href="#physical-terminal-pools" title="Permalink to this heading"></a></h4>
 <p>Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the terminal connects to VIRTEL. There are two types of physical pool, dynamic and non-dynamic, as described later.</p>
 <p>Whether or not a pool is dynamic, the definition of a physical pool is indicated by the presence of a “?” character in the first position of the terminal name. The next three characters denote the characteristics of the pool. The last four characters are free-format and serve to distinguish one definition from another.</p>
 <p>A physical pool thus has a name in the format ?xxxyyyy.</p>
@@ -3850,7 +3902,7 @@ relinquishes control of the terminal. In this case, VIRTEL functions somewhat li
 </div></blockquote>
 </section>
 <section id="dynamic-terminal-pools">
-<span id="index-140"></span><h4>Dynamic Terminal Pools<a class="headerlink" href="#dynamic-terminal-pools" title="Permalink to this heading"></a></h4>
+<span id="index-143"></span><h4>Dynamic Terminal Pools<a class="headerlink" href="#dynamic-terminal-pools" title="Permalink to this heading"></a></h4>
 <p>In a dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters and “=” signs. Each “=” sign will be dynamically replaced by the value of the corresponding character in the name of the connecting
 terminal.</p>
 <p>For example, for a definition specifying VIR===== as the relay name, each terminal connecting to VIRTEL will be allocated a relay whose first three characters are VIR and whose last five characters are the last five characters of the terminal LU name. VIRTEL must be able to open a VTAM application LU for each possible relay defined in the pool. The use of the VTAM generic character “?” allows all possible relay names to be defined to VTAM by a single APPL statement, as shown in the following example:</p>
@@ -3860,12 +3912,12 @@ terminal.</p>
 <p>A single definition may be sufficient to connect all 3270 terminals in the network.</p>
 </section>
 <section id="non-dynamic-terminal-pools">
-<span id="index-141"></span><h4>Non-Dynamic Terminal Pools<a class="headerlink" href="#non-dynamic-terminal-pools" title="Permalink to this heading"></a></h4>
+<span id="index-144"></span><h4>Non-Dynamic Terminal Pools<a class="headerlink" href="#non-dynamic-terminal-pools" title="Permalink to this heading"></a></h4>
 <p>In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters without “=” signs. A given terminal may be assigned a different relay on each connection according to availability. Each relay in the pool must be defined to VTAM by means of an APPL statement.</p>
 <p>It is advisable to define as many entries as there are terminals to be connected.</p>
 </section>
 <section id="terminal-pool-definition-examples">
-<span id="index-142"></span><h4>Terminal Pool Definition Examples<a class="headerlink" href="#terminal-pool-definition-examples" title="Permalink to this heading"></a></h4>
+<span id="index-145"></span><h4>Terminal Pool Definition Examples<a class="headerlink" href="#terminal-pool-definition-examples" title="Permalink to this heading"></a></h4>
 <section id="physical-pool">
 <h5>Physical Pool<a class="headerlink" href="#physical-pool" title="Permalink to this heading"></a></h5>
 <p>In the examples shown below, ?***0000 is a dynamic physical pool which allows connection of an unlimited number of terminals. ?S5CTM01 is a non-dynamic physical pool which allows connection of up to 8 terminals (of type 3270-5 SNA Colour) which will be assigned relay names VIR5LU01 to VIR5LU08.</p>
@@ -3909,7 +3961,7 @@ P7=Page-1            P8=Page+1            P12=Details
 </section>
 </section>
 <section id="terminal-pool-selection">
-<span id="index-143"></span><h4>Terminal Pool Selection<a class="headerlink" href="#terminal-pool-selection" title="Permalink to this heading"></a></h4>
+<span id="index-146"></span><h4>Terminal Pool Selection<a class="headerlink" href="#terminal-pool-selection" title="Permalink to this heading"></a></h4>
 <p>When a terminal is defined to a logical pool, the selection of a pool is managed automatically by VIRTEL at connection time. At connection time a terminal entry from the logical pool is selected starting at the highest available entry. That entry will be associated with a physical group of predefine terminals each associated with a logical pool. The first available entry of that physical group will be used as the terminal definition. From that terminal definition we derive the VTAM LUNAMES for 3270 and printer definitions for a 3270 application relay.</p>
 <p>Using the above definitions the following selection would occurr for a 3270 application where the Virtel transaction uses a prefix of HTVTA. The incoming connection would select a logical entry from logical pool *W2HPOOL, assuming a line prefix of HT, would select from the range HTVTA000 - HTVTA015. The highest would be HTVTA015 if this is the first connection. Physical terminals defined to *W2HPOOL are W2HTP000 - W2HTP015. The connection would take the first entry in this group, in this case W2HTP000. W2HTP000 is defined as having a 3270 relay LUNAME of RHDVT000 and an associated printer relay of RHDIM000. These LU names would be used to support the 3270 session.</p>
 </section>
@@ -4014,14 +4066,14 @@ P7=Page-1            P8=Page+1            P12=Details
 </section>
 </section>
 <section id="terminal-connection-examples">
-<span id="index-144"></span><h3>Terminal Connection Examples<a class="headerlink" href="#terminal-connection-examples" title="Permalink to this heading"></a></h3>
+<span id="index-147"></span><h3>Terminal Connection Examples<a class="headerlink" href="#terminal-connection-examples" title="Permalink to this heading"></a></h3>
 <p>This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.</p>
 <section id="terminal-in-welcome-mode">
-<span id="index-145"></span><h4>3270 terminal in WELCOME mode<a class="headerlink" href="#terminal-in-welcome-mode" title="Permalink to this heading"></a></h4>
+<span id="index-148"></span><h4>3270 terminal in WELCOME mode<a class="headerlink" href="#terminal-in-welcome-mode" title="Permalink to this heading"></a></h4>
 <p>This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.</p>
 </section>
 <section id="terminal-in-relay-mode">
-<span id="index-146"></span><h4>3270 terminal in RELAY mode<a class="headerlink" href="#terminal-in-relay-mode" title="Permalink to this heading"></a></h4>
+<span id="index-149"></span><h4>3270 terminal in RELAY mode<a class="headerlink" href="#terminal-in-relay-mode" title="Permalink to this heading"></a></h4>
 <p>A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explicit</span> <span class="n">Terminal</span> <span class="n">definition</span>
 
@@ -4059,7 +4111,7 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 </div>
 </section>
 <section id="asynchronous-terminal-on-an-x25-or-xot-line">
-<span id="index-147"></span><h4>Asynchronous terminal on an X25 or XOT line<a class="headerlink" href="#asynchronous-terminal-on-an-x25-or-xot-line" title="Permalink to this heading"></a></h4>
+<span id="index-150"></span><h4>Asynchronous terminal on an X25 or XOT line<a class="headerlink" href="#asynchronous-terminal-on-an-x25-or-xot-line" title="Permalink to this heading"></a></h4>
 <p>A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXPLICIT</span> <span class="n">DEFINITION</span> <span class="n">WITHOUT</span> <span class="n">PSEUDO</span><span class="o">-</span><span class="n">PRINTER</span>
 
@@ -4106,7 +4158,7 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 <p>The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.</p>
 </section>
 <section id="logical-terminals">
-<span id="index-148"></span><h4>Logical terminals<a class="headerlink" href="#logical-terminals" title="Permalink to this heading"></a></h4>
+<span id="index-151"></span><h4>Logical terminals<a class="headerlink" href="#logical-terminals" title="Permalink to this heading"></a></h4>
 <p>It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Physical</span> <span class="n">terminal</span> <span class="n">definitions</span>
 
@@ -4129,9 +4181,9 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 </section>
 </section>
 <section id="controlling-lunames-lu-nailing">
-<span id="v462cn-forceluname"></span><span id="index-149"></span><h2>Controlling LUNAMEs - LU Nailing<a class="headerlink" href="#controlling-lunames-lu-nailing" title="Permalink to this heading"></a></h2>
-<section id="id72">
-<h3>Introduction<a class="headerlink" href="#id72" title="Permalink to this heading"></a></h3>
+<span id="v462cn-forceluname"></span><span id="index-152"></span><h2>Controlling LUNAMEs - LU Nailing<a class="headerlink" href="#controlling-lunames-lu-nailing" title="Permalink to this heading"></a></h2>
+<section id="id74">
+<h3>Introduction<a class="headerlink" href="#id74" title="Permalink to this heading"></a></h3>
 <p>In this section we look at how we can control LUNAME selection for inbound HTTP calls, sometimes referred to as LU nailing. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a <em>Logical Unit</em> or <em>LU</em>, and each LU has a unique eight character name (<em>LU name)</em>. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.</p>
 <p>While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following :-</p>
 <ul class="simple">
@@ -4153,7 +4205,7 @@ Terminal Repeated  Relay    Entry   Type I/O   Pool  2nd Relay
 <p>or</p>
 <p><a class="reference external" href="http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500">http://10.20.170.71:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500</a>          ForceLUNAME example</p>
 <section id="userdata-example-using-a-work-station-name">
-<span id="index-150"></span><h4>UserData example using a work station name<a class="headerlink" href="#userdata-example-using-a-work-station-name" title="Permalink to this heading"></a></h4>
+<span id="index-153"></span><h4>UserData example using a work station name<a class="headerlink" href="#userdata-example-using-a-work-station-name" title="Permalink to this heading"></a></h4>
 <p>In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. Using a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
 <p>Here is an example of a Virtel RULE.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">ESH0000</span><span class="p">,</span>
@@ -4187,7 +4239,7 @@ data parameter. Here is an example:-</p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. The physical terminal name, EHPMA000 need not be the same as the LU relay name but the LU relay name must be associated with the transaction prefix and must be defined to VTAM.</p>
 </section>
 <section id="userdata-example-using-a-lu-name">
-<span id="index-151"></span><h4>UserData example using a LU Name<a class="headerlink" href="#userdata-example-using-a-lu-name" title="Permalink to this heading"></a></h4>
+<span id="index-154"></span><h4>UserData example using a LU Name<a class="headerlink" href="#userdata-example-using-a-lu-name" title="Permalink to this heading"></a></h4>
 <p>Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name.</p>
 <p><a class="reference external" href="http://192.168.170.33:41003/w2h/appmenu.htm+applist+EHPMA00*">http://192.168.170.33:41003/w2h/appmenu.htm+applist+EHPMA00*</a></p>
 <p>For this example the rule looks like:-</p>
@@ -4206,7 +4258,7 @@ NETMASK=255.255.255.255
 <p>The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME which supports a range from EHPMA000 through to EHPMA009.</p>
 </section>
 <section id="forceluname-example">
-<span id="index-152"></span><h4>ForceLUNAME Example<a class="headerlink" href="#forceluname-example" title="Permalink to this heading"></a></h4>
+<span id="index-155"></span><h4>ForceLUNAME Example<a class="headerlink" href="#forceluname-example" title="Permalink to this heading"></a></h4>
 <p>In the preceding examples both required that a physical terminal and relays be predefined and associated with a logical pool of terminals. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-</p>
 <ul class="simple">
 <li><p>the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:</p></li>
@@ -4242,7 +4294,7 @@ NETMASK=255.255.255.255
 </section>
 </section>
 <section id="lu-nailing-by-cookies">
-<span id="index-153"></span><h3>LU Nailing by cookies<a class="headerlink" href="#lu-nailing-by-cookies" title="Permalink to this heading"></a></h3>
+<span id="index-156"></span><h3>LU Nailing by cookies<a class="headerlink" href="#lu-nailing-by-cookies" title="Permalink to this heading"></a></h3>
 <p>Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the user as part of an Email from which the user selects a link to access Virtel or it can be part of the ‘self-registration’ process. The following section details the process of setting up LU nailing with cookies delivered by email.</p>
 <section id="setting-up-the-smtp-line">
 <h4>Setting up the SMTP line<a class="headerlink" href="#setting-up-the-smtp-line" title="Permalink to this heading"></a></h4>
@@ -4298,7 +4350,7 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 <section id="installing-the-cookie-on-the-browser">
 <h4>Installing the cookie on the browser<a class="headerlink" href="#installing-the-cookie-on-the-browser" title="Permalink to this heading"></a></h4>
 <p>When the e-mail arrives at the user’s workstation, it will contain a hyperlink to a VIRTEL page.  The user clicks on this hyperlink to install the cookie in his browser.</p>
-<p>One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the Internet Explorer screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools - Internet Options - Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP address to the list.</p>
+<p>One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the browser screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools - Internet Options - Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP address to the list.</p>
 </section>
 <section id="using-the-cookie">
 <h4>Using the cookie<a class="headerlink" href="#using-the-cookie" title="Permalink to this heading"></a></h4>
@@ -4306,7 +4358,7 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 </section>
 </section>
 <section id="lu-nailing-by-ip-address">
-<span id="index-154"></span><h3>LU Nailing by IP address<a class="headerlink" href="#lu-nailing-by-ip-address" title="Permalink to this heading"></a></h3>
+<span id="index-157"></span><h3>LU Nailing by IP address<a class="headerlink" href="#lu-nailing-by-ip-address" title="Permalink to this heading"></a></h3>
 <p>The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. In the example below we define a rule on line E-HTTP which will force a terminal connecting with IP address 192.168.092.080 to use LU name EHVTA100. The LU name must be pre-defined in a Virtel terminal pool.</p>
 <p><img alt="image121" src="../../../_images/image12112.png" />
 <em>Rule to map IP address 192.168.092.080 to LU name EHVTA100</em></p>
@@ -4336,14 +4388,14 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 <em>3270 session allocated from IP range</em></p>
 </section>
 <section id="lu-nailing-by-userid">
-<span id="index-155"></span><h3>LU Nailing by Userid<a class="headerlink" href="#lu-nailing-by-userid" title="Permalink to this heading"></a></h3>
+<span id="index-158"></span><h3>LU Nailing by Userid<a class="headerlink" href="#lu-nailing-by-userid" title="Permalink to this heading"></a></h3>
 <p>Two options are available to nail a terminal to a supplied userid. Ther are: -</p>
 <ul class="simple">
 <li><p>Using the RACF installation data contained with the users RACF profile.</p></li>
 <li><p>Using ARBO definitions to construct an internal table space of userid, application and terminal associations.</p></li>
 </ul>
 <section id="lu-nailing-using-racf">
-<span id="index-156"></span><h4>LU Nailing using RACF<a class="headerlink" href="#lu-nailing-using-racf" title="Permalink to this heading"></a></h4>
+<span id="index-159"></span><h4>LU Nailing using RACF<a class="headerlink" href="#lu-nailing-using-racf" title="Permalink to this heading"></a></h4>
 <p>LU nailing using RACF uses a Virtel identification scenario to extract the terminal to be nailed from the users RACF installation data. The Installation data within a RACF profile is a variable 256 byte area. Using a Virtel service program and identification scenario, Virtel can access this data and use it to determine the LU to be used in the session setup. The USERID is passed to the identification scenario as a query parameter. In this example below we have identified the user as SPTHOLT in the URL: -</p>
 <p><a class="reference external" href="http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT">http://10.20.170.71:61011/w2h/WEB2AJAX.htm+CICS028?USERNAME=SPTHOLT</a></p>
 <p>The URL will be inspected by the identification scenario and will allocate a specific LU based upon the information found in the RACF installation DATA field. The following RACF actions need to be taken to allow access and extract of the installation data :-</p>
@@ -4383,7 +4435,7 @@ Users who do not present a cookie, or whose cookie contains an invalid or expire
 </div>
 </section>
 <section id="lu-nailing-using-arbo-defininitions">
-<span id="index-157"></span><h4>LU Nailing using ARBO defininitions<a class="headerlink" href="#lu-nailing-using-arbo-defininitions" title="Permalink to this heading"></a></h4>
+<span id="index-160"></span><h4>LU Nailing using ARBO defininitions<a class="headerlink" href="#lu-nailing-using-arbo-defininitions" title="Permalink to this heading"></a></h4>
 <p>LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.</p>
 <section id="new-tct-option">
 <h5>New TCT option<a class="headerlink" href="#new-tct-option" title="Permalink to this heading"></a></h5>
@@ -4589,7 +4641,7 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 </section>
 </section>
 <section id="comparison-table">
-<span id="index-158"></span><h4>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this heading"></a></h4>
+<span id="index-161"></span><h4>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
@@ -4642,9 +4694,9 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 </section>
 </section>
 <section id="at-tls-secure-session">
-<span id="index-159"></span><h2>AT-TLS Secure Session<a class="headerlink" href="#at-tls-secure-session" title="Permalink to this heading"></a></h2>
-<section id="id73">
-<h3>Introduction<a class="headerlink" href="#id73" title="Permalink to this heading"></a></h3>
+<span id="index-162"></span><h2>AT-TLS Secure Session<a class="headerlink" href="#at-tls-secure-session" title="Permalink to this heading"></a></h2>
+<section id="id75">
+<h3>Introduction<a class="headerlink" href="#id75" title="Permalink to this heading"></a></h3>
 <p>This section provides details on on to implement AT-TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.</p>
 <p>AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. A Policy Agent task decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. Virtel continues to send and receive clear text over the socket, but data sent over the network is encrypted and protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.</p>
 <div class="admonition warning">
@@ -4653,7 +4705,7 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 </div>
 </section>
 <section id="installation">
-<span id="index-160"></span><h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<span id="index-163"></span><h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
 <section id="install-policy-agent-procedure">
 <h4>Install Policy Agent procedure<a class="headerlink" href="#install-policy-agent-procedure" title="Permalink to this heading"></a></h4>
 <p>If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.</p>
@@ -4699,7 +4751,7 @@ Theses resources define the VTAM relay LU names to be used in the nailing of ter
 </section>
 </section>
 <section id="operations">
-<span id="index-161"></span><h3>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h3>
+<span id="index-164"></span><h3>Operations<a class="headerlink" href="#operations" title="Permalink to this heading"></a></h3>
 <section id="starting-the-policy-agent">
 <h4>Starting the Policy Agent<a class="headerlink" href="#starting-the-policy-agent" title="Permalink to this heading"></a></h4>
 <p>The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command <strong>S PAGENT</strong>.</p>
@@ -4724,7 +4776,7 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="problem-determination">
-<span id="index-162"></span><h3>Problem determination<a class="headerlink" href="#problem-determination" title="Permalink to this heading"></a></h3>
+<span id="index-165"></span><h3>Problem determination<a class="headerlink" href="#problem-determination" title="Permalink to this heading"></a></h3>
 <section id="policy-agent-log-file">
 <h4>Policy Agent log file<a class="headerlink" href="#policy-agent-log-file" title="Permalink to this heading"></a></h4>
 <p>Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.</p>
@@ -4788,13 +4840,13 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="the-cipher-suites">
-<span id="index-163"></span><h3>The Cipher suites<a class="headerlink" href="#the-cipher-suites" title="Permalink to this heading"></a></h3>
+<span id="index-166"></span><h3>The Cipher suites<a class="headerlink" href="#the-cipher-suites" title="Permalink to this heading"></a></h3>
 <p>The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.</p>
-<p>In Microsoft Internet Explorer, follow the menu <em>Tools – Internet Options – Advanced</em>. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.</p>
+<p>Locate the browsers security settings. For example, <em>Tools – Internet Options – Advanced</em>. Under the security heading there will be options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.</p>
 <p>In Firefox the cipher specifications are accessed by typing <em>about:config</em> in the address bar and typing <em>security</em> in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.</p>
 </section>
 <section id="client-certificates">
-<span id="index-164"></span><h3>Client certificates<a class="headerlink" href="#client-certificates" title="Permalink to this heading"></a></h3>
+<span id="index-167"></span><h3>Client certificates<a class="headerlink" href="#client-certificates" title="Permalink to this heading"></a></h3>
 <p>Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-</p>
 <ul class="simple">
 <li><p>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>….</p></li>
@@ -4807,7 +4859,7 @@ ensure that PAGENT starts before all other applications.</p>
 <p>See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.</p>
 </section>
 <section id="resources">
-<span id="index-165"></span><h3>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h3>
+<span id="index-168"></span><h3>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h3>
 <section id="ibm-manuals">
 <h4>IBM Manuals<a class="headerlink" href="#ibm-manuals" title="Permalink to this heading"></a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="n">SA22</span><span class="o">-</span><span class="mi">7683</span><span class="o">-</span><span class="mi">07</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">V1R7</span> <span class="n">Security</span> <span class="n">Server</span><span class="p">:</span> <span class="n">RACF</span> <span class="n">Security</span> <span class="n">Administrator</span><span class="s1">&#39;s Guide Chapter 21. RACF and Digital Certificates</span>
@@ -4837,7 +4889,7 @@ ensure that PAGENT starts before all other applications.</p>
 </section>
 </section>
 <section id="virtel-and-long-poll-protocol">
-<span id="index-166"></span><h2>Virtel and Long Poll protocol<a class="headerlink" href="#virtel-and-long-poll-protocol" title="Permalink to this heading"></a></h2>
+<span id="index-169"></span><h2>Virtel and Long Poll protocol<a class="headerlink" href="#virtel-and-long-poll-protocol" title="Permalink to this heading"></a></h2>
 <section id="understanding-http-connections">
 <h3>Understanding HTTP Connections<a class="headerlink" href="#understanding-http-connections" title="Permalink to this heading"></a></h3>
 <p>3270 TE users (clients) connect from their web browsers to Virtel (server) through HTTP connections. HTTP connections are client-driven simplex (not duplex) connections:
@@ -4870,8 +4922,8 @@ In other words:
 </section>
 <section id="sso-passtickets-and-proxy-servers">
 <h2>SSO, PassTickets and Proxy Servers<a class="headerlink" href="#sso-passtickets-and-proxy-servers" title="Permalink to this heading"></a></h2>
-<section id="id74">
-<h3>Introduction<a class="headerlink" href="#id74" title="Permalink to this heading"></a></h3>
+<section id="id76">
+<h3>Introduction<a class="headerlink" href="#id76" title="Permalink to this heading"></a></h3>
 <p>Many businesses now implement products which provide a centralized enterprise-class secure single sign-on (SSO) and authentication system. The products tend to run on a server(s) and provides access to a business’s assets like web enabled applications or portals. The basic process is to trap the incoming HTTP call request and establish some user credentials before llowing access to an asset. For example, the user credentials can be extracted from the callers request or determined by the callers IP address. The credentials will be validated against a LDAP or similar active directory server. The result of the validation will either allow or deny the caller access to the requested asset. Security and asset control is managed by the SSO server which as a central server can validate credentials to all business assets, be it on the mainframe or other platforms. Userid and password administration for all assets can be controlled through the functions of the SSO software employed. Virtel will integrate within this SSO infrastructure and process sign on request once they have passed validation. Virtel provides its own validation of the SSO server through the use of rules.</p>
 <p>In the example that follows we are using CA-Site Minder as an example SSO Server and we will document how to define Virtel to interface with the SSO Server and RACF. Our target asset is a CICS application called SPCICSH. The caller will provide no userid or password data.</p>
 <p><img alt="image100" src="../../../_images/image1003.png" /> <em>Data flow of an SSO session setup</em></p>
@@ -4906,7 +4958,7 @@ Server: Virtel/4.53
 <p>In the above trace the CA-SiteMinder specific header “SM_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon – this will be generated via a passsTicket request on behalf of the userid identified in the “SM_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.</p>
 </section>
 <section id="adding-headers-to-the-http-request">
-<span id="index-167"></span><h3>Adding headers to the HTTP request<a class="headerlink" href="#adding-headers-to-the-http-request" title="Permalink to this heading"></a></h3>
+<span id="index-170"></span><h3>Adding headers to the HTTP request<a class="headerlink" href="#adding-headers-to-the-http-request" title="Permalink to this heading"></a></h3>
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
 <p><img alt="image101" src="../../../_images/image10112.png" /> <em>Using the Firefox “Modify Headers” addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
@@ -4916,7 +4968,7 @@ Server: Virtel/4.53
 <p><img alt="image103" src="../../../_images/image1036.png" /> <em>Accessing CICS using a callers credentials. No LOGON required.</em></p>
 </section>
 <section id="racf-passtickets">
-<span id="index-168"></span><h3>RACF Passtickets<a class="headerlink" href="#racf-passtickets" title="Permalink to this heading"></a></h3>
+<span id="index-171"></span><h3>RACF Passtickets<a class="headerlink" href="#racf-passtickets" title="Permalink to this heading"></a></h3>
 <p>Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.</p>
 <section id="define-pass-ticket-racf-profiles">
 <h4>Define Pass Ticket RACF profiles<a class="headerlink" href="#define-pass-ticket-racf-profiles" title="Permalink to this heading"></a></h4>
@@ -4981,7 +5033,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </section>
 </section>
 <section id="virtel-requirements">
-<span id="index-169"></span><h3>Virtel Requirements<a class="headerlink" href="#virtel-requirements" title="Permalink to this heading"></a></h3>
+<span id="index-172"></span><h3>Virtel Requirements<a class="headerlink" href="#virtel-requirements" title="Permalink to this heading"></a></h3>
 <section id="transaction-requirements">
 <h4>Transaction requirements<a class="headerlink" href="#transaction-requirements" title="Permalink to this heading"></a></h4>
 <p>The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-</p>
@@ -5048,7 +5100,7 @@ NOUSER1 DS 0H
 </section>
 </section>
 <section id="common-errors">
-<span id="index-170"></span><h3>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this heading"></a></h3>
+<span id="index-173"></span><h3>Common Errors<a class="headerlink" href="#common-errors" title="Permalink to this heading"></a></h3>
 <p><strong>Message VIR1502E</strong></p>
 <p>VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termed to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.</p>
 <p><strong>Action</strong></p>
@@ -5083,24 +5135,24 @@ application. See preceding ICH408I message in the log.</p></td>
 </table>
 </section>
 <section id="related-material">
-<span id="index-171"></span><h3>Related material<a class="headerlink" href="#related-material" title="Permalink to this heading"></a></h3>
+<span id="index-174"></span><h3>Related material<a class="headerlink" href="#related-material" title="Permalink to this heading"></a></h3>
 <p>Technical newsletter - <cite>TN201416 Virtel Security. Using server and client certificates</cite></p>
 </section>
 </section>
 <section id="running-multiple-instances-of-virtel">
-<span id="index-172"></span><h2>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this heading"></a></h2>
-<section id="id75">
-<h3>Introduction<a class="headerlink" href="#id75" title="Permalink to this heading"></a></h3>
+<span id="index-175"></span><h2>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this heading"></a></h2>
+<section id="id77">
+<h3>Introduction<a class="headerlink" href="#id77" title="Permalink to this heading"></a></h3>
 <p>For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:-</p>
 <p><img alt="image94" src="../../../_images/image947.png" /></p>
 <p>Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools.</p>
 <p>Here are the relevant definitions required to support the VTAM generic resource within Virtel.</p>
 <section id="virtel-tct-settings">
-<span id="index-173"></span><h4>VIRTEL TCT Settings<a class="headerlink" href="#virtel-tct-settings" title="Permalink to this heading"></a></h4>
+<span id="index-176"></span><h4>VIRTEL TCT Settings<a class="headerlink" href="#virtel-tct-settings" title="Permalink to this heading"></a></h4>
 <p>GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME</p>
 </section>
 <section id="sysplex-definitions">
-<span id="index-174"></span><h4>SYSPLEX definitions<a class="headerlink" href="#sysplex-definitions" title="Permalink to this heading"></a></h4>
+<span id="index-177"></span><h4>SYSPLEX definitions<a class="headerlink" href="#sysplex-definitions" title="Permalink to this heading"></a></h4>
 <p>The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.</p>
 <p>Use the following command to display coupling allocation details for ISTGENERIC.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
@@ -5154,7 +5206,7 @@ application. See preceding ICH408I message in the log.</p></td>
 <p>Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.</p>
 </section>
 <section id="workload-balancing-in-a-sysplex-environment">
-<span id="index-175"></span><h4>Workload balancing in a SYSPLEX environment<a class="headerlink" href="#workload-balancing-in-a-sysplex-environment" title="Permalink to this heading"></a></h4>
+<span id="index-178"></span><h4>Workload balancing in a SYSPLEX environment<a class="headerlink" href="#workload-balancing-in-a-sysplex-environment" title="Permalink to this heading"></a></h4>
 <p>In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.</p>
 <p><img alt="image95" src="../../../_images/image957.png" /></p>
 <p>From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM
@@ -5304,7 +5356,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 </section>
 </section>
 <section id="using-a-distributed-vipa-to-load-balance">
-<span id="index-176"></span><h3>Using a Distributed VIPA to load balance<a class="headerlink" href="#using-a-distributed-vipa-to-load-balance" title="Permalink to this heading"></a></h3>
+<span id="index-179"></span><h3>Using a Distributed VIPA to load balance<a class="headerlink" href="#using-a-distributed-vipa-to-load-balance" title="Permalink to this heading"></a></h3>
 <p>Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
@@ -5316,7 +5368,7 @@ U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 </pre></div>
 </div>
 <section id="session-affinity">
-<span id="index-177"></span><h4>Session Affinity<a class="headerlink" href="#session-affinity" title="Permalink to this heading"></a></h4>
+<span id="index-180"></span><h4>Session Affinity<a class="headerlink" href="#session-affinity" title="Permalink to this heading"></a></h4>
 <p>It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W-HTTP (port 41001) is used for Virtel Administration and line C-HTTP (port 41002) for user access
 to applications.</p>
 <p>Line W-HTTP should be defined using the base address of the LPAR (i.e.the home address of the default interface) by specifying only the port number. For example:</p>
@@ -5341,10 +5393,10 @@ to applications.</p>
 </section>
 </section>
 <section id="using-an-apache-proxy-to-load-balance">
-<span id="index-178"></span><h3>Using an Apache Proxy to load balance<a class="headerlink" href="#using-an-apache-proxy-to-load-balance" title="Permalink to this heading"></a></h3>
+<span id="index-181"></span><h3>Using an Apache Proxy to load balance<a class="headerlink" href="#using-an-apache-proxy-to-load-balance" title="Permalink to this heading"></a></h3>
 <p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
 <p><img alt="image96" src="../../../_images/image967.png" /></p>
-<p id="index-179">Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
+<p id="index-182">Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Virtel</span>
 <span class="c1">#</span>
@@ -5410,7 +5462,7 @@ to applications.</p>
 </section>
 </section>
 <section id="virplex">
-<span id="v462cn-virplex"></span><span id="index-180"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this heading"></a></h2>
+<span id="v462cn-virplex"></span><span id="index-183"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this heading"></a></h2>
 <p>Virplex</p>
 <p>The new Virplex communication feature of Virtel provides the ability for multiple virtel instances to communicate with each other. This global knowledge of participating Virtel instances is referred to as a Virplex and enables Virtel instances to share the same ARBO and TRSF files. In a Virplex there is a number of Virtel “READ ONLY” instances and one “WRITER” instance. These instances all share the same ARBO and TRSF files, including any user defined TRSF files, with the read only instances only have a “READ” capability on the shared VSAM files and the “WRITER” instance having a standard tandard read/write capability to all files.  The ability to share files amongst participating Virtels provides support for the following functions:</p>
 <p>Dynamic Message Routing
@@ -5429,7 +5481,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 <p><img alt="image112" src="../../../_images/image11212.png" /></p>
 </section>
 <section id="tct-definitions">
-<span id="index-181"></span><h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this heading"></a></h3>
+<span id="index-184"></span><h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this heading"></a></h3>
 <p>Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.</p>
 <section id="tct-for-reader-tasks">
 <h4>TCT for ‘READER’ tasks.<a class="headerlink" href="#tct-for-reader-tasks" title="Permalink to this heading"></a></h4>
@@ -5465,7 +5517,7 @@ Using the features of Virplex users can now maintain a centralized repository fo
 </section>
 </section>
 <section id="arbo-definitions">
-<span id="index-182"></span><h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this heading"></a></h3>
+<span id="index-185"></span><h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this heading"></a></h3>
 <p>To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W-HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V-HTTP provides the common port for the Virtel instances within the Virplex.</p>
 <p>QLNK Line definitions for ‘READER’ instances.~</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">QLNK</span> <span class="n">Lines</span> <span class="k">for</span> <span class="n">Virplex</span> <span class="n">Reader</span> <span class="n">tasks</span><span class="o">.</span>
@@ -5702,7 +5754,7 @@ TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;’114BE9’&amp;U&amp;’114CF9’&amp
         <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
 </pre></div>
 </div>
-<p id="index-183"><strong>Virplex JCL examples</strong></p>
+<p id="index-186"><strong>Virplex JCL examples</strong></p>
 <p>JCL Procedure for Virplex.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//**********************************************************************</span>
 <span class="o">//*</span> <span class="n">DEFAULT</span> <span class="n">PROCEDURE</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">VIRPLEX</span> <span class="n">TASK</span>                               <span class="o">*</span>
@@ -5753,7 +5805,7 @@ TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;’114BE9’&amp;U&amp;’114CF9’&amp
 <span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168.170.39</span>
 </pre></div>
 </div>
-<p id="index-184"><strong>VTAM Definitions</strong></p>
+<p id="index-187"><strong>VTAM Definitions</strong></p>
 <p>VTAM definitions required for Virtel ‘Reader’ task 0. In this example, a separate VTAMLST member would be require for each Virtel instance within the Virplex to support clone values of 00(RO) , 01(RO) and 99(RW). These VTAM definitions could be merged into one member.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VIRTEH00 VBUILD TYPE=APPL
 * ------------------------------------------------------------------ *
@@ -5772,7 +5824,7 @@ R00IM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
 R00IP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
-<p id="index-185"><strong>TCPIP Changes</strong>
+<p id="index-188"><strong>TCPIP Changes</strong>
 The TCPIP profile definition requirements for a VIRPLEX are a shared Port address and a common VIPA for the Sysplex Distributor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shared</span> <span class="n">Port</span> <span class="n">Example</span>
 <span class="p">;</span> <span class="n">SPVIRExx</span> <span class="n">User</span> <span class="n">Range</span> <span class="k">for</span> <span class="n">Virplex</span>
@@ -5789,7 +5841,7 @@ The TCPIP profile definition requirements for a VIRPLEX are a shared Port addres
 <span class="n">ENDVIPADYNAMIC</span>
 </pre></div>
 </div>
-<p id="index-186"><strong>Installation overview to get Virplex up and running.</strong></p>
+<p id="index-189"><strong>Installation overview to get Virplex up and running.</strong></p>
 <p>The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (VIRTEL0 and VIRTEL1), and one writer instance, VIRTEL9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - VIRTEL0(SPVIRE00), VIRTEL1(SPVIRE01) and VIRTEL9(SPVIRE99).</p>
 <p>Install Virtel and get base product up and running before attempting any Virplex changes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SAMPLIB</span> <span class="n">Members</span><span class="p">:</span>     <span class="n">VIRPLEX</span><span class="p">,</span> <span class="n">VIRTCT00</span><span class="p">,</span> <span class="n">VIRTCT99</span><span class="p">,</span> <span class="n">VIRTELZ</span><span class="p">,</span> <span class="n">VIRTEL00</span><span class="p">,</span> <span class="n">VIRTEL01</span><span class="p">,</span> <span class="n">VIRTEL99</span>
@@ -5908,7 +5960,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 </pre></div>
 </div>
 <p>If the displays match those above then the VIRPLEX has initialized successfully.</p>
-<p id="index-187"><strong>Validating the Virplex</strong></p>
+<p id="index-190"><strong>Validating the Virplex</strong></p>
 <p>Logon to Virtel using the common URL 192.168.170.15:41902. You should be presented with the Applist screen showing the two 3270 applications defined in the common ARBO.</p>
 <p><img alt="image113" src="../../../_images/image11310.png" /></p>
 <p>The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance VIRTEL1 (SPVIRE01)</p>
@@ -5916,7 +5968,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 <p>On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance VIRTEL0 (SPVIRE00).</p>
 <p><img alt="image115" src="../../../_images/image1157.png" /></p>
 <p>At this point validation of the Virplex is confirmed.</p>
-<p id="index-188"><strong>Testing QLNK communication.</strong></p>
+<p id="index-191"><strong>Testing QLNK communication.</strong></p>
 <p>To test that the Virtels are communicating, maintenance will be uploaded via the ‘WRITER’ task. The ‘WRITER’ task will distributed this to the two ‘READER’ tasks. Connect to the TSO application to determine the current maintenance level.</p>
 <p><img alt="image116" src="../../../_images/image1167.png" /></p>
 <p>Is shows as UPDT level V4.62 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-</p>
@@ -5927,7 +5979,7 @@ Assemble to ‘READER’ and ‘WRITER’ TCT’s</p></li>
 <p><img alt="image119" src="../../../_images/image1197.png" /></p>
 <p>This confirms that the ‘WRITER’ and ‘READER’ tasks are communicating and the automatic distribution of maintenance out to ‘READER’ task environments is working. The following traces on the ‘WRITER’ task show that the ‘WRITER is communicating with ‘READER’ tasks:-</p>
 <p><img alt="image120" src="../../../_images/image1207.png" /></p>
-<p id="index-189"><strong>Diagnosing Virplex issues</strong></p>
+<p id="index-192"><strong>Diagnosing Virplex issues</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.  Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
 
 F VIRTEL9,TRACE,L=SPVIRE00
@@ -5953,18 +6005,18 @@ Open a problem with your local Syspertec Support Engineer and send them the outp
 </section>
 </section>
 <section id="protecting-business-assets-with-virtel-rules">
-<span id="index-190"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this heading"></a></h2>
-<section id="id76">
-<h3>Introduction<a class="headerlink" href="#id76" title="Permalink to this heading"></a></h3>
+<span id="index-193"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this heading"></a></h2>
+<section id="id78">
+<h3>Introduction<a class="headerlink" href="#id78" title="Permalink to this heading"></a></h3>
 <p>In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset – secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.</p>
 <p><img alt="image97" src="../../../_images/image977.png" /></p>
 </section>
 <section id="virtel-setup">
-<span id="index-191"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this heading"></a></h3>
+<span id="index-194"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this heading"></a></h3>
 <p>From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non-secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address – 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.</p>
-<section id="index-192">
-<span id="id77"></span><h4>Virtel Rules<a class="headerlink" href="#index-192" title="Permalink to this heading"></a></h4>
+<section id="index-195">
+<span id="id79"></span><h4>Virtel Rules<a class="headerlink" href="#index-195" title="Permalink to this heading"></a></h4>
 <p>Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re-directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
@@ -6021,7 +6073,7 @@ EPREJECT.HTM.</p>
 <p>To protect the business assets the calling IP address can only be that of the proxy server - 192.168.092.160. Any other calling IP address will be rejected by the Virtel ruleset. By default, the ruleset associated with a line is normally the internal name of the line – C-HTTP for example. How the rejected session is handled depends on how Virtel has been setup.</p>
 </section>
 <section id="default-rule-template">
-<span id="index-193"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this heading"></a></h4>
+<span id="index-196"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this heading"></a></h4>
 <p>In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;

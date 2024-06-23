@@ -12,7 +12,7 @@ Getting Started with Virtel
 
 Version : 4.62
 
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Virtel SAS
 

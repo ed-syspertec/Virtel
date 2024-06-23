@@ -53,7 +53,7 @@
 
 
 \title{Virtel Messages}
-\date{Feb 17, 2024}
+\date{Jun 23, 2024}
 \release{4.62}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -84,7 +84,7 @@
 Version : 4.62
 
 \sphinxAtStartPar
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 \sphinxAtStartPar
 Syspertec Communication
@@ -2479,7 +2479,7 @@ VIRTEL Web Access print function needs to open a new browser window to display p
 
 \sphinxlineitem{Action}
 \sphinxAtStartPar
-Adjust your browser settings to allow VIRTEL scripts to open pop\sphinxhyphen{}up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools \textendash{} Options \textendash{} Content \textendash{} Block pop\sphinxhyphen{}up windows.
+Adjust your browser settings to allow VIRTEL scripts to open pop\sphinxhyphen{}up windows. Add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools \textendash{} Options \textendash{} Content \textendash{} Block pop\sphinxhyphen{}up windows.
 
 \end{description}
 
@@ -6702,8 +6702,8 @@ None.
 \end{description}
 
 
-\subsubsection{VIR0871W ENTRY FOR \%userid\% NOT FOUND}
-\label{\detokenize{messages:vir0871w-entry-for-userid-not-found}}\begin{description}
+\subsubsection{VIR0871W luname ENTRY FOR \%userid\% NOT FOUND}
+\label{\detokenize{messages:vir0871w-luname-entry-for-userid-not-found}}\begin{description}
 \sphinxlineitem{Module}
 \sphinxAtStartPar
 VIR0008U
@@ -6719,8 +6719,8 @@ Check that the USERID \%userid\% has been defined in the ARBO statements.
 \end{description}
 
 
-\subsubsection{VIR0872E Critical error encountered for \%name\%.}
-\label{\detokenize{messages:vir0872e-critical-error-encountered-for-name}}\begin{description}
+\subsubsection{VIR0872E luname Critical error encountered for \%name\%.}
+\label{\detokenize{messages:vir0872e-luname-critical-error-encountered-for-name}}\begin{description}
 \sphinxlineitem{Module}
 \sphinxAtStartPar
 VIR0008U
@@ -6732,6 +6732,108 @@ The TS entry \%name\% has an internal reference error within the table space.
 \sphinxlineitem{Action}
 \sphinxAtStartPar
 Rebuild the ARBO. If problem persists contact Virtel Support.
+
+\end{description}
+
+
+\subsubsection{VIR0873W Applicatioin \%appl\% not protected or has no profiles}
+\label{\detokenize{messages:vir0873w-applicatioin-appl-not-protected-or-has-no-profiles}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+The application \%name\% is not protected of has no related application profiles in the table space.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Define the application and its associated applications profiles.
+
+\end{description}
+
+
+\subsubsection{VIR0874I \%luname\% nailing resource \%resource\% for userid \%userid\%}
+\label{\detokenize{messages:vir0874i-luname-nailing-resource-resource-for-userid-userid}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+The resource \%resource\% has been located in the table space and allocated to the userid. For a userid resource, a protected application has been selected. For a terminal, a pre\sphinxhyphen{}defined relay terminal and printer will be used in the session setup.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+None
+
+\end{description}
+
+
+\subsubsection{VIR0875W Unable to nail resource for userid \%userid\%}
+\label{\detokenize{messages:vir0875w-unable-to-nail-resource-for-userid-userid}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Virtel was unable to nail a resource for userid \%userid\%
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Rebuild the ARBO. If problem persists contact Virtel Support
+
+\end{description}
+
+
+\subsubsection{VIR0876E \%luname\% Entry table full}
+\label{\detokenize{messages:vir0876e-luname-entry-table-full}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+The internal entry table is full.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Reduce the number of ARBO statements. Rebuild the ARBO. If problem persists contact Virtel Support
+
+\end{description}
+
+
+\subsubsection{VIR0877W \%luname\% Reference Error}
+\label{\detokenize{messages:vir0877w-luname-reference-error}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+The internal entry table has corrupted reference pointers
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Reduce the number of ARBO statements. Rebuild the ARBO. If problem persists contact Virtel Support
+
+\end{description}
+
+
+\subsubsection{VIR0878I RESOURCE \%luname\% RELEASED|BYPASSED}
+\label{\detokenize{messages:vir0878i-resource-luname-released-bypassed}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0008U
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Action taken on a resource
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+None
 
 \end{description}
 
@@ -13280,6 +13382,23 @@ An error has occurred on cross\sphinxhyphen{}memory line linename. with session 
 \sphinxlineitem{Action}
 \sphinxAtStartPar
 Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
+
+\end{description}
+
+
+\subsubsection{VIRX925W linename WAITING DUE TO mmmmmmmm RETCODE retcode Event cccccccc PROTOCOL servtyp PARTNER jobname}
+\label{\detokenize{messages:virx925w-linename-waiting-due-to-mmmmmmmm-retcode-retcode-event-cccccccc-protocol-servtyp-partner-jobname}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0X09
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Cross\sphinxhyphen{}memory line linename is pending connection to module mmmmmmmm. Retcode is the decimal return code, cccccccc is the Event code.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Refer to the VIRXM User Guide manual to determine the meaning of the return code and Event Code.
 
 \end{description}
 

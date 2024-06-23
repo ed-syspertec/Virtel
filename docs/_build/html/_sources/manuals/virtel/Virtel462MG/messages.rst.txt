@@ -14,7 +14,7 @@ Messages V4.62
 
 Version : 4.62 
 
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Syspertec Communication
 
@@ -1322,7 +1322,7 @@ Module
 Meaning
     VIRTEL Web Access print function needs to open a new browser window to display print data, but the function is disallowed by the browser settings.
 Action
-    Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.
+    Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. Add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.
 
 *Cannot open pop-up window for settings. You may need to disable your pop-up blocker*       
 

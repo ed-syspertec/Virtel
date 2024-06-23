@@ -13,11 +13,9 @@ Connectivity Guide V4.62
 
 **VIRTEL Connectivity Guide**
 
-.. warning:: This is a draft version of the document.
+Version : 4.62 
 
-Version : 4.62 Draft
-
-Release Date : TBA. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 17/02/2024
 
 Syspertec Communication
 
@@ -3290,7 +3288,86 @@ LLCLIST
 .. index::
    single: Virtel Rules   
 
-.. _#_V462CN_VirtelRules:    
+.. _#_V462CN_VirtelRules:   
+
+TN3270 line
+-----------
+
+Virtel provides support for TN3270.
+
+|image157|    
+
+.. index::
+   pair: TN3270; Parameters      
+
+Parameters
+^^^^^^^^^^
+
+Remote ident
+    Partner TN3270 Server
+
+Local ident
+    Always blank.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry Point
+    $NONE$. The entry point should be defined in the rules of the line.
+
+Line type
+    Always TCP1.
+
+Possible calls
+    Outbound. Virtel is a TN3270 client. 
+
+Protocol
+    TN3270
+
+Window
+    0003
+
+Packet
+    0128
+
+Pad
+    Blank. Not used.
+
+Tran
+    Blank. Not used.
+
+.. index::
+   pair: TN320 line; Terminal Definitions   
+
+Terminal Definitions
+^^^^^^^^^^^^^^^^^^^^
+
+TN3270 ine uses a single sub-group of type-3 terminals having a common prefix (TNTRM in this example). No VTAM relays are defined for this type of line as connection is throup TCPIP and not VTAM. The number of terminals defined determines the maximum number of TN3270 sessions between VIRTEL and the TN3270 Server.
+
+Sample Virtel message log : -
+::
+
+    VIRTN51I TNCLI000 CALLING SERVER 192.168.204.31:23                    
+    VIRT907I TN3270   SOCKET 00000000 CALLING   192.168.204.31:23         
+    VIR0554I DELOC009 LINKED TO TNET01   THRU TNCLI000                    
+    VIRT906I HTTP-W2H SOCKET 00010000 CALL FROM 192.168.79.10:21124       
+    VIRTN19I TNCLI000 RELAY TCPT1052 CONNECTED                            
+
+|image158|   
+
+.. index::
+   pair: TN320 line; Supported Environments   
+
+Supported TN3270 Servers Environments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ARBOLOAD installation job with the [TN3270=YES] option set will install a default TN3270 sample Virtel definitions for a TN3270 Servers. The following TN3270 servers have been tested : 
+
+-   z/OS Telnet Server, inc. BTI
+-   z/VM Telnet Server, inc. BTI
+-   z/VSE BSI Stack, inc. BTI
+-   z/VSE CSI Stack, inc. BTI
+-   OSA Card Telnet Server
 
 Virtel Rules
 ============
@@ -5461,7 +5538,7 @@ Installing the cookie on the browser
 
 When the e-mail arrives at the user’s workstation, it will contain a hyperlink to a VIRTEL page.  The user clicks on this hyperlink to install the cookie in his browser.
 
-One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the Internet Explorer screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools - Internet Options - Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP address to the list.
+One point to note here: the desktop administrator may have set the security settings to inhibit the browser from storing cookies on the user’s workstation.  Often the simplest solution to this problem is make sure that the browser recognizes VIRTEL’s IP address as being in the “Local Intranet” zone, and not the “Internet” zone.  You can verify the zone by looking at the icon in the bottom right hand corner of the browser screen when the VIRTEL web page is displayed.  If it says “Internet” then you need to click “Tools - Internet Options - Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP address to the list.
 
 Using the cookie
 ^^^^^^^^^^^^^^^^
@@ -6105,7 +6182,7 @@ The Cipher suites
     
 The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
 
-In Microsoft Internet Explorer, follow the menu *Tools – Internet Options – Advanced*. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
+Locate the browsers security settings. For example, *Tools – Internet Options – Advanced*. Under the security heading there will be options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
 
 In Firefox the cipher specifications are accessed by typing *about:config* in the address bar and typing *security* in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.
 
@@ -8166,3 +8243,5 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image154| image:: images/media/image154.png
 .. |image155| image:: images/media/image155.png
 .. |image156| image:: images/media/image156.png
+.. |image157| image:: images/media/image157.png
+.. |image158| image:: images/media/image158.png    

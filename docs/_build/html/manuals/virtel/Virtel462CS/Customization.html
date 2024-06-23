@@ -120,12 +120,8 @@
 <span id="virtel462cs"></span><h1>Customization Guide V4.62<a class="headerlink" href="#customization-guide-v4-62" title="Permalink to this heading"></a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web26.png"><img alt="image0" src="../../../_images/logo_virtel_web26.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Customization</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a d raft version of the document.</p>
-</div>
-<p>Version : 4.62 Draft</p>
-<p>Release Date : TBA. Publication Date : 17/02/2024</p>
+<p>Version : 4.62</p>
+<p>Release Date : 23/06/2024. Publication Date : 17/02/2024</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -1893,7 +1889,7 @@ Agent is started. Do not be tempted to authorize applications to use this RACF r
 </section>
 <section id="cipher-suite">
 <h5>Cipher suite<a class="headerlink" href="#cipher-suite" title="Permalink to this heading"></a></h5>
-<p>The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time. In Microsoft Internet Explorer, follow the menu Tools – Internet Options – Advanced. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0, and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
+<p>The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time. In your browser settings, follow the menu Tools – Internet Options – Advanced. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0, and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
 In Firefox the cipher specifications are accessed by typing <a class="reference external" href="about:config">about:config</a> in the address bar and typing security in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.</p>
 </section>
 <section id="bibliography">
@@ -2318,25 +2314,10 @@ The response should be :
 </section>
 <section id="ntlm-support">
 <span id="index-115"></span><h3>NTLM Support<a class="headerlink" href="#ntlm-support" title="Permalink to this heading"></a></h3>
-<p>Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.</p>
-<section id="enable-windows-integrated-authentication-for-internet-explorer">
-<h4>Enable Windows Integrated Authentication for Internet Explorer<a class="headerlink" href="#enable-windows-integrated-authentication-for-internet-explorer" title="Permalink to this heading"></a></h4>
-<section id="for-internet-explorer-11">
-<h5>For Internet Explorer 11<a class="headerlink" href="#for-internet-explorer-11" title="Permalink to this heading"></a></h5>
-<ul class="simple">
-<li><p>Open Internet Explorer and select “Tools” Pull-down menu,</p></li>
-<li><p>Select the “Internet Option” line,</p></li>
-<li><p>In the opened Pop Up window, select the “Advanced” tab,</p></li>
-<li><p>Scroll down to the “Security” section until you see “Enable Integrated Windows Authentication”. Select the box next to this field to enable,</p></li>
-<li><p>Select the “Security” tab,</p></li>
-<li><p>Select the “Local Intranet Area”,</p></li>
-<li><p>Add the web server address (DNS or IP address) to the list.</p></li>
-</ul>
-</section>
-</section>
+<p>Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication may be enable by default but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.</p>
 <section id="enable-windows-integrated-authentication-for-google-chrome">
 <h4>Enable Windows Integrated Authentication for Google Chrome<a class="headerlink" href="#enable-windows-integrated-authentication-for-google-chrome" title="Permalink to this heading"></a></h4>
-<p>The latest version of Chrome uses existing Internet Explorer settings, but older version require additional configurations (see below). You can use three methods to enable Chrome to use Windows Integrated Authentication.Your options are the command line, editing the registry, or using ADMX templates through group policy. If you choose to use the command line or edit the registry, you could use Group Policy Preferences to distribute those changes on a broader scale. Each of these three methods achieve the same results for configuring Google Chrome for Windows Integrated Authentication. Below are the steps for the three methods:</p>
+<p>You can use three methods to enable Chrome to use Windows Integrated Authentication.Your options are the command line, editing the registry, or using ADMX templates through group policy. If you choose to use the command line or edit the registry, you could use Group Policy Preferences to distribute those changes on a broader scale. Each of these three methods achieve the same results for configuring Google Chrome for Windows Integrated Authentication. Below are the steps for the three methods:</p>
 <p><strong>To use the command line to configure Google Chrome.</strong></p>
 <p>Start Chrome with the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Chrome.exe  –auth-server-whitelist=”MyVirtel.Domain.Name”
@@ -2410,7 +2391,7 @@ The response should be :
 <h5>Still receiving login prompt<a class="headerlink" href="#still-receiving-login-prompt" title="Permalink to this heading"></a></h5>
 <p>If you still continue to receive logon prompt, please check your configuration. Most common error are:</p>
 <ul class="simple">
-<li><p>The accessed server is not listed in the NTLM trusted uris section (Local Intranet Area for Internet Explorer).</p></li>
+<li><p>The accessed server is not listed in the NTLM trusted uris section (Local Intranet Area).</p></li>
 <li><p>The invoked Virtel transaction is not defined with security = 2.</p></li>
 </ul>
 </section>

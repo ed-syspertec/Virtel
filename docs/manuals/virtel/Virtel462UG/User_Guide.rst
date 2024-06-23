@@ -12,11 +12,9 @@ User Guide V4.62
 
 **VIRTEL User Guide**
 
-.. warning:: This is a draft version of the document.
-
 Version : 4.62 
 
-Release Date : TBA. Publication Date : 17/03/20241
+Release Date : 23/06/2024. Publication Date : 17/03/2024
 
 Syspertec Communication
 
@@ -3263,7 +3261,7 @@ VIRTEL associates a MIME-type with each page template or other element stored in
 
 VIRTEL normally sets the MIME-type to the value indicated by the browser or mailer at the time the page is uploaded. However, in certain cases VIRTEL may force the MIME-type to a different value:-
 
-- If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME-type to be “text/html”. This is because some versions of Internet Explorer upload HTML files using MIME-type “text/plain”
+- If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME-type to be “text/html”. This is because some versions of the browser upload HTML files using MIME-type “text/plain”
 
 - If the file contains a SET-CONTENT-TYPE tag, then VIRTEL will force the MIME-type to the value specified in the tag
 
