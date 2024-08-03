@@ -7648,6 +7648,19 @@ Meaning
 Action
     Contact technical support.    
 
+VIRTEL TELNET messages
+^^^^^^^^^^^^^^^^^^^^^^
+
+VIRCTN2I  luname DECONNECTING resoure
+"""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    VIRSV could not allocate the VSVTRACE file number tracenum
+
+Action
+    No Action Required
+
 Miscellaneos messages
 ^^^^^^^^^^^^^^^^^^^^^
 
