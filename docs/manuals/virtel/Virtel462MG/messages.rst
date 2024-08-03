@@ -4993,6 +4993,93 @@ Meaning
 Action
     The UNLOAD is aborted. Check that the correct dataset name has been specified in the DSN= keyword and that the dataset has been preallocated.
 
+Messages VIRTNXXX
+^^^^^^^^^^^^^^^^^
+
+VIRTN51I  luname CALLING SERVER server
+""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname CONNECTING to server servername
+
+Action
+    No Action Required
+
+Messages VIRCTNxx
+^^^^^^^^^^^^^^^^^
+
+VIRCTN4I luname SYNCHRONIZING WITH resource (servername)
+""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname has synchronized with server servername
+
+Action
+    No Action Required
+
+VIRCTN7I luname has no more psuedo terminals
+""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    Virtel resource shortage.
+
+Action
+    Contact technical support.
+
+VIRCTN9E luname IS REQUESTING DUPLICATE CORRELATOR, correlator. ALREADY ALLOCATED TO resource.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname is requesting a correlator that is already allocated.
+
+Action
+    Contact technical support.
+
+VIRCTN9I INITIALISATION FOR luname ('resource') VERSION vers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname initialised using resource.
+
+Action
+    No Action Required.
+
+VIRCTN9I luname RECEIVE ON SOCKET puname
+""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname has received data from puname
+
+Action
+    No Action Required.
+
+VIRCTN9I luname SEND
+""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname has sent data
+
+Action
+    No Action Required.    
+
+VIRCTN9I LINE linename WAS STOPPED
+""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    LINE linename has been stopped
+
+Action
+    No Action Required.  
+
+
 Messages VIRCTxxx
 ^^^^^^^^^^^^^^^^^ 
 
@@ -6492,6 +6579,32 @@ Meaning
 Action
     Ensure that only entry points with emulation type $NONE$ are specified in the rules and in the line definition for a VIRPESIT line.
 
+Messages VIRQLxxx
+^^^^^^^^^^^^^^^^^
+VIRQL51I luname CONNECTING terminal TO server
+Module
+    VIR0TNET
+Meaning
+    luname is connecting terminal to server.
+Action
+    No Action Required     
+
+VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT
+Module
+    VIR0TNET
+Meaning
+    Definition error. Line is not an output type.
+Action
+    Contact Technical Support.
+
+VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT
+Module
+    VIR0TNET
+Meaning
+    Definition error. luname cannot connect. Line is not open.  
+Action
+    Contact Technical Support.
+
 Messages VIRQ9xxx
 ^^^^^^^^^^^^^^^^^ 
 
@@ -6954,6 +7067,48 @@ Meaning
     VIRTEL received an incomplete message on an SMTP line. The message does not contain the required headers In-Reply-To: (or alternatively References:) and Mime-Version:. The message has been rejected with response 581 Delivery not authorized, message refused sent to the SMTP requester.
 Action
     To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.
+
+Messages VIRTNXXX
+^^^^^^^^^^^^^^^^^
+
+VIRTN01I INITIALISATION FOR TN3270 (server), VERSION V.VV
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    Virtel TN3270 initialsed.
+
+Action
+    No Action Required
+
+VIRTN19I luname RELAY resource CONNECTED
+""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    Virtel TN3270 has connected relay resource using luname
+Action
+    No Action Required
+
+VIRTN51I  luname CALLING SERVER ipaddr
+""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname CONNECTING to server at ipaddr
+
+Action
+    No Action Required
+
+VIRTN52I TN3270 DECONNECTING resoure
+""""""""""""""""""""""""""""""""""""
+Module
+    VIR0TNET
+Meaning
+    luname is disconnecting resource from TN3270 server
+
+Action
+    No Action Required   
 
 Messages VIRT2xxx
 ^^^^^^^^^^^^^^^^^
@@ -7647,19 +7802,6 @@ Meaning
 
 Action
     Contact technical support.    
-
-VIRTEL TELNET messages
-^^^^^^^^^^^^^^^^^^^^^^
-
-VIRCTN2I  luname DECONNECTING resoure
-"""""""""""""""""""""""""""""""""""""
-Module
-    VIR0TNET
-Meaning
-    VIRSV could not allocate the VSVTRACE file number tracenum
-
-Action
-    No Action Required
 
 Miscellaneos messages
 ^^^^^^^^^^^^^^^^^^^^^

@@ -6022,6 +6022,100 @@ member DEFTRSF for an example of initializing a TRSF VSAM file.</p>
 </dl>
 </section>
 </section>
+<section id="messages-virtnxxx">
+<h4>Messages VIRTNXXX<a class="headerlink" href="#messages-virtnxxx" title="Permalink to this heading"></a></h4>
+<section id="virtn51i-luname-calling-server-server">
+<h5>VIRTN51I  luname CALLING SERVER server<a class="headerlink" href="#virtn51i-luname-calling-server-server" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname CONNECTING to server servername</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="messages-virctnxx">
+<h4>Messages VIRCTNxx<a class="headerlink" href="#messages-virctnxx" title="Permalink to this heading"></a></h4>
+<section id="virctn4i-luname-synchronizing-with-resource-servername">
+<h5>VIRCTN4I luname SYNCHRONIZING WITH resource (servername)<a class="headerlink" href="#virctn4i-luname-synchronizing-with-resource-servername" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname has synchronized with server servername</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virctn7i-luname-has-no-more-psuedo-terminals">
+<h5>VIRCTN7I luname has no more psuedo terminals<a class="headerlink" href="#virctn7i-luname-has-no-more-psuedo-terminals" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>Virtel resource shortage.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact technical support.</p>
+</dd>
+</dl>
+</section>
+<section id="virctn9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-resource">
+<h5>VIRCTN9E luname IS REQUESTING DUPLICATE CORRELATOR, correlator. ALREADY ALLOCATED TO resource.<a class="headerlink" href="#virctn9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-resource" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is requesting a correlator that is already allocated.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact technical support.</p>
+</dd>
+</dl>
+</section>
+<section id="virctn9i-initialisation-for-luname-resource-version-vers">
+<h5>VIRCTN9I INITIALISATION FOR luname (‘resource’) VERSION vers<a class="headerlink" href="#virctn9i-initialisation-for-luname-resource-version-vers" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname initialised using resource.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required.</p>
+</dd>
+</dl>
+</section>
+<section id="virctn9i-luname-receive-on-socket-puname">
+<h5>VIRCTN9I luname RECEIVE ON SOCKET puname<a class="headerlink" href="#virctn9i-luname-receive-on-socket-puname" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname has received data from puname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required.</p>
+</dd>
+</dl>
+</section>
+<section id="virctn9i-luname-send">
+<h5>VIRCTN9I luname SEND<a class="headerlink" href="#virctn9i-luname-send" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname has sent data</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required.</p>
+</dd>
+</dl>
+</section>
+<section id="virctn9i-line-linename-was-stopped">
+<h5>VIRCTN9I LINE linename WAS STOPPED<a class="headerlink" href="#virctn9i-line-linename-was-stopped" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>LINE linename has been stopped</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required.</p>
+</dd>
+</dl>
+</section>
+</section>
 <section id="messages-virctxxx">
 <h4>Messages VIRCTxxx<a class="headerlink" href="#messages-virctxxx" title="Permalink to this heading"></a></h4>
 <section id="virct01e-cryn-error-installing-no-encryption-subtask">
@@ -7814,6 +7908,42 @@ Contact technical support.</p>
 </dl>
 </section>
 </section>
+<section id="messages-virqlxxx">
+<h4>Messages VIRQLxxx<a class="headerlink" href="#messages-virqlxxx" title="Permalink to this heading"></a></h4>
+<p>VIRQL51I luname CONNECTING terminal TO server
+Module</p>
+<blockquote>
+<div><p>VIR0TNET</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Meaning</dt><dd><p>luname is connecting terminal to server.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+<p>VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT
+Module</p>
+<blockquote>
+<div><p>VIR0TNET</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Meaning</dt><dd><p>Definition error. Line is not an output type.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact Technical Support.</p>
+</dd>
+</dl>
+<p>VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT
+Module</p>
+<blockquote>
+<div><p>VIR0TNET</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Meaning</dt><dd><p>Definition error. luname cannot connect. Line is not open.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact Technical Support.</p>
+</dd>
+</dl>
+</section>
 <section id="messages-virq9xxx">
 <h4>Messages VIRQ9xxx<a class="headerlink" href="#messages-virq9xxx" title="Permalink to this heading"></a></h4>
 <section id="virq903w-line-linename-has-a-session-started-with-mqm-mqmname">
@@ -8372,6 +8502,53 @@ The following codes are commonly encountered:</p>
 <dt>Meaning</dt><dd><p>VIRTEL received an incomplete message on an SMTP line. The message does not contain the required headers In-Reply-To: (or alternatively References:) and Mime-Version:. The message has been rejected with response 581 Delivery not authorized, message refused sent to the SMTP requester.</p>
 </dd>
 <dt>Action</dt><dd><p>To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="id7">
+<h4>Messages VIRTNXXX<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<section id="virtn01i-initialisation-for-tn3270-server-version-v-vv">
+<h5>VIRTN01I INITIALISATION FOR TN3270 (server), VERSION V.VV<a class="headerlink" href="#virtn01i-initialisation-for-tn3270-server-version-v-vv" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>Virtel TN3270 initialsed.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virtn19i-luname-relay-resource-connected">
+<h5>VIRTN19I luname RELAY resource CONNECTED<a class="headerlink" href="#virtn19i-luname-relay-resource-connected" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>Virtel TN3270 has connected relay resource using luname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virtn51i-luname-calling-server-ipaddr">
+<h5>VIRTN51I  luname CALLING SERVER ipaddr<a class="headerlink" href="#virtn51i-luname-calling-server-ipaddr" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname CONNECTING to server at ipaddr</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virtn52i-tn3270-deconnecting-resoure">
+<h5>VIRTN52I TN3270 DECONNECTING resoure<a class="headerlink" href="#virtn52i-tn3270-deconnecting-resoure" title="Permalink to this heading"></a></h5>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0TNET</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is disconnecting resource from TN3270 server</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
 </section>
@@ -9169,20 +9346,6 @@ The following codes are commonly encountered:</p>
 <dt>Meaning</dt><dd><p>VIRSV could not allocate the VSVTRACE file number tracenum</p>
 </dd>
 <dt>Action</dt><dd><p>Contact technical support.</p>
-</dd>
-</dl>
-</section>
-</section>
-<section id="virtel-telnet-messages">
-<h4>VIRTEL TELNET messages<a class="headerlink" href="#virtel-telnet-messages" title="Permalink to this heading"></a></h4>
-<section id="virctn2i-luname-deconnecting-resoure">
-<h5>VIRCTN2I  luname DECONNECTING resoure<a class="headerlink" href="#virctn2i-luname-deconnecting-resoure" title="Permalink to this heading"></a></h5>
-<dl class="simple">
-<dt>Module</dt><dd><p>VIR0TNET</p>
-</dd>
-<dt>Meaning</dt><dd><p>VIRSV could not allocate the VSVTRACE file number tracenum</p>
-</dd>
-<dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
 </section>
