@@ -1765,14 +1765,15 @@ Defining the VIRARBO and VIRSWAP files
     SET MAXCC=0
     DEFINE CLUSTER ( -
       NAME (VIRTEL.SWAP ) -
-      RECORDS(200 50) -
+      RECORDS(500 500) -
       SHAREOPTIONS (2 3) -
-      RECSZ (600 4089) -
+      RECSZ (100 8185) -
       VOLUMES (SYSWK1) -
       REUSE -
       KEYS (16 0) -
-      TO (99366))-
-    DATA (NAME (VIRTEL.SWAP.DATA )) -
+      )-
+    DATA (NAME (VIRTEL.SWAP.DATA ) -
+	  CISZ(8192)   ) -
     INDEX (NAME (VIRTEL.SWAP.INDEX )) -
       CATALOG (VSESP.USER.CATALOG )
     IF LASTCC NE 0 THEN CANCEL JOB
