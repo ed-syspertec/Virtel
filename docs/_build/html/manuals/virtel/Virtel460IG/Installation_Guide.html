@@ -1465,14 +1465,15 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
   <span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
   <span class="n">DEFINE</span> <span class="n">CLUSTER</span> <span class="p">(</span> <span class="o">-</span>
     <span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SWAP</span> <span class="p">)</span> <span class="o">-</span>
-    <span class="n">RECORDS</span><span class="p">(</span><span class="mi">200</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">RECORDS</span><span class="p">(</span><span class="mi">500</span> <span class="mi">500</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span>
-    <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">600</span> <span class="mi">4089</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">100</span> <span class="mi">8185</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">VOLUMES</span> <span class="p">(</span><span class="n">SYSWK1</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">REUSE</span> <span class="o">-</span>
     <span class="n">KEYS</span> <span class="p">(</span><span class="mi">16</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span>
-    <span class="n">TO</span> <span class="p">(</span><span class="mi">99366</span><span class="p">))</span><span class="o">-</span>
-  <span class="n">DATA</span> <span class="p">(</span><span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SWAP</span><span class="o">.</span><span class="n">DATA</span> <span class="p">))</span> <span class="o">-</span>
+    <span class="p">)</span><span class="o">-</span>
+  <span class="n">DATA</span> <span class="p">(</span><span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SWAP</span><span class="o">.</span><span class="n">DATA</span> <span class="p">)</span> <span class="o">-</span>
+        <span class="n">CISZ</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>   <span class="p">)</span> <span class="o">-</span>
   <span class="n">INDEX</span> <span class="p">(</span><span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SWAP</span><span class="o">.</span><span class="n">INDEX</span> <span class="p">))</span> <span class="o">-</span>
     <span class="n">CATALOG</span> <span class="p">(</span><span class="n">VSESP</span><span class="o">.</span><span class="n">USER</span><span class="o">.</span><span class="n">CATALOG</span> <span class="p">)</span>
   <span class="n">IF</span> <span class="n">LASTCC</span> <span class="n">NE</span> <span class="mi">0</span> <span class="n">THEN</span> <span class="n">CANCEL</span> <span class="n">JOB</span>
