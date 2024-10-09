@@ -14,7 +14,7 @@ Messages V4.62
 
 Version : 4.62 
 
-Release Date : 23/06/2024. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 18/02/2024
 
 Syspertec Communication
 
@@ -5010,7 +5010,7 @@ Messages VIRCTNxx
 ^^^^^^^^^^^^^^^^^
 
 VIRCTN4I luname SYNCHRONIZING WITH resource (servername)
-""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0TNET
 Meaning
@@ -6582,28 +6582,37 @@ Action
 Messages VIRQLxxx
 ^^^^^^^^^^^^^^^^^
 VIRQL51I luname CONNECTING terminal TO server
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0TNET
+
 Meaning
     luname is connecting terminal to server.
+
 Action
-    No Action Required     
+No Action Required     
 
 VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0TNET
+
 Meaning
     Definition error. Line is not an output type.
+
 Action
-    Contact Technical Support.
+Contact Technical Support.
 
 VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0TNET
+
 Meaning
     Definition error. luname cannot connect. Line is not open.  
+
 Action
-    Contact Technical Support.
+Contact Technical Support.
 
 Messages VIRQ9xxx
 ^^^^^^^^^^^^^^^^^ 
