@@ -1,0 +1,179 @@
+.. _tn202410:
+
+Getting started with Virtel Web Integration (VWI)
+=================================================
+
+The following newsletter provides an introduction to using Virtel to expose elements from a 3270 application to an external webserver. These features are known as *Virtel Web Integration* or *VWI*. 
+
+Basic concepts
+--------------
+
+
+VWI Architecture
+^^^^^^^^^^^^^^^^
+
+The objective of VIRTEL Web Integration is to allow a host application to take maximum control of its web interface, for example through web services.
+
+To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL scenario scripting language, the page template (that can be HTML, XML, JSON, TXT...) , and optionally a set of VIRTEL commands contained in structured fields. 
+
+VWI can be configured to support a wide range of interfaces, protocols and APIs which can :
+
+* Expose mainframe applications and data as web services to web clients
+* Invoke web services for the count of mainframe applications
+* Support interactive exchange procedures between mainframe and web applications for cooperative work
+* Function as a SOAP, MQ, PHP… server
+* Transfer data blocks larger than 32KB, or blocks of data with variable format
+* Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa
+* Serve 3270 data as international icons to eliminate natural languages from user interfaces
+* Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or home-grown (CICS socket programming)
+
+**Incoming calls**
+
+* To expose host applications to web clients though web services, Virtel can be configured to:
+* Receive and parse incoming web service calls
+* Execute the appropriate transactions
+* Receive data returned by the transactions in the form of screens, structured fields, COMMAREA, or database segments
+* Reformat and wrap that data with XML, JSON, HTML, SOAP, CSV, PDF, Word, JSON, etc.
+* Serve it back to the web callers
+
+**Outgoing calls**
+
+* In the outgoing direction (host-initiated web services) the mechanism is the same, just reverse.
+
+
+Virtel URL Formats
+^^^^^^^^^^^^^^^^^^
+
+It is important to understand the format of Virtel URLs to work with VWI. The general form of the URL for a VIRTEL Web Access, VIRTEL Web Integration, or VIRTEL Web Modernisation transaction is:
+
+::
+
+    https://ipaddr:port/pathname/pagename+tranname?param1=value&param2=value
+
+ipaddr:port
+    Is the address of the HTTP line. Corresponds to the “Local ident” field of an HTTP line defined to
+    VIRTEL. The rules of the line are used to select the entry point.
+    This entry point, which must specify emulation type HTML, contains
+    the list of transactions which the user is authorized to invoke.
+
+pathname
+    Represents a VIRTEL directory. This field is optional.
+
+pagename
+    Is the name of a Virtel template file (HTML, XML, JSON, TXT, ...) 
+    from the specified directory,
+    into which VIRTEL inserts dynamic data from the 3270 screen.
+
+tranname
+    Is the external name of a transaction defined under the entry point.
+    The application program (which may be a CICS transaction or other
+    VTAM application, a VIRTEL sub-application, or an external server)
+    invoked by this transaction provides the dynamic data which VIRTEL
+    inserts into the template page.
+
+param1, param2, ...
+    These are the names of the parameters which the scenario can pick up using
+    the COPY$ INPUT-TO-VARIABLE or COPY$ INPUT-TO-SCREEN instructions
+    The cumulative length of the URL parameters is
+    limited by the BUFSIZE parameter of the VIRTCT. If blanks or other
+    special characters are required in the parameter value, then the
+    special characters must be coded in the standard URL escape format
+    %xx where xx is the hexadecimal value of the character in ASCII. For
+    example, a blank is represented as %20.
+
+Lines, Entry points, Transactions...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following diagram illustrates how all the elements of Virtel work together:
+
+|terminology|
+
+Virtel templates
+^^^^^^^^^^^^^^^^
+
+Virtel templates are text files (usually HTML, XML, JSON format, but any text file will work), that contain *Virtel Tags* that Virtel recognizes at runtime and will act upon accordingly.
+
+Virtel tags begin with {{{ and end with }}}
+
+Some examples of Virtel tags:
+
+{{{SET-OUTPUT-ENCODING-UTF-8 ""}}}
+    Sets encoding of file to UTF-8
+
+{{{CURRENT-VALUE-OF "variable"}}}
+    Returns the value of a variable set by a Virtel Scenario
+
+A file containing Virtel tags must begin with the following statement:
+
+::
+
+    <!--VIRTEL start="{{{" end="}}}" -->
+
+Simple "Hello World" application
+--------------------------------
+
+The following example will call Virtel and display "Hello World" in a simple TXT format template, using this url:
+
+::
+
+    https://spvirdoc.com:41003/apidemo.txt+APICICS1
+
+41003
+    Is the port number associated with a Virtel line. This line points to a default entry point named *APIWHOST*
+
+apidemo.txt
+    Is the name of a simple Virtel template file, in TXT format, containing some Virtel tags that will be populated by a Virtel scenario:
+
+::
+
+    <!--VIRTEL start="{{{" end="}}}" -->
+    {{{SET-OUTPUT-ENCODING-UTF-8 ""}}}
+    {{{SET-CONTENT-TYPE "text/plain"}}}
+    
+    Scenario Name: {{{TRIMMED-VALUE-OF "SCENNAME"}}}
+    MyVar:         {{{TRIMMED-VALUE-OF "MYVAR"}}}
+    Error Message: {{{TRIMMED-VALUE-OF "ERRMSG"}}}
+
+APICICS1
+    Is the name of a Virtel transaction that calls CICS (CICS name = SPCICSH), automatically signs the user on and calls a CICS transaction named TRAD (This is the IBM CICS Trader demo). An OUTPUT SCENARIO named APIDEMO1 is then called to process the variables in the template. Here is the VIRCONF definition of this transaction::
+
+        TRANSACT ID=API-51,                                          -
+             NAME=APICICS1,                                          -
+             DESC='DEMO of Virtel APIs',                             -
+             APPL=SPCICSH,                                           -
+             RACFNAME=SPCICSH,                                       -
+             TYPE=1,                                                 -
+             TERMINAL=APVTA,                                         -
+             STARTUP=1,                                              -
+             SECURITY=1,                                             -
+             TIOASTA="Signon&/W&*7D4EC9&'114BE9'&U&'114CF9'&P&/ATRAD&-
+             /A",                                                    -
+             EXITMSGO=APIDEMO1                                        
+
+Below is the source of the APIDEMO1 scenario. Note that it doesn't actually make any use of the CICS TRAD screen, it just gives values to the 3 variables that are in the apidemo.txt template file::
+
+    APIDEMO1 SCREENS APPL=APIDEMO1,EXEC=NO
+         
+         SCENARIO OUTPUT
+         SET$  ENCODING,UTF-8
+         
+         COPY$ VALUE-TO-VARIABLE,VAR=SCENNAME,TYPE=REPLACE,            X
+               VALUE='APIDEMO1'
+         
+         COPY$ VALUE-TO-VARIABLE,VAR=MYVAR,TYPE=REPLACE,               X
+               VALUE='Hello World'
+
+         COPY$ VALUE-TO-VARIABLE,VAR=ERRMSG,TYPE=REPLACE,              X
+               VALUE='Scenario executed successfully'
+                                    
+         SCENARIO DISCARD
+         SCENARIO END
+         
+         SCRNEND
+         END                  
+
+
+zzz 
+^^^
+
+.. |terminology| image:: images/media/terminology.png
