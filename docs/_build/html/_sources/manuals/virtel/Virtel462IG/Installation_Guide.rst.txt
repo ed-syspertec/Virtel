@@ -409,7 +409,7 @@ The following changes should be made to this job before submitting it:
 
 - The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.
 
-- Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member Virtel commands are to be executed st start up. Other members can be created which cna be executed trhro
+- Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member of Virtel commands that are to be executed at start up. 
 
 Example of STARTUP member: -
 
@@ -2450,7 +2450,7 @@ Possible values are:
 +-------------------+----------------+-----------------+-----------------+
 | L2 or ISO-LATIN-2 | Eastern Europe |      CP 870     |     8859-2      |
 +-------------------+----------------+-----------------+-----------------+
-| NETHERLAND        | The Netherlands|      CP 037     |     8859-1      |
+| NETHERLANDS       | The Netherlands|      CP 037     |     8859-1      |
 +-------------------+----------------+-----------------+-----------------+
 | NO or NORWAY      | Norway         |      CP 277     |     8859-1      |
 +-------------------+----------------+-----------------+-----------------+

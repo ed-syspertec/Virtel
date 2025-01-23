@@ -437,7 +437,7 @@ RENAMEUNC( -
 <li><p>If the VIRTEL datasets are to be managed by SMS, remove the NULLSTORCLAS BYPASSACS(**) statement and replace it by STORCLAS(classname) where classname is the name of the SMS storage class on which the VIRTEL datasets are to be allocated. Do not delete the OUTDYNAM parameter, ADRDSSU requires it even though its value is ignored for SMS.</p></li>
 <li><p>In the RENAMEUNC parameter, replace yourqual by the high-level qualifiers to be used for your VIRTEL datasets.</p></li>
 <li><p>The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.</p></li>
-<li><p>Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member Virtel commands are to be executed st start up. Other members can be created which cna be executed trhro</p></li>
+<li><p>Allocate the optional control library VIRCNTL using the following DCB PDS, LRECL=80, RECFM=FB, BLKSIZE=3120, SPACE=(TRK,(5,5,10)). This PDS contains command members. Create a STARTUP member of Virtel commands that are to be executed at start up.</p></li>
 </ul>
 <p>Example of STARTUP member: -</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">ADD</span> <span class="n">SILENCE</span> <span class="n">MESSAGES</span> <span class="o">*</span>
@@ -2134,7 +2134,7 @@ each client and functions in relation to the following parameters: ADDR1, ADDR2,
 <td><p>CP 870</p></td>
 <td><p>8859-2</p></td>
 </tr>
-<tr class="row-odd"><td><p>NETHERLAND</p></td>
+<tr class="row-odd"><td><p>NETHERLANDS</p></td>
 <td><p>The Netherlands</p></td>
 <td><p>CP 037</p></td>
 <td><p>8859-1</p></td>
