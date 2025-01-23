@@ -1658,7 +1658,7 @@ Updating the VIRARBO file (ARBOLOAD)
 Job VIRCONF contains an example of a job to load configuration elements into the VIRARBO file. This is the equivalent of the z/OS job known as ARBOLOAD. Before running this job, you will need to make the following modifications:
 
 - Select the desired features (for example, WEB=YES, XOT=YES)
-- Change all ‘DBDCCICS’ to the APPLID of your CICS system.
+- Optional. Change all ‘DBDCCICS’ references to the APPLID of your CICS system.
 
 .. note::
 
