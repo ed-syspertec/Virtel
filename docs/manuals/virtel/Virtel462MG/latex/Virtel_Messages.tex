@@ -53,9 +53,9 @@
 
 
 \title{Virtel Messages}
-\date{Jun 23, 2024}
+\date{Feb 12, 2025}
 \release{4.62}
-\author{Syspertec Communications}
+\author{Virtel SAS, Syspertec Group}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
 \makeindex
@@ -84,36 +84,35 @@
 Version : 4.62
 
 \sphinxAtStartPar
-Release Date : 23/06/2024. Publication Date : 17/02/2024
+Release Date : 23/06/2024. Publication Date : 18/02/2024
 
 \sphinxAtStartPar
-Syspertec Communication
+Virtel SAS, Syspertec Group
 
 \sphinxAtStartPar
-196, Bureaux de la Colline 92213 Saint\sphinxhyphen{}Cloud Cedex Tél. : +33 (0) 1 46 02 60 42
+302 Bureaux de la Colline, 92213 Saint Cloud Cedex, France Tél. : +33 (0) 1 46 02 60 42
 
 \sphinxAtStartPar
-\sphinxhref{http://www.syspertec.com/}{www.syspertec.com}
+\sphinxhref{http://www.virtelweb.com/}{www.virtelweb.com}
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 Reproduction, transfer, distribution, or storage, in any form, of all or any part of
-the contents of this document, except by prior authorization of SysperTec
-Communication, is prohibited.
+the contents of this document, except by prior authorization of Virtel SAS, is prohibited.
 
 \sphinxAtStartPar
-Every possible effort has been made by SysperTec Communication to ensure that this document
-is complete and relevant. In no case can SysperTec Communication be held responsible for
+Every possible effort has been made by Virtel SAS to ensure that this document
+is complete and relevant. In no case can Virtel SAS be held responsible for
 any damages, direct or indirect, caused by errors or omissions in this document.
 
 \sphinxAtStartPar
-As SysperTec Communication uses a continuous development methodology; the information
+As Virtel SAS uses a continuous development methodology; the information
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.
 
 \sphinxAtStartPar
-“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
+“Virtel SAS” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.
 \end{sphinxadmonition}
@@ -9233,6 +9232,148 @@ The UNLOAD is aborted. Check that the correct dataset name has been specified in
 \end{description}
 
 
+\subsection{Messages VIRTNXXX}
+\label{\detokenize{messages:messages-virtnxxx}}
+
+\subsubsection{VIRTN51I  luname CALLING SERVER server}
+\label{\detokenize{messages:virtn51i-luname-calling-server-server}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname CONNECTING to server servername
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
+
+\end{description}
+
+
+\subsection{Messages VIRCTNxx}
+\label{\detokenize{messages:messages-virctnxx}}
+
+\subsubsection{VIRCTN4I luname SYNCHRONIZING WITH resource (servername)}
+\label{\detokenize{messages:virctn4i-luname-synchronizing-with-resource-servername}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname has synchronized with server servername
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
+
+\end{description}
+
+
+\subsubsection{VIRCTN7I luname has no more psuedo terminals}
+\label{\detokenize{messages:virctn7i-luname-has-no-more-psuedo-terminals}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Virtel resource shortage.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Contact technical support.
+
+\end{description}
+
+
+\subsubsection{VIRCTN9E luname IS REQUESTING DUPLICATE CORRELATOR, correlator. ALREADY ALLOCATED TO resource.}
+\label{\detokenize{messages:virctn9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-resource}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname is requesting a correlator that is already allocated.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+Contact technical support.
+
+\end{description}
+
+
+\subsubsection{VIRCTN9I INITIALISATION FOR luname (‘resource’) VERSION vers}
+\label{\detokenize{messages:virctn9i-initialisation-for-luname-resource-version-vers}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname initialised using resource.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required.
+
+\end{description}
+
+
+\subsubsection{VIRCTN9I luname RECEIVE ON SOCKET puname}
+\label{\detokenize{messages:virctn9i-luname-receive-on-socket-puname}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname has received data from puname
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required.
+
+\end{description}
+
+
+\subsubsection{VIRCTN9I luname SEND}
+\label{\detokenize{messages:virctn9i-luname-send}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname has sent data
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required.
+
+\end{description}
+
+
+\subsubsection{VIRCTN9I LINE linename WAS STOPPED}
+\label{\detokenize{messages:virctn9i-line-linename-was-stopped}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+LINE linename has been stopped
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required.
+
+\end{description}
+
+
 \subsection{Messages VIRCTxxx}
 \label{\detokenize{messages:messages-virctxxx}}
 
@@ -12004,6 +12145,60 @@ Ensure that only entry points with emulation type \$NONE\$ are specified in the 
 \end{description}
 
 
+\subsection{Messages VIRQLxxx}
+\label{\detokenize{messages:messages-virqlxxx}}
+
+\subsubsection{VIRQL51I luname CONNECTING terminal TO server}
+\label{\detokenize{messages:virql51i-luname-connecting-terminal-to-server}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname is connecting terminal to server.
+
+\end{description}
+
+\sphinxAtStartPar
+Action
+No Action Required
+
+
+\subsubsection{VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT}
+\label{\detokenize{messages:virql58e-luname-luintern-is-not-an-output-line-cannot-connect}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Definition error. Line is not an output type.
+
+\end{description}
+
+\sphinxAtStartPar
+Action
+Contact Technical Support.
+
+
+\subsubsection{VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT}
+\label{\detokenize{messages:virql59e-luname-luintern-is-not-open-cannot-connect}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Definition error. luname cannot connect. Line is not open.
+
+\end{description}
+
+\sphinxAtStartPar
+Action
+Contact Technical Support.
+
+
 \subsection{Messages VIRQ9xxx}
 \label{\detokenize{messages:messages-virq9xxx}}
 
@@ -12863,6 +13058,77 @@ VIRTEL received an incomplete message on an SMTP line. The message does not cont
 \sphinxlineitem{Action}
 \sphinxAtStartPar
 To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.
+
+\end{description}
+
+
+\subsection{Messages VIRTNXXX}
+\label{\detokenize{messages:id7}}
+
+\subsubsection{VIRTN01I INITIALISATION FOR TN3270 (server), VERSION V.VV}
+\label{\detokenize{messages:virtn01i-initialisation-for-tn3270-server-version-v-vv}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Virtel TN3270 initialsed.
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
+
+\end{description}
+
+
+\subsubsection{VIRTN19I luname RELAY resource CONNECTED}
+\label{\detokenize{messages:virtn19i-luname-relay-resource-connected}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+Virtel TN3270 has connected relay resource using luname
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
+
+\end{description}
+
+
+\subsubsection{VIRTN51I  luname CALLING SERVER ipaddr}
+\label{\detokenize{messages:virtn51i-luname-calling-server-ipaddr}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname CONNECTING to server at ipaddr
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
+
+\end{description}
+
+
+\subsubsection{VIRTN52I TN3270 DECONNECTING resoure}
+\label{\detokenize{messages:virtn52i-tn3270-deconnecting-resoure}}\begin{description}
+\sphinxlineitem{Module}
+\sphinxAtStartPar
+VIR0TNET
+
+\sphinxlineitem{Meaning}
+\sphinxAtStartPar
+luname is disconnecting resource from TN3270 server
+
+\sphinxlineitem{Action}
+\sphinxAtStartPar
+No Action Required
 
 \end{description}
 
