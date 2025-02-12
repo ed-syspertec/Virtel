@@ -21,7 +21,7 @@ Virtel SAS, Syspertec Group
 
 302 Bureaux de la Colline, 92213 Saint Cloud Cedex, France Tél. : +33 (0) 1 46 02 60 42
 
-`www.virtelweb.com <http://www.wirtelweb.com/>`__
+`www.virtelweb.com <http://www.virtelweb.com/>`__
 
 .. note::
 
