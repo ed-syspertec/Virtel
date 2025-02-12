@@ -16,28 +16,27 @@ Version : 4.62
 
 Release Date : 23/06/2024. Publication Date : 18/02/2024
 
-Syspertec Communication
+Virtel SAS, Syspertec Group
 
-196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42
+302 Bureaux de la Colline, 92213 Saint Cloud Cedex, France Tél. : +33 (0) 1 46 02 60 42
 
-`www.syspertec.com <http://www.syspertec.com/>`__
+`www.virtelweb.com <http://www.virtelweb.com/>`__
 
 .. note::
 
     Reproduction, transfer, distribution, or storage, in any form, of all or any part of 
-    the contents of this document, except by prior authorization of SysperTec 
-    Communication, is prohibited.
+    the contents of this document, except by prior authorization of Virtel SAS, is prohibited.
 
-    Every possible effort has been made by SysperTec Communication to ensure that this document 
-    is complete and relevant. In no case can SysperTec Communication be held responsible for 
+    Every possible effort has been made by Virtel SAS to ensure that this document 
+    is complete and relevant. In no case can Virtel SAS be held responsible for 
     any damages, direct or indirect, caused by errors or omissions in this document.
 
-    As SysperTec Communication uses a continuous development methodology; the information 
+    As Virtel SAS uses a continuous development methodology; the information 
     contained in this document may be subject to change without notice. Nothing in this 
     document should be construed in any manner as conferring a right to use, in whole or in 
     part, the products or trademarks quoted herein.
 
-    "SysperTec Communication" and "VIRTEL" are registered trademarks. Names of other products 
+    "Virtel SAS" and "VIRTEL" are registered trademarks. Names of other products 
     and companies mentioned in this document may be trademarks or registered trademarks of 
     their respective owners.  
 

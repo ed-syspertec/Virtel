@@ -47,7 +47,7 @@ master_doc = 'connectivity_guide'
 
 # General information about the project.
 project = 'Virtel'
-copyright = '2020, Syspertec Communications. All rights reserved'
+copyright = '2021, Virtel SAS, Syspertec Group. All rights reserved'
 author = 'Ed Holt'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -147,7 +147,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Virtel_Connectivity_Guide.tex', 'Virtel Connectivity Guide',
-     'Syspertec Communications', 'manual'),
+     'Virtel SAS, Syspertec Group', 'manual'),
 ]
 
 

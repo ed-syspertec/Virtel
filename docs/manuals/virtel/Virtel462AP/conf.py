@@ -47,7 +47,7 @@ master_doc = 'audit_operations_ and_performance'
 
 # General information about the project.
 project = 'Virtel'
-copyright = '2024, Syspertec Communications. All rights reserved'
+copyright = '2021, Virtel SAS, Syspertec Group. All rights reserved'
 author = 'Ed Holt'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -147,7 +147,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'Virtel_AOP_Guide.tex', 'Virtel Audit, Administration, Operations and Performance Guide',
-     'Syspertec Communications', 'manual'),
+     'Virtel SAS, Syspertec Group', 'manual'),
 ]
 
 
