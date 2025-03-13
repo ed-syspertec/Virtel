@@ -2580,6 +2580,35 @@ Default=none
 This parameter defines the characteristics of the encryption performed by VIRTEL for page templates which specify the cryptographic identifier name2. The subparameters are the same as those of CRYPT1.
 
 .. index::
+   pair: Virtel TCT; CRYPTS parameter
+
+CRYPTS parameter
+^^^^^^^^^^^^^^^^
+
+::
+
+
+  CRYPTS=name
+
+**Default** = NONE
+
+This parameter defines VIRTEL’s Session Code encryption conditions.
+
+**name** - A name which serves to identify the encryption algorithm to apply.
+
++---------------+--------------------------------------------------------------------------+
+| Value         |                          Description                                     |
++===============+==========================================================================+
+| NONE          | No encryption (Default value)                                            |
++---------------+--------------------------------------------------------------------------+
+| AES-128       | Advanced Encryption Standard, key size 128 bits (16 byte key)            |
++---------------+--------------------------------------------------------------------------+
+| AES-192       | Advanced Encryption Standard, key size 192 bits (24 byte key)            |
++---------------+--------------------------------------------------------------------------+
+| AES-256       | Advanced Encryption Standard, key size 256 bits (24 byte key)            |
++---------------+--------------------------------------------------------------------------+
+
+.. index::
    pair: Virtel TCT; DEFENTR parameter	
 
 DEFENTR parameter
