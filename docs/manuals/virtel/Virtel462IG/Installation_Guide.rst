@@ -3632,7 +3632,7 @@ For the z/OS environment, the following options can be specified:
 	Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: **SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)**
 	You can also specify the minimum passphrase length using the Passphrase Length option. Default is 14 characters long.
 	The following sets the Passphrase length to 10 : 
-	**SECURE=(RACROUTE,RACF,PASSPHRASE,10)**
+	**SECUR=(RACROUTE,RACF,PASSPHRASE,10)**
 
 	Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase. Passphrases will always be mixed characters (Upper and Lower case) and will never be "UPPERCASED".    
 
