@@ -179,18 +179,19 @@ LINE Command
 Display line detail
 ^^^^^^^^^^^^^^^^^^^
 
-To display detail information about a Virtel line use the line detail command.
+To display detail or extended information about a Virtel line use the line display command.
 
 ::
 
     LINE=linename,DISPLAY (or L=linename,D)
+    LINE=linename,EXTENDED (or L=linename,E)
 
 linename
     Internal or external name of the line
 
 The LINE DISPLAY command displays the status of a line and its associated terminals.
 
-Example::
+Example Detail Display::
 
     F VIRTEL,LINE=C-HTTP,D                              
     VIR0200I LINE=C-HTTP,D                                
@@ -223,6 +224,17 @@ Example::
     VIR0204I W2HTP003 REHVT003 REHIP003                   
     VIR0204I W2HTP004 REHVT004 REHIP004                   
     VIR0204I ---END OF LIST---           
+
+Example Extended Display::
+
+    VIR0200I LINE=C-HTTP,E                                                        
+    VIR0202I DISPLAY      676                                                     
+    EXTENDED TERMINAL DISPLAY FOR LINE: C-HTTP                                    
+    PREFIX   : CL      TYPE : TCP1    DEFINED :    130  LINKED :    130           
+    ACTIVE   :      0  TOTAL:      0  MAX. CON:      0  TIME   :      0           
+    NO ACTIVE TERMINALS                                                           
+    VIR0202I END
+
 
 .. raw:: latex
 

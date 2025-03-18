@@ -227,8 +227,9 @@ VIR0202I ---END OF LIST---
 <span id="index-5"></span><h3>LINE Command<a class="headerlink" href="#line-command" title="Permalink to this heading"></a></h3>
 <section id="display-line-detail">
 <h4>Display line detail<a class="headerlink" href="#display-line-detail" title="Permalink to this heading"></a></h4>
-<p>To display detail information about a Virtel line use the line detail command.</p>
+<p>To display detail or extended information about a Virtel line use the line display command.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">EXTENDED</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">E</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="simple">
@@ -236,7 +237,7 @@ VIR0202I ---END OF LIST---
 </dd>
 </dl>
 <p>The LINE DISPLAY command displays the status of a line and its associated terminals.</p>
-<p>Example:</p>
+<p>Example Detail Display:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">D</span>
 <span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">D</span>
 <span class="n">VIR0207I</span> <span class="n">LINE</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">TCP1</span>  <span class="n">HTTP</span> <span class="n">STARTED</span>
@@ -268,6 +269,16 @@ VIR0202I ---END OF LIST---
 <span class="n">VIR0204I</span> <span class="n">W2HTP003</span> <span class="n">REHVT003</span> <span class="n">REHIP003</span>
 <span class="n">VIR0204I</span> <span class="n">W2HTP004</span> <span class="n">REHVT004</span> <span class="n">REHIP004</span>
 <span class="n">VIR0204I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<p>Example Extended Display:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">E</span>
+<span class="n">VIR0202I</span> <span class="n">DISPLAY</span>      <span class="mi">676</span>
+<span class="n">EXTENDED</span> <span class="n">TERMINAL</span> <span class="n">DISPLAY</span> <span class="n">FOR</span> <span class="n">LINE</span><span class="p">:</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>
+<span class="n">PREFIX</span>   <span class="p">:</span> <span class="n">CL</span>      <span class="n">TYPE</span> <span class="p">:</span> <span class="n">TCP1</span>    <span class="n">DEFINED</span> <span class="p">:</span>    <span class="mi">130</span>  <span class="n">LINKED</span> <span class="p">:</span>    <span class="mi">130</span>
+<span class="n">ACTIVE</span>   <span class="p">:</span>      <span class="mi">0</span>  <span class="n">TOTAL</span><span class="p">:</span>      <span class="mi">0</span>  <span class="n">MAX</span><span class="o">.</span> <span class="n">CON</span><span class="p">:</span>      <span class="mi">0</span>  <span class="n">TIME</span>   <span class="p">:</span>      <span class="mi">0</span>
+<span class="n">NO</span> <span class="n">ACTIVE</span> <span class="n">TERMINALS</span>
+<span class="n">VIR0202I</span> <span class="n">END</span>
 </pre></div>
 </div>
 </section>
