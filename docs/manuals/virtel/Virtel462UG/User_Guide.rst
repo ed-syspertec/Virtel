@@ -12662,24 +12662,27 @@ CALL VIRSETA example
 ::
 
         in Working-Storage:
+
         01 WS-ARRAY.
-        05 WS-ELEMENT OCCURS 50 TIMES.
-        10 WS-DATA-ITEM PIC X(80).
-        10 FILLER PIC X(20).
+            05 WS-ELEMENT OCCURS 50 TIMES.
+                10 WS-DATA-ITEM PIC X(80).
+                10 FILLER PIC X(20).
         77 WS-ELEMENT-SIZE PIC S9(4) COMP SYNC.
         77 WS-COUNT PIC S9(4) COMP SYNC.
         77 WS-DATA-LENGTH PIC S9(4) COMP SYNC.
+
         in the Procedure Division:
+
         MOVE LENGTH OF WS-ELEMENT (1) TO WS-ELEMENT-SIZE.
         MOVE 50 TO WS-COUNT.
         MOVE LENGTH OF WS-DATA-ITEM (1) TO WS-DATA-LENGTH.
         CALL 'VIRSETA' USING DFHEIBLK
-        DFHCOMMAREA
-        BY CONTENT 'MYVAR '
-        BY REFERENCE WS-ARRAY
-        WS-ELEMENT-SIZE
-        WS-COUNT
-        WS-DATA-LENGTH.
+                       DFHCOMMAREA
+                       BY CONTENT 'MYVAR '
+                       BY REFERENCE WS-ARRAY
+                       WS-ELEMENT-SIZE
+                       WS-COUNT
+                       WS-DATA-LENGTH.
 
 *Example of VIRTEL Web Integration application using CALL VIRSETA*
 
@@ -12748,15 +12751,18 @@ CALL VIRSETV example
 ::
 
         in Working-Storage:
+
         77 WS-BUFFER PIC X(80) VALUE '** MY VALUE **'.
         77 WS-LENGTH PIC S9(4) COMP SYNC.
+        
         in the Procedure Division:
+        
         MOVE LENGTH OF WS-BUFFER TO WS-LENGTH.
         CALL 'VIRSETV' USING DFHEIBLK
-        DFHCOMMAREA
-        BY CONTENT 'MYVAR '
-        BY REFERENCE WS-BUFFER
-        WS-LENGTH.
+                       DFHCOMMAREA
+                       BY CONTENT 'MYVAR '
+                       BY REFERENCE WS-BUFFER
+                       WS-LENGTH.
 
 *Example of VIRTEL Web Integration application using CALL VIRSETV*
 
@@ -12828,7 +12834,7 @@ CALL VIRSETAI example
         in Working-Storage:
 
         01 WS-TABLE.
-        05 WS-ELEMENT PIC X(80) OCCURS 100 TIMES.
+            05 WS-ELEMENT PIC X(80) OCCURS 100 TIMES.
         77 WS-TESTDATA PIC X(10) VALUE 'TEST DATA'.
         77 WS-ELEMSIZE PIC S9(4) COMP SYNC.
         77 WS-COUNT PIC S9(4) COMP SYNC.
@@ -12844,12 +12850,12 @@ CALL VIRSETAI example
         MOVE 3 TO WS-COUNT.
         MOVE LENGTH OF WS-TESTDATA TO WS-DATALEN.
         CALL 'VIRSETAI' USING CONTENT 'MYVAR '
-        REFERENCE WS-TABLE
-        WS-ELEMSIZE
-        WS-COUNT
-        WS-DATALEN
-        LS-IOPCB
-        RETURNING WS-RC1.
+                        REFERENCE WS-TABLE
+                        WS-ELEMSIZE
+                        WS-COUNT
+                        WS-DATALEN
+                        LS-IOPCB
+                        RETURNING WS-RC1.
         IF WS-RC1 NOT EQUAL 0 GO TO ERROR.
 
 *Example of VIRTEL Web Integration application using CALL VIRSETAI*
