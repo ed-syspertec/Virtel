@@ -125,11 +125,10 @@ AT-TLS.</p>
 <p>AT_TLS inserts itself in the connection between the application and
 browser. This means that the application will send and receive clear
 text over the socket interface, but data over the network is encrypted
-by system SSL. System SSL has three supported protocol levels:</p>
+by system SSL. System SSL has three several protocol levels. For example :</p>
 <p>TLSv1</p>
-<p>SSLv2</p>
-<p>SSLv3</p>
-<p>In this configuration we will be using SSLv3.</p>
+<p>TLSv1.n (Where n can be a 1, 2 or 3)</p>
+<p>In this configuration we will be using TLSv1.</p>
 <p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <ol class="arabic simple">
 <li><p>The Client contacts the Server with “Hello” message:
@@ -474,10 +473,8 @@ TTLSEnvironmentAction section and the TTLSRule section.</p>
                 <span class="p">}</span>
                 <span class="n">TTLSEnvironmentAdvancedParms</span>
                 <span class="p">{</span>
-                        <span class="n">SSLv2</span> <span class="n">On</span>
-                        <span class="n">SSLv3</span> <span class="n">On</span>
                         <span class="n">TLSv1</span> <span class="n">On</span>
-                        <span class="n">ClientAuthType</span> <span class="n">SAFCheck</span>
+                        <span class="n">ClientAuthType</span> <span class="n">Full</span>
                 <span class="p">}</span>
                 <span class="n">TTLSCipherParmsRef</span> <span class="n">VIRTELcipher</span>
 <span class="p">}</span>
