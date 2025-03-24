@@ -3147,15 +3147,15 @@ LANG parameter
 
 ::
 
-	LANG='E'                             Default=' '
+	LANG='E|F'                           Default='F'
 
 Specifies the language in which the VIRTEL administration panels are displayed. The following values are possible:
-**' '** - French language.
+**'F'** - French language.
 **'E'** - English language.
 
 .. note::
 
-	The apostrophes are required.
+	The apostrophes are required. For backward compatibility ' ' is also supported as an alternative to 'F'.
 
 .. index::
    pair: Virtel TCT; LICENCE parameter	
