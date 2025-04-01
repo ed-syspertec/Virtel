@@ -3894,8 +3894,18 @@ Module
 Meaning
     The transaction at terminal termid called for a scenario module which was not valid.
 Action
-    Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
+    Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.  
+    
 
+
+VIR11D3W termid IND$FILE DOWNLOAD CANCELED BECAUSE LARGER THAN HTPARM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0011D
+Meaning
+    The file transfer has been cancelled because the file size is larger than the TCT HTPARM(2) setting.
+Action
+    Increase the TCT HTPARM(2) setting.
 Messages VIR15xxx
 ^^^^^^^^^^^^^^^^^
 
