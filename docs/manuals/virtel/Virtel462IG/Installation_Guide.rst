@@ -3211,16 +3211,19 @@ LPKALIVE parameter
 
 ::
 	
-	LPKALIVE=nnn         LONG POLL KEEP ALIVE VALUE in Seconds.  
-
-It is possible for some intermediary equipment or firewalls to try to close the Virtel Long Poll session, because is appears to be a stalled request. From the user's point of view, this can appear as a hung session (the long poll session is used by Virtel to dynamically refresh the 3270 screen in the browser when it is modified outside of the http send/receive conversation). 
-This parameter forces the LP sessions to be restarted at regular intervals (see example below).
+	LPKALIVE=nnn                                                   Default=0  
 
 nnn
-  Long Poll Keep Alive value in seconds. LPKALIVE=0 means that Long Poll Keep Alive is inactive
+  Long poll keep alive value in seconds. LPKALIVE=0 means that Long Poll Keep Alive is inactive. This value should be set in adequation with the firewall/proxy settings for long-running http requests.
+
+This parameter concerns the Virtel "long poll" session that is used by Virtel to dynamically refresh the 3270 screen in the browser when it is modified by the application outside of the synchronous http send/receive conversation. 
+
+Some firewalls are unhappy with long-running HTTP requests (which is the case of the long poll session), and therefore sometimes kill the Virtel long poll session because it appears to be a stalled request. From the user's point of view, this appears as a hung session.
+
+This parameter forces the LP sessions to be restarted at regular intervals (see example below).
 
 Example: LPKALIVE=120
-  A 304 response to the LongPoll session will be sent by Virtel 120 seconds after receiving a LP=0 request. After the 304 response, the javascript side closes and re-opens a new long poll session.
+  A 304 response to the long poll session will be sent by Virtel 120 seconds after receiving the LP request. After receiving the 304 response, the Virtel JavaScript reacts by closing the LP session and re-opening a new one.
 
 This parameter should only be included in the TCT if recommended by Syspertec.  
 
