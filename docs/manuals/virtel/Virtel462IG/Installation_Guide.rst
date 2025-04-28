@@ -3213,13 +3213,14 @@ LPKALIVE parameter
 	
 	LPKALIVE=nnn         LONG POLL KEEP ALIVE VALUE in Seconds.  
 
-It is possible for some intermediary equipment or firewalls to try to close the Virtel Long Poll session, because is appears to be a stalled request. This causes or appears as a hung session. This parameter forces the LP sessions to be restarted at regular intervals.
+It is possible for some intermediary equipment or firewalls to try to close the Virtel Long Poll session, because is appears to be a stalled request. From the user's point of view, this can appear as a hung session (the long poll session is used by Virtel to dynamically refresh the 3270 screen in the browser when it is modified outside of the http send/receive conversation). 
+This parameter forces the LP sessions to be restarted at regular intervals (see example below).
 
 nnn
-  Long Poll Keep Alive value in seconds. LPKALIVE=0 means that Long Poll Keepalive is inactive
+  Long Poll Keep Alive value in seconds. LPKALIVE=0 means that Long Poll Keep Alive is inactive
 
 Example: LPKALIVE=120
-  A 304 response to the LongPoll session will be sent by Virtel 120 seconds after receiving a LP=0 request.
+  A 304 response to the LongPoll session will be sent by Virtel 120 seconds after receiving a LP=0 request. After the 304 response, the javascript side closes and re-opens a new long poll session.
 
 This parameter should only be included in the TCT if recommended by Syspertec.  
 
