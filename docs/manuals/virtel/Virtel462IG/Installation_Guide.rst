@@ -2320,9 +2320,9 @@ BUFSIZE parameter
 
 ::
 
-  BUFSIZE=n Default=8192
+  BUFSIZE=n Default=32000
 
-**n** - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The size is generally 8192.
+**n** - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The recommended size is 32000.
 
 .. index::
    pair: Virtel TCT; CHARSET parameter
@@ -4394,7 +4394,7 @@ An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB fo
 		CRYPT1=(CRYPT3270,NONE,NONE,NO-ENCRYPTION,HEX), *
 		TCP1=(TCPIP,,,250), <------ *
 		HTVSAM=VIRHTML, <------ *
-		BUFSIZE=20000, *
+		BUFSIZE=32000, *
 		ACCUEIL=YES, *
 		DEFENTR=PC, *
 		FCAPT=VIRCAPT, *
