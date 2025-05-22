@@ -2364,10 +2364,10 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 </section>
 <section id="bufsize-parameter">
 <span id="index-42"></span><h4>BUFSIZE parameter<a class="headerlink" href="#bufsize-parameter" title="Permalink to this heading"></a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BUFSIZE</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">8192</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BUFSIZE</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">32000</span>
 </pre></div>
 </div>
-<p><strong>n</strong> - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The size is generally 8192.</p>
+<p><strong>n</strong> - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The recommended size is 32000.</p>
 </section>
 <section id="charset-parameter">
 <span id="index-43"></span><h4>CHARSET parameter<a class="headerlink" href="#charset-parameter" title="Permalink to this heading"></a></h4>
@@ -3785,7 +3785,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
         <span class="n">CRYPT1</span><span class="o">=</span><span class="p">(</span><span class="n">CRYPT3270</span><span class="p">,</span><span class="n">NONE</span><span class="p">,</span><span class="n">NONE</span><span class="p">,</span><span class="n">NO</span><span class="o">-</span><span class="n">ENCRYPTION</span><span class="p">,</span><span class="n">HEX</span><span class="p">),</span> <span class="o">*</span>
         <span class="n">TCP1</span><span class="o">=</span><span class="p">(</span><span class="n">TCPIP</span><span class="p">,,,</span><span class="mi">250</span><span class="p">),</span> <span class="o">&lt;------</span> <span class="o">*</span>
         <span class="n">HTVSAM</span><span class="o">=</span><span class="n">VIRHTML</span><span class="p">,</span> <span class="o">&lt;------</span> <span class="o">*</span>
-        <span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="o">*</span>
+        <span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">32000</span><span class="p">,</span> <span class="o">*</span>
         <span class="n">ACCUEIL</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="o">*</span>
         <span class="n">DEFENTR</span><span class="o">=</span><span class="n">PC</span><span class="p">,</span> <span class="o">*</span>
         <span class="n">FCAPT</span><span class="o">=</span><span class="n">VIRCAPT</span><span class="p">,</span> <span class="o">*</span>

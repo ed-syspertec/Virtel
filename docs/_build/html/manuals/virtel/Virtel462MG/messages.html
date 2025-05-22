@@ -60,6 +60,19 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel462IG/Installation_Guide.html">Installation Guide V4.62</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Messages V4.62</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-messages">Virtel Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk1i-luname-connecting-terminal">VIRQLK1I luname CONNECTING terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk2i-luname-deconnecting-terminal">VIRQLK2I luname DECONNECTING terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk3i-luname-accepted-terminal">VIRQLK3I luname ACCEPTED terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk4i-luname-synchronizing-with-server-serverint">VIRQLK4I luname SYNCHRONIZING WITH server (serverInt)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk5i-local-line-luname-lunameint-is-waiting-for-remote-virtel-qlnkname">VIRQLK5I LOCAL LINE luname (lunameInt) IS WAITING FOR REMOTE VIRTEL : qlnkname</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk6e-luname-prtocol-error-code-snap-taken">VIRQLK6E luname PRTOCOL ERROR - code - SNAP TAKEN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk7i-luname-has-no-more-pseudo-terminals">VIRQLK7I luname HAS NO MORE PSEUDO TERMINALS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk8i-local-line-luname-lunameint-is-connected-to-remote-virtel-terminal">VIRQLK8I LOCAL LINE luname (lunameInt) IS CONNECTED TO REMOTE VIRTEL : terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk9i-initialisation-for-luname-lunameint-version-version">VIRQLK9I INITIALISATION FOR luname (lunameInt) VERSION version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk9i-luname-send">VIRQLK9I luname SEND</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk9i-line-linename-was-stopped">VIRQLK9I LINE linename WAS STOPPED</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk9i-luname-receive-on-socket-puname">VIRQLK9I luname RECEIVE ON SOCKET puname</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virqlk9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-terminal">VIRQLK9E luname IS REQUESTING DUPLICATE CORRELATOR correlator. ALREADY ALLOCATED TO terminal</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel462MI/Migration_Guide.html">Migration Guide V4.62</a></li>
@@ -7920,8 +7933,151 @@ Contact technical support.</p>
 </section>
 <section id="messages-virqlxxx">
 <h4>Messages VIRQLxxx<a class="headerlink" href="#messages-virqlxxx" title="Permalink to this heading"></a></h4>
-<section id="virql51i-luname-connecting-terminal-to-server">
-<h5>VIRQL51I luname CONNECTING terminal TO server<a class="headerlink" href="#virql51i-luname-connecting-terminal-to-server" title="Permalink to this heading"></a></h5>
+</section>
+</section>
+</section>
+<section id="virqlk1i-luname-connecting-terminal">
+<h2>VIRQLK1I luname CONNECTING terminal<a class="headerlink" href="#virqlk1i-luname-connecting-terminal" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is connecting with remoter terminal terminalname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk2i-luname-deconnecting-terminal">
+<h2>VIRQLK2I luname DECONNECTING terminal<a class="headerlink" href="#virqlk2i-luname-deconnecting-terminal" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is disconnecting from terminal terminalname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk3i-luname-accepted-terminal">
+<h2>VIRQLK3I luname ACCEPTED terminal<a class="headerlink" href="#virqlk3i-luname-accepted-terminal" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is disconnecting from terminal terminalname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk4i-luname-synchronizing-with-server-serverint">
+<h2>VIRQLK4I luname SYNCHRONIZING WITH server (serverInt)<a class="headerlink" href="#virqlk4i-luname-synchronizing-with-server-serverint" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is disconnecting from terminal terminalname</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk5i-local-line-luname-lunameint-is-waiting-for-remote-virtel-qlnkname">
+<h2>VIRQLK5I LOCAL LINE luname (lunameInt) IS WAITING FOR REMOTE VIRTEL : qlnkname<a class="headerlink" href="#virqlk5i-local-line-luname-lunameint-is-waiting-for-remote-virtel-qlnkname" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname is waiting for qlnkname to respond to complete connection.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk6e-luname-prtocol-error-code-snap-taken">
+<h2>VIRQLK6E luname PRTOCOL ERROR - code - SNAP TAKEN<a class="headerlink" href="#virqlk6e-luname-prtocol-error-code-snap-taken" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>Protocol error on luname. Unable to continue. Code indicates the error type.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact Technical Support.</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk7i-luname-has-no-more-pseudo-terminals">
+<h2>VIRQLK7I luname HAS NO MORE PSEUDO TERMINALS<a class="headerlink" href="#virqlk7i-luname-has-no-more-pseudo-terminals" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>Pseudo terminals have been exhausted. No more connections possible.</p>
+</dd>
+<dt>Action</dt><dd><p>Add more terminals. Contact Technical Support for additional help.</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk8i-local-line-luname-lunameint-is-connected-to-remote-virtel-terminal">
+<h2>VIRQLK8I LOCAL LINE luname (lunameInt) IS CONNECTED TO REMOTE VIRTEL : terminal<a class="headerlink" href="#virqlk8i-local-line-luname-lunameint-is-connected-to-remote-virtel-terminal" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>Successful QLNK connection between local luname and remote terminal.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk9i-initialisation-for-luname-lunameint-version-version">
+<h2>VIRQLK9I INITIALISATION FOR luname (lunameInt) VERSION version<a class="headerlink" href="#virqlk9i-initialisation-for-luname-lunameint-version-version" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>Successful initialisation of QLNK luname.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action Required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk9i-luname-send">
+<h2>VIRQLK9I luname SEND<a class="headerlink" href="#virqlk9i-luname-send" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>luname has issued a send request.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk9i-line-linename-was-stopped">
+<h2>VIRQLK9I LINE linename WAS STOPPED<a class="headerlink" href="#virqlk9i-line-linename-was-stopped" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>QLNK line linename has been stopped.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk9i-luname-receive-on-socket-puname">
+<h2>VIRQLK9I luname RECEIVE ON SOCKET puname<a class="headerlink" href="#virqlk9i-luname-receive-on-socket-puname" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>A message has been received on the physical socket puname.</p>
+</dd>
+<dt>Action</dt><dd><p>No Action required</p>
+</dd>
+</dl>
+</section>
+<section id="virqlk9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-terminal">
+<h2>VIRQLK9E luname IS REQUESTING DUPLICATE CORRELATOR correlator. ALREADY ALLOCATED TO terminal<a class="headerlink" href="#virqlk9e-luname-is-requesting-duplicate-correlator-correlator-already-allocated-to-terminal" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Module</dt><dd><p>VIR0QLK</p>
+</dd>
+<dt>Meaning</dt><dd><p>Setup has occurred in establishing QLNKS. Check configuration.</p>
+</dd>
+<dt>Action</dt><dd><p>Contact Technical Support.</p>
+</dd>
+</dl>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -7930,9 +8086,6 @@ Contact technical support.</p>
 </dl>
 <p>Action
 No Action Required</p>
-</section>
-<section id="virql58e-luname-luintern-is-not-an-output-line-cannot-connect">
-<h5>VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT<a class="headerlink" href="#virql58e-luname-luintern-is-not-an-output-line-cannot-connect" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -7941,9 +8094,6 @@ No Action Required</p>
 </dl>
 <p>Action
 Contact Technical Support.</p>
-</section>
-<section id="virql59e-luname-luintern-is-not-open-cannot-connect">
-<h5>VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT<a class="headerlink" href="#virql59e-luname-luintern-is-not-open-cannot-connect" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -7952,12 +8102,6 @@ Contact Technical Support.</p>
 </dl>
 <p>Action
 Contact Technical Support.</p>
-</section>
-</section>
-<section id="messages-virq9xxx">
-<h4>Messages VIRQ9xxx<a class="headerlink" href="#messages-virq9xxx" title="Permalink to this heading"></a></h4>
-<section id="virq903w-line-linename-has-a-session-started-with-mqm-mqmname">
-<h5>VIRQ903W LINE linename HAS A SESSION STARTED WITH MQM mqmname<a class="headerlink" href="#virq903w-line-linename-has-a-session-started-with-mqm-mqmname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -7966,9 +8110,6 @@ Contact Technical Support.</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virq904w-linename-object-socknum-waiting-for-input">
-<h5>VIRQ904W linename OBJECT socknum WAITING FOR INPUT<a class="headerlink" href="#virq904w-linename-object-socknum-waiting-for-input" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -7977,9 +8118,6 @@ Contact Technical Support.</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virq904w-linename-object-socknum-has-message-of-length-hexlen-waiting">
-<h5>VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH ‘hexlen’ WAITING<a class="headerlink" href="#virq904w-linename-object-socknum-has-message-of-length-hexlen-waiting" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -7988,9 +8126,6 @@ Contact Technical Support.</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virq912w-linename-object-socknum-started">
-<h5>VIRQ912W linename OBJECT socknum STARTED<a class="headerlink" href="#virq912w-linename-object-socknum-started" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -7999,9 +8134,6 @@ Contact Technical Support.</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virq922w-linename-ending-object-socknum-for-mqmname">
-<h5>VIRQ922W linename ENDING OBJECT socknum FOR mqmname<a class="headerlink" href="#virq922w-linename-ending-object-socknum-for-mqmname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -8010,9 +8142,6 @@ Contact Technical Support.</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virq923e-linename-req-reqtype-completion-code-ccc-reason-code-xx-ddd-mqm-mqmname-linename-param-queuename">
-<h5>VIRQ923E linename REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename<a class="headerlink" href="#virq923e-linename-req-reqtype-completion-code-ccc-reason-code-xx-ddd-mqm-mqmname-linename-param-queuename" title="Permalink to this heading"></a></h5>
 <dl>
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -8029,9 +8158,6 @@ The following codes are commonly encountered:</p>
 </div></blockquote>
 </dd>
 </dl>
-</section>
-<section id="virq924e-linename-object-socknum-req-reqtype-completion-code-ccc-reason-code-xx-ddd-mqm-mqmname-linename-param-queuename">
-<h5>VIRQ924E linename OBJECT socknum REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename<a class="headerlink" href="#virq924e-linename-object-socknum-req-reqtype-completion-code-ccc-reason-code-xx-ddd-mqm-mqmname-linename-param-queuename" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -8040,9 +8166,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.</p>
 </dd>
 </dl>
-</section>
-<section id="virq925w-linename-mqm-mqmname-is-quiescing">
-<h5>VIRQ925W linename MQM mqmname IS QUIESCING<a class="headerlink" href="#virq925w-linename-mqm-mqmname-is-quiescing" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0Q09</p>
 </dd>
@@ -8051,12 +8174,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Restart the queue manager.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virr2xxx">
-<h4>Messages VIRR2xxx<a class="headerlink" href="#messages-virr2xxx" title="Permalink to this heading"></a></h4>
-<section id="virr211e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid">
-<h5>VIRR211E termid INVALID SERVER CALLED: ‘servid’ FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virr211e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0021R</p>
 </dd>
@@ -8065,12 +8182,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Correct the definition of transaction tranid.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virrwxxx">
-<h4>Messages VIRRWxxx<a class="headerlink" href="#messages-virrwxxx" title="Permalink to this heading"></a></h4>
-<section id="virrw01i-initialisation-for-linename-n-xxxxxx-version-x-xx">
-<h5>VIRRW01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx<a class="headerlink" href="#virrw01i-initialisation-for-linename-n-xxxxxx-version-x-xx" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8079,9 +8190,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw04i-line-linename-was-stopped">
-<h5>VIRRW04I LINE linename WAS STOPPED<a class="headerlink" href="#virrw04i-line-linename-was-stopped" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8090,9 +8198,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw27e-linename-is-rejected-at-entry-point-epname">
-<h5>VIRRW27E linename IS REJECTED AT ENTRY POINT epname<a class="headerlink" href="#virrw27e-linename-is-rejected-at-entry-point-epname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8101,9 +8206,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the definition of the line.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h5>VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virrw28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8112,9 +8214,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw29i-linename-has-no-more-pseudo-terminals">
-<h5>VIRRW29I linename HAS NO MORE PSEUDO TERMINALS<a class="headerlink" href="#virrw29i-linename-has-no-more-pseudo-terminals" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8123,9 +8222,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the definition of the line. Add more terminals if necessary.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw30i-linename-request-from-termname-sent-at-timestamp1-corr-correlator">
-<h5>VIRRW30I linename REQUEST FROM termname SENT AT timestamp1 CORR=correlator<a class="headerlink" href="#virrw30i-linename-request-from-termname-sent-at-timestamp1-corr-correlator" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8134,9 +8230,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw30i-linename-reply-timestamp1-at-timestamp2-corr-correlator-q-qname">
-<h5>VIRRW30I linename REPLY timestamp1 AT timestamp2 CORR=correlator Q=qname<a class="headerlink" href="#virrw30i-linename-reply-timestamp1-at-timestamp2-corr-correlator-q-qname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8145,9 +8238,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw31i-linename-request-timestamp1-corr-correlator-timeout-q-qname">
-<h5>VIRRW31I linename REQUEST timestamp1 CORR=correlator TIMEOUT Q=qname<a class="headerlink" href="#virrw31i-linename-request-timestamp1-corr-correlator-timeout-q-qname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8156,9 +8246,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the message queue manager log to determine why no response was received.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw51i-linename-connecting-termname">
-<h5>VIRRW51I linename CONNECTING termname<a class="headerlink" href="#virrw51i-linename-connecting-termname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8167,9 +8254,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw52i-linename-deconnecting-termname">
-<h5>VIRRW52I linename DECONNECTING termname<a class="headerlink" href="#virrw52i-linename-deconnecting-termname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8178,9 +8262,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw54e-invalid-request-on-linename-entry-point-epname-directory-dirname">
-<h5>VIRRW54E INVALID REQUEST ON linename ENTRY POINT ‘epname’ DIRECTORY ‘dirname’<a class="headerlink" href="#virrw54e-invalid-request-on-linename-entry-point-epname-directory-dirname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8189,9 +8270,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw55e-invalid-rule-rulename-entry-point-epname">
-<h5>VIRRW55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virrw55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8200,9 +8278,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the entry point name specified in the rule definition.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw99i-linename-message-received-from-socket-socknum">
-<h5>VIRRW99I linename MESSAGE RECEIVED FROM SOCKET socknum<a class="headerlink" href="#virrw99i-linename-message-received-from-socket-socknum" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8211,9 +8286,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virrw99i-linename-send-to-socket-socknum">
-<h5>VIRRW99I linename SEND TO SOCKET socknum<a class="headerlink" href="#virrw99i-linename-send-to-socket-socknum" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0RAW</p>
 </dd>
@@ -8222,12 +8294,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virs1xxx">
-<h4>Messages VIRS1xxx<a class="headerlink" href="#messages-virs1xxx" title="Permalink to this heading"></a></h4>
-<section id="virs121w-termid-error-loading-scenario-modname-in-transaction-tranid">
-<h5>VIRS121W termid ERROR LOADING SCENARIO modname IN TRANSACTION tranid<a class="headerlink" href="#virs121w-termid-error-loading-scenario-modname-in-transaction-tranid" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8236,9 +8302,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the log for a previous message VIR0031W. Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.</p>
 </dd>
 </dl>
-</section>
-<section id="virs122w-termid-invalid-fa39-scenario-received">
-<h5>VIRS122W termid INVALID FA39 SCENARIO RECEIVED<a class="headerlink" href="#virs122w-termid-invalid-fa39-scenario-received" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8247,9 +8310,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.</p>
 </dd>
 </dl>
-</section>
-<section id="virs123w-termid-error-loading-scenario-modname-in-entry-point-epname">
-<h5>VIRS123W termid ERROR LOADING SCENARIO modname IN ENTRY POINT epname<a class="headerlink" href="#virs123w-termid-error-loading-scenario-modname-in-entry-point-epname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8258,9 +8318,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the log for a previous message VIR0031W. Check the module name specified in the “Identification Scenario” field of entry point epname. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.</p>
 </dd>
 </dl>
-</section>
-<section id="virs124e-termid-virsv-create-error-r15-xxxxxxxx-dddddddd">
-<h5>VIRS124E termid VIRSV CREATE ERROR – R15 : xxxxxxxx (dddddddd)<a class="headerlink" href="#virs124e-termid-virsv-create-error-r15-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8269,9 +8326,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPCREA return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. If VIRTEL runs as an APF-authorized task, check that the VIRSV load library is APF-authorized.</p>
 </dd>
 </dl>
-</section>
-<section id="virs125e-termid-virsv-request-error-r15-xxxxxxxx-dddddddd">
-<h5>VIRS125E termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd)<a class="headerlink" href="#virs125e-termid-virsv-request-error-r15-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8280,9 +8334,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPREQS return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check that the requested service program exists in a load library in the SERVLIB concatenation of the VIRTEL started task JCL. If VIRTEL runs as an APF-authorized task, check that the load library containing the service program is APF-authorized.</p>
 </dd>
 </dl>
-</section>
-<section id="virs126e-termid-virsv-application-error-code-xxxxxxxx-dddddddd">
-<h5>VIRS126E termid VIRSV APPLICATION ERROR CODE : xxxxxxxx (dddddddd)<a class="headerlink" href="#virs126e-termid-virsv-application-error-code-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8291,9 +8342,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Determine the meaning of the service program return code and take appropriate action.</p>
 </dd>
 </dl>
-</section>
-<section id="virs127e-termid-virsv-services-unavailable">
-<h5>VIRS127E termid VIRSV SERVICES UNAVAILABLE<a class="headerlink" href="#virs127e-termid-virsv-services-unavailable" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8302,9 +8350,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check that the VIRTCT contains a VIRSV1 parameter. If so, check the VIRTEL log to determine why the VIRSV facility failed to initialise at VIRTEL startup. Refer to message VIR0090E.</p>
 </dd>
 </dl>
-</section>
-<section id="virs129e-termid-error-scenario-scenname-abended-at-offset-xxxxxxxx-on-instruction-starting-with-yyyyyyyy-input-output-identification-scenario-is-discarded">
-<h5>VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET ‘xxxxxxxx’ ON INSTRUCTION STARTING WITH ‘yyyyyyyy’ [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]<a class="headerlink" href="#virs129e-termid-error-scenario-scenname-abended-at-offset-xxxxxxxx-on-instruction-starting-with-yyyyyyyy-input-output-identification-scenario-is-discarded" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8313,9 +8358,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the assembly listing to verify that the scenario has been correctly assembled. Check that the correct level macro library was used.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12ai-termid-error-scenario-scenname-was-abnormally-stopped-at-offset-xxxxxxxx">
-<h5>VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET ‘xxxxxxxx’<a class="headerlink" href="#virs12ai-termid-error-scenario-scenname-was-abnormally-stopped-at-offset-xxxxxxxx" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8324,9 +8366,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12be-scenario-requires-header-headername-not-found-in-tct-aborting">
-<h5>VIRS12BE SCENARIO REQUIRES HEADER ‘headername’ NOT FOUND IN TCT : ABORTING<a class="headerlink" href="#virs12be-scenario-requires-header-headername-not-found-in-tct-aborting" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8335,9 +8374,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Add headername to the HTHEADR parameter of the VIRTCT.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12ce-termid-virsv-request-error-r15-xxxxxxxx-dddddddd-from-progname">
-<h5>VIRS12CE termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd) FROM progname<a class="headerlink" href="#virs12ce-termid-virsv-request-error-r15-xxxxxxxx-dddddddd-from-progname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8346,9 +8382,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRSV documentation for the meaning of the return code.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12de-termid-virsv-transaction-error-code-xxxxxxxx-dddddddd-from-progname">
-<h5>VIRS12DE termid VIRSV TRANSACTION ERROR CODE : xxxxxxxx (dddddddd) FROM progname<a class="headerlink" href="#virs12de-termid-virsv-transaction-error-code-xxxxxxxx-dddddddd-from-progname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8357,9 +8390,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRSV documentation for the meaning of the return code.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12ee-termid-scenario-scenname-returned-error-dddddddd">
-<h5>VIRS12EE termid SCENARIO scenname RETURNED ERROR : ‘dddddddd’<a class="headerlink" href="#virs12ee-termid-scenario-scenname-returned-error-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8368,9 +8398,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Determine the meaning of the scenario return code and take appropriate action.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12fe-termid-error-scenario-scenname-calls-undefined-transaction-tranname-at-offset-xxxxxxxx">
-<h5>VIRS12FE termid ERROR: SCENARIO ‘scenname’ CALLS UNDEFINED TRANSACTION ‘tranname’ AT OFFSET ‘xxxxxxxx’<a class="headerlink" href="#virs12fe-termid-error-scenario-scenname-calls-undefined-transaction-tranname-at-offset-xxxxxxxx" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8379,9 +8406,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Verify that the entry point contains a type 5 transaction whose external name is tranname, or correct the transaction name in the scenario.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12ge-cannot-resolve-passticket-of-type-applname-aborting-scenario">
-<h5>VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE ‘applname’ ABORTING SCENARIO<a class="headerlink" href="#virs12ge-cannot-resolve-passticket-of-type-applname-aborting-scenario" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8390,9 +8414,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Possible causes are: (1) Not signed on (2) Transaction not found (3) No application name in transaction (4) PASSTCK not specified in VIRTCT (5) Application name not found in PASSTCK table (6) Request is neither GENERATE nor EVALUATE (7) Request specifies GENERATE or EVALUATE but does not match corresponding entry in the PASSTCK table (8) Insufficient storage for workarea (9) Error linking to module IRRSPK00</p>
 </dd>
 </dl>
-</section>
-<section id="virs12he-termid-error-scenario-scenname-racf-ticketserv-generate-evaluate-saf-rc-safrc-racf-rc-racfrc-racf-reason-racfreas">
-<h5>VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: ‘safrc’ RACF RC: ‘racfrc’ RACF reason: ‘racfreas’<a class="headerlink" href="#virs12he-termid-error-scenario-scenname-racf-ticketserv-generate-evaluate-saf-rc-safrc-racf-rc-racfrc-racf-reason-racfreas" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8401,9 +8422,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>For an explanation of the return codes and reason codes, refer to the IBM manual z/OS Security Server RACF Callable Services chapter 2: “R_ticketserv”.</p>
 </dd>
 </dl>
-</section>
-<section id="virs12ie-termid-loop-was-detected-in-scenario-scenname">
-<h5>VIRS12IE termid LOOP WAS DETECTED IN SCENARIO scenname<a class="headerlink" href="#virs12ie-termid-loop-was-detected-in-scenario-scenname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0S12</p>
 </dd>
@@ -8412,12 +8430,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>For an explanation on the way to identify or manage loops in scenario, refer to the HANDLE$ LOOP instrauction in the VIRTEL Web Access documentation.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virsmxxx">
-<h4>Messages VIRSMxxx<a class="headerlink" href="#messages-virsmxxx" title="Permalink to this heading"></a></h4>
-<section id="virsm01i-smtp-initialisation-for-linename-n-xxxxxx-version-x-xx">
-<h5>VIRSM01I SMTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx<a class="headerlink" href="#virsm01i-smtp-initialisation-for-linename-n-xxxxxx-version-x-xx" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8426,9 +8438,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm04i-smtp-line-linename-was-stopped">
-<h5>VIRSM04I SMTP LINE linename WAS STOPPED<a class="headerlink" href="#virsm04i-smtp-line-linename-was-stopped" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8437,9 +8446,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm27e-linename-is-rejected-at-entry-point-epname">
-<h5>VIRSM27E linename IS REJECTED AT ENTRY POINT epname<a class="headerlink" href="#virsm27e-linename-is-rejected-at-entry-point-epname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8448,9 +8454,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the definition of the SMTP line.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h5>VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virsm28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8459,9 +8462,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm29i-linename-has-no-more-pseudo-terminals">
-<h5>VIRSM29I linename HAS NO MORE PSEUDO TERMINALS<a class="headerlink" href="#virsm29i-linename-has-no-more-pseudo-terminals" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8470,9 +8470,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the definition of the line. Add more terminals if necessary.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm51i-linename-connecting-termname">
-<h5>VIRSM51I linename CONNECTING termname<a class="headerlink" href="#virsm51i-linename-connecting-termname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8481,9 +8478,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm52i-linename-deconnecting-termname">
-<h5>VIRSM52I linename DECONNECTING termname<a class="headerlink" href="#virsm52i-linename-deconnecting-termname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8492,9 +8486,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm55e-invalid-rule-rulename-entry-point-epname">
-<h5>VIRSM55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virsm55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8503,9 +8494,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the entry point name specified in the rule definition.</p>
 </dd>
 </dl>
-</section>
-<section id="virsm581-message-from-xxx-xxx-xxx-to-xxx-xxx-xxx-was-rejected">
-<h5>VIRSM581 MESSAGE FROM <a class="reference external" href="mailto:xxx&#37;&#52;&#48;xxx&#46;xxx">xxx<span>&#64;</span>xxx<span>&#46;</span>xxx</a> TO <a class="reference external" href="mailto:xxx&#37;&#52;&#48;xxx&#46;xxx">xxx<span>&#64;</span>xxx<span>&#46;</span>xxx</a> WAS REJECTED<a class="headerlink" href="#virsm581-message-from-xxx-xxx-xxx-to-xxx-xxx-xxx-was-rejected" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRSMTP</p>
 </dd>
@@ -8514,12 +8502,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="id7">
-<h4>Messages VIRTNXXX<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
-<section id="virtn01i-initialisation-for-tn3270-server-version-v-vv">
-<h5>VIRTN01I INITIALISATION FOR TN3270 (server), VERSION V.VV<a class="headerlink" href="#virtn01i-initialisation-for-tn3270-server-version-v-vv" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -8528,9 +8510,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
-</section>
-<section id="virtn19i-luname-relay-resource-connected">
-<h5>VIRTN19I luname RELAY resource CONNECTED<a class="headerlink" href="#virtn19i-luname-relay-resource-connected" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -8539,9 +8518,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
-</section>
-<section id="virtn51i-luname-calling-server-ipaddr">
-<h5>VIRTN51I  luname CALLING SERVER ipaddr<a class="headerlink" href="#virtn51i-luname-calling-server-ipaddr" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -8550,9 +8526,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
-</section>
-<section id="virtn52i-tn3270-deconnecting-resoure">
-<h5>VIRTN52I TN3270 DECONNECTING resoure<a class="headerlink" href="#virtn52i-tn3270-deconnecting-resoure" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0TNET</p>
 </dd>
@@ -8561,12 +8534,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>No Action Required</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virt2xxx">
-<h4>Messages VIRT2xxx<a class="headerlink" href="#messages-virt2xxx" title="Permalink to this heading"></a></h4>
-<section id="virt251e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid">
-<h5>VIRT251E termid INVALID SERVER CALLED: ‘servid’ FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virt251e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0025T</p>
 </dd>
@@ -8575,12 +8542,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Correct the definition of transaction tranid.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virt9xxx">
-<h4>Messages VIRT9xxx<a class="headerlink" href="#messages-virt9xxx" title="Permalink to this heading"></a></h4>
-<section id="virt903w-line-linename-has-a-session-started-with-tcp-ip-tcpname-highest-socket-is-xxxxxxxx-dddddddd">
-<h5>VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS ‘xxxxxxxx’ (dddddddd)<a class="headerlink" href="#virt903w-line-linename-has-a-session-started-with-tcp-ip-tcpname-highest-socket-is-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8589,9 +8550,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None</p>
 </dd>
 </dl>
-</section>
-<section id="virt904i-line-linename-n-xxxxxx-is-using-tcp-ip-keepalive">
-<h5>VIRT904I LINE linename (n-xxxxxx) IS USING TCP/IP KEEPALIVE<a class="headerlink" href="#virt904i-line-linename-n-xxxxxx-is-using-tcp-ip-keepalive" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8600,9 +8558,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt905i-linename-socket-socknum-listening-ipaddr-port">
-<h5>VIRT905I linename SOCKET socknum LISTENING ipaddr:port<a class="headerlink" href="#virt905i-linename-socket-socknum-listening-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8611,9 +8566,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt906i-linename-socket-socknum-call-from-ipaddr-port">
-<h5>VIRT906I linename SOCKET socknum CALL FROM ipaddr:port<a class="headerlink" href="#virt906i-linename-socket-socknum-call-from-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8622,9 +8574,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt907i-linename-socket-socknum-calling-ipaddr-port">
-<h5>VIRT907I linename SOCKET socknum CALLING ipaddr:port<a class="headerlink" href="#virt907i-linename-socket-socknum-calling-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8633,9 +8582,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt912w-linename-socket-socknum-started-for-ipaddr-port">
-<h5>VIRT912W linename SOCKET socknum STARTED FOR ipaddr:port<a class="headerlink" href="#virt912w-linename-socket-socknum-started-for-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8644,9 +8590,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt918s-no-more-oscore-available">
-<h5>VIRT918S NO MORE OSCORE AVAILABLE<a class="headerlink" href="#virt918s-no-more-oscore-available" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8655,9 +8598,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the OSCORE parameter in the VIRTCT.</p>
 </dd>
 </dl>
-</section>
-<section id="virt920w-tcp-session-lost-for-lu-linename">
-<h5>VIRT920W TCP SESSION LOST FOR LU linename<a class="headerlink" href="#virt920w-tcp-session-lost-for-lu-linename" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8666,9 +8606,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the partner system to determine the cause of the error.</p>
 </dd>
 </dl>
-</section>
-<section id="virt922w-linename-socket-socknum-ended-for-ipaddr-port">
-<h5>VIRT922W linename SOCKET socknum ENDED FOR ipaddr:port<a class="headerlink" href="#virt922w-linename-socket-socknum-ended-for-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8677,9 +8614,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virt923e-error-on-linename-req-reqtype-retcode-ffffffff-errno-xx-ddd">
-<h5>VIRT923E ERROR ON: linename REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)<a class="headerlink" href="#virt923e-error-on-linename-req-reqtype-retcode-ffffffff-errno-xx-ddd" title="Permalink to this heading"></a></h5>
 <dl>
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8700,9 +8634,6 @@ The following codes are commonly encountered:</p>
 </div></blockquote>
 </dd>
 </dl>
-</section>
-<section id="virt924e-error-on-linename-socket-socknum-req-reqtype-retcode-ffffffff-errno-xx-ddd">
-<h5>VIRT924E ERROR ON: linename SOCKET: socknum REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)<a class="headerlink" href="#virt924e-error-on-linename-socket-socknum-req-reqtype-retcode-ffffffff-errno-xx-ddd" title="Permalink to this heading"></a></h5>
 <dl>
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8718,9 +8649,6 @@ The following codes are commonly encountered:</p>
 </div></blockquote>
 </dd>
 </dl>
-</section>
-<section id="virt925e-error-calling-port-port-at-server-servname">
-<h5>VIRT925E ERROR CALLING PORT port AT SERVER servname<a class="headerlink" href="#virt925e-error-calling-port-port-at-server-servname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0T09</p>
 </dd>
@@ -8729,12 +8657,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check preceding messages in the log. Check whether a firewall has blocked access to the specified port.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-viru1xxx">
-<h4>Messages VIRU1xxx<a class="headerlink" href="#messages-viru1xxx" title="Permalink to this heading"></a></h4>
-<section id="viru121e-termid-file-upload-failed-entry-point-epname-directory-dirname-file-filename-user-username">
-<h5>VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ FILE ‘filename’ USER ‘username’<a class="headerlink" href="#viru121e-termid-file-upload-failed-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0U12</p>
 </dd>
@@ -8743,9 +8665,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check, if necessary, that the user has successfully installed a cookie (see “Uploading pages via HTML secured by cookie” in the VIRTEL Web Access Guide). Check the definition of entry point epname. Check (using F6 in the VIRTEL configuration menu) that the directory has permissions “Copy to”, “Copy from”, and “Delete” all marked with “X”. Check that the DD name specified in the directory definition is included in the VIRTEL started task JCL.</p>
 </dd>
 </dl>
-</section>
-<section id="viru122i-termid-file-upload-entry-point-epname-directory-dirname-file-filename-user-username">
-<h5>VIRU122I termid FILE UPLOAD : ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ FILE ‘filename’ USER ‘username’<a class="headerlink" href="#viru122i-termid-file-upload-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0U12</p>
 </dd>
@@ -8754,9 +8673,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="viru123e-luname-file-broadcast-failed-for-file-ddname-reason">
-<h5>VIRU123E luname FILE BROADCAST FAILED FOR FILE ddname reason<a class="headerlink" href="#viru123e-luname-file-broadcast-failed-for-file-ddname-reason" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0U12</p>
 </dd>
@@ -8765,12 +8681,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the VIRPLEX line definitions. VIRTEL will take a SNAP dump to document the problem. Contact Technical Support for further assistance.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virucsxx">
-<h4>Messages VIRUCSxx<a class="headerlink" href="#messages-virucsxx" title="Permalink to this heading"></a></h4>
-<section id="virucs1e-termid-could-not-find-translation-table-tablename">
-<h5>VIRUCS1E termid COULD NOT FIND TRANSLATION TABLE tablename<a class="headerlink" href="#virucs1e-termid-could-not-find-translation-table-tablename" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0UCS</p>
 </dd>
@@ -8779,12 +8689,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check that the CODEPAGE parameter of the URL contains a valid translation table name, and that the table has been loaded by VIRTEL at startup, either as standard, or by the CHARSET parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virv1xxx">
-<h4>Messages VIRV1xxx<a class="headerlink" href="#messages-virv1xxx" title="Permalink to this heading"></a></h4>
-<section id="virv121e-termid-could-not-find-translation-table-tablname-for-page-pagename-directory-tranid-dirname">
-<h5>VIRV121E termid COULD NOT FIND TRANSLATION TABLE ‘tablname’ FOR PAGE ‘pagename’ DIRECTORY ‘tranid’ (dirname)<a class="headerlink" href="#virv121e-termid-could-not-find-translation-table-tablname-for-page-pagename-directory-tranid-dirname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0V12</p>
 </dd>
@@ -8793,9 +8697,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check that the table tablname specified in the SET-OUTPUT-ENCODING-UTF-8 instruction in the HTML page was loaded into VIRTEL at startup time, either as standard, or by being specified in the CHARSET parameter of the VIRTCT (see the VIRTEL Installation Guide manual).</p>
 </dd>
 </dl>
-</section>
-<section id="virv122e-termid-was-stopped">
-<h5>VIRV122E termid WAS STOPPED<a class="headerlink" href="#virv122e-termid-was-stopped" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0V12</p>
 </dd>
@@ -8804,12 +8705,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virx9xxx">
-<h4>Messages VIRX9xxx<a class="headerlink" href="#messages-virx9xxx" title="Permalink to this heading"></a></h4>
-<section id="virx903w-linename-starting-a-virpass-service-of-local-name-xmident-remote-name-relayname-in-job-jobname">
-<h5>VIRX903W linename STARTING A VIRPASS SERVICE OF LOCAL NAME xmident REMOTE NAME relayname IN JOB jobname<a class="headerlink" href="#virx903w-linename-starting-a-virpass-service-of-local-name-xmident-remote-name-relayname-in-job-jobname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8818,9 +8713,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx907i-linename-detaching-vxmtrecv-subtask">
-<h5>VIRX907I linename DETACHING VXMTRECV SUBTASK<a class="headerlink" href="#virx907i-linename-detaching-vxmtrecv-subtask" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8829,9 +8721,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx908i-linename-detaching-vxmtrecv-subtask">
-<h5>VIRX908I linename DETACHING VXMTRECV SUBTASK<a class="headerlink" href="#virx908i-linename-detaching-vxmtrecv-subtask" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8840,9 +8729,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx909i-linename-detaching-vxmtrecv-subtask">
-<h5>VIRX909I linename DETACHING VXMTRECV SUBTASK<a class="headerlink" href="#virx909i-linename-detaching-vxmtrecv-subtask" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8851,9 +8737,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx912w-linename-context-sessionid-started">
-<h5>VIRX912W linename CONTEXT: sessionid STARTED<a class="headerlink" href="#virx912w-linename-context-sessionid-started" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8862,9 +8745,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx922w-linename-ending-context-sessionid-for-jobname">
-<h5>VIRX922W linename ENDING CONTEXT sessionid FOR jobname<a class="headerlink" href="#virx922w-linename-ending-context-sessionid-for-jobname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8873,9 +8753,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virx923e-error-on-linename-req-reqtype-r15-r15code-retcode-retcode-errno-xxxxxxxx-dddddddd">
-<h5>VIRX923E ERROR ON linename REQ reqtype R15 r15code RETCODE retcode ERRNO xxxxxxxx (dddddddd)<a class="headerlink" href="#virx923e-error-on-linename-req-reqtype-r15-r15code-retcode-retcode-errno-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8884,9 +8761,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.</p>
 </dd>
 </dl>
-</section>
-<section id="virx924e-error-on-linename-context-sessionid-req-reqtype-retcode-retcode-errno-xxxxxxxx-dddddddd">
-<h5>VIRX924E ERROR ON linename CONTEXT sessionid REQ reqtype RETCODE retcode ERRNO xxxxxxxx (dddddddd)<a class="headerlink" href="#virx924e-error-on-linename-context-sessionid-req-reqtype-retcode-retcode-errno-xxxxxxxx-dddddddd" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8895,9 +8769,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.</p>
 </dd>
 </dl>
-</section>
-<section id="virx925w-linename-waiting-due-to-mmmmmmmm-retcode-retcode-event-cccccccc-protocol-servtyp-partner-jobname">
-<h5>VIRX925W linename WAITING DUE TO mmmmmmmm RETCODE retcode Event cccccccc PROTOCOL servtyp PARTNER jobname<a class="headerlink" href="#virx925w-linename-waiting-due-to-mmmmmmmm-retcode-retcode-event-cccccccc-protocol-servtyp-partner-jobname" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIR0X09</p>
 </dd>
@@ -8906,12 +8777,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Refer to the VIRXM User Guide manual to determine the meaning of the return code and Event Code.</p>
 </dd>
 </dl>
-</section>
-</section>
-<section id="messages-virxoxxx">
-<h4>Messages VIRXOxxx<a class="headerlink" href="#messages-virxoxxx" title="Permalink to this heading"></a></h4>
-<section id="virxo01i-xot-initialisation-for-linename-n-xxxxxx-version-4-xx">
-<h5>VIRXO01I XOT INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx<a class="headerlink" href="#virxo01i-xot-initialisation-for-linename-n-xxxxxx-version-4-xx" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8920,9 +8785,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo04i-xot-line-linename-was-stopped">
-<h5>VIRXO04I XOT LINE linename WAS STOPPED<a class="headerlink" href="#virxo04i-xot-line-linename-was-stopped" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8931,9 +8793,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo05e-linename-undefined-partner-n-n-n-n-p-is-calling-m-m-m-m-q">
-<h5>VIRXO05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q<a class="headerlink" href="#virxo05e-linename-undefined-partner-n-n-n-n-p-is-calling-m-m-m-m-q" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8942,9 +8801,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:1998 in the “Remote ident” field. If necessary, use the xot-source parameter of the x25 route instruction in the router to ensure that the router presents the expected address to VIRTEL in its incoming calls. For additional information, refer to the section “Defining an XOT line” in the VIRTEL Connectivity Reference manual.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo06i-linename-n-xxxxxx-is-using-a-generic-address">
-<h5>VIRXO06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS<a class="headerlink" href="#virxo06i-linename-n-xxxxxx-is-using-a-generic-address" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8953,9 +8809,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo07i-linename-n-xxxxxx-is-using-a-generic-address">
-<h5>VIRXO07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS<a class="headerlink" href="#virxo07i-linename-n-xxxxxx-is-using-a-generic-address" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8964,9 +8817,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo11i-termid-clear-received-from-remote-linename-cause-xx-diag-yy">
-<h5>VIRXO11I termid CLEAR RECEIVED FROM REMOTE linename CAUSE=xx DIAG=yy<a class="headerlink" href="#virxo11i-termid-clear-received-from-remote-linename-cause-xx-diag-yy" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8975,9 +8825,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>If the cause and diagnostic codes are zero, this indicates a normal end of call from the remote partner. Otherwise, use the cause and diagnostic codes to determine why the router or the remote partner application issued the CLEAR.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo51i-termid-calling-x25callednumber-via-router-ipaddr-port">
-<h5>VIRXO51I termid CALLING x25callednumber VIA ROUTER ipaddr:port<a class="headerlink" href="#virxo51i-termid-calling-x25callednumber-via-router-ipaddr-port" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8986,9 +8833,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo52i-linename-deconnecting-termid">
-<h5>VIRXO52I linename DECONNECTING termid<a class="headerlink" href="#virxo52i-linename-deconnecting-termid" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -8997,9 +8841,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>None.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo53e-linename-has-no-more-pseudo-terminals">
-<h5>VIRXO53E linename HAS NO MORE PSEUDO TERMINALS<a class="headerlink" href="#virxo53e-linename-has-no-more-pseudo-terminals" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -9008,9 +8849,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>Check the line definition. Add more terminals if necessary.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo98e-termid-error-errcode-receiving-from-socket-sockno">
-<h5>VIRXO98E termid ERROR errcode RECEIVING FROM SOCKET sockno<a class="headerlink" href="#virxo98e-termid-error-errcode-receiving-from-socket-sockno" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -9027,9 +8865,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the router sent an invalid XOT message, and if so, perform the appropriate router diagnostic procedures. Otherwise contact technical support.</p>
 </dd>
 </dl>
-</section>
-<section id="virxo99e-termid-error-errcode-sending-to-socket-sockno">
-<h5>VIRXO99E termid ERROR errcode SENDING TO SOCKET sockno<a class="headerlink" href="#virxo99e-termid-error-errcode-sending-to-socket-sockno" title="Permalink to this heading"></a></h5>
 <dl class="simple">
 <dt>Module</dt><dd><p>VIRXOT</p>
 </dd>
@@ -9046,9 +8881,6 @@ The following codes are commonly encountered:</p>
 <dt>Action</dt><dd><p>If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.</p>
 </dd>
 </dl>
-</section>
-</section>
-</section>
 <section id="virtel-vsv-messages">
 <h3>Virtel VSV messages<a class="headerlink" href="#virtel-vsv-messages" title="Permalink to this heading"></a></h3>
 <section id="vsv0104e-vsv0105e">

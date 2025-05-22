@@ -2320,9 +2320,9 @@ BUFSIZE parameter
 
 ::
 
-  BUFSIZE=n Default=8192
+  BUFSIZE=n Default=32000
 
-**n** - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The size is generally 8192.
+**n** - The size of the largest VTAM message that may pass through VIRTEL. Generally this value should not be modified. The recommended size is 32000.
 
 .. index::
    pair: Virtel TCT; CHARSET parameter
@@ -3211,15 +3211,19 @@ LPKALIVE parameter
 
 ::
 	
-	LPKALIVE=nnn         LONG POLL KEEP ALIVE VALUE in Seconds.  
-
-It is possible for some intermediary equipment or firewalls to try to close the Virtel Long Poll session, because is appears to be a stalled request. This causes or appears as a hung session. This parameter forces the LP sessions to be restarted at regular intervals.
+	LPKALIVE=nnn                                                   Default=0  
 
 nnn
-  Long Poll Keep Alive value in seconds. LPKALIVE=0 means that Long Poll Keepalive is inactive
+  Long poll keep alive value in seconds. LPKALIVE=0 means that Long Poll Keep Alive is inactive. This value should be set in adequation with the firewall/proxy settings for long-running http requests.
+
+This parameter concerns the Virtel "long poll" session that is used by Virtel to dynamically refresh the 3270 screen in the browser when it is modified by the application outside of the synchronous http send/receive conversation. 
+
+Some firewalls are unhappy with long-running HTTP requests (which is the case of the long poll session), and therefore sometimes kill the Virtel long poll session because it appears to be a stalled request. From the user's point of view, this appears as a hung session.
+
+This parameter forces the LP sessions to be restarted at regular intervals (see example below).
 
 Example: LPKALIVE=120
-  A 304 response to the LongPoll session will be sent by Virtel 120 seconds after receiving a LP=0 request.
+  A 304 response to the long poll session will be sent by Virtel 120 seconds after receiving the LP request. After receiving the 304 response, the Virtel JavaScript reacts by closing the LP session and re-opening a new one.
 
 This parameter should only be included in the TCT if recommended by Syspertec.  
 
@@ -4390,7 +4394,7 @@ An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB fo
 		CRYPT1=(CRYPT3270,NONE,NONE,NO-ENCRYPTION,HEX), *
 		TCP1=(TCPIP,,,250), <------ *
 		HTVSAM=VIRHTML, <------ *
-		BUFSIZE=20000, *
+		BUFSIZE=32000, *
 		ACCUEIL=YES, *
 		DEFENTR=PC, *
 		FCAPT=VIRCAPT, *

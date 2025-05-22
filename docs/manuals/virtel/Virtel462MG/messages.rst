@@ -6589,6 +6589,150 @@ Action
 
 Messages VIRQLxxx
 ^^^^^^^^^^^^^^^^^
+
+VIRQLK1I luname CONNECTING terminal
+===================================
+Module
+    VIR0QLK
+
+Meaning
+    luname is connecting with remoter terminal terminalname
+
+Action
+    No Action required
+
+VIRQLK2I luname DECONNECTING terminal
+=====================================
+Module
+    VIR0QLK
+
+Meaning
+    luname is disconnecting from terminal terminalname
+
+Action
+    No Action required
+
+VIRQLK3I luname ACCEPTED terminal
+=================================
+Module
+    VIR0QLK
+
+Meaning
+    luname is disconnecting from terminal terminalname
+
+Action
+    No Action required
+
+VIRQLK4I luname SYNCHRONIZING WITH server (serverInt)
+=====================================================
+Module
+    VIR0QLK
+
+Meaning
+    luname is disconnecting from terminal terminalname
+
+Action
+    No Action required
+
+VIRQLK5I LOCAL LINE luname (lunameInt) IS WAITING FOR REMOTE VIRTEL : qlnkname
+==============================================================================
+Module
+    VIR0QLK
+
+Meaning
+    luname is waiting for qlnkname to respond to complete connection.
+
+Action
+    No Action required
+
+VIRQLK6E luname PRTOCOL ERROR - code - SNAP TAKEN 
+=================================================
+Module
+    VIR0QLK
+
+Meaning
+    Protocol error on luname. Unable to continue. Code indicates the error type. 
+
+Action
+    Contact Technical Support.
+
+VIRQLK7I luname HAS NO MORE PSEUDO TERMINALS
+============================================
+Module
+    VIR0QLK
+
+Meaning
+    Pseudo terminals have been exhausted. No more connections possible.  
+
+Action
+    Add more terminals. Contact Technical Support for additional help.
+
+VIRQLK8I LOCAL LINE luname (lunameInt) IS CONNECTED TO REMOTE VIRTEL : terminal
+===============================================================================
+Module
+    VIR0QLK
+
+Meaning
+    Successful QLNK connection between local luname and remote terminal. 
+
+Action
+    No Action Required
+     
+VIRQLK9I INITIALISATION FOR luname (lunameInt) VERSION version
+==============================================================
+Module
+    VIR0QLK
+
+Meaning
+    Successful initialisation of QLNK luname. 
+
+Action
+    No Action Required
+
+VIRQLK9I luname SEND
+====================
+Module
+    VIR0QLK
+
+Meaning
+    luname has issued a send request.
+
+Action
+    No Action required
+
+VIRQLK9I LINE linename WAS STOPPED
+==================================
+Module
+    VIR0QLK
+
+Meaning
+    QLNK line linename has been stopped.
+
+Action
+    No Action required
+
+VIRQLK9I luname RECEIVE ON SOCKET puname
+========================================
+Module
+    VIR0QLK
+
+Meaning
+    A message has been received on the physical socket puname.
+
+Action
+    No Action required    
+
+VIRQLK9E luname IS REQUESTING DUPLICATE CORRELATOR correlator. ALREADY ALLOCATED TO terminal
+============================================================================================
+Module
+    VIR0QLK
+
+Meaning
+    Setup has occurred in establishing QLNKS. Check configuration. 
+
+Action
+    Contact Technical Support.
+
 VIRQL51I luname CONNECTING terminal TO server
 """""""""""""""""""""""""""""""""""""""""""""
 Module
