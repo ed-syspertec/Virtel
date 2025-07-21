@@ -2134,7 +2134,7 @@ The following example shows CSD definitions for VIRTEL Web Access terminals. The
 The Virtel TCT
 ==============
 
-introduction
+Introduction
 ------------
 
 All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in z/OS, or behind the EXEC card in the z/VSE environment.
@@ -3256,6 +3256,19 @@ Example: LPKALIVE=120
 This parameter should only be included in the TCT if recommended by Syspertec.  
 
 .. index::
+	pair: Virtel TCT; LUNSIZE parameter
+
+LUNSIZE parameter
+^^^^^^^^^^^^^^^^^
+
+::
+	
+	LUNSIZE=n                                                     Default=4
+
+n
+  Size of the Internal LU Nailing table in K. This parameter should only be changed if instructed by SysperTec Support.
+
+.. index::
    pair: Virtel TCT; MARK parameter
 
 MARK parameter
@@ -3643,7 +3656,11 @@ SECUR parameter
 
 ::
 
-	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE/MIXEDCASE/PASSPHRASE/,PASSPHRASELEN Default=NO
+	SECUR=NO
+	SECUR=VIRTEL
+	SECUR=(RACROUTE[,RACF|TOPS|ACF2][,MIXEDCASE][,PASSPHRASE][,PASSPHRASELEN])
+
+	(DEFAULT=NO)
 
 For the z/OS environment, the following options can be specified:
 
@@ -3657,36 +3674,21 @@ For the z/OS environment, the following options can be specified:
 
 **(RACROUTE,ACF2)** - The ACF2 security management system is used (via SAF).
 
-
-
-
 .. note::
-	Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: **SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)**
-	You can also specify the minimum passphrase length using the Passphrase Length option. Default is 14 characters long.
+	Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: **SECUR=(RACROUTE,RACF|TOPS|ACF2,PASSPHRASE)**
+	You can also force the minimum length for a passphrase using the Passphrase Length option, this will override the value defined in your security system.
 	The following sets the Passphrase length to 10 : 
 	**SECUR=(RACROUTE,RACF,PASSPHRASE,10)**
 
-	Passwords and Passphrases cannot be intermixed. You cannot go from a password, length 8 or less, to a passphrase. Passphrases will always be mixed characters (Upper and Lower case) and will never be "UPPERCASED".    
+	Passphrases will always be mixed characters (Upper and Lower case) and will never be "UPPERCASED".    
 
-For the z/VSE environment, the following options can be specified:
+For the VSEn environment, the following options can be specified:
 
 **NO** - No security software is used to control access.
 
 **VIRTEL** - VIRTEL’s internal security management feature is used.
 
-**RACROUTE** - (for z/VSE Version 3 or later) VIRTEL uses the z/VSE Basic Security Manager (via SAF), or the External Security Manager if specified in the z/VSE IPL parameters.
-
-The following options are retained for compatibility with previous versions:
-
-**RACF** - RACF without SAF.
-
-**TOPS** - TOP SECRET without SAF.
-
-**ACF2** - ACF2 with ACFDIAG (Only for VM). For MVS, this is treated as (RACROUTE,ACF2).
-
-**RACROUTE** - Multi product interface security (via SAF).
-
-If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
+**RACROUTE** - VIRTEL uses the VSEn Basic Security Manager (via SAF), or the External Security Manager if specified in the VSEn IPL parameters.
 
 .. note:: 
 	When SECUR=VIRTEL is specified Virtel will still validate access to the profile using the TCT security parameters RACAPPL and RNODE. PRFSECU is not used in building the security resource name.  
@@ -3695,7 +3697,7 @@ If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
     \newpage   
 
-MIXEDCASE support prevents a password being automatically "UPPERCASED" prior to signon. This TCT option applies to Top Secret only. For example:-
+**MIXEDCASE** support prevents a password being automatically "UPPERCASED" prior to signon. This TCT option applies to Top Secret only. For example:-
 
 ::
 
@@ -4139,9 +4141,11 @@ The keyword enables the centralized saving of user settings on the host. Based u
 
 ::
 
-	UPARMS=(name)
+	UPARMS=(name[,VIRPLEX])
 
 **name** must be a value name supported by a directory and transaction definition.  
+
+**VIRPLEX** - optional parameter, only to be used in a VIRPLEX architecture. If the USERPARM VSAM file is to be shared within a VIRPLEX, then this parameter must be specified.
 
 Sample ARBO definitions to support the USERPARM feature:-
 
@@ -4694,6 +4698,7 @@ Syntax::
     HDRD 'header-name : header-value'
 
 **header-name** - HTTP header name to be added to the response. The header name is case sensitive.
+
 **header-value** - Value assigne to the header. This value is also case sensitive. The value may contain spaces, but must not contain line breaks. If the value contains a colon, it must be escaped with a backslash (\\).
 
 Example of HDRH / HDRD usage
@@ -4704,7 +4709,8 @@ Here is a sample of the syntax to implement to implement custom HTTP security he
 	      VIRTERM  TYPE=INITIAL,                                          X
 	[...]
 	               HDRSEC=(MYHDRTAB,HIDESERVER),                          X
-	[... to end of VIRTCT main code]
+	[...]
+
 	MYHDRTAB HDRH
 	         HDRD 'X-Content-Type-Options: nosniff'
 	         HDRD 'X-Frame-Options: SAMEORIGIN'

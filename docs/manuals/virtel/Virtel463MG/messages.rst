@@ -2435,6 +2435,16 @@ Action
     None.
 
 
+VIR0076I HTTP SECURITY HEADERS _[ADDED | REMOVED]_ FROM TCT:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    	VIR0000
+Meaning
+    Specifies the list of security HTTP headers that will be added to (or removed from) responses sent to the client browser.
+Action
+    None.
+
+
 Messages VIR008xx
 ^^^^^^^^^^^^^^^^^
 
@@ -3659,7 +3669,7 @@ Module
 Meaning
     The internal entry table is full. 
 Action
-    Reduce the number of ARBO statements. Rebuild the ARBO. If problem persists contact Virtel Support
+    Reduce the number of ARBO statements and rebuild the ARBO, or increase the size of the table using the LUNSIZE parameter of the VIRTCT. If problem persists contact Virtel Support.
 
 VIR0877W %luname% Reference Error
 """"""""""""""""""""""""""""""""""
@@ -5439,6 +5449,15 @@ Meaning
     A VIRTEL entity is attempting to BIND a connection to the IP address locaddr.
 Action
     None
+
+VIRHT65I TRANSACTION *tranname* HAS INCONSISTENT SECURITY
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIRHTTP
+Meaning
+    A transaction *tranname* pointing to the directory hosting centralized user parameters is defined with a security mode other than 0, which in some cases may lead the user to sign in a second time. As this transaction is not intended to be secure, VIRTEL sets the security mode to 0 to avoid this double signature situation.
+Action
+    Set the “security” field of the *tranname* transaction definition to 0.
 
 Messages VIRI9xxx
 ^^^^^^^^^^^^^^^^^
@@ -7432,7 +7451,7 @@ Meaning
 Action
     None.
 
-VIRU123E luname FILE BROADCAST FAILED FOR FILE ddname reason
+VIRU123W luname FILE BROADCAST FAILED FOR FILE ddname reason
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0U12
