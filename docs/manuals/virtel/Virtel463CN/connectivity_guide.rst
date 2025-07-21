@@ -3,17 +3,17 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. _#_Virtel462CN:
+.. _#_Virtel463CN:
 
 ========================
-Connectivity Guide V4.62
+Connectivity Guide V4.63
 ========================
 
 |image00|
 
 **VIRTEL Connectivity Guide**
 
-Version : 4.62 
+Version : 4.63 
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
 
@@ -41,7 +41,7 @@ Virtel SAS, Syspertec Group
     and companies mentioned in this document may be trademarks or registered trademarks of 
     their respective owners.  
 
-.. _V462CN_Introduction:
+.. _V463CN_Introduction:
 
 Configuring Virtel
 ==================
@@ -366,12 +366,12 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
     //* ARBO MIGRATION. UPDATE ARBO TO ADD NEW ELEMENTS              *      
     //*                                                              *      
     //* Change          Description                       Release    *      
-    //*                 Create directory for poc test     V462       *      
+    //*                 Create directory for poc test     V463       *      
     //*                                                              *      
     //*--------------------------------------------------------------*      
     //*                                                                     
-    // SET LOAD=VIRTEL.VIRT462.LOADLIB                                     
-    // SET ARBO=VIRTEL.VIRT462.ARBO                                        
+    // SET LOAD=VIRTEL.VIRT463.LOADLIB                                     
+    // SET ARBO=VIRTEL.VIRT463.ARBO                                        
     //*                                                                     
     //CONFIG  EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M                   
     //STEPLIB  DD  DSN=&LOAD,DISP=SHR                                       
@@ -767,7 +767,7 @@ Prefix
 
 Pool
     The name of a logical pool of terminals associated with the line. This pool is used for HTTP connections without predefined terminals
-    (see :ref:`“HTTP connections with non-predefined LU names”,<#_V462CN_ForceLUNAME>`). In all other cases this field can be left blank.
+    (see :ref:`“HTTP connections with non-predefined LU names”,<#_V463CN_ForceLUNAME>`). In all other cases this field can be left blank.
 
 Entry Point
     Defines the default entry point used by the line. This is a required field for HTTP and SMTP lines. It is optional in all other cases. 
@@ -1057,7 +1057,7 @@ Possible calls
     represents a listening port where VIRTEL is acting as an HTTP
     server.
 
-    For the case where VIRTEL acts as an HTTP requester, refer to the following section :ref:`“Definition of a HTTP Outbound line”<#_V462CN_HTTPOutbound>`.
+    For the case where VIRTEL acts as an HTTP requester, refer to the following section :ref:`“Definition of a HTTP Outbound line”<#_V463CN_HTTPOutbound>`.
 
 Protocol
     VIRHTTP or HTTP.
@@ -1080,7 +1080,7 @@ Tran
 Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^    
 
-An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_V462CN_LogicalPool>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
+An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_V463CN_LogicalPool>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
 
 Press [PF4] at the HTTP line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. If the terminals refer to a logical pool, the pool itself may have a different prefix and will therefore not be displayed. In this case you can press [PF2] at the Configuration Menu to display a list of all terminals.
 
@@ -1177,7 +1177,7 @@ This job is supplied in member CSDW2H of the VIRTEL SAMPLIB.
 .. index::
    pair: Lines; HTTP Outbound line
 
-.. _#_V462CN_HTTPOutbound:
+.. _#_V463CN_HTTPOutbound:
 
 HTTP Outbound line
 ------------------    
@@ -2442,7 +2442,7 @@ Repeat
 .. index::
    pair: Lines; X25 GATE Non Fast-Connect (NFC) line  
 
-.. _#_V462CN_X25GATELine:    
+.. _#_V463CN_X25GATELine:    
 
 X25 GATE Non Fast-Connect (NFC) line
 ------------------------------------
@@ -2774,7 +2774,7 @@ Repeat
 VTAM Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section :ref:`“Definition of a X25 GATE Non Fast-Connect line”<#_V462CN_X25GATELine>`.
+Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section :ref:`“Definition of a X25 GATE Non Fast-Connect line”<#_V463CN_X25GATELine>`.
 
 .. index::
    pair: X25 GATE FastC line; NCP/NPSI Definitions 
@@ -3150,7 +3150,7 @@ The second sub-group is used for incoming calls (from the point of view of the a
 |image53|    
 *Inbound terminal definition for X25 AntiPCNE (method 1)*
 
-A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_V462CN_LogicalPool>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
+A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_V463CN_LogicalPool>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
 The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool \*POOLPCN. Terminal Definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
 
@@ -3269,7 +3269,7 @@ Support for incoming connections via an X25 non GATE line still exists. This typ
 VTAM definitions for X25 non GATE terminals    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in :ref:`“Definition of an X25 GATE Non Fast-Connect line”<#_V462CN_X25GATELine>`.
+Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in :ref:`“Definition of an X25 GATE Non Fast-Connect line”<#_V463CN_X25GATELine>`.
 
 .. index::
    pair: X25 AntiPCNE line; NCP/NPSI definitions for X25 Non Gate terminals
@@ -3287,7 +3287,7 @@ LLCLIST
 .. index::
    single: Virtel Rules   
 
-.. _#_V462CN_VirtelRules:   
+.. _#_V463CN_VirtelRules:   
 
 TN3270 line
 -----------
@@ -3374,7 +3374,7 @@ Virtel Rules
 Introduction
 ------------
 
-Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See :ref:`“Controlling LUNames”<#_V462CN_ForceLUNAME>`) for examples on how to define and use Virtel Rules to control LU names.  
+Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See :ref:`“Controlling LUNames”<#_V463CN_ForceLUNAME>`) for examples on how to define and use Virtel Rules to control LU names.  
 
 .. index::
    pair: Virtel Rules; Summary Display   
@@ -3630,7 +3630,7 @@ Relay
 
     Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the "terminal name", "relay", and "2nd relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
 
-.. _#_V462CN_PatternCharacters:
+.. _#_V463CN_PatternCharacters:
 
 .. index::
    pair: Terminal Management Sub-Application; Pattern Characters
@@ -4155,7 +4155,7 @@ Application Type
             for a reference to a VIRTEL line
 
 Pseudo Terminals
-    Specifies the prefix of the name of the VIRTEL terminal which will be used to connect to the application. The value $LINE$ in the “Pseudo Terminals” field indicates that this transaction is reserved for HTTP connections using non-predefined terminals (see :ref:`“HTTP connections with non-predefined LU names”<#_V462CN_ForceLUNAME>`).
+    Specifies the prefix of the name of the VIRTEL terminal which will be used to connect to the application. The value $LINE$ in the “Pseudo Terminals” field indicates that this transaction is reserved for HTTP connections using non-predefined terminals (see :ref:`“HTTP connections with non-predefined LU names”<#_V463CN_ForceLUNAME>`).
 
 Logmode
     The name of the new LOGMODE that **MUST** be used to connect to the application. This overrides any LOGMODE parameter specified in the URL or in an identification scenario.
@@ -4967,7 +4967,7 @@ In the examples shown below, ?\*\*\*0000 is a dynamic physical pool which allows
 
 *Physical pools of terminals*
 
-.. _#_V462CN_LogicalPool:
+.. _#_V463CN_LogicalPool:
 
 Logical pool
 """"""""""""
@@ -5282,7 +5282,7 @@ The 3 groups of terminals contain the value \*POOL001 under the heading “\*Poo
 .. index::
    single: Controlling LUNAMEs
 
-.. _#_V462CN_ForceLUNAME:
+.. _#_V463CN_ForceLUNAME:
 
 Controlling LUNAMEs - LU Nailing
 ================================
@@ -5302,7 +5302,7 @@ While most mainframe applications will accept a connection from any LU name, cer
 
 -  By Userid  
 
-Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V462CN_VirtelRules>` for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation. 
+Virtel Rules can be used to associate a user with a LU name based on a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V463CN_VirtelRules>` for further information on Virtel Rules. The following sections go through examples of how to nail or control LU Name allocation. 
 
 
 LU Nailing By URL
@@ -5588,7 +5588,7 @@ When a device is "nailed" by a rule it takes the first predefined terminal in th
 
 Although it is recommended that terminal definitions should be defined with the same prefix as defined in the line statement it is not necessary. Here we have used a prefix of **IP** to define terminals that will be caught by the IP rule(s). The key name definition that **must** be adhered to is that the prefix of the terminal pool defintions, in this case EHVTA2%%, must begin with the transaction pseudo-terminals parameter. In this line definition the transactions associated with the Entry Point use a pseudo-terminals prefix of EHVTA.    
 
-Note the use of pattern characters when defining the range. In this example we have used %% when % represents hexadecimal digist 0-9 and A-F. See :ref:`“Pattern characters”,<#_V462CN_PatternCharacters>` for more information on how to define ranges with pattern characters. 
+Note the use of pattern characters when defining the range. In this example we have used %% when % represents hexadecimal digist 0-9 and A-F. See :ref:`“Pattern characters”,<#_V463CN_PatternCharacters>` for more information on how to define ranges with pattern characters. 
 
 |image124|
 *3270 session allocated from IP range*
@@ -5673,7 +5673,7 @@ Output messages from the scenario
 LU Nailing using ARBO defininitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.62. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
+LU Nailing using ARBO definitions is provided through a User Function application called Relay Support. The User Function Relay Support is a new feature delivered in Virtel V4.63. It expands on Virtel’s “Nailing LU” options by allowing users to define application, userid and terminal relationships using ARBO definitions. With this feature a user can protect application access as well as predefine terminal userid relationships. The associated ARBO definitions DEPT, USER, PROFILE and RESOURCE statements, are used to build an internal ARBO table space. This tables space, the ARBO TS, is used to control application and terminal nailing.
 
 New TCT option
 """"""""""""""
@@ -6737,7 +6737,7 @@ READ ONLY Restrictions
 
 If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.
 
-In Virtel V4.62 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated "WRITER" Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as macros, could be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files would then populate the files with the new updates. Virtel "READ" instances would detect the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V462CN_VIRPLEX>` for move information.  
+In Virtel V4.62 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated "WRITER" Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as macros, could be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files would then populate the files with the new updates. Virtel "READ" instances would detect the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V463CN_VIRPLEX>` for move information.  
 
 .. raw:: latex
 
@@ -7009,7 +7009,7 @@ See https://httpd.apache.org/docs/2.2/mod/mod_expires.html for more information.
 .. index::
    single: VIRPLEX
 
-.. _#_V462CN_VIRPLEX:
+.. _#_V463CN_VIRPLEX:
 
 VIRPLEX
 =======
@@ -7394,16 +7394,16 @@ JCL Procedure for Virplex.
 ::
 
     //VIRTEL0 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID  
-    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT462.CNTL                    
-    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=462,CLONE=00         
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT463.CNTL                    
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=463,CLONE=00         
 
 **JCL example for Virtel ‘READER’ task 1**
 
 ::
 
     //VIRTEL1 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT462.CNTL                   
-    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=462,CLONE=01,       
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT463.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=VIRTEL,REL=463,CLONE=01,       
     // IP=192.168.170.47 
 
 **JCL example for Virtel ‘WRITER’ task**
@@ -7411,8 +7411,8 @@ JCL Procedure for Virplex.
 ::
 
     //VIRTEL9 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                          
-    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT462.CNTL                   
-    //S01 EXEC VIRTELZ,TCT=99,HLQ=VIRTEL,REL=462,CLONE=99,       
+    //PROCLIB JCLLIB ORDER=VIRTEL.VIRT463.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=99,HLQ=VIRTEL,REL=463,CLONE=99,       
     // IP=192.168.170.39    
 
 .. index::
@@ -7495,7 +7495,7 @@ You should see the following messages as the Administration line is activated:-
 
 ::
 
-    VIRHT01I HTTP INITIALISATION FOR HTTP-W2H (W-HTTP  ), VERSION 4.62             
+    VIRHT01I HTTP INITIALISATION FOR HTTP-W2H (W-HTTP  ), VERSION 4.63             
     VIRT905I HTTP-W2H SOCKET 00000000 LISTENING 192.168.170.039:41001              
     VIRHT02I LINE HTTP-W2H (W-HTTP  ) HAS URL http://192.168.170.39:41001          
     VIRHT03I HTTP LINE HTTP-W2H (W-HTTP  ), IS A VIRPLEX SERVER WITH VSAMTYP=WRITER  
@@ -7509,13 +7509,13 @@ In the ‘WRITER’ task you should see evidence that the ‘WRITER’ has conne
 ::
 
     VIRB17AI LINE SPVIRE00 (SPVIRE00), RESTARTED TO ALLOW CONNECTION TO SPVIRE00     
-    VIRQLK9I INITIALISATION FOR SPVIRE00 (SPVIRE00), VERSION 4.62                    
+    VIRQLK9I INITIALISATION FOR SPVIRE00 (SPVIRE00), VERSION 4.63                    
     VIRT907I SPVIRE00 SOCKET 00000000 CALLING   192.168.170.081:41030                
     VIRQLK8I LOCAL LINE SPVIRE00 (SPVIRE00) IS CONNECTED TO REMOTE VIRTEL : SPVIRE00 
-    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.62
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.63
     . . .
     VIRB17AI LINE SPVIRE01 (SPVIRE01), RESTARTED TO ALLOW CONNECTION TO SPVIRE01    
-    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.62                   
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.63                   
     VIRT907I SPVIRE01 SOCKET 00000000 CALLING   192.168.170.081:41031               
     VIRQLK8I LOCAL LINE SPVIRE01 (SPVIRE01) IS CONNECTED TO REMOTE VIRTEL : SPVIRE01               
 
@@ -7525,17 +7525,17 @@ VIRTEL0 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ t
 
 ::
 
-    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.62                   
+    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.63                   
     VIRT907I SPVIRE99 SOCKET 00000000 CALLING   192.168.170.081:41099               
     VIRQLK8I LOCAL LINE SPVIRE99 (SPVIRE99) IS CONNECTED TO REMOTE VIRTEL : SPVIRE99
     . . .
     VIRT905I HTTP-VPX SOCKET 00000000 LISTENING 192.168.170.015:41902                
     VIRHT02I LINE HTTP-VPX (V-HTTP  ) HAS URL http://192.168.170.15:41902            
     VIRHT03I HTTP LINE HTTP-VPX (V-HTTP  ), IS A VIRPLEX SERVER WITH VSAMTYP=READONLY
-    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.62
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.63
     . . .
     VIRB17AI LINE SPVIRE01 (SPVIRE01), RESTARTED TO ALLOW CONNECTION TO SPVIRE01    
-    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.62                   
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.63                   
     VIRT907I SPVIRE01 SOCKET 00000000 CALLING   192.168.170.081:41031               
     VIRQLK8I LOCAL LINE SPVIRE01 (SPVIRE01) IS CONNECTED TO REMOTE VIRTEL : SPVIRE01    
 
@@ -7545,10 +7545,10 @@ VIRTEL1 Connecting to the ‘WRITER’ task VIRTEL9 and the other ‘READER’ t
 
     VIRQLK8I LOCAL LINE SPVIRE00 (SPVIRE00) IS CONNECTED TO REMOTE VIRTEL : SPVIRE00
     VIRT903W LINE SPVIRE01 HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
-    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.62                   
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.63                   
     VIRT905I SPVIRE01 SOCKET 00000000 LISTENING 192.168.170.081:41031               
     VIRT903W LINE SPVIRE99 HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
-    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.62                   
+    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.63                   
     VIRT907I SPVIRE99 SOCKET 00000000 CALLING   192.168.170.081:41099               
     VIRQLK8I LOCAL LINE SPVIRE99 (SPVIRE99) IS CONNECTED TO REMOTE VIRTEL : SPVIRE99
     VIRT903W LINE HTTP-VPX HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
@@ -7559,7 +7559,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
 
     F VIRTEL0,LINES                                      
     VIR0200I LINES                                        
-    VIR0201I VIRTEL 4.62 APPLID=SPVIRE00 LINES            
+    VIR0201I VIRTEL 4.63 APPLID=SPVIRE00 LINES            
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP            
     VIR0202I -------- -------- ----- ---------            
     VIR0202I W-HTTP           *GATE                       
@@ -7572,7 +7572,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
 
     F VIRTEL1,LINES                                         
     VIR0200I LINES                                           
-    VIR0201I VIRTEL 4.62 APPLID=SPVIRE01 LINES               
+    VIR0201I VIRTEL 4.63 APPLID=SPVIRE01 LINES               
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP               
     VIR0202I -------- -------- ----- ---------               
     VIR0202I W-HTTP           *GATE                          
@@ -7585,7 +7585,7 @@ Once the three tasks have initiated you should see no more “CONNECT” error m
 
     F VIRTEL9,LINES                                        
     VIR0200I LINES                                          
-    VIR0201I VIRTEL 4.62 APPLID=SPVIRE99 LINES              
+    VIR0201I VIRTEL 4.63 APPLID=SPVIRE99 LINES              
     VIR0202I ALLOCATED IP ADDRESS = 192.168.170.39          
     VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP              
     VIR0202I -------- -------- ----- ---------              
@@ -7627,15 +7627,15 @@ To test that the Virtels are communicating, maintenance will be uploaded via the
 
 |image116|
 
-Is shows as UPDT level V4.62 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-
+Is shows as UPDT level V4.59 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-
 
 |image117|
 
-This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance VIRTEL9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.62 (5695):-
+This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance VIRTEL9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.59 (5695):-
 
 |image118|
 
-If a new browser window is opened on another machine, and TSO is accessed through the common URL / APPLIST navigation, the maintenance level has changed to V4.62 UPDT 5695:-
+If a new browser window is opened on another machine, and TSO is accessed through the common URL / APPLIST navigation, the maintenance level has changed to V4.59 UPDT 5695:-
 
 |image119|
 
@@ -7826,8 +7826,8 @@ Sample ARBO definitions for LU Nailing
     //* THIS JOB LOADS AN ARBO FILE
     //*
     //*SET LOAD=SP000.VIRTEL.PRODV460.LOADLIB
-    // SET LOAD=SPTHOLT.VIRT462.LOADLIB
-    // SET ARBO=SPTHOLT.VIRT462.ARBO
+    // SET LOAD=SPTHOLT.VIRT463.LOADLIB
+    // SET ARBO=SPTHOLT.VIRT463.ARBO
     //*
     //DELETE  EXEC PGM=VIRCONF,PARM='LOAD,REPL,LANG=EN',REGION=2M
     //STEPLIB  DD  DSN=&LOAD,DISP=SHR

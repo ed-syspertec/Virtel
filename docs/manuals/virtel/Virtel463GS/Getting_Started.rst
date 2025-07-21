@@ -2,7 +2,7 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. _Virtel462GS:
+.. _Virtel463GS:
 
 ===========================
 Getting Started with Virtel
@@ -10,7 +10,7 @@ Getting Started with Virtel
 
 |image1|
 
-Version : 4.62
+Version : 4.63
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
 
@@ -167,7 +167,7 @@ On the server side, the following elements are also required:
 What's new in this release?
 ===========================
 
-.. note:: For further details see the Virtel Technical Newsletter TN202403: Whats new in Virtel 4.62.
+
 
 Before you install the product
 ------------------------------
@@ -210,17 +210,17 @@ z/OS
 
 Here are the instructions to quick install and start Virtel on z/OS:
 
-1. After unzipping virtel462mvs.zip run job $ALOCDSU to create the TRANSFER.XMIT file.
+1. After unzipping virtel463mvs.zip run job $ALOCDSU to create the TRANSFER.XMIT file.
 
-2. Upload the virtel462mvs.xmit file to the TRANSFER.XMIT file IN BINARY MODE.
+2. Upload the virtel463mvs.xmit file to the TRANSFER.XMIT file IN BINARY MODE.
 
 3. Edit the job $RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets, then run the job $RESTDSU to create the VIRTEL datasets
 
-4. Apply the PTFs in the allptfs-mvs462.txt file using job ZAPJCL in the VIRTEL CNTL library. If allptfs-mvs462.txt doesn't exist skip this step.
+4. Apply the PTFs in the allptfs-mvs463.txt file using job ZAPJCL in the VIRTEL CNTL library. If allptfs-mvs463.txt doesn't exist skip this step.
 
 5. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list::
 
-    SETPROG APF,ADD,DSN=yourqual.VIRT462.LOADLIB,VOL=volser
+    SETPROG APF,ADD,DSN=yourqual.VIRT463.LOADLIB,VOL=volser
 
 6. Edit member VIRTCT01 in the VIRTEL CNTL library:
 
@@ -307,7 +307,7 @@ Here are the instructions to quick install and start Virtel on z/OS:
 
 14. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to separate documentation. 
     
-15. Apply any "update" maintenance (virtel462updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel462updtnnnn.zip if available. Skip this step if no zip file is available.
+15. Apply any "update" maintenance (virtel463updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel463updtnnnn.zip if available. Skip this step if no zip file is available.
 
 VSEn
 ====
@@ -354,7 +354,7 @@ VSEn
 
     where nnn.nnn.nnn.nnn is the IP address of your z/OS system.
 
-12. Apply any "update" maintenance (virtel462updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel462updtnnnn.zip if available. Skip this step if no zip file is available.
+12. Apply any "update" maintenance (virtel463updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel463updtnnnn.zip if available. Skip this step if no zip file is available.
 
 Accessing SysperTec support
 ===========================

@@ -2,17 +2,17 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. _Virtel462CS:
+.. _Virtel463CS:
 
 =========================
-Customization Guide V4.62
+Customization Guide V4.63
 =========================
 
 |image0|
 
 **VIRTEL Customization**
 
-Version : 4.62
+Version : 4.63
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
 
@@ -44,10 +44,13 @@ Virtel SAS, Syspertec Group
 
     \newpage     
 
-.. _Virtel462CS_Summary_Of_Amendments:
+.. _Virtel463CS_Summary_Of_Amendments:
 
 Summary of Amendments
 =====================
+
+Virtel version 4.63 Beta (July 2025)
+-----------------------------------
 
 Virtel version 4.62 (11th Oct 2021)
 -----------------------------------
@@ -3547,7 +3550,7 @@ Modify the *Main* and *Sub* titles
 
     cAppMenuOptions["texts"] = {
             "main-title":"Virtel Application Tier Menu",
-            "sub-title":"Syspertec Virtel V4.62 Application Menu",
+            "sub-title":"Syspertec Virtel V4.63 Application Menu",
             };
 
 Setup Level 0, first level of the Tier menu - **CICS Production Regions**  
@@ -3692,7 +3695,7 @@ Example of appmenu.[keyname].js
     // Titles
     cAppMenuOptions["texts"]= {
     "main-title":"Virtel Sample Application Tier Menu",
-    "sub-title": "Syspertec Virtel V4.62 Application Menu",
+    "sub-title": "Syspertec Virtel V4.63 Application Menu",
     };
 
 
@@ -3767,7 +3770,7 @@ The pf2tran array needs to be added to the cAppmenOptions array. The following i
     cAppMenuOptions = {
         "texts": {
         "main-title": "Virtel Demo Application Tier Menu Session Manager",
-        "sub-title": "SYSPERTEC Virtel V4.62 Application Menu"
+        "sub-title": "SYSPERTEC Virtel V4.63 Application Menu"
     },
     // mapping of the pf keys connected to VIRTEL transactions
     "pf2tran": [

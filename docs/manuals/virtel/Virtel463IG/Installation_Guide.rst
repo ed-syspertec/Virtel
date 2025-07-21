@@ -2,17 +2,17 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. _Virtel462IG:
+.. _Virtel463IG:
 
 ========================
-Installation Guide V4.62
+Installation Guide V4.63
 ========================
 
 |image1|
 
 **VIRTEL Installation Guide**
 
-Version : 4.62 
+Version : 4.63 
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
 
@@ -44,10 +44,14 @@ Virtel SAS, Syspertec Group
 
     \newpage     
 
-.. _Virtel462IG_Summary_Of_Ammendments:
+.. _Virtel463IG_Summary_Of_Amendments:
 
 Summary of Amendments
 =====================
+
+Virtel version 4.63 Beta (July 2025)
+-----------------------------------
+
 
 Virtel version 4.62 (17th Feb 2024)
 -----------------------------------
@@ -57,7 +61,7 @@ Virtel version 4.62 (17th Feb 2024)
 Virtel version 4.61 (10th Oct 2021)
 -----------------------------------
 
-.. note:: For further details see the Virtel Technical Newsletter TN202303: Whats new in Virtel 4.62.
+.. note:: For further details see the Virtel Technical Newsletter TN202303: Whats new in Virtel 4.61.
 
 Virtel version 4.60 (11th Nov 2020)
 -----------------------------------
@@ -69,7 +73,7 @@ Virtel version 4.59 (12th Jul 2019)
 
 .. note:: For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.
 
-.. _Virtel462IG_Introduction:
+.. _Virtel463IG_Introduction:
 
 Introduction
 ============
@@ -115,7 +119,7 @@ VIRTEL Web Access requires a standard web browser on the user’s workstation. S
 
 VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
-.. _Virtel462IG_installz/os:    
+.. _Virtel463IG_installz/os:    
 
 .. index::
    single: Installing under z/OS
@@ -230,7 +234,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 Step 1
 """"""
 
-Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the Public directory “VIRTEL - 4.62- Products” and download the virtel462mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server `http://ftp-group.syspertec.com <http://ftp-group.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the Public directory “VIRTEL - 4.63- Products” and download the virtel463mvs.zip file. Unzip this file into a folder on your workstation.
 
 .. raw:: latex
 
@@ -457,7 +461,7 @@ The Virtel Administration portal is used to upload **Updates** to the SAMPTRSF f
 Obtaining PTFs and Updates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the Public directory “VIRTEL-V.462-PTFS" and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP's are released periodically and are only applicable to z/OS.      
+To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the Public directory “VIRTEL-V.463-PTFS" and download the ptf and update files if they exists. Virtel maintenance packages (VMP) are used to load updates via a batch process rather than the manually process required for updates. The naming convention is VirtelvrrVMPnnnn.zip. VMP's are released periodically and are only applicable to z/OS.      
 
 Applying PTFs
 ^^^^^^^^^^^^^
@@ -773,7 +777,7 @@ At execution time:
   VIRQ903W LINE lin1name HAS A SESSION STARTED WITH MQM CSQ7
   VIRQ923E lin1name REQ MQOPEN COMPLETION CODE 00000002 REASON CODE 00000825 (00002085) MQM CSQ7
   VIRQ923E lin1name PARAM ABCD.VIRTELOUT
-  VIRRW01I INITIALISATION FOR lin2name (MQI-XX ), VERSION 4.62
+  VIRRW01I INITIALISATION FOR lin2name (MQI-XX ), VERSION 4.63
   VIRQ903W LINE lin2name HAS A SESSION STARTED WITH MQM CSQ6
 
 .. note::
@@ -1022,7 +1026,7 @@ Defining the library
 
 *VIRTLIB : JCL to define the sublibrary (z/VSE)*
 
-Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.62. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
+Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.63. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
 Loading the executable modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3009,6 +3013,30 @@ GUIDE parameter
 GUIDE=00 allows the [GUIDE] key to display a pad offering further choices.
 
 .. index::
+   pair: Virtel TCT; HDRSEC parameter	
+
+HDRSEC parameter
+^^^^^^^^^^^^^^^^
+
+::
+
+	HDRSEC=(hdrtable,[HIDESERVER])    Default=none
+
+**hdrtable** - The name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to responses returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
+**HIDESERVER** If this option is specified, the HTTP header "Server: Virtel 4.63" will not be added to responses returned by the Virtel HTTP server.
+
+The HDRSEC parameter can be used to add additional security headers to responses returned by VIRTEL to the browser, and / or to hide the “Server” http header. 
+
+Please refer to the section “Using the VIRTCT to add HTTP Security Headers” for further details.
+
+.. raw:: latex
+
+    \newpage
+
+.. index::
+   pair: VSAM Files; Additional Parameters  
+
+.. index::
    pair: Virtel TCT; HTFORWD parameter	
 
 HTFORWD parameter
@@ -3201,7 +3229,7 @@ LOGGER
   WTOs are written to Sysplex logger.
 
 FILE
-  Messages will be written to the DDNAMEs LOGFILEx|y               (Virtel 4.62)	
+  Messages will be written to the DDNAMEs LOGFILEx|y               (Virtel 4.63)	
 
 .. index::
 	pair: Virtel TCT; LPKALIVE parameter
@@ -4074,7 +4102,7 @@ This parameter should be coded in the same way as for the X25MCH macro in NPSI.
 .. index::
    pair: Virtel TCT; UFIELnn parameter  
 
-.. _#_V462IG_ufile1_to_ufile20_parameters:     
+.. _#_V463IG_ufile1_to_ufile20_parameters:     
 
 UFILE1 to UFILE20 parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4179,7 +4207,7 @@ VSAMTYP parameter
 
 **NORMAL** - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.
 
-VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see :ref:`“Additional parameters for VSAM files”, <#_V462IG_additional_parameters_for_VSAM_files>`): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see :ref:`“UFILE1 to UFILE20", <#_V462IG_ufile1_to_ufile20_parameters>`).
+VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see :ref:`“Additional parameters for VSAM files”, <#_V463IG_additional_parameters_for_VSAM_files>`): and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see :ref:`“UFILE1 to UFILE20", <#_V463IG_ufile1_to_ufile20_parameters>`).
 
 .. note::
 
@@ -4290,7 +4318,7 @@ ZAPH parameter
 .. index::
    pair: VSAM Files; Additional Parameters  
 
-.. _#_V462IG_additional_parameters_for_VSAM_files:  
+.. _#_V463IG_additional_parameters_for_VSAM_files:  
 
 Additional Parameters For VSAM Files
 ------------------------------------
@@ -4372,7 +4400,7 @@ How To Share VSAM Files Between Multiple Instances Of VIRTEL
 
 Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in "write" mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel. 
 
-For more detailed informations on this subject, see :ref:`“UFILE1 to UFILE20", <#_V462IG_ufile1_to_ufile20_parameters>` and also :ref:`“Additional parameters for VSAM files”, <#_V462IG_additional_parameters_for_VSAM_files>`.
+For more detailed informations on this subject, see :ref:`“UFILE1 to UFILE20", <#_V463IG_ufile1_to_ufile20_parameters>` and also :ref:`“Additional parameters for VSAM files”, <#_V463IG_additional_parameters_for_VSAM_files>`.
 
 .. raw:: latex
 
@@ -4638,6 +4666,51 @@ The format of each ZAPD instruction is as follows::
 **replace** - replacement value (hexadecimal digits)
 
 **desc** - (optional) description for message VIR0066I
+
+.. index::
+   pair: Using the VIRTCT to add HTTP Security Headers
+
+Using the VIRTCT to add HTTP Security Headers
+---------------------------------------------
+
+The HDRSEC parameter of the VIRTCT can be used to reference a table containing the list of HTTP headers that must be present in all responses sent by VIRTEL to the browser. 
+
+HDRH instruction
+^^^^^^^^^^^^^^^^
+
+The HDRH instruction is used to define a table that will contain a list of HTTP headers. The name of the table is specified as the parameter of the HDRH instruction. This table will be referenced by the HDRSEC parameter.
+
+Syntax::
+
+    MYHDRTAB HDRH
+
+HDRD instruction
+^^^^^^^^^^^^^^^^
+
+The HDRD instruction is used to define a single HTTP header in the table referenced by the HDRSEC parameter. Each HDRD instruction defines one header and its value.
+
+Syntax::
+
+    HDRD 'header-name : header-value'
+
+**header-name** - HTTP header name to be added to the response. The header name is case sensitive.
+**header-value** - Value assigne to the header. This value is also case sensitive. The value may contain spaces, but must not contain line breaks. If the value contains a colon, it must be escaped with a backslash (\\).
+
+Example of HDRH / HDRD usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here is a sample of the syntax to implement to implement custom HTTP security headers in the VIRTCT::
+
+	      VIRTERM  TYPE=INITIAL,                                          X
+	[...]
+	               HDRSEC=(MYHDRTAB,HIDESERVER),                          X
+	[... to end of VIRTCT main code]
+	MYHDRTAB HDRH
+	         HDRD 'X-Content-Type-Options: nosniff'
+	         HDRD 'X-Frame-Options: SAMEORIGIN'
+	         HDRD 'X-Download-Options: noopen'
+	         HDRD 'Strict-Transport-Security: max-age=63072000'
+
 
 .. index::
    single: VIRCONF Utility 

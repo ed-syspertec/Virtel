@@ -2,15 +2,15 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. _Virtel462MI:
+.. _Virtel463MI:
 
 =====================
-Migration Guide V4.62
+Migration Guide V4.63
 =====================
 
 **VIRTEL Migration Guide**
 
-Version : 4.62
+Version : 4.63
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
 
@@ -43,11 +43,11 @@ NOTICE
     \newpage    
 
 .. index::
-   Migrating to Virtel V4.62        
+   Migrating to Virtel V4.63        
 
-.. _V462MI_Introduction:
+.. _V463MI_Introduction:
 
-Migrating to Virtel V4.62
+Migrating to Virtel V4.63
 =========================
 
 Overview
@@ -74,19 +74,19 @@ Before starting the upgrade read through this document first and build a migrati
 
 Download from our file server at http://ftp-group.syspertec.com
 
-- /VIRTEL 4.62/Produits/virtel462mvs.zip
-- /VIRTEL 4.62/PTFS/allptfs-mvs462.txt
-- /VIRTEL 4.62/PTFS/virtel462updtnnnn.zip
+- /VIRTEL 4.63/Produits/virtel463mvs.zip
+- /VIRTEL 4.63/PTFS/allptfs-mvs463.txt
+- /VIRTEL 4.63/PTFS/virtel463updtnnnn.zip
 
 .. warning:: All jobs must be customized to your site standards before running. Backup and keep your existing HTML.TRSF and ARBO VSAM files. 
 
 The procedure for upgrading from a previous release of VIRTEL (version 4.00 or later) is as follows:
 
-1. Download and unzip virtel462mvs.zip.
+1. Download and unzip virtel463mvs.zip.
 2. Upload and run job $ALOCDSU. This will allocate a XMIT file on the mainframe.
-3. Upload virtel462mvs.xmit to the file allocated by $ALOCDSU.
-4. Upload and run job $RESTDSU. This will allocate and install the new Virtel 4.62 libraries.
-5. Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRTnnn.SAMPLIB). The input file is allptfs-mvs462.txt.
+3. Upload virtel463mvs.xmit to the file allocated by $ALOCDSU.
+4. Upload and run job $RESTDSU. This will allocate and install the new Virtel 4.63 libraries.
+5. Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRTnnn.SAMPLIB). The input file is allptfs-mvs463.txt.
 6. Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRTnnn.CNTL
 7. Reassemble your VIRTCTnn module using the ASMTCT job in VIRTnnn.CNTL
 8. If you have any user scenario or user exit modules, copy them to the VIRTnnn.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.
@@ -103,8 +103,8 @@ The procedure for upgrading from a previous release of VIRTEL (version 4.00 or l
 
     \newpage   
 
-12. Apply any "update" maintenance (virtel462updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.
-13. Stop and restart Virtel. If you want to create new copies of your existing ARBO and HTML.TRSF files, and rename them to your V4.62 HLQ, use the JCl shown below. This will preserve any configurational and customized elements you have. For example w2hparm.js, custom.js, custom.css and any customized option members:-
+12. Apply any "update" maintenance (virtel463updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.
+13. Stop and restart Virtel. If you want to create new copies of your existing ARBO and HTML.TRSF files, and rename them to your V4.63 HLQ, use the JCl shown below. This will preserve any configurational and customized elements you have. For example w2hparm.js, custom.js, custom.css and any customized option members:-
 
 ::
 
@@ -160,7 +160,7 @@ Before migration, you must check the following:-
 All versions
 ------------
 
-- You MUST backup and save a copy of your original configuration ARBO file as this file will be migrated to Virtel 4.62. This can be done using the example JCL procedure above. Alternatively, you can use a VIRCONF UNLOAD process to unload and reload to the new distributed V4.62 ARBO file. See "VIRCONF - Unloading a VIRARBO file" in your CURRENT Virtelxxx_Installation_User_Guide.
+- You MUST backup and save a copy of your original configuration ARBO file as this file will be migrated to Virtel 4.63. This can be done using the example JCL procedure above. Alternatively, you can use a VIRCONF UNLOAD process to unload and reload to the new distributed V4.63 ARBO file. See "VIRCONF - Unloading a VIRARBO file" in your CURRENT Virtelxxx_Installation_User_Guide.
 - The previous compatibility support option, as defined in the TCT as HTSET1=(OPTION-DEFAULT-COMPATIBILITY) is no longer supported. You must migrate to "global options" support. See the customization manual for further details.
 - If you using some "custom" files or options files ("custom.js", "customs.css",custom "w2hparm.js" or any option related files) you MUST check that they are stored in a directory other than W2H-DIR. If not you must store your "custom" files in another directory (CLI-DIR for example). 
 - Ensure that the directory on which "custom" file are stored is not the W2H-DIR directory as this directory is allocated to the VIRTxxx.SAMP.TRSF VSAM file. VIRTxxx.SAMP.TRSF is completely replaced as part of the migration procedure. Any customized elements will be lost or overwritten. See SAMPLIB(CUSTCSS) as a sample job to point the relevant transactions to a directory other than W2H-DIR. The suggested directory should be CLI-DIR. For further information on customization see the section "Virtel customization Modes" in the Virtel User Guide.
@@ -272,7 +272,7 @@ Upgrading from a version prior to 4.61
 
 None
 
-Upgrading from a version prior to 4.62
+Upgrading from a version prior to 4.63
 --------------------------------------
 
 LOCADDR2 and PARTNER2 LINE keywords are no longer supported in VIRCONF.
@@ -296,11 +296,6 @@ Running under VSE
 
 .. index::
    What's new in this release.     
-
-What's new in this release
-==========================
-
-.. note:: For further details see the Virtel Technical Newsletter TN202101: Whats new in Virtel 4.62.
 
 
 .. |image1| image:: images/media/logo_virtel_web.png
