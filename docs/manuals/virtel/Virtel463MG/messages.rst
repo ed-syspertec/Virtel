@@ -6610,7 +6610,7 @@ Messages VIRQLxxx
 ^^^^^^^^^^^^^^^^^
 
 VIRQLK1I luname CONNECTING terminal
-===================================
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6621,7 +6621,7 @@ Action
     No Action required
 
 VIRQLK2I luname DECONNECTING terminal
-=====================================
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6632,7 +6632,7 @@ Action
     No Action required
 
 VIRQLK3I luname ACCEPTED terminal
-=================================
+"""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6643,7 +6643,7 @@ Action
     No Action required
 
 VIRQLK4I luname SYNCHRONIZING WITH server (serverInt)
-=====================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6654,7 +6654,7 @@ Action
     No Action required
 
 VIRQLK5I LOCAL LINE luname (lunameInt) IS WAITING FOR REMOTE VIRTEL : qlnkname
-==============================================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6665,7 +6665,7 @@ Action
     No Action required
 
 VIRQLK6E luname PRTOCOL ERROR - code - SNAP TAKEN 
-=================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6676,7 +6676,7 @@ Action
     Contact Technical Support.
 
 VIRQLK7I luname HAS NO MORE PSEUDO TERMINALS
-============================================
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6687,7 +6687,7 @@ Action
     Add more terminals. Contact Technical Support for additional help.
 
 VIRQLK8I LOCAL LINE luname (lunameInt) IS CONNECTED TO REMOTE VIRTEL : terminal
-===============================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6698,7 +6698,7 @@ Action
     No Action Required
      
 VIRQLK9I INITIALISATION FOR luname (lunameInt) VERSION version
-==============================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6709,7 +6709,7 @@ Action
     No Action Required
 
 VIRQLK9I luname SEND
-====================
+""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6720,7 +6720,7 @@ Action
     No Action required
 
 VIRQLK9I LINE linename WAS STOPPED
-==================================
+""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6731,7 +6731,7 @@ Action
     No Action required
 
 VIRQLK9I luname RECEIVE ON SOCKET puname
-========================================
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6742,7 +6742,7 @@ Action
     No Action required    
 
 VIRQLK9E luname IS REQUESTING DUPLICATE CORRELATOR correlator. ALREADY ALLOCATED TO terminal
-============================================================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6754,6 +6754,7 @@ Action
 
 VIRQL51I luname CONNECTING terminal TO server
 """""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 
@@ -6765,6 +6766,7 @@ No Action Required
 
 VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 
@@ -6776,6 +6778,7 @@ Contact Technical Support.
 
 VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 
@@ -6790,6 +6793,7 @@ Messages VIRQ9xxx
 
 VIRQ903W LINE linename HAS A SESSION STARTED WITH MQM mqmname
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6799,6 +6803,7 @@ Action
 
 VIRQ904W linename OBJECT socknum WAITING FOR INPUT
 """"""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6808,6 +6813,7 @@ Action
 
 VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH 'hexlen' WAITING
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6817,6 +6823,7 @@ Action
 
 VIRQ912W linename OBJECT socknum STARTED
 """"""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6826,6 +6833,7 @@ Action
 
 VIRQ922W linename ENDING OBJECT socknum FOR mqmname
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6835,6 +6843,7 @@ Action
 
 VIRQ923E linename REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6851,6 +6860,7 @@ Action
 
 VIRQ924E linename OBJECT socknum REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6860,6 +6870,7 @@ Action
 
 VIRQ925W linename MQM mqmname IS QUIESCING
 """"""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0Q09
 Meaning
@@ -6872,6 +6883,7 @@ Messages VIRR2xxx
 
 VIRR211E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0021R
 Meaning
@@ -6884,6 +6896,7 @@ Messages VIRRWxxx
 
 VIRRW01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6893,6 +6906,7 @@ Action
 
 VIRRW04I LINE linename WAS STOPPED
 """"""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6902,6 +6916,7 @@ Action
 
 VIRRW27E linename IS REJECTED AT ENTRY POINT epname
 """"""""""""""""""""""""""""""""""""""""""""""""""" 
+
 Module
     VIR0RAW
 Meaning
@@ -6911,6 +6926,7 @@ Action
 
 VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6920,6 +6936,7 @@ Action
 
 VIRRW29I linename HAS NO MORE PSEUDO TERMINALS
 """"""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6929,6 +6946,7 @@ Action
 
 VIRRW30I linename REQUEST FROM termname SENT AT timestamp1 CORR=correlator
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6938,6 +6956,7 @@ Action
 
 VIRRW30I linename REPLY timestamp1 AT timestamp2 CORR=correlator Q=qname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6947,6 +6966,7 @@ Action
 
 VIRRW31I linename REQUEST timestamp1 CORR=correlator TIMEOUT Q=qname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6956,6 +6976,7 @@ Action
 
 VIRRW51I linename CONNECTING termname
 """""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6965,6 +6986,7 @@ Action
 
 VIRRW52I linename DECONNECTING termname
 """""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6974,6 +6996,7 @@ Action
 
 VIRRW54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -6983,6 +7006,7 @@ Action
 
 VIRRW55E INVALID RULE rulename ENTRY POINT 'epname'
 """"""""""""""""""""""""""""""""""""""""""""""""""" 
+
 Module
     VIR0RAW
 Meaning
@@ -6992,6 +7016,7 @@ Action
 
 VIRRW99I linename MESSAGE RECEIVED FROM SOCKET socknum
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -7001,6 +7026,7 @@ Action
 
 VIRRW99I linename SEND TO SOCKET socknum
 """"""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0RAW
 Meaning
@@ -7013,6 +7039,7 @@ Messages VIRS1xxx
 
 VIRS121W termid ERROR LOADING SCENARIO modname IN TRANSACTION tranid
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7022,6 +7049,7 @@ Action
 
 VIRS122W termid INVALID FA39 SCENARIO RECEIVED
 """""""""""""""""""""""""""""""""""""""""""""" 
+
 Module
     VIR0S12
 Meaning
@@ -7031,6 +7059,7 @@ Action
 
 VIRS123W termid ERROR LOADING SCENARIO modname IN ENTRY POINT epname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7040,6 +7069,7 @@ Action
 
 VIRS124E termid VIRSV CREATE ERROR – R15 : xxxxxxxx (dddddddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7049,6 +7079,7 @@ Action
 
 VIRS125E termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7058,6 +7089,7 @@ Action
 
 VIRS126E termid VIRSV APPLICATION ERROR CODE : xxxxxxxx (dddddddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7067,6 +7099,7 @@ Action
 
 VIRS127E termid VIRSV SERVICES UNAVAILABLE
 """"""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7076,6 +7109,7 @@ Action
 
 VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET 'xxxxxxxx' ON INSTRUCTION STARTING WITH 'yyyyyyyy' [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7085,6 +7119,7 @@ Action
 
 VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET 'xxxxxxxx'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7094,6 +7129,7 @@ Action
 
 VIRS12BE SCENARIO REQUIRES HEADER 'headername' NOT FOUND IN TCT : ABORTING
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7103,6 +7139,7 @@ Action
 
 VIRS12CE termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd) FROM progname
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7112,6 +7149,7 @@ Action
 
 VIRS12DE termid VIRSV TRANSACTION ERROR CODE : xxxxxxxx (dddddddd) FROM progname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7121,6 +7159,7 @@ Action
 
 VIRS12EE termid SCENARIO scenname RETURNED ERROR : 'dddddddd'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7130,6 +7169,7 @@ Action
 
 VIRS12FE termid ERROR: SCENARIO 'scenname' CALLS UNDEFINED TRANSACTION 'tranname' AT OFFSET 'xxxxxxxx'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7139,6 +7179,7 @@ Action
 
 VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE 'applname' ABORTING SCENARIO
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7148,6 +7189,7 @@ Action
 
 VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: 'safrc' RACF RC: 'racfrc' RACF reason: 'racfreas'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7157,6 +7199,7 @@ Action
 
 VIRS12IE termid LOOP WAS DETECTED IN SCENARIO scenname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0S12
 Meaning
@@ -7169,6 +7212,7 @@ Messages VIRSMxxx
 
 VIRSM01I SMTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7178,6 +7222,7 @@ Action
 
 VIRSM04I SMTP LINE linename WAS STOPPED
 """""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7187,6 +7232,7 @@ Action
 
 VIRSM27E linename IS REJECTED AT ENTRY POINT epname
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7196,6 +7242,7 @@ Action
 
 VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7205,6 +7252,7 @@ Action
 
 VIRSM29I linename HAS NO MORE PSEUDO TERMINALS
 """""""""""""""""""""""""""""""""""""""""""""" 
+
 Module
     VIRSMTP
 Meaning
@@ -7214,6 +7262,7 @@ Action
 
 VIRSM51I linename CONNECTING termname
 """""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7223,6 +7272,7 @@ Action
 
 VIRSM52I linename DECONNECTING termname
 """""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7232,6 +7282,7 @@ Action
 
 VIRSM55E INVALID RULE rulename ENTRY POINT 'epname'
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7241,6 +7292,7 @@ Action
 
 VIRSM581 MESSAGE FROM xxx@xxx.xxx TO xxx@xxx.xxx WAS REJECTED
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRSMTP
 Meaning
@@ -7253,6 +7305,7 @@ Messages VIRTNXXX
 
 VIRTN01I INITIALISATION FOR TN3270 (server), VERSION V.VV
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 Meaning
@@ -7263,6 +7316,7 @@ Action
 
 VIRTN19I luname RELAY resource CONNECTED
 """"""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 Meaning
@@ -7272,6 +7326,7 @@ Action
 
 VIRTN51I  luname CALLING SERVER ipaddr
 """"""""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 Meaning
@@ -7282,6 +7337,7 @@ Action
 
 VIRTN52I TN3270 DECONNECTING resoure
 """"""""""""""""""""""""""""""""""""
+
 Module
     VIR0TNET
 Meaning
@@ -7295,6 +7351,7 @@ Messages VIRT2xxx
 
 VIRT251E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0025T
 Meaning
@@ -7307,6 +7364,7 @@ Messages VIRT9xxx
 
 VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS 'xxxxxxxx' (dddddddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7316,6 +7374,7 @@ Action
 
 VIRT904I LINE linename (n-xxxxxx) IS USING TCP/IP KEEPALIVE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7325,6 +7384,7 @@ Action
 
 VIRT905I linename SOCKET socknum LISTENING ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""""   
+
 Module
     VIR0T09
 Meaning
@@ -7334,6 +7394,7 @@ Action
 
 VIRT906I linename SOCKET socknum CALL FROM ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7343,6 +7404,7 @@ Action
 
 VIRT907I linename SOCKET socknum CALLING ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7352,6 +7414,7 @@ Action
 
 VIRT912W linename SOCKET socknum STARTED FOR ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7361,6 +7424,7 @@ Action
 
 VIRT918S NO MORE OSCORE AVAILABLE
 """"""""""""""""""""""""""""""""" 
+
 Module
     VIR0T09
 Meaning
@@ -7370,6 +7434,7 @@ Action
 
 VIRT920W TCP SESSION LOST FOR LU linename
 """""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7379,6 +7444,7 @@ Action
 
 VIRT922W linename SOCKET socknum ENDED FOR ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7388,6 +7454,7 @@ Action
 
 VIRT923E ERROR ON: linename REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7408,6 +7475,7 @@ Action
 
 VIRT924E ERROR ON: linename SOCKET: socknum REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7423,6 +7491,7 @@ Action
 
 VIRT925E ERROR CALLING PORT port AT SERVER servname
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0T09
 Meaning
@@ -7435,6 +7504,7 @@ Messages VIRU1xxx
 
 VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0U12
 Meaning
@@ -7444,6 +7514,7 @@ Action
 
 VIRU122I termid FILE UPLOAD : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0U12
 Meaning
@@ -7453,6 +7524,7 @@ Action
 
 VIRU123W luname FILE BROADCAST FAILED FOR FILE ddname reason
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0U12
 Meaning
@@ -7465,6 +7537,7 @@ Messages VIRUCSxx
 
 VIRUCS1E termid COULD NOT FIND TRANSLATION TABLE tablename
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0UCS
 Meaning
@@ -7477,6 +7550,7 @@ Messages VIRV1xxx
 
 VIRV121E termid COULD NOT FIND TRANSLATION TABLE 'tablname' FOR PAGE 'pagename' DIRECTORY 'tranid' (dirname)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0V12
 Meaning
@@ -7486,6 +7560,7 @@ Action
 
 VIRV122E termid WAS STOPPED
 """""""""""""""""""""""""""
+
 Module
     VIR0V12
 Meaning
@@ -7498,6 +7573,7 @@ Messages VIRX9xxx
 
 VIRX903W linename STARTING A VIRPASS SERVICE OF LOCAL NAME xmident REMOTE NAME relayname IN JOB jobname
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7507,6 +7583,7 @@ Action
 
 VIRX907I linename DETACHING VXMTRECV SUBTASK
 """"""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7516,6 +7593,7 @@ Action
 
 VIRX908I linename DETACHING VXMTRECV SUBTASK
 """"""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7525,6 +7603,7 @@ Action
 
 VIRX909I linename DETACHING VXMTRECV SUBTASK
 """"""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7534,6 +7613,7 @@ Action
 
 VIRX912W linename CONTEXT: sessionid STARTED
 """"""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7543,6 +7623,7 @@ Action
 
 VIRX922W linename ENDING CONTEXT sessionid FOR jobname
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7552,6 +7633,7 @@ Action
 
 VIRX923E ERROR ON linename REQ reqtype R15 r15code RETCODE retcode ERRNO xxxxxxxx (dddddddd)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+
 Module
     VIR0X09
 Meaning
@@ -7561,6 +7643,7 @@ Action
 
 VIRX924E ERROR ON linename CONTEXT sessionid REQ reqtype RETCODE retcode ERRNO xxxxxxxx (dddddddd)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIR0X09
 Meaning
@@ -7569,7 +7652,8 @@ Action
     Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
 VIRX925W linename WAITING DUE TO mmmmmmmm RETCODE retcode Event cccccccc PROTOCOL servtyp PARTNER jobname
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""   
+
 Module
     VIR0X09
 Meaning
@@ -7582,6 +7666,7 @@ Messages VIRXOxxx
 
 VIRXO01I XOT INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7591,6 +7676,7 @@ Action
 
 VIRXO04I XOT LINE linename WAS STOPPED
 """"""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7600,6 +7686,7 @@ Action
 
 VIRXO05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7609,6 +7696,7 @@ Action
 
 VIRXO06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7618,6 +7706,7 @@ Action
 
 VIRXO07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7627,6 +7716,7 @@ Action
 
 VIRXO11I termid CLEAR RECEIVED FROM REMOTE linename CAUSE=xx DIAG=yy
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7636,6 +7726,7 @@ Action
 
 VIRXO51I termid CALLING x25callednumber VIA ROUTER ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7645,6 +7736,7 @@ Action
 
 VIRXO52I linename DECONNECTING termid
 """""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7654,6 +7746,7 @@ Action
 
 VIRXO53E linename HAS NO MORE PSEUDO TERMINALS
 """"""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7663,6 +7756,7 @@ Action
 
 VIRXO98E termid ERROR errcode RECEIVING FROM SOCKET sockno
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
@@ -7680,6 +7774,7 @@ Action
 
 VIRXO99E termid ERROR errcode SENDING TO SOCKET sockno
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 Module
     VIRXOT
 Meaning
