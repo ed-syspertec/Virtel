@@ -1,14 +1,6 @@
 Virtel Manuals
 ==============
 
-V4.59
------
-.. toctree::
-   :maxdepth: 4   
-   :glob:
-   
-   manuals/virtel/Virtel459*/*        
-
 V4.60
 -----
 .. toctree::
@@ -32,3 +24,11 @@ V4.62
    :glob:
    
    manuals/virtel/Virtel462*/*               
+
+V4.63 Beta
+----------
+.. toctree::
+   :maxdepth: 4   
+   :glob:
+   
+   manuals/virtel/Virtel463*/*               
