@@ -1,0 +1,314 @@
+.. _tn202501:
+
+What’s new in Virtel 4.63 Beta Release
+====================================
+
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.63 Beta @ update level 6200. 
+
+New features
+------------
+
+Connectivity Enhancements: TN3270 Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- The Virtel server now integrates a TN3270 client which enables Telnet bounces towards other Telnet servers such as remote z/OS systems, z/VM systems, OSA-ICC Consoles, IBMi systems (AS400), TPF etc. This is further documented in the Virtel Connectivity Guide (Section - TN3270 Lines)
+
+Security Enhancements
+^^^^^^^^^^^^^^^^^^^^^
+
+- The Virtel SSO Gateway activates external authentication to Mainframe applications (AD, OIDS, SAML...) for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
+- The Virtel session tokens have been re-engineered, in order to be harder to hack
+- It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.)for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
+
+UX Enhancements
+^^^^^^^^^^^^^^^
+
+- Improved support for OMVS: command line is preserved
+
+Administration Enhancements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- New administrator panel to kill active Virtel sessions
+- Search field introduced on several panels, to improve management of large configurations
+- Simplified CSS customization for creation of new colour schemes
+- New LU Nailing feature, integrated into the Virtel ARBO file (no longer relies on RACF groups)
+
+Migration considerations
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**End of support for COMPATIBILITY mode**
+
+The "COMPATIBILITY" mode for w2hparm, that was introduced in version 4.54 to provide seamless migration of V4.53 w2hparm to V4.54. w2hparm is no longer supported from V4.61 onwards. It is recommended to switch to "Option" mode before migrating later releases.
+
+**6046 DCB value of STATS file changed to 255**
+
+This has been increased to 255. Reallocate any STATS file with a LRECL=255,RECFM=VB,BLKSIZE=4096
+
+**Version support**
+
+Versions of Virtel older than V4.59 are no longer supported. It is recommended to migrate to the latest release.
+
+**ARBO changes**
+
+- There have been no changes to the ARBO which would require migration from V4.60 or V4.59. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+
+List of updates:
+----------------
+
+Administration changes
+^^^^^^^^^^^^^^^^^^^^^^
+
+**6107 VIRCONF Versioning**
+
+Files unloaded using the VIRCONF procedure now include a comment identifying which version of Virtel was used to create the VIRCONF file.
+
+**6110 Update SAMPLIB(DEFTRSF)**
+
+Sample Job DEFTRSF has been fixed (missing parenthesis on RECSZ parameter)
+
+**6116 Update ARBOLOAD in Samplib**
+
+Various fixes to ARBOLOAD installation job.
+
+**6122 Update SMFREXX to translate out null values.**
+
+The SMFREXX procedure has been fixed to accept NULL values in fields.
+
+**6124 Enhancements to 3270 ADMIN applications**
+
+New CANCEL feature for active Virtel sessions. Various improvements to Admin panels.
+
+**6129 VIRCONF UNLOAD does not work from a Virplex WRITER task**
+
+VIRCONF program improved to support unload from VIRPLEX instance of Virtel.
+
+**6131 Change SAMPLES (SSLSETUP) to include options on RDATALIB Class**
+
+SSLSETUP JCL adapted to more modern implementations of AT-TLS
+
+**6134 PARM6 not initialy set in VIR0021W. Potential for MAPFAIL condition.**
+
+Improve Virtel resilience in regards to MAPFAIL conditions on USSTAB files.
+
+**6143 New ADMIN 3270 Applications**
+
+Update screens in Security Manager to enable dynamic updates of USER relay session information. 
+
+**6145 Update SAMPLIB and INSTALL.TXT**
+
+Add example Security Manager to SAMPLIB ARBOSECU
+
+**6147 Virtel Line Status Display PF7 Previous returns to top of the first page not previous Page**
+
+Fix various navigation issues in admin panels.
+
+**6149 Display USERPARM in TCT command**
+
+Expand display of USERPARMS in /F VIRTEL,TCT command
+
+**6151 User Parm Manager Feature**
+
+Add field in "Correspondents" admin panel to display centralized user parms for a given user
+
+**6155 LU Nailing Table Option**
+
+New LUNSIZE TCT option to manage size of internal LU Nailing table.
+
+**6156 Correct VSAMTYP= operand in VIRTERM**
+
+VSAMTYP= should only accept READONLY, WRITER, [NORMAL] as operands in VIRTERM macro.
+
+**6159 LANG= TCT parameter validation**
+
+LANG= TCT parameter to support values: 	'E' English / 'F' French / ' ' French / *Blank* Backward Compatibility
+
+**6160 Correct OPTION field length in MAP10**
+
+Update MAP10 (Transaction Detail) OPTION field to 32 bytes. Same as VIRCONF.
+
+**6163 fix samplib job VIR4INST**
+
+Fix allocation parameters for file SAMPTRSF.
+
+**6173 ADMIN 3270 Updates**
+
+Various cosmetic updates to admin panels
+
+**6179 Correct LOGMODE in VIR0021W**
+
+Allow different LOGMODEs for USSTAB
+
+Base Components
+^^^^^^^^^^^^^^^
+
+**6109 MQCLOSE when stopping an MQ Line**
+
+Fix issue for Virtel MQ Lines that are incompletely closed when line is stopped.
+
+**6123 Reformat message VIRHT57E to accomodate IPV6 address**
+
+Message VIRHT57E can now include IPv6 addresses
+
+**6136 PTON  00000031 (00000049) error with CALLER=(BEGIN RULE**
+
+Allow Rules to include more than one proxy name.
+
+**6142 possible abend after receiving a series of invalid VirtelSession**
+
+Fix abend condition reached after receiving multiple invalide VirtelSessions
+
+**6144 Correct message VIR0057I**
+
+Remove invalid text from message VIR0057I
+
+**6148 VIRHTML opened r/w on a virplex reader task**
+
+Force R/O opening of VIRHTML file on reader instances of Virplex
+
+**6150 VIR0537E - LINE T-TNSPT1(TNSPT1 ) HAS NO TERMINALS LINKED**
+
+Fix allocation of terminals for TN3270 lines with large numbers of pseudo-terminals
+
+**6154 Virtel VSE z404 when logging off application**
+
+Fix z404 error condition in Virtel VSE at end of session.
+
+**6158 Fix S0E0 Abend in VIR0008U**
+
+Correct ABEND S0E0 in VIR0008U when printing TS table with OPTION=NY set. Y= Debug LU Nailing On.   
+
+**6181 Update message VIR123E in VIR0U12**
+
+Add reason code to message VIR123E when Virplex broadcast fails 
+
+Interconnection
+^^^^^^^^^^^^^^^
+
+**6111 TN3270 updates to work with OSA card telnet server**
+
+Add TN3270 support for OSA-ICC telnet server
+
+**6118 TN3270 stuck after entering L TSO in USSTABTX**
+
+Fix error when calling a TN3270 line from Virtel usstab program
+
+**6128 TN3270 possible ASRAs and/or shifted screens**
+
+Fix various abends with TN3270 features
+
+**6139 TN3270 - force LU name on client side (for OSA-ICC connections)**
+
+Add new URL option TNLUNAME=xx to force LUNAME on TN3270 outbound connections
+
+**6141 TN3270 Add support for other terminal models - 3 (32x80); 4 (43x80); 5 (27x132)**
+
+Add support for terminal models 3, 4 and 5
+
+**6176 Allow use of logmode parm for TN3270 transactions**
+
+Allow to set the TN3270 terminal model using the Virtel SNX3270x logmode parameters.
+
+Scenario Language
+^^^^^^^^^^^^^^^^^
+
+**6113 Scenario not called on non HTTP line**
+
+Add support for .390 scenarios on "non-HTTP" lines (such as MQ for example)
+
+**6138 COPY$ SCREEN-TO-VARIABLE gives only first line in a FOREACH$ **
+
+Fix compatibility between the COPY$ SCREEN-TO-VARIABLE instruction and the FOREACH$ instruction.
+
+**6167 during UPLOAD of templates, matches WHEN-EXISTS and END-WHEN-EXISTS** 
+
+Add check during upload to Virtel for unmatched WHEN-EXISTS / END-WHEN-EXISTS sections
+
+**6182 Interpret variables in HEADER field of OPTION$**
+
+Allow usage of Virtel variables in the HEADER field of an OPTION$ TO-HTTP statement
+
+Security
+^^^^^^^^
+
+**6114 Logon hangs for revoked passphrase user**
+
+Fix issue for revoked passphrase user that could cause Virtel logon panel to hang
+
+**6115 secu=5 -  283-04C ABEND in RACINIT after timeout**
+
+Trap RACF abend when timeout occurs on logon panel
+
+**6130 Block usage of outdated options SECUR=RACF and SECUR=TSS**
+
+Only support RACROUTE authentication for RACF and TSS shops.
+
+**6132 Password buffer in Security 1 is not limited to 8 characters**
+
+Block authentication for password users when password entered in Browser Sec.1 panel is longer than 8 characters
+
+**6133 Allow usage of Passticket for Virtel transactions**
+
+Allow Passticket authentication to access Virtel application menu when calling from Virtel SSO Gateway.
+
+**6140 Passphrase support for Virtel User Signon Code**
+
+Allow passphrase access for transactions defined with Sec.5
+
+**6161 Invalid SAF call for NAME-OF GROUP if not signed on**
+
+Fix invalid ICH408I when accessing userparms for users that are not signed on to RACF. 
+
+**6162 Multiple calls to SAF with invalid pwd can lead to revoked user**
+
+Fix http realm issue to avoid users being revoked for wrong reason
+
+**6169 Change SAMPLES (SSLSETUP) to include options on RDATALIB Class**
+
+Update SSLSETUP installation job to suggest more modern ways to implement AT-TLS
+
+**6171 Support for custom HTTP security headers**
+
+Introduce a new VIRTERM parameter HDRSEC, and two new macros HDRH and HDRD based on the model of ZAPD/ZAPH. 
+
+Syntax is as follows ::
+	
+	HDRSEC=(hdrtable,[HIDESERVER]),
+	
+*hdrtable* - name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to files returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
+	
+*HIDESERVER* - 	If this option is specified, the HTTP header "Server: Virtel 4.xx" will not be added to files returned by the Virtel HTTP server.
+	
+Example :: 
+	
+    VIRTERM  TYPE=INITIAL,                                          X
+	[...]
+             HDRSEC=(MYHDRTAB,HIDESERVER),                          X
+	[...]
+	
+	MYHDRTAB HDRH
+	         HDRD 'X-Content-Type-Options: nosniff'
+	         HDRD 'X-Frame-Options: SAMEORIGIN'
+	         HDRD 'X-Download-Options: noopen'
+	         HDRD 'Strict-Transport-Security: max-age=63072000'
+
+**6172 Get minimum PASSPHRASE length from TCT**
+
+**6180 Passphrase cleanup for Sec.4**
+**6187 User Signon Code empty if created after connecting to an application**
+**6191 USERPARMS inconsistent security**
+**6193 LOCK parameter causes Browser to resend invalid password**
+
+New features
+------------
+
+**6049 CRYPTS= Encrypt Virtel and Ajax session codes**
+
+A new VIRTCT parameter 
+.. 
+
+    CRYPTS=AES-256|AES-192|AES-128|NONE
+    
+..    
+
+When CRYPTS= is set to NONE, or defaulted, session codes are not encrypted. When CRYPT=AES-... is coded, Virtel session codes will be encrypted. The length of the session code is now 24 bytes instead of the previous 16 bytes.
+

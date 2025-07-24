@@ -72,3 +72,11 @@ Technical Newsletters
    :maxdepth: 1   
    
    manuals/newsletters/TN2024*/*     
+
+2025
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2025*/*     
