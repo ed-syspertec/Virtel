@@ -3023,6 +3023,7 @@ HDRSEC parameter
 	HDRSEC=(hdrtable,[HIDESERVER])    Default=none
 
 **hdrtable** - The name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to responses returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
+
 **HIDESERVER** If this option is specified, the HTTP header "Server: Virtel 4.63" will not be added to responses returned by the Virtel HTTP server.
 
 The HDRSEC parameter can be used to add additional security headers to responses returned by VIRTEL to the browser, and / or to hide the “Server” http header. 
