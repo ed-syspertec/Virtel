@@ -11,7 +11,7 @@ New features
 Connectivity Enhancements: TN3270 Client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- The Virtel server now integrates a TN3270 client which enables Telnet bounces towards other Telnet servers such as remote z/OS systems, z/VM systems, OSA-ICC Consoles, IBMi systems (AS400), TPF etc. This is further documented in the Virtel Connectivity Guide (Section - TN3270 Lines)
+- The Virtel server now integrates a TN3270 client which enables Telnet bounces towards other Telnet servers such as remote z/OS and VSEn systems, z/VM systems, OSA-ICC Consoles, IBMi systems (AS400), TPF etc. This is further documented in the Virtel Connectivity Guide (Section - TN3270 Lines)
 
 Security Enhancements
 ^^^^^^^^^^^^^^^^^^^^^
@@ -272,28 +272,7 @@ Update SSLSETUP installation job to suggest more modern ways to implement AT-TLS
 
 **6171 Support for custom HTTP security headers**
 
-Introduce a new VIRTERM parameter HDRSEC, and two new macros HDRH and HDRD based on the model of ZAPD/ZAPH. 
-
-Syntax is as follows ::
-	
-	HDRSEC=(hdrtable,[HIDESERVER]),
-	
-*hdrtable* - name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to files returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
-	
-*HIDESERVER* - 	If this option is specified, the HTTP header "Server: Virtel 4.xx" will not be added to files returned by the Virtel HTTP server.
-	
-Example :: 
-	
-    VIRTERM  TYPE=INITIAL,                                          X
-	[...]
-             HDRSEC=(MYHDRTAB,HIDESERVER),                          X
-	[...]
-	
-	MYHDRTAB HDRH
-	         HDRD 'X-Content-Type-Options: nosniff'
-	         HDRD 'X-Frame-Options: SAMEORIGIN'
-	         HDRD 'X-Download-Options: noopen'
-	         HDRD 'Strict-Transport-Security: max-age=63072000'
+Introduces a new TCT parameter HDRSEC which allows to define customized security headers to be added to pages served by Virtel. This is documented in the Virtel Installation Guide.
 
 **6180 Passphrase cleanup for Sec.4**
 
