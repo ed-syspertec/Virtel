@@ -3,7 +3,7 @@
 What’s new in Virtel 4.63 Beta Release
 ====================================
 
-The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.63 Beta @ update level 6200. 
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.63 Beta at update level 6200. 
 
 New features
 ------------
@@ -16,14 +16,18 @@ Connectivity Enhancements: TN3270 Client
 Security Enhancements
 ^^^^^^^^^^^^^^^^^^^^^
 
-- The Virtel SSO Gateway activates external authentication to Mainframe applications (AD, OIDS, SAML...) for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
+- The Virtel SSO Gateway allows external authentication (AD, OIDS, SAML...) to Mainframe applications for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
 - The Virtel session tokens have been re-engineered, in order to be harder to hack
 - It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.)for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
 
 UX Enhancements
 ^^^^^^^^^^^^^^^
 
-- Improved support for OMVS: command line is preserved
+- Improved support for the TSO OMVS application. The command line is now preserved when the screen is refreshed.
+
+.. note::
+
+    This feature is disabled by default in the 4.63 Beta version.
 
 Administration Enhancements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -291,24 +295,53 @@ Example ::
 	         HDRD 'X-Download-Options: noopen'
 	         HDRD 'Strict-Transport-Security: max-age=63072000'
 
-**6172 Get minimum PASSPHRASE length from TCT**
-
 **6180 Passphrase cleanup for Sec.4**
-**6187 User Signon Code empty if created after connecting to an application**
+
+Passphrases were not correctly cleared from Virtel storage when closing a session in Sec.4. This is now fixed.
+
 **6191 USERPARMS inconsistent security**
+
+Transactions W2H-00P and CLI-00P should be defined with Sec.0 - the installation procedure has been fixed, and a warning message VIRHT65I is now generated if security is not set to 0 for these transactions.
+
 **6193 LOCK parameter causes Browser to resend invalid password**
 
-New features
-------------
+The TCT LOCK parameter caused browser to memorise an invalid password for transactions in Sec.1. This is now fixed.
 
-**6049 CRYPTS= Encrypt Virtel and Ajax session codes**
+User Interface
+^^^^^^^^^^^^^^
 
-A new VIRTCT parameter 
-.. 
+**6112 keymapping adjustments**
 
-    CRYPTS=AES-256|AES-192|AES-128|NONE
-    
-..    
+Remove use of deprecated keyboard JavaScript functions.
 
-When CRYPTS= is set to NONE, or defaulted, session codes are not encrypted. When CRYPT=AES-... is coded, Virtel session codes will be encrypted. The length of the session code is now 24 bytes instead of the previous 16 bytes.
+**6126 correction of a potential bug due to SYSLANG undefined**
 
+Fix issue by which end users are incorrectly prompted to choose a language for the Virtel interface.
+
+**6127 Cursor character color small changes**
+
+Cursor color fixed for certain screens that made it hard to identify.
+
+**6137 New method to customize colors for 3270 and gray styles**
+
+Introduce a new method to customize colors for 3270 and gray styles. This method relies on two new files that must be present in all the Virtel directories: WEB3270_Custom.css and WEBgray_Custom.css
+These two files are now delivered with commented examples in the CLI-DIR directory.
+
+**6174 Ctrl+PFkeys shortcut for macros**
+
+Several macro shortcuts were not functional, this has been fixed.
+
+**6177 Remove session tokens from Virtel URLs**
+
+Session tokens are no longer sent as URL parameters, as this is considered a potential security risk.
+
+**6196 Long Poll Synchronization for TSO OMVS**
+
+Improved support for the TSO OMVS application. The command line is now preserved when the screen is refreshed.
+
+VSR
+^^^
+
+**6120 VSR - incorrect length for INITIAL-COMPONENTs containing special characters**
+
+Fixed an issue where the length of a field was badly calculated by VSR if it contained special characters.
