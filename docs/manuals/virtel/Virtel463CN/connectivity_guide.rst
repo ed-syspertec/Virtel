@@ -8293,4 +8293,4 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image155| image:: images/media/image155.png
 .. |image156| image:: images/media/image156.png
 .. |image157| image:: images/media/image157.png
-.. |image158| image:: images/media/image158.png    
+.. |image158| image:: images/media/image158.PNG    
