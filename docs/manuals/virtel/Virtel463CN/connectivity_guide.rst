@@ -3412,10 +3412,10 @@ Examples::
      https://spvirdoc.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUTYP=5
 
     Call transaction TNSPT1 with LUNAME FLUT1002
-     https://spvirseb.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1002
+     https://spvirdoc.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1002
 
     Call transaction TNSPT1 with device type 3 and LUNAME FLUT1005
-     https://spvirseb.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1005+TNLUTYP=3
+     https://spvirdoc.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1005+TNLUTYP=3
 
 
 Virtel Rules
