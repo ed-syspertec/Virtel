@@ -3375,7 +3375,7 @@ Virtel 4.63 introduces two new parameters TNLUNAME and TNDEVTYP, in order to res
 New parameters introduced in 4.63
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**TNLUNAME"**
+**TNLUNAME**
 
     Maximum 8 characters
 
@@ -3405,6 +3405,18 @@ New parameters introduced in 4.63
     Default value is 2, any value other than 2-5 defaults to 2
 
 Parameters TNLUNAME and TNDEVTYP can be combined
+
+Examples::
+
+    Call transaction TNSPT1 with device type 5 (27x132)
+     https://spvirdoc.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUTYP=5
+
+    Call transaction TNSPT1 with LUNAME FLUT1002
+     https://spvirseb.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1002
+
+    Call transaction TNSPT1 with device type 3 and LUNAME FLUT1005
+     https://spvirseb.syspertec.lan:41002/w2h/web2ajax.htm+TNSPT1+TNLUNAME=FLUT1005+TNLUTYP=3
+
 
 Virtel Rules
 ============
