@@ -3292,7 +3292,7 @@ LLCLIST
 TN3270 line
 -----------
 
-Virtel provides support for TN3270.
+Virtel provides support for TN3270 client feature towards external telnet servers.
 
 |image157|    
 
@@ -3341,7 +3341,7 @@ Tran
 Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
-TN3270 ine uses a single sub-group of type-3 terminals having a common prefix (TNTRM in this example). No VTAM relays are defined for this type of line as connection is throup TCPIP and not VTAM. The number of terminals defined determines the maximum number of TN3270 sessions between VIRTEL and the TN3270 Server.
+TN3270 line uses a single sub-group of type-3 terminals having a common prefix (TNTRM in this example). No VTAM relays are defined for this type of line as connection is throup TCPIP and not VTAM. The number of terminals defined determines the maximum number of TN3270 sessions between VIRTEL and the TN3270 Server.
 
 Sample Virtel message log : -
 ::
@@ -3355,7 +3355,7 @@ Sample Virtel message log : -
 |image158|   
 
 .. index::
-   pair: TN320 line; Supported Environments   
+   pair: TN3270 line; Supported Environments   
 
 Supported TN3270 Servers Environments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3367,6 +3367,32 @@ The ARBOLOAD installation job with the [TN3270=YES] option set will install a de
 -   z/VSE BSI Stack, inc. BTI
 -   z/VSE CSI Stack, inc. BTI
 -   OSA Card Telnet Server
+
+Virtel 4.63 introduces two new parameters TNLUNAME and TNDEVTYP, in order to respectively force the LUNAME for the connection (useful for OSA-ICC Consoles) and choose the device type model (2-5). These parameters are specified at the URL level and can be used as follows:
+
+**TNLUNAME"**
+    Maximum 8 characters
+    If connection with this parameter is rejected by a z/OS TN3270 server, communication is ended and user is returned to the default/end page of the entry point. The Telnet error code is shown in the Virtel log::
+        SPT1     25.086 12.35.54 SPVIRBM  VIRTN52I TNSPT1   Telnet server sends REJECT with REASON=1 for TNLUNAME=FLUT1003
+
+    Reason codes::
+         CONN-PARTNER       00
+         DEVICE-IN-USE      01
+         INV-ASSOCIATE      02
+         INV-NAME           03
+         INV-DEVICE-TYPE    04
+         TYPE-NAME-ERROR    05
+         UNKNOWN-ERROR      06
+         UNSUPPORTED-REQ    07    
+
+    If connection with this parameter is rejected by an OSA TN3270 server, the communication is not terminated, instead the OSA error screen is displayed
+
+**TNDEVTYP**
+    1 character max
+    Possible values: 2, 3, 4, 5
+    Default value is 2, any value other than 2-5 defaults to 2
+
+Parameters TNLUNAME and TNDEVTYP can be combined
 
 Virtel Rules
 ============

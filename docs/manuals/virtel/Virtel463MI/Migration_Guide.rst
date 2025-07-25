@@ -272,10 +272,21 @@ Upgrading from a version prior to 4.61
 
 None
 
-Upgrading from a version prior to 4.63
+Upgrading from a version prior to 4.62
 --------------------------------------
 
 LOCADDR2 and PARTNER2 LINE keywords are no longer supported in VIRCONF.
+
+Virtel 4.62 update #6137 introduces a new update directory named "cli" corresponding to the CLI-DIR directory in VIRTEL. This directory contains elements to enable the new color customization scheme. If you already have customized colors in place, please contact Virtel support for assistance.
+
+All files present in the "cli" directory must therefore be uploaded to the CLI-DIR directory using the Drag & Drop interface. 
+If you do not have a CLI-DIR directory in your custom installation, please contact Technical Support before installing this update.
+
+You must also ensure that EACH entry point defined in your system has an external name transaction "option" 
+pointing to CLI-DIR. If certain entry points already have an "option" transaction but this does not point to CLI-DIR, 
+then the files present in the "cli" directory must be uploaded into the directory(ies) pointed by the different “option” 
+transactions.
+
 
 .. raw:: latex
 
