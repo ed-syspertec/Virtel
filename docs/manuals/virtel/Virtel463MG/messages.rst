@@ -12,6 +12,8 @@ Messages V4.63
 
 **VIRTEL Messages Guide**
 
+.. warning:: This is a draft version of the document.
+    
 Version : 4.63
 
 Release Date : 23/06/2024. Publication Date : 18/02/2024

@@ -13,6 +13,8 @@ Connectivity Guide V4.63
 
 **VIRTEL Connectivity Guide**
 
+.. warning:: This is a draft version of the document.
+
 Version : 4.63 
 
 Release Date : 23/06/2024. Publication Date : 17/02/2024
@@ -3370,12 +3372,19 @@ The ARBOLOAD installation job with the [TN3270=YES] option set will install a de
 
 Virtel 4.63 introduces two new parameters TNLUNAME and TNDEVTYP, in order to respectively force the LUNAME for the connection (useful for OSA-ICC Consoles) and choose the device type model (2-5). These parameters are specified at the URL level and can be used as follows:
 
+New parameters introduced in 4.63
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 **TNLUNAME"**
+
     Maximum 8 characters
+
     If connection with this parameter is rejected by a z/OS TN3270 server, communication is ended and user is returned to the default/end page of the entry point. The Telnet error code is shown in the Virtel log::
+
         SPT1     25.086 12.35.54 SPVIRBM  VIRTN52I TNSPT1   Telnet server sends REJECT with REASON=1 for TNLUNAME=FLUT1003
 
     Reason codes::
+
          CONN-PARTNER       00
          DEVICE-IN-USE      01
          INV-ASSOCIATE      02
@@ -3388,8 +3397,11 @@ Virtel 4.63 introduces two new parameters TNLUNAME and TNDEVTYP, in order to res
     If connection with this parameter is rejected by an OSA TN3270 server, the communication is not terminated, instead the OSA error screen is displayed
 
 **TNDEVTYP**
+
     1 character max
+
     Possible values: 2, 3, 4, 5
+
     Default value is 2, any value other than 2-5 defaults to 2
 
 Parameters TNLUNAME and TNDEVTYP can be combined

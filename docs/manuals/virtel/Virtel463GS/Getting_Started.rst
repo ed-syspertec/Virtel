@@ -8,6 +8,8 @@
 Getting Started with Virtel
 ===========================
 
+.. warning:: This is a draft version of the document.
+    
 |image1|
 
 Version : 4.63
@@ -167,7 +169,36 @@ On the server side, the following elements are also required:
 What's new in this release?
 ===========================
 
+Connectivity Enhancements: TN3270 Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+- The Virtel server now integrates a TN3270 client which enables Telnet bounces towards other Telnet servers such as remote z/OS and VSEn systems, z/VM systems, OSA-ICC Consoles, IBMi systems (AS400), TPF etc. This is further documented in the Virtel Connectivity Guide (Section - TN3270 Lines)
+
+Security Enhancements
+^^^^^^^^^^^^^^^^^^^^^
+
+- The Virtel SSO Gateway allows external authentication (AD, OIDS, SAML...) to Mainframe applications for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
+- The Virtel session tokens have been re-engineered, in order to be harder to hack
+- It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.)for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
+
+UX Enhancements
+^^^^^^^^^^^^^^^
+
+- Improved support for the TSO OMVS application. The command line is now preserved when the screen is refreshed.
+
+.. note::
+
+    This feature is disabled by default in the 4.63 Beta release.
+
+Administration Enhancements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- New administrator panel to kill active Virtel sessions
+- Search field introduced on several panels, to improve management of large configurations
+- Simplified CSS customization for creation of new colour schemes
+- New LU Nailing feature, integrated into the Virtel ARBO file (no longer relies on RACF groups)
+
+(See also the 2025 Newsletter "Whats New in Virtel 4.63 Beta Release")
 
 Before you install the product
 ------------------------------
