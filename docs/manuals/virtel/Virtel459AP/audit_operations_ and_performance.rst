@@ -312,7 +312,7 @@ Setting up Virtel to use the LOG=FILE facility requires a change to the TCT defi
 
     LOG=FILE 
 
-This will trigger the log program VIR0021A to write messages to either the VIRLOGX DD statement or the VIRLOGY DD statement depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE option. The following DCB attributes. Recommended space allocation could be 10 tracks for each dataset.  
+This will instruct Virtel to write messages to either the LOGFILEX DD statement or the LOGFILEY DD statement depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE option. The following DCB attributes. Recommended space allocation could be 10 tracks for each dataset.  
 
 ::
 
