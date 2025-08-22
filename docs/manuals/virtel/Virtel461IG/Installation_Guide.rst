@@ -3905,13 +3905,13 @@ NBTERM parameter
 NFORCEIP parameter
 ^^^^^^^^^^^^^^^^^^
 
-The IP address provided thru X-Forwarded-For may change randomly, eg when connecting through zScaler This was considered an error by Virtel, which was loosing the connection. NFORCEIP=NO will, by default, ignore a change of client IP address. Specifying NFORCEIP=YES will provide the old behavior, enforcing that the client IP address should not change.
+The IP address provided thru X-Forwarded-For may change randomly, eg when connecting through zScaler This was considered an error by Virtel, which was losing the connection. NFORCEIP=NO will, by default, ignore a change of client IP address. Specifying NFORCEIP=YES will provide the old behavior, enforcing that the client IP address should not change.
 
 ::
 
 	NFORCEIP=YES|NO Default=NO
 
-**YES** - Enforces that the client IP address should not change in which case the session is closed by VIRTEL.
+**YES** - Enforces that the client IP address should not change. Virtel will reject a connection to an existing session if the IP address changes.
 
 **NO** - Any change of IP address during the session is ignored. The session is maintained.
 
