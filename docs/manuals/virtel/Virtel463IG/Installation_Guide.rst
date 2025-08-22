@@ -3418,6 +3418,23 @@ NBTERM parameter
 **nbterm** - Number of terminals envisaged running in VIRTEL. This parameter allows the user to estimate the maximum number events that may be waiting for service at any one time.
 
 .. index::
+   pair: Virtel TCT; NFORCEIP parameter   
+
+NFORCEIP parameter
+^^^^^^^^^^^^^^^^^^
+
+The IP address provided thru X-Forwarded-For may change randomly, eg when connecting through zScaler This was considered an error by Virtel, which was losing the connection. NFORCEIP=NO will, by default, ignore a change of client IP address. Specifying NFORCEIP=YES will provide the old behavior, enforcing that the client IP address should not change.
+
+::
+
+	NFORCEIP=YES|NO Default=NO
+
+**YES** - Enforces that the client IP address should not change. Virtel will reject a connection to an existing session if the IP address changes.
+
+**NO** - Any change of IP address during the session is ignored. The session is maintained.
+
+
+.. index::
    pair: Virtel TCT; NUMTASK parameter   
 
 NUMTASK parameter
