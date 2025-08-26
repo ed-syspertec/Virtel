@@ -6299,34 +6299,42 @@ Understanding HTTP Connections
 ------------------------------
 
 3270 TE users (clients) connect from their web browsers to Virtel (server) through HTTP connections. HTTP connections are client-driven simplex (not duplex) connections:
-1.	The clients (web browsers) are allowed to transmit to the server (Virtel).
-2.	The server (Virtel) can only "listen" (and reply) to the clients (web browsers).
+
+1. The clients (web browsers) are allowed to transmit to the server (Virtel).
+2. The server (Virtel) can only "listen" (and reply) to the clients (web browsers).
 
 When a 3270 transaction sends a reply to a user request, the reply sometimes comes in the form of not one but several messages. Those messages must be aggregated before being returned back to the user. In some infrequent circumstances, Virtel receives a late-coming message(s) from the 3270 application when it has already aggregated and returned all prior messages to the user or must handle some other asynchronous event. But with HTTP:
-1.	Virtel is not authorized to transmit anything back to the user.
-2.	Virtel can only wait to be called again by the browser/user to transmit the late-coming message(s) or handle the asynchronous event.This is when Virtel uses a Long Poll (LP) session.
+
+1. Virtel is not authorized to transmit anything back to the user.
+2. Virtel can only wait to be called again by the browser/user to transmit the late-coming message(s) or handle the asynchronous event.This is when Virtel uses a Long Poll (LP) session.
 
 Understanding Virtel Long Poll (LP) Sessions
 --------------------------------------------
 
 The JavaScript code of the 3270 TE webpages served by Virtel to users/browsers contains the following LP session management logic:
-1.	It creates a main session through which 3270 data will be exchanged between the browser/user and the 3270 application: Virtel immediately acknowledges and answers to this session, which initiates the flow of requests and responses.
-2.	It creates an LP session, which Virtel acknowledges but does not answer until some asynchronous event (such as the need to transmit late-coming 3270 data) occurs.
-3.	When Virtel gets a late-coming message from the 3270 application after all prior messages for the same reply have already been sent back to the user/browser, or need to handle some other asynchronous event:
-a.	Virtel answers the LP session.
-b.	The JavaScript in the 3270 TE page “understands” the situation, and:
-i.	Closes the existing LP session then reopens a new one that Virtel acknowledges but does not answer.
-ii.	“Refreshes” the main session i.e. asks Virtel to send whatever it has to send and aggregates it to what it already received and served to the user.
+
+1. It creates a main session through which 3270 data will be exchanged between the browser/user and the 3270 application: Virtel immediately acknowledges and answers to this session, which initiates the flow of requests and responses.
+2. It creates an LP session, which Virtel acknowledges but does not answer until some asynchronous event (such as the need to transmit late-coming 3270 data) occurs.
+3. When Virtel gets a late-coming message from the 3270 application after all prior messages for the same reply have already been sent back to the user/browser, or need to handle some other asynchronous event:
+
+   a. Virtel answers the LP session.
+   b. The JavaScript in the 3270 TE page “understands” the situation, and:
+
+      * Closes the existing LP session then reopens a new one that Virtel acknowledges but does not answer.
+      * “Refreshes” the main session i.e. asks Virtel to send whatever it has to send and aggregates it to what it already received and served to the user.
+
 In other words:
-1.	Virtel uses the main session to exchange 3270 data between itself and the user/browser.
-2.	Virtel uses the LP session to flag the user/browser when Virtel needs to be called.
+
+1. Virtel uses the main session to exchange 3270 data between itself and the user/browser.
+2. Virtel uses the LP session to flag the user/browser when Virtel needs to be called.
 
 Understanding Network Components Interference
 ---------------------------------------------
 
 Network components (Firewalls, PROXY, routers, etc.) can only handle a limited number of IP sessions at any given time, and therefore periodically do some housekeeping to close any session that seems to be inactive.Virtel LP sessions initiated by users/browsers remain acknowledged but unanswered for long periods of time and seem therefore inactive. Some network components/routers close Virtel’s seemingly inactive (unanswered) LP sessions as part of their periodic housekeeping. When Virtel needs to send a late-coming message or handle another asynchronous event by answering the LP session, it finds that it is no longer there. This may result in VIRT924E messages in the Virtel log and in X SYSTEM screen freezes. To identify and eliminate the interference of network components/routers with Virtel LP sessions, network SEs should:
-1.	Review all network components/routers to find which one(s) is(are) closing “apparently inactive” Virtel LP sessions. 
-2.	'Tell' the network components/routers to accept or ignore LP requests, i.e. URLs to VIRTEL ending with 'LP=0' (LP=zero).
+
+1. Review all network components/routers to find which one(s) is(are) closing “apparently inactive” Virtel LP sessions. 
+2. 'Tell' the network components/routers to accept or ignore LP requests, i.e. URLs to VIRTEL ending with 'LP=0' (LP=zero).
 
 SSO, PassTickets and Proxy Servers
 ==================================
