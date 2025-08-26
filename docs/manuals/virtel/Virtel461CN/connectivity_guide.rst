@@ -5834,15 +5834,13 @@ Understanding HTTP Connections
 
 3270 TE users (clients) connect from their web browsers to Virtel (server) through HTTP connections. HTTP connections are client-driven simplex (not duplex) connections:
 
-1.	The clients (web browsers) are allowed to transmit to the server (Virtel).
-
-2.	The server (Virtel) can only "listen" (and reply) to the clients (web browsers).
+1. The clients (web browsers) are allowed to transmit to the server (Virtel).
+2. The server (Virtel) can only "listen" (and reply) to the clients (web browsers).
 
 When a 3270 transaction sends a reply to a user request, the reply sometimes comes in the form of not one but several messages. Those messages must be aggregated before being returned back to the user. In some infrequent circumstances, Virtel receives a late-coming message(s) from the 3270 application when it has already aggregated and returned all prior messages to the user or must handle some other asynchronous event. But with HTTP:
 
-1.	Virtel is not authorized to transmit anything back to the user.
-
-2.	Virtel can only wait to be called again by the browser/user to transmit the late-coming message(s) or handle the asynchronous event.This is when Virtel uses a Long Poll (LP) session.
+1. Virtel is not authorized to transmit anything back to the user.
+2. Virtel can only wait to be called again by the browser/user to transmit the late-coming message(s) or handle the asynchronous event.This is when Virtel uses a Long Poll (LP) session.
 
 Understanding Virtel Long Poll (LP) Sessions
 --------------------------------------------
@@ -5856,8 +5854,8 @@ The JavaScript code of the 3270 TE webpages served by Virtel to users/browsers c
    a. Virtel answers the LP session.
    b. The JavaScript in the 3270 TE page “understands” the situation, and:
 
-      i. Closes the existing LP session then reopens a new one that Virtel acknowledges but does not answer.
-      ii. “Refreshes” the main session i.e. asks Virtel to send whatever it has to send and aggregates it to what it already received and served to the user.
+      * Closes the existing LP session then reopens a new one that Virtel acknowledges but does not answer.
+      * “Refreshes” the main session i.e. asks Virtel to send whatever it has to send and aggregates it to what it already received and served to the user.
 
 In other words:
 
