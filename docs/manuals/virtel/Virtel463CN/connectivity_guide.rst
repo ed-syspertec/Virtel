@@ -6654,7 +6654,7 @@ For High Availability and performance reasons it is often necessary to run multi
 
 |image94|
 
-Administration of the ARBO and TRSF files is performed by the Virtel Administrator through a specific administration instance of Virtel which can be started only when administration tasks are to be performed.  
+Administration of the ARBO and TRSF files is performed by the Virtel Administrator through a specific administration instance of Virtel (more details below).  
 
 .. raw:: latex
 
@@ -6669,6 +6669,8 @@ Workload balancing in a SYSPLEX environment
 In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
 
 |image95|
+
+Virtel logs on to CICS using a Virtel Relay transaction defining CICSZ as the VTAM application. VTAM and WLM balance the workload across the three members of the CICSZ VTAM generic resource.
 
 From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM
 Generic Resource or CICSPLEX group name.
