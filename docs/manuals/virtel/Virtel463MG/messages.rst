@@ -5324,7 +5324,19 @@ Module
 Meaning
     An incoming call on the HTTP line whose internal name is n-xxxxxx did not match any of the rules of the line, and the default entry point specified in the line definition is either blank or does not exist.
 Action
-    	Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
+    Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
+
+VIRHT30W SESSION DISABLED FOR USER ??????
+"""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0020H
+Meaning
+    A user tried to logon to a Virtel transaction but was denied because the user has been marked as "Disabled" in the Correspondents manager.
+Action
+    Check with the Virtel administrator is this user was disabled for a specific reason. In order to reset the user status to "Enabled", follow these steps:
+    * On the Virtel admin panel, choose F5-Correspondents 
+    * Select the username in the list, and press PF12-Edit (The user should be marked as DISABLED)
+    * Press PF4 to Enable the user
 
 VIRHT51I linename CONNECTING termname TO ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""
