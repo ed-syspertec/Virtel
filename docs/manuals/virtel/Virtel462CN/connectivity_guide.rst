@@ -6600,87 +6600,11 @@ Running multiple instances of Virtel
 Introduction
 ------------
 
-For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:-
+For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This section discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file and TRSF. The configuration looks like this:-
 
 |image94|
 
-Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools. 
-
-Here are the relevant definitions required to support the VTAM generic resource within Virtel.
-
-.. index::
-   pair: Running multiple instances of Virtel; Virtel TCT Settings
-
-VIRTEL TCT Settings
-^^^^^^^^^^^^^^^^^^^
-
-GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
-
-.. index::
-   pair: Running multiple instances of Virtel; SYSPLEX definitions
-
-SYSPLEX definitions
-^^^^^^^^^^^^^^^^^^^
-
-The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
-
-Use the following command to display coupling allocation details for ISTGENERIC.
-
-::
-
-    D XCF,STR,STRNM=ISTGENERIC
-
-*VTAM displayof the generic resource*
-
-The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel instances which are grouped into the generic resource name VIRTPLEX. The example below shows VIRTEL1A and VIRTEL2A as participating in the VIRTRPLEX resource name group.
-
-::
-
-  D NET,ID=VIRTPLEX,E 
-
-  IST097I DISPLAY ACCEPTED
-  IST075I NAME = VIRTPLEX, TYPE = GENERIC RESOURCE 917
-  IST1359I MEMBER NAME OWNING CP SELECTABLE APPC
-  IST1360I SPNET.VIRTEL1A ZAM1SSCP YES NO
-  IST1360I SPNET.VIRTEL2A ZAM2SSCP YES NO
-  IST2210I GR PREFERENCE TABLE ENTRY = **DEFAULT**
-  IST2202I GREXIT = NO WLM = YES LOCLU = YES
-  IST2204I LOCAPPL = YES PASSOLU = NO
-  IST314I END
-
-When the VIRTEL*A application is display in VTAM the following messages are written to the console log:-
-
-::
-
-    D NET,ID=VIRTEL1A,E
-    IST097I DISPLAY ACCEPTED
-    IST075I NAME = SPNET.VIRTEL1A, TYPE = APPL 925
-    IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
-    IST1447I REGISTRATION TYPE = CDSERVR
-    IST1363I GENERIC RESOURCE NAME VIRTPLEX REPRESENTS SPNET.VIRTEL1A
-    IST977I MDLTAB=***NA*** ASLTAB=***NA***
-    IST861I MODETAB=***NA*** USSTAB=***NA***LOGTAB=***NA***
-    IST934I DLOGMOD=***NA*** USS LANGTAB=***NA***
-    IST1632I VPACING = 7
-    IST1938I APPC = NO
-    IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
-    IST231I APPL MAJOR NODE = APPLVIPX
-    IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
-    IST1500I STATE TRACE = OFF
-    IST271I JOBNAME = SPVIR1A, STEPNAME = SPVIR1A, DSPNAME = ISTEBBDB
-    IST228I ENCRYPTION = OPTIONAL , TYPE = DES
-    IST1563I CKEYNAME = VIRTEL1A CKEY = PRIMARY CERTIFY = NO
-    IST1552I MAC = NONE MACTYPE = NONE
-    IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
-    IST1633I ASRCVLM = 1000000
-    IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 1280
-    IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
-    IST206I SESSIONS:
-    IST634I NAME STATUS SID SEND RECV VR TP NETID
-    IST635I SC0TCP13 ACTIV-S CA7B8B52D125F31F 0003 0001 SPNET
-    IST314I END
-
-Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.
+Administration of the ARBO and TRSF files is performed by the Virtel Administrator through a specific administration instance of Virtel which can be started only when administration tasks are to be performed.  
 
 .. raw:: latex
 
@@ -6702,7 +6626,9 @@ Generic Resource or CICSPLEX group name.
 Sharing the ARBO and other VSAM files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In a SYSPLEX or sharing environment the VSAM files, like the ARBO and TRSF files, must be shared only in READ mode. To support this the following TCT parameter should be coded:-
+In a SYSPLEX or sharing environment the VSAM files, like the ARBO and TRSF files, must be shared only in READ mode.  Administration of the ARBO and TRSF files is performed by the Virtel Administrator through a specific administration instance of Virtel which can be started anytime administration tasks need to be performed.  
+
+To support this the following TCT parameter should be coded:-
 
 ::
  
@@ -6743,9 +6669,9 @@ Using a READ only environment enables you to not only share the ARBO file but al
 READ ONLY Restrictions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.
+If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. 
 
-In Virtel V4.62 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated "WRITER" Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as macros, could be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files would then populate the files with the new updates. Virtel "READ" instances would detect the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V462CN_VIRPLEX>` for move information.  
+VIRPLEX enables a nominated "WRITER" Virtel task to participate in the Virtel infrastructure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as macros, can be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files then populates the files with the new updates. Virtel "READ" instances are notified of the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V461CN_VIRPLEX>` for more information.  
 
 .. raw:: latex
 
