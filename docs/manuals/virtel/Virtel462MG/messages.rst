@@ -2607,11 +2607,20 @@ Action
 VIR0098I VIRTEL RUNNING AS A SUBTASK. LINKED FROM mmmmmmmm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
-    	VIR0000
+   	VIR0000
 Meaning
     Indicates that VIRTEL has been attached and called by another process. The module mmmmmmm is calling routine.
 Action
     None
+
+VIR0098E INVALID JCL PARM JOB TERMINATING
+"""""""""""""""""""""""""""""""""""""""""
+Module
+   	VIR0000
+Meaning
+    Indicates that there is an error in the PARM= statement of the Virtel startup JCL. This error can occur if the parameters in the PARM statement end with a comma "," instead of a valid parameter.
+Action
+    Correct the error and restart Virtel. 
 
 VIR0099I applid STARTED AT dd/mm/yy hh:mm:ss , VERSION vvvv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -3435,7 +3444,7 @@ Meaning
 Action
     VIRTEL uses the next VIRSTATx file.
 
-VIR0608E VIRSTATx DEALC ERR=errc-infc DSN=dsname
+VIR0608I VIRSTATx DEALC ERR=errc-infc DSN=dsname
 """"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
@@ -5439,6 +5448,15 @@ Meaning
     A VIRTEL entity is attempting to BIND a connection to the IP address locaddr.
 Action
     None
+
+VIRHTP0I *linename* SENDING 304 TO SOCKET *socket* FOR PSEUDO *pseudo*
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIRHTTP
+Meaning
+    Virtel is set up with the LPKALIVE setting active in the VIRTCTxx configuration module. When this setting is active, Virtel sends at regular intervals an HTTP 304 message to indicate to the browser to stop and restart the Long Poll session.
+Action
+    None.
 
 Messages VIRI9xxx
 ^^^^^^^^^^^^^^^^^

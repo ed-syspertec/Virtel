@@ -2619,11 +2619,20 @@ Action
 VIR0098I VIRTEL RUNNING AS A SUBTASK. LINKED FROM mmmmmmmm
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
-    	VIR0000
+   	VIR0000
 Meaning
     Indicates that VIRTEL has been attached and called by another process. The module mmmmmmm is calling routine.
 Action
     None
+
+VIR0098E INVALID JCL PARM JOB TERMINATING
+"""""""""""""""""""""""""""""""""""""""""
+Module
+   	VIR0000
+Meaning
+    Indicates that there is an error in the PARM= statement of the Virtel startup JCL. This error can occur if the parameters in the PARM statement end with a comma "," instead of a valid parameter.
+Action
+    Correct the error and restart Virtel. 
 
 VIR0099I applid STARTED AT dd/mm/yy hh:mm:ss , VERSION vvvv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -3447,7 +3456,7 @@ Meaning
 Action
     VIRTEL uses the next VIRSTATx file.
 
-VIR0608E VIRSTATx DEALC ERR=errc-infc DSN=dsname
+VIR0608I VIRSTATx DEALC ERR=errc-infc DSN=dsname
 """"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
@@ -5324,7 +5333,19 @@ Module
 Meaning
     An incoming call on the HTTP line whose internal name is n-xxxxxx did not match any of the rules of the line, and the default entry point specified in the line definition is either blank or does not exist.
 Action
-    	Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
+    Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
+
+VIRHT30W SESSION DISABLED FOR USER ??????
+"""""""""""""""""""""""""""""""""""""""""
+Module
+    VIR0020H
+Meaning
+    A user tried to logon to a Virtel transaction but was denied because the user has been marked as "Disabled" in the Correspondents manager.
+Action
+    Check with the Virtel administrator is this user was disabled for a specific reason. In order to reset the user status to "Enabled", follow these steps:
+    * On the Virtel admin panel, choose F5-Correspondents 
+    * Select the username in the list, and press PF12-Edit (The user should be marked as DISABLED)
+    * Press PF4 to Enable the user
 
 VIRHT51I linename CONNECTING termname TO ipaddr:port
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -5460,6 +5481,15 @@ Meaning
     A transaction *tranname* pointing to the directory hosting centralized user parameters is defined with a security mode other than 0, which in some cases may lead the user to sign in a second time. As this transaction is not intended to be secure, VIRTEL sets the security mode to 0 to avoid this double signature situation.
 Action
     Set the “security” field of the *tranname* transaction definition to 0.
+
+VIRHTP0I *linename* SENDING 304 TO SOCKET *socket* FOR PSEUDO *pseudo*
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Module
+    VIRHTTP
+Meaning
+    Virtel is set up with the LPKALIVE setting active in the VIRTCTxx configuration module. When this setting is active, Virtel sends at regular intervals an HTTP 304 message to indicate to the browser to stop and restart the Long Poll session.
+Action
+    None.
 
 Messages VIRI9xxx
 ^^^^^^^^^^^^^^^^^
