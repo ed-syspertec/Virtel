@@ -3256,7 +3256,7 @@ This parameter forces the LP sessions to be restarted at regular intervals (see 
 Example: LPKALIVE=120
   A 304 response to the long poll session will be sent by Virtel 120 seconds after receiving the LP request. After receiving the 304 response, the Virtel JavaScript reacts by closing the LP session and re-opening a new one.
 
-This parameter should only be included in the TCT if recommended by Syspertec.  
+This parameter should only be included in the TCT if recommended by Syspertec. The value for this parameter must take into account the following elements: it should be smaller than TIMEDAFF in a DVIPA multiSTC type of environment, and should also be smaller than the shortest known 3270 application time-out, to avoid any interference.
 
 .. index::
 	pair: Virtel TCT; LUNSIZE parameter
