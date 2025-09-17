@@ -2605,7 +2605,7 @@ This parameter defines VIRTEL’s Session Code encryption conditions.
 +---------------+--------------------------------------------------------------------------+
 | AES-192       | Advanced Encryption Standard, key size 192 bits (24 byte key)            |
 +---------------+--------------------------------------------------------------------------+
-| AES-256       | Advanced Encryption Standard, key size 256 bits (24 byte key)            |
+| AES-256       | Advanced Encryption Standard, key size 256 bits (32 byte key)            |
 +---------------+--------------------------------------------------------------------------+
 
 .. index::
