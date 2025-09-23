@@ -4141,8 +4141,8 @@ Meaning
 Action
     Static data in the USSTAB must be separated by an SF 3270 code every 240 characters or less. For example DATA,SF,DATA,SF,DATA,SF. The DATA portion of this 3270 string cannot be greater than 240 characters. The default USSVIRT table will be loaded or the USSTAB= table as defined in the TCT.
 
-VIR2104E INPUT LENGTH ERROR IN USER USSTAB
-""""""""""""""""""""""""""""""""""""""""""
+VIR2104E INPUT FIELD EXCEEDING 50 CHARACTERS. LOADING DEFAULT USSTAB
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021W
 Meaning
