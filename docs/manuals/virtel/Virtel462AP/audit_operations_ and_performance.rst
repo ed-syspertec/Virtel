@@ -2414,7 +2414,7 @@ The statistics file may contain a mixture of classic, alternate X25, and web for
    pair: VIRSTAT classic format; Audit     
 
 
-VIRSTAT classsic format 
+VIRSTAT classic format 
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:
@@ -2510,7 +2510,10 @@ Type I (inbound)
 Type O (outbound) 
     Records relate to X25 outgoing calls.
 
-For terminals which specify web format recording (STATS=5 or STATS=6), the VIRSTAT record format is shown in the following  tables:
+VIRSTAT Web Access format - Alphanumeric (STATS=5)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For terminals which specify alphanumeric web format recording with STATS=5, the VIRSTAT record format is shown in the following table:
 
 ::
     
@@ -2518,25 +2521,30 @@ For terminals which specify web format recording (STATS=5 or STATS=6), the VIRST
     1 to 8          Alphanumeric    Terminal name
     9 to 12         Packed Decimal  Date (CCYYDDDF)
     13 to 16        Packed Decimal  Time (HHMMSSTF)
-    17 to 31        Alphanumeric    Caller’s IP address
-    32 to 36        Alphanumeric    Alphanumeric
-    37 to 44        Alphanumeric    Entry point name
-    45 to 52        Alphanumeric    Transaction external name
-    53 to 60        Alphanumeric    Rule name
-    61 to 61        Alphanumeric    Record type (H=HTTP inbound)
-    62 to 64        Alphanumeric    Unused
-    65 to 68        Alphanumeric    Error code
-    69 to 76        Alphanumeric    Relay LU name
-    77 to 84        Alphanumeric    Call duration in 1/100 second
-    85 to 92        Alphanumeric    No of bytes received
-    93 to 100       Alphanumeric    No of bytes sent
-    101 to 108      Alphanumeric    Session start date (MM/DD/YY)
-    109 to 116      Alphanumeric    Session start time (HH.MM.SS)
-    117 to 124      Alphanumeric    Session end time (HH.MM.SS)
+    17 to 17        Alphanumeric    Record type (H=alphanumeric web format)
+    18 to 20        Filler
+    21 to 60        Alphanumeric    Caller's IP address and port number
+    61 to 68        Alphanumeric    Entry point name
+    69 to 76        Alphanumeric    Transaction external name
+    77 to 84        Alphanumeric    Rule name
+    85 to 88        Alphanumeric    HTTP Status
+    89 to 96        Alphanumeric    Relay LU name
+    97 to 104       Alphanumeric    Call duration in 1/100 second
+    105 to 112      Alphanumeric    No of bytes received
+    113 to 120      Alphanumeric    No of bytes sent
+    121 to 128      Alphanumeric    Session start date (MM/DD/YY)
+    129 to 136      Alphanumeric    Session start time (HH.MM.SS)
+    137 to 144      Alphanumeric    Session end time (HH.MM.SS)
+    145 to 184      Alphanumeric    Proxy IP Address
 
 *Format of VIRSTAT record (type 5 for Web Access)*
 
 This record type is written when 5 is specified in the STATS field of the terminal definition used for the HTTP line. If the terminal is disconnected by TIMEOUT, the “Error Code” field contains the word     “TIME”.
+
+VIRSTAT Web Access format - Binary (STATS=6)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For terminals which specify binary web format recording with STATS=6, the VIRSTAT record format is shown in the following table:
 
 ::
 
@@ -2544,20 +2552,20 @@ This record type is written when 5 is specified in the STATS field of the termin
     1 to 8          Alphanumeric    Terminal name
     9 to 12         Packed Decimal  Date (CCYYDDDF)
     13 to 16        Packed Decimal  Time (HHMMSSTF)
-    17 to 31        Alphanumeric    Caller’s IP address
-    32 to 36        Alphanumeric    Caller’s port number
-    37 to 44        Alphanumeric    Entry point name
-    45 to 52        Alphanumeric    Transaction external name
-    53 to 60        Alphanumeric    Rule name
-    61 to 61        Alphanumeric    Record type (B=binary HTTP inbound)
-    62 to 64        Alphanumeric    Unused
-    65 to 68        Alphanumeric    Error code
-    69 to 76        Alphanumeric    Relay LU name
-    77 to 80        Hexadecimal     Call duration in 1/100 second
-    81 to 84        Hexadecimal     No of bytes received
-    85 to 88        Hexadecimal     No of bytes sent
-    89 to 108       Alphanumeric    User name
-    109 to 124      Alphanumeric    URL parameter
+    17 to 17        Alphanumeric    Record type (B=Binary web format)
+    18 to 20        Filler
+    21 to 60        Alphanumeric    Caller's IP address and port number
+    61 to 68        Alphanumeric    Entry point name
+    69 to 76        Alphanumeric    Transaction external name
+    77 to 84        Alphanumeric    Rule name
+    85 to 88        Alphanumeric    HTTP Status
+    89 to 96        Alphanumeric    Relay LU name
+    97 to 100       Hexadecimal     Call duration in 1/100 second
+    101 to 104      Hexadecimal     No of bytes received
+    105 to 108      Hexadecimal     No of bytes sent
+    109 to 128      Alphanumeric    User ID
+    129 to 144      Alphanumeric    URL Parameter
+    145 to 184      Alphanumeric    Proxy IP Address
 
 *Format of VIRSTAT record (type 6 for Web Access)*
 
