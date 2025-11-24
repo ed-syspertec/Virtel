@@ -12,7 +12,6 @@ Messages V4.63
 
 **VIRTEL Messages Guide**
 
-.. warning:: This is a draft version of the document.
     
 Version : 4.63
 

@@ -12,7 +12,6 @@ Installation Guide V4.63
 
 **VIRTEL Installation Guide**
 
-.. warning:: This is a draft version of the document.
 	
 Version : 4.63 
 
@@ -51,9 +50,10 @@ Virtel SAS, Syspertec Group
 Summary of Amendments
 =====================
 
-Virtel version 4.63 Beta (July 2025)
+Virtel version 4.63 (July 2025)
 -----------------------------------
 
+.. note:: For further details see the Virtel Technical Newsletter TN202507: Whats new in Virtel 4.63.
 
 Virtel version 4.62 (17th Feb 2024)
 -----------------------------------
@@ -87,17 +87,17 @@ Introduction
 Required Environment
 --------------------
 
-VIRTEL operates in the z/OS or z/VSE environments. Throughout the VIRTEL documentation, the term “z/OS” should be understood to include OS/390 and z/OS, and the term “z/VSE” should be understood to include z/VSE/ESA and z/VSE. 
+VIRTEL operates in the z/OS or VSEn environments. Throughout the VIRTEL documentation, the term “z/OS” should be understood to include OS/390 and z/OS, and the term “VSE” should be understood to include VSEn and z/VSE. 
 
 z/OS environment
 ^^^^^^^^^^^^^^^^
 
 In the z/OS environment, VIRTEL runs under the OS/390 or z/OS operating systems. If the VIRTEL MQ interface is used, then MQSeries Version 6 or later is required. Support for the cryptographic functions of VIRTEL requires ICSF Version HCR7740 or later.
 
-z/VSE environment
+VSE environment
 ^^^^^^^^^^^^^^^^^	
 
-In the z/VSE environment, VIRTEL runs under the z/VSE/ESA or z/VSE operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires z/VSE/ESA 2.5.1 or later, or any version of z/VSE.
+In the VSE environment, VIRTEL runs under the VSEn or z/VSE operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires either the BSI or CSI TCP/IP stack.
 
 .. index::
    single: Supported browser environments
@@ -107,17 +107,15 @@ Browser pre-requisities
 
 VIRTEL Web Access requires a standard web browser on the user’s workstation. Supported browsers include:
 
-- Microsoft Edge (For Windows 10)
+- Microsoft Edge
 
-- Firefox Version 15 or above (for Windows 7 or Vista)
+- Firefox 
 
-- Firefox Version 17 or above (for Windows XP)
+- Chrome 
 
-- Chrome Version 23 or above
+- Opera
 
-- Opera Version 15 or above
-
-- Safari Version 5 or above
+- Safari
 
 VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
@@ -713,7 +711,7 @@ Optional JCL parameters
 Some parameters have a value taken by VIRTEL either from the VIRTCT or from some definition contained in the
 VIRARBO file. The purpose of using JCL parameters is to lower the coupling between the TCT, ARBO and instances of
 VIRTEL so that there is less dependency on the parameters defined in the ARBO and TCT for any one VIRTEL instance.
-If running under z/OS, the parameter list can be transmitted by using the PARM card. If under z/VSE, it can be done by
+If running under z/OS, the parameter list can be transmitted by using the PARM card. If under VSE, it can be done by
 using a SYSIN card. In both cases, parameters are positionnals and coma separated as above:-
 
 ::
@@ -861,18 +859,18 @@ VIRTEL may be stopped by issuing the following command:-
 
 
 .. index::
-   single: Installing under z/VSE
+   single: Installing under VSE
 
-Installing under z/VSE
+Installing under VSE
 ======================
 
 .. index::
-   pair: Installing under z/VSE; z/VSE Check list
+   pair: Installing under VSE; VSE Check list
 
-z/VSE Check List
+VSE Check List
 ----------------
 
-Installation of VIRTEL under z/VSE consists of the following steps. Each step is described in detail in the sections which follow.
+Installation of VIRTEL under VSE consists of the following steps. Each step is described in detail in the sections which follow.
 
 -  Load the installation jobs into the POWER READER QUEUE
 
@@ -897,12 +895,12 @@ Installation of VIRTEL under z/VSE consists of the following steps. Each step is
 -  Define the VIRTEL start procedure
 
 .. index::
-   pair: Installing under z/VSE; Loading the installation job
+   pair: Installing under VSE; Loading the installation job
 
 Loading the installation jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The installation jobs are delivered in a file format that can be mounted on a VTS tape as a 3480 tape cartridge. To load the installation jobs into the POWER reader queue, enter the command S RDR,cuu at the z/VSE console (where cuu represents the address of the tape drive on which you have mounted the cartridge). The following jobs will be loaded into your Reader:- 
+The installation jobs are delivered in a file format that can be mounted on a VTS tape as a 3480 tape cartridge. To load the installation jobs into the POWER reader queue, enter the command S RDR,cuu at the VSE console (where cuu represents the address of the tape drive on which you have mounted the cartridge). The following jobs will be loaded into your Reader:- 
 
 ::
 
@@ -1026,7 +1024,7 @@ Defining the library
 	/&
 	* $$ EOJ
 
-*VIRTLIB : JCL to define the sublibrary (z/VSE)*
+*VIRTLIB : JCL to define the sublibrary (VSE)*
 
 Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.63. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
@@ -1057,7 +1055,7 @@ Loading the executable modules
 	/&
 	* $$ EOJ
 
-*VIRTCIL : JCL to load the executable modules (z/VSE)*
+*VIRTCIL : JCL to load the executable modules (VSE)*
 
 Start the job to load the executable modules by entering the POWER command
 
@@ -1114,7 +1112,7 @@ Loading the source modules
 	/&
 	* $$ EOJ
 
-*VIRTSSL : JCL to load the source modules (z/VSE)*
+*VIRTSSL : JCL to load the source modules (VSE)*
 
 Start the job to load the source modules by entering the POWER commands::
 
@@ -1151,7 +1149,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 	/&
 	* $$ EOJ
 
-*VIRFA29 : JCL to load the FA29 macros (z/VSE)*
+*VIRFA29 : JCL to load the FA29 macros (VSE)*
 
 ::
 
@@ -1175,7 +1173,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 	/&
 	* $$ EOJ
 
-*VIRAPI : JCL to load the VIRAPI macros (z/VSE)*
+*VIRAPI : JCL to load the VIRAPI macros (VSE)*
 
 ::
 
@@ -1199,7 +1197,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 	/&
 	* $$ EOJ
 
-*VIRAPI : JCL to load the SCRNAPI macros (z/VSE)*
+*VIRAPI : JCL to load the SCRNAPI macros (VSE)*
 
 Defining the VIRARBO and VIRSWAP files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1259,7 +1257,7 @@ Defining the VIRARBO and VIRSWAP files
     IF LASTCC NE 0 THEN CANCEL JOB
   /*
 
-*VIRTVS1 : JCL to define the VIRARBO and VIRSWAP files (z/VSE)*
+*VIRTVS1 : JCL to define the VIRARBO and VIRSWAP files (VSE)*
 
 Step VIRTVS1 of job VIRTVS contains an example of defining the VIRARBO and VIRSWAP files. This job is provided as an example, and may need to be modified prior to execution. The parameters SETPARM TAPE=590 and VOLUMES(SYSWK1), and possible the catalog name, may need to be modified.
 
@@ -1281,7 +1279,7 @@ Initialisation of the VIRARBO file
     OFILE(VIRARBO)
   /*
 
-*VIRTVS2 : JCL to initialise the VIRARBO file (z/VSE)*
+*VIRTVS2 : JCL to initialise the VIRARBO file (VSE)*
 
 Step VIRTVS2 of job VIRTVS loads the base configuration definitions into the VIRARBO file. The default language is English. To load the French language version of the base configuration, change the
 
@@ -1328,7 +1326,7 @@ Defining the VIRSTAT file
     IF LASTCC NE 0 THEN CANCEL JOB
    /*
 
-*VIRTVS3 : JCL to define the VIRSTAT file (z/VSE)*
+*VIRTVS3 : JCL to define the VIRSTAT file (VSE)*
 
 Step VIRTVS3 of job VIRTVS contains an example of defining the VIRSTAT file. This job is provided as an example, and may need to be modified prior to execution. The VIRSTAT file is required unless the STATS parameter of the VIRTCT is set to NO.
 
@@ -1366,7 +1364,7 @@ Defining the VIRCMP3 file
   ZZZ
   /*
 
-*VIRTVS4 : JCL to define the VIRCMP3 file (z/VSE)*
+*VIRTVS4 : JCL to define the VIRCMP3 file (VSE)*
 
 Step VIRTVS4 of job VIRTVS contains an example of defining the VIRCMP3 file. This job is provided as an example, and may need to be modified prior to execution. The VIRCMP3 file is used by the level 3 compression feature of VIRTEL/PC, and is required unless the COMPR3 parameter of the VIRTCT is set to NO.
 
@@ -1404,7 +1402,7 @@ Defining the VIRCAPT file
   ZZZ
   /*
 
-*VIRTVS5 : JCL to define the VIRCAPT file (z/VSE)*
+*VIRTVS5 : JCL to define the VIRCAPT file (VSE)*
 
 Step VIRTVS5 of job VIRTVS contains an example of defining the VIRCAPT file. This job is provided as an example, and may need to be modified prior to execution. The VIRCAPT file is used by the videotext page capture feature, and is referenced by the FCAPT parameter of the VIRTCT.
 
@@ -1448,7 +1446,7 @@ Defining the SAMPTRF file
   $$$$IWS.WORKREC.INW$TEMP
   /*
 
-*VIRTVS6 : JCL to define the SAMPTRF file (z/VSE)*
+*VIRTVS6 : JCL to define the SAMPTRF file (VSE)*
 
 Step VIRTVS6 of job VIRTVS contains an example of defining the SAMPTRF file. This job is provided as an example, and may need to be modified prior to execution. The SAMPTRF file contains sample HTML page templates and other elements for the VIRTEL Web Access feature, and is referenced by the UFILEx parameter of the VIRTCT.
 
@@ -1493,7 +1491,7 @@ Defining the HTMLTRF file
   $$$$IWS.WORKREC.INW$TEMP
   /*
 
-*VIRTVS7 : JCL to define the HTMLTRF file (z/VSE)*
+*VIRTVS7 : JCL to define the HTMLTRF file (VSE)*
 
 Step VIRTVS7 of job VIRTVS contains an example of defining the HTMLTRF file. This job is provided as an example, and may need to be modified prior to execution. The HTMLTRF file is used by the VIRTEL Web Access feature to store HTML pages, and is referenced by the UFILEx parameter of the VIRTCT.
 
@@ -1515,7 +1513,7 @@ Loading the SAMPTRF file
     OFILE(SAMPTRF) REPLACE
   /*
 
-*VIRTVS8 : JCL to load the SAMPTRF file (z/VSE)*
+*VIRTVS8 : JCL to load the SAMPTRF file (VSE)*
 
 Step VIRTVS8 of job VIRTVS contains and example of the JCL required to load the sample HTML pages into the SAMPTRF file. This job is required for sites using VIRTEL Web Access.
 
@@ -1558,14 +1556,14 @@ Defining the VIRHTML file
   ZZZ
   /*
 
-*VIRTVS9 : JCL to define the VIRHTML file (z/VSE)*
+*VIRTVS9 : JCL to define the VIRHTML file (VSE)*
 
 Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. This job is provided as an example, and may need to be modified prior to execution. The VIRHTML file is used by the VIRTEL Web Access feature to store the names of E-mail correspondents or centralized parameter information - UPARM= specifed in the TCT. It is referenced by the HTVSAM parameter of the VIRTCT.
 
 Assembling the VIRTCT
 ^^^^^^^^^^^^^^^^^^^^^
 
-Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE and z/OS environments, please refer to section :ref:`VIRTCT <#_VVRRIG_virtct>`. 
+Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE and z/OS environments, please refer to section :ref:`VIRTCT <#_VVRRIG_virtct>`. 
 
 .. note::
 
@@ -1600,7 +1598,7 @@ Assembling the MODVIRT mode table
   /&
   * $$ EOJ
 
-*VIRMOD : Assembling the MODVIRT mode table (z/VSE)*
+*VIRMOD : Assembling the MODVIRT mode table (VSE)*
 
 Job VIRMOD contains an example of the JCL required to assemble the VTAM mode table (MODVIRT) supplied with VIRTEL.
 
@@ -1658,7 +1656,7 @@ Updating the VIRARBO file (ARBOLOAD)
   /&
   * $$ EOJ
 
-*VIRCONF : ARBOLOAD job to update the VIRARBO file (z/VSE)*
+*VIRCONF : ARBOLOAD job to update the VIRARBO file (VSE)*
 
 Job VIRCONF contains an example of a job to load configuration elements into the VIRARBO file. This is the equivalent of the z/OS job known as ARBOLOAD. Before running this job, you will need to make the following modifications:
 
@@ -1699,7 +1697,7 @@ Cataloging the VTAM application book
   /&
   * $$ EOJ
 
-*VIRTAPPL : Cataloging the application major node (z/VSE)*
+*VIRTAPPL : Cataloging the application major node (VSE)*
 
 Job VIRTAPPL contains an example of cataloging the VTAM application book. The VTAM application node VIRTAPPL must be activated before starting VIRTEL. This job is provided as an example, and may need to be modified prior to execution.
 
@@ -1726,36 +1724,36 @@ Defining the CICS resources
   * *****************************************************************
   // EXEC DFHCSDUP,SIZE=AUTO
   * VIRTEL 3270 TERMINALS FOR WEB2HOST
-    DEFINE TE(T000) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT000) PRINTER(I000)
+    DEFINE TE(T000) G(VIRTEL) TY(VSELU2Q) NE(RHTVT000) PRINTER(I000)
         DESC(VIRTEL WEB TO HOST TERMINAL)
-    DEFINE TE(T001) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT001) PRINTER(I001)
+    DEFINE TE(T001) G(VIRTEL) TY(VSELU2Q) NE(RHTVT001) PRINTER(I001)
         DESC(VIRTEL WEB TO HOST TERMINAL)
-    DEFINE TE(T002) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT002) PRINTER(I002)
+    DEFINE TE(T002) G(VIRTEL) TY(VSELU2Q) NE(RHTVT002) PRINTER(I002)
         DESC(VIRTEL WEB TO HOST TERMINAL)
         etc.
   * VIRTEL 3284 PRINTERS FOR WEB2HOST
-    DEFINE TE(I000) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM000)
+    DEFINE TE(I000) G(VIRTEL) TY(VSELU3Q) NE(RHTIM000)
         DESC(VIRTEL WEB TO HOST PRINTER)
-    DEFINE TE(I001) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM001)
+    DEFINE TE(I001) G(VIRTEL) TY(VSELU3Q) NE(RHTIM001)
         DESC(VIRTEL WEB TO HOST PRINTER)
-    DEFINE TE(I002) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM002)
+    DEFINE TE(I002) G(VIRTEL) TY(VSELU3Q) NE(RHTIM002)
         DESC(VIRTEL WEB TO HOST PRINTER)
       etc.
   * ADD VIRTEL GROUP TO STARTUP LIST
-    ADD GROUP(VIRTEL) LIST(z/VSELIST)
+    ADD GROUP(VIRTEL) LIST(VSELIST)
    /*
   /&
   * $$ EOJ
 
-*VIRGROUP : Defining the CICS resources (z/VSE)*
+*VIRGROUP : Defining the CICS resources (VSE)*
 
 Job VIRGROUP contains an example of defining the the CICS resources which are correspond to the relays and virtual printers used by VIRTEL Web Access. This job is provided as an example, and may need to be modified prior to execution.
 
 
-Executing VIRTEL In A z/VSE Environment
+Executing VIRTEL In A VSE Environment
 ----------------------------------------
 
-Job VIRTEL contains an example of the z/VSE startup JCL for VIRTEL. Program VIR0000 reads a parameter card indicating the suffix of the VIRTCT to be used. This suffix must be two characters long and must start in column 1 of the parameter card. In the example supplied, the suffix is 01, indicating that parameter table VIRTCT01 is to be used. The TCT suffix may optionally be followed by a comma and the VTAM APPLID. If the APPLID is not specified then the value in the VIRTCT is used. The partition used must have a size of at least 1.5MB and must have 1MB of GETVIS. The priority of the VIRTEL partition must be immediately below that of VTAM.
+Job VIRTEL contains an example of the VSE startup JCL for VIRTEL. Program VIR0000 reads a parameter card indicating the suffix of the VIRTCT to be used. This suffix must be two characters long and must start in column 1 of the parameter card. In the example supplied, the suffix is 01, indicating that parameter table VIRTCT01 is to be used. The TCT suffix may optionally be followed by a comma and the VTAM APPLID. If the APPLID is not specified then the value in the VIRTCT is used. The partition used must have a size of at least 1.5MB and must have 1MB of GETVIS. The priority of the VIRTEL partition must be immediately below that of VTAM.
 
 ::
 
@@ -1791,7 +1789,7 @@ Job VIRTEL contains an example of the z/VSE startup JCL for VIRTEL. Program VIR0
   /&
   * $$ EOJ
 
-*VIRTEL startup JCL (z/VSE)*
+*VIRTEL startup JCL (VSE)*
 
 Specifying the TCP/IP partition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1812,7 +1810,7 @@ where xx is the identifier of the partition in which VIRTEL is running.
     \newpage
 
 .. index::
-   pair: Installing under z/VSE;Applying Maintenace
+   pair: Installing under VSE;Applying Maintenace
 
 Applying Maintenance
 --------------------
@@ -1846,7 +1844,7 @@ To apply the PTFs, use the following JCL::
   /&
   * $$ EOJ
 
-*JCL for applying PTFs (z/VSE)*
+*JCL for applying PTFs (VSE)*
 
 .. index::
    single: VTAM Definitions
@@ -1857,7 +1855,7 @@ VTAM Definitions
 VTAM parameters
 ---------------
 
-This section describes the VTAM definitions required for VIRTEL. The same definitions are used in both the z/OS and z/VSE environments.
+This section describes the VTAM definitions required for VIRTEL. The same definitions are used in both the z/OS and VSE environments.
 
 .. index::
    pair: VTAM Definitions; VTAM APPL Statement
@@ -1897,7 +1895,7 @@ Each terminal which logs on to a VTAM application via VIRTEL requires an applica
 MODETAB For X25 and APPC
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.
+If you intend to use X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided in the ASMMOD member of the VIRTEL SAMPLIB. For VSE, sample JCL is provided in the VIRMOD installation job.
 
 The source for the MODVIRT mode table is defined as follows::
 
@@ -2139,11 +2137,11 @@ The Virtel TCT
 Introduction
 ------------
 
-All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in z/OS, or behind the EXEC card in the z/VSE environment.
+All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in z/OS, or behind the EXEC card in the VSE environment.
 
 The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an z/OS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.
 
-For z/OS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For z/VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.
+For z/OS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.
 
 Parameters Of The VIRTCT
 ------------------------
@@ -2230,7 +2228,7 @@ APPLID parameter
 
 **nappl** - The name of the primary VIRTEL ACB.
 
-The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 26 or “Executing VIRTEL in a z/VSE environment”, page 46 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL* 
+The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 26 or “Executing VIRTEL in a VSE environment”, page 46 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL* 
 
 If SYSPLUS=YES is specified, a '+' character in the APPLID will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
@@ -2913,7 +2911,7 @@ For example, USA EASTERN DAYLIGHT SAVINGS TIME with the TOD clock set to GMT sho
 
 To avoid the need to modify the GMT parameter when daylight savings time is in effect, you may specify GMT=SYSTZ or GMT=(x,SYSTZ)
 
-**GMT=SYSTZ** - indicates that the TOD clock is set to GMT and that VIRTEL will obtain the timezone difference by inspecting the system local time offset. For z/OS the local time offset is specified in the CLOCKxx member of the system PARMLIB, which may be modified by the SET CLOCK command in the event of a transition between winter and summer time. For z/VSE the local time offset is specified by the SET ZONEDEF command in the $IPL procedure.
+**GMT=SYSTZ** - indicates that the TOD clock is set to GMT and that VIRTEL will obtain the timezone difference by inspecting the system local time offset. For z/OS the local time offset is specified in the CLOCKxx member of the system PARMLIB, which may be modified by the SET CLOCK command in the event of a transition between winter and summer time. For VSE the local time offset is specified by the SET ZONEDEF command in the $IPL procedure.
 
 **GMT=(x,SYSTZ)** - indicates that the TOD clock is set to GMT-x, and VIRTEL will use the system local time offset to calculate the timezone difference. In this case, x is the number of hours which must be added to the TOD clock value to arrive at GMT, and VIRTEL considers the local time to be GMT + w – x where w is the system local time offset. GMT=SYSTZ is equivalent to GMT=(0,SYSTZ).
 
@@ -3312,7 +3310,7 @@ Indicates the type of memory management used by VIRTEL:
 
 **ABOVE** - Memory is managed by VIRTEL, with memory obtained above the 16 megabyte line.
 
-**NATIVE** - Memory managed by z/OS or z/VSE
+**NATIVE** - Memory managed by z/OS or VSE
 
 **TEST** - NATIVE plus ability to track memory usage.
 
@@ -3893,19 +3891,19 @@ TCP1 parameter
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP1.
 
-**tcpname** - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for z/VSE stack.
+**tcpname** - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for VSE stack.
 
 **DNS** -  Start the DNS subtask VIRDNS1. This subtask supports the use of an asynchronous GETNAMEINFO function from within a scenario. See COPY$ NAME-OF-TERMINAL in the Virtel Users Guide for further information.
 
-**maxsock** - In z/OS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of z/OS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In z/VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for z/VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.
+**maxsock** - In z/OS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of z/OS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.
 
 **pgmname** - The name of the VIRTEL TCP/IP interface program used for this connection. The following values can be specified:
 
 	**VIR0T09** - Interface program using ASYNC=EXIT mode. This is the default for z/OS systems.
 
-	**VIR0T10** - Interface program using ASYNC=ECB mode. This is the default for z/VSE systems.
+	**VIR0T10** - Interface program using ASYNC=ECB mode. This is the default for VSE systems.
 
-**adsname** - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for z/VSE stack.
+**adsname** - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for VSE stack.
 
 TCP2 parameter
 ^^^^^^^^^^^^^^
@@ -4433,7 +4431,7 @@ For more detailed informations on this subject, see :ref:`“UFILE1 to UFILE20",
 Example Of The VIRTCT
 ---------------------
 
-An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB for z/OS, and in the installation job VIRTCT for z/VSE::
+An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB for z/OS, and in the installation job VIRTCT for VSE::
 
 	PRINT GEN
 	VIRTERM TYPE=INITIAL,APPLID=VIRTEL, *
@@ -4528,7 +4526,7 @@ An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB fo
 Assembling The VIRTCT
 ---------------------
 
-The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the z/VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.
+The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.
 
 .. index::
    pair: Virtel TCT; Assembly - Z/OS
@@ -4576,9 +4574,9 @@ A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTE
 *VIRTCT assembly in z/OS*
 
 .. index::
-   pair: Virtel TCT; Assembly - z/VSE
+   pair: Virtel TCT; Assembly - VSE
 
-z/VSE example
+VSE example
 ^^^^^^^^^^^^^
 
 A sample job for assembling the VIRTCT is supplied on the installation tape::
@@ -4599,7 +4597,7 @@ A sample job for assembling the VIRTCT is supplied on the installation tape::
 	/&
 	* $$ EOJ
 
-*VIRTCT assembly in z/VSE*
+*VIRTCT assembly in VSE*
 
 .. index::
    pair: Virtel TCT; Dynamic Overrides
@@ -4760,14 +4758,14 @@ The VIRCONF utility program allows a batch job to manage the VIRARBO file, which
 -  Scan a SYSIN cards file for checking the right syntax
 
 .. index::
-   pair: VIRCONF Utility; Define and Upload(z/VSE) 
+   pair: VIRCONF Utility; Define and Upload(VSE) 
 
 JCL
 ---
 
 Below are some JCL examples to define and upload a new VIRARBO file:-
 
-z/VSE
+VSE
 
 ::
 
@@ -4793,7 +4791,7 @@ z/VSE
 	/&
 	* $$ EOJ
 
-*VIRCONF JCL in z/VSE to define and upload a new VIRARBO file*
+*VIRCONF JCL in VSE to define and upload a new VIRARBO file*
 
 .. index::
    pair: VIRCONF Utility; Define and Upload(z/OS)
@@ -4819,7 +4817,7 @@ z/OS
 
 *VIRCONF JCL in z/OS to define and upload a new VIRARBO file*
 
-When VIRCONF is executed with PARM=LOAD, control cards are read from SYSIPT (z/VSE) or SYSIN (z/OS) and are loaded into the VIRARBO file.
+When VIRCONF is executed with PARM=LOAD, control cards are read from SYSIPT (VSE) or SYSIN (z/OS) and are loaded into the VIRARBO file.
 
 Updating a VIRARBO file
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -4827,9 +4825,9 @@ Updating a VIRARBO file
 Below are some JCL examples to add, replace, or delete one or more definitions from an existing VIRARBO file:-
 
 .. index::
-   pair: VIRCONF Utility; Update(z/VSE) 
+   pair: VIRCONF Utility; Update(VSE) 
 
-z/VSE
+VSE
 
 ::
 
@@ -4854,7 +4852,7 @@ z/VSE
 	/&
 	* $$ EOJ
 
-*VIRCONF JCL in z/VSE to update a VIRARBO file*
+*VIRCONF JCL in VSE to update a VIRARBO file*
 
 .. index::
    pair: VIRCONF Utility; Update(z/OS) 
@@ -4905,7 +4903,7 @@ Below are some JCL examples to obtain existing VIRARBO definitions in the form o
 	/&
 	* $$ EOJ
 
-*VIRCONF JCL in z/VSE to unload a VIRARBO file*
+*VIRCONF JCL in VSE to unload a VIRARBO file*
 
 ::
 
@@ -4921,7 +4919,7 @@ Below are some JCL examples to obtain existing VIRARBO definitions in the form o
 
 *VIRCONF JCL in z/OS to unload a VIRARBO file*
 
-When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (z/VSE) or SYSPUNCH (z/OS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.
+When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (VSE) or SYSPUNCH (z/OS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.
 
 .. index::
    pair: VIRCONF Utility; Syntax checking
@@ -4943,7 +4941,7 @@ Below are some JCL examples to verify the control card syntax:-
 	/&
 	* $$ EOJ
 
-*VIRCONF JCL in z/VSE for syntax verification*
+*VIRCONF JCL in VSE for syntax verification*
 
 ::
 
@@ -4958,7 +4956,7 @@ Below are some JCL examples to verify the control card syntax:-
 
 *VIRCONF JCL in z/OS for syntax verification*
 
-Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (z/VSE) or SYSIN (z/OS) cards for potential syntax errors. There is no access to the VIRCONF file.
+Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (VSE) or SYSIN (z/OS) cards for potential syntax errors. There is no access to the VIRCONF file.
 
 .. index::
    pair: VIRCONF Utility; Multi-language Support
@@ -4987,7 +4985,7 @@ When uploading the VIRARBO file, VIRCONF may select one among several versions o
 	/&
 	* $$ EOJ
 
-*VIRCONF JCL in z/VSE for multi-language upload*
+*VIRCONF JCL in VSE for multi-language upload*
 
 ::
 
@@ -5328,7 +5326,7 @@ This operation adds or replaces a RESOURCE entity in the VIRARBO file. The param
 
 .. note::
 
-	If the ID parameter contains a + and SYSPLUS=YES is specified in the TCT the + will be replaced by either the z/OS &SYSCLONE system symbolic or the CLONE parameter as specified in the Virtel JCL parm. For example ID=R+VT001 becomes ID=REHVT001. Not applicable to z/VSE.
+	If the ID parameter contains a + and SYSPLUS=YES is specified in the TCT the + will be replaced by either the z/OS &SYSCLONE system symbolic or the CLONE parameter as specified in the Virtel JCL parm. For example ID=R+VT001 becomes ID=REHVT001. Not applicable to VSE.
 
 .. index::
    pair: VIRCONF Control Cards; RULE statement

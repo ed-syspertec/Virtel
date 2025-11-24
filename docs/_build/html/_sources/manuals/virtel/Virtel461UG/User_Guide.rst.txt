@@ -12,7 +12,6 @@ User Guide V4.61
 
 **VIRTEL User Guide**
 
-.. warning:: This is a draft version of the document.
 
 Version : 4.61 
 
