@@ -8,17 +8,16 @@
 Getting Started with Virtel
 ===========================
 
-.. warning:: This is a draft version of the document.
     
 |image1|
 
 Version : 4.63
 
-Release Date : 23/06/2024. Publication Date : 17/02/2024
+Release Date : 24 November 2025. Publication Date : 24 November 2025
 
 Virtel SAS, SysperTec Group
 
-302 Bureaux de la Colline, 92213 Saint Cloud Cedex, France Tél. : +33 (0) 1 46 02 60 42
+302 Bureaux de la Colline, 92213 Saint Cloud Cedex, France Tel. : +33 (0) 1 46 02 60 42
 
 `www.virtelweb.com <https://www.virtelweb.com/>`_
 
@@ -179,7 +178,7 @@ Security Enhancements
 
 - The Virtel SSO Gateway allows external authentication (AD, OIDS, SAML...) to Mainframe applications for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
 - The Virtel session tokens have been re-engineered, in order to be harder to hack
-- It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.)for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
+- It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.) for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
 
 UX Enhancements
 ^^^^^^^^^^^^^^^
@@ -188,7 +187,7 @@ UX Enhancements
 
 .. note::
 
-    This feature is disabled by default in the 4.63 Beta release.
+    This feature requires update level 6216 or higher.
 
 Administration Enhancements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -198,7 +197,7 @@ Administration Enhancements
 - Simplified CSS customization for creation of new colour schemes
 - New LU Nailing feature, integrated into the Virtel ARBO file (no longer relies on RACF groups)
 
-(See also the 2025 Newsletter "Whats New in Virtel 4.63 Beta Release")
+(See also the 2025 Newsletter "Whats New in Virtel 4.63 Release")
 
 Before you install the product
 ------------------------------

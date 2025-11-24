@@ -8,7 +8,6 @@ Audit, Administration, Operations and Performance V4.59
 
 **VIRTEL Audit, Administration, Operations and Performance**
 
-.. warning:: This is a draft version of the document.
 
 Version : 4.59
 

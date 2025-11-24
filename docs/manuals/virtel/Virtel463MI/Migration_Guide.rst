@@ -10,7 +10,6 @@ Migration Guide V4.63
 
 **VIRTEL Migration Guide**
 
-.. warning:: This is a draft version of the document.
    
 Version : 4.63
 

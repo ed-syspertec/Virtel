@@ -12,9 +12,8 @@ How To Guide V4.59
 
 **VIRTEL How to Guide**
 
-.. warning:: This is a draft version of the document.
 
-Version : 4.59 Draft
+Version : 4.59
 
 Release Date : 27 October 2019. Publication Date : 27/10/2019
 

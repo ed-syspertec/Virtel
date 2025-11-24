@@ -12,9 +12,8 @@ Installation Guide V4.59
 
 **VIRTEL Installation Guide**
 
-.. warning:: This is a draft version of the document.
 
-Version : 4.59 Draft
+Version : 4.59
 
 Release Date : 12 July 2019. Publication Date : 12/07/2019
 

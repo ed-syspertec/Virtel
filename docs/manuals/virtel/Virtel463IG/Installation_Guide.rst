@@ -12,7 +12,6 @@ Installation Guide V4.63
 
 **VIRTEL Installation Guide**
 
-.. warning:: This is a draft version of the document.
 	
 Version : 4.63 
 
@@ -51,7 +50,7 @@ Virtel SAS, Syspertec Group
 Summary of Amendments
 =====================
 
-Virtel version 4.63 Beta (July 2025)
+Virtel version 4.63 (July 2025)
 -----------------------------------
 
 

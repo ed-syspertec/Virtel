@@ -12,9 +12,8 @@ Connectivity Reference V4.61
 
 **VIRTEL Connectivity Reference**
 
-.. warning:: This is a draft version of the document.
 
-Version : 4.61 Draft
+Version : 4.61
 
 Release Date : TBA. Publication Date : 10/10/2021
 

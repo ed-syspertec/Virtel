@@ -13,7 +13,6 @@ Connectivity Guide V4.63
 
 **VIRTEL Connectivity Guide**
 
-.. warning:: This is a draft version of the document.
 
 Version : 4.63 
 

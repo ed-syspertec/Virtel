@@ -25,8 +25,8 @@ V4.62
    
    manuals/virtel/Virtel462*/*               
 
-V4.63 Beta
-----------
+V4.63
+-----
 .. toctree::
    :maxdepth: 4   
    :glob:
