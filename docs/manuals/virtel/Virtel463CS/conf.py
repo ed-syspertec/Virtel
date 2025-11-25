@@ -146,7 +146,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Customization.tex', 'Virtel Customization',
+    (master_doc, 'Virtel_Customization_Guide.tex', 'Virtel Customization',
      'Virtel SAS, Syspertec Group', 'manual'),
 ]
 
