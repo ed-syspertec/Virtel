@@ -42,11 +42,8 @@ Virtel SAS, Syspertec Group
 
 .. _V462MG_Introduction:
 
-Virtel Messages
-===============
-
 Virtel user messages
---------------------
+====================
 
 ERRM121 - ERRM127
 ^^^^^^^^^^^^^^^^^
@@ -1306,7 +1303,7 @@ Action
     When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.
 
 Web Access Messages
--------------------
+===================
 
 .. note::
     These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window. 
@@ -1402,7 +1399,7 @@ Action
     Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
 VIRTEL console messages
------------------------
+=======================
 
 Messages VIR000xx
 ^^^^^^^^^^^^^^^^^
@@ -6609,7 +6606,7 @@ Messages VIRQLxxx
 ^^^^^^^^^^^^^^^^^
 
 VIRQLK1I luname CONNECTING terminal
-===================================
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6620,7 +6617,7 @@ Action
     No Action required
 
 VIRQLK2I luname DECONNECTING terminal
-=====================================
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6631,7 +6628,7 @@ Action
     No Action required
 
 VIRQLK3I luname ACCEPTED terminal
-=================================
+"""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6642,7 +6639,7 @@ Action
     No Action required
 
 VIRQLK4I luname SYNCHRONIZING WITH server (serverInt)
-=====================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6653,7 +6650,7 @@ Action
     No Action required
 
 VIRQLK5I LOCAL LINE luname (lunameInt) IS WAITING FOR REMOTE VIRTEL : qlnkname
-==============================================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6664,7 +6661,7 @@ Action
     No Action required
 
 VIRQLK6E luname PRTOCOL ERROR - code - SNAP TAKEN 
-=================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6675,7 +6672,7 @@ Action
     Contact Technical Support.
 
 VIRQLK7I luname HAS NO MORE PSEUDO TERMINALS
-============================================
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6686,7 +6683,7 @@ Action
     Add more terminals. Contact Technical Support for additional help.
 
 VIRQLK8I LOCAL LINE luname (lunameInt) IS CONNECTED TO REMOTE VIRTEL : terminal
-===============================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6697,7 +6694,7 @@ Action
     No Action Required
      
 VIRQLK9I INITIALISATION FOR luname (lunameInt) VERSION version
-==============================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6708,7 +6705,7 @@ Action
     No Action Required
 
 VIRQLK9I luname SEND
-====================
+""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6719,7 +6716,7 @@ Action
     No Action required
 
 VIRQLK9I LINE linename WAS STOPPED
-==================================
+""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6730,7 +6727,7 @@ Action
     No Action required
 
 VIRQLK9I luname RECEIVE ON SOCKET puname
-========================================
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -6741,7 +6738,7 @@ Action
     No Action required    
 
 VIRQLK9E luname IS REQUESTING DUPLICATE CORRELATOR correlator. ALREADY ALLOCATED TO terminal
-============================================================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0QLK
 
@@ -7698,7 +7695,7 @@ Action
             :scale: 50 % 
 
 Virtel VSV messages
--------------------
+===================
 
 VSV0104E - VSV0105E
 ^^^^^^^^^^^^^^^^^^^
