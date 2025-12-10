@@ -43,11 +43,8 @@ Virtel SAS, Syspertec Group
 
 .. _V463MG_Introduction:
 
-Virtel Messages
-===============
-
 Virtel user messages
---------------------
+====================
 
 ERRM121 - ERRM127
 ^^^^^^^^^^^^^^^^^
@@ -1307,7 +1304,7 @@ Action
     When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.
 
 Web Access Messages
--------------------
+===================
 
 .. note::
     These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window. 
@@ -1403,7 +1400,7 @@ Action
     Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
 VIRTEL console messages
------------------------
+=======================
 
 Messages VIR000xx
 ^^^^^^^^^^^^^^^^^
@@ -7825,7 +7822,7 @@ Action
             :scale: 50 % 
 
 Virtel VSV messages
--------------------
+===================
 
 VSV0104E - VSV0105E
 ^^^^^^^^^^^^^^^^^^^
