@@ -1260,7 +1260,7 @@ There are two types of correspondent: an e-mail correspondent and a local corres
 - A **local correspondent** is activated by the correspondent using a procedure known as “self-registration”. The self-registration procedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
 
 .. index::
-   pair: Access; Correspondent Manangement
+   pair: Access; Correspondent Management
 
 Access to the application
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1271,7 +1271,7 @@ system services sub-application menu, or from the VIRTEL Multi-Session screen vi
 module VIR0041A.
 
 .. index::
-   pair: Security; Correspondent Manangement
+   pair: Security; Correspondent Management
 
 Security
 ^^^^^^^^
@@ -1282,7 +1282,7 @@ When it is accessed by a transaction, the rules of security management of transa
 Security management is described under the heading “Security” 282.
 
 .. index::
-   pair: Objectives; Correspondent Manangement
+   pair: Objectives; Correspondent Management
 
 Objectives
 ^^^^^^^^^^
@@ -1327,7 +1327,7 @@ to the detail of a correspondent is achieved by positioning the cursor and press
     \newpage 
 
 .. index::
-   pair: Field contents; Correspondent Manangement
+   pair: Field contents; Correspondent Management
 
 Field Contents
 ^^^^^^^^^^^^^^
@@ -1360,7 +1360,7 @@ Contacts
 .. _#_V461AP_account_activation:    
 
 .. index::
-   pair: Account activation; Correspondent Manangement
+   pair: Account activation; Correspondent Management
 
 Account activation
 ^^^^^^^^^^^^^^^^^^
@@ -1373,7 +1373,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
     To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.
 
 .. index::
-   pair: Account deactivation; Correspondent Manangement
+   pair: Account deactivation; Correspondent Management
 
 Account deactivation
 ^^^^^^^^^^^^^^^^^^^^
@@ -1381,7 +1381,7 @@ Account deactivation
 A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.
 
 .. index::
-   pair: Access to rules; Correspondent Manangement
+   pair: Access to rules; Correspondent Management
 
 Access to associated rule set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1395,7 +1395,7 @@ To display the list of rules associated with this correspondent, press the [PF6]
 .. _#_V461AP_web_entity_management:
 
 .. index::
-   single: Web Entity Manangement
+   single: Web Entity Management
 
 Web Entity Management
 ---------------------
