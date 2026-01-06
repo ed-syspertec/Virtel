@@ -5,7 +5,7 @@ Virtel Documentation
    :maxdepth: 2
    :caption: Contents:
 
-   virtelmanuals/virtel/Virtel463*/*
+   virtel/Virtel463*/*
    newsletters
    howto
 
