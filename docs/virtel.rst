@@ -1,13 +1,13 @@
 Virtel Manuals
 ==============
 
-V4.61
+V4.63
 -----
 .. toctree::
    :maxdepth: 4   
    :glob:
    
-   manuals/virtel/Virtel461*/*               
+   manuals/virtel/Virtel463*/*               
 
 V4.62
 -----
@@ -17,10 +17,10 @@ V4.62
    
    manuals/virtel/Virtel462*/*               
 
-V4.63
+V4.61
 -----
 .. toctree::
    :maxdepth: 4   
    :glob:
    
-   manuals/virtel/Virtel463*/*               
+   manuals/virtel/Virtel461*/*               
