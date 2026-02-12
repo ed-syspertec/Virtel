@@ -6780,35 +6780,47 @@ Meaning
 Action
     Contact Technical Support.
 
+VIRQL12W linename SOCKET socknum STARTED FOR ipaddr:port 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Module
+    VIR0QLK
+
+Meaning
+    VIRTEL has opened TCP/IP socket socknum on the Quicklink line with external name linename. If socknum is 00000000 then this is a listening socket, port is the listening port number, and ipaddr is the IP address on which VIRTEL accepts incoming connections. If socknum is non-zero and port is non-zero, then this is an incoming connection, and ipaddr:port is the client’s IP address and port number. 
+
+Action
+    No Action Required     
+
 VIRQL51I luname CONNECTING terminal TO server
 """""""""""""""""""""""""""""""""""""""""""""
 
 Module
-    VIR0TNET
+    VIR0QLK
 
 Meaning
     luname is connecting terminal to server.
 
 Action
-No Action Required     
+    No Action Required     
 
 VIRQL58E luname, (LUINTERN) IS NOT AN OUTPUT LINE: CANNOT CONNECT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Module
-    VIR0TNET
+    VIR0QLK
 
 Meaning
     Definition error. Line is not an output type.
 
 Action
-Contact Technical Support.
+    Contact Technical Support.
 
 VIRQL59E luname, (LUINTERN) IS NOT OPEN: CANNOT CONNECT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Module
-    VIR0TNET
+    VIR0QLK
 
 Meaning
     Definition error. luname cannot connect. Line is not open.  
