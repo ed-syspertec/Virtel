@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Virtel'
-copyright = '2025, Virtel. All rights reserved'
+copyright = '2026, Virtel. All rights reserved'
 author = 'Seb Dewar'
 
 # The version info for the project you're documenting, acts as replacement for
