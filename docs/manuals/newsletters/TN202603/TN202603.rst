@@ -11,12 +11,12 @@ New features
 Security Enhancements
 ^^^^^^^^^^^^^^^^^^^^^
 
-- Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced HDRSEC TCT parameter.
+- Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced HDRSEC TCT parameter (see details for update 6212 below).
 
 UX Enhancements
 ^^^^^^^^^^^^^^^
 
-- Enhanced support for Japanese codepages: improved support for IBM1390 codepage, and new options to switch codepage without disconnecting the session. New option to select JIS display mode (JIS78 / JIS83 / JIS90 / JIS97).
+- Enhanced support for Japanese codepages: improved support for IBM1390 codepage, and new options to switch codepage without disconnecting the session. New option to select JIS display mode (JIS78 / JIS83 / JIS90 / JIS97). See details for update 6229 below.
 
 Migration considerations
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ The VIRCONF UNLOAD could truncate long local and remote addresses in certain cas
 
 **6223 Fixes to Correspondents and Security Admin sub-applications**
 
-Cleanup Correspondents and Security admin panels and applications.
+Clean up Correspondents and Security admin panels and applications.
 
 Base Components
 ^^^^^^^^^^^^^^^
@@ -65,6 +65,9 @@ Base Components
 **6215 TCP READ errors reason 000003F1 with LPKALIVE active**
 
 When LPKALIVE is active, the following error message sometimes appears in the Virtel log:
+
+::
+
     VIRT924E ERROR ON: HTTP-CLI SOCKET: 00020000 REQ: READ    - RETCODE: FFFFFFFF ERRNO: 000003F1 (00001009)
 
 This is actually a normal message, it tells us that a READ session was cancelled (by Virtel in this case). The message has been inhibited because it is not useful.
@@ -77,11 +80,11 @@ With NFORCEIP=YES option active, users were getting disconnected but their sessi
 
 Virtel failed to start if the JCL Parm in the Virtel startup proc ended with a comma. This is fixed.
 
-**DDI Directories are empty when CRYPTS parameter is specified**
+**6225 DDI Directories are empty when CRYPTS parameter is specified**
 
 The CRYPTS parameter was causing an error in DDI processing. This is fixed.
 
-**Disable default Debug Option (DOPTIONS) for LU Nailing**
+**6227 Disable default Debug Option (DOPTIONS) for LU Nailing**
 
 The default for the LU Nailing Debug Option was set to on. It is now set to off.
 
@@ -104,15 +107,17 @@ Scenario Language
 
 The following syntax can now be used to empty a field without moving the cursor:
 
-         COPY$ VALUE-TO-SCREEN,VALUE=X'00',SCREEN=(20,16,08),          X
-               TYPE=ERASE-FIELD
+::
+
+    COPY$ VALUE-TO-SCREEN,VALUE=X'00',SCREEN=(20,16,08),          X
+            TYPE=ERASE-FIELD
 
 Security
 ^^^^^^^^
 
 **6212 Session Cookies for 2FA session token management**
 
-Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced HDRSEC TCT parameter:
+Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced **HDRSEC** TCT parameter:
 
 ::
 
@@ -128,16 +133,11 @@ The HDRSEC parameter can be used to add additional security headers to responses
 
 **SECURE** - The session cookie is set with the "Secure" option. You must only activate this option if Virtel is fully set up for https encrypted connections.
 
-A new message in the log when Virtel detects a connection attempt with an invalid or missing session cookie:
+A new message WIRHT67W appears in the log when Virtel detects a connection attempt with an invalid or missing session cookie:
 
-VIRHT67W REQUEST WAS BLOCKED DUE TO INVALID SESSION COOKIE FOR CALLER ipaddr:port
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Module
-    VIRHTTP
-Meaning
-    Virtel is running with the option HDRSEC=(,,SESSCOOKIE) in the TCT, and a request using an existing VirtelSession code was blocked by Virtel because the supplied Session Cookie was invalid or missing.
-Action
-    The request is blocked by Virtel. The security team should be notified of this error to verify if the user at the specified ip address is actually trying to steal someone else's session.
+::
+
+    VIRHT67W REQUEST WAS BLOCKED DUE TO INVALID SESSION COOKIE FOR CALLER ipaddr:port
 
 **6237 Maximum passphrase length set to 100**
 
@@ -159,17 +159,17 @@ Added a new font **Yu Gothic** that fully supports the Japanese character sets.
 Added a new TCT parameter **ALTUTF8** to define an alternate codepage (**DEFUTF8** is the parameter to set the default codepage).
 Combine these parameters with the following parameter in w2hparm configuration file - **w2hparm.encodingSwitch = true;** - to add a toggle button to the Virtel toolbar that allows to switch between both codepages.
 
-(Although this feature is aimed at Japanese users who need to switch between IBM1399 and IBM1390 without disconnecting their session, this can also be used for European users to toggle between Latin and US codepages).
-
-Added a new w2hparm parameter **w2hparm.japaneseFonts = true** that activates a new user parameter to choose a Japanese font variant. Possible values are: JIS78, JIS83, JIS90, JIS97 
-
-Note: Full support for IBM1390 also requires the use of option CRYPTS=(AES-256,HEX), in order for session tokens to be generated without any characters that are badly translated to IBM1390. It also requires the DBCS codepages to be specified on the TCT **CHARSET=** parameter.
-
 ::
 
     ALTUTF8=XXXXXXXX Default=none
 
 **XXXXXXXX** - Name of the alternate character set for EBCDIC to UTF-8 translation, that will be used in combination with the wh2hparm **w2hparm.encodingSwitch = true;** parameter. The combination of these two parameters will add a toggle button to the Virtel toolbar that allows to switch between both codepages. This parameter accepts any of the values that can be specified on the **DEFUTF8** parameter.
+
+(Although this feature is aimed at Japanese users who need to switch between IBM1399 and IBM1390 without disconnecting their session, this can also be used for European users to toggle between Latin and US codepages).
+
+Added a new w2hparm parameter **w2hparm.japaneseFonts = true** that activates a new user parameter to choose a Japanese font variant. Possible values are: JIS78, JIS83, JIS90, JIS97 
+
+Note: Full support for IBM1390 also requires the use of option CRYPTS=(AES-256,HEX), in order for session tokens to be generated without any characters that are badly translated to IBM1390. It also requires the DBCS codepages to be specified on the TCT **CHARSET=** parameter.
 
 **6230 Keyboard beep and change behavior of keyboard lock**
 
