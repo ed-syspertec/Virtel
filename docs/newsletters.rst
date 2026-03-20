@@ -1,69 +1,21 @@
 Technical Newsletters
 =====================
 
-2014
+2026
 ----
 .. toctree::
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2014*/*   
-
-2015
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2015*/*
-
-2016
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2016*/*   
-
-2017
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2017*/*               
-
-2018
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2018*/*
-
-2019
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2019*/*
-
-2020
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2020*/*
+   manuals/newsletters/TN2026*/*
                                                 
-2023
+2025
 ----
 .. toctree::
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2023*/*   
+   manuals/newsletters/TN2025*/*   
 
 2024
 ----
@@ -73,18 +25,66 @@ Technical Newsletters
    
    manuals/newsletters/TN2024*/*     
 
-2025
+2023
 ----
 .. toctree::
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2025*/*     
+   manuals/newsletters/TN2023*/*     
 
-2026
+2020
 ----
 .. toctree::
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2026*/*     
+   manuals/newsletters/TN2020*/*     
+
+2019
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2019*/*   
+
+2018
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2018*/*
+
+2017
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2017*/*   
+
+2016
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2016*/*               
+
+2015
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2015*/*
+
+2014
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2014*/*
