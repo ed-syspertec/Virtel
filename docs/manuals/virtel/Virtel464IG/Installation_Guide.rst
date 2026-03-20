@@ -45,41 +45,6 @@ Virtel SAS, Syspertec Group
 
     \newpage     
 
-.. _Virtel464IG_Summary_Of_Amendments:
-
-Summary of Amendments
-=====================
-
-Virtel version 4.64 (March 2026)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN202603: Whats new in Virtel 4.64.
-
-Virtel version 4.63 (July 2025)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN202507: Whats new in Virtel 4.63.
-
-Virtel version 4.62 (17th Feb 2024)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN202403: Whats new in Virtel 4.62.
-
-Virtel version 4.61 (10th Oct 2021)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN202303: Whats new in Virtel 4.61.
-
-Virtel version 4.60 (11th Nov 2020)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN202003: Whats new in Virtel 4.60.
-
-Virtel version 4.59 (12th Jul 2019)
------------------------------------
-
-.. note:: For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.
-
 .. _Virtel464IG_Introduction:
 
 Introduction
