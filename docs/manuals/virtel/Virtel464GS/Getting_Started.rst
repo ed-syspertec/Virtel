@@ -168,34 +168,15 @@ On the server side, the following elements are also required:
 What's new in this release?
 ===========================
 
-Connectivity Enhancements: TN3270 Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- The Virtel server now integrates a TN3270 client which enables Telnet bounces towards other Telnet servers such as remote z/OS and VSEn systems, z/VM systems, OSA-ICC Consoles, IBMi systems (AS400), TPF etc. This is further documented in the Virtel Connectivity Guide (Section - TN3270 Lines)
-
 Security Enhancements
 ^^^^^^^^^^^^^^^^^^^^^
 
-- The Virtel SSO Gateway allows external authentication (AD, OIDS, SAML...) to Mainframe applications for end-users, allowing them to connect to Mainframe applications using their Windows/AD password.
-- The Virtel session tokens have been re-engineered, in order to be harder to hack
-- It is now possible to set customized HTTP Security Headers (Strict Transport Security, etc.) for all pages and files served by the Virtel web server. This allows the Virtel web server to be compliant with the most recent security standards.
+- Enforced 2FA session tokens to protect Virtel sessions from becoming exposed. These can be activated via the new enhanced HDRSEC TCT parameter (see details for update 6212 below).
 
 UX Enhancements
 ^^^^^^^^^^^^^^^
 
-- Improved support for the TSO OMVS application. The command line is now preserved when the screen is refreshed.
-
-.. note::
-
-    This feature requires update level 6216 or higher.
-
-Administration Enhancements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-- New administrator panel to kill active Virtel sessions
-- Search field introduced on several panels, to improve management of large configurations
-- Simplified CSS customization for creation of new colour schemes
-- New LU Nailing feature, integrated into the Virtel ARBO file (no longer relies on RACF groups)
+- Enhanced support for Japanese codepages: improved support for IBM1390 codepage, and new options to switch codepage without disconnecting the session. New option to select JIS display mode (JIS78 / JIS83 / JIS90 / JIS97). See details for update 6229 below.
 
 (See also the 2026 Newsletter "Whats New in Virtel 4.64 Release")
 
@@ -386,10 +367,10 @@ VSEn
 
 12. Apply any "update" maintenance (virtel464updtnnnn.zip) according to the instructions in the Readme-updtnnnn.txt file in the virtel464updtnnnn.zip if available. Skip this step if no zip file is available.
 
-Accessing SysperTec support
-===========================
+Accessing Virtel Support
+========================
 
-To contact SysperTec support, please send an email to support@syspertec.com. If you have the necessary credentials, you can also open an issue at https://support.syspertec.com 
+To contact Virtel support, please send an email to support@syspertec.com. If you have the necessary credentials, you can also open an issue at https://support.syspertec.com 
 
 Appendix
 --------
