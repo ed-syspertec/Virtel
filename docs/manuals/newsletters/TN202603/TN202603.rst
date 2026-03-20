@@ -11,7 +11,7 @@ New features
 Security Enhancements
 ^^^^^^^^^^^^^^^^^^^^^
 
-- Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced HDRSEC TCT parameter (see details for update 6212 below).
+- Enforced 2FA session tokens to protect Virtel sessions from becoming exposed. These can be activated via the new enhanced HDRSEC TCT parameter (see details for update 6212 below).
 
 UX Enhancements
 ^^^^^^^^^^^^^^^
@@ -123,7 +123,9 @@ Enforced 2FA session tokens to protect Virtel sessions from being stolen by hack
 
     HDRSEC=(hdrtable,[HIDESERVER],[SESSCOOKIE],[SECURE]) Default=none
 
-The HDRSEC parameter can be used to add additional security headers to responses returned by VIRTEL to the browser, and / or to hide the “Server” http header. Please refer to the section “Using the VIRTCT to add HTTP Security Headers” for further details. (versions 4.64 and above) This parameter is also used to activate 2-factor SessionId validation using HttpOnly cookies.
+The HDRSEC parameter can be used to add additional security headers to responses returned by VIRTEL to the browser, and / or to hide the “Server” http header. Please refer to the section “Using the VIRTCT to add HTTP Security Headers” for further details. (versions 4.63 and above) 
+
+This parameter is also used to activate 2-factor SessionId validation using HttpOnly cookies, using the SESSCOOKIE and SECURE sub-parameters (versions 4.64 and above) 
 
 **hdrtable** - The name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to responses returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
 

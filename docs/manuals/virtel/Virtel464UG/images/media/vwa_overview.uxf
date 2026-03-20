@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>340</x>
+      <y>350</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>fontsize=24
+Virtel Engine
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSyncBarVertical</id>
+    <coordinates>
+      <x>430</x>
+      <y>300</y>
+      <w>20</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>template=txt
+title=titletext
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>360</y>
+      <w>320</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;
+m1=//http:www.myHost.com/web2ajax+TSO5
+</panel_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>1180</x>
+      <y>370</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>620</x>
+      <y>180</y>
+      <w>180</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>Internet
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>130</x>
+      <y>360</y>
+      <w>100</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>TSO
+valign=center
+
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>210</y>
+      <w>250</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Virtel establishes a relay session
+with TSO acting as a SLU. TSO sends
+3270 data messages to Virtel.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>240</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+User enters URL to logon to TSO through Virtel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>200</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Acting as a web server, waiting on port 80, the URL connects the users browser to the Virtel Engine.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>190</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Virtel interrogates the URL and initiates a VTAM conection with the TSO application.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>510</y>
+      <w>230</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Virtel receives the 3270 data 
+and converts the data into a 
+HTML page using the 3270 
+template page defined in the 
+initial URL. In this case 
+WEB2AJAX.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>560</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Virtel sends the constructed HTML 
+page to the web browser.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>490</y>
+      <w>200</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+style=wordwrap
+lw=0
+Browser displays the page 
+received from Virtel:-
+
+IKJ56700A ENTER LOGON</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>430</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=[].()
+</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>370</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>440</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>440</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>360</y>
+      <w>130</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=[]-()
+</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>430</y>
+      <w>320</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;&gt;
+m1=//http:www.myHost.com/web2ajax+TSO5
+</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1090</x>
+      <y>360</y>
+      <w>90</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Browser
+Tab
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>370</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1010</x>
+      <y>190</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*1*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>510</x>
+      <y>150</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>340</x>
+      <y>150</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*3*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>150</x>
+      <y>190</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*4*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>150</x>
+      <y>640</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*5*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>410</x>
+      <y>670</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*6*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1000</x>
+      <y>620</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*7*</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

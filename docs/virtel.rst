@@ -1,6 +1,21 @@
 Virtel Manuals
 ==============
 
+V4.64
+-----
+.. toctree::
+   :maxdepth: 4   
+   :glob:
+   
+   manuals/virtel/Virtel464GS/*
+   manuals/virtel/Virtel464IG/*
+   manuals/virtel/Virtel464MI/*
+   manuals/virtel/Virtel464CN/*
+   manuals/virtel/Virtel464UG/*
+   manuals/virtel/Virtel464MG/*
+   manuals/virtel/Virtel464CS/*
+   manuals/virtel/Virtel464AP/*
+
 V4.63
 -----
 .. toctree::
