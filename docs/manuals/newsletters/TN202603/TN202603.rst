@@ -1,0 +1,186 @@
+.. _tn202603:
+
+What’s new in Virtel 4.64 Release
+=================================
+
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.64 at update level 6245. 
+
+New features
+------------
+
+Security Enhancements
+^^^^^^^^^^^^^^^^^^^^^
+
+- Enforced 2FA session tokens to protect Virtel sessions from becoming exposed. These can be activated via the new enhanced HDRSEC TCT parameter (see details for update 6212 below).
+
+UX Enhancements
+^^^^^^^^^^^^^^^
+
+- Enhanced support for Japanese codepages: improved support for IBM1390 codepage, and new options to switch codepage without disconnecting the session. New option to select JIS display mode (JIS78 / JIS83 / JIS90 / JIS97). See details for update 6229 below.
+
+Migration considerations
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Browser support**
+
+Internet Explorer and Edge in IE-compatibility mode are **no longer supported by Virtel**.
+
+**Version support**
+
+Virtel versions 4.60 and older are no longer supported. It is recommended to migrate to the latest GA release.
+
+**ARBO changes**
+
+There have been no changes to the ARBO which would require specific migration actions from v4.61 and upwards. For migration from older versions, please contact Virtel support for assistance.
+
+List of updates:
+----------------
+
+Administration changes
+^^^^^^^^^^^^^^^^^^^^^^
+
+**6213 Fix PF keys on transaction detail screen**
+
+In certain situations, pressing the wrong PFKEY on the transaction detail screen could clear the screen. This has been fixed.
+
+**6217 Fix VIRCONF UNLOAD TIOA and URL fields for External Servers**
+
+There was an error in the VIRCONF unload of External Server records that contain TIOA fields. This has been fixed.
+
+**6219 Delete Transaction requires Virtel restart**
+
+Deleting a transaction from the Transaction List admin panel required a Virtel restart to be refreshed. This is now dynamically refreshed when pressing PF1 on the Entry Point List panel.
+
+**6222 VIRCONF UNLOAD is inconsistent for long local and remote addresses**
+
+The VIRCONF UNLOAD could truncate long local and remote addresses in certain cases. This is fixed.
+
+**6223 Fixes to Correspondents and Security Admin sub-applications**
+
+Clean up Correspondents and Security admin panels and applications.
+
+Base Components
+^^^^^^^^^^^^^^^
+
+**6215 TCP READ errors reason 000003F1 with LPKALIVE active**
+
+When LPKALIVE is active, the following error message sometimes appears in the Virtel log:
+
+::
+
+    VIRT924E ERROR ON: HTTP-CLI SOCKET: 00020000 REQ: READ    - RETCODE: FFFFFFFF ERRNO: 000003F1 (00001009)
+
+This is actually a normal message, it tells us that a READ session was cancelled (by Virtel in this case). The message has been inhibited because it is not useful.
+
+**6218 NFORCEIP=YES will free resources**
+
+With NFORCEIP=YES option active, users were getting disconnected but their sessions were not being freed. This is fixed.
+
+**6220 Virtel fails with VIR0098E and RC16 if JCL parms end with a comma**
+
+Virtel failed to start if the JCL Parm in the Virtel startup proc ended with a comma. This is fixed.
+
+**6225 DDI Directories are empty when CRYPTS parameter is specified**
+
+The CRYPTS parameter was causing an error in DDI processing. This is fixed.
+
+**6227 Disable default Debug Option (DOPTIONS) for LU Nailing**
+
+The default for the LU Nailing Debug Option was set to on. It is now set to off.
+
+**6236 Change default for BFVSAM**
+
+Default for BFVSAM was 8192, it is now set to the recommended value of 32768.
+
+**6241 Invalid display on VIRHT54E message. Port number has extra character**
+
+Message VIRHT54E showed an erroneous extra character at the end of the port number. This is now fixed.
+
+**6243b Terminals not released when using Edge**
+
+Some terminals were not correctly being released by Virtel when closing the browser (Microsoft Edge only). This has been fixed.
+
+Scenario Language
+^^^^^^^^^^^^^^^^^
+
+**6235 Allow use of X'00' in COPY$ to erase a field without moving the cursor**
+
+The following syntax can now be used to empty a field without moving the cursor:
+
+::
+
+    COPY$ VALUE-TO-SCREEN,VALUE=X'00',SCREEN=(20,16,08),          X
+            TYPE=ERASE-FIELD
+
+Security
+^^^^^^^^
+
+**6212 Session Cookies for 2FA session token management**
+
+Enforced 2FA session tokens to protect Virtel sessions from being stolen by hackers. These can be activated via the new enhanced **HDRSEC** TCT parameter:
+
+::
+
+    HDRSEC=(hdrtable,[HIDESERVER],[SESSCOOKIE],[SECURE]) Default=none
+
+The HDRSEC parameter can be used to add additional security headers to responses returned by VIRTEL to the browser, and / or to hide the “Server” http header. Please refer to the section “Using the VIRTCT to add HTTP Security Headers” for further details. (versions 4.63 and above) 
+
+This parameter is also used to activate 2-factor SessionId validation using HttpOnly cookies, using the SESSCOOKIE and SECURE sub-parameters (versions 4.64 and above) 
+
+**hdrtable** - The name of a table added to the end of the VIRTCT allowing for one or more HTTP headers to be added to responses returned by the Virtel HTTP server. The table is built using the HDRH and HDRD macros. HDRH defines the table, and repeated HDRD entries define all the HTTP headers that should be added.
+
+**HIDESERVER** - If this option is specified, the HTTP header “Server: Virtel 4.63” will not be added to responses returned by the Virtel HTTP server.
+
+**SESSCOOKIE** - Activate the use of Virtel HttpOnly Session Cookies to alleviate the risk of sessions being stolen by man-in-the-middle attacks.
+
+**SECURE** - The session cookie is set with the "Secure" option. You must only activate this option if Virtel is fully set up for https encrypted connections.
+
+A new message VIRHT67W appears in the log when Virtel detects a connection attempt with an invalid or missing session cookie:
+
+::
+
+    VIRHT67W REQUEST WAS BLOCKED DUE TO INVALID SESSION COOKIE FOR CALLER ipaddr:port
+
+**6237 Maximum passphrase length set to 100**
+
+Maximum length for a passphrase was 255, which is beyond the maximum supported by RACF, TSS or ACF2. It has now been set to 100.
+
+User Interface
+^^^^^^^^^^^^^^
+
+**6228 Sometimes after several screenlocks, the session hangs with X-SYSTEM**
+
+Fixed an issue where repeated screenlocks were causing the session to hang.
+
+**6229 Enhanced support for Japanese codepages**
+
+Full support for codepages IBM1390 and IBM1399. 
+
+Added a new font **Yu Gothic** that fully supports the Japanese character sets.
+
+Added a new TCT parameter **ALTUTF8** to define an alternate codepage (**DEFUTF8** is the parameter to set the default codepage).
+Combine these parameters with the following parameter in w2hparm configuration file - **w2hparm.encodingSwitch = true;** - to add a toggle button to the Virtel toolbar that allows to switch between both codepages.
+
+::
+
+    ALTUTF8=XXXXXXXX Default=none
+
+**XXXXXXXX** - Name of the alternate character set for EBCDIC to UTF-8 translation, that will be used in combination with the wh2hparm **w2hparm.encodingSwitch = true;** parameter. The combination of these two parameters will add a toggle button to the Virtel toolbar that allows to switch between both codepages. This parameter accepts any of the values that can be specified on the **DEFUTF8** and/or **CHARSET** parameter.
+
+(Although this feature is aimed at Japanese users who need to switch between IBM1399 and IBM1390 without disconnecting their session, it can also be used for European users to toggle between Latin and US codepages).
+
+Added a new w2hparm parameter **w2hparm.japaneseFonts = true** that activates a new user parameter to choose a Japanese font variant. Possible values are: JIS78, JIS83, JIS90, JIS97 
+
+Note: Full support for IBM1390 also requires the use of option CRYPTS=(AES-256,HEX), in order for session tokens to be generated without any characters that are badly translated to IBM1390. It also requires the DBCS codepages to be specified on the TCT **CHARSET=** parameter.
+
+**6230 Keyboard beep and change behavior of keyboard lock**
+
+Added a keyboard beep when a user tries to type into a protected field (which can be disabled in the user settings). Also doing this no longer locks the keyboard, the user can still move the cursor using the arrows or the tabulation key. 
+
+**6240 fixed selection box on OMVS and CICS screens**
+
+On certain 3270 screens, such as OMVS and CICS, the selection box was not positioned correctly. This is now fixed.
+
+**6243 New "rename" button on macro admin panel**
+
+It is now possible for users to rename a macro via the macro admin panel.
