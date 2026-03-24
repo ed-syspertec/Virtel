@@ -5149,7 +5149,8 @@ This example uses the after_standardInit function in conjunction with a custom s
     -webkit-text-fill-color: transparent;
     -webkit-transform: rotate(-40deg);
     -moz-transform: rotate(-40deg);
-    filter: alpha(opacity=25) progid:DXImageTransform.Microsoft.Matrix(M11=0.819, M12=0.574, M21=-0.574, M22=0.819, }
+    filter: alpha(opacity=25) progid:DXImageTransform.Microsoft.Matrix(M11=0.819, M12=0.574, M21=-0.574, M22=0.819, sizingMethod="auto expand");
+    }
 
 *Example custom.css to define the style of the watermark*
 
