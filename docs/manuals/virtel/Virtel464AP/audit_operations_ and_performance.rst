@@ -2042,11 +2042,11 @@ The TCT option RESO=YES must be specified in the TCT. This enables Virtel to acc
 Accessing the Session Manager 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Session Manager application is accessed through PFK PF10 of the ADMIN Configuration Menu.  :
+The Session Manager application is accessed through PFkey F10 of the ADMIN Configuration Menu.  :
 
 |sessman01|
 
-Selecting PFK F10 will from the configuration menu will display the Session Manager active session panel :
+Selecting F10 from the configuration menu will display the Session Manager active session panel :
 
 |sessman02|
 
