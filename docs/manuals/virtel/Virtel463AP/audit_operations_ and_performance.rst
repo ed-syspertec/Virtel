@@ -2035,6 +2035,10 @@ The CNTL job ARBOLOAD must be (re)run with the SESSM=YES option set. This enable
 TCT definitions:
 The TCT option RESO=YES must be specified in the TCT. This enables Virtel to access the VTAM API required to support the CANCEL command option.
 
+.. note::
+    
+    The session management feature currently only works in a single instance Virtel environment. It is not possible to display sessions from another instance in a Virplex environment.
+
 Accessing the Session Manager 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
