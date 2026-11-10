@@ -2019,6 +2019,63 @@ From now on, the cookies are managed automatically. After each upload, VIRTEL se
 Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
 
 .. index::
+   single: Managing Virtel Sessions;
+
+Managing Virtel Sessions
+------------------------
+
+The Session Manager application (VIR0050) has been added to the ADMIN suite of applications in v4.63. It allows a session(s) to be terminated from a list of active sessions using the CANCEL option. The CANCEL option has also been added to the ADMIN 3270 Line Status panels. The CANCEL results in a VTAM INACT command which terminates the sessions.
+
+Installation and Prerequisites 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ARBOLOAD Installation Job:
+The CNTL job ARBOLOAD must be (re)run with the SESSM=YES option set. This enables the ARBO build to add the supporting definitions for Session Manager. This can be run after the initial installation ARBOLOAD has been run.
+
+TCT definitions:
+The TCT option RESO=YES must be specified in the TCT. This enables Virtel to access the VTAM API required to support the CANCEL command option.
+
+Accessing the Session Manager 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Session Manager application is accessed through PFK PF10 of the ADMIN Configuration Menu.  :
+
+|sessman01|
+
+Selecting PFK F10 will from the configuration menu will display the Session Manager active session panel :
+
+|sessman02|
+
+Active Virtel session will be displayed. The panel supports line commands under the C column for each active session. The following line commands are available:
+
+::
+
+ C    Cancel Session
+ 
+
+Searching for sessions
+^^^^^^^^^^^^^^^^^^^^^^
+
+To refine the search for particular sessions the command area at the top of the screen can be used. For example, to search for active sessions beginning RDO1T: 
+
+|sessman03|
+
+To search for sessions with a particular partner use the P=suffix:
+
+|sessman05|
+
+Cancel Sessions from the Line Status Panel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The cancel line command can also be used from within other ADMIN panels. For example In the Line Status Detail Panel. From the main Configuration Menu, select PFK F9 to enter the line status panel, then place the cursor under the line you wish to have further detail on. In our example we have selected W-HTTP. This line is showing 4 sessions. Press PFK PF12 to reveal the detail link report:
+
+|sessman06|
+
+Tab down the cursor to the line you wish to terminate the session for and press PFK F9. The session will then be terminated:
+
+|sessman07|
+
+.. index::
    single: Performance
 
 Performance
@@ -2369,6 +2426,63 @@ Message-triggered SNAPMSG
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”. See the SNAPMSG command for further details.
+
+.. index::
+   single: Managing Virtel Sessions;
+
+Managing Virtel Sessions
+------------------------
+
+The Session Manager application (VIR0050) has been added to the ADMIN suite of applications in v4.63. It allows a session(s) to be terminated from a list of active sessions using the CANCEL option. The CANCEL option has also been added to the ADMIN 3270 Line Status panels. The CANCEL results in a VTAM INACT command which terminates the sessions.
+
+Installation and Prerequisites 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ARBOLOAD Installation Job:
+The CNTL job ARBOLOAD must be (re)run with the SESSM=YES option set. This enables the ARBO build to add the supporting definitions for Session Manager. This can be run after the initial installation ARBOLOAD has been run.
+
+TCT definitions:
+The TCT option RESO=YES must be specified in the TCT. This enables Virtel to access the VTAM API required to support the CANCEL command option.
+
+Accessing the Session Manager 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Session Manager application is accessed through PFK PF10 of the ADMIN Configuration Menu.  :
+
+|sessman01|
+
+Selecting PFK F10 will from the configuration menu will display the Session Manager active session panel :
+
+|sessman02|
+
+Active Virtel session will be displayed. The panel supports line commands under the C column for each active session. The following line commands are available:
+
+::
+
+ C    Cancel Session
+ 
+
+Searching for sessions
+^^^^^^^^^^^^^^^^^^^^^^
+
+To refine the search for particular sessions the command area at the top of the screen can be used. For example, to search for active sessions beginning RDO1T: 
+
+|sessman03|
+
+To search for sessions with a particular partner use the P=suffix:
+
+|sessman05|
+
+Cancel Sessions from the Line Status Panel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The cancel line command can also be used from within other ADMIN panels. For example In the Line Status Detail Panel. From the main Configuration Menu, select PFK F9 to enter the line status panel, then place the cursor under the line you wish to have further detail on. In our example we have selected W-HTTP. This line is showing 4 sessions. Press PFK PF12 to reveal the detail link report:
+
+|sessman06|
+
+Tab down the cursor to the line you wish to terminate the session for and press PFK F9. The session will then be terminated:
+
+|sessman07|
 
 .. index::
    single: Audit     
@@ -3124,3 +3238,9 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image80| image:: images/media/image80.png
 .. |image81| image:: images/media/image81.png
 .. |image82| image:: images/media/image82.png    
+.. |sessman01| image:: images/media/sessman01.png    
+.. |sessman02| image:: images/media/sessman02.png    
+.. |sessman03| image:: images/media/sessman03.png    
+.. |sessman05| image:: images/media/sessman05.png    
+.. |sessman06| image:: images/media/sessman06.png    
+.. |sessman07| image:: images/media/sessman07.png    
